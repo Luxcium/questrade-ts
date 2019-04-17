@@ -69,3 +69,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ALL KIND, EXPRESS OR IMPLI
 ## Contributions
 
 All contributions are welcome!
+
+- questrade-ts@0.3.1-UNSTABLE
