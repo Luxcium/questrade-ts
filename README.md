@@ -1,12 +1,12 @@
 <!-- @format -->
 
-# QUESTRADE Typescript/Javascript API
+# Questrade TS/NodeJS API
 
-## Currently, this API does not have any test suites installed and is therefore not to be considered ready for production
+This API is an easy way to use the [Questrade API](www.questrade.com/api/documentation/getting-started) immediately. It give full support for TypeScript and NodeJS.
+
+### Currently, this API does not have any test suites installed and is therefore not to be considered ready for production
 
 Until version 1.0 breaking change will occur at minor version change 0.X.0, Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything problematic to help us during the development phase of this project. use the `--save-exact` flag until the version 1.0.x Using the caret (circumflex accent`U+005E`) ^0.X.Y on a version stating with 0.x should not upgrade to folowing minor version but to have full control make sure you unsing that flag or `-E` and then to upgrade to a new latest version use `@latest` i.e. `npm i --save-exact questrade-ts@latest`. alternatively you may use `--no-save` to prevents saving to dependencies at all.
-
-This API is an easy way to use the [Questrade API](www.questrade.com/api/documentation/getting-started) immediately.
 
 ### Features
 
@@ -34,7 +34,7 @@ After that, it is really simple to use:
 
 ```typescript
 // typescript
-import { tokenConnection } from '.';
+import { tokenConnection } from 'questrade-ts';
 
 const seedToken = 'R0TFhgiWFjKi1YCwCjAMJFugwD4A8cgb0';
 
@@ -73,7 +73,7 @@ By default, if you instantiate the `Questrade` class without passing in an accou
 qt.account = '12345678'; // Switch to account 12345678 -- All future calls will use this account. using 8 digits
 ```
 
-## Contributions
+# Contributions
 
 All contributions are welcome!
 
