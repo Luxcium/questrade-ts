@@ -34,7 +34,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com/luxcium/questrade.git"
+    "url": "git@github.com/luxcium/questrade-ts.git"
   },
   "keywords": [
     "Questrade",
@@ -45,9 +45,9 @@
   "author": "Luxcium <luxcium@neb401.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/luxcium/questrade/issues"
+    "url": "https://github.com/luxcium/questrade-ts/issues"
   },
-  "homepage": "https://github.com/luxcium/questrade",
+  "homepage": "https://github.com/luxcium/questrade-ts",
   "dependencies": {
     "@types/lodash": "^4.14.123",
     "@types/mkdirp": "^0.5.2",
