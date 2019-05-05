@@ -25,5 +25,6 @@ install:
 
 script:
   - npm run build
+  - ls -alg
 
 '.result': configured
