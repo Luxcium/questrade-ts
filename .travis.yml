@@ -21,6 +21,7 @@ install:
   - npm i -g typescript@latest
   - npm i -g tslint@latest
   - npm i -g tslint-config-airbnb@latest tslint-config-prettier@latest tslint-react@latest
+  - npm install
 
 script:
   - npm run build
