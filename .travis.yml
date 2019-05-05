@@ -1,0 +1,28 @@
+# @format
+
+os: linux
+
+language: node_js
+
+node_js:
+  - lts/carbon
+  - lts/dubnium
+
+dist: trusty
+
+cache:
+  directories:
+    - '$HOME/.node_packages'
+
+group: stable
+
+install:
+  - npm i -g npm@latest
+  - npm i -g typescript@latest
+  - npm i -g tslint@latest
+  - npm i -g tslint-config-airbnb@latest tslint-config-prettier@latest tslint-react@latest
+
+script:
+  - npm run build
+
+'.result': configured
