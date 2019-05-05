@@ -20,7 +20,6 @@ group: stable
 
 install:
   - npm i -g npm@latest
-  - npm i -g concurrently@latest
   - npm i -g typescript@latest @types/node@latest
   - npm i -g ts-jest@latest
   - npm i -g jest@latest @types/jest@latest
