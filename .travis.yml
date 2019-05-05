@@ -5,6 +5,8 @@ os: linux
 language: node_js
 
 node_js:
+  - lts/argon
+  - lts/boron
   - lts/carbon
   - lts/dubnium
 
