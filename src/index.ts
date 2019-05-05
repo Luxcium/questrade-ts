@@ -30,5 +30,5 @@ export { QuestradeHelperFunction };
 import { QuestradeHelperFunction } from './utils/QuestradeHelperFunction';
 export const tokenConnection = async (seedToken: string) => {
   const questrade = await QuestradeHelperFunction({ seedToken });
-  return { questrade: questrade };
+  return { questrade };
 };
