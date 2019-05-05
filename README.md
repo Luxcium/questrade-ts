@@ -16,9 +16,10 @@
 [![GitHub stars](https://img.shields.io/github/stars/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/stargazers)
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/pulls)
 [![GitHub issues](https://img.shields.io/github/issues/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/issues)
-This API is an easy way to use the [Questrade API](www.questrade.com/api/documentation/getting-started) immediately. It give full support for TypeScript and NodeJS.
 
 ## Getting Started
+
+This API is an easy way to use the [Questrade API](www.questrade.com/api/documentation/getting-started) immediately. It give full support for TypeScript and NodeJS.
 
 Simply start by installing this questrade-ts library:
 
