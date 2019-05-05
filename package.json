@@ -1,7 +1,7 @@
 {
   "name": "questrade-ts",
   "displayName": "Questrade API by Luxcium (with typescript support).",
-  "version": "0.5.7",
+  "version": "0.5.9",
   "description": "Unofficial Questrade API wraper by Luxcium (with typescript support).",
   "main": "./src/index.js",
   "types": "./lib/index.d.ts",
@@ -18,7 +18,7 @@
     "copy:LICENSE": "cp-cli LICENSE ./build/LICENSE && npm run copy:LICENSE:notice",
     "copy:readme": "cp-cli README.md build/README.md",
     "copy:static:files": "npm run copy:package:json && npm run copy:npmignore && npm run copy:LICENSE && npm run copy:readme",
-    "predist:install": "rimraf package-lock.json && rimraf node_modules && npm install",
+    "predist:install": "rimraf package-lock.json && rimraf node_modules && npm install && npm i -D @types/node@latest",
     "predist:check": "npm run proto:test && echo 'will smoke:test' && echo 'will test'",
     "quick:predist": "npm run gitcheck && npm run build && npm run copy:static:files && rimraf ./build/tmp",
     "predist": "npm run predist:install && npm run quick:predist && echo done",
@@ -57,16 +57,16 @@
     "moment": "^2.24.0"
   },
   "devDependencies": {
-    "@types/node": "^11.13.0",
+    "@types/node": "^12.0.0",
     "cp-cli": "^2.0.0",
-    "prettier": "^1.16.4",
+    "prettier": "^1.17.0",
     "rimraf": "^2.6.3",
-    "ts-node": "^8.0.3",
+    "ts-node": "^8.1.0",
     "tslib": "^1.9.3",
-    "tslint": "^5.15.0",
+    "tslint": "^5.16.0",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.4.2",
+    "typescript": "^3.4.5",
     "typescript-tslint-plugin": "^0.3.1"
   }
 }
