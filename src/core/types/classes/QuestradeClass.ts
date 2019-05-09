@@ -1,5 +1,6 @@
 /** @format */
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
+// import {default as fetch} from 'node-fetch'
 import { EventEmitter as EE } from 'events';
 import { readFileSync, writeFileSync } from 'fs';
 import { sync } from 'mkdirp';
@@ -39,6 +40,7 @@ import { IOptionsQuotes } from '../IOptionsQuotes';
 import { IOrder, IOrders } from '../IOrders';
 import { IQuote, IQuotes } from '../IQuotes';
 
+// fetch()
 export class QuestradeClass extends EE {
   public get getServerTime(): Promise<string> {
     return this._getTime();
@@ -653,12 +655,6 @@ export class QuestradeClass extends EE {
       console.error('at _refreshKey()', error.message);
       throw new Error(error.message);
     }
-    /*
-        if (!this._refreshToken) {
-      this._refreshToken = this.seedToken;
-      this._saveKey();
-    }
-    */
   }
   // ? async method _saveKey()
   // Saves the latest refreshToken in the file name after the seedToken
