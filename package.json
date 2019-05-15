@@ -49,10 +49,8 @@
   },
   "homepage": "https://github.com/luxcium/questrade-ts",
   "dependencies": {
-    "@types/axios": "^0.14.0",
     "@types/lodash": "^4.14.123",
     "@types/mkdirp": "^0.5.2",
-    "@types/moment": "^2.13.0",
     "@types/node-fetch": "^2.3.3",
     "axios": "^0.18.0",
     "lodash": "^4.17.11",
