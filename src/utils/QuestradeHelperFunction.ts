@@ -4,13 +4,13 @@ import { IQuestradeAPIOptions, QuestradeClass } from '../core/types';
 
 export async function QuestradeHelperFunction(
   opts: IQuestradeAPIOptions,
-  cb?: (qt: QuestradeClass) => Promise<void>
+  cb?: (qt: QuestradeClass) => Promise<void | QuestradeClass>
 ) {
   const qt = await new QuestradeClass(opts);
-  qt.on('ready', () => {
+  return qt.on('ready', () => {
     if (typeof cb === 'function') {
-      cb(qt);
+      return cb(qt);
     }
+    return qt;
   });
-  return qt;
 }
