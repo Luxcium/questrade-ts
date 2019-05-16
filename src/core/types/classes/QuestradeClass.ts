@@ -156,7 +156,10 @@ export class QuestradeClass extends EE {
           this.emit('ready');
         } catch (mainError) {
           // console.error(error.message);
-          console.log('Error at main() in constructor', mainError.message);
+          console.log(
+            'Error at main() in QuestradeClass constructor',
+            mainError.message
+          );
           // this.emit('error');
           // throw new Error(error.message);
         }
@@ -166,7 +169,10 @@ export class QuestradeClass extends EE {
           // will alphabetise
         })
         .catch(callingMainError => {
-          console.log('Error calling main() in constructor', callingMainError);
+          console.log(
+            'Error calling main() QuestradeClass in constructor',
+            callingMainError
+          );
           // throw new Error(err.message);
         });
     } catch (error) {
