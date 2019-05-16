@@ -33,7 +33,7 @@ export {
   IQuestradeAPIOptions,
   QuestradeAPIOptions,
 } from './core/types/IQuestradeAPIOptions';
-export { QuestradeHelperFunction, questradeTS, Questrade };
+export { QuestradeHelperFunction, questradeTS, Questrade, QuestradeClass };
 export const tokenConnection = async (seedToken: string) => {
   const questrade = await QuestradeHelperFunction({ seedToken });
   return { questrade };
