@@ -1,4 +1,0 @@
-,
-      qt => {
-        return qt;
-      }

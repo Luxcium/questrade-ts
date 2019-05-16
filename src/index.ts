@@ -1,6 +1,5 @@
 /** @format */
 
-// questrade-ts
 export {
   AccountStatus,
   ClientAccountType,
@@ -27,4 +26,7 @@ export {
   IQuestradeAPIOptions,
   QuestradeAPIOptions,
 } from './core/types/IQuestradeAPIOptions';
-export { QuestradeHelperFunction } from './utils/QuestradeHelperFunction';
+export {
+  QuestradeHelperFunction,
+  tokenConnection,
+} from './utils/QuestradeHelperFunction';

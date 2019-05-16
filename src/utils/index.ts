@@ -1,3 +1,6 @@
 /** @format */
 
-export { QuestradeHelperFunction } from './QuestradeHelperFunction';
+export {
+  QuestradeHelperFunction,
+  tokenConnection,
+} from './QuestradeHelperFunction';
