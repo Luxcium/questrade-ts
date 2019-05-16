@@ -18,7 +18,9 @@ export async function QuestradeHelperFunction(
     }
   );
 }
-export const tokenConnection = async (token: string) => {
+export const tokenConnection: (
+  token: string
+) => Promise<{ questrade: QuestradeClass }> = async (token: string) => {
   const questrade = await QuestradeHelperFunction({ seedToken: token });
   return { questrade };
 };
