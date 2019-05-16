@@ -14,3 +14,8 @@ export async function QuestradeHelperFunction(
   });
   return qt;
 }
+
+export const tokenConnection = async (seedToken: string) => {
+  const questrade = await QuestradeHelperFunction({ seedToken });
+  return { questrade };
+};
