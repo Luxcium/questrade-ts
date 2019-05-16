@@ -51,11 +51,13 @@ After that, it is really simple to use:
 // typescript
 import { tokenConnection } from 'questrade-ts';
 
-const seedToken = 'R0TFhgiWFjKi1YCwCjAMJFugwD4A8cgb0';
-
 // using async Immediately Invoked Function Expressions to avoid using then().catch()
 (async () => {
   // always put your code in a try catch block
+
+  // you do not have to put the token in plain text you should import it from elsewhere
+  const seedToken = 'YOUR-TOKEN-HERE_jKi1YCwCjAMJFugwD4A8cgb0';
+
   try {
     const { questrade } = await tokenConnection(seedToken);
 
