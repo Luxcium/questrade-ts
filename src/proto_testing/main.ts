@@ -1,5 +1,8 @@
 /** @format */
 
 import { main } from './index';
-const seedToken = 'AGKcjCWcxgIGr5WPaKY83qNxFnH6qX2I0';
-main(seedToken).catch(error => console.log('MAINERROR:', error));
+// will void this token bfore publishing do not use this token
+const seedToken = '8gVXfsNeGezpqbnRYF5jrgxwBLFFjABb0';
+main(seedToken).catch(error =>
+  console.log('MAINERROR in PROTO TESTING:', error)
+);

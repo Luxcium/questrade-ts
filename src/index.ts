@@ -29,4 +29,4 @@ export {
 export {
   QuestradeHelperFunction,
   tokenConnection,
-} from './utils/QuestradeHelperFunction';
+} from './QuestradeHelperFunction';
