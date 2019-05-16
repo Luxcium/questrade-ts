@@ -61,8 +61,10 @@ export const main = async (seedToken: string) => {
       // await console.log(candle[0].volume);
       // const result = await qt.search('aapl');
       // await await console.log(result);Ã¹
+      return qt;
     } catch (error) {
       await console.log(error.message);
+      throw new Error(error.message);
     }
   });
 };
