@@ -27,7 +27,4 @@ export {
   IQuestradeAPIOptions,
   QuestradeAPIOptions,
 } from './core/types/IQuestradeAPIOptions';
-export {
-  QuestradeHelperFunction,
-  tokenConnection,
-} from './utils/QuestradeHelperFunction';
+export { QuestradeHelperFunction } from './utils/QuestradeHelperFunction';
