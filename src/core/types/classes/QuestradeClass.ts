@@ -39,6 +39,22 @@ import { IEquitySymbol, IEquitySymbols } from '../IEquitySymbols';
 import { IOptionsQuotes } from '../IOptionsQuotes';
 import { IOrder, IOrders } from '../IOrders';
 import { IQuote, IQuotes } from '../IQuotes';
+type Methode =
+  | 'GET'
+  | 'get'
+  | 'delete'
+  | 'DELETE'
+  | 'head'
+  | 'HEAD'
+  | 'options'
+  | 'OPTIONS'
+  | 'post'
+  | 'POST'
+  | 'put'
+  | 'PUT'
+  | 'patch'
+  | 'PATCH'
+  | undefined;
 
 // fetch()
 export class QuestradeClass extends EE {
@@ -320,7 +336,9 @@ export class QuestradeClass extends EE {
   }
   public async getOrder(
     orderId?: idType,
-    orderOptions: OrdersOptions = { stateFilter: OrderStateFilterType.All }
+    orderOptions: OrdersOptions = {
+      stateFilter: OrderStateFilterType.All,
+    }
   ): Promise<IOrder[]> {
     const rangeValidated = this._rangeValidation(orderOptions);
     try {
@@ -527,7 +545,7 @@ export class QuestradeClass extends EE {
   // ? async method _accountApi<T>
   // Method that appends the set account to the API calls so all calls are made
   private async _accountApi<T>(
-    method?: string,
+    method?: Methode,
     endpoint?: string,
     options?: Optionals
   ) {
@@ -544,7 +562,7 @@ export class QuestradeClass extends EE {
   // ? async method _api<T>
   // Method that actually mades the GET/POST request to Questrade
   private async _api<T>(
-    method?: string,
+    method: Methode = 'GET',
     endpoint?: string,
     options?: Optionals,
     additionalHeaders?: IHeaders
@@ -556,7 +574,10 @@ export class QuestradeClass extends EE {
     }
     const auth = `Bearer ${this._accessToken}`;
     const url: string = this._apiUrl + endpoint;
-    const headers: IHeaders = { Authorization: auth, ...additionalHeaders };
+    const headers: IHeaders = {
+      Authorization: auth,
+      ...additionalHeaders,
+    };
     const config: AxiosRequestConfig = {
       params,
       method,
