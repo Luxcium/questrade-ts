@@ -16,7 +16,6 @@
       "name": "Attach (Port: 9922)",
       "port": 9922
     }, */
-
     /*     {
       "type": "node",
       "request": "launch",
@@ -32,16 +31,21 @@
       "name": "TS-Node Debug Launch",
       "protocol": "inspector",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["-r", "ts-node/register"],
-      "args": ["${workspaceFolder}/src/main.ts"],
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register"
+      ],
+      "args": [
+        "${workspaceFolder}/debug.ts"
+      ],
       "cwd": "${workspaceFolder}",
       "env": {
         "NODE_ENV": "development"
       },
       "stopOnEntry": true,
-      "autoAttachChildProcesses": false,
+      "autoAttachChildProcesses": true,
       "console": "integratedTerminal",
-      "internalConsoleOptions": "neverOpen"
+      "internalConsoleOptions": "openOnSessionStart"
     }
   ]
 }

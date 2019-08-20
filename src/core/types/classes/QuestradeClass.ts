@@ -1,6 +1,5 @@
 /** @format */
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
-// import {default as fetch} from 'node-fetch'
 import { EventEmitter as EE } from 'events';
 import { readFileSync, writeFileSync } from 'fs';
 import { sync } from 'mkdirp';
@@ -39,24 +38,8 @@ import { IEquitySymbol, IEquitySymbols } from '../IEquitySymbols';
 import { IOptionsQuotes } from '../IOptionsQuotes';
 import { IOrder, IOrders } from '../IOrders';
 import { IQuote, IQuotes } from '../IQuotes';
-type Methode =
-  | 'GET'
-  | 'get'
-  | 'delete'
-  | 'DELETE'
-  | 'head'
-  | 'HEAD'
-  | 'options'
-  | 'OPTIONS'
-  | 'post'
-  | 'POST'
-  | 'put'
-  | 'PUT'
-  | 'patch'
-  | 'PATCH'
-  | undefined;
+import { Methode } from '../Methode';
 
-// fetch()
 export class QuestradeClass extends EE {
   public get getServerTime(): Promise<string> {
     return this._getTime();
@@ -578,7 +561,7 @@ export class QuestradeClass extends EE {
       Authorization: auth,
       ...additionalHeaders,
     };
-    const config: AxiosRequestConfig = {
+    const requestConfig: AxiosRequestConfig = {
       params,
       method,
       headers,
@@ -586,9 +569,15 @@ export class QuestradeClass extends EE {
     };
     let response: AxiosResponse<T>;
     try {
-      response = await client(config);
+      response = await client(requestConfig);
     } catch (error) {
-      console.error(error.message);
+      console.error(
+        '\nError in the API call:\n',
+        `\n${error.message}`,
+        `\nError code: ${error.response.data.code}`,
+        `\n${error.response.data.message}`
+      );
+      error.message = error.response.data;
       throw error;
     }
     return response.data;
