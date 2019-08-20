@@ -5,19 +5,18 @@ import { QuestradeClass } from '../core/types';
 export async function allOfGetAccounts(qt: QuestradeClass, done: any) {
   const getAccounts = await qt.getAccounts();
   const account = getAccounts[0];
-  await console.log('\n\n\n\nCLIENTACCOUNTTYPE (for each):');
-  await console.log('\n\nclientAccountType:');
-  await console.dir(account.clientAccountType);
-  await console.log('isBilling:');
-  await console.dir(account.isBilling);
-  await console.log('isPrimary:');
-  await console.dir(account.isPrimary);
-  await console.log('number:');
-  await console.dir(account.number);
-  await console.log('status:');
-  await console.dir(account.status);
-  await console.log('type:');
-  await console.dir(account.type);
-
+  console.log('\n\n\n\nCLIENTACCOUNTTYPE (for each):');
+  console.log('\n\nclientAccountType:');
+  console.dir(account.clientAccountType);
+  console.log('isBilling:');
+  console.dir(account.isBilling);
+  console.log('isPrimary:');
+  console.dir(account.isPrimary);
+  console.log('number:');
+  console.dir(account.number);
+  console.log('status:');
+  console.dir(account.status);
+  console.log('type:');
+  console.dir(account.type);
   done();
 }

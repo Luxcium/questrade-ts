@@ -13,10 +13,10 @@ import { allOfgetServerTimeObject } from './allOfgetServerTimeObject';
 
 export const main = async (seedToken: string) => {
   await QuestradeHelperFunction({ seedToken }, async (qt: QuestradeClass) => {
-    await console.log('seedToken:', qt.seedToken);
-    await console.log('keyFile:', qt.keyFile);
-    await console.log('getServerTime:', qt.getServerTime);
-    await console.log(
+    console.log('seedToken:', qt.seedToken);
+    console.log('keyFile:', qt.keyFile);
+    console.log('getServerTime:', qt.getServerTime);
+    console.log(
       'qt.getPrimaryAccountNumber():',
       await qt.getPrimaryAccountNumber()
     );
@@ -63,7 +63,7 @@ export const main = async (seedToken: string) => {
       // await await console.log(result);Ã¹
       return qt;
     } catch (error) {
-      await console.log(error.message);
+      console.log(error.message);
       throw new Error(error.message);
     }
   });
