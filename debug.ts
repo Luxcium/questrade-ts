@@ -2,7 +2,7 @@
 
 import { IQuestradeAPIOptions, tokenConnection } from './src';
 const qtOptions: IQuestradeAPIOptions = {
-  seedToken: 'IEQ6p8dqR3a4cccAIfCizwcKFqon7dQh0',
+  seedToken: 'WKt4cb82wcc8qx6xNIfqtqgATpeGPWB90',
 };
 (async (): Promise<void> => {
   // const somInterval = {};

@@ -31,14 +31,14 @@ import {
   Time,
   TimeRange,
   TimeRangeInterval,
-} from '../../types';
-import { OrderStateFilterType } from '../enums';
-import { ICandle, ICandles } from '../ICandles';
-import { IEquitySymbol, IEquitySymbols } from '../IEquitySymbols';
-import { IOptionsQuotes } from '../IOptionsQuotes';
-import { IOrder, IOrders } from '../IOrders';
-import { IQuote, IQuotes } from '../IQuotes';
-import { Methode } from '../Methode';
+} from '../core/types';
+import { OrderStateFilterType } from '../core/types/enums';
+import { ICandle, ICandles } from '../core/types/ICandles';
+import { IEquitySymbol, IEquitySymbols } from '../core/types/IEquitySymbols';
+import { IOptionsQuotes } from '../core/types/IOptionsQuotes';
+import { IOrder, IOrders } from '../core/types/IOrders';
+import { IQuote, IQuotes } from '../core/types/IQuotes';
+import { Methode } from '../core/types/Methode';
 
 export class QuestradeClass extends EE {
   public get getServerTime(): Promise<string> {
