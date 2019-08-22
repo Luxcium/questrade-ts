@@ -1,6 +1,7 @@
 /** @format */
 
 export interface IQuestradeAPIOptions {
+  practiceAccount?: boolean;
   test?: boolean;
   keyDir?: string;
   apiVersion?: string;
