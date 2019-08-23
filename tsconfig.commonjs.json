@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
-    "outDir": "./build/common/src",
+    "outDir": "./build/src",
     "tsBuildInfoFile": "./build/tmp/tsbuild.commonjs.info",
     "noEmit": false,
     "noEmitHelpers": false,
@@ -19,6 +19,6 @@
     "sourceMap": true,
     "inlineSourceMap": false,
     "inlineSources": true,
-    "declarationDir": "./build/common/lib"
+    "declarationDir": "./build/lib/"
   }
 }

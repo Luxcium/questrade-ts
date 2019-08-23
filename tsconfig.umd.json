@@ -2,8 +2,8 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "umd",
-    "outDir": "./build/umd/src",
-    "tsBuildInfoFile": "./build/tmp/tsbuild.commonjs.info",
+    "outDir": "./build/js/umd/src",
+    "tsBuildInfoFile": "./build/tmp/tsbuild.umd.info",
     "noEmit": false,
     "noEmitHelpers": false,
     /* Additional Vebosity */
@@ -19,6 +19,6 @@
     "sourceMap": true,
     "inlineSourceMap": false,
     "inlineSources": true,
-    "declarationDir": "./build/umd/lib"
+    "declarationDir": "./build/js/umd/lib"
   }
 }

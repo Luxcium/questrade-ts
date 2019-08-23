@@ -2,7 +2,7 @@ export { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 export { EventEmitter as EE } from 'events';
 export { readFileSync, writeFileSync } from 'fs';
 export { sync } from 'mkdirp';
-export { default as moment } from 'moment';
+// export { default as moment } from 'moment';
 export { dirname } from 'path';
 export {
   AcountNumber,

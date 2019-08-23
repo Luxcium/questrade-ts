@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "system",
-    "outFile": "./build/client/questrade.sys.js",
+    "outFile": "./build/js/questrade.sys.js",
     "tsBuildInfoFile": "./build/tmp/tsbuild.sys.info",
     "noEmit": false,
     "noEmitHelpers": false,

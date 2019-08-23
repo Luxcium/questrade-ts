@@ -3,7 +3,7 @@ import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 import { EventEmitter as EE } from 'events';
 import { readFileSync, writeFileSync } from 'fs';
 import { sync } from 'mkdirp';
-import { default as moment } from 'moment';
+// // import { default as moment } from 'moment';
 import { dirname } from 'path';
 import {
   AcountNumber,
@@ -14,7 +14,6 @@ import {
   IActivities,
   IBalances,
   ICreds,
-  IDateObject,
   idsType,
   idType,
   IExecution,
@@ -422,43 +421,43 @@ export class QuestradeClass extends EE {
       throw new Error(error.message);
     }
   }
-  public async getServerTimeObject(): Promise<IDateObject> {
-    const serverTime = await this._getTime();
-    const timeMoment = moment(serverTime);
-    const weekDay = timeMoment.localeData().weekdays()[timeMoment.weekday()];
-    const returnDate = {
-      serverTime,
-      UTC: timeMoment.toJSON(),
-      timeObject: timeMoment.toObject(),
-      toUTCDate: timeMoment.toDate(),
-      toArray: timeMoment.toArray(),
-      date: {
-        day: weekDay,
-        date: timeMoment.date(),
-        month: timeMoment.month() + 1,
-        year: timeMoment.year(),
-      },
-      time: {
-        hour: timeMoment.hour(),
-        minute: timeMoment.minute(),
-        second: timeMoment.second(),
-        milliseconds: timeMoment.milliseconds(),
-        unixmilliseconds: timeMoment.valueOf(),
-        unix: timeMoment.unix(),
-        utcOffset: timeMoment.utcOffset(),
-      },
-      isValid: timeMoment.isValid(),
-      dayOfYear: timeMoment.dayOfYear(),
-      weekOfTheYeay: timeMoment.isoWeek(),
-      weekday: timeMoment.weekday(),
-      isLeapYear: timeMoment.isLeapYear(),
-      daysInMonth: timeMoment.daysInMonth(),
-      weeksInYear: timeMoment.isoWeeksInYear(),
-      quarter: timeMoment.quarter(),
-      locale: timeMoment.locale(),
-    };
-    return returnDate;
-  }
+  // public async getServerTimeObject(): Promise<IDateObject> {
+  //   const serverTime = await this._getTime();
+  //   const timeMoment = moment(serverTime);
+  //   const weekDay = timeMoment.localeData().weekdays()[timeMoment.weekday()];
+  //   const returnDate = {
+  //     serverTime,
+  //     UTC: timeMoment.toJSON(),
+  //     timeObject: timeMoment.toObject(),
+  //     toUTCDate: timeMoment.toDate(),
+  //     toArray: timeMoment.toArray(),
+  //     date: {
+  //       day: weekDay,
+  //       date: timeMoment.date(),
+  //       month: timeMoment.month() + 1,
+  //       year: timeMoment.year(),
+  //     },
+  //     time: {
+  //       hour: timeMoment.hour(),
+  //       minute: timeMoment.minute(),
+  //       second: timeMoment.second(),
+  //       milliseconds: timeMoment.milliseconds(),
+  //       unixmilliseconds: timeMoment.valueOf(),
+  //       unix: timeMoment.unix(),
+  //       utcOffset: timeMoment.utcOffset(),
+  //     },
+  //     isValid: timeMoment.isValid(),
+  //     dayOfYear: timeMoment.dayOfYear(),
+  //     weekOfTheYeay: timeMoment.isoWeek(),
+  //     weekday: timeMoment.weekday(),
+  //     isLeapYear: timeMoment.isLeapYear(),
+  //     daysInMonth: timeMoment.daysInMonth(),
+  //     weeksInYear: timeMoment.isoWeeksInYear(),
+  //     quarter: timeMoment.quarter(),
+  //     locale: timeMoment.locale(),
+  //   };
+  //   return returnDate;
+  // }
   // public async getstockSymbolId(stockSymbol: string): Promise<number> {
   //   return (await this.searchSymbol(stockSymbol)).symbolId;
   // }
@@ -526,6 +525,9 @@ export class QuestradeClass extends EE {
       console.error(error.message);
       // throw new Error(error.message);
     }
+  }
+  public _rangeValidation(...args: any) {
+    return args;
   }
   // ? async method _accountApi<T>
   // Method that appends the set account to the API calls so all calls are made
@@ -621,24 +623,25 @@ export class QuestradeClass extends EE {
   // ?   private _rangeValidation(rangeOptions: TimeRange = {})
   // used to validate range of start and end dates and setting
   // a 30 day default value
-  private _rangeValidation(rangeOptions: TimeRange = {}): Optionals {
-    if (rangeOptions.startTime && !moment(rangeOptions.startTime).isValid()) {
-      throw new Error('start_time_invalid');
-    }
-    if (rangeOptions.endTime && !moment(rangeOptions.endTime).isValid()) {
-      throw new Error('end_time_invalid');
-    }
-    const startTime = rangeOptions.startTime
-      ? moment(rangeOptions.startTime).toISOString()
-      : moment()
-          .startOf('day')
-          .subtract(30, 'days')
-          .toISOString();
-    const endTime = rangeOptions.endTime
-      ? moment(rangeOptions.endTime).toISOString()
-      : moment().toISOString();
-    return { startTime, endTime, ...rangeOptions };
-  }
+  // private _rangeValidation(rangeOptions: TimeRange = {}): Optionals {
+  //   if (rangeOptions.startTime &&
+  // !moment(rangeOptions.startTime).isValid()) {
+  //     throw new Error('start_time_invalid');
+  //   }
+  //   if (rangeOptions.endTime && !moment(rangeOptions.endTime).isValid()) {
+  //     throw new Error('end_time_invalid');
+  //   }
+  //   const startTime = rangeOptions.startTime
+  //     ? moment(rangeOptions.startTime).toISOString()
+  //     : moment()
+  //         .startOf('day')
+  //         .subtract(30, 'days')
+  //         .toISOString();
+  //   const endTime = rangeOptions.endTime
+  //     ? moment(rangeOptions.endTime).toISOString()
+  //     : moment().toISOString();
+  //   return { startTime, endTime, ...rangeOptions };
+  // }
   // ? async method _refreshKey()
   //  Refresh the tokem (aka Logs in) using the latest RefreshToken
   // (or the SeedToken if no previous saved file)

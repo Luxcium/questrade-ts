@@ -12,19 +12,9 @@ module.exports = {
     },
   },
   entry: './build/src/debug.js',
-  devtool: 'inline-source-map',
-  module: {
-    rules: [
-      {
-        test: /\.ts$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
   mode: 'production',
   output: {
-    path: path.resolve(__dirname, 'build/dist'),
+    path: path.resolve(__dirname, 'build/dist/bundle'),
     filename: './[name].bundle.js',
   },
 };

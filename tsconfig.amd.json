@@ -2,7 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "module": "amd",
-    "outFile": "./build/client/questrade.amd.js",
+    "outFile": "./build/js/questrade.amd.js",
     "tsBuildInfoFile": "./build/tmp/tsbuild.amd.info",
     "noEmit": false,
     "noEmitHelpers": false,
