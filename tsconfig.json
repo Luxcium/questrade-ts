@@ -16,32 +16,26 @@
     /* ALWAYS TRUE STRICT TYPE-CHECKING, ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
     /* Basic Options */
     "target": "es5",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "noLib": false,
     "rootDir": "./src",
     "outDir": "./build/src",
     "newLine": "LF",
     "module": "commonjs",
-    "jsx": "preserve",
     "typeRoots": [
       "node_modules/.registry.npmjs.org/@types/**/*",
       "node_modules/@types/**/*"
     ],
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     /* Compilation Options */
-    "noEmit": false,
+    "noEmit": true,
     "noEmitHelpers": false,
     "importHelpers": true,
     "removeComments": true,
     "noErrorTruncation": true,
     "noEmitOnError": true,
     "incremental": true,
-    "tsBuildInfoFile": "./build/tmp/tsbuildinfo",
+    "tsBuildInfoFile": "./build/tmp/tsbuild.info",
     /* Module Resolution Options */
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
@@ -49,11 +43,10 @@
     /* Source Map Options */
     "composite": true,
     "declaration": true,
-    "declarationMap": false,
-    "sourceMap": false,
+    "declarationMap": true,
+    "sourceMap": true,
     "inlineSourceMap": false,
-    "inlineSources": false,
-    "declarationDir": "./build/lib/",
+    "inlineSources": true,
     /* Additional Options */
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -64,16 +57,10 @@
     "extendedDiagnostics": true,
     "listFiles": false,
     "listEmittedFiles": false,
-    "traceResolution": false,
+    "traceResolution": false
   },
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "build",
-    "imports"
-  ],
+  "include": ["./src/**/*"],
+  "exclude": ["node_modules", "build", "imports", "./src/proto_testing/**/*"],
   "plugins": [
     {
       "name": "typescript-tslint-plugin",
@@ -81,11 +68,7 @@
       "configFile": "./tslint.json",
       "suppressWhileTypeErrorsPresent": false,
       "mockTypeScriptVersion": false,
-      "exclude": [
-        "build",
-        "node_modules",
-        "imports"
-      ]
+      "exclude": ["build", "node_modules", "imports"]
     }
   ]
 }

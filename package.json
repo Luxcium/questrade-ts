@@ -6,6 +6,9 @@
   "main": "./src/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
+    "out:amd": "tsc -b ./tsconfig.light.amd.json",
+    "out:sys": "tsc -b ./tsconfig.light.sys.json",
+    "out": "npm run out:sys & npm run out:amd &",
     "smoke:test": "jest --silent --detectOpenHandles --forceExit --config ./src/__tests__/smoketest/jest.config.js",
     "proto:test": "env NODE_ENV=development /Users/neb_401/.nvm/versions/node/v10.15.3/bin/node -r ts-node/register /Users/neb_401/Developer/neb401corp/LuxciumProject/questrade-ts/src/proto_testing/main.ts",
     "debug": "cd /Users/neb_401/Developer/neb401corp/LuxciumProject/questrade ; env NODE_ENV=development /Users/neb_401/.nvm/versions/node/v10.15.3/bin/node -r ts-node/register --inspect=9922 /Users/neb_401/Developer/neb401corp/LuxciumProject/questrade/src/main.ts",
@@ -57,20 +60,25 @@
     "mkdirp": "0.5.1",
     "moment": "2.24.0",
     "node-fetch": "2.6.0",
+    "require-ensure": "^1.0.2",
     "tslib": "^1.10.0"
   },
   "devDependencies": {
     "@types/minimist": "1.2.0",
     "@types/node": "^12.6.8",
+    "clean-webpack-plugin": "^3.0.0",
     "cp-cli": "2.0.0",
     "minimist": "1.2.0",
     "prettier": "1.18.2",
     "rimraf": "2.6.3",
+    "ts-loader": "^6.0.4",
     "ts-node": "8.3.0",
     "tslint": "5.18.0",
     "tslint-config-airbnb": "5.11.1",
     "tslint-config-prettier": "1.18.0",
     "typescript": "3.5.3",
-    "typescript-tslint-plugin": "0.5.4"
+    "typescript-tslint-plugin": "0.5.4",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
   }
 }

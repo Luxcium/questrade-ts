@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "amd",
+    "outFile": "./build/client/questrade.amd.js",
+    "tsBuildInfoFile": "./build/tmp/tsbuild.amd.info",
+    /* Additional Vebosity */
+    "noEmit": false,
+    "noEmitHelpers": false,
+    "diagnostics": true,
+    "extendedDiagnostics": false,
+    "listFiles": false,
+    "listEmittedFiles": false,
+    "traceResolution": false,
+    /* Source Map Options */
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+    "inlineSourceMap": false,
+    "inlineSources": false
+  }
+}
