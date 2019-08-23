@@ -220,26 +220,24 @@ export class Questrade extends EE {
       }
     });
   }
+
   /*
-
-
-
-
   !! PRIVATE _axiosClient<T> **************************/
   /** Connect the api using Axios as the client */
   private async _axiosClient<T>(
-    url: string,
+    /*  url: string,
     params: any,
     method: Methode = 'GET',
-    headers?: IHeaders
+    headers?: IHeaders */
+    axiosConfig: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
     try {
-      const axiosConfig: AxiosRequestConfig = {
+      /*  const axiosConfig: AxiosRequestConfig = {
         url,
         params,
         headers,
         method,
-      };
+      }; */
       /*
       !! Where the magic hapends ...
       * Connection to the REST API using axios:
@@ -274,22 +272,32 @@ export class Questrade extends EE {
       Authorization: auth,
       ...additionalHeaders,
     };
+
+    // !!
     let data: T;
     try {
-      const response = await this._axiosClient<T>(url, params, method, headers);
+      const response = await this._axiosClient<T>({
+        url,
+        params,
+        method,
+        headers,
+      });
       data = response.data;
-    } catch (error) {
+    } catch (apiError) {
       try {
         console.error(
-          '\nError in the API call:\n',
-          `\n${error.message}`,
-          `\nError code: ${error.response.data.code}`,
-          `\n${error.response.data.message}`
+          '\nAPI error in call to api:\n',
+          `\n${apiError.message}`,
+          `\nError code: ${apiError.response.data.code}`,
+          `\n${apiError.response.data.message}`
         );
-      } catch (error) {
-        console.error('\nError in the API call:', `\n${error.message}`);
+      } catch (dateError) {
+        console.error(
+          '\nAPI error in the response from the api:',
+          `\n${dateError.message}`
+        );
       }
-      throw error;
+      throw apiError;
     }
     return data;
   }
@@ -327,7 +335,7 @@ export class Questrade extends EE {
         grant_type: 'refresh_token',
         refresh_token: this._refreshToken,
       };
-      const response = await this._axiosClient<ICreds>(url, params);
+      const response = await this._axiosClient<ICreds>({ url, params });
       const data = response.data;
 
       const creds: ICreds = data;

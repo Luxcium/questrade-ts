@@ -10,7 +10,6 @@
   "defaultSeverity": "warning",
   "rulesDirectory": [],
   "rules": {
-    // ?-- TYPESCRIPT RULES
     "import-name": true,
     "max-line-length": [true, 80],
     "no-boolean-literal-compare": false,
@@ -21,6 +20,7 @@
     "ordered-imports": true,
     "triple-equals": [true, "allow-null-check"],
     "object-literal-shorthand": false,
+    "interface-name": false,
 
     "ter-arrow-parens": [
       true,
@@ -40,7 +40,6 @@
     ]
   },
   "jsRules": {
-    // ?-- JAVASCRIPT RULES
     "import-name": false,
     "max-line-length": [true, 80],
     "no-console": false,
