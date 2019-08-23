@@ -1,7 +1,4 @@
 /** @format */
-// import { sync } from '../utils/mkdirp';
-// import fs from 'fs';
-import { sync } from 'mkdirp';
 import {
   access,
   AcountNumber,
@@ -20,6 +17,7 @@ import {
   Time,
   writeFileSync,
 } from '.';
+import { sync } from '../utils/mkdirp';
 import { void_0 } from './void_0';
 
 const MY_ACCT_NUMBER = 51648972;
@@ -115,8 +113,26 @@ export class Questrade extends EE {
        */
       (async () => {
         try {
-          await this._loadKey()._refreshKey();
-          // await this.getPrimaryAccountNumber();
+          await this._loadKey(); /* ._getRefreshKey(); */
+          const refreshKeyoptions = {
+            url: `${this._authUrl}/oauth2/token`,
+            params: {
+              grant_type: 'refresh_token',
+              refresh_token: this._refreshToken,
+            },
+          };
+          try {
+            const { data: creds } = await this._axiosClient<ICreds>(
+              refreshKeyoptions
+            );
+            this._saveKey({ ...creds });
+          } catch (error) {
+            console.error(
+              'at _refreshKey in MAIN constructor site',
+              error.message
+            );
+            throw new Error(error.message);
+          }
         } catch (mainError) {
           console.error(mainError.message);
           this.emit(
@@ -225,25 +241,12 @@ export class Questrade extends EE {
   !! PRIVATE _axiosClient<T> **************************/
   /** Connect the api using Axios as the client */
   private async _axiosClient<T>(
-    /*  url: string,
-    params: any,
-    method: Methode = 'GET',
-    headers?: IHeaders */
     axiosConfig: AxiosRequestConfig
   ): Promise<AxiosResponse<T>> {
     try {
-      /*  const axiosConfig: AxiosRequestConfig = {
-        url,
-        params,
-        headers,
-        method,
-      }; */
-      /*
-      !! Where the magic hapends ...
-      * Connection to the REST API using axios:
-      */
       const response: AxiosResponse<T> = await axios(axiosConfig);
-      if (response.data === null) {
+      // validating response.data is not empty string null or undefined
+      if (!response.data) {
         throw new Error();
       } else {
         return response as AxiosResponse<T>;
@@ -262,25 +265,19 @@ export class Questrade extends EE {
     options?: Optionals,
     additionalHeaders?: IHeaders
   ): Promise<T> {
-    let params: Optionals = {};
-    if (typeof options !== 'undefined' && typeof options === 'object') {
-      params = options;
-    }
-    const auth = `Bearer ${this._accessToken}`;
-    const url: string = this._apiUrl + endpoint;
-    const headers: IHeaders = {
-      Authorization: auth,
-      ...additionalHeaders,
-    };
-
-    // !!
     let data: T;
     try {
       const response = await this._axiosClient<T>({
-        url,
-        params,
+        url: this._apiUrl + endpoint,
+        params:
+          typeof options !== 'undefined' && typeof options === 'object'
+            ? options
+            : {},
         method,
-        headers,
+        headers: {
+          Authorization: `Bearer ${this._accessToken}`,
+          ...additionalHeaders,
+        },
       });
       data = response.data;
     } catch (apiError) {
@@ -314,36 +311,11 @@ export class Questrade extends EE {
         sync(this._keyDir);
       }
       refreshToken = readFileSync(this.keyFile, 'utf8');
-    } catch (error) {
+    } catch (_) {
       this._access(this.keyFile, this.seedToken);
-      // writeFileSync(this.keyFile, this.seedToken, 'utf8');
-      // this._saveKey();
-      // console.error("Error while 'Loading Token Key()'");
-      // throw error;
     }
     this._refreshToken = refreshToken;
     return this;
-  }
-
-  /*
-  !! PRIVATE _REFRESHKEY **************************/
-  /**  Gets  the refresh_token from Questrade API serice */
-  private async _refreshKey(): Promise<this> {
-    try {
-      const url = `${this._authUrl}/oauth2/token`;
-      const params = {
-        grant_type: 'refresh_token',
-        refresh_token: this._refreshToken,
-      };
-      const response = await this._axiosClient<ICreds>({ url, params });
-      const data = response.data;
-
-      const creds: ICreds = data;
-      return this._saveKey({ ...creds });
-    } catch (error) {
-      console.error('at _refreshKey()', error.message);
-      throw new Error(error.message);
-    }
   }
 
   /*
