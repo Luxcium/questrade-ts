@@ -8,7 +8,8 @@
   "scripts": {
     "out:amd": "tsc -b ./tsconfig.light.amd.json",
     "out:sys": "tsc -b ./tsconfig.light.sys.json",
-    "out": "npm run out:sys & npm run out:amd &",
+    "out:commonjs": "tsc -b ./tsconfig.commonjs.json",
+    "out": "npm run out:sys & npm run out:amd & npm run out:commonjs",
     "smoke:test": "jest --silent --detectOpenHandles --forceExit --config ./src/__tests__/smoketest/jest.config.js",
     "proto:test": "env NODE_ENV=development /Users/neb_401/.nvm/versions/node/v10.15.3/bin/node -r ts-node/register /Users/neb_401/Developer/neb401corp/LuxciumProject/questrade-ts/src/proto_testing/main.ts",
     "debug": "cd /Users/neb_401/Developer/neb401corp/LuxciumProject/questrade ; env NODE_ENV=development /Users/neb_401/.nvm/versions/node/v10.15.3/bin/node -r ts-node/register --inspect=9922 /Users/neb_401/Developer/neb401corp/LuxciumProject/questrade/src/main.ts",

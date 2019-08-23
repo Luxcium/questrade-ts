@@ -1,0 +1,33 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "outDir": "./build/src",
+    "tsBuildInfoFile": "./build/tmp/tsbuild.commonjs.info",
+    /* Compilation Options */
+    "noEmit": false,
+    "noEmitHelpers": false,
+    "importHelpers": true,
+    "removeComments": true,
+    "noErrorTruncation": true,
+    "noEmitOnError": true,
+    "incremental": true,
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    /* Source Map Options */
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "inlineSourceMap": false,
+    "inlineSources": true,
+    /* Additional Vebosity */
+    "diagnostics": true,
+    "extendedDiagnostics": false,
+    "listFiles": false,
+    "listEmittedFiles": false,
+    "traceResolution": false
+  }
+}

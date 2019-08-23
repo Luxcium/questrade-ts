@@ -4,9 +4,9 @@
     "module": "system",
     "outFile": "./build/client/questrade.sys.js",
     "tsBuildInfoFile": "./build/tmp/tsbuild.sys.info",
-    /* Additional Vebosity */
     "noEmit": false,
     "noEmitHelpers": false,
+    /* Additional Vebosity */
     "diagnostics": true,
     "extendedDiagnostics": false,
     "listFiles": false,
