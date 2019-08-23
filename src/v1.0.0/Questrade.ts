@@ -1,9 +1,14 @@
 /** @format */
+// import { sync } from '../utils/mkdirp';
+// import fs from 'fs';
+import { sync } from 'mkdirp';
 import {
+  access,
   AcountNumber,
   axios,
   AxiosRequestConfig,
   AxiosResponse,
+  constants,
   dirname,
   EE,
   ICreds,
@@ -12,23 +17,26 @@ import {
   Optionals,
   QuestradeAPIOptions,
   readFileSync,
-  sync,
   Time,
   writeFileSync,
 } from '.';
+import { void_0 } from './void_0';
 
 const MY_ACCT_NUMBER = 51648972;
 
 export class Questrade extends EE {
   /**  Gets name of the file where the refreshToken is stored */
   public get keyFile() {
-    return this._keyFile || `${this._keyDir}/${this.seedToken}`;
+    return this._keyFile || `${this._keyDir}/${this._seedToken}`;
+  }
+  public get seedToken() {
+    return this._seedToken;
   }
   public accounts: any;
   public markets: any;
-  public seedToken: string;
   public symbols: any;
   public token: any;
+  private _seedToken: string;
   private _accessToken: string;
   private _accountNumber: AcountNumber;
   private _apiServer: string;
@@ -49,7 +57,7 @@ export class Questrade extends EE {
     this._keyDir = './keys';
     this._keyFile = '';
     this._practice = false;
-    this.seedToken = '';
+    this._seedToken = '';
     this._expiresIn = 0;
     this._tokenType = '';
 
@@ -60,7 +68,7 @@ export class Questrade extends EE {
       this._keyFile = options;
     }
     if (typeof options === 'string' && options.indexOf('/') === -1) {
-      this.seedToken = options;
+      this._seedToken = options;
     }
     if (typeof options === 'object') {
       // Set to true if using a practice account
@@ -78,7 +86,7 @@ export class Questrade extends EE {
       // Not really neede if you keep the seedToken and the keyDir
       this._keyFile = options.keyFile || '';
       // The original token obtained mannuelly from the interface
-      this.seedToken = options.seedToken || '';
+      this._seedToken = options.seedToken || '';
       // The default Account agains wich the API are made.
       // GetAccounts() will return the possible values
       this._accountNumber = `${options.account}` || '';
@@ -99,59 +107,62 @@ export class Questrade extends EE {
       ? 'https://practicelogin.q.com'
       : 'https://login.questrade.com';
 
-    /**
-     * <-- !!START OF SECTION !! -->
-     * <-- ASYNC MAIN FUNCTION ()-->
-     */
-    (async () => {
-      try {
-        this._loadKey();
-        await this._refreshKey();
-        await this.getPrimaryAccountNumber();
-      } catch (mainError) {
-        console.error(mainError.message);
-        this.emit(
-          'error',
-          'Main error in Questrade Class Constructor',
-          mainError
-        );
-        throw new Error(mainError.message);
-      }
-    })()
-      .then(() => {
-        this.getTime()
-          .then(time => {
-            console.info('Server Time:', new Date(time).toLocaleString());
-            console.info(
-              'This',
-              this._tokenType,
-              'token expire in',
-              this._expiresIn / 60,
-              'minutes'
-            );
-            this.emit('ready');
-          })
-          .catch(err => {
-            console.error(err);
-            try {
-              this.emit('error', 'Can not get server time', err);
-            } catch (error) {
-              console.error('Canot get server time');
-            }
-          });
-      })
-      .catch(callingMainError => {
-        console.error(
-          'Error calling main() QuestradeClass in constructor',
-          callingMainError
-        );
-      });
-    /**
-     * <-- ASYNC MAIN FUNCTION ()-->
-     * <-- !! END OF SECTION! !! -->
-     */
+    // MAIN CLASS CONSTRUCTOR FUNCTION STAR
+    const MAIN: void_0 = __ => {
+      /**
+       * <-- !!START OF SECTION !! -->
+       * <-- ASYNC MAIN FUNCTION ()-->
+       */
+      (async () => {
+        try {
+          await this._loadKey()._refreshKey();
+          // await this.getPrimaryAccountNumber();
+        } catch (mainError) {
+          console.error(mainError.message);
+          this.emit(
+            'error',
+            'Main error in Questrade Class Constructor',
+            mainError
+          );
+          throw new Error(mainError.message);
+        }
+      })(/* this.seedToken */)
+        .then(() => {
+          this.getTime()
+            .then(time => {
+              console.info('Server Time:', new Date(time).toLocaleString());
+              console.info(
+                'This',
+                this._tokenType,
+                'token expire in',
+                this._expiresIn / 60,
+                'minutes'
+              );
+              this.emit('ready');
+            })
+            .catch(err => {
+              console.error(err);
+              try {
+                this.emit('error', 'Can not get server time', err);
+              } catch (error) {
+                console.error('Canot get server time');
+              }
+            });
+        })
+        .catch(_callingMainError => {
+          console.error(
+            'Error calling main() QuestradeClass in constructor'
+            // callingMainError
+          );
+        });
+      return void 0 && __;
+      /**
+       * <-- ASYNC MAIN FUNCTION ()-->
+       * <-- !! END OF SECTION! !! -->
+       */
+    }; // MAIN CLASS CONSTRUCTOR FUNCTION END
+    MAIN(void 0); // IMMEDIATELY INVOKED FUNCTION
   }
-
   public async getTime() {
     try {
       const { time } = await this._api<Time>('/time');
@@ -189,7 +200,32 @@ export class Questrade extends EE {
   */
   }
   /*
-  !! PRIVATE _axiosClient<T>  **************************/
+  !! PRIVATE _access **************************/
+  /** Validate existence of a file before writing it */
+  private async _access(
+    path: string,
+    seedToken: string,
+    utf8: string = 'utf8',
+    wfs: any = writeFileSync
+  ) {
+    // (this.keyFile, this.seedToken, 'utf8',writeFileSync)
+    await access(path, constants.F_OK, none => {
+      if (none) {
+        console.info(none);
+        try {
+          wfs(path, seedToken, utf8);
+        } catch (writeError) {
+          console.error(writeError);
+        }
+      }
+    });
+  }
+  /*
+
+
+
+
+  !! PRIVATE _axiosClient<T> **************************/
   /** Connect the api using Axios as the client */
   private async _axiosClient<T>(
     url: string,
@@ -271,8 +307,11 @@ export class Questrade extends EE {
       }
       refreshToken = readFileSync(this.keyFile, 'utf8');
     } catch (error) {
-      console.error("Error while 'Loading Token Key()'");
-      throw error;
+      this._access(this.keyFile, this.seedToken);
+      // writeFileSync(this.keyFile, this.seedToken, 'utf8');
+      // this._saveKey();
+      // console.error("Error while 'Loading Token Key()'");
+      // throw error;
     }
     this._refreshToken = refreshToken;
     return this;
@@ -281,7 +320,7 @@ export class Questrade extends EE {
   /*
   !! PRIVATE _REFRESHKEY **************************/
   /**  Gets  the refresh_token from Questrade API serice */
-  private async _refreshKey() {
+  private async _refreshKey(): Promise<this> {
     try {
       const url = `${this._authUrl}/oauth2/token`;
       const params = {
@@ -292,7 +331,7 @@ export class Questrade extends EE {
       const data = response.data;
 
       const creds: ICreds = data;
-      this._saveKey({ ...creds });
+      return this._saveKey({ ...creds });
     } catch (error) {
       console.error('at _refreshKey()', error.message);
       throw new Error(error.message);
@@ -315,6 +354,7 @@ export class Questrade extends EE {
     this._refreshToken = refresh_token;
     this._tokenType = token_type;
     this._apiUrl = `${this._apiServer}${this._apiVersion}`;
+
     writeFileSync(this.keyFile, this._refreshToken, 'utf8');
 
     return this;
@@ -367,75 +407,6 @@ getMarkets/candles/:id
 // * PUBLIC ##############################################
 /*  public set account(accountNumber: string | number) {
     this._accountNumber = accountNumber.toString();
-  } */
-
-// * PUBLIC ##############################################
-// public constructor(/* options?: QuestradeAPIOptions */) {
-
-/*       const loadKey = async () => {
-        try {
-          await this._loadKey();
-          this.emit('keyLoaded');
-        } catch (error) {
-          console.error('loadKey error at loadKey()', error.message);
-          // this.emit('loadKeyError');
-          this.emit('error');
-          throw new Error(error.message);
-        }
-      }; */
-/*  const refreshKey = async () => {
-        try {
-          await this._refreshKey();
-          this.emit('keyRefreshed');
-        } catch (error) {
-          console.error('at refreshKey in constructor', error.message);
-          this.emit('refreshKeyError');
-          // this.emit('error', error.message);
-          // throw new Error(error.message);
-        }
-      }; */
-/*  const getPrimaryAccountNumber = async () => {
-        try {
-          await this.getPrimaryAccountNumber();
-          this.emit('accountSeted');
-        } catch (error) {
-          console.error(error.message);
-          this.emit('getPrimaryAccountNumberError');
-          // this.emit('error');
-          throw new Error(error.message);
-        }
-      }; */
-/*  const main = async () => {
-        try {
-          await loadKey();
-          await refreshKey();
-          await getPrimaryAccountNumber();
-          this.emit('ready');
-        } catch (mainError) {
-          // console.error(error.message);
-          console.log(
-            'Error at main() in QuestradeClass constructor',
-            mainError.message
-          );
-          this.emit('error');
-          // throw new Error(error.message);
-        }
-      }; */
-/*    main()
-        .then(() => {
-          // will alphabetise
-        })
-        .catch(callingMainError => {
-          console.log(
-            'Error calling main() QuestradeClass in constructor',
-            callingMainError
-          );
-          // throw new Error(err.message);
-        });
-    } catch (error) {
-      console.error(error.message);
-      throw new Error(error.message);
-    }
   } */
 
 // * PUBLIC ##############################################

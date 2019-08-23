@@ -31,13 +31,8 @@
       "name": "TS-Node Debug Launch",
       "protocol": "inspector",
       "runtimeExecutable": "node",
-      "runtimeArgs": [
-        "-r",
-        "ts-node/register"
-      ],
-      "args": [
-        "${workspaceFolder}/debug.ts"
-      ],
+      "runtimeArgs": ["-r", "ts-node/register"],
+      "args": ["${workspaceFolder}/src/debug.ts"],
       "cwd": "${workspaceFolder}",
       "env": {
         "NODE_ENV": "development"

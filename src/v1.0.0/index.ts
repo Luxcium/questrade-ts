@@ -1,7 +1,6 @@
 export { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 export { EventEmitter as EE } from 'events';
-export { readFileSync, writeFileSync } from 'fs';
-export { sync } from 'mkdirp';
+export { access, constants, readFileSync, writeFileSync } from 'fs';
 // export { default as moment } from 'moment';
 export { dirname } from 'path';
 export {
@@ -38,3 +37,5 @@ export { IOptionsQuotes } from '../core/types/IOptionsQuotes';
 export { IOrder, IOrders } from '../core/types/IOrders';
 export { IQuote, IQuotes } from '../core/types/IQuotes';
 export { Methode } from '../core/types/Methode';
+// export { sync } from 'mkdirp';
+export { sync } from '../utils/mkdirp';

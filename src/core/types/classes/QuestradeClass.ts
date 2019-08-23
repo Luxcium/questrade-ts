@@ -2,9 +2,10 @@
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 import { EventEmitter as EE } from 'events';
 import { readFileSync, writeFileSync } from 'fs';
-import { sync } from 'mkdirp';
 // // import { default as moment } from 'moment';
 import { dirname } from 'path';
+// import { sync } from 'mkdirp'
+import { sync } from '../../../utils/mkdirp';
 import {
   AcountNumber,
   HistoricalDataGranularity,
@@ -38,7 +39,6 @@ import { IOptionsQuotes } from '../IOptionsQuotes';
 import { IOrder, IOrders } from '../IOrders';
 import { IQuote, IQuotes } from '../IQuotes';
 import { Methode } from '../Methode';
-
 export class QuestradeClass extends EE {
   public get getServerTime(): Promise<string> {
     return this._getTime();

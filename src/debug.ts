@@ -1,13 +1,14 @@
 /** @format */
 
 import { IQuestradeAPIOptions } from '.';
-import { Questrade } from './v1.0.0/v1.0.0QuestradeClass';
+import { Questrade } from './v1.0.0/Questrade';
 
 export const qtOptions: IQuestradeAPIOptions = {
-  seedToken: 'gv3X68BHQTnkAMRDxFmMCscftZae8hzl0',
+  seedToken: 'yAs_xQBAVniAB2P3ODdHGvvoL9ThnCsj0',
 };
 export const qt1 = new Questrade(qtOptions);
 qt1.on('ready', () => console.log('READY'));
+// console.log('end');
 // (async (): Promise<void> => {
 //   // const somInterval = {};
 //   // const { questrade: qt } = await tokenConnection(qtOptions.seedToken!);
