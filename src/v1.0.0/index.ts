@@ -1,6 +1,6 @@
 export { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 export { EventEmitter as EE } from 'events';
-export { access, constants, readFileSync, writeFileSync } from 'fs';
+export { access, constants, readFileSync, writeFile, writeFileSync } from 'fs';
 // export { default as moment } from 'moment';
 export { dirname } from 'path';
 export {
