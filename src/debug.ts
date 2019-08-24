@@ -7,27 +7,9 @@ export const qtOptions: IQuestradeAPIOptions = {
   seedToken: 'yAs_xQBAVniAB2P3ODdHGvvoL9ThnCsj0',
 };
 export const qt1 = new Questrade(qtOptions);
-qt1.on('ready', () => console.log('READY'));
-// console.log('end');
-// (async (): Promise<void> => {
-//   // const somInterval = {};
-//   // const { questrade: qt } = await tokenConnection(qtOptions.seedToken!);
-//   try {
-//     const serverTime = await qt1.getTime();
-//     console.log('serverTime:', serverTime);
-//     // console.log((await qt.getAccounts())[0].isBilling); //
-//     // console.log(await qt.getPrimaryAccountNumber()); //
-//     // qt.
-//     // const aapl = JSON.stringify(await qt.searchSymbol('AAPL'));
-//     // return aapl;
-//     // console.log(aapl.split(',')
-//     // /* JSON.parse(aapl).symbols[0].symbolId */);
-//     // console.log(await );
-//     // console.log(await qt.getCandles(symbolId));
-//     // console.log('done');
-//     // console.log(await qt.getCandles('aapl'));
-//     return void 0;
-//   } catch (error) {
-//     return void 0;
-//   }
-// })();
+qt1.on('ready', async () => {
+  console.log('READY');
+  console.log(await qt1.getAccounts());
+  console.log(await qt1.accountNumber);
+  console.log(await qt1);
+});
