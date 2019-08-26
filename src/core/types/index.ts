@@ -49,3 +49,4 @@ export {
 } from './Optionals';
 export { Time } from './Time';
 export { DateTime, idsType, idType } from './Types';
+export { void0, void_0 } from './void_0';

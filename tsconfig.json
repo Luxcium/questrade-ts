@@ -29,7 +29,6 @@
     "types": ["node"],
     /* Compilation Options */
     "noEmit": true,
-    "noEmitHelpers": false,
     "importHelpers": true,
     "removeComments": true,
     "noErrorTruncation": true,
@@ -40,7 +39,7 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    /* Source Map Options */
+    /* Source Map and declaration options */
     "composite": true,
     "declaration": true,
     "declarationMap": true,

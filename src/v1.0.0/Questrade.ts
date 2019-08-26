@@ -15,6 +15,7 @@ import {
   QuestradeAPIOptions,
   readFileSync,
   Time,
+  void_0,
   writeFileSync,
 } from '.';
 import {
@@ -28,7 +29,6 @@ import {
   TimeRange,
 } from '../core/types';
 import { sync } from '../utils/mkdirp';
-import { void_0 } from './void_0';
 export class Questrade extends EE {
   /**  Gets name of the file where the refreshToken is stored */
   public get keyFile() {
