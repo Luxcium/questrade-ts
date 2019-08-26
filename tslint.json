@@ -11,7 +11,15 @@
   "rulesDirectory": [],
   "rules": {
     "import-name": true,
-    "max-line-length": [true, 80],
+    "max-line-length": [
+      true,
+      {
+        "limit": 80,
+        "ignore-pattern": "@see",
+        "check-strings": true,
+        "check-regex": true
+      }
+    ],
     "no-boolean-literal-compare": false,
     "no-console": false,
     "no-unused-expression": true,

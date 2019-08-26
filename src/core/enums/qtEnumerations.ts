@@ -131,35 +131,26 @@ a joint and informal trust.
 Institution	Non-individual account held by an institution.
 */
 export enum ClientAccountType {
+  /** Account held by an individual. */
   INDIVIDUAL = 'Individual',
-
   /** Account held jointly by several individuals (e.g., spouses). */
   JOINT = 'Joint',
-
   /** Non-individual account held by an informal trust. */
   INFORMAL_TRUST = 'Informal Trust',
-
   /** Non-individual account held by a corporation. */
   CORPORATION = 'Corporation',
-
   /** Non-individual account held by an investment club. */
   INVESTMENT_CLUB = 'Investment Club',
-
   /** Non-individual account held by a formal trust. */
   FORMAL_TRUST = 'Formal Trust',
-
   /** Non-individual account held by a partnership. */
   PARTNERSHIP = 'Partnership',
-
   /** Non-individual account held by a sole proprietorship. */
   SOLE_PROPRIETORSHIP = 'Sole Proprietorship',
-
   /** Account held by a family. */
   FAMILY = 'Family',
-
   /** Non-individual account held by a joint and informal trust. */
   JOINT_AND_INFORMAL_TRUST = 'Joint and Informal Trust',
-
   /** Non-individual account held by an institution. */
   INSTITUTION = 'Institution',
 }
@@ -636,36 +627,10 @@ export enum StrategyTypes {
   CUSTOM = 'Custom',
 }
 
-/*
-
-*/
-
-/*
-% Enumerations
-
-  #Currency: '',
-  #ListingExchange: '',
-  #AccountType: '',
-  #ClientAccountType: '',
-  #AccountStatus: '',
-  #TickType: '',
-  #OptionType: '',
-  #OptionDurationType: '',
-  #OptionExerciseType: '',
-  #SecurityType: '',
-  #OrderStateFilterType: '',
-  #OrderAction: '',
-  #OrderSide: '',
-  #OrderType: '',
-  #OrderTimeInForce: '',
-  #OrderState: '',
-  #HistoricalDataGranularity: '',
-  #OrderClass: '',
-  #StrategyTypes: '',
-
-*/
-
-/** Specifies all supported currency codes. */
+/**
+ * Specifies all supported Questrade Developer Platform Enumertions Types
+ * @see https://www.questrade.com/api/documentation/rest-operations/enumerations/enumerations
+ */
 
 export const qtEnumerations = {
   /** Specifies all supported currency codes. */
@@ -708,4 +673,29 @@ export const qtEnumerations = {
   StrategyTypes,
 };
 
-// export const enums = enumerations;
+/**
+ * @license MIT LICENSE
+ *
+ * @Copyright (c) 2019
+ *
+ * @author Benjamin Vincent Kasapoglu (Luxcium)
+ *
+ * Permission is hereby granted, free of charge, to all person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to
+ * deal in the Software without restriction, including without limitation the
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+ * sell copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ALL KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ALL CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ *
+ */
