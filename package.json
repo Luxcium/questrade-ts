@@ -1,7 +1,7 @@
 {
   "name": "questrade-ts",
   "displayName": "Questrade API by Luxcium (with typescript support).",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Unofficial Questrade API wraper by Luxcium (with typescript support).",
   "main": "./src/index.js",
   "types": "./lib/index.d.ts",
@@ -42,7 +42,7 @@
   "homepage": "https://github.com/luxcium/questrade-ts",
   "dependencies": {
     "axios": "0.19.0",
-    "questrade-api-enumerations": "^1.1.0",
+    "questrade-api-enumerations": "^1.1.1",
     "tslib": "1.10.0"
   },
   "devDependencies": {
