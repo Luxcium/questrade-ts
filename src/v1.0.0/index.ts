@@ -1,6 +1,6 @@
 export { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 export { EventEmitter as EE } from 'events';
-export { access, constants, readFileSync, writeFileSync } from 'fs';
+export { access, constants, readFileSync, writeFile, writeFileSync } from 'fs';
 // export { default as moment } from 'moment';
 export { dirname } from 'path';
 export {
@@ -29,6 +29,7 @@ export {
   Time,
   TimeRange,
   TimeRangeInterval,
+  void_0,
 } from '../core/types';
 export { OrderStateFilterType } from '../core/types/enums';
 export { ICandle, ICandles } from '../core/types/ICandles';
@@ -39,3 +40,4 @@ export { IQuote, IQuotes } from '../core/types/IQuotes';
 export { Methode } from '../core/types/Methode';
 // export { sync } from 'mkdirp';
 export { sync } from '../utils/mkdirp';
+export { oAuthLogic } from './oAuthLogic';

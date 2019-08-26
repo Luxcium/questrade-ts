@@ -1,11 +1,17 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "noEmit": false,
+    "noEmitHelpers": false,
+    /*                   */
     "module": "commonjs",
     "outDir": "./build/src",
     "tsBuildInfoFile": "./build/tmp/tsbuild.commonjs.info",
-    "noEmit": false,
-    "noEmitHelpers": false,
+    "importHelpers": true,
+    "baseUrl": "./",
+    "paths": {
+      "tslib": ["node_modules/tslib/tslib.d.ts"]
+    },
     /* Additional Vebosity */
     "diagnostics": true,
     "extendedDiagnostics": false,
