@@ -1,6 +1,10 @@
 /** @format */
 
-import { AccountStatus, ClientAccountType, UserAccountType } from '../enums';
+import {
+  AccountStatus,
+  AccountType as UserAccountType,
+  ClientAccountType,
+} from '../enums';
 
 export type AcountNumber = string | number;
 

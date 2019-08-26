@@ -9,7 +9,7 @@ import { allOfgetMarkets } from './allOfgetMarkets';
 import { allOfGetOrder } from './allOfGetOrder';
 import { allOfGetOrders } from './allOfGetOrders';
 import { allOfGetPositions } from './allOfGetPositions';
-import { allOfgetServerTimeObject } from './allOfgetServerTimeObject';
+// import { allOfgetServerTimeObject } from './allOfgetServerTimeObject';
 
 export const main = async (seedToken: string) => {
   await QuestradeHelperFunction({ seedToken }, async (qt: QuestradeClass) => {
@@ -20,9 +20,9 @@ export const main = async (seedToken: string) => {
       'qt.getPrimaryAccountNumber():',
       await qt.getPrimaryAccountNumber()
     );
-    await allOfgetServerTimeObject(qt, () => {
-      // do nothing yet!
-    });
+    // await allOfgetServerTimeObject(qt, () => {
+    //   // do nothing yet!
+    // });
     await allOfGetAccounts(qt, () => {
       // do nothing yet!
     });

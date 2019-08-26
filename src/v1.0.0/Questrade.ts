@@ -238,7 +238,7 @@ export class Questrade extends EE {
   public async getOrdersAll(range?: TimeRange): Promise<IOrder[]> {
     try {
       return this.getOrder(undefined, {
-        stateFilter: OrderStateFilterType.All,
+        stateFilter: OrderStateFilterType.ALL,
         ...range,
       });
     } catch (error) {
@@ -250,7 +250,7 @@ export class Questrade extends EE {
   public async getOrdersClosed(range?: TimeRange): Promise<IOrder[]> {
     try {
       return this.getOrder(undefined, {
-        stateFilter: OrderStateFilterType.Closed,
+        stateFilter: OrderStateFilterType.CLOSED,
         ...range,
       });
     } catch (error) {
@@ -262,7 +262,7 @@ export class Questrade extends EE {
   public async getOrdersOpen(range?: TimeRange): Promise<IOrder[]> {
     try {
       return this.getOrder(undefined, {
-        stateFilter: OrderStateFilterType.Open,
+        stateFilter: OrderStateFilterType.OPEN,
         ...range,
       });
     } catch (error) {
@@ -274,7 +274,7 @@ export class Questrade extends EE {
   public async getOrder(
     orderId?: idType,
     orderOptions: OrdersOptions = {
-      stateFilter: OrderStateFilterType.All,
+      stateFilter: OrderStateFilterType.ALL,
     }
   ): Promise<IOrder[]> {
     // const rangeValidated = this._rangeValidation(orderOptions);

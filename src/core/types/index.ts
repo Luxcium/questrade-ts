@@ -1,6 +1,7 @@
 /** @format */
 
 export {
+  AccountType as UserAccountType,
   ClientAccountType,
   Currency,
   HistoricalDataGranularity,
@@ -18,7 +19,6 @@ export {
   SecurityType,
   StrategyTypes,
   TickType,
-  UserAccountType,
 } from '../enums';
 export { AccountStatus } from '../enums/';
 export { QuestradeClass } from './classes/QuestradeClass';

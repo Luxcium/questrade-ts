@@ -2,7 +2,7 @@
 
 export {
   AccountStatus,
-  AccountType as UserAccountType,
+  AccountType,
   ClientAccountType,
   Currency,
   HistoricalDataGranularity,
