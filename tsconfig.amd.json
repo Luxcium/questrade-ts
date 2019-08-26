@@ -1,11 +1,17 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "noEmit": false,
+    "noEmitHelpers": false,
+    /*                   */
     "module": "amd",
     "outFile": "./build/js/questrade.amd.js",
     "tsBuildInfoFile": "./build/tmp/tsbuild.amd.info",
-    "noEmit": false,
-    "noEmitHelpers": false,
+    "importHelpers": true,
+    "baseUrl": "./",
+    "paths": {
+      "tslib": ["node_modules/tslib/tslib.d.ts"]
+    },
     /* Additional Vebosity */
     "diagnostics": true,
     "extendedDiagnostics": false,
