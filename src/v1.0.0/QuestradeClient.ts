@@ -1,21 +1,16 @@
 /** @format */
 import {
-  access,
   axios,
   AxiosRequestConfig,
   AxiosResponse,
-  constants,
-  dirname,
   EE,
   Methode,
-  readFileSync,
-  writeFileSync,
+  oAuthLogic,
 } from '.';
 import {
   AcountNumber,
   IAccount,
   IAccounts,
-  ICreds,
   IHeaders,
   IMarket,
   IMarketsResponse,
@@ -24,78 +19,85 @@ import {
   Time,
   void_0,
 } from '../core/types';
-import { sync } from '../utils/mkdirp';
-export class QuestradeClient extends EE {
+import { Credentials } from './Credentials';
+import { validateAuthOptions } from './validateAuthOptions';
+export class QuestradeClient extends EE implements Credentials {
   /**  Gets name of the file where the refreshToken is stored */
   public get keyFile() {
-    return this._keyFile || `${this._keyDir}/${this._seedToken}`;
+    return this._keyFile || `${this.keyDir}/${this._seedToken}`;
+  }
+  public set keyFile(key: string) {
+    this._keyFile = key;
+    // return this._keyFile || `${this.keyDir}/${this._seedToken}`;
   }
   public get qtMarketsNames() {
     return this._qtMarketsNames;
   }
-  public get qtSeedToken() {
+  public get seedToken() {
     return this._seedToken;
+  }
+  public set seedToken(seed: string) {
+    this._seedToken = seed;
   }
   public get qtAccountNumber() {
     this.getPrimaryAccountNumber();
-    return this._accountNumber;
+    return this.accountNumber;
   }
 
   public accounts: any;
   public markets: any;
   public symbols: any;
   public token: any;
-  private _seedToken: string;
-  private _accessToken: string;
-  private _accountNumber: AcountNumber;
-  private _apiServer: string;
-  private _apiUrl: string;
-  private _apiVersion: string;
-  private _authUrl: string;
-  private _expiresIn: number;
-  private _keyDir: string;
-  private _keyFile: string;
-  private _practice: boolean;
-  private _refreshToken: string;
-  private _tokenType: string;
-  private _qtMarketsNames: any;
+  public _seedToken: string;
+  public accessToken: string;
+  public accountNumber: string | number;
+  public apiServer: string;
+  public apiUrl: string;
+  public apiVersion: string;
+  public authUrl: string;
+  public expiresIn: number;
+  public keyDir: string;
+  public _keyFile: string;
+  public practice: boolean;
+  public refreshToken: string;
+  public tokenType: string;
+  public _qtMarketsNames: any;
 
   public constructor(options: QuestradeAPIOptions) {
     super();
-    this._accountNumber = '';
-    this._apiVersion = 'v1';
-    this._keyDir = './keys';
+    this.accountNumber = '';
+    this.apiVersion = 'v1';
+    this.keyDir = './keys';
     this._keyFile = '';
-    this._practice = false;
+    this.practice = false;
     this._seedToken = '';
-    this._expiresIn = 0;
-    this._tokenType = '';
+    this.expiresIn = 0;
+    this.tokenType = '';
+    this.refreshToken = '';
+    this.accessToken = '';
+    this.apiUrl = '';
+    this.apiServer = '';
+    validateAuthOptions(this, options);
 
-    if (typeof options === 'undefined' || options === undefined) {
-      throw new Error('questrade_missing_api_key or options');
-    }
-    if (typeof options === 'string' && options.indexOf('/') !== -1) {
-      this._keyFile = options;
-    }
-    if (typeof options === 'string' && options.indexOf('/') === -1) {
-      this._seedToken = options;
-    }
-    if (typeof options === 'object') {
-      this._practice =
-        options.practiceAccount === undefined
-          ? false
-          : !!options.practiceAccount;
-      this._keyDir = options.keyDir || './keys';
-      this._apiVersion = options.apiVersion || 'v1';
-      this._keyFile = options.keyFile || '';
-      this._seedToken = options.seedToken || '';
-      this._accountNumber = `${options.account}` || '';
-    }
-    this._refreshToken = '';
-    this._accessToken = '';
-    this._apiUrl = '';
-    this._apiServer = '';
-    this._authUrl = this._practice
+    // if (typeof options === 'undefined' || options === undefined) {
+    //   throw new Error('questrade_missing_api_key or options');
+    // }
+    // if (typeof options === 'string' && options.indexOf('/') !== -1) {
+    //   this._keyFile = options;
+    // }
+    // if (typeof options === 'string' && options.indexOf('/') === -1) {
+    //   this._seedToken = options;
+    // }
+    // if (typeof options === 'object') {
+    //   this.practice = !!options.practiceAccount;
+    //   this.keyDir = options.keyDir || './keys';
+    //   this.apiVersion = options.apiVersion || 'v1';
+    //   this._keyFile = options.keyFile || '';
+    //   this._seedToken = options.seedToken || '';
+    //   this.accountNumber = `${options.account}` || '';
+    // }
+
+    this.authUrl = this.practice
       ? 'https://practicelogin.q.com'
       : 'https://login.questrade.com';
 
@@ -105,71 +107,72 @@ export class QuestradeClient extends EE {
        * <-- !!START OF SECTION !! -->
        * <-- ASYNC MAIN FUNCTION ()-->
        */
-      // !!
-      // *below is the 'MAIN' anonymous async IIFE declaration with the
-      // *'this' keyword as self
-      (async (self: this): Promise<this> => {
-        try {
-          let refreshToken: string = self.qtSeedToken || '';
-          try {
-            if (!!self._keyFile) {
-              sync(dirname(self._keyFile));
-            } else {
-              sync(self._keyDir);
-            }
-            refreshToken = readFileSync(self.keyFile, 'utf8');
-          } catch (_) {
-            await access(self.keyFile, constants.F_OK, async none => {
-              if (none) {
-                await writeFileSync(self.keyFile, self.qtSeedToken, {
-                  encoding: 'utf8',
-                });
-              }
-            });
-          }
-          const { data: credentials } = await self._axiosClient<ICreds>({
-            url: `${self._authUrl}/oauth2/token`,
-            params: {
-              grant_type: 'refresh_token',
-              refresh_token: refreshToken,
-            },
-          });
-          self._accessToken = credentials.access_token;
-          self._apiServer = credentials.api_server;
-          self._expiresIn = credentials.expires_in;
-          self._refreshToken = credentials.refresh_token;
-          self._tokenType = credentials.token_type;
-          self._apiUrl = `${self._apiServer}${self._apiVersion}`;
-          writeFileSync(self.keyFile, self._refreshToken, 'utf8');
-          await self.getPrimaryAccountNumber();
-          await self.qtGetMarketsNames();
-        } catch (mainError) {
-          console.error(mainError.message);
-          self.emit('error', mainError);
-          throw new Error(mainError.message);
-        }
-        return self;
-        // *Above is the 'MAIN' anonymous async IIFE declaration
-        // *Below is the call to anonymous async IIFE declared above with the
-        // *'this' keyword as self
-      })(this)
-        // !!
 
-        .then(self => {
+      // !!
+      // // *below is the 'MAIN' anonymous async IIFE declaration with the
+      // // *'this' keyword as self
+      // (async (self: this): Promise<this> => {
+      //   try {
+      //     let refreshToken: string = self.seedToken || '';
+      //     try {
+      //       if (!!self._keyFile) {
+      //         sync(dirname(self._keyFile));
+      //       } else {
+      //         sync(self.keyDir);
+      //       }
+      //       refreshToken = readFileSync(self.keyFile, 'utf8');
+      //     } catch (_) {
+      //       await access(self.keyFile, constants.F_OK, async none => {
+      //         if (none) {
+      //           await writeFileSync(self.keyFile, self.seedToken, {
+      //             encoding: 'utf8',
+      //           });
+      //         }
+      //       });
+      //     }
+      //     const { data: credentials } = await self._axiosClient<ICreds>({
+      //       url: `${self.authUrl}/oauth2/token`,
+      //       params: {
+      //         grant_type: 'refresh_token',
+      //         refresh_token: refreshToken,
+      //       },
+      //     });
+      //     self.accessToken = credentials.access_token;
+      //     self.apiServer = credentials.api_server;
+      //     self.expiresIn = credentials.expires_in;
+      //     self.refreshToken = credentials.refresh_token;
+      //     self.tokenType = credentials.token_type;
+      //     self.apiUrl = `${self.apiServer}${self.apiVersion}`;
+      //     writeFileSync(self.keyFile, self.refreshToken, 'utf8');
+      //     await self.getPrimaryAccountNumber();
+      //     await self.qtGetMarketsNames();
+      //   } catch (mainError) {
+      //     console.error(mainError.message);
+      //     self.emit('error', mainError);
+      //     throw new Error(mainError.message);
+      //   }
+      //   return self;
+      //   // *Above is the 'MAIN' anonymous async IIFE declaration
+      //   // *Below is the call to anonymous async IIFE declared above with the
+      //   // *'this' keyword as self
+      // })(this)
+      // !!
+      oAuthLogic(this)
+        .then((self: any) => {
           self
             .qtGetTime()
-            .then(time => {
+            .then((time: any) => {
               console.info('Server Time:', new Date(time).toLocaleString());
               console.info(
                 'self',
-                self._tokenType,
+                self.tokenType,
                 'token expire in',
-                self._expiresIn / 60,
+                self.expiresIn / 60,
                 'minutes'
               );
               self.emit('ready', self);
             })
-            .catch(err => {
+            .catch((err: Error) => {
               console.error(err);
               try {
                 this.emit('error', 'Can not get server time', err);
@@ -203,7 +206,11 @@ export class QuestradeClient extends EE {
     data = await this._api<T>(endpoint, 'GET');
     return data;
   }
-
+  // public async qtGetSymbolID(stockSymbol: string): Promise<T | null> {
+  //   // let data: T | null = null;
+  //   const data = await this._api<T>(endpoint, 'GET');
+  //   return data;
+  // }
   public async qtGetTime() {
     try {
       const { time } = await this._api<Time>('/time');
@@ -228,7 +235,7 @@ export class QuestradeClient extends EE {
     this._qtMarketsNames = (await this.qtGetMarkets()).map(
       item => item.name as string
     );
-    return this._qtMarketsNames;
+    return this.qtMarketsNames;
   }
   public async qtGetMarket(marketName: string): Promise<IMarket> {
     const markets = ((await this.qtGetAPI(
@@ -243,18 +250,18 @@ export class QuestradeClient extends EE {
     }
     // if only one retur the only one ...
     if (accounts.length === 1) {
-      this._accountNumber = accounts[0].number;
-      return this._accountNumber;
+      this.accountNumber = accounts[0].number;
+      return this.accountNumber;
     }
     // if more than one return the first one marked primary
     const primary = accounts.filter(account => account.isPrimary);
     if (primary.length > 0) {
-      this._accountNumber = primary[0].number;
-      return this._accountNumber;
+      this.accountNumber = primary[0].number;
+      return this.accountNumber;
     }
     // if none marked primary and more than one return first one
-    this._accountNumber = accounts[0].number;
-    return this._accountNumber;
+    this.accountNumber = accounts[0].number;
+    return this.accountNumber;
   }
 
   /*
@@ -312,14 +319,14 @@ export class QuestradeClient extends EE {
     let data: T;
     try {
       const response = await this._axiosClient<T>({
-        url: this._apiUrl + endpoint,
+        url: this.apiUrl + endpoint,
         params:
           typeof options !== 'undefined' && typeof options === 'object'
             ? options
             : {},
         method,
         headers: {
-          Authorization: `Bearer ${this._accessToken}`,
+          Authorization: `Bearer ${this.accessToken}`,
           ...additionalHeaders,
         },
       });

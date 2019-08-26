@@ -12,8 +12,4 @@ qt1.on('ready', async (_obj: QuestradeClient) => {
   console.log(await qt1.getAccounts());
   console.log(await qt1.qtAccountNumber);
   console.log(await qt1.qtMarketsNames);
-  // console.dir(obj);
-  // console.log(obj);
-  // console.log('__________');
-  // console.log(JSON.stringify(obj.getAccounts));
 });

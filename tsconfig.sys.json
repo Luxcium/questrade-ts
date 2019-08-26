@@ -1,11 +1,17 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "noEmit": false,
+    "noEmitHelpers": false,
+    /*                   */
     "module": "system",
     "outFile": "./build/js/questrade.sys.js",
     "tsBuildInfoFile": "./build/tmp/tsbuild.sys.info",
-    "noEmit": false,
-    "noEmitHelpers": false,
+    "importHelpers": true,
+    "baseUrl": "./",
+    "paths": {
+      "tslib": ["node_modules/tslib/tslib.d.ts"]
+    },
     /* Additional Vebosity */
     "diagnostics": true,
     "extendedDiagnostics": false,

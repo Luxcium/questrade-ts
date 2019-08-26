@@ -1,20 +1,18 @@
 const path = require('path');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 module.exports = {
-  plugins: [new CleanWebpackPlugin()],
+  entry: './build/js/questrade.amd.js',
+  mode: 'development',
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'build/dist'),
+  },
   node: {
     fs: 'empty',
   },
   optimization: {
-    usedExports: true,
     splitChunks: {
       chunks: 'all',
     },
-  },
-  entry: './build/src/debug.js',
-  mode: 'production',
-  output: {
-    path: path.resolve(__dirname, 'build/dist/bundle'),
-    filename: './[name].bundle.js',
   },
 };

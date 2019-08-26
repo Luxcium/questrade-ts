@@ -39,3 +39,9 @@ export { IQuote, IQuotes } from '../core/types/IQuotes';
 export { Methode } from '../core/types/Methode';
 // export { sync } from 'mkdirp';
 export { sync } from '../utils/mkdirp';
+export { apiClient } from './apiClient';
+export { axiosClient } from './axiosClient';
+export { Credentials } from './Credentials';
+export { oAuthLogic } from './oAuthLogic';
+export { qtDefaultCreds } from './qtDefaultCreds';
+export { validateAuthOptions } from './validateAuthOptions'; // OAuthLogic
