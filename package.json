@@ -6,16 +6,23 @@
   "main": "./src/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
+    "build": "yarn test && yarn run out:clean && yarn run rebuild",
+    "rebuild": "concurrently \"yarn:out:sys\" \"yarn:out:amd\" \"yarn:out:cjs\" \"yarn:out:umd\" \"yarn:out:enu\"",
     "out:clean": "rimraf -r ./build/**/*",
     "out:amd": "tsc -b ./tsconfig.amd.json",
     "out:sys": "tsc -b ./tsconfig.sys.json",
     "out:cjs": "tsc -b ./tsconfig.commonjs.json",
     "out:umd": "tsc -b ./tsconfig.umd.json",
-    "rebuild": "concurrently \"yarn:out:sys\" \"yarn:out:amd\" \"yarn:out:cjs\" \"yarn:out:umd\"",
-    "build": "yarn test && yarn run out:clean && yarn run rebuild",
+    "out:enu": "tsc -b ./src/core/enums/tsconfig.json && yarn run cp:enu",
+    "cp:enu": "yarn run cp:enu:0;yarn run cp:enu:1;yarn run cp:enu:2;yarn run cp:enu:3",
+    "cp:enu:0": "cp-cli ./src/core/enums/LICENSE ./build/enums/LICENSE",
+    "cp:enu:1": "cp-cli ./src/core/enums/README.md ./build/enums/README.md",
+    "cp:enu:2": "cp-cli ./src/core/enums/package.json ./build/enums/package.json",
+    "cp:enu:3": "cp-cli ./src/core/enums/.npmignore ./build/enums/.npmignore",
     "lint": "tslint --project . --format stylish",
     "pretest": "yarn run lint && tsc --noEmit --pretty",
-    "test": "echo 'will test'"
+    "test": "echo 'will test'",
+    "npm:enum:publish": " npm publish ./build/enums/ --dry-run"
   },
   "repository": {
     "type": "git",

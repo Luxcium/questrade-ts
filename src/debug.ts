@@ -4,7 +4,7 @@ import { IQuestradeAPIOptions } from '.';
 import { Questrade } from './v1.0.0/Questrade';
 
 export const qtOptions: IQuestradeAPIOptions = {
-  seedToken: 'yAs_xQBAVniAB2P3ODdHGvvoL9ThnCsj0',
+  seedToken: '2ZzJ3MhdpwmzhPprcwAhmnf1nQ4cRUYV0',
 };
 export const qt1 = new Questrade(qtOptions);
 qt1.on('ready', async () => {

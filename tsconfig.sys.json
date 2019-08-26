@@ -6,7 +6,7 @@
     /*                   */
     "module": "system",
     "outFile": "./build/js/questrade.sys.js",
-    "tsBuildInfoFile": "./build/tmp/tsbuild.sys.info",
+    "tsBuildInfoFile": "./build/tmp/tsbuild.systeme.info",
     "importHelpers": true,
     "baseUrl": "./",
     "paths": {
