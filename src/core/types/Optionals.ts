@@ -5,7 +5,7 @@ import {
   HistoricalDataGranularity,
   OptionType,
   OrderStateFilterType,
-} from './enums';
+} from '../enums';
 
 export type AccountType = number | string;
 export interface IFilter {

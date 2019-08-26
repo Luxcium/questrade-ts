@@ -1,6 +1,6 @@
 /** @format */
 
-import { TickType } from './enums';
+import { TickType } from '../enums';
 
 export interface IQuotes {
   quotes: IQuote[];

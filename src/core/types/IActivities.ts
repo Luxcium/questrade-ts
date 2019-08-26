@@ -2,7 +2,7 @@
 // GET accounts/:id/activities
 // Retrieve account activities,
 // including cash transactions, dividends, trades, etc.
-import { Currency } from './enums';
+import { Currency } from '../enums';
 
 type DateTime = Date | string;
 export interface IActivities {

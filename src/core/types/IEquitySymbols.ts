@@ -7,7 +7,7 @@ import {
   OptionExerciseType,
   OptionType,
   SecurityType,
-} from './enums';
+} from '../enums';
 
 export interface IEquitySymbols {
   symbols: IEquitySymbol[];

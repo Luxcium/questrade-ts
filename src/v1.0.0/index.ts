@@ -3,6 +3,7 @@ export { EventEmitter as EE } from 'events';
 export { access, constants, readFileSync, writeFile, writeFileSync } from 'fs';
 // export { default as moment } from 'moment';
 export { dirname } from 'path';
+export { OrderStateFilterType } from '../core/enums';
 export {
   AcountNumber,
   HistoricalDataGranularity,
@@ -31,7 +32,6 @@ export {
   TimeRangeInterval,
   void_0,
 } from '../core/types';
-export { OrderStateFilterType } from '../core/types/enums';
 export { ICandle, ICandles } from '../core/types/ICandles';
 export { IEquitySymbol, IEquitySymbols } from '../core/types/IEquitySymbols';
 export { IOptionsQuotes } from '../core/types/IOptionsQuotes';

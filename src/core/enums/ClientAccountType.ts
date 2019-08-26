@@ -1,6 +1,4 @@
-/** @format */
-
-// The following table specifies all supported account client types.
+/**  Specifies all supported account client types. */ //
 export enum ClientAccountType {
   // Account held by an individual.
 

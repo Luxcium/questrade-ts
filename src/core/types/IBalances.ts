@@ -1,6 +1,6 @@
 /** @format */
 
-import { Currency } from './enums';
+import { Currency } from '../enums';
 
 export interface IBalance {
   currency: Currency;

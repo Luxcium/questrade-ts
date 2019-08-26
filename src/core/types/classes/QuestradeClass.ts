@@ -6,6 +6,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
 // import { sync } from 'mkdirp'
 import { sync } from '../../../utils/mkdirp';
+import { OrderStateFilterType } from '../../enums';
 import {
   AcountNumber,
   HistoricalDataGranularity,
@@ -32,7 +33,6 @@ import {
   TimeRange,
   TimeRangeInterval,
 } from '../../types';
-import { OrderStateFilterType } from '../enums';
 import { ICandle, ICandles } from '../ICandles';
 import { IEquitySymbol, IEquitySymbols } from '../IEquitySymbols';
 import { IOptionsQuotes } from '../IOptionsQuotes';

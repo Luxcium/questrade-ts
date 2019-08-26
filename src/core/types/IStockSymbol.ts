@@ -1,6 +1,6 @@
 /** @format */
 
-import { Currency, ListingExchange, SecurityType } from './enums';
+import { Currency, ListingExchange, SecurityType } from '../enums';
 
 export interface IStockSymbol {
   symbol: string;

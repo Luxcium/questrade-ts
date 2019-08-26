@@ -1,6 +1,6 @@
 /** @format */
 
-// The following table specifies all supported account status values.
+/** Specifies all supported account status values. */
 export enum AccountStatus {
   Active,
   SuspendedClosed,

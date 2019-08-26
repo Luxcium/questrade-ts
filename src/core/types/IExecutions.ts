@@ -1,6 +1,6 @@
 /** @format */
 
-import { OrderSide } from './enums';
+import { OrderSide } from '../enums';
 
 /** @format */
 export type DateTime = Date | string;

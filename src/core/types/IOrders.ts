@@ -8,7 +8,7 @@ import {
   OrderTimeInForce,
   OrderType,
   StrategyTypes,
-} from './enums';
+} from '../enums';
 
 export interface IOrders {
   orders: IOrder[];
