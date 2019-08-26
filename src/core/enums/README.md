@@ -2,7 +2,7 @@
 
 Questrade API TypeScript Enumerations (Unofficial)
 
-[Refer to Questrade API TypeScript Enumerations for more informations](https://wwwquestradecom/api/documentation/restoperations/enumerations/enumerations)
+[Refer to Questrade API TypeScript Enumerations for more informations](https://www.questrade.com/api/documentation/rest-operations/enumerations/enumerations)
 
 > **Open a GitHub issue for any problems**
 
