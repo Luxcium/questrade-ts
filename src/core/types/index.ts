@@ -1,6 +1,7 @@
 /** @format */
 
 export {
+  AccountStatus,
   AccountType as UserAccountType,
   ClientAccountType,
   Currency,
@@ -16,11 +17,11 @@ export {
   OrderStateFilterType,
   OrderTimeInForce,
   OrderType,
+  qtEnumerations,
   SecurityType,
   StrategyTypes,
   TickType,
-} from '../enums';
-export { AccountStatus } from '../enums/';
+} from 'questrade-api-enumerations';
 export { QuestradeClass } from './classes/QuestradeClass';
 export { AcountNumber, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';

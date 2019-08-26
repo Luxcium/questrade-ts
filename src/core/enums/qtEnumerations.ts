@@ -667,7 +667,7 @@ export enum StrategyTypes {
 
 /** Specifies all supported currency codes. */
 
-export const enums = {
+export const qtEnumerations = {
   /** Specifies all supported currency codes. */
   Currency,
   /** Specifies all supported listing exchanges. */
@@ -707,3 +707,5 @@ export const enums = {
   /** Supported types of strategies for multi-leg strategy orders. */
   StrategyTypes,
 };
+
+// export const enums = enumerations;

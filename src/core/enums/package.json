@@ -1,10 +1,10 @@
 {
   "name": "questrade-api-enumerations",
   "displayName": "Questrade API TypeScript Enumerations.",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Unofficial Questrade API TypeScript Enumerations.",
-  "main": "./src/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./qtEnumerations.js",
+  "types": "./types/qtEnumerations.d.ts",
   "author": "Luxcium <luxcium@neb401.com>",
   "license": "MIT",
   "bugs": {

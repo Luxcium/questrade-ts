@@ -18,4 +18,4 @@ export {
   SecurityType,
   StrategyTypes,
   TickType,
-} from './Enumerations';
+} from './qtEnumerations';
