@@ -22,7 +22,7 @@
     "lint": "tslint --project . --format stylish",
     "pretest": "yarn run lint && tsc --noEmit --pretty",
     "test": "echo 'will test'",
-    "npm:enum:publish": " npm publish ./build/enums/ --dry-run"
+    "npm:enum:publish": " npm publish ./build/enums/"
   },
   "repository": {
     "type": "git",

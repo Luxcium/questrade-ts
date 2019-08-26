@@ -1,7 +1,7 @@
 {
   "name": "questrade-api-enumerations",
   "displayName": "Questrade API TypeScript Enumerations.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Unofficial Questrade API TypeScript Enumerations.",
   "main": "./src/index.js",
   "types": "./lib/index.d.ts",

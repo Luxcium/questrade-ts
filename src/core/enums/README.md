@@ -10,14 +10,13 @@ Questrade API TypeScript Enumerations (Unofficial)
 
 ### The following table specifies all supported currency codes
 
-- Type Description
 - USD US dollar
 - CAD Canadian dollar
-- Listing Exchange
+
+## Listing Exchange
 
 ### The following table specifies all supported listing exchanges
 
-- Type Description
 - TSX Toronto Stock Exchange
 - TSXV Toronto Venture Exchange
 - CNSX Canadian National Stock Exchange
@@ -34,7 +33,6 @@ Questrade API TypeScript Enumerations (Unofficial)
 
 ### The following table specifies all supported user account types
 
-- Type Description
 - Cash Cash account
 - Margin Margin account
 - TFSA Tax Free Savings Account
@@ -55,7 +53,6 @@ Questrade API TypeScript Enumerations (Unofficial)
 
 ### The following table specifies all supported account client types
 
-- Type Description
 - Individual Account held by an individual
 - Joint Account held jointly by several individuals (eg, spouses)
 - Informal Trust Non individual account held by an informal trust
@@ -72,17 +69,16 @@ Questrade API TypeScript Enumerations (Unofficial)
 
 ### The following table specifies a supported account status values
 
-- Type
 - Active
 - Suspended (Closed)
 - Suspended (View Only)
 - Liquidate Only
 - Closed
-- Tick Type
+
+## Tick Type
 
 ### The following table specifies all supported market data tick types
 
-- Type Description
 - Up Designates an uptick
 - Down Designates a downtick
 - Equal Designates a tick that took place at the same price as a previous one
@@ -91,14 +87,13 @@ Questrade API TypeScript Enumerations (Unofficial)
 
 ### The following table specifies all supported option types
 
-- Type Description
 - Call Call option
 - Put Put option
-- Option Duration Type
+
+## Option Duration Type
 
 ### The following table specifies all supported option duration types
 
-- Type Description
 - Weekly Weekly expiry cycle
 - Monthly Monthly expiry cycle
 - Quarterly Quarterly expiry cycle
@@ -108,7 +103,6 @@ Questrade API TypeScript Enumerations (Unofficial)
 
 ### The following table specifies all supported option exercise types
 
-- Type Description
 - American American option
 - European European option
 
@@ -116,7 +110,6 @@ Questrade API TypeScript Enumerations (Unofficial)
 
 ### The following table specifies all supported security types
 
-- Type Description
 - Stock Common and preferred equities, ETFs, ETNs, units, ADRs, etc
 - Option Equity and index options
 - Bond Debentures, notes, bonds, both corporate and government
@@ -129,7 +122,6 @@ Questrade API TypeScript Enumerations (Unofficial)
 
 ### The following table specifies all supported order state filter types
 
-- Type Description
 - All Includes all orders, regardless of their state
 - Open Includes only orders that are still open
 - Closed Includes only orders that are already closed
@@ -138,7 +130,6 @@ Questrade API TypeScript Enumerations (Unofficial)
 
 ### The following table specifies all supported order side values
 
-- Type Description
 - Buy Designates an order to purchase a security
 - Sell Designates an order to dispose a security
 
