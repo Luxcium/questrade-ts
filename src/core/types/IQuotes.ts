@@ -1,6 +1,6 @@
 /** @format */
 
-import { TickType } from '../enums';
+import { TickType } from 'questrade-api-enumerations';
 
 export interface IQuotes {
   quotes: IQuote[];

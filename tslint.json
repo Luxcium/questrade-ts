@@ -15,7 +15,7 @@
       true,
       {
         "limit": 80,
-        "ignore-pattern": ["@see", "/"],
+        "ignore-pattern": "@see",
         "check-strings": true,
         "check-regex": true
       }

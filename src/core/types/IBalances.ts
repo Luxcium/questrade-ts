@@ -1,6 +1,6 @@
 /** @format */
 
-import { Currency } from '../enums';
+import { Currency } from 'questrade-api-enumerations';
 
 export interface IBalance {
   currency: Currency;

@@ -4,9 +4,16 @@
 
 import fs from 'fs';
 import path from 'path';
-import { Made } from './Made';
-import { Mode } from './Mode';
-import { OptionsSync } from './OptionsSync';
+export type Made = string | null;
+export type Mode = number | string | null;
+export interface FsImplementationSync {
+  mkdirSync: typeof fs.mkdirSync;
+  statSync: typeof fs.statSync;
+}
+export interface OptionsSync {
+  mode?: Mode;
+  fs?: FsImplementationSync;
+}
 
 const _0777 = parseInt('0777', 8);
 

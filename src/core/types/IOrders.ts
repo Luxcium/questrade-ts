@@ -1,6 +1,5 @@
 /** @format */
 
-import { DateTime, idType } from '.';
 import {
   OrderClass,
   OrderSide,
@@ -8,7 +7,8 @@ import {
   OrderTimeInForce,
   OrderType,
   StrategyTypes,
-} from '../enums';
+} from 'questrade-api-enumerations';
+import { DateTime, idType } from '.';
 
 export interface IOrders {
   orders: IOrder[];

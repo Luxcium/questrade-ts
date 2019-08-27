@@ -1,6 +1,6 @@
 /** @format */
 
-import { OrderSide } from '../enums';
+import { OrderSide } from 'questrade-api-enumerations';
 
 /** @format */
 export type DateTime = Date | string;

@@ -1,6 +1,5 @@
 // tslint:disable: no-parameter-reassignment
-import { Credentials } from './Credentials';
-import { qtDefaultCreds } from './qtDefaultCreds';
+import { Credentials, qtDefaultCreds } from './Credentials';
 export function validateAuthOptions(credentials: Credentials, options: any) {
   credentials = { ...qtDefaultCreds, ...credentials };
 

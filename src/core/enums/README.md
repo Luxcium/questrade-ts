@@ -6,6 +6,19 @@ Questrade API TypeScript Enumerations (Unofficial)
 
 > **Open a GitHub issue for any problems**
 
+_Questrade API TypeScript Enumerations_ is part of questrade-ts library
+so you can simply start by installing the questrade-ts library:
+
+```bash
+npm install --save questrade-ts
+```
+
+Or to use the _Questrade API TypeScript Enumerations_ stand alone in your project:
+
+```bash
+npm install --save questrade-api-enumerations
+```
+
 ## Currency
 
 ### The following table specifies all supported currency codes

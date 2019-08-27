@@ -1,6 +1,10 @@
 /** @format */
 
-import { Currency, ListingExchange, SecurityType } from '../enums';
+import {
+  Currency,
+  ListingExchange,
+  SecurityType,
+} from 'questrade-api-enumerations';
 
 export interface IStockSymbol {
   symbol: string;

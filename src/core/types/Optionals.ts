@@ -1,11 +1,11 @@
 /** @format */
 
-import { DateTime } from '.';
 import {
   HistoricalDataGranularity,
   OptionType,
   OrderStateFilterType,
-} from '../enums';
+} from 'questrade-api-enumerations';
+import { DateTime } from '.';
 
 export type AccountType = number | string;
 export interface IFilter {

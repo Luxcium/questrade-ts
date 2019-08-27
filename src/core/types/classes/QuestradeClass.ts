@@ -4,9 +4,9 @@ import { EventEmitter as EE } from 'events';
 import { readFileSync, writeFileSync } from 'fs';
 // // import { default as moment } from 'moment';
 import { dirname } from 'path';
+import { OrderStateFilterType } from 'questrade-api-enumerations';
 // import { sync } from 'mkdirp'
 import { sync } from '../../../v1.0.0/private/utils/mkdirp';
-import { OrderStateFilterType } from '../../enums';
 import {
   AcountNumber,
   HistoricalDataGranularity,

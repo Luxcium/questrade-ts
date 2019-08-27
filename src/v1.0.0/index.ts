@@ -3,7 +3,7 @@ export { EventEmitter as EE } from 'events';
 export { access, constants, readFileSync, writeFile, writeFileSync } from 'fs';
 // export { default as moment } from 'moment';
 export { dirname } from 'path';
-export { OrderStateFilterType } from '../core/enums';
+export { OrderStateFilterType } from 'questrade-api-enumerations';
 export {
   AcountNumber,
   HistoricalDataGranularity,

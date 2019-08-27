@@ -4,7 +4,7 @@ import {
   AccountStatus,
   AccountType as UserAccountType,
   ClientAccountType,
-} from '../enums';
+} from 'questrade-api-enumerations';
 
 export type AcountNumber = string | number;
 

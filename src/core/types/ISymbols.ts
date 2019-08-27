@@ -4,7 +4,7 @@ import {
   OptionExerciseType,
   OptionType,
   SecurityType,
-} from '../enums';
+} from 'questrade-api-enumerations';
 import { DateTime } from './Types';
 export interface ISymbols {
   symbols: ISymbol[];
