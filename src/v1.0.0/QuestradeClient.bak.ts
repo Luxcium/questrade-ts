@@ -383,7 +383,7 @@ export class QuestradeClient extends EE {
 }
 
 /*
-// getTime
+getTime
 getAccounts
 getAccounts/:id/positions
 getAccounts/:id/balances

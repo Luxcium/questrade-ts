@@ -1,14 +1,8 @@
+// tslint:disable: no-parameter-reassignment
 import { Credentials } from './Credentials';
+import { qtDefaultCreds } from './qtDefaultCreds';
 export function validateAuthOptions(credentials: Credentials, options: any) {
-  //   const credentials: Credentials;
-  credentials.accountNumber = '';
-  credentials.apiVersion = 'v1';
-  credentials.keyDir = './keys';
-  credentials.keyFile = '';
-  credentials.practice = false;
-  credentials.seedToken = '';
-  credentials.expiresIn = 0;
-  credentials.tokenType = '';
+  credentials = { ...qtDefaultCreds, ...credentials };
 
   if (typeof options === 'undefined' || options === undefined) {
     throw new Error('questrade_missing_api_key or options');
@@ -28,10 +22,6 @@ export function validateAuthOptions(credentials: Credentials, options: any) {
     credentials.seedToken = options.seedToken || '';
     credentials.accountNumber = `${options.account}` || '';
   }
-  credentials.refreshToken = '';
-  credentials.accessToken = '';
-  credentials.apiUrl = '';
-  credentials.apiServer = '';
   credentials.authUrl = credentials.practice
     ? 'https://practicelogin.q.com'
     : 'https://login.questrade.com';
