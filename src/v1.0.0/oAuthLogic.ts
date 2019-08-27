@@ -10,7 +10,8 @@ import {
 import { axiosClient } from './axiosClient';
 import { Credentials } from './Credentials';
 // import { constants } from 'buffer';
-
+// const symbol: symbol = Symbol('tag');
+// symbol.toString();
 export async function oAuthLogic(
   credentials: Credentials
 ): Promise<Credentials> {

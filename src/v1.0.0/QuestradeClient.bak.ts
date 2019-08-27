@@ -24,7 +24,7 @@ import {
   Time,
   void_0,
 } from '../core/types';
-import { sync } from '../utils/mkdirp';
+import { sync } from './private/utils/mkdirp';
 export class QuestradeClient extends EE {
   /**  Gets name of the file where the refreshToken is stored */
   public get keyFile() {
