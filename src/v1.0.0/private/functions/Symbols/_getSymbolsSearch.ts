@@ -1,3 +1,8 @@
+export function _symbolSearch(query: string /* ,client,credentials */) {
+  // Sample request
+  // GET https://api01.iq.questrade.com/v1/symbols/search?prefix=BMO
+  return { query /* , client, credentials */ };
+}
 /*
 getTime
 getAccounts

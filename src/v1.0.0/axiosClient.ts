@@ -1,5 +1,8 @@
 import { axios, AxiosRequestConfig, AxiosResponse } from '.';
-
+export { axios, AxiosRequestConfig, AxiosResponse };
+export type AxiosClient<T> = (
+  axiosConfig: AxiosRequestConfig
+) => Promise<AxiosResponse<T>>;
 export async function axiosClient<T>(
   axiosConfig: AxiosRequestConfig
 ): Promise<AxiosResponse<T>> {

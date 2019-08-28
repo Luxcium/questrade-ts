@@ -7,11 +7,12 @@ import {
   sync,
   writeFileSync,
 } from '.';
-import { axiosClient } from './axiosClient';
+import { axiosClient, AxiosClient } from './axiosClient';
 import { Credentials } from './Credentials';
 
 export async function oAuthLogic(
-  credentials: Credentials
+  credentials: Credentials,
+  _axiosClient: AxiosClient<ICreds> = axiosClient
 ): Promise<Credentials> {
   let refreshToken: string = credentials.seedToken || '';
   try {
@@ -35,7 +36,7 @@ export async function oAuthLogic(
     });
   }
   try {
-    const { data: refreshCreds } = await axiosClient<ICreds>({
+    const { data: refreshCreds } = await _axiosClient({
       url: `${credentials.authUrl}/oauth2/token`,
       params: {
         grant_type: 'refresh_token',
