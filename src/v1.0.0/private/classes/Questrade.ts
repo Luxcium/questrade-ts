@@ -15,7 +15,6 @@ import {
   QuestradeAPIOptions,
   readFileSync,
   Time,
-  void_0,
   writeFileSync,
 } from '../..';
 import {
@@ -27,7 +26,7 @@ import {
   OrdersOptions,
   OrderStateFilterType,
   TimeRange,
-} from '../../../core/types';
+} from '../../../legacy/types';
 import { sync } from '../utils/mkdirp';
 export class Questrade extends EE {
   /**  Gets name of the file where the refreshToken is stored */
@@ -118,7 +117,7 @@ export class Questrade extends EE {
       : 'https://login.questrade.com';
 
     // MAIN CLASS CONSTRUCTOR FUNCTION STAR
-    const MAIN: void_0 = __ => {
+    const MAIN = (__: any) => {
       /**
        * <-- !!START OF SECTION !! -->
        * <-- ASYNC MAIN FUNCTION ()-->

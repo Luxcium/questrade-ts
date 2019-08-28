@@ -5,8 +5,6 @@ import { readFileSync, writeFileSync } from 'fs';
 // // import { default as moment } from 'moment';
 import { dirname } from 'path';
 import { OrderStateFilterType } from 'questrade-api-enumerations';
-// import { sync } from 'mkdirp'
-import { sync } from '../../../v1.0.0/private/utils/mkdirp';
 import {
   AcountNumber,
   HistoricalDataGranularity,
@@ -32,7 +30,9 @@ import {
   Time,
   TimeRange,
   TimeRangeInterval,
-} from '../../types';
+} from '..';
+// import { sync } from 'mkdirp'
+import { sync } from '../../../v1.0.0/private/utils/mkdirp';
 import { ICandle, ICandles } from '../ICandles';
 import { IEquitySymbol, IEquitySymbols } from '../IEquitySymbols';
 import { IOptionsQuotes } from '../IOptionsQuotes';
