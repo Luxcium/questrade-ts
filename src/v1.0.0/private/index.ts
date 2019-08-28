@@ -1,9 +1,14 @@
-import { apiClient } from '../apiClient';
-import { axiosClient, AxiosRequestConfig, AxiosResponse } from '../axiosClient';
-import { Credentials } from '../Credentials';
-import { oAuthLogic } from '../oAuthLogic';
-import { qtDefaultCreds } from '../qtDefaultCreds';
-import { validateAuthOptions } from '../validateAuthOptions';
+// import { oAuthLogic } from '../oAuthLogic';
+import { apiGet } from './apiGet';
+import { Credentials, qtDefaultCreds } from './Credentials';
+import {
+  axios,
+  axiosClient,
+  AxiosRequestConfig,
+  AxiosResponse,
+  oAuthLogic,
+} from './oAuthLogic';
+import { validateAuthOptions } from './validateAuthOptions';
 
 export async function myModel(axiosClientX: any) {
   return async function myModel0(apiClientX: any) {
@@ -30,10 +35,11 @@ export async function myModel(axiosClientX: any) {
 }
 
 export {
-  apiClient,
+  apiGet,
   axiosClient,
   AxiosRequestConfig,
   AxiosResponse,
+  axios,
   Credentials,
   oAuthLogic,
   qtDefaultCreds,

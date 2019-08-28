@@ -19,8 +19,8 @@ import {
   Time,
   void_0,
 } from '../core/types';
-import { Credentials } from './Credentials';
-import { validateAuthOptions } from './validateAuthOptions';
+import { Credentials } from './private/Credentials';
+import { validateAuthOptions } from './private/validateAuthOptions';
 export class QuestradeClient extends EE implements Credentials {
   /**  Gets name of the file where the refreshToken is stored */
   public get keyFile() {

@@ -1,13 +1,16 @@
 import { dirname } from 'path';
 import {
   access,
+  axios,
+  AxiosRequestConfig,
+  AxiosResponse,
   constants,
   ICreds,
   readFileSync,
   sync,
   writeFileSync,
-} from '.';
-import { axiosClient, AxiosClient } from './axiosClient';
+} from '..';
+// import { axiosClient, AxiosClient } from './axiosClient';
 import { Credentials } from './Credentials';
 
 export async function oAuthLogic(
@@ -56,4 +59,25 @@ export async function oAuthLogic(
     console.error('Authentication error:', authError.message);
   }
   return credentials;
+}
+
+export { axios, AxiosRequestConfig, AxiosResponse };
+export type AxiosClient<T> = (
+  axiosConfig: AxiosRequestConfig
+) => Promise<AxiosResponse<T>>;
+export async function axiosClient<T>(
+  axiosConfig: AxiosRequestConfig
+): Promise<AxiosResponse<T>> {
+  try {
+    const response: AxiosResponse<T> = await axios(axiosConfig);
+    // validating response.data is not: NaN, "", '', 0, false, null or undefined
+    if (!response.data) {
+      throw new Error();
+    } else {
+      return response as AxiosResponse<T>;
+    }
+  } catch (error) {
+    // error handling must be taken care of when calling axioClient Function
+    throw error;
+  }
 }
