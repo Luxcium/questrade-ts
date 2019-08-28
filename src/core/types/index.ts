@@ -1,5 +1,3 @@
-/** @format */
-
 export {
   AccountStatus,
   AccountType as UserAccountType,

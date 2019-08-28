@@ -1,5 +1,3 @@
-/** @format */
-
 interface ITime {
   time: string;
 }

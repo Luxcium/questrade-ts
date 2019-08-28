@@ -1,5 +1,3 @@
-/** @format */
-
 import { Currency } from 'questrade-api-enumerations';
 
 export interface IBalance {

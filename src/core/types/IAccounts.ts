@@ -1,5 +1,3 @@
-/** @format */
-
 import {
   AccountStatus,
   AccountType as UserAccountType,

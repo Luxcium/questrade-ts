@@ -1,5 +1,3 @@
-/** @format */
-
 import { IQuestradeAPIOptions, QuestradeClass } from '.';
 export async function QuestradeHelperFunction(
   opts: IQuestradeAPIOptions,

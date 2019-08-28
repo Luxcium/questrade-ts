@@ -1,5 +1,3 @@
-/** @format */
-
 import { TickType } from 'questrade-api-enumerations';
 
 export interface IQuotes {

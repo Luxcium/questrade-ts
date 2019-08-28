@@ -1,5 +1,3 @@
-/** @format */
-
 import { DateTime } from './Types';
 
 export interface ICandles {

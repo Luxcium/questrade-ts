@@ -1,8 +1,5 @@
-/** @format */
-
 import { Currency } from 'questrade-api-enumerations';
 
-/** @format */
 // GET markets
 // Retrieves information about supported markets.
 // Request parameters

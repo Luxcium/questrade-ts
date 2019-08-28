@@ -1,4 +1,3 @@
-/** @format */
 // GET accounts/:id/activities
 // Retrieve account activities,
 // including cash transactions, dividends, trades, etc.

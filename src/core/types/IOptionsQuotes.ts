@@ -1,8 +1,4 @@
-/** @format */
-
 import { DateTime } from './Types';
-
-/** @format */
 
 export interface IOptionsQuotes {
   quotes: IOptionsQuote[];

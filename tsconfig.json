@@ -58,12 +58,13 @@
     "listEmittedFiles": false,
     "traceResolution": false
   },
-  "include": ["./src/**/*", "debug.ts"],
+  "include": ["./src/**/*", "debug.js"],
   "exclude": [
     "node_modules",
     "build",
     "imports",
-    "src/legacy/proto_testing/**/*"
+    "src/legacy/proto_testing/**/*",
+    "debug.js"
   ],
   "plugins": [
     {

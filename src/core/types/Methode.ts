@@ -1,5 +1,3 @@
-/** @format */
-
 export type Methode =
   | 'GET'
   | 'get'

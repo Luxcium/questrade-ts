@@ -1,5 +1,3 @@
-/** @format */
-
 interface ITimeObject {
   years: number;
   months: number;

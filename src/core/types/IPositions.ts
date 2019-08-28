@@ -1,5 +1,3 @@
-/** @format */
-
 export interface IPosition {
   symbol: string;
   symbolId: number;

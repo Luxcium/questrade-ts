@@ -1,5 +1,3 @@
-/** @format */
-
 export interface IQuestradeAPIOptions {
   practiceAccount?: boolean;
   test?: boolean;
