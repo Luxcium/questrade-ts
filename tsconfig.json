@@ -58,7 +58,7 @@
     "listEmittedFiles": false,
     "traceResolution": false
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", "debug.ts"],
   "exclude": [
     "node_modules",
     "build",

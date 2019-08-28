@@ -1,12 +1,6 @@
-/** @format */
-import {
-  axios,
-  AxiosRequestConfig,
-  AxiosResponse,
-  EE,
-  Methode,
-  oAuthLogic,
-} from '../..';
+import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
+import { EventEmitter as EE } from 'events';
+import { Credentials, oAuthLogic, validateAuthOptions } from '..';
 import {
   AcountNumber,
   IAccount,
@@ -14,13 +8,13 @@ import {
   IHeaders,
   IMarket,
   IMarketsResponse,
+  Methode,
   Optionals,
   QuestradeAPIOptions,
   Time,
   void_0,
-} from '../../../legacy/types';
-import { Credentials } from '../api/Credentials';
-import { validateAuthOptions } from '../api/validateAuthOptions';
+} from '../../../core/types';
+
 export class QuestradeClient extends EE implements Credentials {
   /**  Gets name of the file where the refreshToken is stored */
   public get keyFile() {

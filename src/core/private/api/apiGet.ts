@@ -1,4 +1,4 @@
-import { axios, AxiosResponse } from '..';
+import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 export async function apiGet<T>(url: string, _accessToken: string): Promise<T> {
   let data: T;
   try {
@@ -40,4 +40,24 @@ export function generateHeader(url: string, _accessToken: string) {
       Authorization: `Bearer ${_accessToken}`,
     },
   };
+}
+
+export type AxiosClient<T> = (
+  axiosConfig: AxiosRequestConfig
+) => Promise<AxiosResponse<T>>;
+export async function axiosClient<T>(
+  axiosConfig: AxiosRequestConfig
+): Promise<AxiosResponse<T>> {
+  try {
+    const response: AxiosResponse<T> = await axios(axiosConfig);
+    // validating response.data is not: NaN, "", '', 0, false, null or undefined
+    if (!response.data) {
+      throw new Error();
+    } else {
+      return response as AxiosResponse<T>;
+    }
+  } catch (error) {
+    // error handling must be taken care of when calling axioClient Function
+    throw error;
+  }
 }

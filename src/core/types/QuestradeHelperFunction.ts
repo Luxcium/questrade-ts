@@ -1,6 +1,6 @@
 /** @format */
 
-import { IQuestradeAPIOptions, QuestradeClass } from './legacy/types';
+import { IQuestradeAPIOptions, QuestradeClass } from '.';
 export async function QuestradeHelperFunction(
   opts: IQuestradeAPIOptions,
   cb?: (qt: QuestradeClass) => Promise<QuestradeClass>

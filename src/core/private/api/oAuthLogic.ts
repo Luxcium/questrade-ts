@@ -1,10 +1,10 @@
-import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
+// tslint:disable: no-parameter-reassignment
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import { ICreds } from '../../../legacy/types';
+import { ICreds } from '../../../core/types';
 import { sync } from '../utils/mkdirp';
-// import { axiosClient, AxiosClient } from './axiosClient';
-import { Credentials } from './Credentials';
+import { AxiosClient, axiosClient } from './apiGet';
+import { Credentials, qtDefaultCreds } from './credentials';
 export async function oAuthLogic(
   credentials: Credentials,
   _axiosClient: AxiosClient<ICreds> = axiosClient
@@ -53,23 +53,30 @@ export async function oAuthLogic(
   return credentials;
 }
 
-export { axios, AxiosRequestConfig, AxiosResponse };
-export type AxiosClient<T> = (
-  axiosConfig: AxiosRequestConfig
-) => Promise<AxiosResponse<T>>;
-export async function axiosClient<T>(
-  axiosConfig: AxiosRequestConfig
-): Promise<AxiosResponse<T>> {
-  try {
-    const response: AxiosResponse<T> = await axios(axiosConfig);
-    // validating response.data is not: NaN, "", '', 0, false, null or undefined
-    if (!response.data) {
-      throw new Error();
-    } else {
-      return response as AxiosResponse<T>;
-    }
-  } catch (error) {
-    // error handling must be taken care of when calling axioClient Function
-    throw error;
+export function validateAuthOptions(credentials: Credentials, options: any) {
+  credentials = { ...qtDefaultCreds, ...credentials };
+
+  if (typeof options === 'undefined' || options === undefined) {
+    throw new Error('questrade_missing_api_key or options');
   }
+  if (typeof options === 'string' && options.indexOf('/') !== -1) {
+    credentials.keyFile = options;
+  }
+  if (typeof options === 'string' && options.indexOf('/') === -1) {
+    credentials.seedToken = options;
+  }
+  if (typeof options === 'object') {
+    credentials.practice =
+      options.practiceAccount === undefined ? false : !!options.practiceAccount;
+    credentials.keyDir = options.keyDir || './keys';
+    credentials.apiVersion = options.apiVersion || 'v1';
+    credentials.keyFile = options.keyFile || '';
+    credentials.seedToken = options.seedToken || '';
+    credentials.accountNumber = `${options.account}` || '';
+  }
+  credentials.authUrl = credentials.practice
+    ? 'https://practicelogin.q.com'
+    : 'https://login.questrade.com';
+
+  return credentials;
 }
