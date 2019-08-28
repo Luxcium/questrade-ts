@@ -1,5 +1,15 @@
 /** @format */
 import {
+  IAccount,
+  IAccounts,
+  idType,
+  IOrder,
+  IOrders,
+  OrdersOptions,
+  OrderStateFilterType,
+  TimeRange,
+} from '../../../legacy/types';
+import {
   access,
   AcountNumber,
   axios,
@@ -16,17 +26,7 @@ import {
   readFileSync,
   Time,
   writeFileSync,
-} from '../..';
-import {
-  IAccount,
-  IAccounts,
-  idType,
-  IOrder,
-  IOrders,
-  OrdersOptions,
-  OrderStateFilterType,
-  TimeRange,
-} from '../../../legacy/types';
+} from '../../../v1.0.0';
 import { sync } from '../utils/mkdirp';
 export class Questrade extends EE {
   /**  Gets name of the file where the refreshToken is stored */

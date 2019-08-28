@@ -2,7 +2,6 @@
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 import { EventEmitter as EE } from 'events';
 import { readFileSync, writeFileSync } from 'fs';
-// // import { default as moment } from 'moment';
 import { dirname } from 'path';
 import { OrderStateFilterType } from 'questrade-api-enumerations';
 import {
@@ -32,7 +31,7 @@ import {
   TimeRangeInterval,
 } from '..';
 // import { sync } from 'mkdirp'
-import { sync } from '../../../v1.0.0/private/utils/mkdirp';
+import { sync } from '../../../core/private/utils/mkdirp';
 import { ICandle, ICandles } from '../ICandles';
 import { IEquitySymbol, IEquitySymbols } from '../IEquitySymbols';
 import { IOptionsQuotes } from '../IOptionsQuotes';

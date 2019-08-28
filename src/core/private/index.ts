@@ -1,14 +1,14 @@
 // import { oAuthLogic } from '../oAuthLogic';
-import { apiGet } from './apiGet';
-import { Credentials, qtDefaultCreds } from './Credentials';
+import { apiGet } from './api/apiGet';
+import { Credentials, qtDefaultCreds } from './api/Credentials';
 import {
   axios,
   axiosClient,
   AxiosRequestConfig,
   AxiosResponse,
   oAuthLogic,
-} from './oAuthLogic';
-import { validateAuthOptions } from './validateAuthOptions';
+} from './api/oAuthLogic';
+import { validateAuthOptions } from './api/validateAuthOptions';
 
 export async function myModel(axiosClientX: any) {
   return async function myModel0(apiClientX: any) {

@@ -1,4 +1,4 @@
-import { axios, AxiosResponse } from '.';
+import { axios, AxiosResponse } from '..';
 export async function apiGet<T>(url: string, _accessToken: string): Promise<T> {
   let data: T;
   try {

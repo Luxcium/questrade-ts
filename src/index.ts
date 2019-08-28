@@ -1,5 +1,6 @@
 /** @format */
 
+export * from './core';
 export {
   AccountStatus,
   ClientAccountType,
@@ -20,12 +21,12 @@ export {
   StrategyTypes,
   TickType,
   UserAccountType,
-} from './core/types';
-export { QuestradeClass } from './core/types/classes/QuestradeClass';
+} from './legacy/types';
+export { QuestradeClass } from './legacy/types/classes/QuestradeClass';
 export {
   IQuestradeAPIOptions,
   QuestradeAPIOptions,
-} from './core/types/IQuestradeAPIOptions';
+} from './legacy/types/IQuestradeAPIOptions';
 export {
   QuestradeHelperFunction,
   tokenConnection,

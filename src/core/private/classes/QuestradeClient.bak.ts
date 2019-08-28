@@ -23,7 +23,7 @@ import {
   QuestradeAPIOptions,
   Time,
   void_0,
-} from '../../../core/types';
+} from '../../../legacy/types';
 import { sync } from '../utils/mkdirp';
 export class QuestradeClient extends EE {
   /**  Gets name of the file where the refreshToken is stored */

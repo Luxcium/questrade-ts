@@ -3,6 +3,9 @@ export { EventEmitter as EE } from 'events';
 export { access, constants, readFileSync, writeFile, writeFileSync } from 'fs';
 export { dirname } from 'path';
 export { OrderStateFilterType } from 'questrade-api-enumerations';
+export { oAuthLogic } from '../core/private/api/oAuthLogic';
+// export { sync } from 'mkdirp';
+export { sync } from '../core/private/utils/mkdirp';
 export {
   AcountNumber,
   HistoricalDataGranularity,
@@ -30,13 +33,10 @@ export {
   TimeRange,
   TimeRangeInterval,
   void_0,
-} from '../core/types';
-export { ICandle, ICandles } from '../core/types/ICandles';
-export { IEquitySymbol, IEquitySymbols } from '../core/types/IEquitySymbols';
-export { IOptionsQuotes } from '../core/types/IOptionsQuotes';
-export { IOrder, IOrders } from '../core/types/IOrders';
-export { IQuote, IQuotes } from '../core/types/IQuotes';
-export { Methode } from '../core/types/Methode';
-export { oAuthLogic } from './private/oAuthLogic';
-// export { sync } from 'mkdirp';
-export { sync } from './private/utils/mkdirp';
+} from '../legacy/types';
+export { ICandle, ICandles } from '../legacy/types/ICandles';
+export { IEquitySymbol, IEquitySymbols } from '../legacy/types/IEquitySymbols';
+export { IOptionsQuotes } from '../legacy/types/IOptionsQuotes';
+export { IOrder, IOrders } from '../legacy/types/IOrders';
+export { IQuote, IQuotes } from '../legacy/types/IQuotes';
+export { Methode } from '../legacy/types/Methode';

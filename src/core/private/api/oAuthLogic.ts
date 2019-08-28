@@ -9,7 +9,7 @@ import {
   readFileSync,
   sync,
   writeFileSync,
-} from '..';
+} from '../../../v1.0.0';
 // import { axiosClient, AxiosClient } from './axiosClient';
 import { Credentials } from './Credentials';
 
