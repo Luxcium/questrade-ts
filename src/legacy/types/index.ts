@@ -43,6 +43,7 @@ export {
 export { IQuote, IQuotes } from './IQuotes';
 export { IStockSymbol } from './IStockSymbol';
 export { ISymbol, ISymbols } from './ISymbols';
+export { Methode } from './Methode';
 export {
   IFilter,
   Optionals,

@@ -1,33 +1,27 @@
 /** @format */
+
+import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
+import { EventEmitter as EE } from 'events';
+import { access, constants, readFileSync, writeFileSync } from 'fs';
+import { dirname } from 'path';
 import {
   IAccount,
   IAccounts,
+  ICreds,
   idType,
+  IHeaders,
   IOrder,
   IOrders,
-  OrdersOptions,
-  OrderStateFilterType,
-  TimeRange,
-} from '../../../legacy/types';
-import {
-  access,
-  AcountNumber,
-  axios,
-  AxiosRequestConfig,
-  AxiosResponse,
-  constants,
-  dirname,
-  EE,
-  ICreds,
-  IHeaders,
   Methode,
   Optionals,
+  OrdersOptions,
+  OrderStateFilterType,
   QuestradeAPIOptions,
-  readFileSync,
   Time,
-  writeFileSync,
-} from '../../../v1.0.0';
+  TimeRange,
+} from '../../../legacy/types';
 import { sync } from '../utils/mkdirp';
+
 export class Questrade extends EE {
   /**  Gets name of the file where the refreshToken is stored */
   public get keyFile() {
@@ -47,7 +41,7 @@ export class Questrade extends EE {
   public token: any;
   private _seedToken: string;
   private _accessToken: string;
-  private _accountNumber: AcountNumber;
+  private _accountNumber: string | number;
   private _apiServer: string;
   private _apiUrl: string;
   private _apiVersion: string;
@@ -205,7 +199,7 @@ export class Questrade extends EE {
       throw new Error(error.message);
     }
   }
-  public async getPrimaryAccountNumber(): Promise<AcountNumber> {
+  public async getPrimaryAccountNumber(): Promise<string | number> {
     // this._accountNumber = MY_ACCT_NUMBER;
     // return this._accountNumber;
     // }

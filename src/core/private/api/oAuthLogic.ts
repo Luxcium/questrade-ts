@@ -1,18 +1,10 @@
+import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
+import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import {
-  access,
-  axios,
-  AxiosRequestConfig,
-  AxiosResponse,
-  constants,
-  ICreds,
-  readFileSync,
-  sync,
-  writeFileSync,
-} from '../../../v1.0.0';
+import { ICreds } from '../../../legacy/types';
+import { sync } from '../utils/mkdirp';
 // import { axiosClient, AxiosClient } from './axiosClient';
 import { Credentials } from './Credentials';
-
 export async function oAuthLogic(
   credentials: Credentials,
   _axiosClient: AxiosClient<ICreds> = axiosClient
