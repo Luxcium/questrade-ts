@@ -1,10 +1,12 @@
 // tslint:disable: no-parameter-reassignment
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import { ICreds } from '../../../core/types';
+import { ICreds } from '../../types';
+import { Credentials, qtDefaultCreds } from '../../types/credentials';
 import { sync } from '../utils/mkdirp';
 import { AxiosClient, axiosClient } from './apiGet';
-import { Credentials, qtDefaultCreds } from './credentials';
+// import { apiGet, axiosClient } from './apiGet';
+// import { oAuthLogic, validateAuthOptions } from './oAuthLogic';
 export async function oAuthLogic(
   credentials: Credentials,
   _axiosClient: AxiosClient<ICreds> = axiosClient
@@ -79,4 +81,11 @@ export function validateAuthOptions(credentials: Credentials, options: any) {
     : 'https://login.questrade.com';
 
   return credentials;
+}
+
+export async function getAccessToken(refreshToken: string) {
+  return (async (): Promise<[string, Credentials]> => {
+    const credentials = validateAuthOptions(qtDefaultCreds, refreshToken);
+    return [(await oAuthLogic(credentials)).accessToken, credentials];
+  })();
 }

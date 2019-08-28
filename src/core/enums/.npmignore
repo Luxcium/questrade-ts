@@ -1,4 +1,4 @@
-./types/tmp
+./types/tmp/**/*.*
 
 .*.swp
 ._*

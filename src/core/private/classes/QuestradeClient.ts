@@ -1,8 +1,8 @@
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 import { EventEmitter as EE } from 'events';
-import { Credentials, oAuthLogic, validateAuthOptions } from '..';
 import {
   AcountNumber,
+  Credentials,
   IAccount,
   IAccounts,
   IHeaders,
@@ -14,6 +14,7 @@ import {
   Time,
   void_0,
 } from '../../../core/types';
+import { oAuthLogic, validateAuthOptions } from '../api/getAccessToken';
 
 export class QuestradeClient extends EE implements Credentials {
   /**  Gets name of the file where the refreshToken is stored */

@@ -15,7 +15,7 @@ export async function apiGet<T>(url: string, _accessToken: string): Promise<T> {
 }
 
 /** Logging the error for the function apiClient */
-export function errorLog(apiError: any) {
+function errorLog(apiError: any) {
   try {
     console.error(
       '\nAPI error in call to api:\n',
@@ -32,7 +32,7 @@ export function errorLog(apiError: any) {
   return apiError;
 }
 
-export function generateHeader(url: string, _accessToken: string) {
+function generateHeader(url: string, _accessToken: string) {
   return {
     url,
     methode: 'GET',

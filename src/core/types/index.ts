@@ -21,6 +21,7 @@ export {
   TickType,
 } from 'questrade-api-enumerations';
 export { QuestradeClass } from './classes/QuestradeClass';
+export { Credentials, qtDefaultCreds } from './credentials';
 export { AcountNumber, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
 export { IBalance, IBalances } from './IBalances';
