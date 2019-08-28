@@ -59,7 +59,12 @@
     "traceResolution": false
   },
   "include": ["./src/**/*"],
-  "exclude": ["node_modules", "build", "imports", "./src/proto_testing/**/*"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "imports",
+    "src/legacy/proto_testing/**/*"
+  ],
   "plugins": [
     {
       "name": "typescript-tslint-plugin",

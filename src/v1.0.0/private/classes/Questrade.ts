@@ -17,7 +17,7 @@ import {
   Time,
   void_0,
   writeFileSync,
-} from '.';
+} from '../..';
 import {
   IAccount,
   IAccounts,
@@ -27,8 +27,8 @@ import {
   OrdersOptions,
   OrderStateFilterType,
   TimeRange,
-} from '../core/types';
-import { sync } from './private/utils/mkdirp';
+} from '../../../core/types';
+import { sync } from '../utils/mkdirp';
 export class Questrade extends EE {
   /**  Gets name of the file where the refreshToken is stored */
   public get keyFile() {

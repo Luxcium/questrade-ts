@@ -1,5 +1,5 @@
 /** @format */
-import { QuestradeClass, QuestradeHelperFunction } from '..';
+import { QuestradeClass, QuestradeHelperFunction } from '../..';
 import { allOfGetAccounts } from './allOfGetAccounts';
 import { allOfGetActivities } from './allOfGetActivities';
 import { allOfgetBalances } from './allOfgetBalances';

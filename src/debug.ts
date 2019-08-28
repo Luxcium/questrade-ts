@@ -1,7 +1,7 @@
 /** @format */
 
 import { IQuestradeAPIOptions } from '.';
-import { Questrade } from './v1.0.0/Questrade';
+import { Questrade } from './v1.0.0/private/classes/Questrade';
 // import { } from ;
 export const qtOptions: IQuestradeAPIOptions = {
   seedToken: 'UN6KnAjJbxtEobLrBYJzYQDMKPuDqquE0',

@@ -6,7 +6,7 @@ import {
   EE,
   Methode,
   oAuthLogic,
-} from '.';
+} from '../..';
 import {
   AcountNumber,
   IAccount,
@@ -18,9 +18,9 @@ import {
   QuestradeAPIOptions,
   Time,
   void_0,
-} from '../core/types';
-import { Credentials } from './private/Credentials';
-import { validateAuthOptions } from './private/validateAuthOptions';
+} from '../../../core/types';
+import { Credentials } from '../Credentials';
+import { validateAuthOptions } from '../validateAuthOptions';
 export class QuestradeClient extends EE implements Credentials {
   /**  Gets name of the file where the refreshToken is stored */
   public get keyFile() {

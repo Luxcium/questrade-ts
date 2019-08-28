@@ -12,7 +12,7 @@ import {
   readFileSync,
   writeFile,
   writeFileSync,
-} from '.';
+} from '../..';
 import {
   AcountNumber,
   IAccount,
@@ -23,8 +23,8 @@ import {
   QuestradeAPIOptions,
   Time,
   void_0,
-} from '../core/types';
-import { sync } from './private/utils/mkdirp';
+} from '../../../core/types';
+import { sync } from '../utils/mkdirp';
 export class QuestradeClient extends EE {
   /**  Gets name of the file where the refreshToken is stored */
   public get keyFile() {
