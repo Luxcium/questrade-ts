@@ -1,7 +1,7 @@
 // import { oAuthLogic } from '../oAuthLogic';
 import { Credentials, qtDefaultCreds } from '../types/credentials';
-import { apiGet, axiosClient } from './api/apiGet';
-import { oAuthLogic, validateAuthOptions } from './api/getAccessToken';
+import { apiGet, axiosClient } from './secure/apiGet';
+import { oAuthLogic, validateAuthOptions } from './secure/getAccessToken';
 
 export async function myModel(axiosClientX: any) {
   return async function myModel0(apiClientX: any) {
