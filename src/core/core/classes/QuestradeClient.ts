@@ -13,7 +13,7 @@ import {
   QuestradeAPIOptions,
   Time,
   void_0,
-} from '../../../core/types';
+} from '../../types';
 import { oAuthLogic, validateAuthOptions } from '../api/getAccessToken';
 
 export class QuestradeClient extends EE implements Credentials {

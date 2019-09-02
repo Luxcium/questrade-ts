@@ -17,7 +17,7 @@ import {
   QuestradeAPIOptions,
   Time,
   TimeRange,
-} from '../../../core/types';
+} from '../../types';
 import { sync } from '../utils/mkdirp';
 
 export class Questrade extends EE {

@@ -30,7 +30,7 @@ import {
   TimeRangeInterval,
 } from '..';
 // import { sync } from 'mkdirp'
-import { sync } from '../../../core/private/utils/mkdirp';
+import { sync } from '../../core/utils/mkdirp';
 import { ICandle, ICandles } from '../ICandles';
 import { IEquitySymbol, IEquitySymbols } from '../IEquitySymbols';
 import { IOptionsQuotes } from '../IOptionsQuotes';
