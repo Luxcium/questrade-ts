@@ -29,8 +29,7 @@ import {
   TimeRange,
   TimeRangeInterval,
 } from '..';
-// import { sync } from 'mkdirp'
-import { sync } from '../../core/utils/mkdirp';
+import { sync } from '../../utils/mkdirp';
 import { ICandle, ICandles } from '../ICandles';
 import { IEquitySymbol, IEquitySymbols } from '../IEquitySymbols';
 import { IOptionsQuotes } from '../IOptionsQuotes';

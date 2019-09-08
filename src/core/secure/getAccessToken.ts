@@ -1,12 +1,17 @@
 // tslint:disable: no-parameter-reassignment
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import { ICreds } from '../../types';
-import { Credentials, qtDefaultCreds } from '../../types/credentials';
+import { ICreds } from '../types';
+import { Credentials, qtDefaultCreds } from '../types/credentials';
 import { sync } from '../utils/mkdirp';
 import { AxiosClient, axiosClient } from './apiGet';
 // import { apiGet, axiosClient } from './apiGet';
 // import { oAuthLogic, validateAuthOptions } from './oAuthLogic';
+/**
+ *
+ * @param credentials
+ * @param _axiosClient
+ */
 export async function oAuthLogic(
   credentials: Credentials,
   _axiosClient: AxiosClient<ICreds> = axiosClient
@@ -24,9 +29,9 @@ export async function oAuthLogic(
   } catch (_) {
     credentials.keyFile =
       credentials.keyFile || `${credentials.keyDir}/${credentials.seedToken}`;
-    await access(credentials.keyFile, constants.F_OK, async none => {
+    access(credentials.keyFile, constants.F_OK, async none => {
       if (none) {
-        await writeFileSync(credentials.keyFile, credentials.seedToken, {
+        writeFileSync(credentials.keyFile, credentials.seedToken, {
           encoding: 'utf8',
         });
       }
@@ -54,7 +59,11 @@ export async function oAuthLogic(
   }
   return credentials;
 }
-
+/**
+ *
+ * @param credentials
+ * @param options
+ */
 export function validateAuthOptions(credentials: Credentials, options: any) {
   credentials = { ...qtDefaultCreds, ...credentials };
 
@@ -82,10 +91,13 @@ export function validateAuthOptions(credentials: Credentials, options: any) {
 
   return credentials;
 }
-
+/**
+ *
+ * @param refreshToken
+ */
 export async function getAccessToken(refreshToken: string) {
-  return (async (): Promise<[string, Credentials]> => {
+  return (async (): Promise<[Credentials, string]> => {
     const credentials = validateAuthOptions(qtDefaultCreds, refreshToken);
-    return [(await oAuthLogic(credentials)).accessToken, credentials];
+    return [credentials, (await oAuthLogic(credentials)).accessToken];
   })();
 }

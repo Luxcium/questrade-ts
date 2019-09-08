@@ -3,3 +3,7 @@ export function QuestradeApi(seedToken: string = '') {
   return seedToken;
 }
 export default QuestradeApi;
+
+export function logInOrSomething() {
+  //
+}
