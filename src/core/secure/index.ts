@@ -6,18 +6,19 @@ import {
 } from './getAccessToken';
 
 
-export async function thatFunct(options: QuestradeAPIOptions, cb:any=()=>void 0) {
- 
-  const credentials = validateAuthOptions(options);
+export async function getTimeFirst(options: QuestradeAPIOptions, cb:any=()=>void 0) {
+
+  const credentials = validateAuthOptions(options)
 
 
 
 try {
-  const oAuth = await oAuthLogic(credentials)
-  getTime(oAuth)
+  const oAuth = await oAuthLogic(credentials);
+  const timeFirst = await  getTime(oAuth);
+  console.log('TIME getTimeFirst',timeFirst);
   // apiGet('',theSelf.accessToken)
 } catch (error) {
-  
+
 }
   oAuthLogic(credentials)
     .then((self: any) => {
