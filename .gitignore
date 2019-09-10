@@ -32,4 +32,4 @@ test.js
 
 # Key files
 keys
-.env
+*.env
