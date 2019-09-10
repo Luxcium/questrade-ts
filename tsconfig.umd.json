@@ -6,11 +6,14 @@
     /*                   */
     "module": "umd",
     "outDir": "./build/js/umd/src",
+    "incremental": true,
     "tsBuildInfoFile": "./build/tmp/tsbuild.umd.info",
     "importHelpers": true,
     "baseUrl": "./",
     "paths": {
-      "tslib": ["node_modules/tslib/tslib.d.ts"]
+      "tslib": [
+        "node_modules/tslib/tslib.d.ts"
+      ]
     },
     /* Additional Vebosity */
     "diagnostics": true,
