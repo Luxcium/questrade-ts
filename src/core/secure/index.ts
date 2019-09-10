@@ -1,36 +1,28 @@
-import { QuestradeAPIOptions } from '../types';
+import { Credentials, QuestradeAPIOptions } from '../types';
+import { apiGet } from './apiGet';
 import {
   // getAccessToken,
-  oAuthLogic,
-  validateAuthOptions,
+  oAuthLogic, validateAuthOptions
 } from './getAccessToken';
 
-export { apiGet } from './apiGet';
 
-export function thatFunct(options: QuestradeAPIOptions, theThis: any) {
-  theThis.accountNumber = '';
-  theThis.apiVersion = 'v1';
-  theThis.keyDir = './keys';
-  theThis._keyFile = '';
-  theThis.practice = false;
-  theThis._seedToken = '';
-  theThis.expiresIn = 0;
-  theThis.tokenType = '';
-  theThis.refreshToken = '';
-  theThis.accessToken = '';
-  theThis.apiUrl = '';
-  theThis.apiServer = '';
-  validateAuthOptions(theThis, options);
+export async function thatFunct(options: QuestradeAPIOptions, cb:any=()=>void 0) {
+ 
+  const credentials = validateAuthOptions(options);
 
-  theThis.authUrl = theThis.practice
-    ? 'https://practicelogin.q.com'
-    : 'https://login.questrade.com';
 
-  // !!
-  oAuthLogic(theThis)
+
+try {
+  const oAuth = await oAuthLogic(credentials)
+  getTime(oAuth)
+  // apiGet('',theSelf.accessToken)
+} catch (error) {
+  
+}
+  oAuthLogic(credentials)
     .then((self: any) => {
       self
-        .qtGetTime()
+        // getTime()
         .then((time: any) => {
           console.info('Server Time:', new Date(time).toLocaleString());
           console.info(
@@ -45,7 +37,7 @@ export function thatFunct(options: QuestradeAPIOptions, theThis: any) {
         .catch((err: Error) => {
           console.error(err);
           try {
-            theThis.emit('error', 'Can not get server time', err);
+            // credentials.emit('error', 'Can not get server time', err);
           } catch (error) {
             console.error('Canot get server time');
           }
@@ -56,5 +48,14 @@ export function thatFunct(options: QuestradeAPIOptions, theThis: any) {
         'Error calling main() from QuestradeClient class in constructor'
       );
     });
-  return void 0;
+  return cb(credentials)
+}
+
+const getTime = async (oAuth: Credentials)=> {
+  try {
+    const { time } = await apiGet('/time',oAuth) // this._api<Time>('/time');
+    return time;
+  } catch (error) {
+    throw new Error(error.message);
+  }
 }

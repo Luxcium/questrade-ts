@@ -2,22 +2,7 @@ import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 import { EventEmitter as EE } from 'events';
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import {
-  IAccount,
-  IAccounts,
-  ICreds,
-  idType,
-  IHeaders,
-  IOrder,
-  IOrders,
-  Methode,
-  Optionals,
-  OrdersOptions,
-  OrderStateFilterType,
-  QuestradeAPIOptions,
-  Time,
-  TimeRange,
-} from '../../types';
+import { IAccount, IAccounts, ICreds, idType, IHeaders, IOrder, IOrders, Methode, Optionals, OrdersOptions, OrderStateFilterType, QuestradeAPIOptions, Time, TimeRange } from '../types';
 import { sync } from '../utils/mkdirp';
 
 export class Questrade extends EE {

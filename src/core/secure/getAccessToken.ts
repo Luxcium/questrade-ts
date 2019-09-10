@@ -64,8 +64,21 @@ export async function oAuthLogic(
  * @param credentials
  * @param options
  */
-export function validateAuthOptions(credentials: Credentials, options: any) {
-  credentials = { ...qtDefaultCreds, ...credentials };
+export function validateAuthOptions( options: any) {
+  const credentials:Credentials = qtDefaultCreds
+  credentials.accountNumber = '';
+  credentials.apiVersion = 'v1';
+  credentials.keyDir = './keys';
+  credentials.keyFile = '';
+  credentials.practice = false;
+  credentials.seedToken = '';
+  credentials.expiresIn = 0;
+  credentials.tokenType = '';
+  credentials.refreshToken = '';
+  credentials.accessToken = '';
+  credentials.apiUrl = '';
+  credentials.apiServer = '';
+  // credentials = { ...qtDefaultCreds, ...credentials };
 
   if (typeof options === 'undefined' || options === undefined) {
     throw new Error('questrade_missing_api_key or options');
@@ -97,7 +110,7 @@ export function validateAuthOptions(credentials: Credentials, options: any) {
  */
 export async function getAccessToken(refreshToken: string) {
   return (async (): Promise<[Credentials, string]> => {
-    const credentials = validateAuthOptions(qtDefaultCreds, refreshToken);
+    const credentials = validateAuthOptions( refreshToken);
     return [credentials, (await oAuthLogic(credentials)).accessToken];
   })();
 }
