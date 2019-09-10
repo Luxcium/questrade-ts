@@ -1,6 +1,6 @@
 dependencies:
   axios: 0.19.0
-  questrade-api-enumerations: 1.1.3
+  questrade-api-enumerations: 1.1.4
   tslib: 1.10.0
 devDependencies:
   '@types/node': 12.6.8
@@ -10,8 +10,8 @@ devDependencies:
   prettier: 1.18.2
   rimraf: 2.6.3
   ts-node: 8.3.0_typescript@3.5.3
-  tslint: 5.19.0_typescript@3.5.3
-  tslint-config-airbnb: 5.11.1_tslint@5.19.0+typescript@3.5.3
+  tslint: 5.20.0_typescript@3.5.3
+  tslint-config-airbnb: 5.11.1_tslint@5.20.0+typescript@3.5.3
   tslint-config-prettier: 1.18.0
   typescript: 3.5.3
   typescript-tslint-plugin: 0.5.4
@@ -31,12 +31,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-7dV4eu9gBxoM0dAnj/BCFDW9LFU0zvTrkq0ugM7pnHEgguOEeOz1so2ZghEdzviYzQEED0r4EAgpsBChKy1TRQ==
-  /@fimbul/bifrost/0.17.0_tslint@5.19.0+typescript@3.5.3:
+  /@fimbul/bifrost/0.17.0_tslint@5.20.0+typescript@3.5.3:
     dependencies:
       '@fimbul/ymir': 0.17.0_tsutils@3.17.1+typescript@3.5.3
       get-caller-file: 2.0.5
       tslib: 1.10.0
-      tslint: 5.19.0_typescript@3.5.3
+      tslint: 5.20.0_typescript@3.5.3
       tsutils: 3.17.1_typescript@3.5.3
       typescript: 3.5.3
     dev: true
@@ -225,7 +225,7 @@ packages:
       date-fns: 1.30.1
       lodash: 4.17.15
       read-pkg: 4.0.1
-      rxjs: 6.5.2
+      rxjs: 6.5.3
       spawn-command: 0.0.2-1
       supports-color: 4.5.0
       tree-kill: 1.2.1
@@ -304,12 +304,6 @@ packages:
       node: '>=0.4.0'
     resolution:
       integrity: sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
-  /diff/3.5.0:
-    dev: true
-    engines:
-      node: '>=0.3.1'
-    resolution:
-      integrity: sha512-A46qtFgd+g7pDZinpnwiRJtxbC1hpgf0uzP3iG89scHk0AUC7A1TGxf5OiiOUv/JMZR8GOt8hL900hV0bOy5xA==
   /diff/4.0.1:
     dev: true
     engines:
@@ -904,10 +898,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-OeHeMc0JhFE9idD4ZdtNibzY0+TPHSpSSb9h8FqtP+YnoZZ1sl8Vc9b1sasjfymH3SonAF4QcA2+mzHPhMvIiw==
-  /psl/1.3.0:
+  /psl/1.4.0:
     dev: true
     resolution:
-      integrity: sha512-avHdspHO+9rQTLbv1RO+MPYeP/SzsCoxofjVnHanETfQhTJrmB0HlDoW+EiN/R+C0BZ+gERab9NY0lPN2TxNag==
+      integrity: sha512-HZzqCGPecFLyoRj5HLfuDSKYTJkAfB5thKBIkRHtGjWwY7p1dAyveIbXIq4tO0KYfDF2tHqPUgY9SDnGm00uFw==
   /pump/3.0.0:
     dependencies:
       end-of-stream: 1.4.1
@@ -931,10 +925,10 @@ packages:
       node: '>=0.6'
     resolution:
       integrity: sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
-  /questrade-api-enumerations/1.1.3:
+  /questrade-api-enumerations/1.1.4:
     dev: false
     resolution:
-      integrity: sha512-gFWNtmxU3Aqyn5qSXo8ei7el31mN61UvuKJY+YsiJ6SjjYiZyUd6+A3Hv7flmR85K/9D3/yevj35MAiNFN37FA==
+      integrity: sha512-xjnbatYT+vuJwRhlTLIADHsDopPVcQY/3ozIuxobWsffQ6cqBAFKAKJvc0UvlIiWJ76UicUhfx+MsCml4KMuhg==
   /read-pkg/4.0.1:
     dependencies:
       normalize-package-data: 2.5.0
@@ -1003,14 +997,14 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
-  /rxjs/6.5.2:
+  /rxjs/6.5.3:
     dependencies:
       tslib: 1.10.0
     dev: true
     engines:
       npm: '>=2.0.0'
     resolution:
-      integrity: sha512-HUb7j3kvb7p7eCUHE3FqjoDsC1xfZQ4AHFWfTKSpZ+sAhhz5X1WX0ZuUqWbzB2QhSLp3DoLUG+hMdEDKqWo2Zg==
+      integrity: sha512-wuYsAYYFdWTAnAaPoKGNhfpWwKZbJW+HgAJ+mImp+Epl7BG8oNWBCTyRM8gba9k4lk8BgWdoYm21Mo/RYhhbgA==
   /safe-buffer/5.2.0:
     dev: true
     resolution:
@@ -1165,7 +1159,7 @@ packages:
       integrity: sha512-QjVjwdXIt408MIiAqCX4oUKsgU2EqAGzs2Ppkm4aQYbjm+ZEWEcW4SfFNTr4uMNZma0ey4f5lgLrkB0aX0QMow==
   /tough-cookie/2.4.3:
     dependencies:
-      psl: 1.3.0
+      psl: 1.4.0
       punycode: 1.4.1
     dev: true
     engines:
@@ -1200,12 +1194,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-f/qGG2tUkrISBlQZEjEqoZ3B2+npJjIf04H1wuAv9iA8i04Icp+61KRXxFdha22670NJopsZCIjhC3SnjPRKrQ==
-  /tslint-config-airbnb/5.11.1_tslint@5.19.0+typescript@3.5.3:
+  /tslint-config-airbnb/5.11.1_tslint@5.20.0+typescript@3.5.3:
     dependencies:
-      tslint: 5.19.0_typescript@3.5.3
-      tslint-consistent-codestyle: 1.15.1_tslint@5.19.0+typescript@3.5.3
-      tslint-eslint-rules: 5.4.0_tslint@5.19.0+typescript@3.5.3
-      tslint-microsoft-contrib: 5.2.1_tslint@5.19.0+typescript@3.5.3
+      tslint: 5.20.0_typescript@3.5.3
+      tslint-consistent-codestyle: 1.15.1_tslint@5.20.0+typescript@3.5.3
+      tslint-eslint-rules: 5.4.0_tslint@5.20.0+typescript@3.5.3
+      tslint-microsoft-contrib: 5.2.1_tslint@5.20.0+typescript@3.5.3
     dev: true
     peerDependencies:
       tslint: ^5.11.0
@@ -1219,11 +1213,11 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-xPw9PgNPLG3iKRxmK7DWr+Ea/SzrvfHtjFt5LBl61gk2UBG/DB9kCXRjv+xyIU1rUtnayLeMUVJBcMX8Z17nDg==
-  /tslint-consistent-codestyle/1.15.1_tslint@5.19.0+typescript@3.5.3:
+  /tslint-consistent-codestyle/1.15.1_tslint@5.20.0+typescript@3.5.3:
     dependencies:
-      '@fimbul/bifrost': 0.17.0_tslint@5.19.0+typescript@3.5.3
+      '@fimbul/bifrost': 0.17.0_tslint@5.20.0+typescript@3.5.3
       tslib: 1.10.0
-      tslint: 5.19.0_typescript@3.5.3
+      tslint: 5.20.0_typescript@3.5.3
       tsutils: 2.29.0_typescript@3.5.3
       typescript: 3.5.3
     dev: true
@@ -1232,11 +1226,11 @@ packages:
       typescript: '>=2.1.4 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >=3.0.0-dev || >=3.1.0-dev || >=3.2.0-dev || >=3.3.0-dev || >=3.4.0-dev'
     resolution:
       integrity: sha512-38Y3Dz4zcABe/PlPAQSGNEWPGVq0OzcIQR7SEU6dNujp/SgvhxhJOhIhI9gY4r0I3/TNtvVQwARWor9O9LPZWg==
-  /tslint-eslint-rules/5.4.0_tslint@5.19.0+typescript@3.5.3:
+  /tslint-eslint-rules/5.4.0_tslint@5.20.0+typescript@3.5.3:
     dependencies:
       doctrine: 0.7.2
       tslib: 1.9.0
-      tslint: 5.19.0_typescript@3.5.3
+      tslint: 5.20.0_typescript@3.5.3
       tsutils: 3.17.1_typescript@3.5.3
       typescript: 3.5.3
     dev: true
@@ -1245,9 +1239,9 @@ packages:
       typescript: ^2.2.0 || ^3.0.0
     resolution:
       integrity: sha512-WlSXE+J2vY/VPgIcqQuijMQiel+UtmXS+4nvK4ZzlDiqBfXse8FAvkNnTcYhnQyOTW5KFM+uRRGXxYhFpuBc6w==
-  /tslint-microsoft-contrib/5.2.1_tslint@5.19.0+typescript@3.5.3:
+  /tslint-microsoft-contrib/5.2.1_tslint@5.20.0+typescript@3.5.3:
     dependencies:
-      tslint: 5.19.0_typescript@3.5.3
+      tslint: 5.20.0_typescript@3.5.3
       tsutils: 2.28.0_typescript@3.5.3
       typescript: 3.5.3
     dev: true
@@ -1256,13 +1250,13 @@ packages:
       typescript: ^2.1.0 || ^3.0.0
     resolution:
       integrity: sha512-PDYjvpo0gN9IfMULwKk0KpVOPMhU6cNoT9VwCOLeDl/QS8v8W2yspRpFFuUS7/c5EIH/n8ApMi8TxJAz1tfFUA==
-  /tslint/5.19.0_typescript@3.5.3:
+  /tslint/5.20.0_typescript@3.5.3:
     dependencies:
       '@babel/code-frame': 7.5.5
       builtin-modules: 1.1.1
       chalk: 2.4.2
       commander: 2.20.0
-      diff: 3.5.0
+      diff: 4.0.1
       glob: 7.1.4
       js-yaml: 3.13.1
       minimatch: 3.0.4
@@ -1279,7 +1273,7 @@ packages:
     peerDependencies:
       typescript: '>=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >=3.0.0-dev || >= 3.1.0-dev || >= 3.2.0-dev'
     resolution:
-      integrity: sha512-1LwwtBxfRJZnUvoS9c0uj8XQtAnyhWr9KlNvDIdB+oXyT+VpsOAaEhEgKi1HrZ8rq0ki/AAnbGSv4KM6/AfVZw==
+      integrity: sha512-2vqIvkMHbnx8acMogAERQ/IuINOq6DFqgF8/VDvhEkBqQh/x6SP0Y+OHnKth9/ZcHQSroOZwUQSN18v8KKF0/g==
   /tsutils/2.28.0_typescript@3.5.3:
     dependencies:
       tslib: 1.10.0
@@ -1465,7 +1459,7 @@ specifiers:
   questrade-api-enumerations: ^1.1.3
   rimraf: 2.6.3
   ts-node: 8.3.0
-  tslib: 1.10.0
+  tslib: ^1.10.0
   tslint: ^5.18.0
   tslint-config-airbnb: 5.11.1
   tslint-config-prettier: 1.18.0
