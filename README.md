@@ -9,7 +9,6 @@
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/pulls)
 [![GitHub issues](https://img.shields.io/github/issues/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/issues)
 
-
 [![NPM](https://img.shields.io/npm/l/questrade-ts.svg)](https://github.com/luxcium/questrade-ts/blob/master/LICENSE)
 [![Build Status](https://dev.azure.com/luxcium/Questrade-ts/_apis/build/status/Luxcium.questrade-ts?branchName=master)](https://dev.azure.com/luxcium/Questrade-ts/_build/latest?definitionId=1&branchName=master)
 [![Coverage Status](https://coveralls.io/repos/github/luxcium/questrade-ts/badge.svg?style=flat&branch=master)](https://coveralls.io/github/luxcium/questrade-ts?branch=master)
@@ -17,11 +16,8 @@
 [![npm](https://img.shields.io/npm/dt/questrade-ts.svg)](https://www.npmjs.com/package/questrade-ts)
 [![Known Vulnerabilities](https://snyk.io/test/github/luxcium/questrade-ts/badge.svg)](https://snyk.io/test/github/luxcium/questrade-ts)
 
-
-<!-- [![code style: prettier](https://img.shields.io/badge/code_style-prettier-blue.svg?style=flat)](https://github.com/prettier/prettier) 
+<!-- [![code style: prettier](https://img.shields.io/badge/code_style-prettier-blue.svg?style=flat)](https://github.com/prettier/prettier)
 -->
-
-
 
 ## Getting Started
 
@@ -103,11 +99,8 @@ All contributions are welcome!
 # MIT LICENSE
 
 Copyright (c) 2019 Benjamin Vincent Kasapoglu (Luxcium)
+
 Copyright (c) 2016-2019 Leander Lee
-
-MIT LICENSE
-
-(WITH ALL DUE RESERVATION PLEASE FIRST READ ./notice.md)
 
 Permission is hereby granted, free of charge, to all person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
