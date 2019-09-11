@@ -1,8 +1,8 @@
 // tslint:disable: no-parameter-reassignment
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
+import { Credentials, qtDefaultCreds } from '../libraries/Credentials';
 import { ICreds } from '../types';
-import { Credentials, qtDefaultCreds } from '../types/credentials';
 import { sync } from '../utils/mkdirp';
 import { AxiosClient, axiosClient } from './_apiGet';
 // import { apiGet, axiosClient } from './apiGet';

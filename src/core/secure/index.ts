@@ -1,13 +1,13 @@
-import { Credentials, QuestradeAPIOptions } from '../types';
+import { Credentials } from '../libraries/Credentials';
+import { QuestradeAPIOptions } from '../types';
 import { _apiGet } from './_apiGet';
 import {
   // getAccessToken,
-  oAuthLogic,
-  validateAuthOptions,
+  oAuthLogic, validateAuthOptions
 } from './_getAccessToken';
 
 /** As first test will get time from server after oAuthentiocation  */
-export async function getTimeFirst(
+export async function _getTimeFirst(
   options: QuestradeAPIOptions,
   cb: any = () => void 0
 ) {
@@ -15,7 +15,7 @@ export async function getTimeFirst(
 
   try {
     const oAuth = await oAuthLogic(credentials);
-    const timeFirst = await getTime(oAuth);
+    const timeFirst = await _getTime(oAuth);
     console.log('TIME getTimeFirst', timeFirst);
     // apiGet('',theSelf.accessToken)
   } catch (error) {
@@ -53,7 +53,7 @@ export async function getTimeFirst(
   return cb(credentials);
 }
 
-const getTime = async (oAuth: Credentials) => {
+const _getTime = async (oAuth: Credentials) => {
   try {
     const { time } = await _apiGet('/time', oAuth); // this._api<Time>('/time');
     return time;
