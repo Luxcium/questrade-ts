@@ -1,7 +1,9 @@
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
-import { Credentials } from '../types';
-export async function _apiGet<T>(endpoint: string,oAuth: Credentials):
-Promise<T> {
+import { Credentials } from '../libraries/Credentials';
+export async function _apiGet<T>(
+  endpoint: string,
+  oAuth: Credentials
+): Promise<T> {
   let data: T;
   try {
     let response: AxiosResponse<T>;
@@ -36,7 +38,7 @@ function errorLog(apiError: any) {
 
 function generateHeader(endpoint: string, oAuth: Credentials) {
   return {
-    url:oAuth.apiUrl+ endpoint,
+    url: oAuth.apiUrl + endpoint,
     methode: 'GET',
     headers: {
       Authorization: `Bearer ${oAuth.accessToken}`,
