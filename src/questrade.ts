@@ -1,7 +1,4 @@
 // -------------------------------------------------------------------------- //
-// -
-// -------------------------------------------------------------------------- //
-
 import { questradeAPI } from './core/api';
 import { QtApi } from './core/libraries';
 import {
@@ -11,8 +8,11 @@ import {
   IMarket,
   IMarketsResponse,
 } from './core/types';
-
 // -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+// - ------------------------------------------------------------------------ //
 
 export const questrade = (() => {
   return async (options: any) => {
@@ -78,3 +78,4 @@ const _getMarkets = async (qtApi: QtApi): Promise<IMarket[]> => {
 // getMarkets/quotes/options
 // getMarkets/quotes/strategies
 // getMarkets/candles/:id
+// - ------------------------------------------------------------------------ //

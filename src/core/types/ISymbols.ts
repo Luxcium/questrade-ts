@@ -1,3 +1,4 @@
+// - ------------------------------------------------------------------------ //
 import {
   OptionDurationType,
   OptionExerciseType,
@@ -5,6 +6,13 @@ import {
   SecurityType,
 } from 'questrade-api-enumerations';
 import { DateTime } from './Types';
+
+// -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+// - ------------------------------------------------------------------------ //
+
 export interface ISymbols {
   symbols: ISymbol[];
 }
@@ -50,3 +58,4 @@ export interface ISymbol {
   industryGroup?: string;
   industrySubGroup?: string;
 }
+// - ------------------------------------------------------------------------ //

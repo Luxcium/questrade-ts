@@ -1,3 +1,8 @@
+// -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+// - ------------------------------------------------------------------------ //
 interface ITimeObject {
   years: number;
   months: number;
@@ -76,3 +81,4 @@ export interface IDateObject {
 //   quarter: timeMoment.quarter(),
 //   locale: timeMoment.locale(),
 // };
+// - ------------------------------------------------------------------------ //

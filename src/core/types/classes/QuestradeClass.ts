@@ -1,3 +1,4 @@
+// -------------------------------------------------------------------------- //
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 import { EventEmitter as EE } from 'events';
 import { readFileSync, writeFileSync } from 'fs';
@@ -36,6 +37,13 @@ import { IOptionsQuotes } from '../IOptionsQuotes';
 import { IOrder, IOrders } from '../IOrders';
 import { IQuote, IQuotes } from '../IQuotes';
 import { Methode } from '../Methode';
+
+// -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+// - ------------------------------------------------------------------------ //
+
 export class QuestradeClass extends EE {
   public get getServerTime(): Promise<string> {
     return this._getTime();
@@ -681,3 +689,4 @@ export class QuestradeClass extends EE {
     return this._refreshToken;
   }
 }
+// -------------------------------------------------------------------------- //

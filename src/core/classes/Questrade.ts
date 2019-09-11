@@ -1,10 +1,32 @@
+// -------------------------------------------------------------------------- //
+
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 import { EventEmitter as EE } from 'events';
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import { IAccount, IAccounts, ICreds, idType, IHeaders, IOrder, IOrders, Methode, Optionals, OrdersOptions, OrderStateFilterType, QuestradeAPIOptions, Time, TimeRange } from '../types';
+import {
+  IAccount,
+  IAccounts,
+  ICreds,
+  idType,
+  IHeaders,
+  IOrder,
+  IOrders,
+  Methode,
+  Optionals,
+  OrdersOptions,
+  OrderStateFilterType,
+  QuestradeAPIOptions,
+  Time,
+  TimeRange,
+} from '../types';
 import { sync } from '../utils/mkdirp';
 
+// -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+// - ------------------------------------------------------------------------ //
 export class Questrade extends EE {
   /**  Gets name of the file where the refreshToken is stored */
   public get keyFile() {
@@ -758,3 +780,4 @@ getMarkets/candles/:id
     return { startTime, endTime, ...rangeOptions };
   }
  */
+// -------------------------------------------------------------------------- //

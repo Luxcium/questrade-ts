@@ -1,3 +1,4 @@
+// - ------------------------------------------------------------------------ //
 import {
   OrderClass,
   OrderSide,
@@ -7,6 +8,12 @@ import {
   StrategyTypes,
 } from 'questrade-api-enumerations';
 import { DateTime, idType } from '.';
+
+// -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+// - ------------------------------------------------------------------------ //
 
 export interface IOrders {
   orders: IOrder[];
@@ -56,3 +63,4 @@ export interface IOrder {
   orderGroupId?: idType;
   orderClass?: OrderClass;
 }
+// - ------------------------------------------------------------------------ //

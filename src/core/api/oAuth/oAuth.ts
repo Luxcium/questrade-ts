@@ -1,7 +1,13 @@
+// -------------------------------------------------------------------------- //
 import { Credentials } from '../../libraries';
 import { QuestradeAPIOptions } from '../../types';
 import { apiGet } from '../apiGet/apiGet';
 import { oAuthLogic } from './oAuthLogic';
+// -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+// - ------------------------------------------------------------------------ //
 export const oAuth = (() => {
   return async (
     options: QuestradeAPIOptions,
@@ -30,3 +36,4 @@ export const oAuth = (() => {
     return cb(null as null, credentials as Credentials);
   };
 })();
+// -------------------------------------------------------------------------- //

@@ -1,3 +1,9 @@
+// -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+// - ------------------------------------------------------------------------ //
+
 // tslint:disable: class-name
 /** The class Ticker is used to create objects representing a Stock Symbol */
 class _Ticker implements Ticker {
@@ -115,3 +121,4 @@ nullSymbol.toString(); // ?
   isQuotable: boolean,
   isTradable: boolean,
 ): Ticker  */
+// -------------------------------------------------------------------------- //

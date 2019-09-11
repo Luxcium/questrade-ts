@@ -1,8 +1,15 @@
+// - ------------------------------------------------------------------------ //
 import {
   Currency,
   ListingExchange,
   SecurityType,
 } from 'questrade-api-enumerations';
+
+// -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+// - ------------------------------------------------------------------------ //
 
 export interface IStockSymbol {
   symbol: string;
@@ -16,3 +23,4 @@ export interface IStockSymbol {
 }
 
 export type StockSymbol = IStockSymbol | string;
+// - ------------------------------------------------------------------------ //

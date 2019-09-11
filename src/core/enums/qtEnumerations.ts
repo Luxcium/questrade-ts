@@ -1,3 +1,8 @@
+// -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License. See end of file for license information.
+// - ------------------------------------------------------------------------ //
+
 /** Specifies all supported currency codes. */
 /*
 Currency
@@ -674,7 +679,7 @@ export const qtEnumerations = {
 };
 
 /**
- * @license MIT LICENSE
+ * @license MIT
  *
  * @Copyright (c) 2019
  *
@@ -699,3 +704,4 @@ export const qtEnumerations = {
  * IN THE SOFTWARE.
  *
  */
+// -------------------------------------------------------------------------- //

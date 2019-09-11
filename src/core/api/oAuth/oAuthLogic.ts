@@ -1,10 +1,15 @@
+// -------------------------------------------------------------------------- //
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
 import { AxiosClient, Credentials, defaultCredentials } from '../../libraries';
 import { ICreds } from '../../types';
 import { sync } from '../../utils/mkdirp';
 import { axiosClient } from '../apiGet/axiosClient';
-
+// -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+// - ------------------------------------------------------------------------ //
 export const oAuthLogic = async (options: any): Promise<Credentials> => {
   const _axiosClient: AxiosClient<ICreds> = axiosClient;
   const credentials: Credentials = defaultCredentials;
@@ -84,3 +89,4 @@ export const oAuthLogic = async (options: any): Promise<Credentials> => {
   }
   return credentials;
 };
+// -------------------------------------------------------------------------- //

@@ -1,4 +1,10 @@
+// - ------------------------------------------------------------------------ //
 import { Currency } from 'questrade-api-enumerations';
+// -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+// - ------------------------------------------------------------------------ //
 
 export interface IBalance {
   currency: Currency;
@@ -16,3 +22,4 @@ export interface IBalances {
   sodPerCurrencyBalances: IBalance[];
   sodCombinedBalances: IBalance[];
 }
+// - ------------------------------------------------------------------------ //
