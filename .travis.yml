@@ -28,7 +28,7 @@ install:
   - npm install
 
 script:
-  - npm run out:clean:all
+  - yarn run build
   - ls -alg
 
 '.result': configured
