@@ -22,7 +22,7 @@
     "cp:enu:3": "cp-cli ./src/core/enums/.npmignore ./build/enums/.npmignore",
     "lint": "tslint --project . --format stylish",
     "pretest": "yarn run lint && tsc --noEmit --pretty",
-    "test": "echo 'will test'",
+    "test": "jest",
     "npm:enum:publish": " npm publish ./build/enums/"
   },
   "repository": {
@@ -47,10 +47,16 @@
     "tslib": "^1.10.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "@types/jest": "^24.0.18",
     "@types/node": "12.6.8",
+    "babel-jest": "^24.9.0",
     "concurrently": "4.1.2",
     "coveralls": "^3.0.6",
     "cp-cli": "2.0.0",
+    "jest": "^24.9.0",
     "prettier": "1.18.2",
     "rimraf": "2.6.3",
     "ts-node": "8.3.0",
