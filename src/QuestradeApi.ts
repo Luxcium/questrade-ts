@@ -1,4 +1,5 @@
-import { apiGet } from './core/secure/apiGet';
+import { _apiGet } from './core/secure/_apiGet';
+/** the only function we are exposing to the world */
 export function QuestradeApi(seedToken: string = '') {
   //
   console.log('NOT IMPLEMENTED YET');
@@ -6,7 +7,8 @@ export function QuestradeApi(seedToken: string = '') {
 }
 export default QuestradeApi;
 
-export function logInOrSomething() {
-  //
-}
-export { apiGet };
+// export function logInOrSomething() {
+//   //
+// }
+export { _apiGet as apiGet };
+

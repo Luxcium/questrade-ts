@@ -1,6 +1,6 @@
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 import { EventEmitter as EE } from 'events';
-import { oAuthLogic, validateAuthOptions } from '../secure/getAccessToken';
+import { oAuthLogic, validateAuthOptions } from '../secure/_getAccessToken';
 import {
   AcountNumber,
   Credentials,

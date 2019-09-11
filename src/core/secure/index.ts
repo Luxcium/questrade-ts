@@ -1,25 +1,26 @@
 import { Credentials, QuestradeAPIOptions } from '../types';
-import { apiGet } from './apiGet';
+import { _apiGet } from './_apiGet';
 import {
   // getAccessToken,
-  oAuthLogic, validateAuthOptions
-} from './getAccessToken';
+  oAuthLogic,
+  validateAuthOptions,
+} from './_getAccessToken';
 
+/** As first test will get time from server after oAuthentiocation  */
+export async function getTimeFirst(
+  options: QuestradeAPIOptions,
+  cb: any = () => void 0
+) {
+  const credentials = validateAuthOptions(options);
 
-export async function getTimeFirst(options: QuestradeAPIOptions, cb:any=()=>void 0) {
-
-  const credentials = validateAuthOptions(options)
-
-
-
-try {
-  const oAuth = await oAuthLogic(credentials);
-  const timeFirst = await  getTime(oAuth);
-  console.log('TIME getTimeFirst',timeFirst);
-  // apiGet('',theSelf.accessToken)
-} catch (error) {
-
-}
+  try {
+    const oAuth = await oAuthLogic(credentials);
+    const timeFirst = await getTime(oAuth);
+    console.log('TIME getTimeFirst', timeFirst);
+    // apiGet('',theSelf.accessToken)
+  } catch (error) {
+    //
+  }
   oAuthLogic(credentials)
     .then((self: any) => {
       self
@@ -49,14 +50,14 @@ try {
         'Error calling main() from QuestradeClient class in constructor'
       );
     });
-  return cb(credentials)
+  return cb(credentials);
 }
 
-const getTime = async (oAuth: Credentials)=> {
+const getTime = async (oAuth: Credentials) => {
   try {
-    const { time } = await apiGet('/time',oAuth) // this._api<Time>('/time');
+    const { time } = await _apiGet('/time', oAuth); // this._api<Time>('/time');
     return time;
   } catch (error) {
     throw new Error(error.message);
   }
-}
+};
