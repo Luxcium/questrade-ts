@@ -17,7 +17,11 @@ export interface OptionsSync {
 
 const _0777 = parseInt('0777', 8);
 
-export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
+export const sync = (
+  p: string,
+  opts?: Mode | OptionsSync,
+  made?: Made
+): Made => {
   if (!opts || typeof opts !== 'object') {
     opts = { mode: opts };
   }
@@ -58,7 +62,7 @@ export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
   }
 
   return made;
-}
+};
 
 /*
 Copyright 2010 James Halliday (mail@substack.net)

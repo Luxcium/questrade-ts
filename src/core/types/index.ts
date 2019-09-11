@@ -20,7 +20,7 @@ export {
   StrategyTypes,
   TickType,
 } from 'questrade-api-enumerations';
-export { ICreds } from '../libraries/ICreds';
+export { ICreds } from '../libraries';
 export { QuestradeClass } from './classes/QuestradeClass';
 export { AcountNumber, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';

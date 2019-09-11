@@ -1,8 +1,8 @@
 import { AxiosResponse, default as axios } from 'axios';
-import { RawApiGet } from '../libraries/ApiGet';
-import { Credentials } from '../libraries/Credentials';
+import { Credentials, RawApiGet } from '../../libraries';
 import { apiGetErrorLogin } from './apiGetErrorLogin';
 import { generateHeader } from './generateHeader';
+
 export const apiGet: RawApiGet = (crendentials: Credentials) => {
   return async <T>(endpoint: string): Promise<T> => {
     let data: T;

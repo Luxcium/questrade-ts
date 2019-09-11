@@ -1,7 +1,7 @@
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
-export async function axiosClient<T>(
+export const axiosClient = async <T>(
   axiosConfig: AxiosRequestConfig
-): Promise<AxiosResponse<T>> {
+): Promise<AxiosResponse<T>> => {
   try {
     const response: AxiosResponse<T> = await axios(axiosConfig);
     // validating response.data is not NaN, "", '', 0, false, null or undefined
@@ -14,4 +14,4 @@ export async function axiosClient<T>(
     // error handling must be taken care of when calling axioClient Function
     throw error;
   }
-}
+};

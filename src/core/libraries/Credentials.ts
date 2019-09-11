@@ -21,7 +21,7 @@ export interface Credentials {
   toValue: () => any;
 }
 
-export const qtDefaultCreds: Credentials = {
+export const defaultCredentials: Credentials = {
   accessToken: '',
   accountNumber: '',
   apiServer: '',

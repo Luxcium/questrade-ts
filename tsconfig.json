@@ -16,10 +16,7 @@
     /* ALWAYS TRUE STRICT TYPE-CHECKING, ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
     /* Basic Options */
     "target": "es5",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "noLib": false,
     "rootDir": "./src",
     "outDir": "./build/src",
@@ -29,9 +26,7 @@
       "node_modules/.registry.npmjs.org/@types/**/*",
       "node_modules/@types/**/*"
     ],
-    "types": [
-      "node"
-    ],
+    "types": ["node"],
     /* Compilation Options */
     "noEmit": true,
     "importHelpers": true,
@@ -60,16 +55,14 @@
     "listEmittedFiles": false,
     "traceResolution": false
   },
-  "include": [
-    "./src/**/*",
-    "src/debug.ts"
-  ],
+  "include": ["./src/**/*", "src/debug.ts"],
   "exclude": [
     "node_modules",
     "build",
     "imports",
     "src/legacy/proto_testing/**/*",
     "debug.js",
+    "src/core/classes/",
     "manualTestingAndDebug.js"
   ],
   "plugins": [
@@ -79,11 +72,7 @@
       "configFile": "./tslint.json",
       "suppressWhileTypeErrorsPresent": false,
       "mockTypeScriptVersion": false,
-      "exclude": [
-        "build",
-        "node_modules",
-        "imports"
-      ]
+      "exclude": ["build", "node_modules", "imports"]
     }
   ]
 }

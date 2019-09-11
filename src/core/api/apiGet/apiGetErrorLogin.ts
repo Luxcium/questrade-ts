@@ -1,5 +1,5 @@
 /** Logging the error for the function apiClient */
-export function apiGetErrorLogin(apiError: any) {
+export const apiGetErrorLogin = (apiError: any) => {
   try {
     console.error(
       '\nAPI error in call to api:\n',
@@ -14,4 +14,4 @@ export function apiGetErrorLogin(apiError: any) {
     );
   }
   return apiError;
-}
+};

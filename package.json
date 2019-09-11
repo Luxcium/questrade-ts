@@ -7,6 +7,7 @@
   "types": "./lib/QuestradeApi.d.ts",
   "scripts": {
     "build": "yarn test && yarn run out:clean && yarn run rebuild",
+    "quick": "yarn test && yarn run rebuild",
     "rebuild": "concurrently \"yarn:out:sys\" \"yarn:out:amd\" \"yarn:out:cjs\" \"yarn:out:umd\" \"yarn:out:enu\"",
     "out:clean": "rimraf -r ./build/**/*",
     "out:amd": "tsc -b ./tsconfig.amd.json",

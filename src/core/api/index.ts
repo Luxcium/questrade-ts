@@ -1,15 +1,14 @@
-import { ApiGet } from '../libraries/ApiGet';
-import { Credentials } from '../libraries/Credentials';
-import { apiGet } from './apiGet';
-import { oAuthLogic } from './oAuthLogic';
+import { Credentials } from '../libraries';
+import { apiGet } from './apiGet/apiGet';
+import { oAuth } from './oAuth/oAuth';
 
 export const questradeAPI = async (
   options: any,
   cb?: (error: any, credentials: Credentials | null) => Credentials | null
 ) => {
-  const credentials: Credentials = (await oAuthLogic(
-    options,
-    cb
-  )) as Credentials;
-  return [apiGet(credentials), credentials] as [ApiGet, Credentials];
+  const credentials: Credentials = (await oAuth(options, cb)) as Credentials;
+  return {
+    get: apiGet(credentials),
+    credentials,
+  };
 };

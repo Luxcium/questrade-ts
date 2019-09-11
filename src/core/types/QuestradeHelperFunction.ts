@@ -1,8 +1,8 @@
 import { IQuestradeAPIOptions, QuestradeClass } from '.';
-export async function QuestradeHelperFunction(
+export const questradeHelperFunction = async (
   opts: IQuestradeAPIOptions,
   cb?: (qt: QuestradeClass) => Promise<QuestradeClass>
-) {
+) => {
   return new Promise(
     (resolve: (qt: QuestradeClass) => any, _reject: (error: Error) => any) => {
       const qt = new QuestradeClass(opts);
@@ -15,10 +15,10 @@ export async function QuestradeHelperFunction(
       });
     }
   );
-}
+};
 export const tokenConnection: (
   token: string
 ) => Promise<{ questrade: QuestradeClass }> = async (token: string) => {
-  const questrade = await QuestradeHelperFunction({ seedToken: token });
+  const questrade = await questradeHelperFunction({ seedToken: token });
   return { questrade };
 };

@@ -1,6 +1,6 @@
-export function _getTime(url: string, apiGetFuntion: any) {
+export const _getTime = (url: string, apiGetFuntion: any) => {
   return { url, apiGetFuntion }; //
-}
+};
 
 /*
 GET time

@@ -1,5 +1,9 @@
+// -------------------------------------------------------------------------- //
+// -
+// -------------------------------------------------------------------------- //
+
 import { questradeAPI } from './core/api';
-import { ApiGet } from './core/ApiGet.1';
+import { QtApi } from './core/libraries';
 import {
   AcountNumber,
   IAccount,
@@ -7,38 +11,38 @@ import {
   IMarket,
   IMarketsResponse,
 } from './core/types';
+
+// -------------------------------------------------------------------------- //
+
 export const questrade = (() => {
   return async (options: any) => {
-    const [apiGet, credentials] = await questradeAPI(options);
-    // const credentials = (await oAuth(options)) as Credentials;
-    credentials.accountNumber = await _getPrimaryAccountNumber(
-      apiGet
-      // credentials
-    );
+    const qtApi: QtApi = await questradeAPI(options);
+    qtApi.credentials.accountNumber = await _getPrimaryAccountNumber(qtApi);
+
     return {
-      credentials,
-      getAccounts: () => _getAccounts(apiGet),
-      getMarkets: () => _getMarkets(apiGet),
-      getPrimaryAccountNumber: () => _getPrimaryAccountNumber(apiGet),
+      credentials: qtApi.credentials,
+      getAccounts: () => _getAccounts(qtApi),
+      getMarkets: () => _getMarkets(qtApi),
+      getPrimaryAccountNumber: () => _getPrimaryAccountNumber(qtApi),
     };
   };
 })();
 questrade('elEp9b6PABDNeYUsXddrzjLnehTAuOXa0');
 
-async function _getAccounts(apiGet: ApiGet): Promise<IAccount[]> {
+const _getAccounts = async (qtApi: QtApi): Promise<IAccount[]> => {
   try {
-    const { accounts } = await apiGet<IAccounts>('/accounts');
+    const { accounts } = await qtApi.get<IAccounts>('/accounts');
     return accounts;
   } catch (error) {
     console.error(error.message);
     throw new Error(error.message);
   }
-}
+};
 
 const _getPrimaryAccountNumber = async (
-  apiGet: ApiGet
+  qtApi: QtApi
 ): Promise<AcountNumber> => {
-  const accounts = await _getAccounts(apiGet as ApiGet);
+  const accounts = await _getAccounts(qtApi as QtApi);
   if (accounts.length < 1) {
     throw new Error('No account number found');
   }
@@ -55,6 +59,22 @@ const _getPrimaryAccountNumber = async (
   return accounts[0].number;
 };
 
-const _getMarkets = async (apiGet: ApiGet): Promise<IMarket[]> => {
-  return (await apiGet<IMarketsResponse>('/markets')).markets;
+const _getMarkets = async (qtApi: QtApi): Promise<IMarket[]> => {
+  return (await qtApi.get<IMarketsResponse>('/markets')).markets;
 };
+
+// getAccounts
+// getAccounts/:id/positions
+// getAccounts/:id/balances
+// getAccounts/:id/executions
+// getAccounts/:id/orders[/:orderId]
+// getAccounts/:id/activities
+
+// getSymbols/:id
+// getSymbols/search
+// getSymbols/:id/options
+// getMarkets
+// getMarkets/quotes/:id
+// getMarkets/quotes/options
+// getMarkets/quotes/strategies
+// getMarkets/candles/:id

@@ -90,15 +90,15 @@ export interface Ticker {
   isTradable: boolean;
 }
 
-export function tickerFactory({
+export const tickerFactory = ({
   qtSymbol,
   symbolID,
   hasOptions,
   isQuotable,
   isTradable,
-}: Ticker): Ticker {
+}: Ticker): Ticker => {
   return new _Ticker(qtSymbol, symbolID, hasOptions, isQuotable, isTradable);
-}
+};
 
 const nullSymbol = tickerFactory({
   qtSymbol: '',
