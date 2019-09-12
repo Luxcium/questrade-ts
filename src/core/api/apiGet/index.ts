@@ -1,2 +1,2 @@
+export { _apiAccountGet } from './_apiAccountGet';
 export { _apiGet } from './_apiGet';
-export { _apiGetAccount } from './_apiGetAccount';

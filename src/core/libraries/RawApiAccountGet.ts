@@ -4,4 +4,4 @@ import { ApiGet, Credentials } from '.';
 // - Licensed under the MIT License.
 // - See License.txt in the project root for license information.
 
-export type RawAccountApiGet = (crendentials: Credentials) => ApiGet;
+export type RawApiAccountGet = (crendentials: Credentials) => ApiGet;

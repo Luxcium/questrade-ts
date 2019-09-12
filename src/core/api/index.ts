@@ -1,5 +1,5 @@
 import { Credentials } from '../libraries';
-import { _apiGet, _apiGetAccount } from './apiGet';
+import { _apiAccountGet, _apiGet } from './apiGet';
 import { oAuth } from './oAuth/oAuth';
 
 export const api = async (
@@ -7,12 +7,13 @@ export const api = async (
   cb?: (error: any, credentials: Credentials | null) => Credentials | null
 ) => {
   const credentials: Credentials = (await oAuth(options, cb)) as Credentials;
-  const { accountNumber } = credentials;
   return {
-    get: (endpoint: string) => _apiGet(credentials)(endpoint),
-    getAccount: (endpoint: string) =>
-      _apiGetAccount(credentials)(`/account/${accountNumber}${endpoint}`),
+    get: <T>(endpoint: string) => _apiGet(credentials)<T>(endpoint),
+    accountGet: <T>(endpoint: string) =>
+      _apiAccountGet(credentials)<T>(
+        `/account/${credentials.accountNumber}${endpoint}`
+      ),
     credentials,
-    accountNumber,
+    accountNumber: credentials.accountNumber,
   };
 };
