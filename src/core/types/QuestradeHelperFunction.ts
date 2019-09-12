@@ -1,11 +1,5 @@
 import { IQuestradeAPIOptions, QuestradeClass } from '.';
 
-// -------------------------------------------------------------------------- //
-// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
-// - Licensed under the MIT License.
-// - See License.txt in the project root for license information.
-// - ------------------------------------------------------------------------ //
-
 export const questradeHelperFunction = async (
   opts: IQuestradeAPIOptions,
   cb?: (qt: QuestradeClass) => Promise<QuestradeClass>
@@ -29,4 +23,3 @@ export const tokenConnection: (
   const questrade = await questradeHelperFunction({ seedToken: token });
   return { questrade };
 };
-// - ------------------------------------------------------------------------ //

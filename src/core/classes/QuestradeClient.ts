@@ -1,8 +1,8 @@
-// -------------------------------------------------------------------------- //
+
 // - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
 // - Licensed under the MIT License.
 // - See License.txt in the project root for license information.
-// - ------------------------------------------------------------------------ //
+
 
    async function qtGetAPI<T>(endpoint: string): Promise<T | null> {
     let data: T | null = null;
@@ -145,4 +145,3 @@ getMarkets/quotes/options
 getMarkets/quotes/strategies
 getMarkets/candles/:id
   */
-// -------------------------------------------------------------------------- //

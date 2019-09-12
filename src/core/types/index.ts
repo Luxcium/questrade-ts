@@ -1,8 +1,3 @@
-// -------------------------------------------------------------------------- //
-// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
-// - Licensed under the MIT License.
-// - See License.txt in the project root for license information.
-// - ------------------------------------------------------------------------ //
 export {
   AccountStatus,
   AccountType as UserAccountType,
@@ -57,4 +52,3 @@ export {
 export { Time } from './Time';
 export { DateTime, idsType, idType } from './Types';
 export { void0, void_0 } from './void_0';
-// - ------------------------------------------------------------------------ //

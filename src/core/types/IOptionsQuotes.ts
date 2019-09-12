@@ -1,10 +1,8 @@
-// - ------------------------------------------------------------------------ //
 import { DateTime } from './Types';
-// -------------------------------------------------------------------------- //
+
 // - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
 // - Licensed under the MIT License.
 // - See License.txt in the project root for license information.
-// - ------------------------------------------------------------------------ //
 
 export interface IOptionsQuotes {
   quotes: IOptionsQuote[];
@@ -40,4 +38,3 @@ export interface IOptionsQuote {
   isHalted: boolean; // Whether or not the symbol was halted
   VWAP: number; // Volume Weighted Average Price
 }
-// - ------------------------------------------------------------------------ //

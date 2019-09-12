@@ -1,4 +1,7 @@
-// -------------------------------------------------------------------------- //
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+
 import { questradeAPI } from './core/api';
 import { QtApi } from './core/libraries';
 import {
@@ -8,11 +11,6 @@ import {
   IMarket,
   IMarketsResponse,
 } from './core/types';
-// -------------------------------------------------------------------------- //
-// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
-// - Licensed under the MIT License.
-// - See License.txt in the project root for license information.
-// - ------------------------------------------------------------------------ //
 
 export const questrade = (() => {
   return async (options: any) => {
@@ -63,19 +61,18 @@ const _getMarkets = async (qtApi: QtApi): Promise<IMarket[]> => {
   return (await qtApi.get<IMarketsResponse>('/markets')).markets;
 };
 
-// getAccounts
-// getAccounts/:id/positions
-// getAccounts/:id/balances
-// getAccounts/:id/executions
-// getAccounts/:id/orders[/:orderId]
-// getAccounts/:id/activities
+// _getAccounts
+// _getAccounts/:id/positions
+// _getAccounts/:id/balances
+// _getAccounts/:id/executions
+// _getAccounts/:id/orders[/:orderId]
+// _getAccounts/:id/activities
 
-// getSymbols/:id
-// getSymbols/search
-// getSymbols/:id/options
-// getMarkets
-// getMarkets/quotes/:id
-// getMarkets/quotes/options
-// getMarkets/quotes/strategies
-// getMarkets/candles/:id
-// - ------------------------------------------------------------------------ //
+// _getSymbols/:id
+// _getSymbols/search
+// _getSymbols/:id/options
+// _getMarkets
+// _getMarkets/quotes/:id
+// _getMarkets/quotes/options
+// _getMarkets/quotes/strategies
+// _getMarkets/candles/:id

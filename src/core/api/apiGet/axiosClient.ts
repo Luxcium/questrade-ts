@@ -1,10 +1,5 @@
-// -------------------------------------------------------------------------- //
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
-// -------------------------------------------------------------------------- //
-// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
-// - Licensed under the MIT License.
-// - See License.txt in the project root for license information.
-// - ------------------------------------------------------------------------ //
+
 export const axiosClient = async <T>(
   axiosConfig: AxiosRequestConfig
 ): Promise<AxiosResponse<T>> => {
@@ -21,4 +16,3 @@ export const axiosClient = async <T>(
     throw error;
   }
 };
-// -------------------------------------------------------------------------- //

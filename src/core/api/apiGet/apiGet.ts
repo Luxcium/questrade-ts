@@ -1,13 +1,7 @@
-// -------------------------------------------------------------------------- //
 import { AxiosResponse, default as axios } from 'axios';
 import { Credentials, RawApiGet } from '../../libraries';
 import { apiGetErrorLogin } from './apiGetErrorLogin';
 import { generateHeader } from './generateHeader';
-// -------------------------------------------------------------------------- //
-// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
-// - Licensed under the MIT License.
-// - See License.txt in the project root for license information.
-// - ------------------------------------------------------------------------ //
 
 export const apiGet: RawApiGet = (crendentials: Credentials) => {
   return async <T>(endpoint: string): Promise<T> => {
@@ -25,4 +19,3 @@ export const apiGet: RawApiGet = (crendentials: Credentials) => {
     return data;
   };
 };
-// -------------------------------------------------------------------------- //

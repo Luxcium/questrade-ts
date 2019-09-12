@@ -1,8 +1,7 @@
-// -------------------------------------------------------------------------- //
 // - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
 // - Licensed under the MIT License.
 // - See License.txt in the project root for license information.
-// - ------------------------------------------------------------------------ //
+
 /** Logging the error for the function apiClient */
 export const apiGetErrorLogin = (apiError: any) => {
   try {
@@ -20,4 +19,3 @@ export const apiGetErrorLogin = (apiError: any) => {
   }
   return apiError;
 };
-// -------------------------------------------------------------------------- //

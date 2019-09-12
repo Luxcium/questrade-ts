@@ -1,13 +1,11 @@
-// - ------------------------------------------------------------------------ //
 // GET accounts/:id/activities
 // Retrieve account activities,
 // including cash transactions, dividends, trades, etc.
 import { Currency } from 'questrade-api-enumerations';
-// -------------------------------------------------------------------------- //
+
 // - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
 // - Licensed under the MIT License.
 // - See License.txt in the project root for license information.
-// - ------------------------------------------------------------------------ //
 
 type DateTime = Date | string;
 export interface IActivities {
@@ -64,4 +62,3 @@ Sample response:
 
 
 */
-// - ------------------------------------------------------------------------ //
