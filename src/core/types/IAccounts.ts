@@ -4,7 +4,7 @@ import {
   ClientAccountType,
 } from 'questrade-api-enumerations';
 
-export type AcountNumber = string | number;
+export type AcountNumber = string;
 
 export interface IAccount {
   type: UserAccountType;

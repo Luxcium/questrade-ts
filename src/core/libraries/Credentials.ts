@@ -4,7 +4,7 @@
 
 export interface Credentials {
   accessToken: string;
-  accountNumber: string | number;
+  accountNumber: string;
   apiServer: string;
   apiUrl: string;
   apiVersion: string;

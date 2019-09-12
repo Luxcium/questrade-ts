@@ -1,6 +1,6 @@
 import { Credentials } from '../../libraries';
 import { QuestradeAPIOptions } from '../../types';
-import { apiGet } from '../apiGet/apiGet';
+import { _apiGet } from '../apiGet/_apiGet';
 import { oAuthLogic } from './oAuthLogic';
 
 export const oAuth = (() => {
@@ -13,7 +13,7 @@ export const oAuth = (() => {
   ) => {
     const credentials = await oAuthLogic(options);
     try {
-      const { time } = await apiGet(credentials)<any>('/time');
+      const { time } = await _apiGet(credentials)<any>('/time');
       const timZoneOffset = new Date(time).getTimezoneOffset();
       const timZone = -1 * 60 * 1000 * timZoneOffset;
       const serverTime = new Date(time).getTime();

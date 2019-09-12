@@ -5,3 +5,7 @@ test('should exist at least', async (done: any) => {
     done();
   });
 });
+
+export const b = 5,
+
+  a = 4;

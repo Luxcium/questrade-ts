@@ -3,7 +3,8 @@ import { Credentials, RawApiGet } from '../../libraries';
 import { apiGetErrorLogin } from './apiGetErrorLogin';
 import { generateHeader } from './generateHeader';
 
-export const apiGet: RawApiGet = (crendentials: Credentials) => {
+export const _apiGet: RawApiGet = (crendentials: Credentials) => {
+  /** qtApi.get<T>(endpoint) */
   return async <T>(endpoint: string): Promise<T> => {
     let data: T;
     try {
