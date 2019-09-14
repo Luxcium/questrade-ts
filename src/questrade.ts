@@ -3,22 +3,9 @@
 // - See License.txt in the project root for license information.
 import { OrderStateFilterType } from 'questrade-api-enumerations';
 import { api } from './core/api';
+import { _apiPOST } from './core/api/apiGet/axiosApi';
 import { QtApi } from './core/libraries';
-import {
-  AcountNumber,
-  IAccount,
-  IAccountActivity,
-  IAccounts,
-  IActivities,
-  IBalances,
-  ICurencyBalance,
-  IExecution,
-  IExecutions,
-  IMarkets,
-  IOrders,
-  IPositions,
-  IQuotes,
-} from './core/types';
+import { AcountNumber, IAccount, IAccountActivity, IAccounts, IActivities, IBalances, ICurencyBalance, IExecution, IExecutions, IMarkets, IOrders, IPositions, IQuotes } from './core/types';
 
 export const questrade = (() => {
   return async (options: any) => {
@@ -194,6 +181,8 @@ export const _getMarketsQuotes = (qtApi: QtApi) => async (
   }`;
   return (await endPoinFactory<Promise<IQuotes>>(endpoint)(qtApi)).quotes;
 };
+
+export const _quotesOptions = () =>  _apiPOST(,);
 
 // _getSymbols/:id
 // _getSymbols/search

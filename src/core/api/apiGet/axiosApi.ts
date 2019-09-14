@@ -1,21 +1,11 @@
 import { AxiosResponse, default as axios } from 'axios';
-import { Credentials, RawApiGet, RawApiPost } from '../../libraries';
+import { Credentials } from '../../libraries';
 import { apiGetErrorLogin } from './apiGetErrorLogin';
 import { generateHeader } from './generateHeader';
 
-export const _apiGet: RawApiGet = (crendentials: Credentials) => {
-  return <T>(endpoint: string) =>
-    axiosApi(crendentials)('GET', null)<T>(endpoint);
-};
-
-export const _apiPOST: RawApiPost = (crendentials: Credentials) => {
-  return <T, P = any>(endpoint: string, postData: P) =>
-    axiosApi(crendentials)('POST', postData)<T>(endpoint);
-};
-
-export const axiosApi = (crendentials: Credentials) => (
+export const axiosApi = (crendentials: Credentials) => <P>(
   VERB: string,
-  postData?: any
+  postData?: P
 ) => async <T>(endpoint: string): Promise<T> => {
   let data: T;
   try {
