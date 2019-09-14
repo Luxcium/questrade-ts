@@ -1,4 +1,4 @@
-[*.{js,json}]
+[*.{js,json,ts,tsx,jsx}]
 indent_style = space
 indent_size = 2
 trim_trailing_whitespace = true

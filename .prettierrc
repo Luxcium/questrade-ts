@@ -5,10 +5,11 @@
   "htmlWhitespaceSensitivity": "css",
   "insertPragma": false,
   "printWidth": 80,
-  "proseWrap": "preserve",
+  "proseWrap": "always",
   "semi": true,
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "es5",
-  "useTabs": false
+  "useTabs": false,
+  "parser": "typescript"
 }

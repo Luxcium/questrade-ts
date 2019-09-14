@@ -22,10 +22,7 @@
     "outDir": "./build/src",
     "newLine": "LF",
     "module": "commonjs",
-    "typeRoots": [
-      "node_modules/.registry.npmjs.org/@types/**/*",
-      "node_modules/@types/**/*"
-    ],
+    "typeRoots": ["node_modules/.registry.npmjs.org/@types/**/*", "node_modules/@types/**/*"],
     "types": ["node"],
     /* Compilation Options */
     "noEmit": true,

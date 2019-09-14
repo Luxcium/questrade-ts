@@ -17,9 +17,8 @@ import {
   IMarkets,
   IOrders,
   IPositions,
+  IQuotes,
 } from './core/types';
-
-// const ONE_MONTH = 30 * 24 * 60 * 60 * 1000;
 
 export const questrade = (() => {
   return async (options: any) => {
@@ -29,65 +28,46 @@ export const questrade = (() => {
 
     const { credentials } = qtApi;
     return {
+      credentials,
       get: {
+        serverTime: '',
         supported: {
-          markets: () => _getMarkets(qtApi),
+          markets: async () => _getMarkets()(qtApi),
         },
-
-        current: { accountNumber: () => credentials.accountNumber },
-        credentials: () => credentials,
-        allAccounts: () => _getAccounts(qtApi),
+        orders: (startDate?: string, endDate?: string) => async (
+          orderStateFilterType?: OrderStateFilterType
+        ) => _getOrders(qtApi)(orderStateFilterType)(startDate, endDate),
+        current: { accountNumber: async () => credentials.accountNumber },
+        credentials: async () => credentials,
+        allAccounts: async () => _getAccounts(qtApi),
         account: {
-          number: () => credentials.accountNumber,
+          orders: {
+            all: async (startDate?: string, endDate?: string) =>
+              _getOrders(qtApi)(OrderStateFilterType.ALL)(startDate, endDate),
+            closed: async (startDate?: string, endDate?: string) =>
+              _getOrders(qtApi)(OrderStateFilterType.CLOSED)(
+                startDate,
+                endDate
+              ),
+            open: async (startDate?: string, endDate?: string) =>
+              _getOrders(qtApi)(OrderStateFilterType.OPEN)(startDate, endDate),
+          },
+          number: async () => credentials.accountNumber,
           activities: (startDate: string, endDate: string) =>
             _getActivities(qtApi)(startDate, endDate),
-          balances: () => _getBalances(qtApi),
-          executions: () => _getExecutions(qtApi),
-          orders: (startDate?: string, endDate?: string) => (
-            orderStateFilterType?: OrderStateFilterType
-          ) => _getOrders(qtApi)(orderStateFilterType)(startDate, endDate),
-          ordersAll: (startDate?: string, endDate?: string) =>
-            _getOrders(qtApi)(OrderStateFilterType.ALL)(startDate, endDate),
-          ordersClosed: (startDate?: string, endDate?: string) =>
-            _getOrders(qtApi)(OrderStateFilterType.CLOSED)(startDate, endDate),
-          ordersOpen: (startDate?: string, endDate?: string) =>
-            _getOrders(qtApi)(OrderStateFilterType.OPEN)(startDate, endDate),
-          positions: () => _getPositions(qtApi),
-          primaryNumber: () => _getPrimaryAccountNumber(qtApi),
+          balances: async () => _getBalances(qtApi),
+          executions: async () => _getExecutions(qtApi),
+          positions: async () => _getPositions(qtApi),
+          primaryNumber: async () => _getPrimaryAccountNumber(qtApi),
+        },
+        market: {
+          quotes: async (qtSymbol: number[]) =>
+            _getMarketsQuotes(qtApi)(qtSymbol),
         },
       },
     };
   };
 })();
-
-// questrade('0I55OUTM7zHQZbG9AiwA5vY3zQY6W6qt0')
-//   .then(async will => {
-//     console.log(will.getAcountNumber());
-//     console.log(await will.getAccounts());
-//     // console.log(await will.getActivities());
-//     console.log(await will.getBalances());
-//     console.log(will.getCredentials());
-//     console.log(await will.getExecutions());
-//     console.log(await will.getMarkets());
-//     console.log(await will.getOrders());
-//     console.log(await will.getPositions());
-//     console.log(await will.getPrimaryAccountNumber());
-
-//     // await will.getMarkets();
-//     // console.log('- -\n',await will.getAccounts());
-//     // console.log('- -\n',await will.getActivities());
-//     // console.log((await will.getBalances()).combinedBalances.USD.cash);
-//     // console.log('- -\n', await will.getSODPerCurrencyBalances());
-//     // console.log('- -\n',await will.getBalances());
-//     // console.log('- -\n',await will.getExecutions());
-//     // console.log('- -\n',await will.getMarkets());
-//     // console.log('- -\n',await will.getOrders());
-//     // console.log('- -\n',await will.getPositions());
-//     // console.log('- -\n',await will.getPrimaryAccountNumber());
-//     // console.log('- -\n',will.credentials);
-//   })
-//   .then(_ => console.log('-OK-'))
-//   .catch(err => console.error(err.message));
 
 const _getAccounts = async (qtApi: QtApi): Promise<IAccount[]> => {
   try {
@@ -126,12 +106,11 @@ const endPoinFactory = <T>(endpoint: string) => {
 const accountEndPoinFactory = <T>(endpoint: string) => {
   return async (qtApi: QtApi): Promise<T> => qtApi.accountGet<T>(endpoint);
 };
-// /accounts/26598145/
 
-export const _getPositions = async (qtApi: QtApi) =>
+const _getPositions = async (qtApi: QtApi) =>
   accountEndPoinFactory<Promise<IPositions>>('/positions')(qtApi);
 
-export const _getBalances = async (qtApi: QtApi) => {
+const _getBalances = async (qtApi: QtApi) => {
   let {
     perCurrencyBalances,
     combinedBalances,
@@ -159,11 +138,11 @@ export const _getBalances = async (qtApi: QtApi) => {
     sodCombinedBalances: sodCombinedBalances as ICurencyBalance,
   };
 };
-export const _getExecutions = async (qtApi: QtApi): Promise<IExecution[]> =>
+const _getExecutions = async (qtApi: QtApi): Promise<IExecution[]> =>
   (await accountEndPoinFactory<Promise<IExecutions>>('/executions')(qtApi))
     .executions;
 
-export const _getOrders = (qtApi: QtApi) => (
+const _getOrders = (qtApi: QtApi) => (
   orderStateFilterType?: OrderStateFilterType
 ) => async (startDate?: string, endDate?: string): Promise<IOrders> => {
   let stateFilter = '';
@@ -190,11 +169,31 @@ const _getActivities = (qtApi: QtApi) => async (
     ).toISOString()}&endTime=${new Date(endDate).toISOString()}`
   )(qtApi)).activities;
 };
-export const _getMarkets = async (qtApi: QtApi) =>
-  (await endPoinFactory<Promise<IMarkets>>('/markets')(qtApi)).markets;
-// _getActivities<any>()
-// _getPositions<any>(qtApi);
-// function getUrl(= endpoint:string,)
+const _getMarkets = (endpoint: string = '/markets') => async (qtApi: QtApi) => {
+  console.log(' _getMarkets:endpoint:endpoint', endpoint);
+  return endPoinFactory<Promise<IMarkets>>(endpoint)(qtApi);
+};
+
+export const _getMarketsQuotes = (qtApi: QtApi) => async (
+  qtSymbol: number[]
+) => {
+  if (!qtSymbol.length) {
+    // will error out after calling the api the server will reply the error message ...
+    return (await endPoinFactory<Promise<IQuotes>>('/markets/quotes')(qtApi))
+      .quotes;
+  }
+  let qtSymbolString: string = '';
+  qtSymbol.forEach((val, currentIndex, ar) => {
+    qtSymbolString += `${val.toString()}${
+      !(ar.length - currentIndex - 1) ? '' : ','
+    }`;
+  });
+
+  const endpoint = `/markets/quotes${
+    qtSymbol.length === 1 ? `/${qtSymbolString}` : `?ids=${qtSymbolString}`
+  }`;
+  return (await endPoinFactory<Promise<IQuotes>>(endpoint)(qtApi)).quotes;
+};
 
 // _getSymbols/:id
 // _getSymbols/search
@@ -204,30 +203,3 @@ export const _getMarkets = async (qtApi: QtApi) =>
 // _getMarkets/quotes/options
 // _getMarkets/quotes/strategies
 // _getMarkets/candles/:id
-
-// '/markets';
-
-// _getPositions() '/positions'
-// _getBalances() '/balances'
-// _getExecutions() '/executions'
-// _getOrders() '/orders'
-// _getActivities() '/activities'
-
-// [/:orderId]
-
-// _getAccounts
-// _getAccounts/:id
-// _getAccounts/:id
-// _getAccounts/:id
-// _getAccounts/:id
-// _getAccounts/:id
-
-// _getSymbols/:id
-// _getSymbols/search
-// _getSymbols/:id/options
-// _getMarkets
-// _getMarkets/quotes/:id
-// _getMarkets/quotes/options
-// _getMarkets/quotes/strategies
-// _getMarkets/candles/:id
-// const qtApi : any = null

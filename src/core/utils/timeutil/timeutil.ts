@@ -24,9 +24,11 @@ endDate = `2019-${offset}-14`;
 import { questrade } from '../../../questrade';
 questrade('0I55OUTM7zHQZbG9AiwA5vY3zQY6W6qt0').then(async will =>
   console.log(
-    await will.get.account.orders(startDate, endDate)() // .reduce(
-    // will.get.current.accountNumber
+    // await will.get.orders(startDate, endDate)(), // .reduce(
+    // will.get.current.accountNumber(),
     // will.get.markets
+    // await will.get.supported.markets(),
+    await will.get.market.quotes([9292, 9292])
     // (pre: number, curent, _index) =>
     // console.log('\n', each.description, '\n')
     // {
