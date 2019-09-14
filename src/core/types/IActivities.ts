@@ -9,23 +9,38 @@ import { Currency } from 'questrade-api-enumerations';
 
 type DateTime = Date | string;
 export interface IActivities {
+  /** Array of activity records */
   activities: IAccountActivity[];
 }
 export interface IAccountActivity {
-  tradeDate: DateTime; // Trade date
-  transactionDate: DateTime; // Transaction date
-  settlementDate: DateTime; // Settlement date
-  action: string; // Activity action
-  symbol: string; // Symbol name
-  symbolId: string | number; // Symbol ID
-  description: string; // Description
-  currency: Currency; // Enumeration Currency
-  quantity: number; // The quantity
-  price: number; // The price
-  grossAmount: number; // Gross amount
-  commission: number; // The commission
-  netAmount: number; // Net Amount
-  type: string; // Activity Type
+  /** Trade date */
+  tradeDate: DateTime;
+  /** Transaction date */
+  transactionDate: DateTime;
+  /** Settlement date */
+  settlementDate: DateTime;
+  /** Activity action */
+  action: string;
+  /** Symbol name */
+  symbol: string;
+  /** Symbol ID */
+  symbolId: string | number;
+  /** Description */
+  description: string;
+  /** Enumeration Currency */
+  currency: Currency;
+  /** The quantity */
+  quantity: number;
+  /** The price */
+  price: number;
+  /** Gross amount */
+  grossAmount: number;
+  /** The commission */
+  commission: number;
+  /** Net Amount */
+  netAmount: number;
+  /** Activity Type */
+  type: string;
 }
 
 /*

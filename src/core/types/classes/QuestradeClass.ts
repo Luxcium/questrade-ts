@@ -19,7 +19,7 @@ import {
   IFilter,
   IHeaders,
   IMarket,
-  IMarketsResponse,
+  IMarkets,
   IPosition,
   IPositions,
   Optionals,
@@ -254,7 +254,7 @@ export class QuestradeClass extends EE {
   }
   public async getMarkets(): Promise<IMarket[]> {
     try {
-      const { markets } = await this._api<IMarketsResponse>('GET', '/markets');
+      const { markets } = await this._api<IMarkets>('GET', '/markets');
       return markets; // keyBy(response.markets, 'name');
     } catch (error) {
       console.error(error.message);

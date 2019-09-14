@@ -299,11 +299,11 @@ Open	Includes only orders that are still open.
 Closed	Includes only orders that are already closed.
 */
 export enum OrderStateFilterType {
-  /** Includes all orders, regardless of their state. */
+  /** Retrieve all orders, regardless of their state. */
   ALL = 'All',
-  /** Includes only orders that are still open. */
+  /** Retrieve only orders that are still open. */
   OPEN = 'Open',
-  /** Includes only orders that are already closed. */
+  /** Retrieve only orders that are already closed. */
   CLOSED = 'Closed',
 }
 

@@ -16,8 +16,8 @@
       {
         "limit": 80,
         "ignore-pattern": "@see",
-        "check-strings": true,
-        "check-regex": true
+        "check-strings": false,
+        "check-regex": false
       }
     ],
     "no-boolean-literal-compare": false,

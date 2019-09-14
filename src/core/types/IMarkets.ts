@@ -4,7 +4,7 @@ import { Currency } from 'questrade-api-enumerations';
 // Retrieves information about supported markets.
 // Request parameters
 // No parameters.
-export interface IMarketsResponse {
+export interface IMarkets {
   markets: IMarket[];
 }
 export interface IMarket {

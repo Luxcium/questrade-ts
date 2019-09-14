@@ -11,7 +11,7 @@ export const api = async (
     get: <T>(endpoint: string) => _apiGet(credentials)<T>(endpoint),
     accountGet: <T>(endpoint: string) =>
       _apiAccountGet(credentials)<T>(
-        `/account/${credentials.accountNumber}${endpoint}`
+        `/accounts/${credentials.accountNumber}${endpoint}`
       ),
     credentials,
     accountNumber: credentials.accountNumber,
