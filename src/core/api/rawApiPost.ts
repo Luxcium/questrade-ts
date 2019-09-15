@@ -1,4 +1,4 @@
-import { Credentials, RawApiPost } from '../../libraries';
+import { Credentials, RawApiPost } from '../libraries';
 import { axiosApi } from './axiosApi';
 
 /** RawApiPost need to get credentials to be ready to be used */

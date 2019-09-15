@@ -1,11 +1,7 @@
-import { _apiAccountGet } from '.';
-import { oAuth } from '..';
-import { Credentials, RawApiGet, RawApiPost } from '../../libraries';
-import { axiosApi } from './axiosApi';
-// import { rawApiGet } from './rawApiGet';
-// import { rawApiPost } from './rawApiPost';
+import { Credentials, RawApiGet, RawApiPost } from '../libraries';
+import { axiosApi, oAuth, _apiAccountGet } from './';
 
-export const api = async (
+export const questradeApi = async (
   options: any,
   cb?: (error: any, credentials: Credentials | null) => Credentials | null
 ) => {
@@ -62,3 +58,5 @@ export const api = async (
     accountNumber,
   };
 };
+
+//  export  questradeApi()

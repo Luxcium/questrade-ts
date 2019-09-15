@@ -1,4 +1,4 @@
-import { Credentials } from '../../libraries';
+import { Credentials } from '../libraries';
 
 export const generateHeader = (
   endpoint: string,

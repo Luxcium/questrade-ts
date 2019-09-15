@@ -1,4 +1,4 @@
-import { Credentials, RawApiGet } from '../../libraries';
+import { Credentials, RawApiGet } from '../libraries';
 import { axiosApi } from './axiosApi';
 
 export const rawApiGet: RawApiGet = (crendentials: Credentials) => {

@@ -21,7 +21,7 @@ const offset = 9;
 startDate = `2019-${offset}-13`;
 endDate = `2019-${offset}-14`;
 
-import { questrade } from '../../../questrade';
+import { questrade } from '../../functions/private/questrade/questrade';
 questrade('0I55OUTM7zHQZbG9AiwA5vY3zQY6W6qt0').then(async will =>
   console.log(
     // await will.get.orders(startDate, endDate)(), // .reduce(

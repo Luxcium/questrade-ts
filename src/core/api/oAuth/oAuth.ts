@@ -1,6 +1,6 @@
 import { Credentials } from '../../libraries';
 import { QuestradeAPIOptions } from '../../types';
-import { _apiGet } from '../apiGet/axiosApi';
+import { _apiGet } from '../axiosApi';
 import { oAuthLogic } from './';
 
 export const oAuth = (() => {

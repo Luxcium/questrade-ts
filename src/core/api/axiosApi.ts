@@ -1,5 +1,5 @@
 import { AxiosResponse, default as axios } from 'axios';
-import { Credentials } from '../../libraries';
+import { Credentials } from '../libraries';
 import { apiGetErrorLogin } from './apiGetErrorLogin';
 import { generateHeader } from './generateHeader';
 
