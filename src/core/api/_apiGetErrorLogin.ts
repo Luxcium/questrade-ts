@@ -3,7 +3,7 @@
 // - See License.txt in the project root for license information.
 
 /** Logging the error for the function apiClient */
-export const apiGetErrorLogin = (apiError: any) => {
+export const _apiGetErrorLogin = (apiError: any) => {
   try {
     console.error(
       '\nAPI error in call to api:\n',

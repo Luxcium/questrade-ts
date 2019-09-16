@@ -3,10 +3,10 @@ import { dirname } from 'path';
 import { AxiosClient, Credentials, defaultCredentials } from '../../libraries';
 import { ICreds } from '../../types';
 import { sync } from '../../utils/mkdirp';
-import { axiosClient } from '../axiosClient';
+import { _axiosClient } from './';
 
-export const oAuthLogic = async (options: any): Promise<Credentials> => {
-  const _axiosClient: AxiosClient<ICreds> = axiosClient;
+export const _oAuthLogic = async (options: any): Promise<Credentials> => {
+  const axiosClient: AxiosClient<ICreds> = _axiosClient;
   const credentials: Credentials = defaultCredentials;
   credentials.accountNumber = '';
   credentials.apiVersion = 'v1';
@@ -65,7 +65,7 @@ export const oAuthLogic = async (options: any): Promise<Credentials> => {
     });
   }
   try {
-    const { data: refreshCreds } = await _axiosClient({
+    const { data: refreshCreds } = await axiosClient({
       url: `${credentials.authUrl}/oauth2/token`,
       params: {
         grant_type: 'refresh_token',

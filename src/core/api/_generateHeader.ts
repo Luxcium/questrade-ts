@@ -1,6 +1,6 @@
 import { Credentials } from '../libraries';
 
-export const generateHeader = (
+export const _generateHeader = (
   endpoint: string,
   credentials: Credentials,
   methode: string = 'GET',

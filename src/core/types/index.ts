@@ -21,6 +21,7 @@ export {
   TickType,
 } from 'questrade-api-enumerations';
 export { ICreds } from '../libraries';
+export { Time } from '../libraries/Time';
 export { QuestradeClass } from './classes/QuestradeClass';
 export { AcountNumber, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
@@ -49,6 +50,5 @@ export {
   TimeRange,
   TimeRangeInterval,
 } from './Optionals';
-export { Time } from './Time';
 export { DateTime, idsType, idType } from './Types';
 export { void0, void_0 } from './void_0';

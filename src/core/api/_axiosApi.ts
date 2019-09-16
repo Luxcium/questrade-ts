@@ -1,9 +1,9 @@
 import { AxiosResponse, default as axios } from 'axios';
 import { Credentials } from '../libraries';
-import { apiGetErrorLogin } from './apiGetErrorLogin';
-import { generateHeader } from './generateHeader';
+import { _apiGetErrorLogin } from './_apiGetErrorLogin';
+import { _generateHeader } from './_generateHeader';
 
-export const axiosApi = (crendentials: Credentials) => <P>(
+export const _axiosApi = (crendentials: Credentials) => <P>(
   VERB: string,
   postData?: P
 ) => async <T>(endpoint: string): Promise<T> => {
@@ -11,14 +11,14 @@ export const axiosApi = (crendentials: Credentials) => <P>(
   try {
     let response: AxiosResponse<T>;
     response = await axios(
-      generateHeader(endpoint, crendentials, VERB, postData)
+      _generateHeader(endpoint, crendentials, VERB, postData)
     );
     if (!response.data) {
       throw new Error();
     }
     data = response.data;
   } catch (apiError) {
-    throw apiGetErrorLogin(apiError);
+    throw _apiGetErrorLogin(apiError);
   }
   return data;
 };

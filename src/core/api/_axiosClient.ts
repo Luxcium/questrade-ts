@@ -1,6 +1,6 @@
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 
-export const axiosClient = async <T>(
+export const _axiosClient = async <T>(
   axiosConfig: AxiosRequestConfig
 ): Promise<AxiosResponse<T>> => {
   try {

@@ -1,4 +1,5 @@
 import { Credentials, RawApiAccountGet } from '../libraries';
-import { qtApi } from './';
+import { _rawApiGet } from './';
+
 export const _apiAccountGet: RawApiAccountGet = (credentials: Credentials) =>
-  qtApi(credentials);
+  _rawApiGet(credentials);

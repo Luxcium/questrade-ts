@@ -1,2 +1,3 @@
-export { oAuth } from './oAuth';
-export { oAuthLogic } from './oAuthLogic';
+export { /* rawApiGet, */ _axiosClient } from '../';
+export { _oAuth } from './_oAuth';
+export { _oAuthLogic } from './_oAuthLogic';

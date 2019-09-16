@@ -1,8 +1,8 @@
 import { Credentials, RawApiPost } from '../libraries';
-import { axiosApi } from './axiosApi';
+import { _axiosApi } from './_axiosApi';
 
 /** RawApiPost need to get credentials to be ready to be used */
-export const rawApiPost: RawApiPost = (crendentials: Credentials) => {
+export const _rawApiPost: RawApiPost = (crendentials: Credentials) => {
   return <T, P = any>(endpoint: string, postData: P) =>
-    axiosApi(crendentials)<P>('POST', postData)<T>(endpoint);
+    _axiosApi(crendentials)<P>('POST', postData)<T>(endpoint);
 };
