@@ -2,6 +2,7 @@
 
 # Questrade TS/NodeJS API [![npm](https://img.shields.io/npm/v/questrade-ts.svg)](https://www.npmjs.com/package/questrade-ts)
 
+**Unofficial Questrade API wrapper for NodeJS & TypeScript**
 
 
 [![GitHub contributors](https://img.shields.io/github/contributors-anon/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/graphs/contributors)
@@ -18,7 +19,6 @@
 [![Known Vulnerabilities](https://snyk.io/test/github/luxcium/questrade-ts/badge.svg)](https://snyk.io/test/github/luxcium/questrade-ts)
 [![NPM](https://img.shields.io/npm/l/questrade-ts.svg)](https://github.com/luxcium/questrade-ts/blob/master/LICENSE)
 
-Unofficial Questrade API wrapper for NodeJS & TypeScript
 
 
 ## Getting Started
