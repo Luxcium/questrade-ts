@@ -8,10 +8,7 @@
 
 # Questrade TS/NodeJS API [![npm](https://img.shields.io/npm/v/questrade-ts.svg)](https://www.npmjs.com/package/questrade-ts)
 
-**This [NPM Package](https://www.npmjs.com/package/questrade-ts) is an unofficial [NodeJS](https://nodejs.org/en/docs/) wrapper for [Questrade API](https://www.questrade.com/api/documentation/getting-started) with full [TypeScript](https://www.typescriptlang.org/docs/home.html) support.**
-
-
-
+**This [NPM Package](https://www.npmjs.com/package/questrade-ts) is an unofficial [Questrade API](https://www.questrade.com/api/documentation/getting-started) wrapper for [NodeJS](https://nodejs.org/en/docs/) with full [TypeScript](https://www.typescriptlang.org/docs/home.html) support.**
 
 
 [![Build Status](https://dev.azure.com/luxcium/Questrade-ts/_apis/build/status/Luxcium.questrade-ts?branchName=master)](https://dev.azure.com/luxcium/Questrade-ts/_build/latest?definitionId=1&branchName=master)
