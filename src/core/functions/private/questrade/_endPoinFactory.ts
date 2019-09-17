@@ -3,6 +3,6 @@
 // - See License.txt in the project root for license information.
 import { QtApi } from '../../../libraries';
 
-export const endPoinFactory = <T>(endpoint: string) => {
+export const _endPoinFactory = <T>(endpoint: string) => {
   return (qtApi: QtApi) => async (): Promise<T> => qtApi.get<T>(endpoint);
 };
