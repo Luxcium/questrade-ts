@@ -7,14 +7,16 @@
     "outDir": "../../../build/enums",
     "rootDir": "../enums",
     "baseUrl": "./",
+
     /* Options */
+    "types": ["@babel/types"],
     "declarationDir": "../../../build/enums/types",
     "declaration": true,
     "declarationMap": true,
     "inlineSourceMap": true,
     "inlineSources": true,
     "composite": true,
-    "target": "es3",
+    "target": "es5",
     "module": "umd",
     "moduleResolution": "classic",
     "importHelpers": true,

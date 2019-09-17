@@ -8,3 +8,4 @@ export { _getOrders } from './_getOrders';
 export { _getPositions } from './_getPositions';
 export { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 export { _getTime } from './_getTime';
+export { _rawApiAccountCalls } from './_rawApiAccountCalls';

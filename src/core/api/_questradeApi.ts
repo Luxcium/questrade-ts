@@ -1,10 +1,10 @@
 import { _apiAccountGet, _oAuth, _rawApiGet, _rawApiPost } from '.';
-import { Credentials } from '../libraries';
+import { Credentials, QtApi } from '../libraries';
 
-export const _questradeApi = async (
+export const _qtApiFactory = async (
   options: any,
   cb?: (error: any, credentials: Credentials | null) => Credentials | null
-) => {
+): Promise<QtApi> => {
   const credentials: Credentials = (await _oAuth(options, cb)) as Credentials;
 
   /**
@@ -32,7 +32,7 @@ export const _questradeApi = async (
    * the credentials
    */
   const accountNumber = credentials.accountNumber;
-
+  // Will return what is used in the package as qtApi => Promise<QtApi>
   return {
     get,
     post,
