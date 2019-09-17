@@ -1,3 +1,6 @@
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
 import {
   _getAccounts,
   _getActivities,
@@ -6,6 +9,8 @@ import {
   _getOrders,
   _getTime,
 } from '.';
+import { QtApi } from '../../../libraries';
+
 export const _rawApiAccountCalls = () => {
   return {
     ACTIVITIES: _getActivities,
@@ -14,5 +19,16 @@ export const _rawApiAccountCalls = () => {
     BALANCES: _getBalances,
     ACCOUNTS: _getAccounts,
     TIME: _getTime,
+  };
+};
+
+export const _getApiAccountCalls = (qtApi: QtApi) => {
+  return {
+    activities: _getActivities(qtApi),
+    orders: _getOrders(qtApi),
+    executions: _getExecutions(qtApi),
+    balances: _getBalances(qtApi),
+    accounts: _getAccounts(qtApi),
+    time: _getTime(qtApi),
   };
 };

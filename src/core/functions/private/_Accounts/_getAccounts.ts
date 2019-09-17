@@ -4,7 +4,7 @@
 import { QtApi } from '../../../libraries';
 import { IAccount, IAccounts } from '../../../types';
 
-export const _getAccounts = async (qtApi: QtApi): Promise<IAccount[]> => {
+export const _getAccounts = (qtApi: QtApi) => async (): Promise<IAccount[]> => {
   try {
     const { accounts } = await qtApi.get<IAccounts>('/accounts');
     return accounts;

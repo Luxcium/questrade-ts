@@ -5,13 +5,13 @@ import { _accountEndPoinFactory } from '.';
 import { QtApi } from '../../../libraries';
 import { IBalances, ICurencyBalance } from '../../../types';
 
-export const _getBalances = async (qtApi: QtApi) => {
+export const _getBalances = (qtApi: QtApi) => async () => {
   let {
     perCurrencyBalances,
     combinedBalances,
     sodPerCurrencyBalances,
     sodCombinedBalances,
-  } = (await _accountEndPoinFactory<IBalances>('/balances')(qtApi)) as any;
+  } = (await _accountEndPoinFactory<IBalances>('/balances')(qtApi)()) as any;
   [
     perCurrencyBalances,
     combinedBalances,

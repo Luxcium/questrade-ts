@@ -5,10 +5,10 @@ import { _getAccounts } from '.';
 import { QtApi } from '../../../libraries';
 import { AcountNumber } from '../../../types';
 
-export const _getPrimaryAccountNumber = async (
-  qtApi: QtApi
-): Promise<AcountNumber> => {
-  const accounts = await _getAccounts(qtApi as QtApi);
+export const _getPrimaryAccountNumber = (qtApi: QtApi) => async (): Promise<
+  AcountNumber
+> => {
+  const accounts = await _getAccounts(qtApi)();
   if (accounts.length < 1) {
     throw new Error('No account number found');
   }

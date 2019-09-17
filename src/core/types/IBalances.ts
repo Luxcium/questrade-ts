@@ -1,5 +1,12 @@
 import { Currency } from 'questrade-api-enumerations';
 
+export interface IBalances {
+  perCurrencyBalances: IBalance[];
+  combinedBalances: IBalance[];
+  sodPerCurrencyBalances: IBalance[];
+  sodCombinedBalances: IBalance[];
+}
+
 export interface IBalance {
   currency: Currency;
   cash: number;
@@ -31,9 +38,10 @@ export interface ICurencyBalance {
   CAD: IBalanceCAD;
   USD: IBalanceUSD;
 }
-export interface IBalances {
-  perCurrencyBalances: IBalance[];
-  combinedBalances: IBalance[];
-  sodPerCurrencyBalances: IBalance[];
-  sodCombinedBalances: IBalance[];
+
+export interface Balances {
+  perCurrencyBalances: ICurencyBalance;
+  combinedBalances: ICurencyBalance;
+  sodPerCurrencyBalances: ICurencyBalance;
+  sodCombinedBalances: ICurencyBalance;
 }

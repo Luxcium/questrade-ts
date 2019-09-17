@@ -12,5 +12,5 @@ export const _getActivities = (qtApi: QtApi) => (startDate: string) => (
     `/activities?startTime=${new Date(
       startDate
     ).toISOString()}&endTime=${new Date(endDate).toISOString()}`
-  )(qtApi)).activities;
+  )(qtApi)()).activities;
 };

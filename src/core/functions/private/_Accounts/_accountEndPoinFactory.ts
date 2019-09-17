@@ -4,5 +4,6 @@
 import { QtApi } from '../../../libraries';
 
 export const _accountEndPoinFactory = <T>(endpoint: string) => {
-  return async (qtApi: QtApi): Promise<T> => qtApi.accountGet<T>(endpoint);
+  return (qtApi: QtApi) => async (): Promise<T> =>
+    qtApi.accountGet<T>(endpoint);
 };

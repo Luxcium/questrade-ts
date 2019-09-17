@@ -23,5 +23,5 @@ export const _getOrders = (qtApi: QtApi) => (
   }
   return _accountEndPoinFactory<Promise<IOrders>>(
     `/orders?${stateFilter}&${requstRange}`
-  )(qtApi);
+  )(qtApi)();
 };

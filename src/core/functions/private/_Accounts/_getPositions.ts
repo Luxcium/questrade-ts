@@ -5,5 +5,5 @@ import { _accountEndPoinFactory } from '.';
 import { QtApi } from '../../../libraries';
 import { IPositions } from '../../../types';
 
-export const _getPositions = async (qtApi: QtApi) =>
-  _accountEndPoinFactory<Promise<IPositions>>('/positions')(qtApi);
+export const _getPositions = (qtApi: QtApi) => async () =>
+  _accountEndPoinFactory<Promise<IPositions>>('/positions')(qtApi)();

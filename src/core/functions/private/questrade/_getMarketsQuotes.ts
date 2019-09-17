@@ -10,7 +10,7 @@ export const _getMarketsQuotes = (qtApi: QtApi) => async (
 ) => {
   if (!qtSymbol.length) {
     // will error out after calling the api the server will reply the error message ...
-    return (await endPoinFactory<Promise<IQuotes>>('/markets/quotes')(qtApi))
+    return (await endPoinFactory<Promise<IQuotes>>('/markets/quotes')(qtApi)())
       .quotes;
   }
   let qtSymbolString: string = '';
@@ -23,5 +23,5 @@ export const _getMarketsQuotes = (qtApi: QtApi) => async (
   const endpoint = `/markets/quotes${
     qtSymbol.length === 1 ? `/${qtSymbolString}` : `?ids=${qtSymbolString}`
   }`;
-  return (await endPoinFactory<Promise<IQuotes>>(endpoint)(qtApi)).quotes;
+  return (await endPoinFactory<Promise<IQuotes>>(endpoint)(qtApi)()).quotes;
 };

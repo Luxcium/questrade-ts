@@ -6,21 +6,21 @@ import { _getBalances } from './_getBalances';
 
 const BALANCES = (qtApi: QtApi) => {
   const combinedCADCurrent = async () =>
-    (await _getBalances(qtApi)).combinedBalances.CAD;
+    (await _getBalances(qtApi)()).combinedBalances.CAD;
   const combinedUSDCurrent = async () =>
-    (await _getBalances(qtApi)).combinedBalances.USD;
+    (await _getBalances(qtApi)()).combinedBalances.USD;
   const CADCurrent = async () =>
-    (await _getBalances(qtApi)).perCurrencyBalances.CAD;
+    (await _getBalances(qtApi)()).perCurrencyBalances.CAD;
   const USDCurrent = async () =>
-    (await _getBalances(qtApi)).perCurrencyBalances.USD;
+    (await _getBalances(qtApi)()).perCurrencyBalances.USD;
   const combinedCADStartOfDay = async () =>
-    (await _getBalances(qtApi)).sodCombinedBalances.CAD;
+    (await _getBalances(qtApi)()).sodCombinedBalances.CAD;
   const combinedUSDStartOfDay = async () =>
-    (await _getBalances(qtApi)).sodCombinedBalances.USD;
+    (await _getBalances(qtApi)()).sodCombinedBalances.USD;
   const CADStartOfDay = async () =>
-    (await _getBalances(qtApi)).sodPerCurrencyBalances.CAD;
+    (await _getBalances(qtApi)()).sodPerCurrencyBalances.CAD;
   const USDStartOfDay = async () =>
-    (await _getBalances(qtApi)).sodPerCurrencyBalances.USD;
+    (await _getBalances(qtApi)()).sodPerCurrencyBalances.USD;
 
   return {
     current: {
@@ -86,7 +86,7 @@ export const _accounts = (qtApi: QtApi) => ({
 /*
 
 
-export const _getBalances = async (qtApi: QtApi) => {
+export const _getBalances =  (qtApi: QtApi)=>async () => {
   let {
     perCurrencyBalances,
     combinedBalances,

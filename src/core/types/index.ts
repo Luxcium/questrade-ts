@@ -25,7 +25,7 @@ export { Time } from '../libraries/Time';
 export { QuestradeClass } from './classes/QuestradeClass';
 export { AcountNumber, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
-export { IBalance, IBalances, ICurencyBalance } from './IBalances';
+export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';
 export { ICandle, ICandles } from './ICandles';
 export { IDateObject } from './IDateObject';
 export { IEquitySymbol, IEquitySymbols } from './IEquitySymbols';

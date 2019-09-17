@@ -86,7 +86,7 @@ export const _accounts = (qtApi: QtApi) => ({
 /*
 
 
-export const _getBalances = async (qtApi: QtApi) => {
+export const _getBalances =  (qtApi: QtApi)=>async () => {
   let {
     perCurrencyBalances,
     combinedBalances,
