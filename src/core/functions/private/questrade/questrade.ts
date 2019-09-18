@@ -24,6 +24,9 @@ import {
   Time,
 } from '../../../types';
 
+// !!
+// !! questrade = async (options: any) => {
+// !!
 export const questrade = async (options: any) => {
   const qtApi: QtApi = await _questradeApi(options);
 
@@ -33,6 +36,7 @@ export const questrade = async (options: any) => {
     orders: _getActivities(qtApi),
     executions: _getExecutions(qtApi),
     balances: _getBalances(qtApi),
+    positions: _getPositions(qtApi),
     listAccounts: _getExecutions(qtApi),
     time: _getOrders(qtApi),
   } as any;
@@ -60,7 +64,10 @@ export const questrade = async (options: any) => {
   };
 };
 
-const _getCandles = (qtApi: QtApi) => (startDate: string) => (
+// !!
+// !! _getCandles = (qtApi: QtApi) => (startDate: string) => (
+// !!
+export const _getCandles = (qtApi: QtApi) => (startDate: string) => (
   interval: string = 'OneDay'
 ) => (endDate: string) => async (symbolID: string) => {
   return _getEndPoinFactory<Promise<any>>(
@@ -68,61 +75,61 @@ const _getCandles = (qtApi: QtApi) => (startDate: string) => (
   )(qtApi);
 };
 
-/*
-
- {
-    "variants": [
-        {
-             "variantId": 1,
-             "strategy": ”Custom”,
-             "legs": [
-                   {
-                      "symbolId": 27426,
-                      "ratio":  1000,
-                      "action": "Buy"
-                   },
-                   {
-                       "symbolId": 10550014,
-                       "ratio":  10,
-                       "action": "Sell"
-                   }
-                ]
-          },
-             ...
-    ]
-}
-*/
-
-const _postGetStrategiesQuotes = (qtApi: QtApi) => async () => {
+// !!
+// !! _postGetStrategiesQuotes = (qtApi: QtApi) => async () => {
+// !!
+export const _postGetStrategiesQuotes = (qtApi: QtApi) => async () => {
   return _postEndPoinFactory<Promise<any>>('/markets/quotes/strategies')(qtApi);
 };
 
-const _getQuotesFromSymbolID = (qtApi: QtApi) => async (symbolID: string) => {
+// !!
+// !! _getQuotesFromSymbolID = (qtApi: QtApi) => async (
+// !!
+export const _getQuotesFromSymbolID = (qtApi: QtApi) => async (
+  symbolID: string
+) => {
   return _getEndPoinFactory<Promise<any>>(`/markets/quotes?ids=${symbolID}`)(
     qtApi
   );
 };
 
-const _getSymbolSearch = (qtApi: QtApi) => async (prefix: string) => {
+// !!
+// !! _getSymbolSearch = (qtApi: QtApi) => async (prefix: string) => {
+// !!
+export const _getSymbolSearch = (qtApi: QtApi) => async (prefix: string) => {
   return _getEndPoinFactory<Promise<any>>(`/symbols/search?prefix=${prefix}`)(
     qtApi
   );
 };
 
-const _getOptionsSymbols = (qtApi: QtApi) => async (symbolID: string) => {
+// !!
+// !! _getOptionsSymbols = (qtApi: QtApi) => async (
+// !!
+export const _getOptionsSymbols = (qtApi: QtApi) => async (
+  symbolID: string
+) => {
   return _getEndPoinFactory<Promise<any>>(`/symbols/${symbolID}/options`)(
     qtApi
   );
 };
 
-const _postGetOptionsQuotes = (qtApi: QtApi) => async () => {
+// !!
+// !! _postGetOptionsQuotes = (qtApi: QtApi) => async () => {
+// !!
+export const _postGetOptionsQuotes = (qtApi: QtApi) => async () => {
   return _postEndPoinFactory<Promise<any>>('/markets/quotes/options')(qtApi);
 };
 
-const _getSymbolFromSymbolID = (qtApi: QtApi) => async () => {
+// !!
+// !! _getSymbolFromSymbolID = (qtApi: QtApi) => async () => {
+// !!
+export const _getSymbolFromSymbolID = (qtApi: QtApi) => async () => {
   return _getEndPoinFactory<Promise<any>>('/symbols')(qtApi);
 };
 
+// !!
+// !! _getMarketsQuotes = (qtApi: QtApi) => async (
+// !!
 export const _getMarketsQuotes = (qtApi: QtApi) => async (
   qtSymbol: number[]
 ) => {
@@ -144,13 +151,21 @@ export const _getMarketsQuotes = (qtApi: QtApi) => async (
   return (await _getEndPoinFactory<Promise<IQuotes>>(endpoint)(qtApi)()).quotes;
 };
 
+// !!
+// !! _getMarkets = (qtApi: QtApi) => async () => {
+// !!
 export const _getMarkets = (qtApi: QtApi) => async () => {
   return _getEndPoinFactory<Promise<IMarkets>>('/markets')(qtApi)();
 };
-
+// !!
+// !! _getPositions = (qtApi: QtApi) => async () =>
+// !!
 export const _getPositions = (qtApi: QtApi) => async () =>
   _accountEndPoinFactory<Promise<IPositions>>('/positions')(qtApi)();
 
+// !!
+// !! _getTime = (qtApi: QtApi) => async (): Promise<string> => {
+// !!
 export const _getTime = (qtApi: QtApi) => async (): Promise<string> => {
   try {
     const { time } = await qtApi.get<Time>('/time');
@@ -161,12 +176,18 @@ export const _getTime = (qtApi: QtApi) => async (): Promise<string> => {
   }
 };
 
+// !!
+// !! _getExecutions = (qtApi: QtApi) => async (): Promise<
+// !!
 export const _getExecutions = (qtApi: QtApi) => async (): Promise<
   IExecution[]
 > =>
   (await _accountEndPoinFactory<Promise<IExecutions>>('/executions')(qtApi)())
     .executions;
 
+// !!
+// !! _getOrders = (qtApi: QtApi) => (
+// !!
 export const _getOrders = (qtApi: QtApi) => (
   orderStateFilterType?: OrderStateFilterType
 ) => (startDate?: string) => (endDate?: string) => async (): Promise<
@@ -187,6 +208,9 @@ export const _getOrders = (qtApi: QtApi) => (
   )(qtApi)();
 };
 
+// !!
+// !! _getActivities = (qtApi: QtApi) => (startDate: string) => (
+// !!
 export const _getActivities = (qtApi: QtApi) => (startDate: string) => (
   endDate: string
 ) => async (): Promise<IAccountActivity[]> => {
@@ -197,6 +221,9 @@ export const _getActivities = (qtApi: QtApi) => (startDate: string) => (
   )(qtApi)()).activities;
 };
 
+// !!
+// !! _getBalances = (qtApi: QtApi) => async () => {
+// !!
 export const _getBalances = (qtApi: QtApi) => async () => {
   let {
     perCurrencyBalances,
@@ -226,6 +253,9 @@ export const _getBalances = (qtApi: QtApi) => async () => {
   };
 };
 
+// !!
+// !! _getAccounts = (qtApi: QtApi) => async (): Promise<IAccount[]> => {
+// !!
 export const _getAccounts = (qtApi: QtApi) => async (): Promise<IAccount[]> => {
   try {
     const { accounts } = await qtApi.get<IAccounts>('/accounts');
@@ -236,6 +266,9 @@ export const _getAccounts = (qtApi: QtApi) => async (): Promise<IAccount[]> => {
   }
 };
 
+// !!
+// !! _getPrimaryAccountNumber = (qtApi: QtApi) => async (): Promise<
+// !!
 export const _getPrimaryAccountNumber = (qtApi: QtApi) => async (): Promise<
   AcountNumber
 > => {
@@ -291,6 +324,9 @@ const BALANCES = (qtApi: QtApi) => {
   };
 };
 
+// !!
+// !! _accounts = (qtApi: QtApi) => ({
+// !!
 export const _accounts = (qtApi: QtApi) => ({
   get: {
     BALANCES: BALANCES(qtApi),
