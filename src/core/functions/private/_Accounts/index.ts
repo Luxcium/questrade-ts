@@ -1,4 +1,4 @@
-export { _accountEndPoinFactory } from './_accountEndPoinFactory';
+export { _accountEndPoinFactory } from '../questrade';
 export { _accounts } from './_accounts';
 export { _getAccounts } from './_getAccounts';
 export { _getActivities } from './_getActivities';
@@ -8,4 +8,7 @@ export { _getOrders } from './_getOrders';
 export { _getPositions } from './_getPositions';
 export { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 export { _getTime } from './_getTime';
-export { _rawApiAccountCalls } from './_rawApiAccountCalls';
+// export {
+//   _getApiAccountCalls,
+//   _rawApiAccountCalls,
+// } from './_rawApiAccountCalls';
