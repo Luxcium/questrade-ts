@@ -1,7 +1,4 @@
 // tslint:disable: variable-name
-// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
-// - Licensed under the MIT License.
-// - See License.txt in the project root for license information.
 import { OrderStateFilterType } from 'questrade-api-enumerations';
 import {
   _accountEndPoinFactory,
@@ -26,7 +23,6 @@ import {
   IQuotes,
   Time,
 } from '../../../types';
-// import { _getBalances } from './_getBalances';
 
 export const questrade = async (options: any) => {
   const qtApi: QtApi = await _questradeApi(options);
@@ -35,7 +31,7 @@ export const questrade = async (options: any) => {
   const accounts = {
     activities: _getAccounts(qtApi),
     orders: _getActivities(qtApi),
-    executions: _getExecutions(qtApi), // :// _getApiAccountCalls(qtApi),
+    executions: _getExecutions(qtApi),
     balances: _getBalances(qtApi),
     listAccounts: _getExecutions(qtApi),
     time: _getOrders(qtApi),
@@ -64,7 +60,6 @@ export const questrade = async (options: any) => {
   };
 };
 
-// GET https://api01.iq.questrade.com/v1/markets/candles/38738?startTime=2014-10-01T00:00:00-05:00&endTime=2014-10-20T23:59:59-05:00&interval=OneDay
 const _getCandles = (qtApi: QtApi) => (startDate: string) => (
   interval: string = 'OneDay'
 ) => (endDate: string) => async (symbolID: string) => {
@@ -98,59 +93,32 @@ const _getCandles = (qtApi: QtApi) => (startDate: string) => (
 }
 */
 
-// POST https://api01.iq.questrade.com/v1/markets/quotes/strategies
 const _postGetStrategiesQuotes = (qtApi: QtApi) => async () => {
   return _postEndPoinFactory<Promise<any>>('/markets/quotes/strategies')(qtApi);
 };
 
-// GET https://api01.iq.questrade.com/v1/markets/quotes?ids=38738,...
 const _getQuotesFromSymbolID = (qtApi: QtApi) => async (symbolID: string) => {
   return _getEndPoinFactory<Promise<any>>(`/markets/quotes?ids=${symbolID}`)(
     qtApi
   );
 };
 
-// GET https://api01.iq.questrade.com/v1/symbols/search?prefix=BMO
 const _getSymbolSearch = (qtApi: QtApi) => async (prefix: string) => {
   return _getEndPoinFactory<Promise<any>>(`/symbols/search?prefix=${prefix}`)(
     qtApi
   );
 };
 
-// GET https://api01.iq.questrade.com/v1/symbols/9291/options
 const _getOptionsSymbols = (qtApi: QtApi) => async (symbolID: string) => {
   return _getEndPoinFactory<Promise<any>>(`/symbols/${symbolID}/options`)(
     qtApi
   );
 };
 
-/*
-
-{
-    “filters”: [
-        {
-             “optionType”: ”Call”,
-             “underlyingId”: 27426,
-             “expiryDate”: ”2017-01-20T00:00:00.000000-05:00”,
-             “minstrikePrice”: 70,
-             “maxstrikePrice”: 80
-        },
-              ...
-      ],
-      “optionIds”:
-             [
-              9907637,
-              9907638,
-                  ...
-         ]
-  }
-*/
-// POST https://api01.iq.questrade.com/v1/markets/quotes/options
 const _postGetOptionsQuotes = (qtApi: QtApi) => async () => {
   return _postEndPoinFactory<Promise<any>>('/markets/quotes/options')(qtApi);
 };
 
-// GET https://api01.iq.questrade.com/v1/symbols?ids=8049,...
 const _getSymbolFromSymbolID = (qtApi: QtApi) => async () => {
   return _getEndPoinFactory<Promise<any>>('/symbols')(qtApi);
 };
@@ -159,7 +127,6 @@ export const _getMarketsQuotes = (qtApi: QtApi) => async (
   qtSymbol: number[]
 ) => {
   if (!qtSymbol.length) {
-    // will error out after calling the api the server will reply the error message ...
     return (await _getEndPoinFactory<Promise<IQuotes>>('/markets/quotes')(
       qtApi
     )()).quotes;
@@ -276,16 +243,16 @@ export const _getPrimaryAccountNumber = (qtApi: QtApi) => async (): Promise<
   if (accounts.length < 1) {
     throw new Error('No account number found');
   }
-  // if only one retur the only one ...
+
   if (accounts.length === 1) {
     return accounts[0].number;
   }
-  // if more than one return the first one marked primary
+
   const primary = accounts.filter(account => account.isPrimary);
   if (primary.length > 0) {
     return primary[0].number;
   }
-  // if none marked primary and more than one return first one
+
   return accounts[0].number;
 };
 
@@ -296,7 +263,7 @@ const BALANCES = (qtApi: QtApi) => {
     (await _getBalances(qtApi)()).combinedBalances.USD;
   const CADCurrent = async () =>
     (await _getBalances(qtApi)()).perCurrencyBalances.CAD;
-  // tslint:disable: variable-name
+
   const USDCurrent = async () =>
     (await _getBalances(qtApi)()).perCurrencyBalances.USD;
   const combinedCADStartOfDay = async () =>
@@ -324,11 +291,7 @@ const BALANCES = (qtApi: QtApi) => {
   };
 };
 
-// const TIME = _getTime(qtApi);
-
 export const _accounts = (qtApi: QtApi) => ({
-  // ACTIVITIES: (startDate: string) => (endDate: string) =>
-  //   _getActivities(qtApi)(startDate)(endDate),
   get: {
     BALANCES: BALANCES(qtApi),
     ORDERS: {
@@ -352,75 +315,6 @@ export const _accounts = (qtApi: QtApi) => ({
             _getOrders(qtApi)(OrderStateFilterType.OPEN)(startDate)(endDate)(),
         }),
       },
-      // ACCOUNTS: async () => _getAccounts(qtApi),
     },
   },
-  // ORDERS: async (orderStateFilterType: OrderStateFilterType) => (
-  //   startDate?: string
-  // ) => (endDate?: string) =>
-  //   _getOrders(qtApi)(orderStateFilterType)(startDate)(endDate),
-
-  // EXECUTIONS: async () => _getExecutions(qtApi),
-  // BALANCES: async () => _getBalances(qtApi),
-  // POSITIONS: async () => _getPositions(qtApi),
-
-  // currentAccountNumber: async () => qtApi.credentials.accountNumber,
-  // TIME: async () => _getTime(qtApi),
-  // qtApi,
 });
-
-/*
-
-
-export const _getBalances =  (qtApi: QtApi)=>async () => {
-  let {
-    perCurrencyBalances,
-    combinedBalances,
-    sodPerCurrencyBalances,
-    sodCombinedBalances,
-  } = (await accountEndPoinFactory<IBalances>('/balances')(qtApi)) as any;
-  [
-    perCurrencyBalances,
-    combinedBalances,
-    sodPerCurrencyBalances,
-    sodCombinedBalances,
-  ] = [
-    perCurrencyBalances,
-    combinedBalances,
-    sodPerCurrencyBalances,
-    sodCombinedBalances,
-  ].map(item => {
-    const [CAD, USD] = item;
-    return { CAD, USD };
-  });
-  return {
-    perCurrencyBalances: perCurrencyBalances as ICurencyBalance,
-    combinedBalances: combinedBalances as ICurencyBalance,
-    sodPerCurrencyBalances: sodPerCurrencyBalances as ICurencyBalance,
-    sodCombinedBalances: sodCombinedBalances as ICurencyBalance,
-  };
-};
-
-*/
-
-// }//
-/*
-
-current
-
-currentCAD
-currentUSD
-
-currentallInCAD
-currentallInUSD
-
-startOfDay
-
-startOfDayCAD
-startOfDayUSD
-
-startOfDayallInCAD
-startOfDayallInUSD
-
-
-*/
