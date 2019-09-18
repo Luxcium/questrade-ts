@@ -14,6 +14,7 @@ import {
   IAccounts,
   IActivities,
   IBalances,
+  ICandles,
   ICurencyBalance,
   IExecution,
   IExecutions,
@@ -31,18 +32,14 @@ export const questrade = async (options: any) => {
   const qtApi: QtApi = await _questradeApi(options);
 
   qtApi.credentials.accountNumber = await _getPrimaryAccountNumber(qtApi)();
-  const accounts = {
-    activities: _getAccounts(qtApi),
-    orders: _getActivities(qtApi),
+  const accountsApiCalls = {
+    activities: _getActivities(qtApi),
+    orders: _getOrders(qtApi),
     executions: _getExecutions(qtApi),
     balances: _getBalances(qtApi),
     positions: _getPositions(qtApi),
-    listAccounts: _getExecutions(qtApi),
-    time: _getOrders(qtApi),
-  } as any;
-  const markets = {
-    candles: _getCandles(qtApi),
-    list: _getMarkets(qtApi),
+    listAccounts: _getAccounts(qtApi),
+    time: _getTime(qtApi),
   } as any;
   const quotes = {
     strategies: _postGetStrategiesQuotes(qtApi),
@@ -54,13 +51,15 @@ export const questrade = async (options: any) => {
     options: _getOptionsSymbols(qtApi),
     fromSymbolID: _getSymbolFromSymbolID(qtApi),
   } as any;
-
-  return {
-    qtApi,
-    accounts,
-    symbols,
-    markets,
+  const marketsApiCalls = {
+    candles: _getCandles(qtApi),
+    list: _getMarkets(qtApi),
     quotes,
+    symbols,
+  } as any;
+  return {
+    accountsApiCalls,
+    marketsApiCalls,
   };
 };
 
@@ -69,10 +68,10 @@ export const questrade = async (options: any) => {
 // !!
 export const _getCandles = (qtApi: QtApi) => (startDate: string) => (
   interval: string = 'OneDay'
-) => (endDate: string) => async (symbolID: string) => {
-  return _getEndPoinFactory<Promise<any>>(
+) => (endDate: string) => async (symbolID: string): Promise<ICandles> => {
+  return _getEndPoinFactory<ICandles>(
     `/markets/candles/${symbolID}?startTime=${startDate}&endTime=${endDate}&interval=${interval}`
-  )(qtApi);
+  )(qtApi)();
 };
 
 // !!
@@ -90,7 +89,7 @@ export const _getQuotesFromSymbolID = (qtApi: QtApi) => async (
 ) => {
   return _getEndPoinFactory<Promise<any>>(`/markets/quotes?ids=${symbolID}`)(
     qtApi
-  );
+  )();
 };
 
 // !!
@@ -99,7 +98,7 @@ export const _getQuotesFromSymbolID = (qtApi: QtApi) => async (
 export const _getSymbolSearch = (qtApi: QtApi) => async (prefix: string) => {
   return _getEndPoinFactory<Promise<any>>(`/symbols/search?prefix=${prefix}`)(
     qtApi
-  );
+  )();
 };
 
 // !!
@@ -110,21 +109,21 @@ export const _getOptionsSymbols = (qtApi: QtApi) => async (
 ) => {
   return _getEndPoinFactory<Promise<any>>(`/symbols/${symbolID}/options`)(
     qtApi
-  );
+  )();
 };
 
 // !!
 // !! _postGetOptionsQuotes = (qtApi: QtApi) => async () => {
 // !!
 export const _postGetOptionsQuotes = (qtApi: QtApi) => async () => {
-  return _postEndPoinFactory<Promise<any>>('/markets/quotes/options')(qtApi);
+  return _postEndPoinFactory<Promise<any>>('/markets/quotes/options')(qtApi)();
 };
 
 // !!
 // !! _getSymbolFromSymbolID = (qtApi: QtApi) => async () => {
 // !!
 export const _getSymbolFromSymbolID = (qtApi: QtApi) => async () => {
-  return _getEndPoinFactory<Promise<any>>('/symbols')(qtApi);
+  return _getEndPoinFactory<Promise<any>>('/symbols')(qtApi)();
 };
 
 // !!
@@ -151,12 +150,6 @@ export const _getMarketsQuotes = (qtApi: QtApi) => async (
   return (await _getEndPoinFactory<Promise<IQuotes>>(endpoint)(qtApi)()).quotes;
 };
 
-// !!
-// !! _getMarkets = (qtApi: QtApi) => async () => {
-// !!
-export const _getMarkets = (qtApi: QtApi) => async () => {
-  return _getEndPoinFactory<Promise<IMarkets>>('/markets')(qtApi)();
-};
 // !!
 // !! _getPositions = (qtApi: QtApi) => async () =>
 // !!
@@ -354,3 +347,10 @@ export const _accounts = (qtApi: QtApi) => ({
     },
   },
 });
+
+// !!
+// !! _getMarkets = (qtApi: QtApi) => async () => {
+// !!
+export const _getMarkets = (qtApi: QtApi) => async () => {
+  return _getEndPoinFactory<Promise<IMarkets>>('/markets')(qtApi)();
+};
