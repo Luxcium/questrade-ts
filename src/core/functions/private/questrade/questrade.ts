@@ -1,17 +1,32 @@
-// import { _getMarkets } from '.';
+// tslint:disable: variable-name
+// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
+// - Licensed under the MIT License.
+// - See License.txt in the project root for license information.
+import { OrderStateFilterType } from 'questrade-api-enumerations';
+import {
+  _accountEndPoinFactory,
+  _getEndPoinFactory,
+  _postEndPoinFactory,
+} from '.';
 import { _questradeApi } from '../../../api';
 import { QtApi } from '../../../libraries';
-import { IMarkets, IQuotes } from '../../../types';
 import {
-  _getAccounts,
-  _getActivities,
-  // _getApiAccountCalls,
-  _getBalances,
-  _getExecutions,
-  _getOrders,
-  _getPrimaryAccountNumber,
-} from '../_Accounts';
-import { _getEndPoinFactory } from './_endPoinFactory';
+  AcountNumber,
+  IAccount,
+  IAccountActivity,
+  IAccounts,
+  IActivities,
+  IBalances,
+  ICurencyBalance,
+  IExecution,
+  IExecutions,
+  IMarkets,
+  IOrders,
+  IPositions,
+  IQuotes,
+  Time,
+} from '../../../types';
+// import { _getBalances } from './_getBalances';
 
 export const questrade = async (options: any) => {
   const qtApi: QtApi = await _questradeApi(options);
@@ -85,7 +100,7 @@ const _getCandles = (qtApi: QtApi) => (startDate: string) => (
 
 // POST https://api01.iq.questrade.com/v1/markets/quotes/strategies
 const _postGetStrategiesQuotes = (qtApi: QtApi) => async () => {
-  return _getEndPoinFactory<Promise<any>>('/markets/quotes/strategies')(qtApi);
+  return _postEndPoinFactory<Promise<any>>('/markets/quotes/strategies')(qtApi);
 };
 
 // GET https://api01.iq.questrade.com/v1/markets/quotes?ids=38738,...
@@ -132,7 +147,7 @@ const _getOptionsSymbols = (qtApi: QtApi) => async (symbolID: string) => {
 */
 // POST https://api01.iq.questrade.com/v1/markets/quotes/options
 const _postGetOptionsQuotes = (qtApi: QtApi) => async () => {
-  return _getEndPoinFactory<Promise<any>>('/markets/quotes/options')(qtApi);
+  return _postEndPoinFactory<Promise<any>>('/markets/quotes/options')(qtApi);
 };
 
 // GET https://api01.iq.questrade.com/v1/symbols?ids=8049,...
@@ -165,3 +180,247 @@ export const _getMarketsQuotes = (qtApi: QtApi) => async (
 export const _getMarkets = (qtApi: QtApi) => async () => {
   return _getEndPoinFactory<Promise<IMarkets>>('/markets')(qtApi)();
 };
+
+export const _getPositions = (qtApi: QtApi) => async () =>
+  _accountEndPoinFactory<Promise<IPositions>>('/positions')(qtApi)();
+
+export const _getTime = (qtApi: QtApi) => async (): Promise<string> => {
+  try {
+    const { time } = await qtApi.get<Time>('/time');
+    return time;
+  } catch (error) {
+    console.error(error.message);
+    throw new Error(error.message);
+  }
+};
+
+export const _getExecutions = (qtApi: QtApi) => async (): Promise<
+  IExecution[]
+> =>
+  (await _accountEndPoinFactory<Promise<IExecutions>>('/executions')(qtApi)())
+    .executions;
+
+export const _getOrders = (qtApi: QtApi) => (
+  orderStateFilterType?: OrderStateFilterType
+) => (startDate?: string) => (endDate?: string) => async (): Promise<
+  IOrders
+> => {
+  let stateFilter = '';
+  if (!!orderStateFilterType) {
+    stateFilter = `stateFilter=${orderStateFilterType}`;
+  }
+  let requstRange = '';
+  if (startDate && endDate) {
+    requstRange = `startTime=${new Date(
+      startDate
+    ).toISOString()}&endTime=${new Date(endDate).toISOString()}`;
+  }
+  return _accountEndPoinFactory<Promise<IOrders>>(
+    `/orders?${stateFilter}&${requstRange}`
+  )(qtApi)();
+};
+
+export const _getActivities = (qtApi: QtApi) => (startDate: string) => (
+  endDate: string
+) => async (): Promise<IAccountActivity[]> => {
+  return (await _accountEndPoinFactory<Promise<IActivities>>(
+    `/activities?startTime=${new Date(
+      startDate
+    ).toISOString()}&endTime=${new Date(endDate).toISOString()}`
+  )(qtApi)()).activities;
+};
+
+export const _getBalances = (qtApi: QtApi) => async () => {
+  let {
+    perCurrencyBalances,
+    combinedBalances,
+    sodPerCurrencyBalances,
+    sodCombinedBalances,
+  } = (await _accountEndPoinFactory<IBalances>('/balances')(qtApi)()) as any;
+  [
+    perCurrencyBalances,
+    combinedBalances,
+    sodPerCurrencyBalances,
+    sodCombinedBalances,
+  ] = [
+    perCurrencyBalances,
+    combinedBalances,
+    sodPerCurrencyBalances,
+    sodCombinedBalances,
+  ].map(item => {
+    const [CAD, USD] = item;
+    return { CAD, USD };
+  });
+  return {
+    perCurrencyBalances: perCurrencyBalances as ICurencyBalance,
+    combinedBalances: combinedBalances as ICurencyBalance,
+    sodPerCurrencyBalances: sodPerCurrencyBalances as ICurencyBalance,
+    sodCombinedBalances: sodCombinedBalances as ICurencyBalance,
+  };
+};
+
+export const _getAccounts = (qtApi: QtApi) => async (): Promise<IAccount[]> => {
+  try {
+    const { accounts } = await qtApi.get<IAccounts>('/accounts');
+    return accounts;
+  } catch (error) {
+    console.error(error.message);
+    throw new Error(error.message);
+  }
+};
+
+export const _getPrimaryAccountNumber = (qtApi: QtApi) => async (): Promise<
+  AcountNumber
+> => {
+  const accounts = await _getAccounts(qtApi)();
+  if (accounts.length < 1) {
+    throw new Error('No account number found');
+  }
+  // if only one retur the only one ...
+  if (accounts.length === 1) {
+    return accounts[0].number;
+  }
+  // if more than one return the first one marked primary
+  const primary = accounts.filter(account => account.isPrimary);
+  if (primary.length > 0) {
+    return primary[0].number;
+  }
+  // if none marked primary and more than one return first one
+  return accounts[0].number;
+};
+
+const BALANCES = (qtApi: QtApi) => {
+  const combinedCADCurrent = async () =>
+    (await _getBalances(qtApi)()).combinedBalances.CAD;
+  const combinedUSDCurrent = async () =>
+    (await _getBalances(qtApi)()).combinedBalances.USD;
+  const CADCurrent = async () =>
+    (await _getBalances(qtApi)()).perCurrencyBalances.CAD;
+  // tslint:disable: variable-name
+  const USDCurrent = async () =>
+    (await _getBalances(qtApi)()).perCurrencyBalances.USD;
+  const combinedCADStartOfDay = async () =>
+    (await _getBalances(qtApi)()).sodCombinedBalances.CAD;
+  const combinedUSDStartOfDay = async () =>
+    (await _getBalances(qtApi)()).sodCombinedBalances.USD;
+  const CADStartOfDay = async () =>
+    (await _getBalances(qtApi)()).sodPerCurrencyBalances.CAD;
+  const USDStartOfDay = async () =>
+    (await _getBalances(qtApi)()).sodPerCurrencyBalances.USD;
+
+  return {
+    current: {
+      CAD: CADCurrent,
+      USD: USDCurrent,
+      allInCAD: combinedCADCurrent,
+      allInUSD: combinedUSDCurrent,
+    },
+    startOfDay: {
+      CAD: CADStartOfDay,
+      USD: USDStartOfDay,
+      allInCAD: combinedCADStartOfDay,
+      allInUSD: combinedUSDStartOfDay,
+    },
+  };
+};
+
+// const TIME = _getTime(qtApi);
+
+export const _accounts = (qtApi: QtApi) => ({
+  // ACTIVITIES: (startDate: string) => (endDate: string) =>
+  //   _getActivities(qtApi)(startDate)(endDate),
+  get: {
+    BALANCES: BALANCES(qtApi),
+    ORDERS: {
+      all: {
+        from: (startDate?: string) => ({
+          to: (endDate?: string) =>
+            _getOrders(qtApi)(OrderStateFilterType.ALL)(startDate)(endDate)(),
+        }),
+      },
+      closed: {
+        from: (startDate?: string) => ({
+          to: (endDate?: string) =>
+            _getOrders(qtApi)(OrderStateFilterType.CLOSED)(startDate)(
+              endDate
+            )(),
+        }),
+      },
+      open: {
+        from: (startDate?: string) => ({
+          to: (endDate?: string) =>
+            _getOrders(qtApi)(OrderStateFilterType.OPEN)(startDate)(endDate)(),
+        }),
+      },
+      // ACCOUNTS: async () => _getAccounts(qtApi),
+    },
+  },
+  // ORDERS: async (orderStateFilterType: OrderStateFilterType) => (
+  //   startDate?: string
+  // ) => (endDate?: string) =>
+  //   _getOrders(qtApi)(orderStateFilterType)(startDate)(endDate),
+
+  // EXECUTIONS: async () => _getExecutions(qtApi),
+  // BALANCES: async () => _getBalances(qtApi),
+  // POSITIONS: async () => _getPositions(qtApi),
+
+  // currentAccountNumber: async () => qtApi.credentials.accountNumber,
+  // TIME: async () => _getTime(qtApi),
+  // qtApi,
+});
+
+/*
+
+
+export const _getBalances =  (qtApi: QtApi)=>async () => {
+  let {
+    perCurrencyBalances,
+    combinedBalances,
+    sodPerCurrencyBalances,
+    sodCombinedBalances,
+  } = (await accountEndPoinFactory<IBalances>('/balances')(qtApi)) as any;
+  [
+    perCurrencyBalances,
+    combinedBalances,
+    sodPerCurrencyBalances,
+    sodCombinedBalances,
+  ] = [
+    perCurrencyBalances,
+    combinedBalances,
+    sodPerCurrencyBalances,
+    sodCombinedBalances,
+  ].map(item => {
+    const [CAD, USD] = item;
+    return { CAD, USD };
+  });
+  return {
+    perCurrencyBalances: perCurrencyBalances as ICurencyBalance,
+    combinedBalances: combinedBalances as ICurencyBalance,
+    sodPerCurrencyBalances: sodPerCurrencyBalances as ICurencyBalance,
+    sodCombinedBalances: sodCombinedBalances as ICurencyBalance,
+  };
+};
+
+*/
+
+// }//
+/*
+
+current
+
+currentCAD
+currentUSD
+
+currentallInCAD
+currentallInUSD
+
+startOfDay
+
+startOfDayCAD
+startOfDayUSD
+
+startOfDayallInCAD
+startOfDayallInUSD
+
+
+*/
