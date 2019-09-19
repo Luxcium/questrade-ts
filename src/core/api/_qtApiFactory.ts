@@ -17,8 +17,8 @@ export const _qtApiFactory = async (
    * apiPost as post  will be exported out to serve
    * the main apiPost method of connection
    */
-  const post = <T, P = any>(endpoint: string, postData: P) =>
-    _rawApiPost(credentials)<T, P>(endpoint, postData);
+  const post = <T, P = any>(endpoint: string) => <D = P>(postData: D) =>
+    _rawApiPost(credentials)<T>(endpoint)<D>(postData);
   /**
    *  get the requests requiring account number
    *  to transact with tge api server
@@ -27,6 +27,8 @@ export const _qtApiFactory = async (
     _apiAccountGet(credentials)<T>(
       `/accounts/${credentials.accountNumber}${endpoint}`
     );
+  // qtApi
+  credentials.accountNumber = '12345678'; // todo get real account number (await getEndPoint(get))('');
   /**
    * accountNumber return the curently selected account number from
    * the credentials

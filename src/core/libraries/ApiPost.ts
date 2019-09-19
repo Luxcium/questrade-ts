@@ -1,1 +1,3 @@
-export type ApiPost = <T, P = any>(endpoint: string, postData: P) => Promise<T>;
+export type ApiPost = <T, P = any>(
+  endpoint: string
+) => <D = P>(postData: D) => Promise<T>;

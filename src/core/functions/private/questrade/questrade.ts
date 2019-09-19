@@ -5,7 +5,7 @@ import {
   _getEndPoinFactory,
   _postEndPoinFactory,
 } from '.';
-import { _questradeApi } from '../../../api';
+import { _qtApiFactory } from '../../../api';
 import { QtApi } from '../../../libraries';
 import {
   AcountNumber,
@@ -24,118 +24,107 @@ import {
   IQuotes,
   Time,
 } from '../../../types';
-
+// const _qtApi: Promise<QtApi> = _qtApiFactory('options');
 // !!
 // !! questrade = async (options: any) => {
 // !!
-export const questrade = async (options: any) => {
-  const qtApi: QtApi = await _questradeApi(options);
-
-  qtApi.credentials.accountNumber = await _getPrimaryAccountNumber(qtApi)();
-  const accountsApiCalls = {
-    activities: _getActivities(qtApi),
-    orders: _getOrders(qtApi),
-    executions: _getExecutions(qtApi),
-    balances: _getBalances(qtApi),
-    positions: _getPositions(qtApi),
-    listAccounts: _getAccounts(qtApi),
-    time: _getTime(qtApi),
-  } as any;
-  const quotes = {
-    strategies: _postGetStrategiesQuotes(qtApi),
-    options: _postGetOptionsQuotes(qtApi),
-    fromSymbolID: _getQuotesFromSymbolID(qtApi),
-  } as any;
-  const symbols = {
-    search: _getSymbolSearch(qtApi),
-    options: _getOptionsSymbols(qtApi),
-    fromSymbolID: _getSymbolFromSymbolID(qtApi),
-  } as any;
-  const marketsApiCalls = {
-    candles: _getCandles(qtApi),
-    list: _getMarkets(qtApi),
-    quotes,
-    symbols,
-  } as any;
-  return {
-    accountsApiCalls,
-    marketsApiCalls,
+export class Questrade {
+  public qtApi: Promise<QtApi>;
+  public accountsApiCalls = {
+    activities: _getActivities(this.qtApi),
+    orders: _getOrders(this.qtApi),
+    executions: _getExecutions(this.qtApi),
+    balances: _getBalances(this.qtApi),
+    positions: _getPositions(this.qtApi),
+    listAccounts: _getAccounts(this.qtApi),
+    time: _getTime(this.qtApi),
   };
-};
+  public quotes = {
+    strategies: _postGetStrategiesQuotes(this.qtApi),
+    options: _postGetOptionsQuotes(this.qtApi),
+    fromSymbolID: _getQuotesFromSymbolID(this.qtApi),
+  } as any;
+  public symbols = {
+    search: _getSymbolSearch(this.qtApi),
+    options: _getOptionsSymbols(this.qtApi),
+    fromSymbolID: _getSymbolFromSymbolID(this.qtApi),
+  } as any;
+  public marketsApiCalls = {
+    candles: _getCandles(this.qtApi),
+    list: _getMarkets(this.qtApi),
+    quotes: this.quotes,
+    symbols: this.symbols,
+  } as any;
+  constructor(options: any) {
+    this.qtApi = _qtApiFactory(options);
+  }
+}
 
+// Questrade( )
 // !!
-// !! _getCandles = (qtApi: QtApi) => (startDate: string) => (
+// !! _postGetStrategiesQuotes = (qtApi: Promise<QtApi>)  => {
 // !!
-export const _getCandles = (qtApi: QtApi) => (startDate: string) => (
-  interval: string = 'OneDay'
-) => (endDate: string) => async (symbolID: string): Promise<ICandles> => {
-  return _getEndPoinFactory<ICandles>(
-    `/markets/candles/${symbolID}?startTime=${startDate}&endTime=${endDate}&interval=${interval}`
-  )(qtApi)();
-};
-
-// !!
-// !! _postGetStrategiesQuotes = (qtApi: QtApi) => async () => {
-// !!
-export const _postGetStrategiesQuotes = (qtApi: QtApi) => async () => {
+export const _postGetStrategiesQuotes = async (qtApi: Promise<QtApi>) => {
   return _postEndPoinFactory<Promise<any>>('/markets/quotes/strategies')(qtApi);
 };
 
 // !!
-// !! _getQuotesFromSymbolID = (qtApi: QtApi) => async (
+// !! _getQuotesFromSymbolID = (qtApi: Promise<QtApi>) => async (
 // !!
-export const _getQuotesFromSymbolID = (qtApi: QtApi) => async (
-  symbolID: string
-) => {
-  return _getEndPoinFactory<Promise<any>>(`/markets/quotes?ids=${symbolID}`)(
-    qtApi
-  )();
-};
+// export //  const _getQuotesFromSymbolID = (qtApi: Promise<QtApi>) => async (
+//   symbolID: string
+// ) => {
+//   return _getEndPoinFactory<Promise<any>>(`/markets/quotes?ids=${symbolID}`)(
+//     qtApi
+//   );
+// };
 
 // !!
-// !! _getSymbolSearch = (qtApi: QtApi) => async (prefix: string) => {
+// !! _getSymbolSearch = (qtApi: Promise<QtApi>) => async (prefix: string) => {
 // !!
-export const _getSymbolSearch = (qtApi: QtApi) => async (prefix: string) => {
+export const _getSymbolSearch = (qtApi: Promise<QtApi>) => async (
+  prefix: string
+) => {
   return _getEndPoinFactory<Promise<any>>(`/symbols/search?prefix=${prefix}`)(
     qtApi
-  )();
+  );
 };
 
 // !!
-// !! _getOptionsSymbols = (qtApi: QtApi) => async (
+// !! _getOptionsSymbols = (qtApi: Promise<QtApi>) => async (
 // !!
-export const _getOptionsSymbols = (qtApi: QtApi) => async (
+export const _getOptionsSymbols = (qtApi: Promise<QtApi>) => async (
   symbolID: string
 ) => {
   return _getEndPoinFactory<Promise<any>>(`/symbols/${symbolID}/options`)(
     qtApi
-  )();
+  );
 };
 
 // !!
-// !! _postGetOptionsQuotes = (qtApi: QtApi) => async () => {
+// !! _postGetOptionsQuotes = (qtApi: Promise<QtApi>)  => {
 // !!
-export const _postGetOptionsQuotes = (qtApi: QtApi) => async () => {
-  return _postEndPoinFactory<Promise<any>>('/markets/quotes/options')(qtApi)();
+export const _postGetOptionsQuotes = async (qtApi: Promise<QtApi>) => {
+  return _postEndPoinFactory<Promise<any>>('/markets/quotes/options')(qtApi);
 };
 
 // !!
-// !! _getSymbolFromSymbolID = (qtApi: QtApi) => async () => {
+// !! _getSymbolFromSymbolID = (qtApi: Promise<QtApi>)  => {
 // !!
-export const _getSymbolFromSymbolID = (qtApi: QtApi) => async () => {
-  return _getEndPoinFactory<Promise<any>>('/symbols')(qtApi)();
+export const _getSymbolFromSymbolID = async (qtApi: Promise<QtApi>) => {
+  return _getEndPoinFactory<Promise<any>>('/symbols')(qtApi);
 };
 
 // !!
-// !! _getMarketsQuotes = (qtApi: QtApi) => async (
+// !! _getMarketsQuotes = (qtApi: Promise<QtApi>) => async (
 // !!
-export const _getMarketsQuotes = (qtApi: QtApi) => async (
+export const _getQuotesFromSymbolID = (qtApi: Promise<QtApi>) => async (
   qtSymbol: number[]
 ) => {
   if (!qtSymbol.length) {
     return (await _getEndPoinFactory<Promise<IQuotes>>('/markets/quotes')(
       qtApi
-    )()).quotes;
+    )).quotes;
   }
   let qtSymbolString: string = '';
   qtSymbol.forEach((val, currentIndex, ar) => {
@@ -147,21 +136,21 @@ export const _getMarketsQuotes = (qtApi: QtApi) => async (
   const endpoint = `/markets/quotes${
     qtSymbol.length === 1 ? `/${qtSymbolString}` : `?ids=${qtSymbolString}`
   }`;
-  return (await _getEndPoinFactory<Promise<IQuotes>>(endpoint)(qtApi)()).quotes;
+  return (await _getEndPoinFactory<Promise<IQuotes>>(endpoint)(qtApi)).quotes;
 };
 
 // !!
-// !! _getPositions = (qtApi: QtApi) => async () =>
+// !! _getPositions = (qtApi: Promise<QtApi>)  =>
 // !!
-export const _getPositions = (qtApi: QtApi) => async () =>
-  _accountEndPoinFactory<Promise<IPositions>>('/positions')(qtApi)();
+export const _getPositions = async (qtApi: Promise<QtApi>) =>
+  _accountEndPoinFactory<Promise<IPositions>>('/positions')(qtApi);
 
 // !!
-// !! _getTime = (qtApi: QtApi) => async (): Promise<string> => {
+// !! _getTime = (qtApi: Promise<QtApi>) : Promise<string> => {
 // !!
-export const _getTime = (qtApi: QtApi) => async (): Promise<string> => {
+export const _getTime = async (qtApi: Promise<QtApi>): Promise<string> => {
   try {
-    const { time } = await qtApi.get<Time>('/time');
+    const { time } = await (await qtApi).get<Time>('/time');
     return time;
   } catch (error) {
     console.error(error.message);
@@ -170,22 +159,20 @@ export const _getTime = (qtApi: QtApi) => async (): Promise<string> => {
 };
 
 // !!
-// !! _getExecutions = (qtApi: QtApi) => async (): Promise<
+// !! _getExecutions = (qtApi: Promise<QtApi>) : Promise<
 // !!
-export const _getExecutions = (qtApi: QtApi) => async (): Promise<
-  IExecution[]
-> =>
-  (await _accountEndPoinFactory<Promise<IExecutions>>('/executions')(qtApi)())
+export const _getExecutions = async (
+  qtApi: Promise<QtApi>
+): Promise<IExecution[]> =>
+  (await _accountEndPoinFactory<Promise<IExecutions>>('/executions')(qtApi))
     .executions;
 
 // !!
-// !! _getOrders = (qtApi: QtApi) => (
+// !! _getOrders = (qtApi: Promise<QtApi>) => (
 // !!
-export const _getOrders = (qtApi: QtApi) => (
+export const _getOrders = (qtApi: Promise<QtApi>) => (
   orderStateFilterType?: OrderStateFilterType
-) => (startDate?: string) => (endDate?: string) => async (): Promise<
-  IOrders
-> => {
+) => (startDate?: string) => async (endDate?: string): Promise<IOrders> => {
   let stateFilter = '';
   if (!!orderStateFilterType) {
     stateFilter = `stateFilter=${orderStateFilterType}`;
@@ -198,32 +185,32 @@ export const _getOrders = (qtApi: QtApi) => (
   }
   return _accountEndPoinFactory<Promise<IOrders>>(
     `/orders?${stateFilter}&${requstRange}`
-  )(qtApi)();
+  )(qtApi);
 };
 
 // !!
-// !! _getActivities = (qtApi: QtApi) => (startDate: string) => (
+// !! _getActivities = (qtApi: Promise<QtApi>) => (startDate: string) => (
 // !!
-export const _getActivities = (qtApi: QtApi) => (startDate: string) => (
-  endDate: string
-) => async (): Promise<IAccountActivity[]> => {
+export const _getActivities = (qtApi: Promise<QtApi>) => (
+  startDate: string
+) => async (endDate: string): Promise<IAccountActivity[]> => {
   return (await _accountEndPoinFactory<Promise<IActivities>>(
     `/activities?startTime=${new Date(
       startDate
     ).toISOString()}&endTime=${new Date(endDate).toISOString()}`
-  )(qtApi)()).activities;
+  )(qtApi)).activities;
 };
 
 // !!
-// !! _getBalances = (qtApi: QtApi) => async () => {
+// !! _getBalances = (qtApi: Promise<QtApi>)  => {
 // !!
-export const _getBalances = (qtApi: QtApi) => async () => {
+export const _getBalances = async (qtApi: Promise<QtApi>) => {
   let {
     perCurrencyBalances,
     combinedBalances,
     sodPerCurrencyBalances,
     sodCombinedBalances,
-  } = (await _accountEndPoinFactory<IBalances>('/balances')(qtApi)()) as any;
+  } = (await _accountEndPoinFactory<IBalances>('/balances')(qtApi)) as any;
   [
     perCurrencyBalances,
     combinedBalances,
@@ -247,11 +234,13 @@ export const _getBalances = (qtApi: QtApi) => async () => {
 };
 
 // !!
-// !! _getAccounts = (qtApi: QtApi) => async (): Promise<IAccount[]> => {
+// !! _getAccounts = (qtApi: Promise<QtApi>) : Promise<IAccount[]> => {
 // !!
-export const _getAccounts = (qtApi: QtApi) => async (): Promise<IAccount[]> => {
+export const _getAccounts = async (
+  qtApi: Promise<QtApi>
+): Promise<IAccount[]> => {
   try {
-    const { accounts } = await qtApi.get<IAccounts>('/accounts');
+    const { accounts } = await (await qtApi).get<IAccounts>('/accounts');
     return accounts;
   } catch (error) {
     console.error(error.message);
@@ -260,12 +249,12 @@ export const _getAccounts = (qtApi: QtApi) => async (): Promise<IAccount[]> => {
 };
 
 // !!
-// !! _getPrimaryAccountNumber = (qtApi: QtApi) => async (): Promise<
+// !! _getPrimaryAccountNumber = (qtApi: Promise<QtApi>) : Promise<
 // !!
-export const _getPrimaryAccountNumber = (qtApi: QtApi) => async (): Promise<
-  AcountNumber
-> => {
-  const accounts = await _getAccounts(qtApi)();
+export const _getPrimaryAccountNumber = async (
+  qtApi: Promise<QtApi>
+): Promise<AcountNumber> => {
+  const accounts = await _getAccounts(qtApi);
   if (accounts.length < 1) {
     throw new Error('No account number found');
   }
@@ -282,24 +271,24 @@ export const _getPrimaryAccountNumber = (qtApi: QtApi) => async (): Promise<
   return accounts[0].number;
 };
 
-const BALANCES = (qtApi: QtApi) => {
+const BALANCES = (qtApi: Promise<QtApi>) => {
   const combinedCADCurrent = async () =>
-    (await _getBalances(qtApi)()).combinedBalances.CAD;
+    (await _getBalances(qtApi)).combinedBalances.CAD;
   const combinedUSDCurrent = async () =>
-    (await _getBalances(qtApi)()).combinedBalances.USD;
+    (await _getBalances(qtApi)).combinedBalances.USD;
   const CADCurrent = async () =>
-    (await _getBalances(qtApi)()).perCurrencyBalances.CAD;
+    (await _getBalances(qtApi)).perCurrencyBalances.CAD;
 
   const USDCurrent = async () =>
-    (await _getBalances(qtApi)()).perCurrencyBalances.USD;
+    (await _getBalances(qtApi)).perCurrencyBalances.USD;
   const combinedCADStartOfDay = async () =>
-    (await _getBalances(qtApi)()).sodCombinedBalances.CAD;
+    (await _getBalances(qtApi)).sodCombinedBalances.CAD;
   const combinedUSDStartOfDay = async () =>
-    (await _getBalances(qtApi)()).sodCombinedBalances.USD;
+    (await _getBalances(qtApi)).sodCombinedBalances.USD;
   const CADStartOfDay = async () =>
-    (await _getBalances(qtApi)()).sodPerCurrencyBalances.CAD;
+    (await _getBalances(qtApi)).sodPerCurrencyBalances.CAD;
   const USDStartOfDay = async () =>
-    (await _getBalances(qtApi)()).sodPerCurrencyBalances.USD;
+    (await _getBalances(qtApi)).sodPerCurrencyBalances.USD;
 
   return {
     current: {
@@ -320,28 +309,27 @@ const BALANCES = (qtApi: QtApi) => {
 // !!
 // !! _accounts = (qtApi: QtApi) => ({
 // !!
-export const _accounts = (qtApi: QtApi) => ({
+export const _accounts = (qtApi: Promise<QtApi>) => ({
   get: {
+    PrimaryAccountNumber: _getPrimaryAccountNumber(qtApi),
     BALANCES: BALANCES(qtApi),
     ORDERS: {
       all: {
         from: (startDate?: string) => ({
           to: (endDate?: string) =>
-            _getOrders(qtApi)(OrderStateFilterType.ALL)(startDate)(endDate)(),
+            _getOrders(qtApi)(OrderStateFilterType.ALL)(startDate)(endDate),
         }),
       },
       closed: {
         from: (startDate?: string) => ({
           to: (endDate?: string) =>
-            _getOrders(qtApi)(OrderStateFilterType.CLOSED)(startDate)(
-              endDate
-            )(),
+            _getOrders(qtApi)(OrderStateFilterType.CLOSED)(startDate)(endDate),
         }),
       },
       open: {
         from: (startDate?: string) => ({
           to: (endDate?: string) =>
-            _getOrders(qtApi)(OrderStateFilterType.OPEN)(startDate)(endDate)(),
+            _getOrders(qtApi)(OrderStateFilterType.OPEN)(startDate)(endDate),
         }),
       },
     },
@@ -349,8 +337,19 @@ export const _accounts = (qtApi: QtApi) => ({
 });
 
 // !!
-// !! _getMarkets = (qtApi: QtApi) => async () => {
+// !! _getCandles = (qtApi: QtApi) => (startDate: string) => (
 // !!
-export const _getMarkets = (qtApi: QtApi) => async () => {
-  return _getEndPoinFactory<Promise<IMarkets>>('/markets')(qtApi)();
+export const _getCandles = (qtApi: Promise<QtApi>) => (startDate: string) => (
+  interval: string = 'OneDay'
+) => (endDate: string) => async (symbolID: string): Promise<ICandles> => {
+  return _getEndPoinFactory<ICandles>(
+    `/markets/candles/${symbolID}?startTime=${startDate}&endTime=${endDate}&interval=${interval}`
+  )(qtApi);
+};
+
+// !!
+// !! _getMarkets = (qtApi: QtApi)  => {
+// !!
+export const _getMarkets = async (qtApi: Promise<QtApi>) => {
+  return _getEndPoinFactory<Promise<IMarkets>>('/markets')(qtApi);
 };
