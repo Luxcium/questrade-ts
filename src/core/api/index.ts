@@ -1,3 +1,10 @@
+export {
+  _accountEndPoinFactory,
+  _genericEndPoint,
+  _genericPostEndPoint,
+  _getEndPoinFactory,
+  _postEndPoinFactory,
+} from './endPoinFactory';
 export { _oAuth, _oAuthLogic } from './oAuth';
 export { _apiAccountGet } from './_apiAccountGet';
 export { _apiGetErrorLogin } from './_apiGetErrorLogin';

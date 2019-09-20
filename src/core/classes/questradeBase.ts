@@ -1,6 +1,23 @@
 // tslint:disable: variable-name
-import { _qtApiFactory } from '../../../api';
-import { QtApi } from '../../../libraries';
+import { _qtApiFactory } from '../api';
+import {
+  _getAccounts,
+  _getActivities,
+  _getBalances,
+  _getCandles,
+  _getExecutions,
+  _getMarkets,
+  _getOptionsSymbols,
+  _getOrders,
+  _getPositions,
+  _getQuotesFromSymbolID,
+  _getSymbolFromSymbolID,
+  _getSymbolSearch,
+  _getTime,
+  _postGetOptionsQuotes,
+  _postGetStrategiesQuotes,
+} from '../functions/private';
+import { QtApi } from '../libraries';
 
 export class Questrade {
   public qtApi: Promise<QtApi>;

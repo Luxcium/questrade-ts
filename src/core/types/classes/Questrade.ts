@@ -17,8 +17,8 @@ import {
   QuestradeAPIOptions,
   Time,
   TimeRange,
-} from '../types';
-import { sync } from '../utils/mkdirp';
+} from '..';
+import { sync } from '../../utils/mkdirp';
 
 export class Questrade extends EE {
   /**  Gets name of the file where the refreshToken is stored */

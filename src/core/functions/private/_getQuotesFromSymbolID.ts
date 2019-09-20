@@ -1,7 +1,7 @@
 // tslint:disable: variable-name
 import { _getEndPoinFactory } from '.';
-import { QtApi } from '../../../libraries';
-import { IQuotes } from '../../../types';
+import { QtApi } from '../../libraries';
+import { IQuotes } from '../../types';
 
 export const _getQuotesFromSymbolID = (qtApi: Promise<QtApi>) => async (
   qtSymbol: number[]

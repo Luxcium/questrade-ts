@@ -1,6 +1,6 @@
 // tslint:disable: variable-name
 import { _getBalances } from '.';
-import { QtApi } from '../../../libraries';
+import { QtApi } from '../../libraries';
 export const _balances = (qtApi: Promise<QtApi>) => {
   const combinedCADCurrent = async () =>
     (await _getBalances(qtApi)).combinedBalances.CAD;

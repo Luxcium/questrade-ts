@@ -1,6 +1,6 @@
 // tslint:disable: variable-name
-import { QtApi } from '../../../libraries';
-import { AcountNumber } from '../../../types';
+import { QtApi } from '../../libraries';
+import { AcountNumber } from '../../types';
 import { _getAccounts } from './';
 export const _getPrimaryAccountNumber = async (
   qtApi: Promise<QtApi>
