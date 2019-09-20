@@ -59,7 +59,6 @@
     "imports",
     "src/legacy/proto_testing/**/*",
     "debug.js",
-    "src/core/classes/",
     "manualTestingAndDebug.js"
   ],
   "plugins": [
