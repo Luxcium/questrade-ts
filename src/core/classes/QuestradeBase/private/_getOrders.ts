@@ -1,8 +1,8 @@
 // tslint:disable: variable-name
 import { OrderStateFilterType } from 'questrade-api-enumerations';
 import { _accountEndPoinFactory } from '.';
-import { QtApi } from '../../libraries';
-import { IOrders } from '../../types';
+import { QtApi } from '../../../libraries';
+import { IOrders } from '../../../types';
 export const _getOrders = (qtApi: Promise<QtApi>) => (
   orderStateFilterType?: OrderStateFilterType
 ) => (startDate?: string) => async (endDate?: string): Promise<IOrders> => {

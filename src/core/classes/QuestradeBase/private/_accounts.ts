@@ -1,7 +1,7 @@
 // tslint:disable: variable-name
 import { OrderStateFilterType } from 'questrade-api-enumerations';
-import { QtApi } from '../../libraries';
-import { _balances, _getOrders, _getPrimaryAccountNumber } from './';
+import { _balances, _getOrders, _getPrimaryAccountNumber } from '.';
+import { QtApi } from '../../../libraries';
 export const _accounts = (qtApi: Promise<QtApi>) => ({
   get: {
     PrimaryAccountNumber: _getPrimaryAccountNumber(qtApi),

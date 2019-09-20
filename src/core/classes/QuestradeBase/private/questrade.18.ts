@@ -5,8 +5,8 @@ import {
   _getEndPoinFactory,
   _postEndPoinFactory,
 } from '.';
-import { _qtApiFactory } from '../../api';
-import { QtApi } from '../../libraries';
+import { _qtApiFactory } from '../../../api';
+import { QtApi } from '../../../libraries';
 import {
   AcountNumber,
   IAccount,
@@ -23,7 +23,7 @@ import {
   IPositions,
   IQuotes,
   Time,
-} from '../../types';
+} from '../../../types';
 // const _qtApi: Promise<QtApi> = _qtApiFactory('options');
 // !!
 // !! questrade = async (options: any) => {

@@ -4,8 +4,8 @@ export {
   _genericPostEndPoint,
   _getEndPoinFactory,
   _postEndPoinFactory,
-} from '../../api';
-export { Questrade } from '../../classes/questradeBase';
+} from '../../../api';
+export { QuestradeBase } from '../QuestradeBase';
 export { _accounts } from './_accounts';
 export { _balances } from './_balances';
 export { _getAccounts } from './_getAccounts';

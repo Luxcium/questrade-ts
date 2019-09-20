@@ -1,7 +1,7 @@
 // tslint:disable: variable-name
 import { _accountEndPoinFactory } from '.';
-import { QtApi } from '../../libraries';
-import { IBalances, ICurencyBalance } from '../../types';
+import { QtApi } from '../../../libraries';
+import { IBalances, ICurencyBalance } from '../../../types';
 export const _getBalances = async (qtApi: Promise<QtApi>) => {
   let {
     perCurrencyBalances,

@@ -52,7 +52,7 @@
     "listEmittedFiles": false,
     "traceResolution": false
   },
-  "include": ["./src/**/*", "src/debug.ts", "src/core/functions/private/questrade/.ts"],
+  "include": ["./src/**/*", "src/debug.ts", "src/core/classes/private/questrade/.ts"],
   "exclude": [
     "node_modules",
     "build",

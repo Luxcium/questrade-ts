@@ -1,6 +1,6 @@
 // tslint:disable: variable-name
 import { _getEndPoinFactory } from '.';
-import { QtApi } from '../../libraries';
+import { QtApi } from '../../../libraries';
 export const _getOptionsSymbols = (qtApi: Promise<QtApi>) => async (
   symbolID: string
 ) => {
