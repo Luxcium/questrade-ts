@@ -2,27 +2,27 @@
 import { OrderStateFilterType } from 'questrade-api-enumerations';
 import { _balances, _getOrders, _getPrimaryAccountNumber } from '.';
 import { QtApi } from '../../../libraries';
-export const _accounts = (qtApi: Promise<QtApi>) => ({
+export const _accounts = (qtApi: QtApi) => ({
   get: {
     PrimaryAccountNumber: _getPrimaryAccountNumber(qtApi),
     BALANCES: _balances(qtApi),
     ORDERS: {
       all: {
-        from: (startDate?: string) => ({
-          to: (endDate?: string) =>
-            _getOrders(qtApi)(OrderStateFilterType.ALL)(startDate)(endDate),
+        from: (startDate: string) => ({
+          to: (endDate: string) =>
+            _getOrders(qtApi)(startDate)(endDate)(OrderStateFilterType.ALL),
         }),
       },
       closed: {
-        from: (startDate?: string) => ({
-          to: (endDate?: string) =>
-            _getOrders(qtApi)(OrderStateFilterType.CLOSED)(startDate)(endDate),
+        from: (startDate: string) => ({
+          to: (endDate: string) =>
+            _getOrders(qtApi)(startDate)(endDate)(OrderStateFilterType.CLOSED),
         }),
       },
       open: {
-        from: (startDate?: string) => ({
-          to: (endDate?: string) =>
-            _getOrders(qtApi)(OrderStateFilterType.OPEN)(startDate)(endDate),
+        from: (startDate: string) => ({
+          to: (endDate: string) =>
+            _getOrders(qtApi)(startDate)(endDate)(OrderStateFilterType.OPEN),
         }),
       },
     },

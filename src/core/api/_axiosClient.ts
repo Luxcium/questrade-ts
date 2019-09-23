@@ -1,13 +1,23 @@
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 
-export const _axiosClient = async <T>(
+export const _axiosClient = async <T = any>(
   axiosConfig: AxiosRequestConfig
 ): Promise<AxiosResponse<T>> => {
   try {
-    const response: AxiosResponse<T> = await axios(axiosConfig);
+    let response: AxiosResponse<T>;
+
+    try {
+      response = await axios(axiosConfig);
+    } catch (error) {
+      console.log('ERROR response = await axios(axiosConfig);');
+
+      console.error(error.message);
+      throw new Error(error.message);
+    }
+
     // validating response.data is not NaN, "", '', 0, false, null or undefined
     if (!response.data) {
-      throw new Error();
+      throw new Error('Invalid data back from axios client');
     } else {
       return response as AxiosResponse<T>;
     }
