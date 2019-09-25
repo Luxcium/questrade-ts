@@ -9,17 +9,9 @@ import {
   defaultCredentials,
   ITime,
   QtApi,
-  RawApiAccountGet,
-  RawApiGet,
   RawApiPost,
 } from './core/libraries';
-import {
-  AcountNumber,
-  IAccountActivity,
-  IAccounts,
-  IActivities,
-  QuestradeAPIOptions,
-} from './core/types';
+import { QuestradeAPIOptions } from './core/types';
 import { sync } from './core/utils/mkdirp';
 const myRefreshToken = 'qd0AJcnxOGOKpXzvqzIbzKwgHy3Rm3XJ0';
 const emptyCredentials = () => {
@@ -122,8 +114,22 @@ export const writeToken = (
   return credentials;
 };
 
-export const _oAuthLogic = async (token: any): Promise<Credentials> => {
-  const { axiosConfig, credentials }: any = axiosConfigBuilder(token);
+// export const _oAuthLogic = async (token: any): Promise<Credentials> => {
+//   const { axiosConfig, credentials }: any = axiosConfigBuilder(token);
+
+//   const response: AxiosResponse<any> = await axios(axiosConfig);
+
+//   if (!response.data) {
+//     throw new Error(
+//       '!! validate credntials Invalid data back from axios client'
+//     );
+//   }
+//  return  writeToken(credentials, response);
+// };
+
+export const _oAuth = async (options: QuestradeAPIOptions) => {
+  // const credentials = await _oAuthLogic(options);
+  const { axiosConfig, credentials: creds }: any = axiosConfigBuilder(options);
 
   const response: AxiosResponse<any> = await axios(axiosConfig);
 
@@ -132,11 +138,7 @@ export const _oAuthLogic = async (token: any): Promise<Credentials> => {
       '!! validate credntials Invalid data back from axios client'
     );
   }
-  return writeToken(credentials, response);
-};
-
-export const _oAuth = async (options: QuestradeAPIOptions) => {
-  const credentials = await _oAuthLogic(options);
+  const credentials = writeToken(creds, response);
   try {
     const { time } = await _rawApiGet(credentials)<Promise<ITime>>('/time');
 
@@ -152,11 +154,11 @@ export const _oAuth = async (options: QuestradeAPIOptions) => {
     credentials.serverTimeRaw = serverTime;
 
     console.info('Questrade Server Time:', time, '\nStatus: ready\n');
-    return credentials;
   } catch (error) {
     console.log(error.message);
     throw new Error('_oAuth Error getting credentials');
   }
+  return credentials;
 };
 
 /** RawApiPost need to get credentials to be ready to be used */
@@ -231,11 +233,17 @@ export const _axiosApi = (crendentials: Credentials) => <P>(
   return data;
 };
 
-export const _rawApiGet: RawApiGet = (crendentials: Credentials) => {
-  return async <T>(endpoint: string) => {
-    return _axiosApi(crendentials)('GET', null)<T>(endpoint);
-  };
+export const newFunct = (crendentials: Credentials) => (verb: string) => (
+  postData: any
+) => (endpoint: string) => {
+  return { crendentials, verb, postData, endpoint };
 };
+
+// export const _rawApiGet: RawApiGet = (crendentials: Credentials) => {
+//   return async <T>(endpoint: string) => {
+//     return _axiosApi(crendentials)('GET', null)<T>(endpoint);
+//   };
+// };
 
 export const _genericEndPoint = <Type = any>(get: ApiGet) => <T = Type>(
   endpoint: string
@@ -244,98 +252,115 @@ export const _genericEndPoint = <Type = any>(get: ApiGet) => <T = Type>(
 export const _accountEndPoinFactory = <T>(endpoint: string) => async (
   qtApi: QtApi
 ) => {
-  return _genericEndPoint(qtApi.accountGet)<T>(endpoint);
+  return qtApi.accountGet<T>(endpoint);
 };
 
-export const _getActivities = (qtApi: QtApi) => (startDate: string) => async (
+// export const _getActivities = (qtApi: QtApi) => (startDate: string) => async (
+//   endDate: string
+// ) /* : Promise<IAccountActivity[]> */ => {
+//   return qtApi.accountGet<IActivities>(
+//     `/activities?startTime=${new Date(
+//       startDate
+//     ).toISOString()}&endTime=${new Date(endDate).toISOString()}`
+//   );
+//   // ) /* .activities; */;
+// };
+
+// export const _qtApiFactory = async (options: any): Promise<QtApi> => {
+//   const credentials: Credentials | null = await _oAuth(options);
+//   if (!credentials) {
+//     console.log('credentials is null or undefined');
+//     throw new Error('credentials is null or undefined');
+//   }
+
+//   /**
+//    * apiGet as get  will be exported out to serve s the main apiGet method of
+//    * connection
+//    */
+//   const get = <T>(endpoint: string) => _rawApiGet(credentials)<T>(endpoint);
+
+//   /**
+//    * apiPost as post  will be exported out to serve
+//    * the main apiPost method of connection
+//    */
+//   const post = <T, P = any>(endpoint: string) => <D = P>(postData: D) =>
+//     _rawApiPost(credentials)<T>(endpoint)<D>(postData);
+
+//   /**
+//    *  get the requests requiring account number
+//    *  to transact with tge api server
+//    */
+//   const accountGet = <T>(endpoint: string) =>
+//     _apiAccountGet(credentials)<T>(
+//       `/accounts/${credentials.accountNumber}${endpoint}`
+//     );
+
+//   const getPrimaryAccountNumber = async (): Promise<AcountNumber> => {
+//     const { accounts } = await _genericEndPoint<IAccounts>(get)('/accounts');
+
+//     if (accounts.length < 1) {
+//       throw new Error('No account number found');
+//     }
+
+//     if (accounts.length === 1) {
+//       return accounts[0].number;
+//     }
+
+//     const primary = accounts.filter((account: any) => account.isPrimary);
+//     if (primary.length > 0) {
+//       return primary[0].number;
+//     }
+
+//     return accounts[0].number;
+//   };
+//   // qtApi
+//   credentials.accountNumber = await getPrimaryAccountNumber();
+
+//   /**
+//    * accountNumber return the curently selected account number from
+//    * the credentials
+//    */
+//   const accountNumber = credentials.accountNumber;
+//   // Will return what is used in the package as qtApi => QtApi
+//   return {
+//     accountGet,
+//     accountNumber,
+//     credentials,
+//     get,
+//     getPrimaryAccountNumber,
+//     post,
+//   };
+// };
+
+export const _apiAccountGet = (credentials: Credentials) => <T = any>(
+  endpoint: string
+) => _axiosApi(credentials)('GET', null)<T>(endpoint);
+
+export const _getActivities = (cred: Credentials) => (startDate: string) => (
   endDate: string
-): Promise<IAccountActivity[]> => {
-  return (await _accountEndPoinFactory<IActivities>(
-    `/activities?startTime=${new Date(
-      startDate
-    ).toISOString()}&endTime=${new Date(endDate).toISOString()}`
-  )(qtApi)).activities;
+) => {
+  const endpoint: string = `/activities?startTime=${new Date(
+    startDate
+  ).toISOString()}&endTime=${new Date(endDate).toISOString()}`;
+  _apiAccountGet(cred)(endpoint); // { cred, endpoint };
 };
 
-export const _apiAccountGet: RawApiAccountGet = (credentials: Credentials) =>
-  _rawApiGet(credentials);
-
-export const _qtApiFactory = async (options: any): Promise<QtApi> => {
-  const credentials: Credentials | null = await _oAuth(options);
-  if (!credentials) {
-    console.log('credentials is null or undefined');
-    throw new Error('credentials is null or undefined');
-  }
-
-  /**
-   * apiGet as get  will be exported out to serve s the main apiGet method of
-   * connection
-   */
-  const get = <T>(endpoint: string) => _rawApiGet(credentials)<T>(endpoint);
-
-  /**
-   * apiPost as post  will be exported out to serve
-   * the main apiPost method of connection
-   */
-  const post = <T, P = any>(endpoint: string) => <D = P>(postData: D) =>
-    _rawApiPost(credentials)<T>(endpoint)<D>(postData);
-
-  /**
-   *  get the requests requiring account number
-   *  to transact with tge api server
-   */
-  const accountGet = <T>(endpoint: string) =>
-    _apiAccountGet(credentials)<T>(
-      `/accounts/${credentials.accountNumber}${endpoint}`
-    );
-
-  const getPrimaryAccountNumber = async (): Promise<AcountNumber> => {
-    const { accounts } = await _genericEndPoint<IAccounts>(get)('/accounts');
-
-    if (accounts.length < 1) {
-      throw new Error('No account number found');
-    }
-
-    if (accounts.length === 1) {
-      return accounts[0].number;
-    }
-
-    const primary = accounts.filter((account: any) => account.isPrimary);
-    if (primary.length > 0) {
-      return primary[0].number;
-    }
-
-    return accounts[0].number;
-  };
-  // qtApi
-  credentials.accountNumber = await getPrimaryAccountNumber();
-
-  /**
-   * accountNumber return the curently selected account number from
-   * the credentials
-   */
-  const accountNumber = credentials.accountNumber;
-  // Will return what is used in the package as qtApi => QtApi
-  return {
-    accountGet,
-    accountNumber,
-    credentials,
-    get,
-    getPrimaryAccountNumber,
-    post,
-  };
+export const _credentialsFactory = async (options: any) => {
+  return _oAuth(options); // const credentials: Credentials | null = await _oAuth(options);
 };
 
 const log = console.log;
+
 (async () => {
   const starDate = new Date(Date.now()).toISOString();
-  const endDate = new Date(Date.now() - 30 * 24 * 60 * 1000).toISOString();
-  const qtApi = await _qtApiFactory(myRefreshToken);
+  const endDate = new Date(Date.now() - 32 * 24 * 60 * 1000).toISOString();
+  // const qtApi = await _qtApiFactory(myRefreshToken);
+  const cred = await _credentialsFactory(myRefreshToken);
   // const qt = new QuestradeBase(qtApi);
 
   // const accountsApiCalls = qt.accountsApiCalls;
 
-  log('description', await _getActivities(qtApi)(starDate)(endDate));
+  log('description', _getActivities(cred)(starDate)(endDate));
   // log('description', await accountsApiCalls.balances());
   // log('description', await accountsApiCalls.executions());
   // log('description', await accountsApiCalls.listAccounts());

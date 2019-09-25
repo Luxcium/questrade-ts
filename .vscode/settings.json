@@ -1,13 +1,3 @@
 {
-  "editor.formatOnSave": true,
-  "prettier.requireConfig": true,
-  "editor.fontLigatures": true,
-  // On save, run both fixAll and organizeImports source actions
-  "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": true,
-  },
-  "editor.wordWrapColumn": 80,
-  "bracket-pair-colorizer-2.showBracketsInRuler": true,
-  "bracket-pair-colorizer-2.rulerPosition": "Full"
+
 }
