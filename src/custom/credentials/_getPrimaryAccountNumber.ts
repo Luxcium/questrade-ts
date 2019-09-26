@@ -1,6 +1,6 @@
 import { AcountNumber, IAccount } from '../../core/types';
 
-export const getPrimaryAccountNumber = async (
+export const _getPrimaryAccountNumber = async (
   accounts: IAccount[]
 ): Promise<AcountNumber> => {
   if (accounts.length < 1) {

@@ -1,18 +1,27 @@
 import { AxiosResponse, default as axios } from 'axios';
-import { _apiGetErrorLogin, _generateHeader } from '../../core/api';
+import { _apiGetErrorLogin } from '..';
 import { Credentials } from '../../core/libraries';
 
-export const _axiosApi = (crendentials: Credentials) => <P>(
-  VERB: string,
-  postData?: P
-) => async <T>(endpoint: string): Promise<T> => {
+export const _axiosApi = (credentials: Credentials) => (VERB: string) => <
+  P = any
+>(
+  postData?: P | null
+) => async <T = any>(endpoint: string): Promise<T> => {
   let data: T;
   try {
     let response: AxiosResponse<T>;
 
+    const headers = {
+      url: credentials.apiUrl + endpoint,
+      methode: VERB,
+      headers: {
+        Authorization: `Bearer ${credentials.accessToken}`,
+        location: credentials.accountNumber,
+      },
+      data: postData || '',
+    };
+
     try {
-      const headers = _generateHeader(endpoint, crendentials, VERB, postData);
-      console.log('headers', headers);
       response = await axios(headers);
     } catch (e) {
       console.log(e.message);
