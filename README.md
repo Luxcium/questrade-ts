@@ -41,9 +41,9 @@ Until version 1.0 breaking change will occur at minor version change 0.X.0, Plea
 
 ### Features
 
-- Token management
-- Easy to use API calls
-- Auto-select primary account
+  - Token management
+  - Easy to use API calls
+  - Auto-select primary account
 
 You will then need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx).
 
