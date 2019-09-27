@@ -12,7 +12,7 @@
 [![npm](https://img.shields.io/npm/dt/questrade-ts.svg)](https://www.npmjs.com/package/questrade-ts)
 [![Known Vulnerabilities](https://snyk.io/test/github/luxcium/questrade-ts/badge.svg)](https://snyk.io/test/github/luxcium/questrade-ts)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8af26b0bfa624c66b266cd83d4eb52b4)](https://www.codacy.com/manual/Luxcium/questrade-ts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Luxcium/questrade-ts&amp;utm_campaign=Badge_Grade)
-[![NPM](https://img.shields.io/npm/l/questrade-ts.svg)](https://github.com/luxcium/questrade-ts/blob/master/LICENSE)
+[![NPM](https://img.shields.io/npm/l/questrade-ts.svg)](https://raw.githubusercontent.com/Luxcium/questrade-ts/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/questrade-ts.svg)](https://www.npmjs.com/package/questrade-ts)
 
 
