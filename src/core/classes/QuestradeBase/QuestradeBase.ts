@@ -1,53 +1,69 @@
 // tslint:() =>disable:() => variable-name
 // import { _qtApiFactory } from '../../api';
-import { QtApi } from '../../libraries';
-import {
-  _getAccounts,
-  _getActivities,
-  _getBalances,
-  _getCandles,
-  _getExecutions,
-  _getMarkets,
-  _getOptionsSymbols,
-  _getOrders,
-  _getPositions,
-  _getQuotesFromSymbolID,
-  _getSymbolFromSymbolID,
-  _getSymbolSearch,
-  _getTime,
-  _postGetOptionsQuotes,
-  _postGetStrategiesQuotes,
-} from './private_old';
+import { Credentials } from '../../libraries';
+// import {
+//   _getAccounts,
+//   _getActivities,
+//   _getBalances,
+//   _getCandles,
+//   _getExecutions,
+//   _getMarkets,
+//   _getOptionsSymbols,
+//   _getOrders,
+//   _getPositions,
+//   _getQuotesFromSymbolID,
+//   _getSymbolFromSymbolID,
+//   _getSymbolSearch,
+//   _getTime,
+//   _postGetOptionsQuotes,
+//   _postGetStrategiesQuotes,
+// } from './private_old';
 
 export class QuestradeBase {
-  public qtApi: QtApi;
+  public credentials: Credentials;
   public accountsApiCalls = {
-    activities: _getActivities(this.qtApi),
-    orders: _getOrders(this.qtApi),
-    executions: _getExecutions(this.qtApi),
-    balances: _getBalances(this.qtApi),
-    positions: _getPositions(this.qtApi),
-    listAccounts: _getAccounts(this.qtApi),
-    time: _getTime(this.qtApi),
+    activities: _getActivities(this.credentials),
+    orders: _getOrders(this.credentials),
+    executions: _getExecutions(this.credentials),
+    balances: _getBalances(this.credentials),
+    positions: _getPositions(this.credentials),
+    listAccounts: _getAccounts(this.credentials),
+    time: _getTime(this.credentials),
   };
   public quotes = {
-    strategies: _postGetStrategiesQuotes(this.qtApi),
-    options: _postGetOptionsQuotes(this.qtApi),
-    fromSymbolID: _getQuotesFromSymbolID(this.qtApi),
+    strategies: _postGetStrategiesQuotes(this.credentials),
+    options: _postGetOptionsQuotes(this.credentials),
+    fromSymbolID: _getQuotesFromSymbolID(this.credentials),
   };
   public symbols = {
-    search: _getSymbolSearch(this.qtApi),
-    options: _getOptionsSymbols(this.qtApi),
-    fromSymbolID: _getSymbolFromSymbolID(this.qtApi),
+    search: _getSymbolSearch(this.credentials),
+    options: _getOptionsSymbols(this.credentials),
+    fromSymbolID: _getSymbolFromSymbolID(this.credentials),
   };
   public marketsApiCalls = {
-    candles: _getCandles(this.qtApi),
-    list: () => _getMarkets(this.qtApi),
+    candles: _getCandles(this.credentials),
+    list: () => _getMarkets(this.credentials),
     quotes: this.quotes,
     symbols: this.symbols,
   };
-  constructor(qtApi: QtApi) {
-    this.qtApi = qtApi; // _qtApiFactory(str);
+  constructor(credentials: Credentials) {
+    this.credentials = credentials; // _qtApiFactory(str);
     // console.log('this.qtApi', this.qtApi);
   }
 }
+
+const _getAccounts = (credentials: Credentials) => credentials;
+const _getActivities = (credentials: Credentials) => credentials;
+const _getBalances = (credentials: Credentials) => credentials;
+const _getCandles = (credentials: Credentials) => credentials;
+const _getExecutions = (credentials: Credentials) => credentials;
+const _getMarkets = (credentials: Credentials) => credentials;
+const _getOptionsSymbols = (credentials: Credentials) => credentials;
+const _getOrders = (credentials: Credentials) => credentials;
+const _getPositions = (credentials: Credentials) => credentials;
+const _getQuotesFromSymbolID = (credentials: Credentials) => credentials;
+const _getSymbolFromSymbolID = (credentials: Credentials) => credentials;
+const _getSymbolSearch = (credentials: Credentials) => credentials;
+const _getTime = (credentials: Credentials) => credentials;
+const _postGetOptionsQuotes = (credentials: Credentials) => credentials;
+const _postGetStrategiesQuotes = (credentials: Credentials) => credentials;
