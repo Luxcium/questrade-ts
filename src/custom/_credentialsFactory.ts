@@ -3,7 +3,12 @@ import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
 import { _axiosApiGet } from '.';
 import { Credentials, defaultCredentials, ITime } from '../core/libraries';
-import { AcountNumberString, IAccount, IAccounts } from '../core/types';
+import {
+  AcountNumberString,
+  IAccount,
+  IAccounts,
+  QuestradeAPIOptions,
+} from '../core/types';
 import { sync } from '../core/utils/mkdirp';
 
 const _getServerTime = (credentials: Credentials) => async () =>
@@ -107,10 +112,10 @@ const validateToken = (options: any) => {
   return { refreshToken, credentials };
 };
 
-const buildCredentialsFromToken = (token: any) => {
+const buildCredentialsFromToken = (token: QuestradeAPIOptions) => {
   const credentials = emptyCredentials();
 
-  if (typeof token === 'undefined' || token === undefined) {
+  if (typeof token === 'undefined' || !token) {
     throw new Error('questrade_missing_api_key or options');
   }
   if (typeof token === 'string' && token.indexOf('/') !== -1) {
@@ -120,8 +125,7 @@ const buildCredentialsFromToken = (token: any) => {
     credentials.seedToken = token;
   }
   if (typeof token === 'object') {
-    credentials.practice =
-      token.practiceAccount === undefined ? false : !!token.practiceAccount;
+    credentials.practice = !!token.practiceAccount;
     credentials.keyDir = token.keyDir || './keys';
     credentials.apiVersion = token.apiVersion || 'v1';
     credentials.keyFile = token.keyFile || '';

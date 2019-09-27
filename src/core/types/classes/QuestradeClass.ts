@@ -68,7 +68,7 @@ export class QuestradeClass extends EE {
     this._test = false;
     this.seedToken = '';
     try {
-      if (typeof options === 'undefined' || options === undefined) {
+      if (typeof options === 'undefined' || !options) {
         throw new Error('questrade_missing_api_key or options');
       }
       if (typeof options === 'string' && options.indexOf('/') !== -1) {
@@ -80,7 +80,7 @@ export class QuestradeClass extends EE {
       if (typeof options === 'object') {
         // Set to true if using a practice account
         // (http://www.questrade.com/api/free-practice-account)
-        this._test = options.test === undefined ? false : !!options.test;
+        this._test = !!options.test;
         // Directory where the last refreshToken is stored.
         // The file name will have to be seedToken
         this._keyDir = options.keyDir || './keys';
@@ -473,7 +473,7 @@ export class QuestradeClass extends EE {
           names: idOrSymbol,
         };
       }
-      if (params === undefined) {
+      if (!params) {
         throw new Error('missing_ID_or_Symbol');
       }
       const { symbols } = await this._api<IEquitySymbols>(

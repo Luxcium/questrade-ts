@@ -29,7 +29,7 @@ export const sync = (
   let mode = opts.mode;
   const xfs = opts.fs || fs;
 
-  if (mode === undefined) {
+  if (!mode) {
     mode = _0777 & ~process.umask();
   }
   if (!made) made = null;
