@@ -2,7 +2,7 @@
 import { _getEndPoinFactory } from '.';
 import { QtApi } from '../../../libraries';
 import { ICandles } from '../../../types';
-export const _getCandles = (qtApi: Promise<QtApi>) => (startDate: string) => (
+export const _getCandles = (qtApi: QtApi) => (startDate: string) => (
   endDate: string
 ) => (interval: string = 'OneDay') => async (
   symbolID: string

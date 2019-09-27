@@ -2,6 +2,7 @@
   "extends": [
     "tslint:latest",
     "tslint-config-airbnb",
+    "tslint-plugin-prettier",
     "tslint-config-prettier"
   ],
   "linterOptions": {
@@ -10,6 +11,7 @@
   "defaultSeverity": "warning",
   "rulesDirectory": [],
   "rules": {
+    "prettier": false,
     "import-name": true,
     "max-line-length": [
       true,
@@ -20,7 +22,7 @@
         "check-regex": false
       }
     ],
-    "no-boolean-literal-compare": false,
+    "no-boolean-literal-compare": true,
     "no-console": false,
     "no-unused-expression": true,
     "object-literal-sort-keys": false,
@@ -48,6 +50,7 @@
     ]
   },
   "jsRules": {
+    "prettier": false,
     "import-name": false,
     "max-line-length": [true, 80],
     "no-console": false,

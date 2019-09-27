@@ -2,6 +2,8 @@
 import { _postEndPoinFactory } from '.';
 import { QtApi } from '../../../libraries';
 
-export const _postGetStrategiesQuotes = async (qtApi: Promise<QtApi>) => {
-  return _postEndPoinFactory<Promise<any>>('/markets/quotes/strategies')(qtApi);
+export const _postGetStrategiesQuotes = (qtApi: QtApi) => async (data: any) => {
+  return _postEndPoinFactory<Promise<any>>('/markets/quotes/strategies')(qtApi)(
+    data
+  );
 };

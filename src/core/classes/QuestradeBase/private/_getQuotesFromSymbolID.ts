@@ -3,7 +3,7 @@ import { _getEndPoinFactory } from '.';
 import { QtApi } from '../../../libraries';
 import { IQuotes } from '../../../types';
 
-export const _getQuotesFromSymbolID = (qtApi: Promise<QtApi>) => async (
+export const _getQuotesFromSymbolID = (qtApi: QtApi) => async (
   qtSymbol: number[]
 ) => {
   if (!qtSymbol.length) {

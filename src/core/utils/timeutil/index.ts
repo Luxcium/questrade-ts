@@ -1,1 +1,1 @@
-export { naive } from './naiveDate';
+export { day, naive } from './naiveDate';

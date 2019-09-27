@@ -23,3 +23,5 @@ export const naive = {
 };
 // export const naiveSecondes = naive(1);
 // export const naiveMiliSecondes = naive(1000);
+
+export const day = (days: number) => days * naive.inMiliSec.DAY;

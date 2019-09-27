@@ -1,5 +1,5 @@
-// tslint:disable: variable-name
-import { _qtApiFactory } from '../../api';
+// tslint:() =>disable:() => variable-name
+// import { _qtApiFactory } from '../../api';
 import { QtApi } from '../../libraries';
 import {
   _getAccounts,
@@ -20,15 +20,15 @@ import {
 } from './private';
 
 export class QuestradeBase {
-  public qtApi: Promise<QtApi>;
+  public qtApi: QtApi;
   public accountsApiCalls = {
-    activities: () => _getActivities(this.qtApi),
+    activities: _getActivities(this.qtApi),
     orders: _getOrders(this.qtApi),
-    executions: () => _getExecutions(this.qtApi),
-    balances: () => _getBalances(this.qtApi),
-    positions: () => _getPositions(this.qtApi),
-    listAccounts: () => _getAccounts(this.qtApi),
-    time: () => _getTime(this.qtApi),
+    executions: _getExecutions(this.qtApi),
+    balances: _getBalances(this.qtApi),
+    positions: _getPositions(this.qtApi),
+    listAccounts: _getAccounts(this.qtApi),
+    time: _getTime(this.qtApi),
   };
   public quotes = {
     strategies: _postGetStrategiesQuotes(this.qtApi),
@@ -46,7 +46,8 @@ export class QuestradeBase {
     quotes: this.quotes,
     symbols: this.symbols,
   };
-  constructor(options: any) {
-    this.qtApi = _qtApiFactory(options);
+  constructor(qtApi: QtApi) {
+    this.qtApi = qtApi; // _qtApiFactory(str);
+    // console.log('this.qtApi', this.qtApi);
   }
 }

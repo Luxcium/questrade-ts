@@ -4,7 +4,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
 import { OrderStateFilterType } from 'questrade-api-enumerations';
 import {
-  AcountNumber,
+  AcountNumberString,
   HistoricalDataGranularity,
   IAccount,
   IAccountActivity,
@@ -50,7 +50,7 @@ export class QuestradeClass extends EE {
   }
   public seedToken: string;
   private _accessToken: string;
-  private _accountNumber: AcountNumber;
+  private _accountNumber: AcountNumberString;
   private _apiServer: string;
   private _apiUrl: string;
   private _apiVersion: string;
@@ -364,7 +364,7 @@ export class QuestradeClass extends EE {
   }
   public async getPrimaryAccountNumber(
     reset: boolean = false
-  ): Promise<AcountNumber> {
+  ): Promise<AcountNumberString> {
     if (!reset && this._accountNumber.toString().length === 8) {
       return this._accountNumber;
     }

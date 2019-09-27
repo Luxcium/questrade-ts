@@ -2,6 +2,8 @@
 import { _getEndPoinFactory } from '.';
 import { QtApi } from '../../../libraries';
 
-export const _getSymbolFromSymbolID = async (qtApi: Promise<QtApi>) => {
-  return _getEndPoinFactory<Promise<any>>('/symbols')(qtApi);
+export const _getSymbolFromSymbolID = (qtApi: QtApi) => async (
+  symbolID: any
+) => {
+  return _getEndPoinFactory<Promise<any>>(`/symbols/${symbolID}`)(qtApi);
 };

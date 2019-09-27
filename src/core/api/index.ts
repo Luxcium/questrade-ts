@@ -1,3 +1,4 @@
+export { _getAccounts } from '../classes/QuestradeBase/private/_getAccounts';
 export {
   _accountEndPoinFactory,
   _genericEndPoint,

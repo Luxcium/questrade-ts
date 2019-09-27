@@ -1,12 +1,15 @@
+import { AxiosResponse, default as axios } from 'axios';
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import { AxiosClient, Credentials, defaultCredentials } from '../../libraries';
-import { ICreds } from '../../types';
+import {
+  /* AxiosClient, */ Credentials,
+  defaultCredentials,
+} from '../../libraries';
+// import { ICreds } from '../../types';
 import { sync } from '../../utils/mkdirp';
-import { _axiosClient } from './';
 
 export const _oAuthLogic = async (options: any): Promise<Credentials> => {
-  const axiosClient: AxiosClient<ICreds> = _axiosClient;
+  // const axiosClient: AxiosClient<ICreds> = _axiosClient;
   const credentials: Credentials = defaultCredentials;
   credentials.accountNumber = '';
   credentials.apiVersion = 'v1';
@@ -65,13 +68,39 @@ export const _oAuthLogic = async (options: any): Promise<Credentials> => {
     });
   }
   try {
-    const { data: refreshCreds } = await axiosClient({
+    // %% %% %%
+    const axiosConfig: any = {
       url: `${credentials.authUrl}/oauth2/token`,
       params: {
         grant_type: 'refresh_token',
         refresh_token: refreshToken,
       },
-    });
+    };
+
+    // const returnedData: AxiosResponse<any> = ; //_axiosClient<any>(
+    // );
+
+    let response: AxiosResponse<any>;
+    try {
+      try {
+        response = await axios(axiosConfig);
+      } catch (error) {
+        console.error(error.message);
+        throw new Error(error.message);
+      }
+
+      /// validating response.data is not NaN, "", '', 0, false, null or undefined
+      if (!response.data) {
+        throw new Error('Invalid data back from axios client');
+      } else {
+        // return response as AxiosResponse<any>;
+      }
+    } catch (error) {
+      /// error handling must be taken care of when calling axioClient Function
+      throw error;
+    }
+
+    const { data: refreshCreds } = response;
     credentials.accessToken = refreshCreds.access_token;
     credentials.apiServer = refreshCreds.api_server;
     credentials.expiresIn = refreshCreds.expires_in;
@@ -84,3 +113,9 @@ export const _oAuthLogic = async (options: any): Promise<Credentials> => {
   }
   return credentials;
 };
+
+/*
+
+
+
+*/

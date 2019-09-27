@@ -10,9 +10,16 @@ export const _axiosApi = (crendentials: Credentials) => <P>(
   let data: T;
   try {
     let response: AxiosResponse<T>;
-    response = await axios(
-      _generateHeader(endpoint, crendentials, VERB, postData)
-    );
+
+    try {
+      response = await axios(
+        _generateHeader(endpoint, crendentials, VERB, postData)
+      );
+    } catch (e) {
+      console.log(e.message);
+      throw new Error(e.message);
+    }
+
     if (!response.data) {
       throw new Error();
     }
@@ -22,6 +29,3 @@ export const _axiosApi = (crendentials: Credentials) => <P>(
   }
   return data;
 };
-
-// export const axiosGET = () => axiosApi('GET');
-// export const axiosPOST = (postData: any) => axiosApi('POST', postData);
