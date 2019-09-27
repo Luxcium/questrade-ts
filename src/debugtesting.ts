@@ -1,6 +1,6 @@
 // tslint:disable: ordered-imports
-import { _credentialsFactory, _getActivities } from '.';
-import { day } from '../core/utils/timeutil/';
+import { day } from './core/utils/timeutil/';
+import { _credentialsFactory, _getActivities } from './custom';
 export const log = console.log;
 const myRefreshToken = 'qd0AJcnxOGOKpXzvqzIbzKwgHy3Rm3XJ0';
 

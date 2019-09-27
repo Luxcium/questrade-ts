@@ -17,7 +17,7 @@ import {
   _getTime,
   _postGetOptionsQuotes,
   _postGetStrategiesQuotes,
-} from './private';
+} from './private_old';
 
 export class QuestradeBase {
   public qtApi: QtApi;

@@ -1,4 +1,4 @@
-import { ApiPost } from '../../libraries';
+import { ApiPost } from '../../../libraries';
 
 export const _genericPostEndPoint = (post: ApiPost) => <T, P = any>(
   endpoint: string

@@ -7,8 +7,8 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "build": "yarn run build:yarn",
-    "build:yarn": "yarn run test:yarn && yarn run out:clean && yarn run quick:yarn",
-    "build:npm": "npm run test:npm && npm run out:clean && npm run quick:npm",
+    "build:yarn": "yarn run out:clean && yarn run quick:yarn",
+    "build:npm": "npm run out:clean && npm run quick:npm",
     "quick": "yarn run quick:yarn",
     "quick:yarn": "yarn run test:yarn && yarn run rebuild:yarn",
     "quick:npm": "npm run test:npm && npm run rebuild:npm",

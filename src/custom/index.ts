@@ -1,7 +1,4 @@
 export {
-  endpointFormatDate as _endpointFormatDate,
-} from '../core/utils/endpointFormatDate';
-export {
   _axiosAccountApi,
   _axiosApiGet,
   _axiosApiGetEndpointFactory,
@@ -11,9 +8,12 @@ export {
   _axiosApiPostEndpointFactoryD,
   _delayedCrednetialsFunction,
   _delayedFunctionCredentials,
-} from './_axiosApi';
+} from '../core/api/_axiosApi';
 export {
   _credentialsFactory,
   _getPrimaryAccountNumber,
-} from './_credentialsFactory';
-export { _getActivities } from './_getActivities';
+} from '../core/api/_credentialsFactory';
+export { _getActivities } from '../core/classes/QuestradeBase/_getActivities';
+export {
+  endpointFormatDate as _endpointFormatDate,
+} from '../core/utils/endpointFormatDate';

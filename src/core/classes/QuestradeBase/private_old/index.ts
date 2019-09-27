@@ -4,7 +4,7 @@ export {
   _genericPostEndPoint,
   _getEndPoinFactory,
   _postEndPoinFactory,
-} from '../../../api';
+} from '../../../api/deprecated';
 export { QuestradeBase } from '../QuestradeBase';
 export { _accounts } from './_accounts';
 export { _balances } from './_balances';

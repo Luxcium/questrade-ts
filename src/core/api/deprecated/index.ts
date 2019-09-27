@@ -1,4 +1,6 @@
-export { _getAccounts } from '../classes/QuestradeBase/private/_getAccounts';
+export {
+  _getAccounts,
+} from '../../classes/QuestradeBase/private_old/_getAccounts';
 export {
   _accountEndPoinFactory,
   _genericEndPoint,

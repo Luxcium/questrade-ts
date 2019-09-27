@@ -1,6 +1,6 @@
 import { _apiAccountGet, _oAuth, _rawApiGet, _rawApiPost } from '.';
-import { Credentials, QtApi } from '../libraries';
-import { AcountNumberString, IAccounts } from '../types';
+import { Credentials, QtApi } from '../../libraries';
+import { AcountNumberString, IAccounts } from '../../types';
 import { _genericEndPoint } from './endPoinFactory';
 
 export const _qtApiFactory = async (options: any): Promise<QtApi> => {

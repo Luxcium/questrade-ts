@@ -1,5 +1,5 @@
 import { _genericEndPoint } from '..';
-import { QtApi } from '../../libraries';
+import { QtApi } from '../../../libraries';
 
 export const _accountEndPoinFactory = <T>(endpoint: string) => async (
   qtApi: QtApi

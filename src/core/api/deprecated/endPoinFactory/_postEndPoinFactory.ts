@@ -1,5 +1,5 @@
 import { _genericPostEndPoint } from '.';
-import { QtApi } from '../../libraries';
+import { QtApi } from '../../../libraries';
 
 export const _postEndPoinFactory = <T, D = any>(endpoint: string) => (
   qtApi: QtApi
