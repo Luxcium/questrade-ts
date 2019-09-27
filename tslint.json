@@ -2,6 +2,7 @@
   "extends": [
     "tslint:latest",
     "tslint-config-airbnb",
+    "tslint-config-security",
     "tslint-plugin-prettier",
     "tslint-config-prettier"
   ],

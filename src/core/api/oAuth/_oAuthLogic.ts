@@ -24,7 +24,7 @@ export const _oAuthLogic = async (options: any): Promise<Credentials> => {
   credentials.apiUrl = '';
   credentials.apiServer = '';
 
-  if (typeof options === 'undefined' || options === undefined) {
+  if (typeof options === 'undefined' || !options) {
     throw new Error('questrade_missing_api_key or options');
   }
   if (typeof options === 'string' && options.indexOf('/') !== -1) {
@@ -34,8 +34,7 @@ export const _oAuthLogic = async (options: any): Promise<Credentials> => {
     credentials.seedToken = options;
   }
   if (typeof options === 'object') {
-    credentials.practice =
-      options.practiceAccount === undefined ? false : !!options.practiceAccount;
+    credentials.practice = !!options.practiceAccount;
     credentials.keyDir = options.keyDir || './keys';
     credentials.apiVersion = options.apiVersion || 'v1';
     credentials.keyFile = options.keyFile || '';
