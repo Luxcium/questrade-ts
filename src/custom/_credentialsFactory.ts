@@ -3,12 +3,14 @@ import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
 import { _axiosApiGet } from '.';
 import { Credentials, defaultCredentials, ITime } from '../core/libraries';
+
 import {
   AcountNumberString,
   IAccount,
   IAccounts,
   QuestradeAPIOptions,
 } from '../core/types';
+
 import { sync } from '../core/utils/mkdirp';
 
 const _getServerTime = (credentials: Credentials) => async () =>
@@ -112,6 +114,7 @@ const validateToken = (options: any) => {
   return { refreshToken, credentials };
 };
 
+
 const buildCredentialsFromToken = (token: QuestradeAPIOptions) => {
   const credentials = emptyCredentials();
 
@@ -125,6 +128,7 @@ const buildCredentialsFromToken = (token: QuestradeAPIOptions) => {
     credentials.seedToken = token;
   }
   if (typeof token === 'object') {
+
     credentials.practice = !!token.practiceAccount;
     credentials.keyDir = token.keyDir || './keys';
     credentials.apiVersion = token.apiVersion || 'v1';
