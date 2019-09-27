@@ -1,28 +1,11 @@
 // tslint:disable: ordered-imports
-import {
-  endpointFormatDate,
-  log,
-  _axiosAccountApi,
-  _credentialsFactory,
-} from '.';
-import { Credentials } from '../core/libraries';
-// !! ==================================================
-
+import { _credentialsFactory, _getActivities } from '.';
+import { day } from '../core/utils/timeutil/';
+export const log = console.log;
 const myRefreshToken = 'qd0AJcnxOGOKpXzvqzIbzKwgHy3Rm3XJ0';
 
-export const _getActivities = (credentials: Credentials) => (
-  startTime: string
-) => (endTime: string) => {
-  const dateTime = endpointFormatDate(startTime, endTime);
-  const endpoint = `/activities?${dateTime}`;
-
-  return _axiosAccountApi(credentials)(endpoint);
-};
-
 (async () => {
-  const startTime = new Date(
-    Date.now() - 10 * 24 * 60 * 60 * 1000
-  ).toISOString();
+  const startTime = new Date(Date.now() - day(30)).toISOString();
   const endTime = new Date(Date.now()).toISOString();
 
   const cred = await _credentialsFactory(myRefreshToken);

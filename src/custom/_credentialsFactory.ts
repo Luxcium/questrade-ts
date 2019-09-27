@@ -1,12 +1,49 @@
 import { AxiosResponse, default as axios } from 'axios';
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import { Credentials, defaultCredentials } from '../../core/libraries';
-import { sync } from '../../core/utils/mkdirp';
+import { _axiosApiGet } from '.';
+import { Credentials, defaultCredentials, ITime } from '../core/libraries';
+import { AcountNumber, IAccount, IAccounts } from '../core/types';
+import { sync } from '../core/utils/mkdirp';
 
-export const _oAuthCredentials = async (
-  token: string
-): Promise<Credentials> => {
+const _getServerTime = (credentials: Credentials) => async () =>
+  _axiosApiGet(credentials)<Promise<ITime>>('/time');
+
+const _getAccounts = (credentials: Credentials) => async () =>
+  _axiosApiGet(credentials)<Promise<IAccounts>>('/accounts');
+
+export const _credentialsFactory = async (token: string) => {
+  const credentials = await _oAuthCredentials(token);
+
+  try {
+    const allAccounts = _getAccounts(credentials);
+    const serverTimeNow = _getServerTime(credentials);
+
+    const { accounts } = await allAccounts(); // _rawApiGet(credentials)<Promise<IAccounts>>(
+    const { time } = await serverTimeNow();
+
+    const timZoneOffset = new Date(time).getTimezoneOffset();
+    const timZone = -1 * 60 * 1000 * timZoneOffset;
+    const serverTime = new Date(time).getTime();
+    const expireAt = serverTime + credentials.expiresIn * 1000;
+
+    credentials.expiresAt = new Date(expireAt).toLocaleTimeString();
+    credentials.tokenExpiration = new Date(timZone + expireAt);
+    credentials.expiresAtRaw = expireAt;
+    credentials.serverTime = new Date(timZone + serverTime);
+    credentials.serverTimeRaw = serverTime;
+
+    credentials.accountNumber = _getPrimaryAccountNumber(accounts);
+
+    console.info('Questrade Server Time:', time, '\nStatus: ready\n');
+  } catch (error) {
+    console.log(error.message);
+    throw new Error('_oAuth Error getting credentials');
+  }
+  return credentials;
+};
+
+const _oAuthCredentials = async (token: string): Promise<Credentials> => {
   const { refreshToken, credentials } = validateToken(token);
   const axiosConfig = {
     url: `${credentials.authUrl}/oauth2/token`,
@@ -111,4 +148,23 @@ const emptyCredentials = () => {
   credentials.apiUrl = '';
   credentials.apiServer = '';
   return credentials;
+};
+
+export const _getPrimaryAccountNumber = (
+  accounts: IAccount[]
+): AcountNumber => {
+  if (accounts.length < 1) {
+    throw new Error('No account number found');
+  }
+
+  if (accounts.length === 1) {
+    return accounts[0].number;
+  }
+
+  const primary = accounts.filter((account: any) => account.isPrimary);
+  if (primary.length > 0) {
+    return primary[0].number;
+  }
+
+  return accounts[0].number;
 };

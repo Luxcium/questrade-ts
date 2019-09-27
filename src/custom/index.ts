@@ -1,11 +1,19 @@
-export { _apiGetErrorLogin } from './apiGetter/_apiGetErrorLogin';
-export { _axiosAccountApi } from './apiGetter/_axiosAccountApi';
-export { _axiosApi } from './apiGetter/_axiosApi';
-export { _credentialsFactory } from './credentials/_credentialsFactory';
 export {
-  _getPrimaryAccountNumber as getPrimaryAccountNumber,
-} from './credentials/_getPrimaryAccountNumber';
-export { _oAuthCredentials } from './credentials/_oAuthCredentials';
-export { endpointFormatDate } from './endpointFormat/endpointFormatDate';
-
-export const log = console.log;
+  endpointFormatDate as _endpointFormatDate,
+} from '../core/utils/endpointFormatDate';
+export {
+  _axiosAccountApi,
+  _axiosApiGet,
+  _axiosApiGetEndpointFactory,
+  _axiosApiGetEndpointFactoryD,
+  _axiosApiPost,
+  _axiosApiPostEndpointFactory,
+  _axiosApiPostEndpointFactoryD,
+  _delayedCrednetialsFunction,
+  _delayedFunctionCredentials,
+} from './_axiosApi';
+export {
+  _credentialsFactory,
+  _getPrimaryAccountNumber,
+} from './_credentialsFactory';
+export { _getActivities } from './_getActivities';
