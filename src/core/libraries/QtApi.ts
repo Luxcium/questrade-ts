@@ -1,4 +1,4 @@
-import { AcountNumber } from '../types';
+import { AcountNumberString } from '../types';
 import { ApiAccountGet, ApiGet } from './';
 import { ApiPost } from './ApiPost';
 import { Credentials } from './Credentials';
@@ -9,5 +9,5 @@ export interface QtApi {
   accountGet: ApiAccountGet;
   credentials: Credentials;
   accountNumber: string;
-  getPrimaryAccountNumber: () => Promise<AcountNumber>;
+  getPrimaryAccountNumber: () => Promise<AcountNumberString>;
 }

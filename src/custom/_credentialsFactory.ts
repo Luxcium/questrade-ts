@@ -3,7 +3,7 @@ import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
 import { _axiosApiGet } from '.';
 import { Credentials, defaultCredentials, ITime } from '../core/libraries';
-import { AcountNumber, IAccount, IAccounts } from '../core/types';
+import { AcountNumberString, IAccount, IAccounts } from '../core/types';
 import { sync } from '../core/utils/mkdirp';
 
 const _getServerTime = (credentials: Credentials) => async () =>
@@ -12,6 +12,8 @@ const _getServerTime = (credentials: Credentials) => async () =>
 const _getAccounts = (credentials: Credentials) => async () =>
   _axiosApiGet(credentials)<Promise<IAccounts>>('/accounts');
 
+// # _credentialsFactory
+/** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 export const _credentialsFactory = async (token: string) => {
   const credentials = await _oAuthCredentials(token);
 
@@ -150,9 +152,10 @@ const emptyCredentials = () => {
   return credentials;
 };
 
+/** PROVIDE: IAccount[] THEN GET:  a 'primaryAccountNumber string'  */
 export const _getPrimaryAccountNumber = (
   accounts: IAccount[]
-): AcountNumber => {
+): AcountNumberString => {
   if (accounts.length < 1) {
     throw new Error('No account number found');
   }

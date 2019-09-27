@@ -1,6 +1,6 @@
 import { _apiAccountGet, _oAuth, _rawApiGet, _rawApiPost } from '.';
 import { Credentials, QtApi } from '../libraries';
-import { AcountNumber, IAccounts } from '../types';
+import { AcountNumberString, IAccounts } from '../types';
 import { _genericEndPoint } from './endPoinFactory';
 
 export const _qtApiFactory = async (options: any): Promise<QtApi> => {
@@ -32,7 +32,7 @@ export const _qtApiFactory = async (options: any): Promise<QtApi> => {
       `/accounts/${credentials.accountNumber}${endpoint}`
     );
 
-  const getPrimaryAccountNumber = async (): Promise<AcountNumber> => {
+  const getPrimaryAccountNumber = async (): Promise<AcountNumberString> => {
     const { accounts } = await _genericEndPoint<IAccounts>(get)('/accounts');
 
     if (accounts.length < 1) {

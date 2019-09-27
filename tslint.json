@@ -11,7 +11,7 @@
   "defaultSeverity": "warning",
   "rulesDirectory": [],
   "rules": {
-    "prettier": true,
+    "prettier": false,
     "import-name": true,
     "max-line-length": [
       true,
@@ -50,7 +50,7 @@
     ]
   },
   "jsRules": {
-    "prettier": true,
+    "prettier": false,
     "import-name": false,
     "max-line-length": [true, 80],
     "no-console": false,

@@ -23,7 +23,7 @@ export {
 export { ICreds } from '../libraries';
 export { Time } from '../libraries/Time';
 export { QuestradeClass } from './classes/QuestradeClass';
-export { AcountNumber, IAccount, IAccounts } from './IAccounts';
+export { AcountNumberString, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
 export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';
 export { ICandle, ICandles } from './ICandles';
