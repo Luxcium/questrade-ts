@@ -60,14 +60,9 @@ const _apiGetErrorLogin = (apiError: any) => {
 
 // # _axiosApiGet !!!
 /** PROVIDE: credentials and endpoint string with R return type, THEN GET: a Promise<R> */
-export const _axiosApiGet = (credentials: Credentials) =>
-  _axiosApi(credentials)()();
-
-// # _axiosApiPost !!!
-/** PROVIDE: credentials, postData with D data type and endpoint string with R return type, THEN GET: a Promise<R> */
-export const _axiosApiPost = (credentials: Credentials) => <D = any>(
-  postData: D
-) => _axiosApi(credentials)('POST')<D>(postData);
+export const _axiosApiGet = (credentials: Credentials) => <R = any>(
+  endpoint: string
+) => async () => _axiosApi(credentials)()()<R>(endpoint);
 
 // # _axiosAccountApi
 /** PROVIDE: credentials and accountEndpoint string with R return type, THEN GET: a Promise<R> */
@@ -76,7 +71,13 @@ export const _axiosAccountApi = (credentials: Credentials) => <R = any>(
 ) => async () =>
   _axiosApiGet(credentials)<R>(
     endpointFormatAccount(credentials)(accountEndpoint)
-  );
+  )();
+
+// # _axiosApiPost !!!
+/** PROVIDE: credentials, postData with D data type and endpoint string with R return type, THEN GET: a Promise<R> */
+export const _axiosApiPost = (credentials: Credentials) => <D = any>(
+  postData: D
+) => _axiosApi(credentials)('POST')<D>(postData);
 
 // % endpointFormatAccount
 /** PROVIDE: credentials and accountEndpoint string, THEN GET: a endpoint string */
@@ -115,12 +116,13 @@ export const _delayedFunctionCredentials = <R = any>(
 
 // # _axiosApiGetEndpointFactoryD
 /** PROVIDE: endpoint string with R return type and credentials THEN GET: a '() => Promise<R>' */
+// todo: verify this seem to be wrong ...
 export const _axiosApiGetEndpointFactoryD = <R = any>(endpoint: string) => (
   credentials: Credentials
 ) =>
-  _delayedFunctionCredentials(_axiosApiGetEndpointFactory<R>(endpoint))(
-    credentials
-  );
+  _delayedFunctionCredentials(
+    _axiosApiGetEndpointFactory<R>(endpoint)(credentials)
+  )(credentials);
 
 // # _axiosApiPostEndpointFactoryD
 /** PROVIDE: endpoint string with R return type, postData with D data type and credentials THEN GET: a '() => Promise<R>' */
