@@ -38,3 +38,7 @@ export interface IOptionsQuote {
   isHalted: boolean; // Whether or not the symbol was halted
   VWAP: number; // Volume Weighted Average Price
 }
+
+export interface IOptionChains {
+  optionChain: any[];
+}
