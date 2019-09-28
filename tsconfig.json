@@ -16,14 +16,22 @@
     /* ALWAYS TRUE STRICT TYPE-CHECKING, ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
     /* Basic Options */
     "target": "es5",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "noLib": false,
     "rootDir": "./src",
     "outDir": "./build/src",
     "newLine": "LF",
     "module": "commonjs",
-    "typeRoots": ["node_modules/.registry.npmjs.org/@types/**/*", "node_modules/@types/**/*"],
-    "types": ["node"],
+    "typeRoots": [
+      "node_modules/.registry.npmjs.org/@types/**/*",
+      "node_modules/@types/**/*"
+    ],
+    "types": [
+      "node"
+    ],
     /* Compilation Options */
     "noEmit": true,
     "importHelpers": true,
@@ -52,7 +60,11 @@
     "listEmittedFiles": false,
     "traceResolution": false
   },
-  "include": ["./src/**/*", "src/debug.ts", "src/core/classes/private/questrade/.ts"],
+  "include": [
+    "./src/**/*",
+    "src/debug.ts",
+    "src/core/private/questrade/.ts"
+  ],
   "exclude": [
     "node_modules",
     "build",
@@ -68,7 +80,11 @@
       "configFile": "./tslint.json",
       "suppressWhileTypeErrorsPresent": false,
       "mockTypeScriptVersion": false,
-      "exclude": ["build", "node_modules", "imports"]
+      "exclude": [
+        "build",
+        "node_modules",
+        "imports"
+      ]
     }
   ]
 }

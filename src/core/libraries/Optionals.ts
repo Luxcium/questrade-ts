@@ -3,7 +3,7 @@ import {
   OptionType,
   OrderStateFilterType,
 } from 'questrade-api-enumerations';
-import { DateTime } from '.';
+import { DateTime } from '../libraries';
 
 // - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
 // - Licensed under the MIT License.

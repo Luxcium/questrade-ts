@@ -6,7 +6,7 @@ import {
   OrderType,
   StrategyTypes,
 } from 'questrade-api-enumerations';
-import { DateTime, idType } from '.';
+import { DateTime, idType } from '../libraries';
 
 export interface IOrders {
   orders: IOrder[];
