@@ -1,4 +1,4 @@
-import { _axiosApiPost } from '../../../../custom';
+import { _axiosApiPost } from '../../../api/_axiosApi';
 import { Credentials } from '../../../libraries';
 import { OptionType } from '../../../types';
 

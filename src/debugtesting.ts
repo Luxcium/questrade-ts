@@ -1,8 +1,8 @@
 // tslint:disable: ordered-imports
+import { _credentialsFactory } from './core/api/_credentialsFactory';
 import { apiFunctions } from './core/classes/QuestradeBase/private/getDataFromApi';
 import { id0 } from './core/libraries';
 import { day } from './core/utils/timeutil/';
-import { _credentialsFactory } from './custom';
 export const log = console.log;
 const myRefreshToken = 'qd0AJcnxOGOKpXzvqzIbzKwgHy3Rm3XJ0';
 

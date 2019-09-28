@@ -1,7 +1,6 @@
 import { AxiosResponse, default as axios } from 'axios';
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import { _axiosApiGet } from '../../custom';
 import { Credentials, defaultCredentials, ITime } from '../libraries';
 import {
   AcountNumberString,
@@ -10,6 +9,7 @@ import {
   QuestradeAPIOptions,
 } from '../types';
 import { sync } from '../utils/mkdirp';
+import { _axiosApiGet } from './_axiosApi';
 
 const _getServerTime = (credentials: Credentials) => async () =>
   _axiosApiGet(credentials)<Promise<ITime>>('/time')();
