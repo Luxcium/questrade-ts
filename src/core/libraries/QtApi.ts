@@ -1,4 +1,4 @@
-import { AcountNumberString } from '../types';
+import { AcountNumberString } from '../libraries';
 import { ApiAccountGet, ApiGet } from './';
 import { ApiPost } from './ApiPost';
 import { Credentials } from './Credentials';

@@ -1,13 +1,15 @@
 import { AxiosResponse, default as axios } from 'axios';
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import { Credentials, defaultCredentials, ITime } from '../libraries';
 import {
   AcountNumberString,
+  Credentials,
+  defaultCredentials,
   IAccount,
   IAccounts,
+  ITime,
   QuestradeAPIOptions,
-} from '../types';
+} from '../libraries';
 import { sync } from '../utils/mkdirp';
 import { _axiosApiGet } from './_axiosApi';
 
