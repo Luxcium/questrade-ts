@@ -1,7 +1,7 @@
 import { _oAuthLogic } from '.';
 import { _rawApiGet } from '../';
-import { ITime } from '../../libraries';
-import { QuestradeAPIOptions } from '../../types';
+import { ITime } from '../../../libraries';
+import { QuestradeAPIOptions } from '../../../types';
 
 export const _oAuth = async (options: QuestradeAPIOptions) => {
   const credentials = await _oAuthLogic(options);

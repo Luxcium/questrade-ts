@@ -20,8 +20,9 @@ export const _getOrders = (qtApi: QtApi) => (startDate: string) => (
       startDate
     ).toISOString()}&endTime=${new Date(endDate).toISOString()}`;
   }
-  console.log('2qtApi', qtApi);
   return _accountEndPoinFactory<Promise<IOrders>>(
-    `/orders?${stateFilter}&${requstRange}`
+    apiEndpointStringHelper(`/orders?${stateFilter}&${requstRange}`)
   )(qtApi);
 };
+
+const apiEndpointStringHelper = (obj: any): string => `${obj}`;

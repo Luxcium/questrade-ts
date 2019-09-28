@@ -4,13 +4,22 @@ export interface ICandles {
   candles: ICandle[];
 }
 export interface ICandle {
+  /** Candlestick start timestamp (in ISO format). */
   start?: DateTime;
-  end?: DateTime; // Candlestick end timestamp (in ISO format).
-  open?: number; // Opening price.
-  high?: number; // High price.
-  low?: number; // Low price.
-  close?: number; // Closing price.
-  volume?: number; // Trading volume.
+  /** Candlestick end timestamp (in ISO format). */
+  end?: DateTime;
+  /** Opening price. */
+  open?: number;
+  /** High price. */
+  high?: number;
+  /** Low price. */
+  low?: number;
+  /** Closing price. */
+  close?: number;
+  /** Trading volume. */
+  volume?: number;
+  /** The volume weighted average price (VWAP) */
+  VWAP?: number;
 }
 /*
 

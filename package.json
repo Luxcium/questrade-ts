@@ -7,8 +7,8 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "build": "yarn run build:yarn",
-    "build:yarn": "yarn run test:yarn && yarn run out:clean && yarn run quick:yarn",
-    "build:npm": "npm run test:npm && npm run out:clean && npm run quick:npm",
+    "build:yarn": "yarn run out:clean && yarn run quick:yarn",
+    "build:npm": "npm run out:clean && npm run quick:npm",
     "quick": "yarn run quick:yarn",
     "quick:yarn": "yarn run test:yarn && yarn run rebuild:yarn",
     "quick:npm": "npm run test:npm && npm run rebuild:npm",
@@ -57,6 +57,7 @@
   "homepage": "https://github.com/luxcium/questrade-ts",
   "dependencies": {
     "axios": "0.19.0",
+    "http-status-codes": "^1.3.2",
     "pnpm": "^3.8.1",
     "questrade-api-enumerations": "^1.1.3",
     "tslib": "^1.10.0"
@@ -80,9 +81,7 @@
     "tslint": "^5.18.0",
     "tslint-config-airbnb": "5.11.1",
     "tslint-config-prettier": "^1.18.0",
-
     "tslint-config-security": "^1.16.0",
-
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "3.5.3",
     "typescript-tslint-plugin": "0.5.4"

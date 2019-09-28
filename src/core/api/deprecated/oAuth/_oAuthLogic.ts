@@ -4,9 +4,9 @@ import { dirname } from 'path';
 import {
   /* AxiosClient, */ Credentials,
   defaultCredentials,
-} from '../../libraries';
+} from '../../../libraries';
 // import { ICreds } from '../../types';
-import { sync } from '../../utils/mkdirp';
+import { sync } from '../../../utils/mkdirp';
 
 export const _oAuthLogic = async (options: any): Promise<Credentials> => {
   // const axiosClient: AxiosClient<ICreds> = _axiosClient;
