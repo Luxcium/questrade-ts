@@ -22,7 +22,6 @@ export {
 } from 'questrade-api-enumerations';
 export { ICreds } from '../libraries';
 export { Time } from '../libraries/Time';
-export { QuestradeClass } from './classes/QuestradeClass';
 export { AcountNumberString, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
 export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';

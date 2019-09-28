@@ -1,8 +1,8 @@
 import {
   _axiosAccountApi as _axiosAccountGetApi,
   _axiosApiGet as _axiosGetApi,
-} from '../../../api/_axiosApi';
-import { Credentials } from '../../../libraries';
+} from '../../api/_axiosApi';
+import { Credentials } from '../../libraries';
 import {
   IActivities,
   IBalances,
@@ -16,9 +16,9 @@ import {
   ISymbol,
   ISymbols,
   Time,
-} from '../../../types';
-import { IOptionChains } from '../../../types/IOptionsQuotes';
-import { endpointFormatDateTool } from '../../../utils/timeutil';
+} from '../../types';
+import { IOptionChains } from '../../types/IOptionsQuotes';
+import { endpointFormatDateTool } from '../../utils/timeutil';
 import { _OptionsQuotes } from './_optionsQuotes';
 // import { endpointFormatDateTool as _endpointFormatDate } from '../../../utils/endpointFormatDate';
 

@@ -1,6 +1,6 @@
 // tslint:disable: ordered-imports
 import { _credentialsFactory } from './core/api/_credentialsFactory';
-import { apiFunctions } from './core/classes/QuestradeBase/private/getDataFromApi';
+import { apiFunctions } from './core/classes/private/_getDataFromApi';
 import { id0 } from './core/libraries';
 import { day } from './core/utils/timeutil/';
 export const log = console.log;
