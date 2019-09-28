@@ -6,8 +6,8 @@ export {
   _postEndPoinFactory,
 } from '../../../api/deprecated';
 export { QuestradeBase } from './QuestradeBase';
-export { _accounts } from './_accounts';
-export { _balances } from './_balances';
+// export { _accounts } from './_accounts';
+// export { _balances } from './_balances';
 export { _getAccounts } from './_getAccounts';
 export { _getActivities } from './_getActivities';
 export { _getBalances } from './_getBalances';
