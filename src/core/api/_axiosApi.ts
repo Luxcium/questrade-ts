@@ -1,6 +1,6 @@
 import { AxiosResponse, default as axios } from 'axios';
+import { default as httpStatus } from 'http-status-codes';
 import { Credentials } from '../libraries';
-
 // % _axiosApi !!!
 /** PROVIDE: credentials, VERB string, postData with D data type (or null) and endpoint string with R return type, THEN GET: a Promise<R> */
 const _axiosApi = (credentials: Credentials) => (VERB: string = 'GET') => <
@@ -30,6 +30,7 @@ const _axiosApi = (credentials: Credentials) => (VERB: string = 'GET') => <
     }
 
     if (!response.data) {
+      console.error('response data null or undefined');
       throw new Error();
     }
     data = response.data;
@@ -41,20 +42,24 @@ const _axiosApi = (credentials: Credentials) => (VERB: string = 'GET') => <
 
 // % _apiGetErrorLogin
 /** PROVIDE: apiError THEN GET: apiError back WILL: console.error the problems */
-const _apiGetErrorLogin = (apiError: any) => {
-  try {
-    console.error(
-      '\nAPI error in call to api:\n',
-      `\n${apiError.message}`,
-      `\nError code: ${apiError.response.data.code}`,
-      `\n${apiError.response.data.message}`
-    );
-  } catch (dataError) {
-    console.error(
-      '\nAPI error in the response from the api:',
-      `\n${dataError.message}`
-    );
-  }
+const _apiGetErrorLogin = (apiError: any /* , data?: any */) => {
+  // try {
+  console.error(
+    '\nAPI error in call to api:\n',
+    `\n${apiError.message}`
+    // `\nError code: ${apiError.response.}`,
+    // `\n${apiError.response.data.message}`
+  );
+  // } catch (dataError) {
+  console.error(
+    '\nAPI error in the response from the api:',
+    `\n${httpStatus
+      .getStatusText(
+        Number.parseInt((apiError.message as string).slice(-3), 10)
+      )
+      .toUpperCase()}`
+  );
+  // }
   return apiError;
 };
 

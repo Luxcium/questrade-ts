@@ -12,10 +12,10 @@ import {
 import { sync } from '../utils/mkdirp';
 
 const _getServerTime = (credentials: Credentials) => async () =>
-  _axiosApiGet(credentials)<Promise<ITime>>('/time');
+  _axiosApiGet(credentials)<Promise<ITime>>('/time')();
 
 const _getAccounts = (credentials: Credentials) => async () =>
-  _axiosApiGet(credentials)<Promise<IAccounts>>('/accounts');
+  _axiosApiGet(credentials)<Promise<IAccounts>>('/accounts')();
 
 // # _credentialsFactory
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */

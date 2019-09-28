@@ -1,3 +1,5 @@
+import { day } from '.';
+
 export function timeUtil() {
   //
 }
@@ -20,6 +22,35 @@ export const dates = [
 const offset = 9;
 startDate = `2019-${offset}-13`;
 endDate = `2019-${offset}-14`;
+
+export const endpointFormatDateTool = (
+  startTime: string,
+  endTime: string
+): string => {
+  return `startTime=${dateToString(startTime)}&endTime=${dateToString(
+    endTime
+  )}&`;
+};
+export const dateISOStringNow = () => new Date(Date.now()).toISOString();
+export const dateNumericNow = () => new Date(Date.now()).getTime();
+
+export const dateToString = (dateTime: string | number): string =>
+  new Date(dateTime).toISOString();
+
+export const dateToNumeric = (dateTime: string): number =>
+  new Date(dateTime).getTime();
+
+export const rangeTool = (startTime?: string | null) => (
+  endTime?: string | null
+) => (numberOfDays?: number | null) => {
+  const days = !!numberOfDays ? numberOfDays : 0;
+  const endValue = !endTime ? dateNumericNow() : dateToNumeric(endTime);
+  const startValue = !startTime ? dateNumericNow() : dateToNumeric(startTime);
+
+  return [dateToString(endValue), dateToString(startValue + day(days))];
+};
+
+// endpointFormatDateTool(startTime, endTime);
 
 // import { questrade } from '../../classes/questradeBase';
 // questrade('0I55OUTM7zHQZbG9AiwA5vY3zQY6W6qt0').then(

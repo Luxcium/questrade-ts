@@ -1,4 +1,4 @@
-import { _axiosAccountApi, _endpointFormatDate } from '../../../custom';
+import { _axiosAccountApi, _endpointFormatDateTool } from '../../../custom';
 import { Credentials } from '../../libraries';
 import { IActivities } from '../../types';
 
@@ -7,7 +7,7 @@ import { IActivities } from '../../types';
 export const _getActivities = (credentials: Credentials) => (
   startTime: string
 ) => (endTime: string) => async () => {
-  const dateTime = _endpointFormatDate(startTime, endTime);
+  const dateTime = _endpointFormatDateTool(startTime, endTime);
   const endpoint = `/activities?${dateTime}`;
 
   return (await _axiosAccountApi(credentials)<IActivities>(endpoint)())

@@ -13,4 +13,4 @@ export {
   _getTime,
   _postGetOptionsQuotes,
   _postGetStrategiesQuotes,
-} from './_getAccounts';
+} from './getDataFromApi';

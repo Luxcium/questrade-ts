@@ -15,5 +15,5 @@ export {
 } from '../core/api/_credentialsFactory';
 export { _getActivities } from '../core/classes/QuestradeBase/_getActivities';
 export {
-  endpointFormatDate as _endpointFormatDate,
-} from '../core/utils/endpointFormatDate';
+  endpointFormatDateTool as _endpointFormatDateTool,
+} from '../core/utils/timeutil';
