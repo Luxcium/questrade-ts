@@ -1,16 +1,16 @@
 // - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
 // - Licensed under the MIT License.
 // - See License.txt in the project root for license information.
-
 {
   "compilerOptions": {
-    "outDir": "../../../build/enums",
+    "outDir": "../../build/enums",
     "rootDir": "../enums",
     "baseUrl": "./",
-
     /* Options */
-    "types": ["@babel/types"],
-    "declarationDir": "../../../build/enums/types",
+    "types": [
+      "@babel/types"
+    ],
+    "declarationDir": "../../build/enums/typescript",
     "declaration": true,
     "declarationMap": true,
     "inlineSourceMap": true,
@@ -22,9 +22,12 @@
     "importHelpers": true,
     "noEmitHelpers": false,
     "newLine": "LF",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "incremental": true,
-    "tsBuildInfoFile": "../../../build/enums/types/tmp/tsbuild.enums.info",
+    "tsBuildInfoFile": "../../build/tmp/tsbuild.enums.info",
     /* ALWAYS TRUE STRICT TYPE-CHECKING, ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
     /* ALWAYS TRUE */ "strict": true /*                         ALWAYS TRUE  */,
     /* ALWAYS TRUE */ "alwaysStrict": true /*                   ALWAYS TRUE  */,

@@ -4,7 +4,7 @@
   "version": "1.1.4",
   "description": "Unofficial Questrade API TypeScript Enumerations.",
   "main": "./qtEnumerations.js",
-  "types": "./types/qtEnumerations.d.ts",
+  "types": "./typescript/qtEnumerations.d.ts",
   "author": "Luxcium <luxcium@neb401.com>",
   "license": "MIT",
   "repository": {
