@@ -1,4 +1,4 @@
-import { ICandle } from '../libraries';
+import { ICandle } from '../core/libraries';
 
 export const transformCandle = (stockSymbol: string, symbolId: number) => (
   obj: ICandle

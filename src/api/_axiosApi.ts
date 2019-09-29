@@ -1,6 +1,6 @@
 import { AxiosResponse, default as axios } from 'axios';
 import { default as httpStatus } from 'http-status-codes';
-import { Credentials } from '../libraries';
+import { Credentials } from '../core/libraries';
 // % _axiosApi !!!
 /** PROVIDE: credentials, VERB string, postData with D data type (or null) and endpoint string with R return type, THEN GET: a Promise<R> */
 const _axiosApi = (credentials: Credentials) => (VERB: string = 'GET') => <

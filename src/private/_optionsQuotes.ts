@@ -1,5 +1,5 @@
 import { _axiosApiPost } from '../api/_axiosApi';
-import { Credentials, OptionType } from '../libraries';
+import { Credentials, OptionType } from '../core/libraries';
 
 export interface OptionIdFilter {
   optionType?: OptionType;
