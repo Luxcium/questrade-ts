@@ -16,6 +16,7 @@
     "rebuild:yarn": "concurrently \"yarn:out:sys\" \"yarn:out:amd\" \"yarn:out:cjs\" \"yarn:out:umd\" \"yarn:out:enu:yarn\"",
     "rebuild:npm": "concurrently \"npm:out:sys\" \"npm:out:amd\" \"npm:out:cjs\" \"npm:out:umd\" \"npm:out:enu:npm\"",
     "out:clean": "rimraf -r ./build/**/*",
+    "out:clean:post": "rimraf -r ./build/**/*",
     "out:amd": "tsc -b ./tsconfig.amd.json",
     "out:sys": "tsc -b ./tsconfig.sys.json",
     "out:cjs": "tsc -b ./tsconfig.commonjs.json",
