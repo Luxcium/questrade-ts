@@ -1,24 +1,7 @@
-import {
-  Credentials,
-  IActivities,
-  IBalances,
-  ICandle,
-  ICandles,
-  IExecutions,
-  IMarkets,
-  IOrders,
-  IPositions,
-  IQuotes,
-  ISymbol,
-  ISymbols,
-  Time,
-} from '../../libraries';
+import { Credentials, IAccounts, IActivities, IBalances, ICandle, ICandles, IExecutions, IMarkets, IOrders, IPositions, IQuotes, ISymbol, ISymbols, Time } from '../../libraries';
 import { IOptionChains } from '../../libraries/IOptionsQuotes';
 import { endpointFormatDateTool } from '../../utils/timeutil';
-import {
-  _axiosAccountApi as _axiosAccountGetApi,
-  _axiosApiGet as _axiosGetApi,
-} from './_axiosApi';
+import { _axiosAccountApi as _axiosAccountGetApi, _axiosApiGet as _axiosGetApi } from './_axiosApi';
 // import { endpointFormatDateTool as _endpointFormatDate } from '../../../utils/endpointFormatDate';
 
 export const apiFunctions = (() => {
@@ -144,8 +127,8 @@ export const apiFunctions = (() => {
 
   // + _getAccounts
   /** _getAccounts */
-  const _getAccounts = (credentials: Credentials) =>
-    _axiosGetApi(credentials)<any>('/accounts');
+  const _getAccounts = (credentials: Credentials) => async ()=>
+    (await _axiosGetApi(credentials)<IAccounts>('/accounts')()).accounts;
 
   // + _getActivities
   /** PROVIDE: credentials, startTime string and endTime string THEN GET: a 'Promise<IAccountActivity[]>' */

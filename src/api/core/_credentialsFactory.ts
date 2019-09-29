@@ -1,15 +1,7 @@
 import { AxiosResponse, default as axios } from 'axios';
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import {
-  AcountNumberString,
-  Credentials,
-  defaultCredentials,
-  IAccount,
-  IAccounts,
-  ITime,
-  QuestradeAPIOptions,
-} from '../../libraries';
+import { AcountNumberString, Credentials, IAccount, IAccounts, ITime, QuestradeAPIOptions } from '../../libraries';
 import { sync } from '../../utils/mkdirp';
 import { _axiosApiGet } from './_axiosApi';
 
@@ -176,4 +168,42 @@ export const _getPrimaryAccountNumber = (
   }
 
   return accounts[0].number;
+};
+
+
+export const defaultCredentials: Credentials = {
+  accessToken: '',
+  accountNumber: '',
+  apiServer: '',
+  apiUrl: '',
+  apiVersion: 'v1',
+  authUrl: '',
+  expiresAt: undefined,
+  tokenExpiration: undefined,
+  expiresIn: 0,
+  keyDir: './keys',
+  keyFile: '',
+  practice: false,
+  refreshToken: '',
+  seedToken: '',
+  serverTime: undefined,
+  tokenType: '',
+  toValue() {
+    return {
+      ...this,
+      accessToken: '[string:PRIVATE]',
+      keyFile: './keys/[PRIVATE]',
+      refreshToken: '[string:PRIVATE]',
+      seedToken: '[string:PRIVATE]',
+    };
+  },
+  toString() {
+    return {
+      ...this,
+      accessToken: ' [ PRIVATE ] ',
+      keyFile: './keys/[ PRIVATE ] ',
+      refreshToken: ' [ PRIVATE ] ',
+      seedToken: ' [ PRIVATE ] ',
+    };
+  },
 };
