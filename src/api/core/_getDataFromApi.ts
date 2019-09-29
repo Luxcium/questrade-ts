@@ -1,5 +1,5 @@
-import { Credentials, IAccounts, IActivities, IBalances, ICandle, ICandles, IExecutions, IMarkets, IOrders, IPositions, IQuotes, ISymbol, ISymbols, Time } from '../../libraries';
-import { IOptionChains } from '../../libraries/IOptionsQuotes';
+import { Credentials, IAccounts, IActivities, IBalances, ICandle, ICandles, IExecutions, IMarkets, IOrders, IPositions, IQuotes, ISymbol, ISymbols, Time } from '../../typescript';
+import { IOptionChains } from '../../typescript/IOptionsQuotes';
 import { endpointFormatDateTool } from '../../utils/timeutil';
 import { _axiosAccountApi as _axiosAccountGetApi, _axiosApiGet as _axiosGetApi } from './_axiosApi';
 // import { endpointFormatDateTool as _endpointFormatDate } from '../../../utils/endpointFormatDate';
