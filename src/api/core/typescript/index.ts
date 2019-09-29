@@ -10,7 +10,7 @@ export { IEquitySymbol, IEquitySymbols } from './IEquitySymbols';
 export { IExecution, IExecutions } from './IExecutions';
 export { IHeaders } from './IHeaders';
 export { IMarket, IMarkets } from './IMarkets';
-export { IOptionsQuote, IOptionsQuotes } from './IOptionsQuotes';
+export { IOptionChains, IOptionsQuote, IOptionsQuotes } from './IOptionsQuotes';
 export { IOrder, IOrders } from './IOrders';
 export { IPosition, IPositions } from './IPositions';
 export { IQuestradeAPIOptions, QuestradeAPIOptions } from './IQuestradeAPIOptions';

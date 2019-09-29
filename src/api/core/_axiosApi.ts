@@ -65,16 +65,16 @@ const _apiGetErrorLogin = (apiError: Error /* , data?: any */) => {
 
 // # _axiosApiGet !!!
 /** PROVIDE: credentials and endpoint string with R return type, THEN GET: a Promise<R> */
-export const _axiosApiGet = (credentials: Credentials) => <R >(
+export const _axiosGetApi = (credentials: Credentials) => <R >(
   endpoint: string
 ) => async () => _axiosApi(credentials)()()<R>(endpoint);
 
 // # _axiosAccountApi
 /** PROVIDE: credentials and accountEndpoint string with R return type, THEN GET: a Promise<R> */
-export const _axiosAccountApi = (credentials: Credentials) => <R >(
+export const _axiosAccountGetApi = (credentials: Credentials) => <R >(
   accountEndpoint: string
 ) => async () =>
-  _axiosApiGet(credentials)<R>(
+  _axiosGetApi(credentials)<R>(
     endpointFormatAccount(credentials)(accountEndpoint)
   )();
 
@@ -94,7 +94,7 @@ const endpointFormatAccount = (credentials: Credentials) => (
 /** PROVIDE: endpoint string with R return type and credentials THEN GET: a Promise<R> */
 export const _axiosApiGetEndpointFactory = <R >(endpoint: string) => (
   credentials: Credentials
-) => _axiosApiGet(credentials)<R>(endpoint);
+) => _axiosGetApi(credentials)<R>(endpoint);
 
 // # _axiosApiPostEndpointFactory !!!
 /** PROVIDE: endpoint string with R return type, postData with D data type and credentials THEN GET: a Promise<R> */

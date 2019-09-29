@@ -18,7 +18,7 @@
       true,
       {
         "limit": 80,
-        "ignore-pattern": "[@see import]",
+        "ignore-pattern": "[@see]",
         "check-strings": false,
         "check-regex": false
       }
