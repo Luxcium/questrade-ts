@@ -1,8 +1,4 @@
 import {
-  _axiosAccountApi as _axiosAccountGetApi,
-  _axiosApiGet as _axiosGetApi,
-} from '../api/_axiosApi';
-import {
   Credentials,
   IActivities,
   IBalances,
@@ -16,10 +12,13 @@ import {
   ISymbol,
   ISymbols,
   Time,
-} from '../libraries';
-import { IOptionChains } from '../libraries/IOptionsQuotes';
-import { endpointFormatDateTool } from '../utils/timeutil';
-import { _OptionsQuotes } from './_optionsQuotes';
+} from '../../libraries';
+import { IOptionChains } from '../../libraries/IOptionsQuotes';
+import { endpointFormatDateTool } from '../../utils/timeutil';
+import {
+  _axiosAccountApi as _axiosAccountGetApi,
+  _axiosApiGet as _axiosGetApi,
+} from './_axiosApi';
 // import { endpointFormatDateTool as _endpointFormatDate } from '../../../utils/endpointFormatDate';
 
 export const apiFunctions = (() => {
@@ -184,7 +183,6 @@ export const apiFunctions = (() => {
       postGetStrategiesQuotes: _postGetStrategiesQuotes(credentials),
       getAccounts: _getAccounts(credentials),
       getActivities: _getActivities(credentials),
-      OptionsQuotes: _OptionsQuotes(credentials),
     };
   };
 })();

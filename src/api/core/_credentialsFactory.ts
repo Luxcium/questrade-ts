@@ -9,8 +9,8 @@ import {
   IAccounts,
   ITime,
   QuestradeAPIOptions,
-} from '../libraries';
-import { sync } from '../utils/mkdirp';
+} from '../../libraries';
+import { sync } from '../../utils/mkdirp';
 import { _axiosApiGet } from './_axiosApi';
 
 const _getServerTime = (credentials: Credentials) => async () =>
