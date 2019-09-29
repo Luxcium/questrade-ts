@@ -7,7 +7,7 @@ const _axiosApi = (credentials: Credentials) => (VERB: string = 'GET') => <
   D = any
 >(
   postData: D | null = null
-) => async <R = any>(endpoint: string): Promise<R> => {
+) => async <R >(endpoint: string): Promise<R> => {
   let data: R;
   try {
     let response: AxiosResponse<R>;
@@ -42,7 +42,7 @@ const _axiosApi = (credentials: Credentials) => (VERB: string = 'GET') => <
 
 // % _apiGetErrorLogin
 /** PROVIDE: apiError THEN GET: apiError back WILL: console.error the problems */
-const _apiGetErrorLogin = (apiError: any /* , data?: any */) => {
+const _apiGetErrorLogin = (apiError: Error /* , data?: any */) => {
   // try {
   console.error(
     '\nAPI error in call to api:\n',
@@ -65,13 +65,13 @@ const _apiGetErrorLogin = (apiError: any /* , data?: any */) => {
 
 // # _axiosApiGet !!!
 /** PROVIDE: credentials and endpoint string with R return type, THEN GET: a Promise<R> */
-export const _axiosApiGet = (credentials: Credentials) => <R = any>(
+export const _axiosApiGet = (credentials: Credentials) => <R >(
   endpoint: string
 ) => async () => _axiosApi(credentials)()()<R>(endpoint);
 
 // # _axiosAccountApi
 /** PROVIDE: credentials and accountEndpoint string with R return type, THEN GET: a Promise<R> */
-export const _axiosAccountApi = (credentials: Credentials) => <R = any>(
+export const _axiosAccountApi = (credentials: Credentials) => <R >(
   accountEndpoint: string
 ) => async () =>
   _axiosApiGet(credentials)<R>(
@@ -92,13 +92,13 @@ const endpointFormatAccount = (credentials: Credentials) => (
 
 // # _axiosApiGetEndpointFactory !!!
 /** PROVIDE: endpoint string with R return type and credentials THEN GET: a Promise<R> */
-export const _axiosApiGetEndpointFactory = <R = any>(endpoint: string) => (
+export const _axiosApiGetEndpointFactory = <R >(endpoint: string) => (
   credentials: Credentials
 ) => _axiosApiGet(credentials)<R>(endpoint);
 
 // # _axiosApiPostEndpointFactory !!!
 /** PROVIDE: endpoint string with R return type, postData with D data type and credentials THEN GET: a Promise<R> */
-export const _axiosApiPostEndpointFactory = <R = any>(endpoint: string) => <
+export const _axiosApiPostEndpointFactory = <R >(endpoint: string) => <
   D = any
 >(
   postData: D
@@ -115,14 +115,14 @@ export const _delayedCrednetialsFunction = (credentials: Credentials) => <
 
 // # _delayedFunctionCredentials
 /** PROVIDE: function with R return type first (function of type (C: Credentials) => Promise<R>) and provide credentials last THEN GET: an extra 'async () =>' that will return a Promise<R>, added at the end of composition chain */
-export const _delayedFunctionCredentials = <R = any>(
+export const _delayedFunctionCredentials = <R >(
   functionX: (C: Credentials) => Promise<R>
 ) => (credentials: Credentials) => async () => functionX(credentials);
 
 // # _axiosApiGetEndpointFactoryD
 /** PROVIDE: endpoint string with R return type and credentials THEN GET: a '() => Promise<R>' */
 // todo: verify this seem to be wrong ...
-export const _axiosApiGetEndpointFactoryD = <R = any>(endpoint: string) => (
+export const _axiosApiGetEndpointFactoryD = <R >(endpoint: string) => (
   credentials: Credentials
 ) =>
   _delayedFunctionCredentials(
@@ -131,7 +131,7 @@ export const _axiosApiGetEndpointFactoryD = <R = any>(endpoint: string) => (
 
 // # _axiosApiPostEndpointFactoryD
 /** PROVIDE: endpoint string with R return type, postData with D data type and credentials THEN GET: a '() => Promise<R>' */
-export const _axiosApiPostEndpointFactoryD = <R = any>(endpoint: string) => <
+export const _axiosApiPostEndpointFactoryD = <R >(endpoint: string) => <
   D = any
 >(
   postData: D

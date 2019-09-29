@@ -80,7 +80,7 @@ const writeToken = (
   return credentials;
 };
 
-const validateToken = (options: any) => {
+const validateToken = (options: QuestradeAPIOptions) => {
   const credentials = buildCredentialsFromToken(options);
   let refreshToken: string = credentials.seedToken || '';
   try {
@@ -162,7 +162,7 @@ export const _getPrimaryAccountNumber = (
     return accounts[0].number;
   }
 
-  const primary = accounts.filter((account: any) => account.isPrimary);
+  const primary = accounts.filter(account => account.isPrimary);
   if (primary.length > 0) {
     return primary[0].number;
   }
@@ -195,7 +195,7 @@ export const defaultCredentials: Credentials = {
       keyFile: './keys/[PRIVATE]',
       refreshToken: '[string:PRIVATE]',
       seedToken: '[string:PRIVATE]',
-    };
+    }.toString();
   },
   toString() {
     return {
@@ -204,6 +204,6 @@ export const defaultCredentials: Credentials = {
       keyFile: './keys/[ PRIVATE ] ',
       refreshToken: ' [ PRIVATE ] ',
       seedToken: ' [ PRIVATE ] ',
-    };
+    }.toString();
   },
 };
