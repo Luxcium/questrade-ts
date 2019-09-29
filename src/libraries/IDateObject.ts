@@ -44,39 +44,3 @@ export interface IDateObject {
   quarter: number;
   locale: string;
 }
-
-// const serverTime = '(await this._getTime()) || ofset;';
-// const timeMoment = moment(serverTime);
-// // const timeNow = new Date(serverTime);
-// const weekDay = timeMoment.localeData().weekdays()[timeMoment.weekday()];
-// export const returnDate: IDateObject = {
-//   serverTime,
-//   UTC: timeMoment.toJSON(),
-//   timeObject: timeMoment.toObject(),
-//   toUTCDate: timeMoment.toDate(),
-//   toArray: timeMoment.toArray(),
-//   date: {
-//     day: weekDay,
-//     date: timeMoment.date(),
-//     month: timeMoment.month() + 1,
-//     year: timeMoment.year(),
-//   },
-//   time: {
-//     hour: timeMoment.hour(),
-//     minute: timeMoment.minute(),
-//     second: timeMoment.second(),
-//     milliseconds: timeMoment.milliseconds(),
-//     unixmilliseconds: timeMoment.valueOf(),
-//     unix: timeMoment.unix(),
-//     utcOffset: timeMoment.utcOffset(),
-//   },
-//   isValid: timeMoment.isValid(),
-//   dayOfYear: timeMoment.dayOfYear(),
-//   weekOfTheYeay: timeMoment.isoWeek(),
-//   weekday: timeMoment.weekday(),
-//   isLeapYear: timeMoment.isLeapYear(),
-//   daysInMonth: timeMoment.daysInMonth(),
-//   weeksInYear: timeMoment.isoWeeksInYear(),
-//   quarter: timeMoment.quarter(),
-//   locale: timeMoment.locale(),
-// };

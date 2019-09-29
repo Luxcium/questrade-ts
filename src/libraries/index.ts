@@ -21,5 +21,4 @@ export { Methode } from './Methode';
 export { IFilter, Optionals, OrdersOptions, TimeRange, TimeRangeInterval } from './Optionals';
 export { ITime, Time } from './Time';
 export { DateTime, idsType, idType } from './Types';
-export { id0, void0 } from './void0';
-export { void0 as Void0, void_0 } from './void_0';
+export { void0, void_0 } from './void_0';

@@ -1,8 +1,7 @@
 // tslint:disable: ordered-imports
 import { _credentialsFactory } from './api/core/_credentialsFactory';
 import { apiFunctions } from './api/core/_getDataFromApi';
-import { id0 } from './libraries';
-import { day } from './utils';
+import { day, id0 } from './utils';
 export const log = console.log;
 const myRefreshToken = 'qd0AJcnxOGOKpXzvqzIbzKwgHy3Rm3XJ0';
 
