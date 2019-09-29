@@ -1,5 +1,5 @@
+import { _axiosAccountGetApi, _axiosGetApi } from '.';
 import { endpointFormatDateTool } from '../../utils/timeutil';
-import { _axiosAccountGetApi as _axiosAccountGetApi, _axiosGetApi as _axiosGetApi } from './';
 import { Credentials, IAccounts, IActivities, IBalances, ICandle, ICandles, IExecutions, IMarkets, IOptionChains, IOrders, IPositions, IQuotes, ISymbol, ISymbols, Time } from './typescript';
 
 export const apiFunctions = (() => {
