@@ -16,8 +16,8 @@ import {
   ISymbol,
   ISymbols,
   Time,
-} from '../core/libraries';
-import { IOptionChains } from '../core/libraries/IOptionsQuotes';
+} from '../libraries';
+import { IOptionChains } from '../libraries/IOptionsQuotes';
 import { endpointFormatDateTool } from '../utils/timeutil';
 import { _OptionsQuotes } from './_optionsQuotes';
 // import { endpointFormatDateTool as _endpointFormatDate } from '../../../utils/endpointFormatDate';

@@ -9,7 +9,7 @@ import {
   IAccounts,
   ITime,
   QuestradeAPIOptions,
-} from '../core/libraries';
+} from '../libraries';
 import { sync } from '../utils/mkdirp';
 import { _axiosApiGet } from './_axiosApi';
 

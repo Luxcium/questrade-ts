@@ -1,6 +1,6 @@
 // tslint:disable: ordered-imports
 import { _credentialsFactory } from './api/_credentialsFactory';
-import { id0 } from './core/libraries';
+import { id0 } from './libraries';
 import { apiFunctions } from './private/_getDataFromApi';
 import { day } from './utils';
 export const log = console.log;

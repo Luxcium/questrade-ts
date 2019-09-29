@@ -1,5 +1,5 @@
 import { _axiosAccountApi } from '../api/_axiosApi';
-import { Credentials, IActivities } from '../core/libraries';
+import { Credentials, IActivities } from '../libraries';
 import { endpointFormatDateTool as _endpointFormatDateTool } from '../utils/timeutil';
 
 // # _getActivities
