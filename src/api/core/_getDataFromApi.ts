@@ -1,8 +1,24 @@
-import { _axiosAccountGetApi, _axiosGetApi } from '.';
+import { _axiosAccountGetApi, _axiosGetApi } from '..';
 import { endpointFormatDateTool } from '../../utils/timeutil';
-import { Credentials, IAccounts, IActivities, IBalances, ICandle, ICandles, IExecutions, IMarkets, IOptionChains, IOrders, IPositions, IQuotes, ISymbol, ISymbols, Time } from './typescript';
+import {
+  Credentials,
+  IAccounts,
+  IActivities,
+  IBalances,
+  ICandle,
+  ICandles,
+  IExecutions,
+  IMarkets,
+  IOptionChains,
+  IOrders,
+  IPositions,
+  IQuotes,
+  ISymbol,
+  ISymbols,
+  Time,
+} from './typescript';
 
-export const apiFunctions = (() => {
+export const _getDataFromApi = (() => {
   const _getBalances = (credentials: Credentials) =>
     _axiosAccountGetApi(credentials)<IBalances>('/balances');
 
@@ -125,7 +141,7 @@ export const apiFunctions = (() => {
 
   // + _getAccounts
   /** _getAccounts */
-  const _getAccounts = (credentials: Credentials) => async ()=>
+  const _getAccounts = (credentials: Credentials) => async () =>
     (await _axiosGetApi(credentials)<IAccounts>('/accounts')()).accounts;
 
   // + _getActivities

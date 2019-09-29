@@ -1,9 +1,16 @@
 import { AxiosResponse, default as axios } from 'axios';
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import { _axiosGetApi } from '.';
+import { _axiosGetApi } from '..';
 import { sync } from '../../utils/';
-import { AcountNumberString, Credentials, IAccount, IAccounts, ITime, QuestradeAPIOptions } from './typescript';
+import {
+  AcountNumberString,
+  Credentials,
+  IAccount,
+  IAccounts,
+  ITime,
+  QuestradeAPIOptions,
+} from './typescript';
 
 const _getServerTime = (credentials: Credentials) => async () =>
   _axiosGetApi(credentials)<Promise<ITime>>('/time')();
@@ -19,8 +26,7 @@ export const _credentialsFactory = async (token: string) => {
   try {
     const allAccounts = _getAccounts(credentials);
     const serverTimeNow = _getServerTime(credentials);
-
-    const { accounts } = await allAccounts(); // _rawApiGet(credentials)<Promise<IAccounts>>(
+    const { accounts } = await allAccounts();
     const { time } = await serverTimeNow();
 
     const timZoneOffset = new Date(time).getTimezoneOffset();
@@ -134,7 +140,7 @@ const buildCredentialsFromToken = (token: QuestradeAPIOptions) => {
 };
 
 const emptyCredentials = () => {
-  const credentials: Credentials = defaultCredentials;
+  const credentials: Credentials = _defaultCredentials;
   credentials.accountNumber = '';
   credentials.apiVersion = 'v1';
   credentials.keyDir = './keys';
@@ -170,8 +176,7 @@ export const _getPrimaryAccountNumber = (
   return accounts[0].number;
 };
 
-
-export const defaultCredentials: Credentials = {
+export const _defaultCredentials: Credentials = {
   accessToken: '',
   accountNumber: '',
   apiServer: '',

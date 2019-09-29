@@ -1,1 +1,0 @@
-export { _axiosAccountGetApi, _axiosApiGetEndpointFactory, _axiosApiGetEndpointFactoryD, _axiosApiPost, _axiosApiPostEndpointFactory, _axiosApiPostEndpointFactoryD, _axiosGetApi, _delayedCrednetialsFunction, _delayedFunctionCredentials } from './_axiosApi';

@@ -1,4 +1,25 @@
-export { AccountStatus, AccountType as UserAccountType, ClientAccountType, Currency, HistoricalDataGranularity, ListingExchange, OptionDurationType, OptionExerciseType, OptionType, OrderAction, OrderClass, OrderSide, OrderState, OrderStateFilterType, OrderTimeInForce, OrderType, qtEnumerations, SecurityType, StrategyTypes, TickType } from 'questrade-api-enumerations';
+export {
+  AccountStatus,
+  AccountType as UserAccountType,
+  ClientAccountType,
+  Currency,
+  HistoricalDataGranularity,
+  ListingExchange,
+  OptionDurationType,
+  OptionExerciseType,
+  OptionType,
+  OrderAction,
+  OrderClass,
+  OrderSide,
+  OrderState,
+  OrderStateFilterType,
+  OrderTimeInForce,
+  OrderType,
+  qtEnumerations,
+  SecurityType,
+  StrategyTypes,
+  TickType,
+} from 'questrade-api-enumerations';
 export { Credentials } from './Credentials';
 export { AcountNumberString, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
@@ -13,12 +34,21 @@ export { IMarket, IMarkets } from './IMarkets';
 export { IOptionChains, IOptionsQuote, IOptionsQuotes } from './IOptionsQuotes';
 export { IOrder, IOrders } from './IOrders';
 export { IPosition, IPositions } from './IPositions';
-export { IQuestradeAPIOptions, QuestradeAPIOptions } from './IQuestradeAPIOptions';
+export {
+  IQuestradeAPIOptions,
+  QuestradeAPIOptions,
+} from './IQuestradeAPIOptions';
 export { IQuote, IQuotes } from './IQuotes';
 export { IStockSymbol } from './IStockSymbol';
 export { ISymbol, ISymbols } from './ISymbols';
 export { Methode } from './Methode';
-export { IFilter, Optionals, OrdersOptions, TimeRange, TimeRangeInterval } from './Optionals';
+export {
+  IFilter,
+  Optionals,
+  OrdersOptions,
+  TimeRange,
+  TimeRangeInterval,
+} from './Optionals';
 export { ITime, Time } from './Time';
 export { DateTime, idsType, idType } from './Types';
 export { void0, void_0 } from './void_0';

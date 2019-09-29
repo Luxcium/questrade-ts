@@ -1,55 +1,53 @@
 // tslint:disable: ordered-imports
-import { _credentialsFactory } from './api/core/_credentialsFactory';
-import { apiFunctions } from './api/core/_getDataFromApi';
+import { tokenConnection } from '.';
 import { day, id0 } from './utils';
 export const log = console.log;
-const myRefreshToken = 'qd0AJcnxOGOKpXzvqzIbzKwgHy3Rm3XJ0';
+const myRefreshToken = 'cz8IwkxFNKilf9TkoeKA0gD5whwALsMt0';
 
 (async () => {
   const startTime = new Date(Date.now() - day(10)).toISOString();
   const endTime = new Date(Date.now()).toISOString();
-  const qtApi = apiFunctions(await _credentialsFactory(myRefreshToken));
-
+  const { qt } = await tokenConnection(myRefreshToken);
   async function accountCallsTimings() {
     log('');
 
     let datenow = Date.now();
 
     datenow = Date.now();
-    id0(await qtApi.getActivities(startTime)(endTime));
+    id0(await qt.getActivities(startTime)(endTime));
     log('getActivities(startTime)(endTime)', Date.now() - datenow, 'ms');
 
     datenow = Date.now();
-    id0(await qtApi.getOrders(startTime)(endTime)('All'));
+    id0(await qt.getOrders(startTime)(endTime)('All'));
     log("getOrders(startTime)(endTime)('All')", Date.now() - datenow, 'ms');
 
     datenow = Date.now();
-    id0(await qtApi.getOrderByIds([546964950, 546966570]));
+    id0(await qt.getOrderByIds([546964950, 546966570]));
     log('getOrderByIds([546964950, 546966570])', Date.now() - datenow, 'ms');
 
     datenow = Date.now();
-    id0(await qtApi.getExecutions(startTime)(endTime));
+    id0(await qt.getExecutions(startTime)(endTime));
     log('getExecutions(startTime)(endTime)', Date.now() - datenow, 'ms');
 
     datenow = Date.now();
-    id0(await qtApi.getBalances());
+    id0(await qt.getBalances());
     log('getBalances()', Date.now() - datenow, 'ms');
 
     datenow = Date.now();
-    id0(await qtApi.getPositions());
+    id0(await qt.getPositions());
     log('getPositions()', Date.now() - datenow, 'ms');
 
     datenow = Date.now();
-    id0(await qtApi.getAccounts());
+    id0(await qt.getAccounts());
     log('getAccounts()', Date.now() - datenow, 'ms');
 
     datenow = Date.now();
-    id0(await qtApi.getServerTime());
+    id0(await qt.getServerTime());
     log('getServerTime()', Date.now() - datenow, 'ms');
 
     log(
       'serverTime offset with client:',
-      (await qtApi.getServerTime()).valueOf() - Date.now(),
+      (await qt.getServerTime()).valueOf() - Date.now(),
       'ms'
     );
 
@@ -61,7 +59,7 @@ const myRefreshToken = 'qd0AJcnxOGOKpXzvqzIbzKwgHy3Rm3XJ0';
     log('');
 
     datenow = Date.now();
-    id0(await qtApi.getCandles(startTime)(endTime)('OneDay')(8049));
+    id0(await qt.getCandles(startTime)(endTime)('OneDay')(8049));
     log(
       "getCandles(startTime)(endTime)('OneDay')(8049)",
       Date.now() - datenow,
@@ -71,24 +69,24 @@ const myRefreshToken = 'qd0AJcnxOGOKpXzvqzIbzKwgHy3Rm3XJ0';
     log('markets/quotes/strategies');
     log('markets/quotes/options');
     datenow = Date.now();
-    id0(await qtApi.getQuotesByIds([8049]));
+    id0(await qt.getQuotesByIds([8049]));
     log('getQuotesByID([8049])', Date.now() - datenow, 'ms');
 
     datenow = Date.now();
-    id0(await qtApi.getMarkets());
+    id0(await qt.getMarkets());
     log('getMarkets()', Date.now() - datenow, 'ms');
 
     datenow = Date.now();
-    id0(await qtApi.getOptionsById(8049));
+    id0(await qt.getOptionsById(8049));
     log('getOptionsSymbolsByIds(8049)', Date.now() - datenow, 'ms');
     // option symbol id : 27003348
 
     datenow = Date.now();
-    id0(await qtApi.getSymbolSearch('aapl'));
+    id0(await qt.getSymbolSearch('aapl'));
     log('getSymbolSearch("aapl")', Date.now() - datenow, 'ms');
 
     datenow = Date.now();
-    id0(await qtApi.getSymbolsByIds([8049]));
+    id0(await qt.getSymbolsByIds([8049]));
     log('getSymbolsByIDs([8049])', Date.now() - datenow, 'ms');
 
     log('');
@@ -100,7 +98,7 @@ const myRefreshToken = 'qd0AJcnxOGOKpXzvqzIbzKwgHy3Rm3XJ0';
   console.log('error message in debugtesting:', error.message)
 );
 
-// const candles = await qtApi.getCandles(startTime)(endTime)()(8049);
+// const candles = await qt.getCandles(startTime)(endTime)()(8049);
 // log(candles);
 
 // const getActivities = _getActivities(cred);
@@ -110,17 +108,17 @@ const myRefreshToken = 'qd0AJcnxOGOKpXzvqzIbzKwgHy3Rm3XJ0';
 // await activities();
 // );
 
-// log(await qtApi.postGetOptionsQuotes());
-// log(await qtApi.getOptionsSymbols());
+// log(await qt.postGetOptionsQuotes());
+// log(await qt.getOptionsSymbols());
 
-// log(await qtApi.getSymbolFromSymbolID('ETR18Oct19C110.00'));
+// log(await qt.getSymbolFromSymbolID('ETR18Oct19C110.00'));
 
-// log(await qtApi.postGetStrategiesQuotes());
-// log(await qtApi.OptionsQuotes()()()()());
-// log(await qtApi.getQuotesByID([8049]));
-// log(await qtApi.getMarkets());
-// log(await qtApi.getSymbolSearch('aapl'));
-// log(await qtApi.getSymbolSearchAll('ETR18Oct19C110.00'));
-// log(await qtApi.getSymbolSearch.count('ETR18Oct19C110.00'));
-// const candles = await qtApi.getCandles(startTime)(endTime)()(8049)
+// log(await qt.postGetStrategiesQuotes());
+// log(await qt.OptionsQuotes()()()()());
+// log(await qt.getQuotesByID([8049]));
+// log(await qt.getMarkets());
+// log(await qt.getSymbolSearch('aapl'));
+// log(await qt.getSymbolSearchAll('ETR18Oct19C110.00'));
+// log(await qt.getSymbolSearch.count('ETR18Oct19C110.00'));
+// const candles = await qt.getCandles(startTime)(endTime)()(8049)
 // transformCandle
