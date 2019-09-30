@@ -18,8 +18,8 @@ import {
   Time,
 } from './typescript';
 import {
-  _quotesOptionsByIds,
-  _quotesOptionsFilter,
+  _getQuotesOptionsByIds,
+  _getQuotesOptionsFilter,
 } from './_marketsQuotesOptions';
 
 export const _getDataFromApi = (() => {
@@ -74,7 +74,7 @@ export const _getDataFromApi = (() => {
 
   // + _getOrderByIds
   /** _getOrders */
-  const _getOrderByIds = (credentials: Credentials) => async (
+  const _getOrdersByIds = (credentials: Credentials) => async (
     orderId: number[]
   ) =>
     (await _axiosAccountGetApi(credentials)<IOrders>(
@@ -168,27 +168,27 @@ export const _getDataFromApi = (() => {
     symbolSearch.count = _getSymbolSearchCount(credentials);
 
     return {
+      account: credentials.accountNumber,
+      getAccounts: _getAccounts(credentials),
+      getActivities: _getActivities(credentials),
       getBalances: _getBalances(credentials),
       getCandles: _getCandles(credentials),
       getExecutions: _getExecutions(credentials),
       getMarkets: _getMarkets(credentials),
       getOptionsById: _getOptionsById(credentials),
+      getOrdersByIds: _getOrdersByIds(credentials),
       getOrders: _getOrders(credentials),
       getOrdersAll: _getOrders(credentials)('All'),
-      getOrderByIds: _getOrderByIds(credentials),
       getPositions: _getPositions(credentials),
       getQuotesByIds: _getQuotesByIds(credentials),
+      getQuotesOptionsByIds: _getQuotesOptionsByIds(credentials),
+      getQuotesOptionsFilter: _getQuotesOptionsFilter(credentials),
+      getServerTime: _getServerTime(credentials),
       getSymbolsByIds: _getSymbolsByIds(credentials),
       getSymbolSearch: symbolSearch as SymbolSearchAndCount,
       getSymbolSearchAll: _getSymbolSearchAll(credentials),
       getSymbolSearchCount: _getSymbolSearchCount(credentials),
-      getServerTime: _getServerTime(credentials),
-      getQuotesOptionsByIds: _quotesOptionsByIds(credentials),
-      getQuotesOptionsFilter: _quotesOptionsFilter(credentials),
       postGetStrategiesQuotes: _postGetStrategiesQuotes(credentials),
-      getAccounts: _getAccounts(credentials),
-      getActivities: _getActivities(credentials),
-      account: credentials.accountNumber,
     };
   };
 })();

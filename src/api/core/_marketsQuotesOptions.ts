@@ -1,11 +1,11 @@
 import { _axiosApiPost } from '..';
 import { Credentials, IOptionsQuotes } from './typescript';
 
-export const _quotesOptionsByIds = (credentials: Credentials) => async (
+export const _getQuotesOptionsByIds = (credentials: Credentials) => async (
   optionIds: number[]
 ) => _marketsQuotesOptions(credentials)(optionIds, void 0, void 0, null, 0, 0);
 
-export const _quotesOptionsFilter = (credentials: Credentials) => async (
+export const _getQuotesOptionsFilter = (credentials: Credentials) => async (
   filters: Filters
 ) => {
   const {
