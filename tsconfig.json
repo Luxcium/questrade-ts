@@ -30,7 +30,7 @@
       "node_modules/@types/**/*"
     ],
     "types": [
-      "jest","node"
+      "jest","node","jasmine"
     ],
     /* Compilation Options */
     "noEmit": true,
