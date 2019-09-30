@@ -1,5 +1,10 @@
-import { _axiosAccountGetApi, _axiosGetApi } from '..';
-import { endpointFormatDateTool } from '../../utils/timeutil';
+import { _axiosAccountGetApi, _axiosGetApi } from '.';
+import { endpointFormatDateTool } from '../utils/timeutil';
+import {
+  _Filters,
+  _getQuotesOptionsByIds,
+  _getQuotesOptionsFilter,
+} from './_marketsQuotesOptions';
 import {
   Credentials,
   IAccounts,
@@ -18,11 +23,6 @@ import {
   ISymbols,
   Time,
 } from './typescript';
-import {
-  Filters,
-  _getQuotesOptionsByIds,
-  _getQuotesOptionsFilter,
-} from './_marketsQuotesOptions';
 
 export const _getDataFromApi = (() => {
   const _getBalances = (credentials: Credentials) =>
@@ -248,6 +248,6 @@ export interface IQuotesOptionsByIds {
   byIds: (optionIds: number[]) => Promise<IOptionsQuotes>;
 }
 
-export type QuotesOptions = (filters: Filters) => Promise<IOptionsQuotes>;
+export type QuotesOptions = (filters: _Filters) => Promise<IOptionsQuotes>;
 
 export type QuotesOptionsbyFilterAndIds = IQuotesOptionsByIds & QuotesOptions;

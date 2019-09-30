@@ -1,4 +1,4 @@
-import { _axiosApiPost } from '..';
+import { _axiosApiPost } from '.';
 import { Credentials } from './typescript';
 
 export const some = (cred: Credentials) => _axiosApiPost(cred);

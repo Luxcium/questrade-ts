@@ -1,20 +1,10 @@
-export {
-  _axiosAccountGetApi,
-  _axiosApiGetEndpointFactory,
-  _axiosApiGetEndpointFactoryD,
-  _axiosApiPost,
-  _axiosApiPostEndpointFactory,
-  _axiosApiPostEndpointFactoryD,
-  _axiosGetApi,
-  _delayedCrednetialsFunction,
-  _delayedFunctionCredentials,
-} from './core/_axiosApi';
-export {
-  _credentialsFactory,
-  _defaultCredentials,
-  _getPrimaryAccountNumber,
-} from './core/_credentialsFactory';
-export { _getDataFromApi } from './core/_getDataFromApi';
-export {
-  _getMarketsQuotesOptions as _marketsQuotesOptions,
-} from './core/_marketsQuotesOptions';
+import { _credentialsFactory, _getDataFromApi } from './core';
+
+async function tokenConnection(refreshToken: string) {
+  const credentials = await _credentialsFactory(refreshToken);
+  const questrade = _getDataFromApi(credentials);
+  return { qt: questrade, questrade, credentials };
+}
+
+export { id0, log } from './utils';
+export { tokenConnection };

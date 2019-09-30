@@ -1,107 +1,109 @@
 import { tokenConnection } from '.';
-import { day, id0 } from './utils';
-export const log = console.log;
+import { day, id0, log } from './utils';
+// import { types } from 'util';
+// types.
 const myRefreshToken = 'IskeVOywsgf1xx3305wA64BGKwyVibRQ0';
 
-let aValue = 0;
+const aValue = 0;
+
+const startTime = new Date(Date.now() - day(1)).toISOString();
+const endTime = new Date(Date.now()).toISOString();
 
 (async () => {
   const { qt, credentials } = await tokenConnection(myRefreshToken);
 
-  const startTime = new Date(Date.now() - day(1)).toISOString();
-  const endTime = new Date(Date.now()).toISOString();
+  await id0(async () => qt.getServerTime());
 
-  await id0(async () => qt.getServerTime(), 'Test #', ++aValue);
-
-  await id0(async () => qt.setAccount, 'Test #', ++aValue);
-
-  await id0(
-    async () => qt.get.accounts.activities(startTime)(endTime),
-    'Test #',
-    ++aValue
-  );
-
-  await id0(async () => qt.get.accounts.allAccounts(), 'Test #', ++aValue);
-
-  await id0(async () => qt.get.accounts.balances(), 'Test #', ++aValue);
-
-  await id0(
-    async () => qt.get.accounts.executions(startTime)(endTime),
-    'Test #',
-    ++aValue
-  );
-
-  await id0(
-    async () => qt.get.accounts.orders(startTime)(endTime)('All'),
-    'Test #',
-    ++aValue
-  );
+  // await id0(async () => qt.setAccount, 'Test #', ++aValue);
 
   // await id0(
-  //   async () => qt.get.accounts.ordersAll(startTime)(endTime),
+  //   async () => qt.get.accounts.activities(startTime)(endTime),
   //   'Test #',
-  //   ++aValue,
-  //   '!'
+  //   ++aValue
   // );
 
-  await id0(
-    async () => qt.get.accounts.ordersByIds([546964950, 546966570]),
-    'Test #',
-    ++aValue
-  );
+  // await id0(async () => qt.get.accounts.allAccounts(), 'Test #', ++aValue);
 
-  await id0(async () => qt.get.accounts.positions(), 'Test #', ++aValue);
+  // await id0(async () => qt.get.accounts.balances(), 'Test #', ++aValue);
 
-  await id0(async () => qt.get.accounts.time(), 'Test #', ++aValue);
+  // await id0(
+  // async () =>
+  log(await qt.get.accounts.executions(startTime)(endTime));
+  //   'Test #',
+  //   ++aValue
+  // );
 
-  await id0(
-    async () => qt.get.markets.quotes.byIds([8049, 8049]),
-    'Test #',
-    ++aValue
-  );
+  // await id0(
+  //   async () => qt.get.accounts.orders(startTime)(endTime)('All'),
+  //   'Test #',
+  //   ++aValue
+  // );
 
-  await id0(
-    async () => qt.get.markets.quotes.options.byIds([27003348]),
-    'Test #',
-    ++aValue
-  );
+  // // await id0(
+  // //   async () => qt.get.accounts.ordersAll(startTime)(endTime),
+  // //   'Test #',
+  // //   ++aValue,
+  // //   '!'
+  // // );
 
-  await id0(async () => qt.get.markets.quotes.byStrategies, 'Test #', ++aValue);
+  // await id0(
+  //   async () => qt.get.accounts.ordersByIds([546964950, 546966570]),
+  //   'Test #',
+  //   ++aValue
+  // );
 
-  await id0(
-    async () => qt.get.markets.candlesById(startTime)(endTime)('OneDay')(8049),
-    'Test #',
-    ++aValue
-  );
+  // await id0(async () => qt.get.accounts.positions(), 'Test #', ++aValue);
 
-  await id0(async () => qt.get.markets.allMarkets(), 'Test #', ++aValue);
+  // await id0(async () => qt.get.accounts.time(), 'Test #', ++aValue);
 
-  await id0(async () => qt.get.symbols.byIds([8049, 8049]), 'Test #', ++aValue);
+  // await id0(
+  //   async () => qt.get.markets.quotes.byIds([8049, 8049]),
+  //   'Test #',
+  //   ++aValue
+  // );
 
-  await id0(
-    async () => qt.get.symbols.optionsById(27003348),
-    'Test #',
-    ++aValue
-  );
+  // await id0(
+  //   async () => qt.get.markets.quotes.options.byIds([27003348]),
+  //   'Test #',
+  //   ++aValue
+  // );
 
-  await id0(async () => qt.get.symbols.search('aapl'), 'Test #', ++aValue);
+  // await id0(async () => qt.get.markets.quotes.byStrategies, 'Test #', ++aValue);
 
-  await id0(
-    async () => (await qt.get.symbols.search('aapl')).count,
-    'Test #',
-    ++aValue
-  );
+  // await id0(
+  //   async () => qt.get.markets.candlesById(startTime)(endTime)('OneDay')(8049),
+  //   'Test #',
+  //   ++aValue
+  // );
 
-  await id0(
-    async () => qt.get.symbols.search.count('aapl'),
-    'Test #',
-    ++aValue
-  );
+  // await id0(async () => qt.get.markets.allMarkets(), 'Test #', ++aValue);
+
+  // await id0(async () => qt.get.symbols.byIds([8049, 8049]), 'Test #', ++aValue);
+
+  // await id0(
+  //   async () => qt.get.symbols.optionsById(27003348),
+  //   'Test #',
+  //   ++aValue
+  // );
+
+  // await id0(async () => qt.get.symbols.search('aapl'), 'Test #', ++aValue);
+
+  // await id0(
+  //   async () => (await qt.get.symbols.search('aapl')).count,
+  //   'Test #',
+  //   ++aValue
+  // );
+
+  // await id0(
+  //   async () => qt.get.symbols.search.count('aapl'),
+  //   'Test #',
+  //   ++aValue
+  // );
 
   return credentials;
 })()
   .then(cred => {
-    log(cred);
+    id0(() => cred);
   })
   .catch(error =>
     console.log(

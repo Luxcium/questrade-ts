@@ -1,4 +1,4 @@
-import { _axiosApiPost } from '..';
+import { _axiosApiPost } from '.';
 import { Credentials, IOptionsQuotes } from './typescript';
 
 export const _getQuotesOptionsByIds = (credentials: Credentials) => async (
@@ -7,7 +7,7 @@ export const _getQuotesOptionsByIds = (credentials: Credentials) => async (
   _getMarketsQuotesOptions(credentials)(optionIds, void 0, void 0, null, 0, 0);
 
 export const _getQuotesOptionsFilter = (credentials: Credentials) => async (
-  filters: Filters
+  filters: _Filters
 ) => {
   const {
     underlyingId,
@@ -67,10 +67,11 @@ export interface OptionsIdArray {
 }
 
 export interface FiltersArray {
-  filters: Filters[];
+  filters: _Filters[];
 }
 
-export interface Filters {
+// tslint:disable-next-line: class-name
+export interface _Filters {
   underlyingId?: number;
   expiryDate?: string;
   optionType?: string | undefined | null;

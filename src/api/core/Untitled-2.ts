@@ -21,7 +21,7 @@
 // !! is not assignable to type 'FiltersArray'.
 
 // + Type
-//s of property 'filters' are incompatible.
+// s of property 'filters' are incompatible.
 
 // + Type
 // '{ underlyingId: number
@@ -38,7 +38,7 @@
 // !! is not assignable to type 'Filters'.
 
 // + Type
-//s of property 'underlyingId' are incompatible.
+// s of property 'underlyingId' are incompatible.
 
 // + Type
 // 'number
