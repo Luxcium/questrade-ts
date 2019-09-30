@@ -54,4 +54,5 @@ export interface ISymbol {
   industrySector?: string;
   industryGroup?: string;
   industrySubGroup?: string;
+  count?: number;
 }

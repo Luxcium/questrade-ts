@@ -10,6 +10,7 @@ import {
   IExecutions,
   IMarkets,
   IOptionChains,
+  IOptionsQuotes,
   IOrders,
   IPositions,
   IQuotes,
@@ -18,6 +19,7 @@ import {
   Time,
 } from './typescript';
 import {
+  Filters,
   _getQuotesOptionsByIds,
   _getQuotesOptionsFilter,
 } from './_marketsQuotesOptions';
@@ -106,17 +108,23 @@ export const _getDataFromApi = (() => {
     prefix: string,
     offset: number = 0
   ) => {
-    return (await _axiosGetApi(credentials)<ISymbols>(
+    /* return */
+    const { symbols } = await _axiosGetApi(credentials)<ISymbols>(
       `/symbols/search?prefix=${prefix}`
-    )()).symbols[offset];
+    )(); // .symbols[offset];
+    const count = symbols.length;
+    const result = symbols[offset];
+    result.count = count;
+    return result;
   };
   // + _getSymbolSearchAll
   /** _getSymbolSearch */
   const _getSymbolSearchAll = (credentials: Credentials) => async (
-    prefix: string
+    prefix: string,
+    offset: number = 0
   ) => {
     return (await _axiosGetApi(credentials)<ISymbols>(
-      `/symbols/search?prefix=${prefix}`
+      `/symbols/search?prefix=${prefix}&offset=${offset}`
     )()).symbols;
   };
   // + _getSymbolSearchCount
@@ -133,13 +141,9 @@ export const _getDataFromApi = (() => {
   const _getServerTime = (credentials: Credentials) => async () =>
     new Date((await _axiosGetApi(credentials)<Time>('/time')()).time);
 
-  // & _quotesOptionsFromIds
-  // & _quotesOptionsFromFilter
+  // + _quotesOptionsFromIds
 
-  // & _postGetOptionsQuotes
-  /** _postGetOptionsQuotes */
-  // const _postGetOptionsQuotes = (credentials: Credentials) =>
-  //   _axiosAccountGetApi(credentials)<any>('_postGetStrategiesQuotes');
+  // + _quotesOptionsFromFilter
 
   // & _postGetStrategiesQuotes
   /** _postGetStrategiesQuotes */
@@ -167,28 +171,64 @@ export const _getDataFromApi = (() => {
     const symbolSearch: any = _getSymbolSearch(credentials);
     symbolSearch.count = _getSymbolSearchCount(credentials);
 
+    const quotesOptionsFilter: any = _getQuotesOptionsFilter(credentials);
+    quotesOptionsFilter.byIds = _getQuotesOptionsByIds(credentials);
+
+    const setAccount = credentials.accountNumber;
+    const allAccounts = _getAccounts(credentials);
+    const activities = _getActivities(credentials);
+    const balances = _getBalances(credentials);
+    const marketCandlesById = _getCandles(credentials);
+    const executions = _getExecutions(credentials);
+    const markets = _getMarkets(credentials);
+    const optionsById = _getOptionsById(credentials);
+    const ordersByIds = _getOrdersByIds(credentials);
+    const orders = _getOrders(credentials);
+    const ordersAll = _getOrders(credentials)('All');
+    const positions = _getPositions(credentials);
+    const marketsQuotesByIds = _getQuotesByIds(credentials);
+    const quotesOptionsbyFilterAndIds = quotesOptionsFilter as QuotesOptionsbyFilterAndIds;
+    // const optionsQuotesByIds = _getQuotesOptionsByIds(credentials);
+    // const quotesOptionsFilter =
+    const getServerTime = _getServerTime(credentials);
+    const symbolsByIds = _getSymbolsByIds(credentials);
+    const search = symbolSearch as SymbolSearchAndCount;
+    const searchAll = _getSymbolSearchAll(credentials);
+    const searchCount = _getSymbolSearchCount(credentials);
+    const byStrategies = _postGetStrategiesQuotes(credentials);
+
     return {
-      account: credentials.accountNumber,
-      getAccounts: _getAccounts(credentials),
-      getActivities: _getActivities(credentials),
-      getBalances: _getBalances(credentials),
-      getCandles: _getCandles(credentials),
-      getExecutions: _getExecutions(credentials),
-      getMarkets: _getMarkets(credentials),
-      getOptionsById: _getOptionsById(credentials),
-      getOrdersByIds: _getOrdersByIds(credentials),
-      getOrders: _getOrders(credentials),
-      getOrdersAll: _getOrders(credentials)('All'),
-      getPositions: _getPositions(credentials),
-      getQuotesByIds: _getQuotesByIds(credentials),
-      getQuotesOptionsByIds: _getQuotesOptionsByIds(credentials),
-      getQuotesOptionsFilter: _getQuotesOptionsFilter(credentials),
-      getServerTime: _getServerTime(credentials),
-      getSymbolsByIds: _getSymbolsByIds(credentials),
-      getSymbolSearch: symbolSearch as SymbolSearchAndCount,
-      getSymbolSearchAll: _getSymbolSearchAll(credentials),
-      getSymbolSearchCount: _getSymbolSearchCount(credentials),
-      postGetStrategiesQuotes: _postGetStrategiesQuotes(credentials),
+      setAccount,
+      getServerTime,
+      get: {
+        accounts: {
+          activities,
+          orders,
+          ordersAll,
+          ordersByIds,
+          executions,
+          balances,
+          positions,
+          allAccounts: allAccounts,
+          time: getServerTime,
+        },
+        markets: {
+          candlesById: marketCandlesById,
+          quotes: {
+            byStrategies,
+            options: quotesOptionsbyFilterAndIds,
+            byIds: marketsQuotesByIds,
+          },
+          allMarkets: markets,
+        },
+        symbols: {
+          optionsById,
+          byIds: symbolsByIds,
+          search,
+          searchAll,
+          searchCount,
+        },
+      },
     };
   };
 })();
@@ -203,3 +243,11 @@ export type SymbolSearch = (
 ) => Promise<ISymbol>;
 
 export type SymbolSearchAndCount = SymbolSearch & ISymbolSearchCount;
+
+export interface IQuotesOptionsByIds {
+  byIds: (optionIds: number[]) => Promise<IOptionsQuotes>;
+}
+
+export type QuotesOptions = (filters: Filters) => Promise<IOptionsQuotes>;
+
+export type QuotesOptionsbyFilterAndIds = IQuotesOptionsByIds & QuotesOptions;
