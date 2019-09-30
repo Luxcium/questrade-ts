@@ -180,6 +180,7 @@ export const _getDataFromApi = (() => {
       postGetStrategiesQuotes: _postGetStrategiesQuotes(credentials),
       getAccounts: _getAccounts(credentials),
       getActivities: _getActivities(credentials),
+      account: credentials.accountNumber,
     };
   };
 })();

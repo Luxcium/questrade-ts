@@ -1,9 +1,9 @@
-# Questrade TS 
+# Questrade TS
 
 **This [NPM Package](https://www.npmjs.com/package/questrade-ts) is an unofficial [Questrade API](https://www.questrade.com/api/documentation/getting-started) wrapper for [NodeJS](https://nodejs.org/en/docs/) with full [TypeScript](https://www.typescriptlang.org/docs/home.html) support.**
 
-[![Build Status](https://dev.azure.com/luxcium/Questrade-ts/_apis/build/status/Luxcium.questrade-ts?branchName=master)](https://dev.azure.com/luxcium/Questrade-ts/_build/latest?definitionId=1&branchName=master) 
-[![Travis (.org)](https://img.shields.io/travis/Luxcium/questrade-ts?label=Build&logo=travis&logoColor=white)](https://travis-ci.com/Luxcium/questrade-ts) 
+[![Build Status](https://dev.azure.com/luxcium/Questrade-ts/_apis/build/status/Luxcium.questrade-ts?branchName=master)](https://dev.azure.com/luxcium/Questrade-ts/_build/latest?definitionId=1&branchName=master)
+[![Travis (.org)](https://img.shields.io/travis/Luxcium/questrade-ts?label=Build&logo=travis&logoColor=white)](https://travis-ci.com/Luxcium/questrade-ts)
 [![Known Vulnerabilities](https://snyk.io/test/github/luxcium/questrade-ts/badge.svg)](https://snyk.io/test/github/luxcium/questrade-ts)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8af26b0bfa624c66b266cd83d4eb52b4)](https://www.codacy.com/manual/Luxcium/questrade-ts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Luxcium/questrade-ts&amp;utm_campaign=Badge_Grade)
 [![npm](https://img.shields.io/npm/dt/questrade-ts.svg)](https://www.npmjs.com/package/questrade-ts)
@@ -39,7 +39,7 @@ npm install --save-exact questrade-ts@latest
 
 Until version 1.0 breaking change will occur at minor version change 0.X.0, Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything problematic to help us during the development phase of this project. use the `--save-exact` flag until the version 1.0.x Using the caret (circumflex accent`U+005E`) ^0.X.Y on a version stating with 0.x should not upgrade to folowing minor version but to have full control make sure you unsing that flag or `-E` and then to upgrade to a new latest version use `@latest` i.e. `npm i --save-exact questrade-ts@latest`. alternatively you may use `--no-save` to prevents saving to dependencies at all.
 
-**To obtain or provide feedback (as bug reports or enhancements):** [visit our GitHub Issue page](https://github.com/Luxcium/questrade-ts/issues)  
+**To obtain or provide feedback (as bug reports or enhancements):** [visit our GitHub Issue page](https://github.com/Luxcium/questrade-ts/issues)
 **To contribute to this project:** [visit the GitHub Repo page of the project](https://github.com/Luxcium/questrade-ts)
 
 ### Features
@@ -53,21 +53,19 @@ You will then need to get an [API key](https://login.questrade.com/APIAccess/use
 After that, it is really simple to use:
 
 ```typescript
-// typescript
+// TypeScript/JavaScript
 import { tokenConnection } from 'questrade-ts';
 
 // using async Immediately Invoked Function Expressions to avoid using then().catch()
 (async () => {
   // always put your code in a try catch block
-
-  // you do not have to put the token in plain text you should import it from elsewhere
-  const seedToken = 'YOUR-TOKEN-HERE_jKi1YCwCjAMJFugwD4A8cgb0';
-
   try {
-    const { questrade } = await tokenConnection(seedToken);
 
-    // using qt for short if you prefer
-    const qt = questrade;
+    // you do not have to put the token in plain text you should import it from elsewhere
+    const seedToken = 'YOUR-TOKEN-HERE_jKi1YCwCjAMJFugwD4A8cgb0';
+
+    const { qt } = await tokenConnection(seedToken);
+
 
     const symb = await qt.searchSymbol('aapl');
 
@@ -76,7 +74,7 @@ import { tokenConnection } from 'questrade-ts';
     console.log(await qt.getQuote(symb.symbolId));
   } catch (error) {
     // manage your errors here if needed
-    console.log(error);
+    console.log(error.message);
   }
 })();
 ```
@@ -92,7 +90,7 @@ In order to do that, you should set either the `keyDir` option (defaults to `./k
 By default, if you instantiate the `Questrade` class without passing in an account ID to options, we will try to find and select the primary account (by fetching a list of all the accounts). If you want to change the account, simply do:
 
 ```typescript
-qt.account = '12345678'; // Switch to account 12345678 -- All future calls will use this account. using 8 digits
+qt.account = '12345678'; // Switch to account 12345678 -- All future calls will use this 8 digits account.
 ```
 
 ## Contributions

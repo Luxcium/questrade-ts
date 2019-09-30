@@ -20,7 +20,7 @@
     "max-line-length": [
       true,
       {
-        "ignore-pattern":"/",
+        "ignore-pattern":"/ |*",
         "limit": 80,
         "check-strings": false
       }

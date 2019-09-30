@@ -15,3 +15,4 @@ export {
   _getPrimaryAccountNumber,
 } from './core/_credentialsFactory';
 export { _getDataFromApi } from './core/_getDataFromApi';
+export { _marketsQuotesOptions } from './core/_marketsQuotesOptions';

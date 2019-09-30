@@ -1,4 +1,4 @@
-import { AxiosResponse, default as axios } from 'axios';
+import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 import { default as httpStatus } from 'http-status-codes';
 import { Credentials } from './typescript';
 // % _axiosApi !!!
@@ -15,18 +15,19 @@ const _axiosApi = (credentials: Credentials) => (VERB: string = 'GET') => <
   try {
     let response: AxiosResponse<R>;
 
-    const headers = {
+    const config: AxiosRequestConfig = {
       url: credentials.apiUrl + endpoint,
-      methode: VERB,
+      method: VERB.toLowerCase() as 'get' | 'post',
       headers: {
         Authorization: `Bearer ${credentials.accessToken}`,
         location: credentials.accountNumber,
       },
-      data: postData || '',
+      data: postData, // || '',
     };
 
     try {
-      response = await axios(headers);
+      response = await axios(config);
+      // console.log(response);
     } catch (e) {
       console.log(e.message);
       throw new Error(e.message);
