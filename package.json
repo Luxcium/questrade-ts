@@ -36,7 +36,9 @@
     "pretest": "npm run lint && tsc --noEmit --pretty",
     "pretest:yarn": "yarn run lint && tsc --noEmit --pretty",
     "pretest:npm": "npm run lint && tsc --noEmit --pretty",
-    "test": "jest ",
+    "test": "jest --coverage",
+    "coveralls":"jest --coverage --coverageReporters=text-lcov | coveralls",
+    "coverage": "nyc npm run test",
     "test:yarn": "jest",
     "test:npm": "jest",
     "npm:enum:publish": " npm publish ./build/enums/"
@@ -78,6 +80,7 @@
     "coveralls": "^3.0.6",
     "cp-cli": "2.0.0",
     "jest": "^24.9.0",
+    "nyc": "^14.1.1",
     "prettier": "^1.18.2",
     "rimraf": "2.6.3",
     "ts-jest": "^24.1.0",
