@@ -17,6 +17,10 @@ import {
   ISymbols,
   Time,
 } from './typescript';
+import {
+  _quotesOptionsByIds,
+  _quotesOptionsFilter,
+} from './_marketsQuotesOptions';
 
 export const _getDataFromApi = (() => {
   const _getBalances = (credentials: Credentials) =>
@@ -129,10 +133,13 @@ export const _getDataFromApi = (() => {
   const _getServerTime = (credentials: Credentials) => async () =>
     new Date((await _axiosGetApi(credentials)<Time>('/time')()).time);
 
+  // & _quotesOptionsFromIds
+  // & _quotesOptionsFromFilter
+
   // & _postGetOptionsQuotes
   /** _postGetOptionsQuotes */
-  const _postGetOptionsQuotes = (credentials: Credentials) =>
-    _axiosAccountGetApi(credentials)<any>('_postGetStrategiesQuotes');
+  // const _postGetOptionsQuotes = (credentials: Credentials) =>
+  //   _axiosAccountGetApi(credentials)<any>('_postGetStrategiesQuotes');
 
   // & _postGetStrategiesQuotes
   /** _postGetStrategiesQuotes */
@@ -176,7 +183,8 @@ export const _getDataFromApi = (() => {
       getSymbolSearchAll: _getSymbolSearchAll(credentials),
       getSymbolSearchCount: _getSymbolSearchCount(credentials),
       getServerTime: _getServerTime(credentials),
-      postGetOptionsQuotes: _postGetOptionsQuotes(credentials),
+      getQuotesOptionsByIds: _quotesOptionsByIds(credentials),
+      getQuotesOptionsFilter: _quotesOptionsFilter(credentials),
       postGetStrategiesQuotes: _postGetStrategiesQuotes(credentials),
       getAccounts: _getAccounts(credentials),
       getActivities: _getActivities(credentials),

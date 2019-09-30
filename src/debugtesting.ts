@@ -92,11 +92,11 @@ const myRefreshToken = 'cz8IwkxFNKilf9TkoeKA0gD5whwALsMt0';
 
   //   log('');
   // }
+  // const postData: OptionsPostData = { optionIds: [26947351, 26947367] };
   log(
     await _marketsQuotesOptions(credentials)(
-      [],
       // )(
-      // [26947351, 26947367] // , // )
+      null, // postData.optionIds,
       8049,
       '2019-10-04T00:00:00.000000-04:00'
     )
