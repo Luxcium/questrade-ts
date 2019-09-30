@@ -3,7 +3,8 @@ import { Credentials, IOptionsQuotes } from './typescript';
 
 export const _getQuotesOptionsByIds = (credentials: Credentials) => async (
   optionIds: number[]
-) => _marketsQuotesOptions(credentials)(optionIds, void 0, void 0, null, 0, 0);
+) =>
+  _getMarketsQuotesOptions(credentials)(optionIds, void 0, void 0, null, 0, 0);
 
 export const _getQuotesOptionsFilter = (credentials: Credentials) => async (
   filters: Filters
@@ -15,7 +16,7 @@ export const _getQuotesOptionsFilter = (credentials: Credentials) => async (
     minstrikePrice,
     maxstrikePrice,
   } = filters;
-  return _marketsQuotesOptions(credentials)(
+  return _getMarketsQuotesOptions(credentials)(
     null,
     underlyingId,
     expiryDate,
@@ -25,7 +26,7 @@ export const _getQuotesOptionsFilter = (credentials: Credentials) => async (
   );
 };
 
-export const _marketsQuotesOptions = (credentials: Credentials) => async (
+export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
   optionIds: void | null | undefined | number[] = [],
   underlyingId?: number,
   expiryDate?: string,
