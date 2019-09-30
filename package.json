@@ -36,7 +36,7 @@
     "pretest": "npm run lint && tsc --noEmit --pretty",
     "pretest:yarn": "yarn run lint && tsc --noEmit --pretty",
     "pretest:npm": "npm run lint && tsc --noEmit --pretty",
-    "test": "jest --coverage",
+    "test": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "coveralls":"jest --coverage --coverageReporters=text-lcov | coveralls",
     "coverage": "nyc npm run test",
     "test:yarn": "jest",
