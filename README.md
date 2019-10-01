@@ -63,44 +63,44 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 ```
 
 ## ACCOUNTS CALLS
- GET ACCOUNTS/:ID/ACTIVITIES -> `qt.get.accounts.activities`
+ get accounts/:id/activities -> `qt.get.accounts.activities`
 ```TypeScript
       // GET ACCOUNTS/:ID/ACTIVITIES
       log(await qt.get.accounts.activities(startTime)(endTime));
 ```
 
-GET ACCOUNTS/:ID/ORDERS -> `qt.get.accounts.orders`
+get accounts/:id/orders -> `qt.get.accounts.orders`
 ```TypeScript
 
       // GET ACCOUNTS/:ID/ORDERS
       log(await qt.get.accounts.orders(startTime)(endTime)('All'));
 ```
 
- GET ACCOUNTS/:ID/EXECUTIONS -> `qt.get.accounts.executions`
+ get accounts/:id/executions -> `qt.get.accounts.executions`
 ```TypeScript
       // GET ACCOUNTS/:ID/EXECUTIONS
       log(await qt.get.accounts.executions(startTime)(endTime));
 ```
 
- GET ACCOUNTS/:ID/BALANCES -> `qt.get.accounts.balances`
+ get accounts/:id/balances -> `qt.get.accounts.balances`
 ```TypeScript
       // GET ACCOUNTS/:ID/BALANCES
       log(await qt.get.accounts.balances());
 ```
 
- GET ACCOUNTS/:ID/POSITIONS -> `qt.get.accounts.positions`
+ get accounts/:id/positions -> `qt.get.accounts.positions`
 ```TypeScript
       // GET ACCOUNTS/:ID/POSITIONS
       log(await qt.get.accounts.positions());
 ```
 
- GET ACCOUNTS -> `qt.get.accounts.allAccounts`
+ get accounts -> `qt.get.accounts.allAccounts`
 ```TypeScript
       // GET ACCOUNTS
       log(await qt.get.accounts.allAccounts());
 ```
 
- GET TIME -> `qt.get.accounts.time`
+ get time -> `qt.get.accounts.time`
 ```TypeScript
       // GET TIME
       log(await qt.get.accounts.time());
@@ -110,7 +110,7 @@ GET ACCOUNTS/:ID/ORDERS -> `qt.get.accounts.orders`
 
 ### CANDLES
 
-GET MARKETS/CANDLES/:ID -> `qt.get.markets.candlesById`
+get markets/candles/:id -> `qt.get.markets.candlesById`
 
 
 ```TypeScript
@@ -124,13 +124,13 @@ GET MARKETS/CANDLES/:ID -> `qt.get.markets.candlesById`
 
 ### QUOTES
 
-GET MARKETS/QUOTES/STRATEGIES -> `NO IMPLEMENTATION AT HIS TIME`
+get markets/quotes/strategies -> `NO IMPLEMENTATION AT HIS TIME`
 ```TypeScript
       // GET MARKETS/QUOTES/STRATEGIES
       log('NO IMPLEMENTATION AT HIS TIME');
 ```
 
-GET MARKETS/QUOTES/OPTIONS (filter) -> `qt.get.markets.quotes.options`
+get markets/quotes/options (filter) -> `qt.get.markets.quotes.options`
 ```TypeScript
       // GET MARKETS/QUOTES/OPTIONS (filter)
       log(
@@ -152,13 +152,13 @@ Filters :
     */
 ```
 
-GET MARKETS/QUOTES/OPTIONS (byIds optionsIds array) -> `qt.get.markets.quotes.options.byIds`
+get markets/quotes/options (byids optionsids array) -> `qt.get.markets.quotes.options.byIds`
 ```TypeScript
       // GET MARKETS/QUOTES/OPTIONS (byIds optionsIds array)
       log(await qt.get.markets.quotes.options.byIds([optionNumericID]));
 ```
 
-GET MARKETS/QUOTES/:ID -> `qt.get.markets.quotes.byIds`
+get markets/quotes/:id -> `qt.get.markets.quotes.byIds`
 ```TypeScript
       // GET MARKETS/QUOTES/:ID
       log(await qt.get.markets.quotes.byIds([stockNumericID]));
@@ -166,7 +166,7 @@ GET MARKETS/QUOTES/:ID -> `qt.get.markets.quotes.byIds`
 
 ### LIST ALL MARKEST
 
-GET MARKETS -> `qt.get.markets.allMarkets`
+get markets -> `qt.get.markets.allMarkets`
 
 ```TypeScript
       // GET MARKETS
@@ -181,21 +181,21 @@ GET MARKETS -> `qt.get.markets.allMarkets`
       log(await qt.get.symbols.optionsById(stockNumericID));
 ```
 
-GET SYMBOLS/SEARCH (return fisrt result or offseted result) -> `qt.get.symbols.search`
+get symbols/search (return fisrt result or offseted result) -> `qt.get.symbols.search`
 
 ```TypeScript
       // GET SYMBOLS/SEARCH (return fisrt result or offseted result)
       log(await qt.get.symbols.search(stockStringID));
 ```
 
-GET SYMBOLS/SEARCH (count of results or offseted results) -> `(await qt.get.symbols.search(stockStringID)).count`
+get symbols/search (count of results or offseted results) -> `(await qt.get.symbols.search(stockStringID)).count`
 
 ```TypeScript
       // GET SYMBOLS/SEARCH (count of results or offseted results)
       log((await qt.get.symbols.search(stockStringID)).count);
 ```
 
-GET SYMBOLS/SEARCH (count the number of results)  -> `qt.get.symbols.search.count`
+get symbols/search (count the number of results)  -> `qt.get.symbols.search.count`
 
 ```TypeScript
       // GET SYMBOLS/SEARCH (count the number of results)
@@ -204,14 +204,14 @@ GET SYMBOLS/SEARCH (count the number of results)  -> `qt.get.symbols.search.coun
       log(await qt.get.symbols.searchCount(stockStringID));
 ```
 
-GET SYMBOLS/SEARCH (return ALL results can profide an offset as second) -> `qt.get.symbols.searchAll`
+get symbols/search (return all results can profide an offset as second) -> `qt.get.symbols.searchAll`
 
 ```TypeScript
       // GET SYMBOLS/SEARCH (return ALL results can profide an offset as second)
       log(await qt.get.symbols.searchAll(stockStringID));
 ```
 
-GET SYMBOLS/:ID (stockIds array) -> `qt.get.symbols.byIds`
+get symbols/:id (stockids array) -> `qt.get.symbols.byIds`
 
 ```TypeScript
       // GET SYMBOLS/:ID (stockIds array)
