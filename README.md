@@ -149,7 +149,7 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 
 **Filters structure:** <br />
 ```TypeScript
-      /*
+    /*
       underlyingId: number; [REQUIRED]
       expiryDate: string; [REQUIRED]
       optionType?: string | null; [OPTIONAL]
