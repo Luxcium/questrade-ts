@@ -1,0 +1,2 @@
+export declare const testExamples: (yourRefreshToken: string, startTime: string, endTime: string, optionExpiryDate: string, optionNumericID: number, stockNumericID: number, stockStringID: string) => Promise<void>;
+//# sourceMappingURL=testExamples.d.ts.map
