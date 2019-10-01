@@ -35,9 +35,9 @@ npm install --save-exact questrade-ts@latest
 
 ### Currently, this API does not have any test suites installed
 
-[![Coverage Status](https://coveralls.io/repos/github/luxcium/questrade-ts/badge.svg?style=flat&branch=master)](https://coveralls.io/github/luxcium/questrade-ts?branch=master) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
+**Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything you feel is not exactly as described on this page or [Questrade Page](https://www.questrade.com/api/documentation/getting-started).** No test suite is curently implemented but all the examples on this page have been tested manually and did not generated any errors.
 
-Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything you fell is not exactly as described on this page or [Questrade Page](https://www.questrade.com/api/documentation/getting-started). No test suite is curently implemented but all the examples on this page have been tested manually and did not generated any errors.
+[![Coverage Status](https://coveralls.io/repos/github/luxcium/questrade-ts/badge.svg?style=flat&branch=master)](https://coveralls.io/github/luxcium/questrade-ts?branch=master) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
 
 **To obtain or provide feedback (as bug reports or enhancements):** [visit our GitHub Issue page](https://github.com/Luxcium/questrade-ts/issues)
 **To contribute to this project:** [visit the GitHub Repo page of the project](https://github.com/Luxcium/questrade-ts)
@@ -48,12 +48,15 @@ Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-
   - Easy to use API calls
   - Auto-select primary account
 
+
+
+## Examples
+
 You will need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx).
 
 After that, it is really simple to use:
 
-## Examples
-**TL;DR** <br />
+### TL;DR
 ```TypeScript
 import { redeemToken } from 'questrade-ts';
 
@@ -73,7 +76,7 @@ log(credentials)
 // inside and async function then use await qt.<some properties, methodes or functions>
 ```
 
-## ACCOUNTS CALLS
+### ACCOUNTS CALLS
 
 
 **Retrieve account activities, including cash transactions, dividends, trades, etc.** <br />
@@ -121,9 +124,9 @@ log(credentials)
       log(await qt.get.accounts.time());
 ```
 
-## MARKET CALLS
+### MARKET CALLS
 
-### CANDLES
+#### CANDLES
 **Retrieves historical market data in the form of OHLC candlesticks for a specified symbol.** <br />
 [markets/candles/:id](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-candles-id) -> `qt.get.markets.candlesById`
 
@@ -137,7 +140,7 @@ log(credentials)
       );
 ```
 
-### QUOTES
+#### QUOTES
 **Retrieve a calculated L1 market data quote for a single or many multi-leg strategies.** <br />
 [markets/quotes/strategies](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-strategies) -> `NO IMPLEMENTATION AT HIS TIME`
 ```TypeScript
@@ -181,7 +184,7 @@ log(credentials)
       log(await qt.get.markets.quotes.byIds([stockNumericID]));
 ```
 
-### LIST ALL MARKEST
+#### LIST ALL MARKEST
 **Retrieves information about supported markets.** <br />
 [markets](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets) -> `qt.get.markets.allMarkets`
 
@@ -190,7 +193,7 @@ log(credentials)
       log(await qt.get.markets.allMarkets());
 ```
 
-### SYMBOLS
+#### SYMBOLS
 **Retrieves an option chain for a particular underlying symbol.** <br />
 [SYMBOLS/:ID/OPTIONS (by single stockId)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-id-options) -> `qt.get.symbols.optionsById`
 ```TypeScript
@@ -305,7 +308,7 @@ all example are run inside an async IIFE within a try/catch block in the section
   })();
 ```
 
-## Enumerations
+### Enumerations
 [Questrade Enumerations](https://www.questrade.com/api/documentation/rest-operations/enumerations)
 
  Enumerations from `questrade-api-enumerations` NPM package (included)
@@ -368,11 +371,7 @@ qt.account = '12345678';
 // Must be one of your valid account number
 ```
 
-## Contributions
-
-All contributions are welcome!
-
-### MIT LICENSE
+## MIT LICENSE
 
 Copyright (c) 2019 Benjamin Vincent Kasapoglu (Luxcium)
 
@@ -384,7 +383,11 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ALL KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ALL CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## Questrade does not maintain this unofficial SDK
+## Contributions
+
+All contributions are welcome!
+
+### Questrade does not maintain this unofficial SDK
 
 Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation/) to get help. Please always open a [questrade-ts GitHub issue](https://github.com/luxcium/questrade-ts/issues) for anything you feel doesn't match the way it should be working when referring to Questrade docs.
 
