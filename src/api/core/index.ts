@@ -1,20 +1,11 @@
-export {
-  _axiosAccountGetApi,
-  _axiosApiGetEndpointFactory,
-  _axiosApiGetEndpointFactoryD,
-  _axiosApiPost,
-  _axiosApiPostEndpointFactory,
-  _axiosApiPostEndpointFactoryD,
-  _axiosGetApi,
-  _delayedCrednetialsFunction,
-  _delayedFunctionCredentials,
-} from './_axiosApi';
+export {_axiosAccountGetApi,_axiosApiGetEndpointFactory,_axiosApiGetEndpointFactoryD,_axiosApiPost,_axiosApiPostEndpointFactory,_axiosApiPostEndpointFactoryD,_axiosGetApi,_delayedCrednetialsFunction,_delayedFunctionCredentials,
+} from "./_axiosApi";
 export {
   _credentialsFactory,
   _defaultCredentials,
   _getPrimaryAccountNumber,
-} from './_credentialsFactory';
-export { _getDataFromApi } from './_getDataFromApi';
+} from "./_credentialsFactory";
+export { _getDataFromApi } from "./_getDataFromApi";
 export {
   _getMarketsQuotesOptions as _marketsQuotesOptions,
-} from './_marketsQuotesOptions';
+} from "./_marketsQuotesOptions";

@@ -1,4 +1,8 @@
-import { HistoricalDataGranularity, OptionType, OrderStateFilterType } from 'questrade-api-enumerations';
+import {
+  HistoricalDataGranularity,
+  OptionType,
+  OrderStateFilterType,
+} from 'questrade-api-enumerations';
 import { DateTime } from '.';
 
 // - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.

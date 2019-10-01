@@ -78,8 +78,8 @@ export const day = (days: number) => days * naive.inMiliSec.DAY;
 
 // endpointFormatDateTool(startTime, endTime);
 
-// import { questrade } from '../../classes/questradeBase';
-// questrade('0I55OUTM7zHQZbG9AiwA5vY3zQY6W6qt0').then(
+// import { questrade } from "../../classes/questradeBase";
+// questrade("0I55OUTM7zHQZbG9AiwA5vY3zQY6W6qt0").then(
 //   async will => console.log(will)
 // await will.get.orders(startDate, endDate)(), // .reduce(
 // will.get.current.accountNumber(),
@@ -87,7 +87,7 @@ export const day = (days: number) => days * naive.inMiliSec.DAY;
 // await will.get.supported.markets(),
 // await will.get.market.quotes([9292, 9292])
 // (pre: number, curent, _index) =>
-// console.log('\n', each.description, '\n')
+// console.log("\n", each.description, "\n")
 // {
 //   const void0: unknown =
 //   if (!!curent.commission.valueOf()) console.log(curent.commission);
