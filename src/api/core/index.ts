@@ -14,7 +14,7 @@ export {
   _defaultCredentials,
   _getPrimaryAccountNumber,
 } from './_credentialsFactory';
-export { _getDataFromApi } from './_getDataFromApi';
+export { _getApi } from './_getApi';
 export {
   _getMarketsQuotesOptions as _marketsQuotesOptions,
 } from './_marketsQuotesOptions';

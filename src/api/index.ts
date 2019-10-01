@@ -1,10 +1,10 @@
-import { _credentialsFactory, _getDataFromApi } from './core';
+import { _credentialsFactory, _getApi } from './core';
 
-async function tokenConnection(refreshToken: string) {
+async function redeemToken(refreshToken: string) {
   const credentials = await _credentialsFactory(refreshToken);
-  const questrade = _getDataFromApi(credentials);
-  return { qt: questrade, questrade, credentials };
+  const questrade = _getApi(credentials);
+  return { qtApi: questrade, credentials };
 }
 
-export { id0, log } from './utils';
-export { tokenConnection };
+export { id0, log, day } from './utils';
+export { redeemToken };

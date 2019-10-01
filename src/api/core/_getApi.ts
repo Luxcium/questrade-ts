@@ -24,7 +24,7 @@ import {
   Time,
 } from './typescript';
 
-export const _getDataFromApi = (() => {
+export const _getApi = (() => {
   const _getBalances = (credentials: Credentials) =>
     _axiosAccountGetApi(credentials)<IBalances>('/balances');
 

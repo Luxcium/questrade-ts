@@ -1,4 +1,4 @@
-import { tokenConnection } from '.';
+import { redeemToken } from '.';
 import { day, id0, log } from './utils';
 // import { types } from 'util';
 // types.
@@ -10,7 +10,7 @@ const startTime = new Date(Date.now() - day(1)).toISOString();
 const endTime = new Date(Date.now()).toISOString();
 
 (async () => {
-  const { qt, credentials } = await tokenConnection(myRefreshToken);
+  const { qtApi: qt, credentials } = await redeemToken(myRefreshToken);
 
   await id0(async () => qt.getServerTime());
 
