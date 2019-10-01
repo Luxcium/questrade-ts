@@ -2,7 +2,7 @@
   "name": "questrade-ts",
   "displayName": "Questrade API by Luxcium (with typescript support).",
   "description": "Unofficial Questrade API wrapper for NodeJS with full TypeScript support.",
-  "version": "1.0.0-4rc",
+  "version": "1.0.0-rc5",
   "author": "Luxcium <luxcium@neb401.com>",
   "license": "MIT",
   "homepage": "https://github.com/Luxcium/questrade-ts",
@@ -11,7 +11,7 @@
   "scripts": {
     "predist": "yarn run build",
     "dist": "yarn run rm:dist; yarn run cp:dist",
-    "postdist": "npm publish ./dist --tag next --dry-run; npm pack ./dist",
+    "postdist": "npm publish ./dist --tag next --dry-run && npm pack ./dist",
     "rm:dist": "rimraf ./dist/src/; rimraf ./dist/lib/; ",
     "cp:dist": "concurrently \"yarn:cp:dist:0\" \"yarn:cp:dist:1\" \"yarn:cp:dist:2\" \"yarn:cp:dist:3\"",
     "cp:dist:0": "cp-cli ./build/src ./dist/src; cp-cli ./build/lib ./dist/lib",
