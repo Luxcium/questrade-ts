@@ -1,65 +1,54 @@
 {
   "name": "questrade-ts",
   "displayName": "Questrade API by Luxcium (with typescript support).",
-  "version": "1.0.0-0",
   "description": "Unofficial Questrade API wrapper for NodeJS with full TypeScript support.",
+  "version": "1.0.0-0",
+  "author": "Luxcium <luxcium@neb401.com>",
+  "license": "MIT",
+  "homepage": "https://www.npmjs.com/package/questrade-ts",
   "main": "./src/api/index.js",
   "types": "./lib/api/index.d.ts",
+
   "scripts": {
-    "build": "yarn run build:yarn",
-    "build:yarn": "yarn run out:clean && yarn run quick:yarn",
-    "build:npm": "npm run out:clean && npm run quick:npm",
-    "quick": "yarn run quick:yarn",
-    "quick:yarn": "yarn run test:yarn && yarn run rebuild:yarn && yarn run out:clean:post && yarn run out:clean:umd ",
-    "quick:npm": "npm run test:npm && npm run rebuild:npm && npm run out:clean:post && npm run out:clean:umd ",
-    "rebuild": "yarn run rebuild:yarn",
-    "rebuild:yarn": "concurrently \"yarn:out:sys\" \"yarn:out:amd\" \"yarn:out:cjs\" \"yarn:out:umd\"",
-    "rebuild:npm": "concurrently \"npm:out:sys\" \"npm:out:amd\" \"npm:out:cjs\" \"npm:out:umd\"",
-    "out:clean": "rimraf -r ./build/**/*",
-    "out:clean:post": "rimraf -r ./build/src/api/core/typescript/**/*",
-    "out:clean:umd": "rimraf -r ./build/js/umd/src/api/core/typescript/**/*",
-    "out:amd": "tsc -b ./tsconfig.amd.json",
-    "out:sys": "tsc -b ./tsconfig.sys.json",
+    "predist":"yarn run build",
+    "dist":"yarn run rm:dist; yarn run cp:dist ",
+    "rm:dist":"rimraf ./dist/src/; rimraf ./dist/lib/; ",
+    "cp:dist":"cp-cli ./build/src ./dist/src; cp-cli ./build/lib ./dist/lib",
+    "prebuild":"yarn run out:pre:clean",
+    "build": "yarn run quick",
+    "postbuild":"yarn run out:post:clean",
+    "out:pre:clean": "rimraf -r ./build/**/*",
+    "out:post:clean": "yarn run rm:typescript; yarn run rm:test",
+    "rm:test":"rimraf ./build/src/test; rimraf ./build/lib/test; ",
+    "rm:typescript":"rimraf ./build/src/api/core/typescript/; rimraf ./build/js/umd/src/api/core/typescript/",
+    "prequick":"yarn run test",
+    "quick": "yarn run rebuild",
+    "rebuild": "concurrently \"yarn:out:cjs\" \"yarn:out:umd\" \"yarn:out:amd\" \"yarn:out:sys\"",
     "out:cjs": "tsc -b ./tsconfig.commonjs.json",
     "out:umd": "tsc -b ./tsconfig.umd.json",
-    "out:enu": "npm run out:enu:npm",
-    "out:enu:yarn": "tsc -b ./enums/tsconfig.json && yarn run cp:enu:yarn",
-    "out:enu:npm": "tsc -b ./enums/tsconfig.json && npm run cp:enu:npm",
-    "cp:enu": "npm run cp:enu:npm",
-    "cp:enu:yarn": "concurrently \"yarn:cp:enu:0\" \"yarn:cp:enu:1\" \"yarn:cp:enu:2\" \"yarn:cp:enu:3\"",
-    "cp:enu:npm": "concurrently \"npm:cp:enu:0\" \"npm:cp:enu:1\" \"npm:cp:enu:2\" \"npm:cp:enu:3\"",
+    "out:amd": "tsc -b ./tsconfig.amd.json",
+    "out:sys": "tsc -b ./tsconfig.sys.json",
+    "lint": "tslint --project . --format stylish; prettier --write src/api/**/*.ts",
+    "pretest": "yarn run lint && tsc --noEmit --pretty",
+    "test": "jest",
+    "latest": "npm i axios@latest questrade-api-enumerations@latest tslib@latest http-status-codes@latest",
+    "out:enu": "tsc -b ./enums/tsconfig.json && yarn run cp:enu:yarn",
+    "npm:enum:publish": " npm publish ./build/enums/",
+    "cp:enu": "concurrently \"yarn:cp:enu:0\" \"yarn:cp:enu:1\" \"yarn:cp:enu:2\" \"yarn:cp:enu:3\"",
     "cp:enu:0": "cp-cli ./enums/LICENSE.txt ./build/enums/LICENSE.txt",
     "cp:enu:1": "cp-cli ./enums/README.md ./build/enums/README.md",
     "cp:enu:2": "cp-cli ./enums/package.json ./build/enums/package.json",
-    "cp:enu:3": "cp-cli ./enums/.npmignore ./build/enums/.npmignore",
-    "lint": "tslint --project . --format stylish",
-    "pretest": "npm run lint && tsc --noEmit --pretty",
-    "pretest:yarn": "yarn run lint && tsc --noEmit --pretty",
-    "pretest:npm": "npm run lint && tsc --noEmit --pretty",
-    "test": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
-    "coverage": "nyc npm run test",
-    "test:yarn": "jest",
-    "test:npm": "jest",
-    "npm:enum:publish": " npm publish ./build/enums/",
-    "latest": "npm i axios@latest questrade-api-enumerations@latest tslib@latest http-status-codes@latest"
+    "cp:enu:3": "cp-cli ./enums/.npmignore ./build/enums/.npmignore"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com/luxcium/questrade-ts.git"
   },
-  "keywords": [
-    "Questrade",
-    "stocks",
-    "trading",
-    "typescript"
-  ],
-  "author": "Luxcium <luxcium@neb401.com>",
-  "license": "MIT",
+
+
   "bugs": {
     "url": "https://github.com/luxcium/questrade-ts/issues"
   },
-  "homepage": "https://www.npmjs.com/package/questrade-ts",
   "dependencies": {
     "axios": "^0.19.0",
     "http-status-codes": "^1.3.2",
@@ -92,5 +81,13 @@
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.5.3",
     "typescript-tslint-plugin": "0.5.4"
-  }
+  },
+
+  "keywords": [
+    "Questrade",
+    "stocks",
+    "trading",
+    "typescript"
+  ]
+
 }
