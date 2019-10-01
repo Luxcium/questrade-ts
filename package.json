@@ -3,8 +3,8 @@
   "displayName": "Questrade API by Luxcium (with typescript support).",
   "version": "0.8.0",
   "description": "Unofficial Questrade API wrapper for NodeJS with full TypeScript support.",
-  "main": "./src/index.js",
-  "types": "./lib/index.d.ts",
+  "main": "./src/api/index.js",
+  "types": "./lib/api/index.d.ts",
   "scripts": {
     "build": "yarn run build:yarn",
     "build:yarn": "yarn run out:clean && yarn run quick:yarn",
