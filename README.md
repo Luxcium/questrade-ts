@@ -66,45 +66,45 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 
 
 **Retrieve account activities, including cash transactions, dividends, trades, etc.** <br />
- [get accounts/:id/activities](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-activities) -> `qt.get.accounts.activities`
+ [accounts/:id/activities](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-activities) -> `qt.get.accounts.activities`
 
 ```TypeScript
       // GET ACCOUNTS/:ID/ACTIVITIES
       log(await qt.get.accounts.activities(startTime)(endTime));
 ```
 **Retrieves orders for specified account** <br />
-[get accounts/:id/orders](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-orders) -> `qt.get.accounts.orders`.
+[accounts/:id/orders](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-orders) -> `qt.get.accounts.orders`
 ```TypeScript
 
       // GET ACCOUNTS/:ID/ORDERS
       log(await qt.get.accounts.orders(startTime)(endTime)('All'));
 ```
 **Retrieves executions for a specific account.** <br />
- [get accounts/:id/executions](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-executions) -> `qt.get.accounts.executions`
+ [accounts/:id/executions](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-executions) -> `qt.get.accounts.executions`
 ```TypeScript
       // GET ACCOUNTS/:ID/EXECUTIONS
       log(await qt.get.accounts.executions(startTime)(endTime));
 ```
 **Retrieves per-currency and combined balances for a specified account.** <br />
- [get accounts/:id/balances](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-balances) -> `qt.get.accounts.balances`
+ [accounts/:id/balances](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-balances) -> `qt.get.accounts.balances`
 ```TypeScript
       // GET ACCOUNTS/:ID/BALANCES
       log(await qt.get.accounts.balances());
 ```
 **Retrieves positions in a specified account.** <br />
- [get accounts/:id/positions](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-positions) -> `qt.get.accounts.positions`
+ [accounts/:id/positions](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-positions) -> `qt.get.accounts.positions`
 ```TypeScript
       // GET ACCOUNTS/:ID/POSITIONS
       log(await qt.get.accounts.positions());
 ```
 **Retrieves the accounts associated with the user on behalf of which the API client is authorized.** <br />
- [get accounts](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts) -> `qt.get.accounts.allAccounts`
+ [accounts](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts) -> `qt.get.accounts.allAccounts`
 ```TypeScript
       // GET ACCOUNTS
       log(await qt.get.accounts.allAccounts());
 ```
 **Retrieves current server time.** <br />
- [get time](https://www.questrade.com/api/documentation/rest-operations/account-calls/time) -> `qt.get.accounts.time`
+ [time](https://www.questrade.com/api/documentation/rest-operations/account-calls/time) -> `qt.get.accounts.time`
 ```TypeScript
       // GET TIME
       log(await qt.get.accounts.time());
@@ -114,7 +114,7 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 
 ### CANDLES
 **Retrieves historical market data in the form of OHLC candlesticks for a specified symbol.** <br />
-[get markets/candles/:id](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-candles-id) -> `qt.get.markets.candlesById`
+[markets/candles/:id](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-candles-id) -> `qt.get.markets.candlesById`
 
 
 ```TypeScript
@@ -128,14 +128,14 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 
 ### QUOTES
 **Retrieve a calculated L1 market data quote for a single or many multi-leg strategies.** <br />
-[get markets/quotes/strategies](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-strategies) -> `NO IMPLEMENTATION AT HIS TIME`
+[markets/quotes/strategies](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-strategies) -> `NO IMPLEMENTATION AT HIS TIME`
 ```TypeScript
       // GET MARKETS/QUOTES/STRATEGIES
       log('NO IMPLEMENTATION AT HIS TIME');
 ```
 **Retrieves a single Level 1 market data quote and Greek data for one or more option symbols.** <br />
 **Input array of OptionId Filter structures** <br />
-[get markets/quotes/options](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-options) (filter) -> `qt.get.markets.quotes.options`
+[markets/quotes/options](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-options) (filter) -> `qt.get.markets.quotes.options`
 
 ```TypeScript
       // GET MARKETS/QUOTES/OPTIONS (filter)
@@ -158,13 +158,13 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
     */
 ```
 **Input array of option IDs.** <br />
-[get markets/quotes/options](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-options) (byids optionsids array) -> `qt.get.markets.quotes.options.byIds`
+[markets/quotes/options](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-options) (byids optionsids array) -> `qt.get.markets.quotes.options.byIds`
 ```TypeScript
       // GET MARKETS/QUOTES/OPTIONS (byIds optionsIds array)
       log(await qt.get.markets.quotes.options.byIds([optionNumericID]));
 ```
 **Retrieves a single Level 1 market data quote for one or more symbols. (Please check "delay" parameter in response always)** <br />
-[get markets/quotes/:id](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-id) -> `qt.get.markets.quotes.byIds`
+[markets/quotes/:id](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-id) -> `qt.get.markets.quotes.byIds`
 ```TypeScript
       // GET MARKETS/QUOTES/:ID
       log(await qt.get.markets.quotes.byIds([stockNumericID]));
@@ -172,7 +172,7 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 
 ### LIST ALL MARKEST
 **Retrieves information about supported markets.** <br />
-[get markets](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets) -> `qt.get.markets.allMarkets`
+[markets](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets) -> `qt.get.markets.allMarkets`
 
 ```TypeScript
       // GET MARKETS
@@ -181,27 +181,27 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 
 ### SYMBOLS
 **Retrieves an option chain for a particular underlying symbol.** <br />
-[GET SYMBOLS/:ID/OPTIONS (by single stockId)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-id-options) -> `qt.get.symbols.optionsById`
+[SYMBOLS/:ID/OPTIONS (by single stockId)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-id-options) -> `qt.get.symbols.optionsById`
 ```TypeScript
       // GET SYMBOLS/:ID/OPTIONS (by single stockId)
       log(await qt.get.symbols.optionsById(stockNumericID));
 ```
 **Retrieves symbol(s) using several search criteria. (Prefix of a symbol or any word in the description.)** <br />
-[get symbols/search (return fisrt result or offseted result)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search) -> `qt.get.symbols.search`
+[symbols/search (return fisrt result or offseted result)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search) -> `qt.get.symbols.search`
 
 ```TypeScript
       // GET SYMBOLS/SEARCH (return fisrt result or offseted result)
       log(await qt.get.symbols.search(stockStringID));
 ```
 
-[get symbols/search (count of results or offseted results)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search) -> `(await qt.get.symbols.search(stockStringID)).count`
+[symbols/search (count of results or offseted results)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search) -> `(await qt.get.symbols.search(stockStringID)).count`
 
 ```TypeScript
       // GET SYMBOLS/SEARCH (count of results or offseted results)
       log((await qt.get.symbols.search(stockStringID)).count);
 ```
 
-[get symbols/search (count the number of results)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search)  -> `qt.get.symbols.search.count`
+[symbols/search (count the number of results)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search)  -> `qt.get.symbols.search.count`
 
 ```TypeScript
       // GET SYMBOLS/SEARCH (count the number of results)
@@ -210,14 +210,14 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
       log(await qt.get.symbols.searchCount(stockStringID));
 ```
 
-[get symbols/search (return all results can profide an offset as second)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search) -> `qt.get.symbols.searchAll`
+[symbols/search (return all results can profide an offset as second)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search) -> `qt.get.symbols.searchAll`
 
 ```TypeScript
       // GET SYMBOLS/SEARCH (return ALL results can profide an offset as second)
       log(await qt.get.symbols.searchAll(stockStringID));
 ```
 **Retrieves detailed information about one or more symbol.** <br />
-[get symbols/:id (stockids array)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-id) -> `qt.get.symbols.byIds`
+[symbols/:id (stockids array)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-id) -> `qt.get.symbols.byIds`
 
 ```TypeScript
       // GET SYMBOLS/:ID (stockIds array)
