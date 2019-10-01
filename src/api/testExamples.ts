@@ -1,6 +1,8 @@
 // TypeScript/JavaScript
 import { day, Enumerations, redeemToken } from '.';
 
+const testing = false;
+
 export const testExamples = (
   yourRefreshToken: string,
   startTime: string,
@@ -130,37 +132,45 @@ export const testExamples = (
     }
   })();
 
-// for easier reading of the examples
-const toISOStringDate = (dateTime: number | string) =>
-  new Date(dateTime).toISOString();
-// for easier reading of the examples
+function runExamples(isTesting: boolean = false) {
+  if (!isTesting) return;
 
-// convert days to miliseconds for calculations in date
-const tenDays = day(10);
+  // for easier reading of the examples
+  const toISOStringDate = (dateTime: number | string) =>
+    new Date(dateTime).toISOString();
+  // for easier reading of the examples
 
-// to have a start and end dateTime to use in examples
-const timeNow = Date.now();
-const start = timeNow - tenDays;
-const end = timeNow;
-const exampleStartTime = toISOStringDate(start);
-const exampleEndTime = toISOStringDate(end);
+  // convert days to miliseconds for calculations in date
+  const tenDays = day(10);
 
-const exampleOptionExpiryDate: string = '2019-10-04T05:37:30.053Z';
-const exampleOptionNumericID: number = 27003348;
-const exampleStockNumericID: number = 8049; // 'aapl'
-const exampleStockStringID: string = 'aapl'; // 8049
+  // to have a start and end dateTime to use in examples
+  const timeNow = Date.now();
+  const start = timeNow - tenDays;
+  const end = timeNow;
+  const exampleStartTime = toISOStringDate(start);
+  const exampleEndTime = toISOStringDate(end);
 
-// you do not have to put the token in plain text you should import it from elsewhere
-// const refreshToken = 'YOUR-TOKEN-HERE_jKi1YCwCjAMJFugwD4A8cgb0';
-export const refreshToken = 'G0DpF1a5ANONc1kgkC5aOuoMUMrW0X0l0';
-// using async Immediately Invoked Function Expressions to avoid using then().catch()
+  const exampleOptionExpiryDate: string = '2019-10-04T05:37:30.053Z';
+  const exampleOptionNumericID: number = 27003348;
+  const exampleStockNumericID: number = 8049; // 'aapl'
+  const exampleStockStringID: string = 'aapl'; // 8049
 
-testExamples(
-  refreshToken,
-  exampleStartTime,
-  exampleEndTime,
-  exampleOptionExpiryDate,
-  exampleOptionNumericID,
-  exampleStockNumericID,
-  exampleStockStringID
-);
+  // you do not have to put the token in plain text you should import it from elsewhere
+  // const refreshToken = 'YOUR-TOKEN-HERE_jKi1YCwCjAMJFugwD4A8cgb0';
+  const refreshToken = 'G0DpF1a5ANONc1kgkC5aOuoMUMrW0X0l0';
+  // using async Immediately Invoked Function Expressions to avoid using then().catch()
+
+  testExamples(
+    refreshToken,
+    exampleStartTime,
+    exampleEndTime,
+    exampleOptionExpiryDate,
+    exampleOptionNumericID,
+    exampleStockNumericID,
+    exampleStockStringID
+  );
+
+  return;
+}
+
+runExamples(testing);
