@@ -387,6 +387,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ALL KIND, EXPRESS OR IMPLI
 
 All contributions are welcome!
 
+### Please always use semicolons when using this package or using this code in other projects
+>Why? ([airbnb/javascript](https://github.com/airbnb/javascript#semicolons)):
+>When JavaScript encounters a line break without a semicolon, it uses a set of rules called [Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion) to determine whether or not it should regard that line break as the end of a statement, and (as the name implies) place a semicolon into your code before the line break if it thinks so. ASI contains a few eccentric behaviors, though, and your code will break if JavaScript misinterprets your line break. These rules will become more complicated as new features become a part of JavaScript. Explicitly terminating your statements and configuring your linter to catch missing semicolons will help prevent you from encountering issues.
+
 ### Questrade does not maintain this unofficial SDK
 
 Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation/) to get help. Please always open a [questrade-ts GitHub issue](https://github.com/luxcium/questrade-ts/issues) for anything you feel doesn't match the way it should be working when referring to Questrade docs.
@@ -394,7 +398,3 @@ Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation
 ### Originaly based on the work of
 
 [Leander Lee](https://github.com/leanderlee/questrade)
-
-### Please always use semicolons when using my code
->Why? ([airbnb/javascript](https://github.com/airbnb/javascript#semicolons)):
->When JavaScript encounters a line break without a semicolon, it uses a set of rules called [Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion) to determine whether or not it should regard that line break as the end of a statement, and (as the name implies) place a semicolon into your code before the line break if it thinks so. ASI contains a few eccentric behaviors, though, and your code will break if JavaScript misinterprets your line break. These rules will become more complicated as new features become a part of JavaScript. Explicitly terminating your statements and configuring your linter to catch missing semicolons will help prevent you from encountering issues.
