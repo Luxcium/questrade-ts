@@ -37,7 +37,7 @@ npm install --save-exact questrade-ts@latest
 
 [![Coverage Status](https://coveralls.io/repos/github/luxcium/questrade-ts/badge.svg?style=flat&branch=master)](https://coveralls.io/github/luxcium/questrade-ts?branch=master) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
 
-Until version 1.0 breaking change will occur at minor version change 0.X.0, Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything problematic to help us during the development phase of this project. use the `--save-exact` flag until the version 1.0.x Using the caret (circumflex accent`U+005E`) ^0.X.Y on a version stating with 0.x should not upgrade to folowing minor version but to have full control make sure you unsing that flag or `-E` and then to upgrade to a new latest version use `@latest` i.e. `npm i --save-exact questrade-ts@latest`. alternatively you may use `--no-save` to prevents saving to dependencies at all.
+Until version 1.0 breaking change occur at minor version change 0.X.0, Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything problematic to help us during the development phase of this project. use the `--save-exact` flag until the version 1.0.x Using the caret (circumflex accent`U+005E`) ^0.X.Y on a version stating with 0.x should not upgrade to folowing minor version but to have full control make sure you unsing that flag or `-E` and then to upgrade to a new latest version use `@latest` i.e. `npm i --save-exact questrade-ts@latest`. alternatively you may use `--no-save` to prevents saving to dependencies at all.
 
 **To obtain or provide feedback (as bug reports or enhancements):** [visit our GitHub Issue page](https://github.com/Luxcium/questrade-ts/issues)
 **To contribute to this project:** [visit the GitHub Repo page of the project](https://github.com/Luxcium/questrade-ts)
@@ -63,29 +63,57 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 ```
 
 ## ACCOUNTS CALLS
-
-``` TypeScript
+ GET ACCOUNTS/:ID/ACTIVITIES -> `qt.get.accounts.activities`
+```TypeScript
       // GET ACCOUNTS/:ID/ACTIVITIES
       log(await qt.get.accounts.activities(startTime)(endTime));
+```
+
+GET ACCOUNTS/:ID/ORDERS -> `qt.get.accounts.orders`
+```TypeScript
+
       // GET ACCOUNTS/:ID/ORDERS
       log(await qt.get.accounts.orders(startTime)(endTime)('All'));
+```
+
+ GET ACCOUNTS/:ID/EXECUTIONS -> `qt.get.accounts.executions`
+```TypeScript
       // GET ACCOUNTS/:ID/EXECUTIONS
       log(await qt.get.accounts.executions(startTime)(endTime));
+```
+
+ GET ACCOUNTS/:ID/BALANCES -> `qt.get.accounts.balances`
+```TypeScript
       // GET ACCOUNTS/:ID/BALANCES
       log(await qt.get.accounts.balances());
+```
+
+ GET ACCOUNTS/:ID/POSITIONS -> `qt.get.accounts.positions`
+```TypeScript
       // GET ACCOUNTS/:ID/POSITIONS
       log(await qt.get.accounts.positions());
+```
+
+ GET ACCOUNTS -> `qt.get.accounts.allAccounts`
+```TypeScript
       // GET ACCOUNTS
       log(await qt.get.accounts.allAccounts());
+```
+
+ GET TIME -> `qt.get.accounts.time`
+```TypeScript
       // GET TIME
       log(await qt.get.accounts.time());
 ```
+
 ## MARKET CALLS
 
 ### CANDLES
 
-```TypeScript
+GET MARKETS/CANDLES/:ID -> `qt.get.markets.candlesById`
 
+
+```TypeScript
       // GET MARKETS/CANDLES/:ID
       log(
         await qt.get.markets.candlesById(startTime)(endTime)('OneDay')(
@@ -93,13 +121,17 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
         )
       );
 ```
+
 ### QUOTES
 
+GET MARKETS/QUOTES/STRATEGIES -> `NO IMPLEMENTATION AT HIS TIME`
 ```TypeScript
-
       // GET MARKETS/QUOTES/STRATEGIES
       log('NO IMPLEMENTATION AT HIS TIME');
+```
 
+GET MARKETS/QUOTES/OPTIONS (filter) -> `qt.get.markets.quotes.options`
+```TypeScript
       // GET MARKETS/QUOTES/OPTIONS (filter)
       log(
         await qt.get.markets.quotes.options({
@@ -107,6 +139,10 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
           expiryDate: optionExpiryDate,
         })
       );
+```
+
+Filters :
+```TypeScript
       /*
       underlyingId: number; [REQUIRED]
       expiryDate: string; [REQUIRED]
@@ -114,43 +150,73 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
       minstrikePrice?: number | null; [OPTIONAL]
       maxstrikePrice?: number | null; [OPTIONAL]
     */
+```
 
+GET MARKETS/QUOTES/OPTIONS (byIds optionsIds array) -> `qt.get.markets.quotes.options.byIds`
+```TypeScript
       // GET MARKETS/QUOTES/OPTIONS (byIds optionsIds array)
       log(await qt.get.markets.quotes.options.byIds([optionNumericID]));
+```
 
+GET MARKETS/QUOTES/:ID -> `qt.get.markets.quotes.byIds`
+```TypeScript
       // GET MARKETS/QUOTES/:ID
       log(await qt.get.markets.quotes.byIds([stockNumericID]));
 ```
+
 ### LIST ALL MARKEST
+
+GET MARKETS -> `qt.get.markets.allMarkets`
+
 ```TypeScript
       // GET MARKETS
       log(await qt.get.markets.allMarkets());
 ```
- ### SYMBOLS
-```TypeScript
 
+### SYMBOLS
+
+
+```TypeScript
       // GET SYMBOLS/:ID/OPTIONS (by single stockId)
       log(await qt.get.symbols.optionsById(stockNumericID));
+```
 
+GET SYMBOLS/SEARCH (return fisrt result or offseted result) -> `qt.get.symbols.search`
+
+```TypeScript
       // GET SYMBOLS/SEARCH (return fisrt result or offseted result)
       log(await qt.get.symbols.search(stockStringID));
+```
 
+GET SYMBOLS/SEARCH (count of results or offseted results) -> `(await qt.get.symbols.search(stockStringID)).count`
+
+```TypeScript
       // GET SYMBOLS/SEARCH (count of results or offseted results)
       log((await qt.get.symbols.search(stockStringID)).count);
+```
 
+GET SYMBOLS/SEARCH (count the number of results)  -> `qt.get.symbols.search.count`
+
+```TypeScript
       // GET SYMBOLS/SEARCH (count the number of results)
       log(await qt.get.symbols.search.count(stockStringID));
       /* OR */
       log(await qt.get.symbols.searchCount(stockStringID));
+```
 
+GET SYMBOLS/SEARCH (return ALL results can profide an offset as second) -> `qt.get.symbols.searchAll`
+
+```TypeScript
       // GET SYMBOLS/SEARCH (return ALL results can profide an offset as second)
       log(await qt.get.symbols.searchAll(stockStringID));
+```
 
+GET SYMBOLS/:ID (stockIds array) -> `qt.get.symbols.byIds`
+
+```TypeScript
       // GET SYMBOLS/:ID (stockIds array)
       log(await qt.get.symbols.byIds([stockNumericID]));
 ```
-
-
 
 **you can import `testExamples` to test the examples above**
 
@@ -166,7 +232,9 @@ testExamples(
   exampleStockStringID
 );
 ```
+
 ### Examples on this page assume theses values
+
 ```typescript
 import { day } from 'questrade-ts';
 // for easier reading of the examples
@@ -192,8 +260,10 @@ const exampleStockStringID: string = 'aapl'; // 8049
 // you do not have to put the token in plain text you should import it from elsewhere
 const refreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
 ```
-### IMPORTANT To reproduce the examples
-all example are run inside an async IIFE within a try/catch block in the section marked `/* !!! HERE !!! */`
+
+### IMPORTANT: to reproduce the examples
+all example are run inside an async IIFE within a try/catch block in the section marked
+`/* !!! HERE !!! */`
 
 ```typescript
 // using async Immediately Invoked Function Expressions to avoid using then().catch()
@@ -218,7 +288,6 @@ all example are run inside an async IIFE within a try/catch block in the section
   })();
 ```
 
-
 ## Enumerations
 
  Enumerations from `questrade-api-enumerations` NPM package (included)
@@ -226,7 +295,6 @@ all example are run inside an async IIFE within a try/catch block in the section
 `import { qtEnumerations } from 'questrade-api-enumerations';`
 
 ```TypeScript
-
       /** Specifies all supported currency codes. */
       console.dir(Enumerations.Currency);
       /** Specifies all supported listing exchanges. */
@@ -280,7 +348,6 @@ By default, if you instantiate the `Questrade` class without passing in an accou
 // Switch to account 12345678 -- All future calls will use this 8 digits account.
 qt.account = '12345678';
 // Must be one of your valid account number
-
 ```
 
 ## Contributions
