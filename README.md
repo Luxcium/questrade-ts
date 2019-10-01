@@ -368,7 +368,8 @@ By default, when you instantiate the `qtApi`  it will try to find and select the
 ```typescript
 // Switch to account 12345678 -- All future calls will use this 8 digits account.
 qt.account = '12345678';
-// Must be one of the valid account number for the user on behalf of which the API client is authorized
+// Must be one of the valid account number for the
+// user on behalf of which the API client is authorized
 ```
 
 ## MIT LICENSE
