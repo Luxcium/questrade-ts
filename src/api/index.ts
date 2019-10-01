@@ -1,3 +1,4 @@
+import { qtEnumerations } from 'questrade-api-enumerations';
 import { _credentialsFactory, _getApi } from './core';
 
 async function redeemToken(refreshToken: string) {
@@ -9,3 +10,4 @@ async function redeemToken(refreshToken: string) {
 export { id0, log, day } from './utils';
 export { redeemToken };
 export { testExamples } from './testExamples';
+export { qtEnumerations as Enumerations };

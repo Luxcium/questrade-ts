@@ -53,77 +53,13 @@ You will then need to get an [API key](https://login.questrade.com/APIAccess/use
 After that, it is really simple to use:
 
 ## Examples
-
+**TL;DR**
 ```TypeScript
 import { redeemToken } from 'questrade-ts';
-```
 
+const yourRefreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
 
-
-**you can import `testExamples` to test the examples below**
-
-```typescript
-import { testExamples } from 'questrade-ts';
-testExamples(
-  refreshToken,
-  exampleStartTime,
-  exampleEndTime,
-  exampleOptionExpiryDate,
-  exampleOptionNumericID,
-  exampleStockNumericID,
-  exampleStockStringID
-);
-```
-### Examples on this page assume theses values
-```typescript
-import { day } from 'questrade-ts';
-// for easier reading of the examples
-const toISOStringDate = (dateTime: number | string) =>
-  new Date(dateTime).toISOString();
-// for easier reading of the examples
-
-// convert days to miliseconds for calculations in date
-const tenDays = day(10);
-
-// to have a start and end dateTime to use in examples
-const timeNow = Date.now();
-const start = timeNow - tenDays;
-const end = timeNow;
-const exampleStartTime = toISOStringDate(start);
-const exampleEndTime = toISOStringDate(end);
-
-const exampleOptionExpiryDate: string = '2019-10-04T05:37:30.053Z';
-const exampleOptionNumericID: number = 27003348;
-const exampleStockNumericID: number = 8049; // 'aapl'
-const exampleStockStringID: string = 'aapl'; // 8049
-
-// you do not have to put the token in plain text you should import it from elsewhere
-const refreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
-```
-### To reproduce the examples
-all example are run inside an async IIFE within a try/catch block in the section marked `/* !!! HERE !!! */`
-
-```typescript
-// using async Immediately Invoked Function Expressions to avoid using then().catch()
-;(async () => {
-    // Using console.log (log) to output the
-    const log = console.log;
-    // always put your code in a try catch block
-    try {
-      // Create a questrade-ts Api (qtApi) Object redeeming your Refresh Token
-      const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
-
-      // !!! list of all the differents api calls managed by this package
-
-          /* !!! HERE !!! */
-
-      // return private credentials
-      log(credentials);
-    } catch (error) {
-      // manage your errors here if needed
-      console.error(error.message);
-    }
-  })();
+const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 ```
 
    ## ACCOUNTS CALLS
@@ -214,9 +150,80 @@ all example are run inside an async IIFE within a try/catch block in the section
       log(await qt.get.symbols.byIds([stockNumericID]));
 ```
 
+
+
+**you can import `testExamples` to test the examples above**
+
+```typescript
+import { testExamples } from 'questrade-ts';
+testExamples(
+  refreshToken,
+  exampleStartTime,
+  exampleEndTime,
+  exampleOptionExpiryDate,
+  exampleOptionNumericID,
+  exampleStockNumericID,
+  exampleStockStringID
+);
+```
+### Examples on this page assume theses values
+```typescript
+import { day } from 'questrade-ts';
+// for easier reading of the examples
+const toISOStringDate = (dateTime: number | string) =>
+  new Date(dateTime).toISOString();
+// for easier reading of the examples
+
+// convert days to miliseconds for calculations in date
+const tenDays = day(10);
+
+// to have a start and end dateTime to use in examples
+const timeNow = Date.now();
+const start = timeNow - tenDays;
+const end = timeNow;
+const exampleStartTime = toISOStringDate(start);
+const exampleEndTime = toISOStringDate(end);
+
+const exampleOptionExpiryDate: string = '2019-10-04T05:37:30.053Z';
+const exampleOptionNumericID: number = 27003348;
+const exampleStockNumericID: number = 8049; // 'aapl'
+const exampleStockStringID: string = 'aapl'; // 8049
+
+// you do not have to put the token in plain text you should import it from elsewhere
+const refreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
+```
+### IMPORTANT To reproduce the examples
+all example are run inside an async IIFE within a try/catch block in the section marked `/* !!! HERE !!! */`
+
+```typescript
+// using async Immediately Invoked Function Expressions to avoid using then().catch()
+;(async () => {
+    // Using console.log (log) to output the
+    const log = console.log;
+    // always put your code in a try catch block
+    try {
+      // Create a questrade-ts Api (qtApi) Object redeeming your Refresh Token
+      const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
+
+      // !!! list of all the differents api calls managed by this package
+
+          /* !!! HERE !!! */
+
+      // return private credentials
+      log(credentials);
+    } catch (error) {
+      // manage your errors here if needed
+      console.error(error.message);
+    }
+  })();
+```
+
+
 ## Enumerations
 
  Enumerations from `questrade-api-enumerations` NPM package (included)
+ Including with `import { Enumerations } from 'questrade-ts';` or
+`import { qtEnumerations } from 'questrade-api-enumerations';`
 
 ```TypeScript
 
@@ -262,16 +269,18 @@ all example are run inside an async IIFE within a try/catch block in the section
 
 ## Security and Token management
 
-Questrade's security token system requires that you save the latest refresh token that it vends you. After you create one in the user apps page, our library needs to save a key somewhere onto disk. By default, we create a folder for these keys in `./keys` at your working directory, but you can change the directory location or load from a text file (with the key as its contents).
+Questrade's security token system requires that you save the latest refresh token that it vends you. After you create one in the user apps page, our library needs to save a key somewhere onto disk. By default, this wrapper create a folder for these keys in `./keys` at your working directory,but you can change the directory location or load from a text file (with the key as its contents).
 
-In order to do that, you should set either the `keyDir` option (defaults to `./keys`) or `keyFile` to point to a file (defaults to using a directory.) -- See full options below.
 
 ## Switching Accounts
 
 By default, if you instantiate the `Questrade` class without passing in an account ID to options, we will try to find and select the primary account (by fetching a list of all the accounts). If you want to change the account, simply do:
 
 ```typescript
-qt.account = '12345678'; // Switch to account 12345678 -- All future calls will use this 8 digits account.
+// Switch to account 12345678 -- All future calls will use this 8 digits account.
+qt.account = '12345678';
+// Must be one of your valid account number
+
 ```
 
 ## Contributions

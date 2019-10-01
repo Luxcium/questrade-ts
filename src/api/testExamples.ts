@@ -1,6 +1,5 @@
 // TypeScript/JavaScript
-import * as Enumerations from 'questrade-api-enumerations';
-import { /* day, */ day, redeemToken } from '.';
+import { day, Enumerations, redeemToken } from '.';
 
 export const testExamples = (
   yourRefreshToken: string,
@@ -152,7 +151,7 @@ const exampleStockNumericID: number = 8049; // 'aapl'
 const exampleStockStringID: string = 'aapl'; // 8049
 
 // you do not have to put the token in plain text you should import it from elsewhere
-// const yourRefreshToken = 'YOUR-TOKEN-HERE_jKi1YCwCjAMJFugwD4A8cgb0';
+// const refreshToken = 'YOUR-TOKEN-HERE_jKi1YCwCjAMJFugwD4A8cgb0';
 export const refreshToken = 'G0DpF1a5ANONc1kgkC5aOuoMUMrW0X0l0';
 // using async Immediately Invoked Function Expressions to avoid using then().catch()
 
