@@ -66,8 +66,6 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 
 
 **Retrieve account activities, including cash transactions, dividends, trades, etc.** <br />
-
-
  [get accounts/:id/activities](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-activities) -> `qt.get.accounts.activities`
 
 ```TypeScript
@@ -75,7 +73,7 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
       log(await qt.get.accounts.activities(startTime)(endTime));
 ```
 **Retrieves orders for specified account** <br />
-[get accounts/:id/orders](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-orders) -> `qt.get.accounts.orders`
+[get accounts/:id/orders](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-orders) -> `qt.get.accounts.orders`.
 ```TypeScript
 
       // GET ACCOUNTS/:ID/ORDERS
