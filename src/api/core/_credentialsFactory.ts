@@ -21,6 +21,9 @@ const _getAccounts = (credentials: Credentials) => async () =>
 // # _credentialsFactory
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 export const _credentialsFactory = async (token: string) => {
+  if (token.length === 4) {
+    //
+  }
   const credentials = await _oAuthCredentials(token);
 
   try {
