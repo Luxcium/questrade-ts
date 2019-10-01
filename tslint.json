@@ -7,7 +7,10 @@
     "tslint-config-prettier"
   ],
   "linterOptions": {
-    "exclude": ["./build", "./node_modules/**/*"]
+    "exclude": [
+      "./build",
+      "./node_modules/**/*"
+    ]
   },
   "defaultSeverity": "warning",
   "rulesDirectory": [],
@@ -17,10 +20,9 @@
     "max-line-length": [
       true,
       {
+        "ignore-pattern":"",
         "limit": 80,
-        "ignore-pattern": "[@see import]",
-        "check-strings": false,
-        "check-regex": false
+        "check-strings": false
       }
     ],
     "no-boolean-literal-compare": true,
@@ -29,10 +31,12 @@
     "object-literal-sort-keys": false,
     "object-shorthand-properties-first": false,
     "ordered-imports": true,
-    "triple-equals": [true, "allow-null-check"],
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
     "object-literal-shorthand": false,
     "interface-name": false,
-
     "ter-arrow-parens": [
       true,
       "as-needed",
@@ -53,11 +57,20 @@
   "jsRules": {
     "prettier": false,
     "import-name": false,
-    "max-line-length": [true, 80],
+    "max-line-length": [
+      true,
+      {
+        "limit": 80,
+        "check-strings": false
+      }
+    ],
     "no-console": false,
     "object-literal-sort-keys": false,
     "ordered-imports": true,
-    "triple-equals": [true, "allow-null-check"],
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
     "ter-arrow-parens": [
       true,
       "as-needed",

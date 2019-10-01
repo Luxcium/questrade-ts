@@ -26,11 +26,11 @@
     "newLine": "LF",
     "module": "commonjs",
     "typeRoots": [
-      "node_modules/.registry.npmjs.org/@types/**/*",
-      "node_modules/@types/**/*"
+      "./node_modules/@types",
+      "./node_modules/.registry.npmjs.org/@types"
     ],
     "types": [
-      "node"
+      "jest","node"
     ],
     /* Compilation Options */
     "noEmit": true,
@@ -63,12 +63,14 @@
   "include": [
     "./src/**/*",
     "src/debug.ts",
+    "src/test",
     "src/core/private/questrade/.ts"
   ],
   "exclude": [
     "node_modules",
     "build",
     "imports",
+    "enums",
     "src/legacy/proto_testing/**/*",
     "debug.js",
     "manualTestingAndDebug.js"
