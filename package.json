@@ -15,7 +15,7 @@
     "rm:dist": "rimraf ./dist/src/; rimraf ./dist/lib/; ",
     "cp:dist": "concurrently \"yarn:cp:dist:0\" \"yarn:cp:dist:1\" \"yarn:cp:dist:2\" \"yarn:cp:dist:3\"",
     "cp:dist:0": "cp-cli ./build/src ./dist/src; cp-cli ./build/lib ./dist/lib",
-    "cp:dist:1": "cp-cli ./package.light.json ./dist/package.json",
+    "cp:dist:1": "cp-cli ./package.1.json ./dist/package.json",
     "cp:dist:2": "cp-cli ./readme.md ./dist/readme.md",
     "cp:dist:3": "cp-cli ./LICENSE ./dist/LICENSE",
     "prebuild": "yarn run out:pre:clean",
