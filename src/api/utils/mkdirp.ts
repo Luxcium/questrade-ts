@@ -1,6 +1,6 @@
-// ts--lint:disable: no-bitwise
-// ts--lint:disable: no-parameter-reassignment
-// ts--lint:disable: interface-name
+// tslint:disable: no-bitwise
+// tslint:disable: no-parameter-reassignment
+// tslint:disable: interface-name
 
 import fs from 'fs';
 import path from 'path';

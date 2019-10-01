@@ -8,30 +8,33 @@
   "homepage": "https://www.npmjs.com/package/questrade-ts",
   "main": "./src/api/index.js",
   "types": "./lib/api/index.d.ts",
-
   "scripts": {
-    "predist":"yarn run build",
-    "dist":"yarn run rm:dist; yarn run cp:dist ",
-    "rm:dist":"rimraf ./dist/src/; rimraf ./dist/lib/; ",
-    "cp:dist":"cp-cli ./build/src ./dist/src; cp-cli ./build/lib ./dist/lib",
-    "prebuild":"yarn run out:pre:clean",
+    "predist": "yarn run build",
+    "dist": "yarn run rm:dist; yarn run cp:dist",
+    "rm:dist": "rimraf ./dist/src/; rimraf ./dist/lib/; ",
+    "cp:dist":"concurrently \"yarn:cp:dist:0\" \"yarn:cp:dist:1\" \"yarn:cp:dist:2\" \"yarn:cp:dist:3\"",
+    "cp:dist:0": "cp-cli ./build/src ./dist/src; cp-cli ./build/lib ./dist/lib",
+    "cp:dist:1": "cp-cli ./package.light.json ./dist/package.json",
+    "cp:dist:2": "cp-cli ./readme.md ./dist/readme.md",
+    "cp:dist:3": "cp-cli ./LICENSE ./dist/LICENSE",
+    "prebuild": "yarn run out:pre:clean",
     "build": "yarn run quick",
-    "postbuild":"yarn run out:post:clean",
     "out:pre:clean": "rimraf -r ./build/**/*",
     "out:post:clean": "yarn run rm:typescript; yarn run rm:test",
-    "rm:test":"rimraf ./build/src/test; rimraf ./build/lib/test; ",
-    "rm:typescript":"rimraf ./build/src/api/core/typescript/; rimraf ./build/js/umd/src/api/core/typescript/",
-    "prequick":"yarn run test",
+    "rm:test": "rimraf ./build/src/test; rimraf ./build/lib/test rmraf ./build/js/umd/src/test; rimraf ./build/js/umd/lib/test;",
+    "rm:typescript": "rimraf ./build/src/api/core/typescript/; rimraf ./build/js/umd/src/api/core/typescript/",
+    "prequick": "yarn run test",
     "quick": "yarn run rebuild",
     "rebuild": "concurrently \"yarn:out:cjs\" \"yarn:out:umd\" \"yarn:out:amd\" \"yarn:out:sys\"",
+    "postrebuild": "yarn run out:post:clean",
     "out:cjs": "tsc -b ./tsconfig.commonjs.json",
     "out:umd": "tsc -b ./tsconfig.umd.json",
     "out:amd": "tsc -b ./tsconfig.amd.json",
     "out:sys": "tsc -b ./tsconfig.sys.json",
     "lint": "yarn run prettier && yarn run tslint",
-    "tslint":"tslint --project . --format codeFrame --fix",
+    "tslint": "tslint --project . --format codeFrame --fix",
     "pretest": "yarn run lint && tsc --noEmit --pretty",
-    "prettier":"prettier --check --write --config .prettierrc src/* src/api/* src/api/core/* src/api/core/class/* src/api/core/typescript/* src/api/utils/*",
+    "prettier": "prettier --check --write --config .prettierrc src/* src/api/* src/api/core/* src/api/core/class/* src/api/core/typescript/* src/api/utils/*",
     "test": "jest",
     "latest": "npm i axios@latest questrade-api-enumerations@latest tslib@latest http-status-codes@latest",
     "out:enu": "tsc -b ./enums/tsconfig.json && yarn run cp:enu:yarn",
@@ -46,8 +49,6 @@
     "type": "git",
     "url": "git@github.com/luxcium/questrade-ts.git"
   },
-
-
   "bugs": {
     "url": "https://github.com/luxcium/questrade-ts/issues"
   },
@@ -84,12 +85,17 @@
     "typescript": "^3.5.3",
     "typescript-tslint-plugin": "0.5.4"
   },
-
   "keywords": [
     "Questrade",
     "stocks",
     "trading",
-    "typescript"
+    "typescript",
+    "Unofficial",
+    "Questrade API",
+    "API wrapper",
+    "TypeScript support",
+    "stock market api",
+    "canada",
+    "canadian"
   ]
-
 }
