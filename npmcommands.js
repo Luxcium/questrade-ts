@@ -1,4 +1,6 @@
+export const void0 = void 0;
 /*
+
  npm access --help;
  npm adduser --help;
  npm audit --help;
