@@ -1,14 +1,4 @@
-export {
-  _axiosAccountGetApi,
-  _axiosApiGetEndpointFactory,
-  _axiosApiGetEndpointFactoryD,
-  _axiosApiPost,
-  _axiosApiPostEndpointFactory,
-  _axiosApiPostEndpointFactoryD,
-  _axiosGetApi,
-  _delayedCrednetialsFunction,
-  _delayedFunctionCredentials,
-} from './_axiosApi';
+export { _axiosAccountGetApi, _axiosApiPost, _axiosGetApi } from './_axiosApi';
 export {
   _credentialsFactory,
   _defaultCredentials,
