@@ -157,7 +157,7 @@ function runExamples(isTesting: boolean = false) {
 
   // you do not have to put the token in plain text you should import it from elsewhere
   // const refreshToken = 'YOUR-TOKEN-HERE_jKi1YCwCjAMJFugwD4A8cgb0';
-  const refreshToken = 'G0DpF1a5ANONc1kgkC5aOuoMUMrW0X0l0';
+  const refreshToken = 'G0DpF1a5ANONc1kgkC5aOuoMUMrW0X0l0'; // myrefresh token have been revoked prior to publishing
   // using async Immediately Invoked Function Expressions to avoid using then().catch()
 
   testExamples(

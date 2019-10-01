@@ -33,11 +33,11 @@ or
 npm install --save-exact questrade-ts@latest
 ```
 
-### Currently, this API does not have any test suites installed and is therefore not to be considered ready for production
+### Currently, this API does not have any test suites installed
 
 [![Coverage Status](https://coveralls.io/repos/github/luxcium/questrade-ts/badge.svg?style=flat&branch=master)](https://coveralls.io/github/luxcium/questrade-ts?branch=master) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
 
-Until version 1.0 breaking change occur at minor version change 0.X.0, Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything problematic to help us during the development phase of this project. use the `--save-exact` flag until the version 1.0.x Using the caret (circumflex accent`U+005E`) ^0.X.Y on a version stating with 0.x should not upgrade to folowing minor version but to have full control make sure you unsing that flag or `-E` and then to upgrade to a new latest version use `@latest` i.e. `npm i --save-exact questrade-ts@latest`. alternatively you may use `--no-save` to prevents saving to dependencies at all.
+Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything you fell is not exactly as described on this page or [Questrade Page](https://www.questrade.com/api/documentation/getting-started). No test suite is curently implemented but all the examples on this page have been tested manually and did not generated any errors.
 
 **To obtain or provide feedback (as bug reports or enhancements):** [visit our GitHub Issue page](https://github.com/Luxcium/questrade-ts/issues)
 **To contribute to this project:** [visit the GitHub Repo page of the project](https://github.com/Luxcium/questrade-ts)
@@ -48,7 +48,7 @@ Until version 1.0 breaking change occur at minor version change 0.X.0, Please ma
   - Easy to use API calls
   - Auto-select primary account
 
-You will then need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx).
+You will need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx).
 
 After that, it is really simple to use:
 
@@ -59,7 +59,18 @@ import { redeemToken } from 'questrade-ts';
 
 const yourRefreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
 
+// inside of an async function or async IIFE
+(async () => {
+const log = console.log
+
 const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
+
+const serverTime = await qt.getServerTime()
+log(serverTime)
+
+log(credentials)
+})().catch(error=>console.error(error.message));
+// inside and async function then use await qt.<some properties, methodes or functions>
 ```
 
 ## ACCOUNTS CALLS
@@ -210,10 +221,10 @@ const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
       log(await qt.get.symbols.searchCount(stockStringID));
 ```
 
-[symbols/search (return all results can profide an offset as second)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search) -> `qt.get.symbols.searchAll`
+[symbols/search (return all results can provide an offset as second argument)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search) -> `qt.get.symbols.searchAll`
 
 ```TypeScript
-      // GET SYMBOLS/SEARCH (return ALL results can profide an offset as second)
+      // GET SYMBOLS/SEARCH (return all results can provide an offset as second argument)
       log(await qt.get.symbols.searchAll(stockStringID));
 ```
 **Retrieves detailed information about one or more symbol.** <br />
