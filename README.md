@@ -100,7 +100,165 @@ const exampleStockStringID: string = 'aapl'; // 8049
 // you do not have to put the token in plain text you should import it from elsewhere
 const refreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
 ```
+### To reproduce the examples
+all example are run inside an async IIFE within a try/catch block in the section marked `/* !!! HERE !!! */`
 
+```typescript
+// using async Immediately Invoked Function Expressions to avoid using then().catch()
+;(async () => {
+    // Using console.log (log) to output the
+    const log = console.log;
+    // always put your code in a try catch block
+    try {
+      // Create a questrade-ts Api (qtApi) Object redeeming your Refresh Token
+      const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
+
+      // !!! list of all the differents api calls managed by this package
+
+          /* !!! HERE !!! */
+
+      // return private credentials
+      log(credentials);
+    } catch (error) {
+      // manage your errors here if needed
+      console.error(error.message);
+    }
+  })();
+```
+
+   ## ACCOUNTS CALLS
+
+```TypeScript
+      // GET ACCOUNTS/:ID/ACTIVITIES
+      log(await qt.get.accounts.activities(startTime)(endTime));
+      // GET ACCOUNTS/:ID/ORDERS
+      log(await qt.get.accounts.orders(startTime)(endTime)('All'));
+      // GET ACCOUNTS/:ID/EXECUTIONS
+      log(await qt.get.accounts.executions(startTime)(endTime));
+      // GET ACCOUNTS/:ID/BALANCES
+      log(await qt.get.accounts.balances());
+      // GET ACCOUNTS/:ID/POSITIONS
+      log(await qt.get.accounts.positions());
+      // GET ACCOUNTS
+      log(await qt.get.accounts.allAccounts());
+      // GET TIME
+      log(await qt.get.accounts.time());
+```
+## MARKET CALLS
+
+### CANDLES
+
+```TypeScript
+
+      // GET MARKETS/CANDLES/:ID
+      log(
+        await qt.get.markets.candlesById(startTime)(endTime)('OneDay')(
+          stockNumericID
+        )
+      );
+```
+### QUOTES
+
+```TypeScript
+
+      // GET MARKETS/QUOTES/STRATEGIES
+      log('NO IMPLEMENTATION AT HIS TIME');
+
+      // GET MARKETS/QUOTES/OPTIONS (filter)
+      log(
+        await qt.get.markets.quotes.options({
+          underlyingId: stockNumericID,
+          expiryDate: optionExpiryDate,
+        })
+      );
+      /*
+      underlyingId: number; [REQUIRED]
+      expiryDate: string; [REQUIRED]
+      optionType?: string | null; [OPTIONAL]
+      minstrikePrice?: number | null; [OPTIONAL]
+      maxstrikePrice?: number | null; [OPTIONAL]
+    */
+
+      // GET MARKETS/QUOTES/OPTIONS (byIds optionsIds array)
+      log(await qt.get.markets.quotes.options.byIds([optionNumericID]));
+
+      // GET MARKETS/QUOTES/:ID
+      log(await qt.get.markets.quotes.byIds([stockNumericID]));
+```
+### LIST ALL MARKEST
+```TypeScript
+      // GET MARKETS
+      log(await qt.get.markets.allMarkets());
+```
+ ### SYMBOLS
+```TypeScript
+
+      // GET SYMBOLS/:ID/OPTIONS (by single stockId)
+      log(await qt.get.symbols.optionsById(stockNumericID));
+
+      // GET SYMBOLS/SEARCH (return fisrt result or offseted result)
+      log(await qt.get.symbols.search(stockStringID));
+
+      // GET SYMBOLS/SEARCH (count of results or offseted results)
+      log((await qt.get.symbols.search(stockStringID)).count);
+
+      // GET SYMBOLS/SEARCH (count the number of results)
+      log(await qt.get.symbols.search.count(stockStringID));
+      /* OR */
+      log(await qt.get.symbols.searchCount(stockStringID));
+
+      // GET SYMBOLS/SEARCH (return ALL results can profide an offset as second)
+      log(await qt.get.symbols.searchAll(stockStringID));
+
+      // GET SYMBOLS/:ID (stockIds array)
+      log(await qt.get.symbols.byIds([stockNumericID]));
+```
+
+## Enumerations
+
+ Enumerations from `questrade-api-enumerations` NPM package (included)
+
+```TypeScript
+
+      /** Specifies all supported currency codes. */
+      console.dir(Enumerations.Currency);
+      /** Specifies all supported listing exchanges. */
+      console.dir(Enumerations.ListingExchange);
+      /** Specifies all supported user account types. */
+      console.dir(Enumerations.AccountType);
+      /** Specifies all supported account client types. */
+      console.dir(Enumerations.ClientAccountType);
+      /** Specifies all supported account status values. */
+      console.dir(Enumerations.AccountStatus);
+      /** Specifies all supported market data tick types. */
+      console.dir(Enumerations.TickType);
+      /** Specifies all supported option types. */
+      console.dir(Enumerations.OptionType);
+      /** Specifies all supported option duration types. */
+      console.dir(Enumerations.OptionDurationType);
+      /** Specifies all supported option exercise types. */
+      console.dir(Enumerations.OptionExerciseType);
+      /** Specifies all supported security types. */
+      console.dir(Enumerations.SecurityType);
+      /** Specifies all supported order state filter types. */
+      console.dir(Enumerations.OrderStateFilterType);
+      /** Specifies all supported order side values. */
+      console.dir(Enumerations.OrderAction);
+      /** Specifies all supported client order side values. */
+      console.dir(Enumerations.OrderSide);
+      /** Specifies all supported order types. */
+      console.dir(Enumerations.OrderType);
+      /** Specifies all supported order Time-In-Force instructions. */
+      console.dir(Enumerations.OrderTimeInForce);
+      /** Specifies all supported order states. */
+      console.dir(Enumerations.OrderState);
+      /** Specifies all supported order execution status values. */
+      console.dir(Enumerations.HistoricalDataGranularity);
+      /** Specifies all supported bracket order components. */
+      console.dir(Enumerations.OrderClass);
+      /** Supported types of strategies for multi-leg strategy orders. */
+      console.dir(Enumerations.StrategyTypes);
+```
 
 ## Security and Token management
 
