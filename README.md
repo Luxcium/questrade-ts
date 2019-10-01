@@ -52,32 +52,55 @@ You will then need to get an [API key](https://login.questrade.com/APIAccess/use
 
 After that, it is really simple to use:
 
-```typescript
-// TypeScript/JavaScript
-import { tokenConnection } from 'questrade-ts';
+## Examples
 
-// using async Immediately Invoked Function Expressions to avoid using then().catch()
-(async () => {
-  // always put your code in a try catch block
-  try {
-
-    // you do not have to put the token in plain text you should import it from elsewhere
-    const seedToken = 'YOUR-TOKEN-HERE_jKi1YCwCjAMJFugwD4A8cgb0';
-
-    const { qt } = await tokenConnection(seedToken);
-
-
-    const symb = await qt.searchSymbol('aapl');
-
-    console.log(symb);
-
-    console.log(await qt.getQuote(symb.symbolId));
-  } catch (error) {
-    // manage your errors here if needed
-    console.log(error.message);
-  }
-})();
+```TypeScript
+import { redeemToken } from 'questrade-ts';
 ```
+
+
+
+**you can import `testExamples` to test the examples below**
+
+```typescript
+import { testExamples } from 'questrade-ts';
+testExamples(
+  refreshToken,
+  exampleStartTime,
+  exampleEndTime,
+  exampleOptionExpiryDate,
+  exampleOptionNumericID,
+  exampleStockNumericID,
+  exampleStockStringID
+);
+```
+### Examples on this page assume theses values
+```typescript
+import { day } from 'questrade-ts';
+// for easier reading of the examples
+const toISOStringDate = (dateTime: number | string) =>
+  new Date(dateTime).toISOString();
+// for easier reading of the examples
+
+// convert days to miliseconds for calculations in date
+const tenDays = day(10);
+
+// to have a start and end dateTime to use in examples
+const timeNow = Date.now();
+const start = timeNow - tenDays;
+const end = timeNow;
+const exampleStartTime = toISOStringDate(start);
+const exampleEndTime = toISOStringDate(end);
+
+const exampleOptionExpiryDate: string = '2019-10-04T05:37:30.053Z';
+const exampleOptionNumericID: number = 27003348;
+const exampleStockNumericID: number = 8049; // 'aapl'
+const exampleStockStringID: string = 'aapl'; // 8049
+
+// you do not have to put the token in plain text you should import it from elsewhere
+const refreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
+```
+
 
 ## Security and Token management
 

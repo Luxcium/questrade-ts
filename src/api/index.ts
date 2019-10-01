@@ -8,3 +8,4 @@ async function redeemToken(refreshToken: string) {
 
 export { id0, log, day } from './utils';
 export { redeemToken };
+export { testExamples } from './testExamples';
