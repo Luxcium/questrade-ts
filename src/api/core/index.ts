@@ -4,7 +4,7 @@ export {
   _defaultCredentials,
   _getPrimaryAccountNumber,
 } from './_credentialsFactory';
-export { _getApi } from './_getApi';
+export { _getApi } from './_getQuestradeApi';
 export {
   _getMarketsQuotesOptions as _marketsQuotesOptions,
-} from './_marketsQuotesOptions';
+} from './_getQuestradeApi/_marketsQuotesOptions';

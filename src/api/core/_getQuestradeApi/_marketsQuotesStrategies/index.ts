@@ -1,5 +1,5 @@
-import { _axiosApiPost } from '.';
-import { Credentials } from './typescript';
+import { _axiosApiPost } from '../..';
+import { Credentials } from '../../typescript';
 
 export const some = (cred: Credentials) => _axiosApiPost(cred);
 /*
