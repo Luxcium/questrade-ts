@@ -363,12 +363,12 @@ Questrade's security token system requires that you save the latest refresh toke
 
 ## Switching Accounts
 
-By default, if you instantiate the `Questrade` class without passing in an account ID to options, we will try to find and select the primary account (by fetching a list of all the accounts). If you want to change the account, simply do:
+By default, when you instantiate the `qtApi`  it will try to find and select the primary account (by fetching a list of all the accounts). If you want to change the account, simply do:
 
 ```typescript
 // Switch to account 12345678 -- All future calls will use this 8 digits account.
 qt.account = '12345678';
-// Must be one of your valid account number
+// Must be one of the valid account number for the user on behalf of which the API client is authorized
 ```
 
 ## MIT LICENSE
