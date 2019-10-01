@@ -62,9 +62,9 @@ const yourRefreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
 const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 ```
 
-   ## ACCOUNTS CALLS
+## ACCOUNTS CALLS
 
-```TypeScript
+``` TypeScript
       // GET ACCOUNTS/:ID/ACTIVITIES
       log(await qt.get.accounts.activities(startTime)(endTime));
       // GET ACCOUNTS/:ID/ORDERS
