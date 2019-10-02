@@ -33,22 +33,11 @@ or
 npm install --save-exact questrade-ts@latest
 ```
 
-### Currently, this API does not have any test suites installed
-
-**Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything you feel is not exactly as described on this page or [Questrade Page](https://www.questrade.com/api/documentation/getting-started).** No test suite is curently implemented but all the examples on this page have been tested manually and did not generated any errors.
-
-[![Coverage Status](https://coveralls.io/repos/github/luxcium/questrade-ts/badge.svg?style=flat&branch=master)](https://coveralls.io/github/luxcium/questrade-ts?branch=master) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
-
-**To obtain or provide feedback (as bug reports or enhancements):** [visit our GitHub Issue page](https://github.com/Luxcium/questrade-ts/issues)
-**To contribute to this project:** [visit the GitHub Repo page of the project](https://github.com/Luxcium/questrade-ts)
-
-### Features
-
-  - Token management
-  - Easy to use API calls
-  - Auto-select primary account
-
-
+## Contributions
+### All contributions are welcome!
+  - **To contribute to this project:** [visit the GitHub Repo page of the project](https://github.com/Luxcium/questrade-ts)
+  - **To obtain or provide feedback (as bug reports or enhancements):** [visit our GitHub Issue page](https://github.com/Luxcium/questrade-ts/issues)
+  - **Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything you feel is not exactly as described on this page or [Questrade Page](https://www.questrade.com/api/documentation/getting-started).**
 
 ## Examples
 
@@ -77,7 +66,6 @@ log(credentials)
 ```
 
 ### ACCOUNTS CALLS
-
 
 **Retrieve account activities, including cash transactions, dividends, trades, etc.** <br />
  [accounts/:id/activities](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-activities) -> `qt.get.accounts.activities`
@@ -356,12 +344,19 @@ all example are run inside an async IIFE within a try/catch block in the section
       console.dir(Enumerations.StrategyTypes);
 ```
 
-## Security and Token management
+
+## Features
+
+  - Token management
+  - Easy to use API calls
+  - Auto-select primary account
+
+### Security and Token management
 
 Questrade's security token system requires that you save the latest refresh token that it vends you. After you create one in the user apps page, our library needs to save a key somewhere onto disk. By default, this wrapper create a folder for these keys in `./keys` at your working directory,but you can change the directory location or load from a text file (with the key as its contents).
 
 
-## Switching Accounts
+### Switching Accounts
 
 By default, when you instantiate the `qtApi`  it will try to find and select the primary account (by fetching a list of all the accounts). If you want to change the account, simply do:
 
@@ -371,6 +366,21 @@ qt.account = '12345678';
 // Must be one of the valid account number for the
 // user on behalf of which the API client is authorized
 ```
+
+### Always use semicolons when using this package or using this code in other projects
+>Why? ([airbnb/javascript](https://github.com/airbnb/javascript#semicolons)):
+>When JavaScript encounters a line break without a semicolon, it uses a set of rules called [Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion) to determine whether or not it should regard that line break as the end of a statement, and (as the name implies) place a semicolon into your code before the line break if it thinks so. ASI contains a few eccentric behaviors, though, and your code will break if JavaScript misinterprets your line break. These rules will become more complicated as new features become a part of JavaScript. Explicitly terminating your statements and configuring your linter to catch missing semicolons will help prevent you from encountering issues.
+
+### Questrade does not maintain this unofficial SDK
+
+Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation/) to get help. Please always open a [questrade-ts GitHub issue](https://github.com/luxcium/questrade-ts/issues) for anything you feel doesn't match the way it should be working when referring to Questrade docs.
+
+### Currently, this API does not have full coverage of his test suites installed
+#### No test suite is curently fully implemented but all the examples on this page have been tested manually and did not generated any errors.
+
+[![Coverage Status](https://coveralls.io/repos/github/luxcium/questrade-ts/badge.svg?style=flat&branch=master)](https://coveralls.io/github/luxcium/questrade-ts?branch=master) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
+
+![current coverage](https://raw.githubusercontent.com/Luxcium/questrade-ts/version/feature-axio-mock/assets/Capture%20d’écran%2C%20le%202019-10-02%20à%2010.13.56.png)
 
 ## MIT LICENSE
 
@@ -383,18 +393,6 @@ Permission is hereby granted, free of charge, to all person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ALL KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ALL CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-## Contributions
-
-All contributions are welcome!
-
-### Please always use semicolons when using this package or using this code in other projects
->Why? ([airbnb/javascript](https://github.com/airbnb/javascript#semicolons)):
->When JavaScript encounters a line break without a semicolon, it uses a set of rules called [Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion) to determine whether or not it should regard that line break as the end of a statement, and (as the name implies) place a semicolon into your code before the line break if it thinks so. ASI contains a few eccentric behaviors, though, and your code will break if JavaScript misinterprets your line break. These rules will become more complicated as new features become a part of JavaScript. Explicitly terminating your statements and configuring your linter to catch missing semicolons will help prevent you from encountering issues.
-
-### Questrade does not maintain this unofficial SDK
-
-Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation/) to get help. Please always open a [questrade-ts GitHub issue](https://github.com/luxcium/questrade-ts/issues) for anything you feel doesn't match the way it should be working when referring to Questrade docs.
 
 ### Originaly based on the work of
 
