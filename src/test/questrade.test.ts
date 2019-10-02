@@ -1,4 +1,11 @@
 import * as api from '../api';
+import * as apiCore from '../api/core';
+import * as _axiosApi from '../api/core/_axiosApi';
+import * as _credentialsFactory from '../api/core/_credentialsFactory';
+import * as _getQuestradeApi from '../api/core/_getQuestradeApi';
+import * as _marketsQuotesOptions from '../api/core/_getQuestradeApi/_marketsQuotesOptions';
+import * as apiUtils from '../api/utils';
+const log = apiUtils.log;
 describe('Lets play a game', () => {
   it('should convert days to miliseconds', () => {
     expect(api.day(100)).toBe(100 * 24 * 60 * 60 * 1000);
@@ -8,6 +15,21 @@ describe('Lets play a game', () => {
   });
   it('should vvoid and return undefined', () => {
     expect(api.void0(api.id0(() => 100))).toBe(undefined);
+  });
+});
+
+describe('Name of the group', () => {
+  it('should ', (done: any) => {
+    log(apiCore._defaultCredentials);
+    apiUtils.void0(api);
+    apiUtils.void0(apiCore);
+    apiUtils.void0(apiUtils);
+    apiUtils.void0(_axiosApi);
+    apiUtils.void0(_credentialsFactory);
+    apiUtils.void0(_getQuestradeApi);
+    apiUtils.void0(_marketsQuotesOptions);
+    apiUtils.void0();
+    done();
   });
 });
 
@@ -39,4 +61,59 @@ test('should exist at least', async (done: any) => {
   await console.warn(error.message);
   done();
 });
+
+piUrl: '',
+      apiVersion: 'v1',
+      authUrl: '',
+      expiresAt: undefined,
+      tokenExpiration: undefined,
+      expiresIn: 0,
+      keyDir: './keys',
+      keyFile: '',
+      practice: false,
+      refreshToken: '',
+      seedToken: '',
+      serverTime: undefined,
+      tokenType: '',
+      toValue: [Function: toValue],
+      toString: [Function: toString] }
+
+      -------------------------------------------------
+File
+-------------------------------------------------
+All files
+api
+index.ts
+
+testExamples.ts
+
+
+index.ts
+
+
+index.ts
+
+_axiosAccountGetApi.ts
+_axiosApi.ts
+_axiosApiPost.ts
+_axiosGetApi.ts
+_endpointFormatAccount.ts
+
+
+index.ts
+
+
+index.ts
+
+
+index.ts
+
+
+index.ts
+
+id0.ts
+mkdirp.ts
+timeutil.ts
+
+
 */
