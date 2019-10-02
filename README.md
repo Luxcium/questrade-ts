@@ -378,7 +378,7 @@ Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation
 ### Currently, this API does not have full coverage of his test suites installed
 #### No test suite is curently fully implemented but all the examples on this page have been tested manually and did not generated any errors.
 
-[![Coverage Status](https://coveralls.io/repos/github/luxcium/questrade-ts/badge.svg?style=flat&branch=master)](https://coveralls.io/github/luxcium/questrade-ts?branch=master) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
+[![Coverage Status](https://coveralls.io/repos/github/Luxcium/questrade-ts/badge.svg?branch=version/feature-axio-mock)](https://coveralls.io/github/Luxcium/questrade-ts?branch=version/feature-axio-mock) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
 
 ![current coverage](https://raw.githubusercontent.com/Luxcium/questrade-ts/version/feature-axio-mock/assets/Capture%20d’écran%2C%20le%202019-10-02%20à%2010.13.56.png)
 
