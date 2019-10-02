@@ -1,7 +1,13 @@
+import * as api from '../api';
 describe('Lets play a game', () => {
-  it('is call the test game', () => {
-    expect(10).toBe(13 - 3);
-    expect(10).toBe(13 - 3);
+  it('should convert days to miliseconds', () => {
+    expect(api.day(100)).toBe(100 * 24 * 60 * 60 * 1000);
+  });
+  it('should log and return void', () => {
+    expect(api.log(api.id0(() => 100))).toBe(undefined);
+  });
+  it('should vvoid and return undefined', () => {
+    expect(api.void0(api.id0(() => 100))).toBe(undefined);
   });
 });
 

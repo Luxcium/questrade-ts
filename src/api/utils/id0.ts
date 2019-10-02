@@ -9,7 +9,7 @@ export async function id0(
   try {
     return funct();
   } catch (error) {
-    console.error(error.message);
+    console.log(error.message);
+    return error;
   }
-  return;
 }
