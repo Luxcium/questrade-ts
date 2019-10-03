@@ -1,4 +1,4 @@
-import { Enumerations } from '../..';
+import { Enumerations } from '../../api';
 
 export const testEnumerations = async () => {
   const testCurrency = async (mute: boolean = true) => {

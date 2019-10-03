@@ -6,8 +6,8 @@
   "author": "Luxcium <luxcium@neb401.com>",
   "license": "MIT",
   "homepage": "https://github.com/Luxcium/questrade-ts",
-  "main": "./src/api/index.js",
-  "types": "./lib/api/index.d.ts",
+  "main": "./src/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
     "predist": "yarn run build",
     "dist": "yarn run rm:dist; yarn run cp:dist",
