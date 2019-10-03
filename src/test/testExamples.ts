@@ -55,9 +55,7 @@ export const testExamples = async (
     }
   })();
 };
-async function runExamples(
-  isTesting: boolean = false /* ,refreshToken: string */
-) {
+async function runExamples(isTesting: boolean = false, refreshToken: string) {
   if (!isTesting) return;
 
   // for easier reading of the examples
@@ -82,7 +80,7 @@ async function runExamples(
 
   // you do not have to put the token in plain text you should import it from elsewhere
   // const refreshToken = 'YOUR-TOKEN-HERE_jKi1YCwCjAMJFugwD4A8cgb0';
-  const refreshToken = ''; // myrefresh token have been revoked prior to publishing
+  // const refreshToken = ''; // myrefresh token have been revoked prior to publishing
   // using async Immediately Invoked Function Expressions to avoid using then().catch()
 
   await testExamples(
@@ -98,12 +96,10 @@ async function runExamples(
   return;
 }
 
-export const testAll = async (/* token: string */) => {
-  return runExamples(true /* ,token */);
+export const testAll = async (token: string) => {
+  return runExamples(true, token);
 };
 
 export const partialTests = (token: string) => {
   return { token };
 };
-
-testAll();
