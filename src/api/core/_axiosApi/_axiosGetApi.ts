@@ -1,4 +1,4 @@
-import { Credentials } from '../typescript';
+import { Credentials } from '../../typescript';
 import { _axiosApi } from './';
 
 // # _axiosApiGet !!!

@@ -1,4 +1,4 @@
-import { Credentials } from '../typescript';
+import { Credentials } from '../../typescript';
 
 // % endpointFormatAccount
 /** PROVIDE: credentials and accountEndpoint string, THEN GET: a endpoint string */

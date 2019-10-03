@@ -1,4 +1,4 @@
-import { Credentials } from '../typescript';
+import { Credentials } from '../../typescript';
 import { _axiosGetApi, _endpointFormatAccount } from './';
 
 // # _axiosAccountApi

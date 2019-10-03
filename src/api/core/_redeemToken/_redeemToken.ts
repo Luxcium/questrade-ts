@@ -1,5 +1,5 @@
 import { _credentialsFactory, _getQuestradeApi } from '..';
-import { utils } from '../../utils';
+import { utils } from '../../../utils';
 
 export async function _redeemToken(refreshToken: string) {
   const credentials = await _credentialsFactory(refreshToken);

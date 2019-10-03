@@ -1,5 +1,5 @@
 import { _axiosApiPost } from '../..';
-import { Credentials, IStrategiesQuotes } from '../../typescript';
+import { Credentials, IStrategiesQuotes } from '../../../typescript';
 
 export const _marketsQuotesStrategies = (credentials: Credentials) => async (
   strategyVariantRequestData: StrategyVariantRequest

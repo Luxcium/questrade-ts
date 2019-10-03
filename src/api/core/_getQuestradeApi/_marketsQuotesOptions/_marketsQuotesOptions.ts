@@ -1,5 +1,5 @@
 import { _axiosApiPost } from '../..';
-import { Credentials, IOptionsQuotes } from '../../typescript';
+import { Credentials, IOptionsQuotes } from '../../../typescript';
 
 export const _getQuotesOptionsByIds = (credentials: Credentials) => async (
   optionIds: number[]

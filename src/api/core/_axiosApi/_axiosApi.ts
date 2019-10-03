@@ -1,6 +1,6 @@
 import { AxiosRequestConfig, AxiosResponse, default as axios } from 'axios';
 import { default as httpStatus } from 'http-status-codes';
-import { Credentials } from '../typescript';
+import { Credentials } from '../../typescript';
 
 // % _axiosApi !!!
 /**
