@@ -10,7 +10,7 @@ export const testExamples = async (
 ) => {
   (async () => {
     // Using console.log (log) to output the
-    const log = console.log;
+    // const log = console.log;
     // always put your code in a try catch block
     try {
       // Create a questrade-ts Api (qtApi) Object redeeming your Refresh Token
@@ -18,37 +18,38 @@ export const testExamples = async (
 
       // list of all the differents api calls managed by this package
 
-      log(await qt.get.accounts.activities(startTime)(endTime));
-      log(await qt.get.accounts.orders(startTime)(endTime)('All'));
-      log(await qt.get.accounts.executions(startTime)(endTime));
-      log(await qt.get.accounts.balances());
-      log(await qt.get.accounts.positions());
-      log(await qt.get.accounts.allAccounts());
-      log(await qt.get.accounts.time());
-      log(
+      console.log(await qt.get.accounts.activities(startTime)(endTime));
+      console.log(await qt.get.accounts.orders(startTime)(endTime)('All'));
+      console.log(await qt.get.accounts.executions(startTime)(endTime));
+      console.log(await qt.get.accounts.balances());
+      console.log(await qt.get.accounts.positions());
+      console.log(await qt.get.accounts.allAccounts());
+      console.log(await qt.get.accounts.time());
+      console.log(
         await qt.get.markets.candlesById(startTime)(endTime)('OneDay')(
           stockNumericID
         )
       );
-      log('NO IMPLEMENTATION AT HIS TIME');
-      log(
+      console.log('NO IMPLEMENTATION AT HIS TIME');
+      console.log(
         await qt.get.markets.quotes.options({
           underlyingId: stockNumericID,
           expiryDate: optionExpiryDate,
         })
       );
-      log(await qt.get.markets.quotes.options.byIds([optionNumericID]));
-      log(await qt.get.markets.quotes.byIds([stockNumericID]));
-      log(await qt.get.markets.allMarkets());
-      log(await qt.get.symbols.optionsById(stockNumericID));
-      log(await qt.get.symbols.search(stockStringID));
-      log((await qt.get.symbols.search(stockStringID)).count);
-      log(await qt.get.symbols.search.count(stockStringID));
-      log(await qt.get.symbols.searchAll(stockStringID));
-      log(await qt.get.symbols.byIds([stockNumericID]));
+      console.log(await qt.get.markets.quotes.options.byIds([optionNumericID]));
+      console.log(await qt.get.markets.quotes.byIds([stockNumericID]));
+      console.log(await qt.get.markets.allMarkets());
+      console.log(await qt.get.symbols.optionsById(stockNumericID));
+      console.log(await qt.get.symbols.search(stockStringID));
+      console.log((await qt.get.symbols.search(stockStringID)).count);
+      console.log(await qt.get.symbols.search.count(stockStringID));
+      console.log(await qt.get.symbols.searchAll(stockStringID));
+      console.log(await qt.get.symbols.byIds([stockNumericID]));
 
       // return private credentials
-      log(credentials);
+      console.log(credentials);
+      // return credentials;
     } catch (error) {
       // manage your errors here if needed
       console.error(error.message);
@@ -103,5 +104,3 @@ export const testAll = async (token: string) => {
 export const partialTests = (token: string) => {
   return { token };
 };
-
-testAll('408wO9My1ob41fxWAA3L9ApqqkefkOnr0');
