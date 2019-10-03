@@ -24,7 +24,7 @@ import {
   _getQuotesOptionsFilter,
 } from './_marketsQuotesOptions';
 
-export const _getApi = (() => {
+export const _getQuestradeApi = (() => {
   const _getBalances = (credentials: Credentials) =>
     _axiosAccountGetApi(credentials)<IBalances>('/balances');
 

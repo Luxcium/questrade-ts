@@ -1,12 +1,4 @@
-import { qtEnumerations } from 'questrade-api-enumerations';
-import { _credentialsFactory, _getApi } from './core';
-
-export { /* testExamples */ testEnumerations } from './testExamples';
-export { day, id0, log, void0 } from './utils';
-export { qtEnumerations as Enumerations };
-
-export async function redeemToken(refreshToken: string) {
-  const credentials = await _credentialsFactory(refreshToken);
-  const questrade = _getApi(credentials);
-  return { qtApi: questrade, credentials };
-}
+export { redeemToken } from './redeemToken';
+export {} from './testExamples';
+export { day, Enumerations, id0, log, utils, void0 } from './utils';
+export { testEnumerations } from './utils/testExamples/testEnumerations';
