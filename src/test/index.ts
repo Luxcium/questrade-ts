@@ -1,1 +1,1 @@
-export { testExamples } from './testExamples';
+export { testEnumerations, testExamples } from './testExamples';

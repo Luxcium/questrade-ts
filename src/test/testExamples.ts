@@ -1,6 +1,6 @@
 // // TypeScript/JavaScript
 // import { day, redeemToken } from '.';
-
+export const testExamples = () => void 0;
 // export const testExamples = async (
 //   yourRefreshToken: string,
 //   startTime: string,
