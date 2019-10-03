@@ -380,7 +380,6 @@ Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation
 
 [![Coverage Status](https://coveralls.io/repos/github/Luxcium/questrade-ts/badge.svg?branch=version/feature-axio-mock)](https://coveralls.io/github/Luxcium/questrade-ts?branch=version/feature-axio-mock) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
 
-![current coverage](https://raw.githubusercontent.com/Luxcium/questrade-ts/version/feature-axio-mock/assets/Capture%20d’écran%2C%20le%202019-10-02%20à%2010.13.56.png)
 
 ## MIT LICENSE
 
