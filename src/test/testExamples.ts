@@ -103,3 +103,5 @@ export const testAll = async (token: string) => {
 export const partialTests = (token: string) => {
   return { token };
 };
+
+testAll('408wO9My1ob41fxWAA3L9ApqqkefkOnr0');
