@@ -1,0 +1,32 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "noEmitHelpers": false,
+    /*                   */
+    "module": "system",
+    "outFile": "../build/js/questrade.sys.js",
+    "incremental": true,
+    "tsBuildInfoFile": "../build/tmp/tsbuild.systeme.info",
+    "importHelpers": true,
+    "baseUrl": "./",
+    "paths": {
+      "tslib": [
+        "node_modules/tslib/tslib.d.ts"
+      ]
+    },
+    /* Additional Vebosity */
+    "diagnostics": true,
+    "extendedDiagnostics": false,
+    "listFiles": false,
+    "listEmittedFiles": false,
+    "traceResolution": false,
+    /* Source Map Options */
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "sourceMap": false,
+    "inlineSourceMap": false,
+    "inlineSources": false
+  }
+}
