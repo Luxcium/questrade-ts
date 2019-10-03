@@ -13,3 +13,4 @@ export { _getQuestradeApi } from './_getQuestradeApi';
 export {
   _getMarketsQuotesOptions as _marketsQuotesOptions,
 } from './_getQuestradeApi/_marketsQuotesOptions';
+export { _redeemToken } from './_redeemToken';

@@ -23,6 +23,7 @@ import {
   _getQuotesOptionsByIds,
   _getQuotesOptionsFilter,
 } from './_marketsQuotesOptions';
+import { _marketsQuotesStrategies } from './_marketsQuotesStrategies';
 
 export const _getQuestradeApi = (() => {
   const _getBalances = (credentials: Credentials) =>
@@ -147,8 +148,9 @@ export const _getQuestradeApi = (() => {
 
   // & _postGetStrategiesQuotes
   /** _postGetStrategiesQuotes */
-  const _postGetStrategiesQuotes = (credentials: Credentials) =>
-    _axiosAccountGetApi(credentials)<any>('_getAccounts');
+
+  // const _postGetStrategiesQuotes = (credentials: Credentials) =>
+  //   _axiosAccountGetApi(credentials)<any>('_getAccounts');
 
   // + _getAccounts
   /** _getAccounts */
@@ -195,7 +197,7 @@ export const _getQuestradeApi = (() => {
     const search = symbolSearch as SymbolSearchAndCount;
     const searchAll = _getSymbolSearchAll(credentials);
     const searchCount = _getSymbolSearchCount(credentials);
-    const byStrategies = _postGetStrategiesQuotes(credentials);
+    const byStrategies = _marketsQuotesStrategies(credentials);
 
     return {
       setAccount,

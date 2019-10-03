@@ -40,6 +40,7 @@ export {
 } from './IQuestradeAPIOptions';
 export { IQuote, IQuotes } from './IQuotes';
 export { IStockSymbol } from './IStockSymbol';
+export { IStrategiesQuotes } from './IStrategiesQuotes';
 export { ISymbol, ISymbols } from './ISymbols';
 export { Methode } from './Methode';
 export {

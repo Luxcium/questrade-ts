@@ -1,6 +1,6 @@
 // import * as api from '../api';
 import { qtEnumerations } from 'questrade-api-enumerations';
-import { testEnumerations } from '../api/testExamples';
+import { testEnumerations } from '../api/utils/testExamples/testExamples';
 const api: any = {};
 api.Enumerations = qtEnumerations;
 api.testEnumerations = testEnumerations as () => any;
