@@ -20,7 +20,6 @@ export {
   StrategyTypes,
   TickType,
 } from 'questrade-api-enumerations';
-export { Credentials } from './Credentials';
 export { AcountNumberString, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
 export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';

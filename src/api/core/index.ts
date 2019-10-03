@@ -3,14 +3,11 @@ export {
   _axiosApi,
   _axiosApiPost,
   _axiosGetApi,
-} from './_axiosApi';
+} from './AxiosRequestApi';
 export {
   _credentialsFactory,
   _defaultCredentials,
   _getPrimaryAccountNumber,
-} from './_credentialsFactory';
-export { _getQuestradeApi } from './_getQuestradeApi';
-export {
-  _getMarketsQuotesOptions as _marketsQuotesOptions,
-} from './_getQuestradeApi/_marketsQuotesOptions';
-export { _redeemToken } from './_redeemToken';
+  _redeemToken,
+} from './CredentialsFactory';
+export { _getQuestradeApi } from './QuestradeApi';

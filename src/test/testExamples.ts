@@ -30,7 +30,9 @@ export const testExamples = async (
           stockNumericID
         )
       );
-      console.log('NO IMPLEMENTATION AT HIS TIME');
+      console.log(
+        '(await qt.get.markets.quotes.byStrategies({variants:[{variantId:1,strategy:"custom",[]}]}));'
+      );
       console.log(
         await qt.get.markets.quotes.options({
           underlyingId: stockNumericID,
