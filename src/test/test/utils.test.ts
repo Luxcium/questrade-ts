@@ -1,3 +1,8 @@
+import { utils } from '../../index';
+// import {  } from '../../utils';
+const day = utils.day;
+const void0 = utils.void0;
+const log = utils.log;
 // import * as api from '../api';
 // import * as apiCore from '../api/core';
 // import * as _axiosApi from '../api/core/_axiosApi';
@@ -6,15 +11,31 @@
 // import * as _marketsQuotesOptions from '../api/core/_getQuestradeApi/_marketsQuotesOptions';
 // import * as apiUtils from '../api/utils';
 // const log = apiUtils.log;
-// const timeout = 5;
-// describe.skip('Lets play a game', () => {
-//   it(
-//     'should convert days to miliseconds',
-//     () => {
-//       expect(api.day(100)).toBe(100 * 24 * 60 * 60 * 1000);
-//     },
-//     timeout
-//   );
+const timeout = 10000;
+describe('Testing utils functions', () => {
+  it(
+    'should convert days to miliseconds',
+    () => {
+      expect(day(100)).toBe(100 * 24 * 60 * 60 * 1000);
+    },
+    timeout
+  );
+  it(
+    'void0 return undefined',
+    () => {
+      expect(void0(100)).toBe(undefined);
+    },
+    timeout
+  );
+
+  it(
+    'log is an alias to console.log',
+    () => {
+      expect(log(100)).toBe(undefined);
+    },
+    timeout
+  );
+});
 //   it(
 //     'should log and return void',
 //     () => {

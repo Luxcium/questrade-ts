@@ -1,182 +1,182 @@
-import { Enumerations } from '../api';
+import { Enumerations } from '..';
 
 export const testEnumerations = async () => {
-  const testCurrency = async (mute: boolean = true) => {
+  const testCurrency = async () => {
     const currency = Enumerations.Currency;
-    if (!mute) {
-      console.log('/** Specifies all supported currency codes. */\n', currency);
-    }
+
+    console.log('/** Specifies all supported currency codes. */\n', currency);
+
     return currency;
   };
-  const testListingExchange = async (mute: boolean = true) => {
+  const testListingExchange = async () => {
     const listingexchange = Enumerations.ListingExchange;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported listing exchanges. */\n',
-        listingexchange
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported listing exchanges. */\n',
+      listingexchange
+    );
+
     return listingexchange;
   };
-  const testAccountType = async (mute: boolean = true) => {
+  const testAccountType = async () => {
     const accounttype = Enumerations.AccountType;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported user account types. */\n',
-        accounttype
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported user account types. */\n',
+      accounttype
+    );
+
     return accounttype;
   };
-  const testClientAccountType = async (mute: boolean = true) => {
+  const testClientAccountType = async () => {
     const clientaccounttype = Enumerations.ClientAccountType;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported account client types. */\n',
-        clientaccounttype
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported account client types. */\n',
+      clientaccounttype
+    );
+
     return clientaccounttype;
   };
-  const testAccountStatus = async (mute: boolean = true) => {
+  const testAccountStatus = async () => {
     const accountstatus = Enumerations.AccountStatus;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported account status values. */\n',
-        accountstatus
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported account status values. */\n',
+      accountstatus
+    );
+
     return accountstatus;
   };
-  const testTickType = async (mute: boolean = true) => {
+  const testTickType = async () => {
     const ticktype = Enumerations.TickType;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported market data tick types. */\n',
-        ticktype
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported market data tick types. */\n',
+      ticktype
+    );
+
     return ticktype;
   };
-  const testOptionType = async (mute: boolean = true) => {
+  const testOptionType = async () => {
     const optiontype = Enumerations.OptionType;
-    if (!mute) {
-      console.log('/** Specifies all supported option types. */\n', optiontype);
-    }
+
+    console.log('/** Specifies all supported option types. */\n', optiontype);
+
     return optiontype;
   };
-  const testOptionDurationType = async (mute: boolean = true) => {
+  const testOptionDurationType = async () => {
     const optiondurationtype = Enumerations.OptionDurationType;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported option duration types. */\n',
-        optiondurationtype
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported option duration types. */\n',
+      optiondurationtype
+    );
+
     return optiondurationtype;
   };
-  const testOptionExerciseType = async (mute: boolean = true) => {
+  const testOptionExerciseType = async () => {
     const optionexercisetype = Enumerations.OptionExerciseType;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported option exercise types. */\n',
-        optionexercisetype
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported option exercise types. */\n',
+      optionexercisetype
+    );
+
     return optionexercisetype;
   };
-  const testSecurityType = async (mute: boolean = true) => {
+  const testSecurityType = async () => {
     const securitytype = Enumerations.SecurityType;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported security types. */\n',
-        securitytype
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported security types. */\n',
+      securitytype
+    );
+
     return securitytype;
   };
-  const testOrderStateFilterType = async (mute: boolean = true) => {
+  const testOrderStateFilterType = async () => {
     const orderstatefiltertype = Enumerations.OrderStateFilterType;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported order state filter types. */\n',
-        orderstatefiltertype
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported order state filter types. */\n',
+      orderstatefiltertype
+    );
+
     return orderstatefiltertype;
   };
-  const testOrderAction = async (mute: boolean = true) => {
+  const testOrderAction = async () => {
     const orderaction = Enumerations.OrderAction;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported order side values. */\n',
-        orderaction
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported order side values. */\n',
+      orderaction
+    );
+
     return orderaction;
   };
-  const testOrderSide = async (mute: boolean = true) => {
+  const testOrderSide = async () => {
     const orderside = Enumerations.OrderSide;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported client order side values. */\n',
-        orderside
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported client order side values. */\n',
+      orderside
+    );
+
     return orderside;
   };
-  const testOrderType = async (mute: boolean = true) => {
+  const testOrderType = async () => {
     const ordertype = Enumerations.OrderType;
-    if (!mute) {
-      console.log('/** Specifies all supported order types. */\n', ordertype);
-    }
+
+    console.log('/** Specifies all supported order types. */\n', ordertype);
+
     return ordertype;
   };
-  const testOrderTimeInForce = async (mute: boolean = true) => {
+  const testOrderTimeInForce = async () => {
     const ordertimeinforce = Enumerations.OrderTimeInForce;
-    if (!mute) {
-      console.log(
-        '/** Specifies all  ordertimeinforcesupported order Time-In-Force instructions. */\n',
-        ordertimeinforce
-      );
-    }
+
+    console.log(
+      '/** Specifies all  ordertimeinforcesupported order Time-In-Force instructions. */\n',
+      ordertimeinforce
+    );
+
     return ordertimeinforce;
   };
-  const testOrderState = async (mute: boolean = true) => {
+  const testOrderState = async () => {
     const orderstate = Enumerations.OrderState;
-    if (!mute) {
-      console.log('/** Specifies all supported order states. */\n', orderstate);
-    }
+
+    console.log('/** Specifies all supported order states. */\n', orderstate);
+
     return orderstate;
   };
-  const testHistoricalDataGranularity = async (mute: boolean = true) => {
+  const testHistoricalDataGranularity = async () => {
     const historicaldatagranularity = Enumerations.HistoricalDataGranularity;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported historicaldatagranularity order execution status values. */\n',
-        historicaldatagranularity
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported historicaldatagranularity order execution status values. */\n',
+      historicaldatagranularity
+    );
+
     return historicaldatagranularity;
   };
-  const testOrderClass = async (mute: boolean = true) => {
+  const testOrderClass = async () => {
     const orderclass = Enumerations.OrderClass;
-    if (!mute) {
-      console.log(
-        '/** Specifies all supported bracket order components. */\n',
-        orderclass
-      );
-    }
+
+    console.log(
+      '/** Specifies all supported bracket order components. */\n',
+      orderclass
+    );
+
     return orderclass;
   };
-  const testStrategyTypes = async (mute: boolean = true) => {
+  const testStrategyTypes = async () => {
     const strategytypes = Enumerations.StrategyTypes;
-    if (!mute) {
-      console.log(
-        '/** Supported t strategytypesypes of strategies for multi-leg strategy orders. */\n',
-        strategytypes
-      );
-    }
+
+    console.log(
+      '/** Supported t strategytypesypes of strategies for multi-leg strategy orders. */\n',
+      strategytypes
+    );
+
     return strategytypes;
   };
   return {

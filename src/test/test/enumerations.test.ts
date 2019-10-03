@@ -1,17 +1,16 @@
-// import * as api from '../api';
-import { testEnumerations } from '../';
-// import * as apiUtils from '../api/utils';
-// const log = apiUtils.log;
-const timeout = 5000;
+import { testEnumerations } from '..';
+const timeout = 10000;
 
+let enumTests: any;
+beforeAll(async () => {
+  enumTests = await testEnumerations();
+});
 describe('Enumerations', () => {
   it(
     'should have a Currency Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests = await testEnumerations();
-      await enumTests.testCurrency(false);
-      doneFnct();
+      await enumTests.testCurrency();
+      done();
     },
     timeout
   );
@@ -19,11 +18,8 @@ describe('Enumerations', () => {
   it(
     'Should have a ListingExchange Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testListingExchange(false);
-      doneFnct();
+      await enumTests.testListingExchange();
+      done();
     },
     timeout
   );
@@ -31,11 +27,8 @@ describe('Enumerations', () => {
   it(
     'Should have a AccountType Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testAccountType(false);
-      doneFnct();
+      await enumTests.testAccountType();
+      done();
     },
     timeout
   );
@@ -43,11 +36,8 @@ describe('Enumerations', () => {
   it(
     'Should have a ClientAccountType Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testClientAccountType(false);
-      doneFnct();
+      await enumTests.testClientAccountType();
+      done();
     },
     timeout
   );
@@ -55,11 +45,8 @@ describe('Enumerations', () => {
   it(
     'Should have a AccountStatus Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testAccountStatus(false);
-      doneFnct();
+      await enumTests.testAccountStatus();
+      done();
     },
     timeout
   );
@@ -67,11 +54,8 @@ describe('Enumerations', () => {
   it(
     'Should have a TickType Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testTickType(false);
-      doneFnct();
+      await enumTests.testTickType();
+      done();
     },
     timeout
   );
@@ -79,11 +63,8 @@ describe('Enumerations', () => {
   it(
     'Should have a OptionType Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testOptionType(false);
-      doneFnct();
+      await enumTests.testOptionType();
+      done();
     },
     timeout
   );
@@ -91,11 +72,8 @@ describe('Enumerations', () => {
   it(
     'Should have a OptionDurationType Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testOptionDurationType(false);
-      doneFnct();
+      await enumTests.testOptionDurationType();
+      done();
     },
     timeout
   );
@@ -103,11 +81,8 @@ describe('Enumerations', () => {
   it(
     'Should have a OptionExerciseType Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testOptionExerciseType(false);
-      doneFnct();
+      await enumTests.testOptionExerciseType();
+      done();
     },
     timeout
   );
@@ -115,11 +90,8 @@ describe('Enumerations', () => {
   it(
     'Should have a SecurityType Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testSecurityType(false);
-      doneFnct();
+      await enumTests.testSecurityType();
+      done();
     },
     timeout
   );
@@ -127,11 +99,8 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderStateFilterType Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testOrderStateFilterType(false);
-      doneFnct();
+      await enumTests.testOrderStateFilterType();
+      done();
     },
     timeout
   );
@@ -139,11 +108,8 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderAction Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testOrderAction(false);
-      doneFnct();
+      await enumTests.testOrderAction();
+      done();
     },
     timeout
   );
@@ -151,11 +117,8 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderSide Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testOrderSide(false);
-      doneFnct();
+      await enumTests.testOrderSide();
+      done();
     },
     timeout
   );
@@ -163,11 +126,8 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderType Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testOrderType(false);
-      doneFnct();
+      await enumTests.testOrderType();
+      done();
     },
     timeout
   );
@@ -175,11 +135,8 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderTimeInForce Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testOrderTimeInForce(false);
-      doneFnct();
+      await enumTests.testOrderTimeInForce();
+      done();
     },
     timeout
   );
@@ -187,11 +144,8 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderState Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testOrderState(false);
-      doneFnct();
+      await enumTests.testOrderState();
+      done();
     },
     timeout
   );
@@ -199,11 +153,8 @@ describe('Enumerations', () => {
   it(
     'Should have a HistoricalDataGranularity Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testHistoricalDataGranularity(false);
-      doneFnct();
+      await enumTests.testHistoricalDataGranularity();
+      done();
     },
     timeout
   );
@@ -211,11 +162,8 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderClass Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testOrderClass(false);
-      doneFnct();
+      await enumTests.testOrderClass();
+      done();
     },
     timeout
   );
@@ -223,11 +171,8 @@ describe('Enumerations', () => {
   it(
     'Should have a StrategyTypes Enumeration',
     async (done: any) => {
-      const doneFnct = done;
-      const enumTests: any = await testEnumerations();
-
-      await enumTests.testStrategyTypes(false);
-      doneFnct();
+      await enumTests.testStrategyTypes();
+      done();
     },
     timeout
   );
