@@ -381,7 +381,7 @@ Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation
 [![Coverage Status](https://coveralls.io/repos/github/Luxcium/questrade-ts/badge.svg?branch=version/feature-axio-mock)](https://coveralls.io/github/Luxcium/questrade-ts?branch=version/feature-axio-mock) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
 
 #### Manual testing coverage
-![Manual testing coverage](https://raw.githubusercontent.com/Luxcium/questrade-ts/version/next/version/images/manual-testing.png)
+![Manual testing coverage](https://raw.githubusercontent.com/Luxcium/questrade-ts/next/version/images/manual-testing.png)
 
 ## MIT LICENSE
 
