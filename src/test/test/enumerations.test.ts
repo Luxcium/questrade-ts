@@ -1,9 +1,5 @@
 // import * as api from '../api';
-import { qtEnumerations } from 'questrade-api-enumerations';
-import { testEnumerations } from '../testExamples';
-const api: any = {};
-api.Enumerations = qtEnumerations;
-api.testEnumerations = testEnumerations as () => any;
+import { testEnumerations } from '../';
 // import * as apiUtils from '../api/utils';
 // const log = apiUtils.log;
 const timeout = 5000;
@@ -12,9 +8,9 @@ describe('Enumerations', () => {
   it(
     'should have a Currency Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
-      doneFnct = await enumTests.testCurrency(doneFnct);
+      const doneFnct = done;
+      const enumTests = await testEnumerations();
+      await enumTests.testCurrency(false);
       doneFnct();
     },
     timeout
@@ -23,10 +19,10 @@ describe('Enumerations', () => {
   it(
     'Should have a ListingExchange Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testListingExchange(doneFnct);
+      await enumTests.testListingExchange(false);
       doneFnct();
     },
     timeout
@@ -35,10 +31,10 @@ describe('Enumerations', () => {
   it(
     'Should have a AccountType Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testAccountType(doneFnct);
+      await enumTests.testAccountType(false);
       doneFnct();
     },
     timeout
@@ -47,10 +43,10 @@ describe('Enumerations', () => {
   it(
     'Should have a ClientAccountType Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testClientAccountType(doneFnct);
+      await enumTests.testClientAccountType(false);
       doneFnct();
     },
     timeout
@@ -59,10 +55,10 @@ describe('Enumerations', () => {
   it(
     'Should have a AccountStatus Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testAccountStatus(doneFnct);
+      await enumTests.testAccountStatus(false);
       doneFnct();
     },
     timeout
@@ -71,10 +67,10 @@ describe('Enumerations', () => {
   it(
     'Should have a TickType Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testTickType(doneFnct);
+      await enumTests.testTickType(false);
       doneFnct();
     },
     timeout
@@ -83,10 +79,10 @@ describe('Enumerations', () => {
   it(
     'Should have a OptionType Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testOptionType(doneFnct);
+      await enumTests.testOptionType(false);
       doneFnct();
     },
     timeout
@@ -95,10 +91,10 @@ describe('Enumerations', () => {
   it(
     'Should have a OptionDurationType Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testOptionDurationType(doneFnct);
+      await enumTests.testOptionDurationType(false);
       doneFnct();
     },
     timeout
@@ -107,10 +103,10 @@ describe('Enumerations', () => {
   it(
     'Should have a OptionExerciseType Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testOptionExerciseType(doneFnct);
+      await enumTests.testOptionExerciseType(false);
       doneFnct();
     },
     timeout
@@ -119,10 +115,10 @@ describe('Enumerations', () => {
   it(
     'Should have a SecurityType Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testSecurityType(doneFnct);
+      await enumTests.testSecurityType(false);
       doneFnct();
     },
     timeout
@@ -131,10 +127,10 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderStateFilterType Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testOrderStateFilterType(doneFnct);
+      await enumTests.testOrderStateFilterType(false);
       doneFnct();
     },
     timeout
@@ -143,10 +139,10 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderAction Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testOrderAction(doneFnct);
+      await enumTests.testOrderAction(false);
       doneFnct();
     },
     timeout
@@ -155,10 +151,10 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderSide Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testOrderSide(doneFnct);
+      await enumTests.testOrderSide(false);
       doneFnct();
     },
     timeout
@@ -167,10 +163,10 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderType Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testOrderType(doneFnct);
+      await enumTests.testOrderType(false);
       doneFnct();
     },
     timeout
@@ -179,10 +175,10 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderTimeInForce Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testOrderTimeInForce(doneFnct);
+      await enumTests.testOrderTimeInForce(false);
       doneFnct();
     },
     timeout
@@ -191,10 +187,10 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderState Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testOrderState(doneFnct);
+      await enumTests.testOrderState(false);
       doneFnct();
     },
     timeout
@@ -203,10 +199,10 @@ describe('Enumerations', () => {
   it(
     'Should have a HistoricalDataGranularity Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testHistoricalDataGranularity(doneFnct);
+      await enumTests.testHistoricalDataGranularity(false);
       doneFnct();
     },
     timeout
@@ -215,10 +211,10 @@ describe('Enumerations', () => {
   it(
     'Should have a OrderClass Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testOrderClass(doneFnct);
+      await enumTests.testOrderClass(false);
       doneFnct();
     },
     timeout
@@ -227,10 +223,10 @@ describe('Enumerations', () => {
   it(
     'Should have a StrategyTypes Enumeration',
     async (done: any) => {
-      let doneFnct = done;
-      const enumTests: any = await api.testEnumerations(api.Enumerations);
+      const doneFnct = done;
+      const enumTests: any = await testEnumerations();
 
-      doneFnct = await enumTests.testStrategyTypes(doneFnct);
+      await enumTests.testStrategyTypes(false);
       doneFnct();
     },
     timeout

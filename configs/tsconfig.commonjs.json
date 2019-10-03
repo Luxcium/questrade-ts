@@ -5,9 +5,9 @@
     "noEmitHelpers": false,
     /*                   */
     "module": "commonjs",
-    "outDir": "./build/src",
+    "outDir": "../build/src",
     "incremental": true,
-    "tsBuildInfoFile": "./build/tmp/tsbuild.commonjs.info",
+    "tsBuildInfoFile": "../build/tmp/tsbuild.commonjs.info",
     "importHelpers": true,
     "baseUrl": "./",
     "paths": {
@@ -28,6 +28,6 @@
     "sourceMap": true,
     "inlineSourceMap": false,
     "inlineSources": true,
-    "declarationDir": "./build/lib/"
+    "declarationDir": "../build/lib/"
   }
 }

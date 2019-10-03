@@ -5,9 +5,9 @@
     "noEmitHelpers": false,
     /*                   */
     "module": "umd",
-    "outDir": "./build/js/umd/src",
+    "outDir": "../build/js/umd/src",
     "incremental": true,
-    "tsBuildInfoFile": "./build/tmp/tsbuild.umd.info",
+    "tsBuildInfoFile": "../build/tmp/tsbuild.umd.info",
     "importHelpers": true,
     "baseUrl": "./",
     "paths": {
@@ -28,6 +28,6 @@
     "sourceMap": true,
     "inlineSourceMap": false,
     "inlineSources": true,
-    "declarationDir": "./build/js/umd/lib"
+    "declarationDir": "../build/js/umd/lib"
   }
 }

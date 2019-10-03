@@ -5,9 +5,9 @@
     "noEmitHelpers": false,
     /*                   */
     "module": "system",
-    "outFile": "./build/js/questrade.sys.js",
+    "outFile": "../build/js/questrade.sys.js",
     "incremental": true,
-    "tsBuildInfoFile": "./build/tmp/tsbuild.systeme.info",
+    "tsBuildInfoFile": "../build/tmp/tsbuild.systeme.info",
     "importHelpers": true,
     "baseUrl": "./",
     "paths": {

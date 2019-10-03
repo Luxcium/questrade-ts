@@ -5,9 +5,9 @@
     "noEmitHelpers": false,
     /*                   */
     "module": "amd",
-    "outFile": "./build/js/questrade.amd.js",
+    "outFile": "../build/js/questrade.amd.js",
     "incremental": true,
-    "tsBuildInfoFile": "./build/tmp/tsbuild.amd.info",
+    "tsBuildInfoFile": "../build/tmp/tsbuild.amd.info",
     "importHelpers": true,
     "baseUrl": "./",
     "paths": {
