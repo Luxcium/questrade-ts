@@ -82,7 +82,7 @@ async function runExamples(
 
   // you do not have to put the token in plain text you should import it from elsewhere
   // const refreshToken = 'YOUR-TOKEN-HERE_jKi1YCwCjAMJFugwD4A8cgb0';
-  const refreshToken = 'pNBgdR9H1M8O1rKH0wCrQWHHAU0Aos7s0'; // myrefresh token have been revoked prior to publishing
+  const refreshToken = ''; // myrefresh token have been revoked prior to publishing
   // using async Immediately Invoked Function Expressions to avoid using then().catch()
 
   await testExamples(
