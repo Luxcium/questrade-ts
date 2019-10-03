@@ -374,3 +374,107 @@
 // timeutil.ts
 
 // */
+/*
+
+
+
+    doneFnct();
+
+  }, timeout);
+
+   it('should ', async (done: any) => {
+    let doneFnct = done;
+    const enumTests: any = await api.testEnumerations(api.Enumerations);
+
+    // apiUtils.void0(apiCore);
+    // apiUtils.void0();
+    // await apiUtils.testAll('410AeVxJ1W8e01YCTWTh8GGrfMEZ7k5r0', done)
+
+    // apiUtils.void0(_axiosApi);
+    // apiUtils.void0(_credentialsFactory);
+    // apiUtils.void0(_getQuestradeApi);
+    // apiUtils.void0(_marketsQuotesOptions);
+    // apiUtils.void0();
+afterAll(fn, timeout)
+afterEach(fn, timeout)
+beforeAll(fn, timeout)
+beforeEach(fn, timeout)
+describe(name, fn)
+describe.each(table)(name, fn, timeout)
+describe.only(name, fn)
+describe.only.each(table)(name, fn)
+describe.skip(name, fn)
+describe.skip.each(table)(name, fn)
+test(name, fn, timeout)
+test.each(table)(name, fn, timeout)
+test.only(name, fn, timeout)
+test.only.each(table)(name, fn)
+test.skip(name, fn)
+test.skip.each(table)(name, fn)
+test.todo(name)
+
+import    * as jest  from 'jest';
+import { tokenConnection } from '../api';
+test('should exist at least', async (done: any) => {
+  const { qt } = await tokenConnection('mock');
+  await qt.getServerTime();
+  await questrade('').catch(async (error: any) => {
+  await console.warn(error.message);
+  done();
+});
+
+piUrl: '',
+      apiVersion: 'v1',
+      authUrl: '',
+      expiresAt: undefined,
+      tokenExpiration: undefined,
+      expiresIn: 0,
+      keyDir: './keys',
+      keyFile: '',
+      practice: false,
+      refreshToken: '',
+      seedToken: '',
+      serverTime: undefined,
+      tokenType: '',
+      toValue: [Function: toValue],
+      toString: [Function: toString] }
+
+      -------------------------------------------------
+File
+-------------------------------------------------
+All files
+api
+index.ts
+
+testExamples.ts
+
+
+index.ts
+
+
+index.ts
+
+_axiosAccountGetApi.ts
+_axiosApi.ts
+_axiosApiPost.ts
+_axiosGetApi.ts
+_endpointFormatAccount.ts
+
+
+index.ts
+
+
+index.ts
+
+
+index.ts
+
+
+index.ts
+
+id0.ts
+mkdirp.ts
+timeutil.ts
+
+
+*/

@@ -13,7 +13,6 @@
 // ) => {
 //   // (async (done: any) => {
 //   // Using console.log (log) to output the
-const log = console.log;
 //   // always put your code in a try catch block
 //   try {
 //     // Create a questrade-ts Api (qtApi) Object redeeming your Refresh Token
@@ -101,98 +100,136 @@ export const testEnumerations = async (Enumerations: any) => {
   // Enumerations from questrade-api-enumerations NPM package (included)
 
   const testCurrency = async (done: any) => {
-    log('/** Specifies all supported currency codes. */');
-    console.dir(Enumerations.Currency);
+    console.log(
+      '/** Specifies all supported currency codes. */\n',
+      Enumerations.Currency
+    );
     return done;
   };
   const testListingExchange = async (done: any) => {
-    log('/** Specifies all supported listing exchanges. */');
-    console.dir(Enumerations.ListingExchange);
+    console.log(
+      '/** Specifies all supported listing exchanges. */\n',
+      Enumerations.ListingExchange
+    );
     return done;
   };
   const testAccountType = async (done: any) => {
-    log('/** Specifies all supported user account types. */');
-    console.dir(Enumerations.AccountType);
+    console.log(
+      '/** Specifies all supported user account types. */\n',
+      Enumerations.AccountType
+    );
     return done;
   };
   const testClientAccountType = async (done: any) => {
-    log('/** Specifies all supported account client types. */');
-    console.dir(Enumerations.ClientAccountType);
+    console.log(
+      '/** Specifies all supported account client types. */\n',
+      Enumerations.ClientAccountType
+    );
     return done;
   };
   const testAccountStatus = async (done: any) => {
-    log('/** Specifies all supported account status values. */');
-    console.dir(Enumerations.AccountStatus);
+    console.log(
+      '/** Specifies all supported account status values. */\n',
+      Enumerations.AccountStatus
+    );
     return done;
   };
   const testTickType = async (done: any) => {
-    log('/** Specifies all supported market data tick types. */');
-    console.dir(Enumerations.TickType);
+    console.log(
+      '/** Specifies all supported market data tick types. */\n',
+      Enumerations.TickType
+    );
     return done;
   };
   const testOptionType = async (done: any) => {
-    log('/** Specifies all supported option types. */');
-    console.dir(Enumerations.OptionType);
+    console.log(
+      '/** Specifies all supported option types. */\n',
+      Enumerations.OptionType
+    );
     return done;
   };
   const testOptionDurationType = async (done: any) => {
-    log('/** Specifies all supported option duration types. */');
-    console.dir(Enumerations.OptionDurationType);
+    console.log(
+      '/** Specifies all supported option duration types. */\n',
+      Enumerations.OptionDurationType
+    );
     return done;
   };
   const testOptionExerciseType = async (done: any) => {
-    log('/** Specifies all supported option exercise types. */');
-    console.dir(Enumerations.OptionExerciseType);
+    console.log(
+      '/** Specifies all supported option exercise types. */\n',
+      Enumerations.OptionExerciseType
+    );
     return done;
   };
   const testSecurityType = async (done: any) => {
-    log('/** Specifies all supported security types. */');
-    console.dir(Enumerations.SecurityType);
+    console.log(
+      '/** Specifies all supported security types. */\n',
+      Enumerations.SecurityType
+    );
     return done;
   };
   const testOrderStateFilterType = async (done: any) => {
-    log('/** Specifies all supported order state filter types. */');
-    console.dir(Enumerations.OrderStateFilterType);
+    console.log(
+      '/** Specifies all supported order state filter types. */\n',
+      Enumerations.OrderStateFilterType
+    );
     return done;
   };
   const testOrderAction = async (done: any) => {
-    log('/** Specifies all supported order side values. */');
-    console.dir(Enumerations.OrderAction);
+    console.log(
+      '/** Specifies all supported order side values. */\n',
+      Enumerations.OrderAction
+    );
     return done;
   };
   const testOrderSide = async (done: any) => {
-    log('/** Specifies all supported client order side values. */');
-    console.dir(Enumerations.OrderSide);
+    console.log(
+      '/** Specifies all supported client order side values. */\n',
+      Enumerations.OrderSide
+    );
     return done;
   };
   const testOrderType = async (done: any) => {
-    log('/** Specifies all supported order types. */');
-    console.dir(Enumerations.OrderType);
+    console.log(
+      '/** Specifies all supported order types. */\n',
+      Enumerations.OrderType
+    );
     return done;
   };
   const testOrderTimeInForce = async (done: any) => {
-    log('/** Specifies all supported order Time-In-Force instructions. */');
-    console.dir(Enumerations.OrderTimeInForce);
+    console.log(
+      '/** Specifies all supported order Time-In-Force instructions. */\n',
+      Enumerations.OrderTimeInForce
+    );
     return done;
   };
   const testOrderState = async (done: any) => {
-    log('/** Specifies all supported order states. */');
-    console.dir(Enumerations.OrderState);
+    console.log(
+      '/** Specifies all supported order states. */\n',
+      Enumerations.OrderState
+    );
     return done;
   };
   const testHistoricalDataGranularity = async (done: any) => {
-    log('/** Specifies all supported order execution status values. */');
-    console.dir(Enumerations.HistoricalDataGranularity);
+    console.log(
+      '/** Specifies all supported order execution status values. */\n',
+      Enumerations.HistoricalDataGranularity
+    );
     return done;
   };
   const testOrderClass = async (done: any) => {
-    log('/** Specifies all supported bracket order components. */');
-    console.dir(Enumerations.OrderClass);
+    console.log(
+      '/** Specifies all supported bracket order components. */\n',
+      Enumerations.OrderClass
+    );
     return done;
   };
   const testStrategyTypes = async (done: any) => {
-    log('/** Supported types of strategies for multi-leg strategy orders. */');
-    console.dir(Enumerations.StrategyTypes);
+    console.log(
+      '/** Supported types of strategies for multi-leg strategy orders. */\n',
+      Enumerations.StrategyTypes
+    );
     return done;
   };
   return {
@@ -218,7 +255,7 @@ export const testEnumerations = async (Enumerations: any) => {
   };
 };
 //     // return private credentials
-//     log(credentials);
+//     console.log(credentials);
 //   } catch (error) {
 //     // manage your errors here if needed
 //     console.error(error.message);
