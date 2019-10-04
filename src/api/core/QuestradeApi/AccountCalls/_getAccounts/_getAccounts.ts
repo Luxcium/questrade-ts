@@ -1,5 +1,6 @@
 import { _axiosGetApi } from '../../..';
-import { Credentials, IAccounts } from '../../../../typescript';
+import { IAccounts } from '../../../../typescript';
+import { Credentials } from '../../../typescript';
 
 // + _getAccounts
 /** _getAccounts */
