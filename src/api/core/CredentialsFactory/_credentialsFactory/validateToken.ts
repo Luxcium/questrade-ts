@@ -1,11 +1,11 @@
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
-import { buildCredentialsFromToken } from '.';
 import { sync } from '../../../../utils';
 import { QuestradeAPIOptions } from '../../../typescript';
+import { _buildCredentialsFromToken } from '../_buildCredentialsFromToken';
 
 export const validateToken = (options: QuestradeAPIOptions) => {
-  const credentials = buildCredentialsFromToken(options);
+  const credentials = _buildCredentialsFromToken(options);
   let refreshToken: string = credentials.seedToken || '';
   try {
     if (!!credentials.keyFile) {

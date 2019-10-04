@@ -1,7 +1,7 @@
-import { emptyCredentials } from '.';
+import { emptyCredentials } from '..';
 import { QuestradeAPIOptions } from '../../../typescript';
 
-export const buildCredentialsFromToken = (token: QuestradeAPIOptions) => {
+export const _buildCredentialsFromToken = (token: QuestradeAPIOptions) => {
   const credentials = emptyCredentials();
 
   if (typeof token === 'undefined' || !token) {

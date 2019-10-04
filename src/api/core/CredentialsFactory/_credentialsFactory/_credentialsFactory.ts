@@ -1,5 +1,4 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { _oAuthCredentials } from '.';
 import { _axiosGetApi } from '../..';
 import {
   AcountNumberString,
@@ -7,6 +6,7 @@ import {
   IAccounts,
   ITime,
 } from '../../../typescript';
+import { _oAuthCredentials } from '../_oAuthCredentials';
 import { Credentials } from './typescript';
 
 const _getServerTime = (_axios: AxiosStatic = axios) => (
@@ -26,7 +26,7 @@ export const _credentialsFactory = (_axios: AxiosStatic = axios) => async (
   if (token.length === 4) {
     //
   }
-  const credentials = await _oAuthCredentials(token);
+  const credentials = await _oAuthCredentials()(token);
 
   try {
     const allAccounts = _getAccounts(_axios)(credentials);
