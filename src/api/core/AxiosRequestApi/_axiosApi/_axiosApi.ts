@@ -6,9 +6,9 @@ import { Credentials } from '../../typescript';
  * PROVIDE: credentials, VERB string, postData with D data type (or null)
  * and endpoint string with R return type, THEN GET: a Promise<R>
  */
-export const myAxiosApiFactory = (_axios: AxiosStatic = axios) =>
+export function _axiosApi(_axios: AxiosStatic = axios) {
   //
-  function _axiosApi(credentials: Credentials) {
+  return (credentials: Credentials) => {
     //
     return <D = any>(postData: D | null = null, VERB: string = 'GET') => {
       //
@@ -40,3 +40,4 @@ export const myAxiosApiFactory = (_axios: AxiosStatic = axios) =>
       };
     };
   };
+}
