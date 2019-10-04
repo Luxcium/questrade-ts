@@ -1,1 +1,2 @@
-export { _axiosApi } from './_axiosApi';
+import { myAxiosApiFactory } from './_axiosApi';
+export const _axiosApi = myAxiosApiFactory;

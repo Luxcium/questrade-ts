@@ -50,6 +50,7 @@
       true,
       "ban-keywords",
       "check-format",
+      "allow-pascal-case",
       "allow-leading-underscore",
       "allow-trailing-underscore"
     ]
@@ -82,9 +83,10 @@
     "function-name": false,
     "variable-name": [
       true,
-      "check-format",
       "allow-leading-underscore",
+      "check-format",
       "allow-trailing-underscore",
+      "allow-pascal-case",
       "ban-keywords"
     ]
   }
