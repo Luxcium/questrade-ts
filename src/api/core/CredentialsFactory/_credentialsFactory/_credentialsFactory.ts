@@ -1,6 +1,7 @@
 import { AxiosResponse, default as axios } from 'axios';
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
+import { emptyCredentials } from '.';
 import { _axiosGetApi } from '../..';
 import { sync } from '../../../../utils';
 import {
@@ -139,23 +140,6 @@ const buildCredentialsFromToken = (token: QuestradeAPIOptions) => {
     ? 'https://practicelogin.q.com'
     : 'https://login.questrade.com';
 
-  return credentials;
-};
-
-const emptyCredentials = () => {
-  const credentials: Credentials = _defaultCredentials;
-  credentials.accountNumber = '';
-  credentials.apiVersion = 'v1';
-  credentials.keyDir = './keys';
-  credentials.keyFile = '';
-  credentials.practice = false;
-  credentials.seedToken = '';
-  credentials.expiresIn = 0;
-  credentials.tokenType = '';
-  credentials.refreshToken = '';
-  credentials.accessToken = '';
-  credentials.apiUrl = '';
-  credentials.apiServer = '';
   return credentials;
 };
 

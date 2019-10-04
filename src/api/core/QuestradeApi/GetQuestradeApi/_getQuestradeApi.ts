@@ -1,11 +1,11 @@
 import { Credentials } from '../../typescript';
-import { _getAccounts } from '../AccountCalls/_getAccounts';
-import { _getActivities } from '../AccountCalls/_getActivities';
-import { _getBalances } from '../AccountCalls/_getBalances';
-import { _getExecutions } from '../AccountCalls/_getExecutions';
-import { _getOrders, _getOrdersByIds } from '../AccountCalls/_getOrders';
-import { _getPositions } from '../AccountCalls/_getPositions';
-import { _getServerTime } from '../AccountCalls/_getServerTime';
+import { _getAccounts } from '../AccountsCalls/_getAccounts';
+import { _getActivities } from '../AccountsCalls/_getActivities';
+import { _getBalances } from '../AccountsCalls/_getBalances';
+import { _getExecutions } from '../AccountsCalls/_getExecutions';
+import { _getOrders, _getOrdersByIds } from '../AccountsCalls/_getOrders';
+import { _getPositions } from '../AccountsCalls/_getPositions';
+import { _getServerTime } from '../AccountsCalls/_getServerTime';
 import { _getCandles } from '../MarketsCalls/_getCandles';
 import { _getMarkets } from '../MarketsCalls/_getMarkets';
 import { _getOptionsById } from '../MarketsCalls/_getOptionsById';

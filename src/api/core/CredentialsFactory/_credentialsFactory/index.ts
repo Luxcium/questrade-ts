@@ -1,3 +1,4 @@
+export { emptyCredentials } from './emptyCredentials';
 export {
   _credentialsFactory,
   _defaultCredentials,
