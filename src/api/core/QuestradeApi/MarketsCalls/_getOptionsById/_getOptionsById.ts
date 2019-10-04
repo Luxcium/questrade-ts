@@ -7,6 +7,6 @@ import { Credentials } from '../../../typescript';
 export const _getOptionsById = (credentials: Credentials) => async (
   symbolID: number
 ) =>
-  (await _axiosGetApi(credentials)<IOptionChains>(
+  (await _axiosGetApi()(credentials)<IOptionChains>(
     `/symbols/${symbolID}/options`
   )()).optionChain;

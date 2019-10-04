@@ -6,4 +6,4 @@ import { Credentials } from '../../../typescript';
 /** _getSymbolFromSymbolID */
 export const _getSymbolsByIds = (credentials: Credentials) => async (
   symbolId: number[]
-) => _axiosGetApi(credentials)<ISymbols>(`/symbols?ids=${symbolId.join()}`)();
+) => _axiosGetApi()(credentials)<ISymbols>(`/symbols?ids=${symbolId.join()}`)();

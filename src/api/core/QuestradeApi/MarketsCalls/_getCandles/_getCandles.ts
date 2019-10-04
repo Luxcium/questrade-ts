@@ -9,6 +9,6 @@ export const _getCandles = (credentials: Credentials) => (
 ) => (endDate: string) => (interval: string = 'OneDay') => async (
   symbolID: number
 ): Promise<ICandle[]> =>
-  (await _axiosGetApi(credentials)<ICandles>(
+  (await _axiosGetApi()(credentials)<ICandles>(
     `/markets/candles/${symbolID}?startTime=${startDate}&endTime=${endDate}&interval=${interval}`
   )()).candles;

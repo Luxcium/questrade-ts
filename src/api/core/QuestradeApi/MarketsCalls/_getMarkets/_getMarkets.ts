@@ -5,4 +5,4 @@ import { Credentials } from '../../../typescript';
 // + _getMarkets
 /** _getMarkets */
 export const _getMarkets = (credentials: Credentials) => async () =>
-  (await _axiosGetApi(credentials)<IMarkets>('/markets')()).markets;
+  (await _axiosGetApi()(credentials)<IMarkets>('/markets')()).markets;

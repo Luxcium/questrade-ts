@@ -59,7 +59,7 @@ export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
             ],
           };
 
-    return _axiosApiPost(credentials)<OptionsPostData>(postData)<
+    return _axiosApiPost()(credentials)<OptionsPostData>(postData)<
       IOptionsQuotes
     >('/markets/quotes/options');
   } catch (error) {

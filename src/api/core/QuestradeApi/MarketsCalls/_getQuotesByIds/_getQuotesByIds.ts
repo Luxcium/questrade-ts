@@ -7,6 +7,6 @@ import { Credentials } from '../../../typescript';
 export const _getQuotesByIds = (credentials: Credentials) => async (
   ids: number[]
 ) =>
-  (await _axiosGetApi(credentials)<IQuotes>(
+  (await _axiosGetApi()(credentials)<IQuotes>(
     `/markets/quotes?ids=${ids.join(',')}`
   )()).quotes;

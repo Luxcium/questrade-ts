@@ -6,5 +6,5 @@ import { Credentials } from '../../../typescript';
 /** _getAccounts */
 export function _getAccounts(credentials: Credentials) {
   return async () =>
-    (await _axiosGetApi(credentials)<IAccounts>('/accounts')()).accounts;
+    (await _axiosGetApi()(credentials)<IAccounts>('/accounts')()).accounts;
 }

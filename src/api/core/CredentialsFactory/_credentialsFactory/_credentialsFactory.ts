@@ -4,20 +4,14 @@ import { dirname } from 'path';
 import { emptyCredentials } from '.';
 import { _axiosGetApi } from '../..';
 import { sync } from '../../../../utils';
-import {
-  AcountNumberString,
-  IAccount,
-  IAccounts,
-  ITime,
-  QuestradeAPIOptions,
-} from '../../../typescript';
+import { AcountNumberString, IAccount, IAccounts, ITime, QuestradeAPIOptions } from '../../../typescript';
 import { Credentials } from './typescript';
 
 const _getServerTime = (credentials: Credentials) => async () =>
-  _axiosGetApi(credentials)<Promise<ITime>>('/time')();
+  _axiosGetApi()(credentials)<Promise<ITime>>('/time')();
 
 const _getAccounts = (credentials: Credentials) => async () =>
-  _axiosGetApi(credentials)<Promise<IAccounts>>('/accounts')();
+  _axiosGetApi()(credentials)<Promise<IAccounts>>('/accounts')();
 
 // # _credentialsFactory
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */

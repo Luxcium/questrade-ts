@@ -7,7 +7,7 @@ import { Credentials } from '../../../typescript';
 export const _getSymbolSearchCount = (credentials: Credentials) => async (
   prefix: string
 ) => {
-  return (await _axiosGetApi(credentials)<ISymbols>(
+  return (await _axiosGetApi()(credentials)<ISymbols>(
     `/symbols/search?prefix=${prefix}`
   )()).symbols.length;
 };

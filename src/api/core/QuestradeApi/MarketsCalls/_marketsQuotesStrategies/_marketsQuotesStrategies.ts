@@ -5,7 +5,7 @@ import { Credentials } from '../../../typescript';
 export const _marketsQuotesStrategies = (credentials: Credentials) => async (
   strategyVariantRequestData: StrategyVariantRequest
 ) =>
-  _axiosApiPost(credentials)<StrategyVariantRequest>(
+  _axiosApiPost()(credentials)<StrategyVariantRequest>(
     strategyVariantRequestData
   )<IStrategiesQuotes>('markets/quotes/strategies');
 

@@ -9,7 +9,7 @@ export const _getSymbolSearch = (credentials: Credentials) => async (
   offset: number = 0
 ) => {
   /* return */
-  const { symbols } = await _axiosGetApi(credentials)<ISymbols>(
+  const { symbols } = await _axiosGetApi()(credentials)<ISymbols>(
     `/symbols/search?prefix=${prefix}`
   )(); // .symbols[offset];
   const count = symbols.length;
