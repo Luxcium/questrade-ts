@@ -1,8 +1,14 @@
+import { AxiosStatic, default as axios } from 'axios';
 import { _axiosAccountGetApi } from '../../..';
 import { IBalances } from '../../../../typescript';
 import { Credentials } from '../../../typescript';
 
 // + _getBalances
 /** _getBalances */
-export const _getBalances = (credentials: Credentials) =>
-  _axiosAccountGetApi()(credentials)<IBalances>('/balances');
+export const _getBalances = (_axios: AxiosStatic = axios) => {
+  //
+  return (credentials: Credentials) => {
+    //
+    return _axiosAccountGetApi(_axios)(credentials)<IBalances>('/balances');
+  };
+};
