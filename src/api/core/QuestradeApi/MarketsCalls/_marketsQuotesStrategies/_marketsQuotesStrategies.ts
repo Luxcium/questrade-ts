@@ -1,11 +1,12 @@
+import { AxiosStatic, default as axios } from 'axios';
 import { _axiosApiPost } from '../../..';
 import { IStrategiesQuotes } from '../../../../typescript';
 import { Credentials } from '../../../typescript';
 
-export const _marketsQuotesStrategies = (credentials: Credentials) => async (
-  strategyVariantRequestData: StrategyVariantRequest
-) =>
-  _axiosApiPost()(credentials)<StrategyVariantRequest>(
+export const _marketsQuotesStrategies = (_axios: AxiosStatic = axios) => (
+  credentials: Credentials
+) => async (strategyVariantRequestData: StrategyVariantRequest) =>
+  _axiosApiPost(_axios)(credentials)<StrategyVariantRequest>(
     strategyVariantRequestData
   )<IStrategiesQuotes>('markets/quotes/strategies');
 

@@ -1,3 +1,4 @@
+import { AxiosStatic, default as axios } from 'axios';
 import { _axiosApiPost } from '../../..';
 import { IOptionsQuotes } from '../../../../typescript';
 import { Credentials } from '../../../typescript';
@@ -8,14 +9,21 @@ import {
   _Filters,
 } from './typescript';
 
-export const _getQuotesOptionsByIds = (credentials: Credentials) => async (
-  optionIds: number[]
-) =>
-  _getMarketsQuotesOptions(credentials)(optionIds, void 0, void 0, null, 0, 0);
+export const _getQuotesOptionsByIds = (_axios: AxiosStatic = axios) => (
+  credentials: Credentials
+) => async (optionIds: number[]) =>
+  _getMarketsQuotesOptions(_axios)(credentials)(
+    optionIds,
+    void 0,
+    void 0,
+    null,
+    0,
+    0
+  );
 
-export const _getQuotesOptionsFilter = (credentials: Credentials) => async (
-  filters: _Filters
-) => {
+export const _getQuotesOptionsFilter = (_axios: AxiosStatic = axios) => (
+  credentials: Credentials
+) => async (filters: _Filters) => {
   const {
     underlyingId,
     expiryDate,
@@ -23,7 +31,7 @@ export const _getQuotesOptionsFilter = (credentials: Credentials) => async (
     minstrikePrice,
     maxstrikePrice,
   } = filters;
-  return _getMarketsQuotesOptions(credentials)(
+  return _getMarketsQuotesOptions(_axios)(credentials)(
     null,
     underlyingId,
     expiryDate,
@@ -33,7 +41,9 @@ export const _getQuotesOptionsFilter = (credentials: Credentials) => async (
   );
 };
 
-export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
+export const _getMarketsQuotesOptions = (_axios: AxiosStatic = axios) => (
+  credentials: Credentials
+) => async (
   optionIds: void | null | undefined | number[] = [],
   underlyingId?: number,
   expiryDate?: string,
@@ -59,7 +69,7 @@ export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
             ],
           };
 
-    return _axiosApiPost()(credentials)<OptionsPostData>(postData)<
+    return _axiosApiPost(_axios)(credentials)<OptionsPostData>(postData)<
       IOptionsQuotes
     >('/markets/quotes/options');
   } catch (error) {
