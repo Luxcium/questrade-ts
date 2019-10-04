@@ -1,8 +1,11 @@
+import { AxiosStatic, default as axios } from 'axios';
 import { _credentialsFactory, _getQuestradeApi } from '../..';
 import * as utils from '../../../../utils';
 
-export async function _redeemToken(refreshToken: string) {
-  const credentials = await _credentialsFactory(refreshToken);
-  const questrade = _getQuestradeApi()(credentials);
+export const _redeemToken = (_axios: AxiosStatic = axios) => async (
+  refreshToken: string
+) => {
+  const credentials = await _credentialsFactory(_axios)(refreshToken);
+  const questrade = _getQuestradeApi(_axios)(credentials);
   return { qtApi: questrade, credentials, utils };
-}
+};
