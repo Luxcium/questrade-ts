@@ -11,6 +11,6 @@ export const _getActivities = (credentials: Credentials) => (
   const dateTime = endpointFormatDateTool(startTime, endTime);
   const endpoint = `/activities?${dateTime}`;
 
-  return (await _axiosAccountGetApi(credentials)<IActivities>(endpoint)())
+  return (await _axiosAccountGetApi()(credentials)<IActivities>(endpoint)())
     .activities;
 };

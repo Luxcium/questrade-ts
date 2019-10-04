@@ -8,7 +8,7 @@ import { Credentials } from '../../../typescript';
 export const _getOrders = (credentials: Credentials) => (startDate: string) => (
   endDate: string
 ) => async (stateFilter: string = 'All') =>
-  (await _axiosAccountGetApi(credentials)<IOrders>(
+  (await _axiosAccountGetApi()(credentials)<IOrders>(
     `/orders?${endpointFormatDateTool(
       startDate,
       endDate

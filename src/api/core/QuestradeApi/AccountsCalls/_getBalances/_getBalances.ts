@@ -5,4 +5,4 @@ import { Credentials } from '../../../typescript';
 // + _getBalances
 /** _getBalances */
 export const _getBalances = (credentials: Credentials) =>
-  _axiosAccountGetApi(credentials)<IBalances>('/balances');
+  _axiosAccountGetApi()(credentials)<IBalances>('/balances');

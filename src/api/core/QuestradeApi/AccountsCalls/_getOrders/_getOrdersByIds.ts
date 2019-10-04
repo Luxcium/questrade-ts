@@ -7,6 +7,6 @@ import { Credentials } from '../../../typescript';
 export const _getOrdersByIds = (credentials: Credentials) => async (
   orderId: number[]
 ) =>
-  (await _axiosAccountGetApi(credentials)<IOrders>(
+  (await _axiosAccountGetApi()(credentials)<IOrders>(
     `/orders?ids=${orderId.join(',')}`
   )()).orders;

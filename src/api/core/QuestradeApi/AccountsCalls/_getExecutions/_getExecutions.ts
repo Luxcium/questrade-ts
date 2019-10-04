@@ -8,6 +8,6 @@ import { Credentials } from '../../../typescript';
 export const _getExecutions = (credentials: Credentials) => (
   startDate: string
 ) => async (endDate: string) =>
-  (await _axiosAccountGetApi(credentials)<IExecutions>(
+  (await _axiosAccountGetApi()(credentials)<IExecutions>(
     `/executions?${endpointFormatDateTool(startDate, endDate)}`
   )()).executions;
