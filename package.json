@@ -7,7 +7,7 @@
   "license": "MIT",
   "homepage": "https://github.com/Luxcium/questrade-ts",
   "main": "./src/index.js",
-  "types": "./lib/index.d.ts",
+  "types": "./typings/index.d.ts",
   "scripts": {
     "predist": "yarn run build",
     "dist": "yarn run rm:dist; yarn run cp:dist",
@@ -22,7 +22,7 @@
     "build": "yarn run quick",
     "out:pre:clean": "rimraf -r ./build/**/*",
     "out:post:clean": "yarn run rm:typescript; yarn run rm:test",
-    "rm:test": "rimraf ./build/src/test/test; rimraf ./build/lib/test/test rmraf ./build/js/umd/src/test/test; rimraf ./build/js/umd/lib/test/test;",
+    "rm:test": "rimraf ./build/src/test/__test__; rimraf ./build/lib/test/__test__ rmraf ./build/js/umd/src/test/__test__; rimraf ./build/js/umd/lib/test/__test__;",
     "rm:typescript": "rimraf ./build/src/api/typescript/; rimraf ./build/js/umd/src/api/typescript/",
     "prequick": "yarn run test",
     "quick": "yarn run rebuild",

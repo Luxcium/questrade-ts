@@ -28,6 +28,6 @@
     "sourceMap": true,
     "inlineSourceMap": false,
     "inlineSources": true,
-    "declarationDir": "../build/lib/"
+    "declarationDir": "../build/typings/"
   }
 }

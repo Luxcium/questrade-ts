@@ -28,6 +28,6 @@
     "sourceMap": true,
     "inlineSourceMap": false,
     "inlineSources": true,
-    "declarationDir": "../build/js/umd/lib"
+    "declarationDir": "../build/js/umd/typings"
   }
 }
