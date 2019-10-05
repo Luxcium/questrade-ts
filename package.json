@@ -22,7 +22,7 @@
     "build": "yarn run quick",
     "out:pre:clean": "rimraf -r ./build/**/*",
     "out:post:clean": "yarn run rm:typescript; yarn run rm:test",
-    "rm:test": "rimraf ./build/src/test/__test__; rimraf ./build/lib/test/__test__ rmraf ./build/js/umd/src/test/__test__; rimraf ./build/js/umd/lib/test/__test__;",
+    "rm:test": "rimraf ./build/src/test/__test__; rimraf ./build/typings/test/__test__ rmraf ./build/js/umd/src/test/__test__; rimraf ./build/js/umd/typings/test/__test__;",
     "rm:typescript": "rimraf ./build/src/api/typescript/; rimraf ./build/js/umd/src/api/typescript/",
     "prequick": "yarn run test",
     "quick": "yarn run rebuild",

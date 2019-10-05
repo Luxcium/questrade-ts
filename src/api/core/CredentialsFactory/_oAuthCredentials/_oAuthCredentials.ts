@@ -15,7 +15,7 @@ export const _oAuthCredentials = (_axios: AxiosStatic = axios) => async (
     },
   };
   void0(_axios);
-  const response: AxiosResponse<any> = await axios(axiosConfig);
+  const response: AxiosResponse<any> = await _axios(axiosConfig);
 
   if (!response.data) {
     throw new Error(

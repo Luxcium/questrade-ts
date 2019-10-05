@@ -1,5 +1,7 @@
-import { AxiosStatic } from 'axios';
+// import { AxiosStatic } from 'axios';
 
-const _axios = jest.fn(() => Promise.resolve({ data: {} }));
+// // const _axios =
 
-export const axios = (_axios as unknown) as AxiosStatic;
+// export const axios = (jest.fn(() =>
+//   Promise.resolve({ data: {} })
+// ) as unknown) as AxiosStatic;
