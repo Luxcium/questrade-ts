@@ -71,7 +71,7 @@ export const _getMarketsQuotesOptions = (_axios: AxiosStatic = axios) => (
 
     return _axiosApiPost(_axios)(credentials)<OptionsPostData>(postData)<
       IOptionsQuotes
-    >('/markets/quotes/options');
+    >('/markets/quotes/options')();
   } catch (error) {
     console.error('/markets/quotes/options', error.message);
     throw error;
