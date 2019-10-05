@@ -5,10 +5,12 @@ import { Credentials } from '../../../typescript';
 
 export const _marketsQuotesStrategies = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
-) => async (strategyVariantRequestData: StrategyVariantRequest) =>
+) => async (
+  strategyVariantRequestData: StrategyVariantRequest
+): Promise<IStrategiesQuotes> =>
   _axiosApiPost(_axios)(credentials)<StrategyVariantRequest>(
     strategyVariantRequestData
-  )<IStrategiesQuotes>('markets/quotes/strategies');
+  )<IStrategiesQuotes>('markets/quotes/strategies')();
 
 /** Input array of Strategy Variants */
 export type Variants = StrategyVariant[];

@@ -7,7 +7,7 @@ import { Credentials } from '../../../typescript';
 /** _getSymbolFromSymbolID */
 export const _getSymbolsByIds = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
-) => async (symbolId: number[]) =>
+) => async (symbolId: number[]): Promise<ISymbols> =>
   _axiosGetApi(_axios)(credentials)<ISymbols>(
     `/symbols?ids=${symbolId.join()}`
   )();

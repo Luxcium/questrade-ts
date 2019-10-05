@@ -30,7 +30,14 @@ export { IEquitySymbol, IEquitySymbols } from './IEquitySymbols';
 export { IExecution, IExecutions } from './IExecutions';
 export { IHeaders } from './IHeaders';
 export { IMarket, IMarkets } from './IMarkets';
-export { IOptionChains, IOptionsQuote, IOptionsQuotes } from './IOptionsQuotes';
+export {
+  IChainPerRoot,
+  IChainPerStrike,
+  IChainPerStrikePrice,
+  IOptionChain,
+  IOptionChains,
+} from './IOptionsChains';
+export { IOptionsQuote, IOptionsQuotes } from './IOptionsQuotes';
 export { IOrder, IOrders } from './IOrders';
 export { IPosition, IPositions } from './IPositions';
 export {
