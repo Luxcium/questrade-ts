@@ -8,10 +8,13 @@ export { utils };
 export { redeemToken };
 (async () => {
   //
-  const { credentials } = await _redeemToken(axios)(
+  const { credentials, qtApi } = await _redeemToken(axios)(
     'JPkAws5CSK1GkAzpVovk4Q3nwVbUTUPA0'
   );
   console.log(credentials);
+  const serverTime = await qtApi.getServerTime();
+  console.log(serverTime);
+
   return credentials;
 })()
   // .then((cred: any) => console.log(cred))
