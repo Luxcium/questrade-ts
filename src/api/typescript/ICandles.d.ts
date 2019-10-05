@@ -21,10 +21,3 @@ export interface ICandle {
   /** The volume weighted average price (VWAP) */
   VWAP?: number;
 }
-/*
-
-// candles	Complex	List of Candle records.
-// Candle	Complex
-
-
-*/

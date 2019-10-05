@@ -1,7 +1,7 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { _axiosGetApi } from '../../..';
-import { IAccount, IAccounts } from '../../../../typescript';
 import { Credentials } from '../../../typescript';
+import { IAccount, IAccounts } from './typescript';
 
 // + _getAccounts
 /** _getAccounts */

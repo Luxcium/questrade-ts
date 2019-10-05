@@ -20,8 +20,15 @@ export {
   StrategyTypes,
   TickType,
 } from 'questrade-api-enumerations';
-export { AcountNumberString, IAccount, IAccounts } from './IAccounts';
-export { IAccountActivity, IActivities } from './IActivities';
+export {
+  AcountNumberString,
+  IAccount,
+  IAccounts,
+} from '../core/QuestradeApi/AccountsCalls/_getAccounts/typescript/IAccounts';
+export {
+  IAccountActivity,
+  IActivities,
+} from '../core/QuestradeApi/AccountsCalls/_getActivities/typescript/IActivities';
 export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';
 export { ICandle, ICandles } from './ICandles';
 export { ICreds } from './ICreds';
