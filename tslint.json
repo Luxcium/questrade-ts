@@ -15,6 +15,9 @@
   "defaultSeverity": "warning",
   "rulesDirectory": [],
   "rules": {
+    "typedef": [
+      false
+    ],
     "ordered-imports": false,
     "prettier": false,
     "import-name": true,
