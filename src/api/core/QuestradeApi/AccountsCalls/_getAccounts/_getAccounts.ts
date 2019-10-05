@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { _axiosGetApi } from '../../..';
-import { IAccounts } from '../../../../typescript';
+import { IAccount, IAccounts } from '../../../../typescript';
 import { Credentials } from '../../../typescript';
 
 // + _getAccounts
@@ -9,7 +9,7 @@ export function _getAccounts(_axios: AxiosStatic = axios) {
   //
   return (credentials: Credentials) => {
     //
-    return async () => {
+    return async (): Promise<IAccount[]> => {
       //
       const getApi = _axiosGetApi(_axios);
       const getAccounts = getApi(credentials);

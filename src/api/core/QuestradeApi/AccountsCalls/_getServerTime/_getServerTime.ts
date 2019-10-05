@@ -6,7 +6,7 @@ import { Credentials } from '../../../typescript';
 /** _getTime */
 export const _getServerTime = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
-) => async () =>
+) => async (): Promise<Date> =>
   new Date((await _axiosGetApi(_axios)(credentials)<Time>('/time')()).time);
 
 /*

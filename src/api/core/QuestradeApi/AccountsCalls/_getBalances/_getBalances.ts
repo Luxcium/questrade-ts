@@ -7,8 +7,8 @@ import { Credentials } from '../../../typescript';
 /** _getBalances */
 export const _getBalances = (_axios: AxiosStatic = axios) => {
   //
-  return (credentials: Credentials) => {
+  return (credentials: Credentials) => async (): Promise<IBalances> => {
     //
-    return _axiosAccountGetApi(_axios)(credentials)<IBalances>('/balances');
+    return _axiosAccountGetApi(_axios)(credentials)<IBalances>('/balances')();
   };
 };

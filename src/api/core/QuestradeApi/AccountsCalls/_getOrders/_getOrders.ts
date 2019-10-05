@@ -1,7 +1,7 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { _axiosAccountGetApi } from '../../..';
 import { endpointFormatDateTool } from '../../../../../utils';
-import { IOrders } from '../../../../typescript';
+import { IOrder, IOrders } from '../../../../typescript';
 import { Credentials } from '../../../typescript';
 
 // + _getOrders
@@ -10,7 +10,7 @@ export const _getOrders = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
 ) => (startDate: string) => (endDate: string) => async (
   stateFilter: string = 'All'
-) => {
+): Promise<IOrder[]> => {
   return (await _axiosAccountGetApi(_axios)(credentials)<IOrders>(
     `/orders?${endpointFormatDateTool(
       startDate,
