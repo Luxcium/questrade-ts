@@ -1,4 +1,3 @@
-export { emptyCredentials } from './emptyCredentials';
 export { validateToken } from './validateToken';
 export { writeToken } from './writeToken';
 export {
@@ -6,3 +5,4 @@ export {
   _defaultCredentials,
   _getPrimaryAccountNumber,
 } from './_credentialsFactory';
+export { _emptyCredentials } from './_emptyCredentials';

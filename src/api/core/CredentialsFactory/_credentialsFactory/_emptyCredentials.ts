@@ -1,7 +1,7 @@
 import { _defaultCredentials } from '.';
 import { Credentials } from './typescript';
 
-export const emptyCredentials = () => {
+export const _emptyCredentials = () => {
   const credentials: Credentials = _defaultCredentials;
   credentials.accountNumber = '';
   credentials.apiVersion = 'v1';
