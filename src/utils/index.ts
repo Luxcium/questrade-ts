@@ -7,7 +7,7 @@ export {
   dateNowISO,
   dateNowNumeric,
   dateRange,
-  dateRangeNow,
+  dateRangeFromNow,
   dateToNumeric,
   dateToString,
   day,

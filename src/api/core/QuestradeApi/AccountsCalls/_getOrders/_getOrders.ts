@@ -8,8 +8,8 @@ import { Credentials } from '../../../typescript';
 /** _getOrders */
 export const _getOrders = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
-) => (startDate: string) => (endDate: string) => async (
-  stateFilter: string = 'All'
+) => (stateFilter: string = 'All') => (startDate: string) => async (
+  endDate: string
 ): Promise<IOrder[]> => {
   return (await _axiosAccountGetApi(_axios)(credentials)<IOrders>(
     `/orders?${endpointFormatDateTool(

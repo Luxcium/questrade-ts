@@ -40,7 +40,7 @@ export const dateToString = (dateTime: string | number): string =>
 
 export const dateToNumeric = (dateTime: string): number =>
   new Date(dateTime).getTime();
-export const dateRangeNow = (backNumberOfDays: number) => {
+export const dateRangeFromNow = (backNumberOfDays: number) => {
   return dateRange(backNumberOfDays, dateNowISO());
 };
 
