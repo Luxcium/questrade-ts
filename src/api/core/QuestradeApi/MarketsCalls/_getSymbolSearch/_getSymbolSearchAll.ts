@@ -15,7 +15,7 @@ export const _getSymbolSearchAll = (_axios: AxiosStatic = axios) => (
   )();
 
   return results.symbols.map(result => {
-    result.count = results.length;
+    result.count = results.symbols.length;
     return result;
   });
 };
