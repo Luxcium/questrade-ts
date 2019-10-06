@@ -1,10 +1,12 @@
 import axios from 'axios';
+// tslint:disable-next-line: no-implicit-dependencies
+import { default as R } from 'ramda';
 import { _redeemToken } from './api';
-import { dateRangeFromNow } from './utils';
+import { dateRangeFromNow, void0 } from './utils';
 // import { qtEnumerations as Enumerations } from 'questrade-api-enumerations';
 
 (async () => {
-  //
+  void0(R);
   const { credentials, qtApi } = await _redeemToken(axios)(
     'JPkAws5CSK1GkAzpVovk4Q3nwVbUTUPA0'
   );
@@ -18,11 +20,15 @@ import { dateRangeFromNow } from './utils';
     getServerTime: await qtApi.getServerTime(),
     get: {
       accounts: {
-        activities: qtApi.get.accounts.activities(timeStart)(timeEnd),
-        orders: qtApi.get.accounts.orders(timeStart)(timeEnd),
-        ordersAll: qtApi.get.accounts.ordersAll(timeStart)(timeEnd),
+        activities: (await qtApi.get.accounts.activities(timeStart)(
+          timeEnd
+        ))[0],
+        orders: (await qtApi.get.accounts.orders()(timeStart)(timeEnd))[0],
+        ordersAll: (await qtApi.get.accounts.ordersAll(timeStart)(timeEnd))[0],
         ordersByIds: qtApi.get.accounts.ordersByIds,
-        executions: qtApi.get.accounts.executions(timeStart)(timeEnd),
+        executions: (await qtApi.get.accounts.executions(timeStart)(
+          timeEnd
+        ))[0],
         balances: await qtApi.get.accounts.balances(),
         positions: await qtApi.get.accounts.positions(),
         allAccounts: await qtApi.get.accounts.allAccounts(),
@@ -35,7 +41,7 @@ import { dateRangeFromNow } from './utils';
           options: qtApi.get.markets.quotes.options.byIds,
           byIds: qtApi.get.markets.quotes.byIds,
         },
-        allMarkets: await qtApi.get.markets.allMarkets(),
+        allMarkets: void0(await qtApi.get.markets.allMarkets()),
       },
       symbols: {
         optionsById: qtApi.get.symbols.optionsById,
@@ -47,7 +53,10 @@ import { dateRangeFromNow } from './utils';
     },
   };
   // results.search = await qtApi.get.symbols.search('t');
-  console.log(results);
+  // console.dir(results.get.accounts);
+  // console.dir(results.get.markets);
+  // console.dir(results.get.symbols);
+  console.dir(JSON.stringify(results.get.accounts));
   return credentials;
 })()
   // .then((cred: any) => console.log(cred))

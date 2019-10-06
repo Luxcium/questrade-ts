@@ -594,6 +594,7 @@ ButterflyPut	Butterfly Put
 IronButterfly	Iron Butterfly
 CondorCall	Condor
 Custom	Custom, or user defined
+SingleLeg
 */
 export enum StrategyTypes {
   /** Covered Call. */
@@ -628,6 +629,7 @@ export enum StrategyTypes {
   CONDORCALL = 'CondorCall',
   /** Custom, or user defined. */
   CUSTOM = 'Custom',
+  SINGLELEG = 'SingleLeg',
 }
 
 /**
