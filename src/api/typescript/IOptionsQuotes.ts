@@ -123,7 +123,3 @@ export interface IOptionsQuote {
   /** Volume Weighted Average Price */
   VWAP?: number;
 }
-
-export interface IOptionChains {
-  optionChain: any[];
-}

@@ -20,9 +20,15 @@ export {
   StrategyTypes,
   TickType,
 } from 'questrade-api-enumerations';
-export { Credentials } from './Credentials';
-export { AcountNumberString, IAccount, IAccounts } from './IAccounts';
-export { IAccountActivity, IActivities } from './IActivities';
+export {
+  AcountNumberString,
+  IAccount,
+  IAccounts,
+} from '../core/QuestradeApi/AccountsCalls/_getAccounts/typescript/IAccounts';
+export {
+  IAccountActivity,
+  IActivities,
+} from '../core/QuestradeApi/AccountsCalls/_getActivities/typescript/IActivities';
 export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';
 export { ICandle, ICandles } from './ICandles';
 export { ICreds } from './ICreds';
@@ -31,7 +37,14 @@ export { IEquitySymbol, IEquitySymbols } from './IEquitySymbols';
 export { IExecution, IExecutions } from './IExecutions';
 export { IHeaders } from './IHeaders';
 export { IMarket, IMarkets } from './IMarkets';
-export { IOptionChains, IOptionsQuote, IOptionsQuotes } from './IOptionsQuotes';
+export {
+  IChainPerRoot,
+  IChainPerStrike,
+  IChainPerStrikePrice,
+  IOptionChain,
+  IOptionChains,
+} from './IOptionsChains';
+export { IOptionsQuote, IOptionsQuotes } from './IOptionsQuotes';
 export { IOrder, IOrders } from './IOrders';
 export { IPosition, IPositions } from './IPositions';
 export {
