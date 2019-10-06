@@ -14,6 +14,8 @@ export { redeemToken };
   console.log(credentials);
   const serverTime = await qtApi.getServerTime();
   console.log(serverTime);
+  console.log(serverTime);
+  console.log(await (await qtApi.get.symbols.search('t')).currency);
 
   return credentials;
 })()

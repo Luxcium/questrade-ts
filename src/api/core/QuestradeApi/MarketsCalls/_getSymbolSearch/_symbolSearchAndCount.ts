@@ -6,7 +6,9 @@ import { SymbolSearchAndCount } from './typescript';
 export const _symbolSearchAndCount = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
 ): SymbolSearchAndCount => {
-  const symbolSearch: any = _getSymbolSearch(_axios)(credentials);
+  const symbolSearch: SymbolSearchAndCount = _getSymbolSearch(_axios)(
+    credentials
+  );
   symbolSearch.count = _getSymbolSearchCount(_axios)(credentials);
   return symbolSearch as SymbolSearchAndCount;
 };

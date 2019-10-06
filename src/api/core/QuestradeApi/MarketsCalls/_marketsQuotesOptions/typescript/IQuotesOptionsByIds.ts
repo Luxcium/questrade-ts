@@ -1,7 +1,7 @@
 import { IOptionsQuotes } from '../../../../../typescript';
 
 export interface IQuotesOptionsByIds {
-  byIds: (optionIds: number[]) => Promise<IOptionsQuotes>;
+  byIds?: (optionIds: number[]) => Promise<IOptionsQuotes>;
 }
 
 export type QuotesOptions = (filters: _Filters) => Promise<IOptionsQuotes>;

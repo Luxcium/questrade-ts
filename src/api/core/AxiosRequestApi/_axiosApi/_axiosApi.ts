@@ -11,7 +11,7 @@ void0((_axios: AxiosStatic = axios) => {
   //
   return (credentials: Credentials) => {
     //
-    return <D = any>(postData: D | null = null, VERB: string = 'GET') => {
+    return <D>(postData: D | null = null, VERB: string = 'GET') => {
       //
       return async <R>(endpoint: string): Promise<R> => {
         //

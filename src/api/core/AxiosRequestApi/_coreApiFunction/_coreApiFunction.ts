@@ -6,9 +6,9 @@ export const _coreApiFunction = (_axios: AxiosStatic = axios) => {
   //
   return (credentials: Credentials) => {
     //
-    return (VERB: string = 'GET') => {
+    return (VERB: 'GET' | 'POST' = 'GET') => {
       //
-      return <D = any>(postData: D | null = null) => {
+      return <D>(postData: D | null = null) => {
         //
         return <R>(endpoint: string) => {
           //
@@ -16,7 +16,7 @@ export const _coreApiFunction = (_axios: AxiosStatic = axios) => {
             //
             return _tryToGetData<R>(
               //
-              _coreApiConfig(credentials, VERB, endpoint, postData)
+              _coreApiConfig<D>(credentials, VERB, endpoint, postData)
             );
           };
         };

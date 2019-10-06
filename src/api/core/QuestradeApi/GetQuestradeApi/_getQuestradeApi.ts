@@ -24,25 +24,25 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
 ) => {
   const setAccount = credentials.accountNumber;
-  const allAccounts = _getAccounts()(credentials);
-  const activities = _getActivities()(credentials);
-  const balances = _getBalances()(credentials);
-  const marketCandlesById = _getCandles()(credentials);
-  const executions = _getExecutions()(credentials);
-  const markets = _getMarkets()(credentials);
-  const optionsById = _getOptionsById()(credentials);
-  const options = _quotesOptionsbyFilterAndIds()(credentials);
-  const ordersByIds = _getOrdersByIds()(credentials);
-  const orders = _getOrders()(credentials);
-  const ordersAll = _getOrders()(credentials)('All');
-  const positions = _getPositions()(credentials);
-  const marketsQuotesByIds = _getQuotesByIds()(credentials);
-  const search = _symbolSearchAndCount()(credentials);
-  const getServerTime = _getServerTime()(credentials);
-  const symbolsByIds = _getSymbolsByIds()(credentials);
-  const searchAll = _getSymbolSearchAll()(credentials);
-  const searchCount = _getSymbolSearchCount()(credentials);
-  const byStrategies = _marketsQuotesStrategies()(credentials);
+  const allAccounts = _getAccounts(_axios)(credentials);
+  const activities = _getActivities(_axios)(credentials);
+  const balances = _getBalances(_axios)(credentials);
+  const marketCandlesById = _getCandles(_axios)(credentials);
+  const executions = _getExecutions(_axios)(credentials);
+  const markets = _getMarkets(_axios)(credentials);
+  const optionsById = _getOptionsById(_axios)(credentials);
+  const options = _quotesOptionsbyFilterAndIds(_axios)(credentials);
+  const ordersByIds = _getOrdersByIds(_axios)(credentials);
+  const orders = _getOrders(_axios)(credentials);
+  const ordersAll = _getOrders(_axios)(credentials)('All');
+  const positions = _getPositions(_axios)(credentials);
+  const marketsQuotesByIds = _getQuotesByIds(_axios)(credentials);
+  const search = _symbolSearchAndCount(_axios)(credentials);
+  const getServerTime = _getServerTime(_axios)(credentials);
+  const symbolsByIds = _getSymbolsByIds(_axios)(credentials);
+  const searchAll = _getSymbolSearchAll(_axios)(credentials);
+  const searchCount = _getSymbolSearchCount(_axios)(credentials);
+  const byStrategies = _marketsQuotesStrategies(_axios)(credentials);
 
   return {
     setAccount,
