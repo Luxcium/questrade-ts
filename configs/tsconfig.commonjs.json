@@ -8,7 +8,6 @@
     "outDir": "../build/src",
     "incremental": true,
     "tsBuildInfoFile": "../build/tmp/tsbuild.commonjs.info",
-    "importHelpers": true,
     "baseUrl": "./",
     "paths": {
       "tslib": [
@@ -17,7 +16,7 @@
     },
     /* Additional Vebosity */
     "diagnostics": true,
-    "extendedDiagnostics": false,
+    "extendedDiagnostics": true,
     "listFiles": false,
     "listEmittedFiles": false,
     "traceResolution": false,

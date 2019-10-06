@@ -69,7 +69,6 @@
   "exclude": [
     "node_modules",
     "build",
-    "imports",
     "enums",
     "src/legacy/proto_testing/**/*",
     "debug.js",
@@ -84,8 +83,7 @@
       "mockTypeScriptVersion": false,
       "exclude": [
         "build",
-        "node_modules",
-        "imports"
+        "node_modules"
       ]
     }
   ]

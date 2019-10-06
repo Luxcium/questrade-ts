@@ -1,12 +1,13 @@
 import { AxiosResponse, AxiosStatic, default as axios } from 'axios';
-import { logError } from '../../../../utils';
+import { logError, void0 } from '../../../../utils';
 import { Credentials } from '../../typescript';
 
 /**
  * PROVIDE: credentials, VERB string, postData with D data type (or null)
  * and endpoint string with R return type, THEN GET: a Promise<R>
  */
-export function _axiosApi(_axios: AxiosStatic = axios) {
+// Deprecated _axiosApi
+void0((_axios: AxiosStatic = axios) => {
   //
   return (credentials: Credentials) => {
     //
@@ -40,4 +41,4 @@ export function _axiosApi(_axios: AxiosStatic = axios) {
       };
     };
   };
-}
+});

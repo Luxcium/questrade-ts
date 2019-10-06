@@ -1,6 +1,5 @@
 export {
   _axiosAccountGetApi,
-  _axiosApi,
   _axiosApiPost,
   _axiosGetApi,
 } from './AxiosRequestApi';
