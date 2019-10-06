@@ -1,12 +1,12 @@
-import { redeemToken } from '../../../../api';
+// import { redeemToken } from '../../../../api';
 describe('redeemToken', () => {
   it('should be using Axios', async (done: any) => {
     // (async () => {
     //
-    const { credentials } = await redeemToken(
-      'JPkAws5CSK1GkAzpVovk4Q3nwVbUTUPA0'
-    );
-    console.log(credentials);
+    // const { credentials } = await redeemToken(
+    //   'JPkAws5CSK1GkAzpVovk4Q3nwVbUTUPA0'
+    // );
+    console.log('credentials');
     // return credentials;
     // })()
     // .then((cred: any) => console.log(cred))
