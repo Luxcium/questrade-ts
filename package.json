@@ -10,7 +10,7 @@
   "types": "./typings/index.d.ts",
   "scripts": {
     "prebuild": "yarn run test",
-    "build": "concurrently \"yarn:out:cjs\" \"yarn:out:amd\" \"yarn:out:sys\"",
+    "build": "concurrently \"yarn:out:cjs\" \"yarn:out:amd\"",
     "out:cjs": "tsc -b ./configs/tsconfig.commonjs.json",
     "out:umd": "tsc -b ./configs/tsconfig.umd.json",
     "out:amd": "tsc -b ./configs/tsconfig.amd.json",
