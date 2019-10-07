@@ -73,6 +73,7 @@
     "src/legacy/proto_testing/**/*",
     "debug.js",
     "manualTestingAndDebug.js"
+    ,"__test__"
   ],
   "plugins": [
     {
