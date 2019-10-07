@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../../src/api/core/CredentialsFactory/_buildCredentialsFromToken/index.ts"],"names":[],"mappings":";;AAAA,2EAA0E;AAAjE,kEAAA,0BAA0B,CAAA","sourcesContent":["export { _buildCredentialsFromToken } from './_buildCredentialsFromToken';\n"]}

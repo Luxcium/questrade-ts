@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../../../src/api/core/AxiosRequestApi/_coreApiFunction/typescript/index.ts"],"names":[],"mappings":"","sourcesContent":["export { CoreApiConfig } from './CoreApiConfigD';\n"]}

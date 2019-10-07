@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../../../src/api/core/QuestradeApi/MarketsCalls/_getQuotesByIds/index.ts"],"names":[],"mappings":";;AAAA,qDAAoD;AAA3C,4CAAA,eAAe,CAAA","sourcesContent":["export { _getQuotesByIds } from './_getQuotesByIds';\n"]}

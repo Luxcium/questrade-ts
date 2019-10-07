@@ -1,1 +1,0 @@
-{"version":3,"file":"id0.js","sourceRoot":"","sources":["../../../src/utils/id0.ts"],"names":[],"mappings":";;AAAA,SAAgB,GAAG,CAAC,GAAG,KAAU;IAC/B,OAAO,KAAK,CAAC;AACf,CAAC;AAFD,kBAEC","sourcesContent":["export function id0(...param: any) {\n  return param;\n}\n"]}
