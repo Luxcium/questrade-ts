@@ -15,7 +15,7 @@
     /* ALWAYS TRUE */ "noUnusedParameters": true /*             ALWAYS TRUE  */,
     /* ALWAYS TRUE STRICT TYPE-CHECKING, ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
     /* Basic Options */
-    "target": "es5",
+    "target": "esnext",
     "lib": [
       "dom",
       "esnext"
@@ -69,11 +69,11 @@
   "exclude": [
     "node_modules",
     "build",
-    "imports",
     "enums",
     "src/legacy/proto_testing/**/*",
     "debug.js",
     "manualTestingAndDebug.js"
+    ,"__test__"
   ],
   "plugins": [
     {
@@ -84,8 +84,7 @@
       "mockTypeScriptVersion": false,
       "exclude": [
         "build",
-        "node_modules",
-        "imports"
+        "node_modules"
       ]
     }
   ]

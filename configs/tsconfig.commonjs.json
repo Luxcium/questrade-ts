@@ -1,0 +1,31 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "noEmitHelpers": false,
+    /*                   */
+    "module": "commonjs",
+    "outDir": "../build/src",
+    "incremental": true,
+    "tsBuildInfoFile": "../build/tmp/tsbuild.commonjs.info",
+    "baseUrl": "./",
+    "paths": {
+      "tslib": [
+        "node_modules/tslib/tslib.d.ts"
+      ]
+    },
+    /* Additional Vebosity */
+    "diagnostics": true,
+    "listFiles": false,
+    "listEmittedFiles": false,
+    "traceResolution": false,
+    /* Source Map Options */
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "inlineSourceMap": false,
+    "inlineSources": true,
+    "declarationDir": "../build/typings/"
+  }
+}

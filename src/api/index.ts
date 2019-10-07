@@ -1,12 +1,13 @@
-import { qtEnumerations } from 'questrade-api-enumerations';
-import { _credentialsFactory, _getApi } from './core';
+import { AxiosStatic, default as axios } from 'axios';
+import { _redeemToken } from './core';
 
-export { id0, log, day } from './utils';
-export { testExamples } from './testExamples';
-export { qtEnumerations as Enumerations };
+const redeemToken = _redeemToken(axios as AxiosStatic);
 
-export async function redeemToken(refreshToken: string) {
-  const credentials = await _credentialsFactory(refreshToken);
-  const questrade = _getApi(credentials);
-  return { qtApi: questrade, credentials };
-}
+export { _redeemToken, redeemToken };
+
+// axios or something
+// creds or something
+// GET or POST or something
+// endpoints or something (getAccount or something)
+// postData or not
+// apiFullyConstructed endPoint

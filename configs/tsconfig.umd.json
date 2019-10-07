@@ -1,0 +1,32 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "noEmitHelpers": false,
+    /*                   */
+    "module": "umd",
+    "outDir": "../build/js/umd/src",
+    "incremental": true,
+    "tsBuildInfoFile": "../build/tmp/tsbuild.umd.info",
+    "importHelpers": true,
+    "baseUrl": "./",
+    "paths": {
+      "tslib": [
+        "node_modules/tslib/tslib.d.ts"
+      ]
+    },
+    /* Additional Vebosity */
+    "diagnostics": true,
+    "listFiles": false,
+    "listEmittedFiles": false,
+    "traceResolution": false,
+    /* Source Map Options */
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "inlineSourceMap": false,
+    "inlineSources": true,
+    "declarationDir": "../build/js/umd/typings"
+  }
+}

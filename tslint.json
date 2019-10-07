@@ -15,12 +15,16 @@
   "defaultSeverity": "warning",
   "rulesDirectory": [],
   "rules": {
+    "typedef": [
+      false
+    ],
+    "ordered-imports": false,
     "prettier": false,
     "import-name": true,
     "max-line-length": [
       true,
       {
-        "ignore-pattern":"",
+        "ignore-pattern": "",
         "limit": 80,
         "check-strings": false
       }
@@ -30,7 +34,6 @@
     "no-unused-expression": true,
     "object-literal-sort-keys": false,
     "object-shorthand-properties-first": false,
-    "ordered-imports": true,
     "triple-equals": [
       true,
       "allow-null-check"
@@ -50,6 +53,7 @@
       true,
       "ban-keywords",
       "check-format",
+      "allow-pascal-case",
       "allow-leading-underscore",
       "allow-trailing-underscore"
     ]
@@ -66,7 +70,7 @@
     ],
     "no-console": false,
     "object-literal-sort-keys": false,
-    "ordered-imports": true,
+    "ordered-imports": false,
     "triple-equals": [
       true,
       "allow-null-check"
@@ -82,9 +86,10 @@
     "function-name": false,
     "variable-name": [
       true,
-      "check-format",
       "allow-leading-underscore",
+      "check-format",
       "allow-trailing-underscore",
+      "allow-pascal-case",
       "ban-keywords"
     ]
   }
