@@ -18,6 +18,7 @@ import { dateRangeFromNow, void0 } from './utils';
   const qt = {
     setAccount: qtApi.setAccount,
     getServerTime: await qtApi.getServerTime(),
+    myBalances: await qtApi.myBalances(),
     get: {
       accounts: {
         activities: (await qtApi.get.accounts.activities(timeStart)(
@@ -57,24 +58,41 @@ import { dateRangeFromNow, void0 } from './utils';
   // console.dir(results.get.markets);
   // console.dir(results.get.symbols);
   // aapl : 8049
-  const result = qt.get.accounts.balances;
+  const result = qt.myBalances;
   // candles.map(candle => {
   //   console.log(candle.hash.short);
   // });
-  console.log(result);
 
-  return credentials;
+  console.dir(result.CAD);
+  console.dir(result.USD);
+  console.dir(result.combined);
+  console.dir(result.current);
+  console.dir(result.perCurrency);
+  console.dir(result.startOfDay);
+
+  return { credentials };
 })()
   // .then((cred: any) => console.log(cred))
   .catch(error => console.log('error message:', error.message));
 
 /*
-CAD
-USD
-perCurrencyBalances:
-combinedBalances:
-sodPerCurrencyBalances:
-sodCombinedBalances:
+
+perCurrency.USD
+startOfDay
+current
+
+perCurrency.CAD
+startOfDay
+current
+
+combined.inUSD:
+startOfDay
+current
+
+combined.inCAD:
+startOfDay
+current
+
 
   setAccount,
     getServerTime,

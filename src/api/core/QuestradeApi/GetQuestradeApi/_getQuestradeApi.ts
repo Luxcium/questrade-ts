@@ -2,7 +2,7 @@ import { AxiosStatic, default as axios } from 'axios';
 import { Credentials } from '../../typescript';
 import { _getAccounts } from '../AccountsCalls/_getAccounts';
 import { _getActivities } from '../AccountsCalls/_getActivities';
-import { _getBalances } from '../AccountsCalls/_getBalances';
+import { _getBalances, _myBalances } from '../AccountsCalls/_getBalances';
 import { _getExecutions } from '../AccountsCalls/_getExecutions';
 import { _getOrders, _getOrdersByIds } from '../AccountsCalls/_getOrders';
 import { _getPositions } from '../AccountsCalls/_getPositions';
@@ -27,6 +27,7 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => (
   const allAccounts = _getAccounts(_axios)(credentials);
   const activities = _getActivities(_axios)(credentials);
   const balances = _getBalances(_axios)(credentials);
+  const myBalances = () => _myBalances(_getBalances(_axios)(credentials)())();
   const marketCandlesById = _getCandles(_axios)(credentials);
   const executions = _getExecutions(_axios)(credentials);
   const markets = _getMarkets(_axios)(credentials);
@@ -47,6 +48,8 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => (
   return {
     setAccount,
     getServerTime,
+    myBalances,
+
     get: {
       accounts: {
         activities,
