@@ -8,14 +8,14 @@ import { dateRangeFromNow, void0 } from './utils';
 (async () => {
   void0(R);
   const { credentials, qtApi } = await _redeemToken(axios)(
-    'JPkAws5CSK1GkAzpVovk4Q3nwVbUTUPA0'
+    'gtXzC9Loal6I1fzDKNxbTdbiSVw7ALd50'
   );
   // console.log(credentials);
   // const serverTime = await qtApi.getServerTime();
   // console.log(serverTime);
   const [timeStart, timeEnd] = dateRangeFromNow(10);
 
-  const results = {
+  const qt = {
     setAccount: qtApi.setAccount,
     getServerTime: await qtApi.getServerTime(),
     get: {
@@ -41,7 +41,7 @@ import { dateRangeFromNow, void0 } from './utils';
           options: qtApi.get.markets.quotes.options.byIds,
           byIds: qtApi.get.markets.quotes.byIds,
         },
-        allMarkets: void0(await qtApi.get.markets.allMarkets()),
+        allMarkets: qtApi.get.markets.allMarkets,
       },
       symbols: {
         optionsById: qtApi.get.symbols.optionsById,
@@ -57,10 +57,11 @@ import { dateRangeFromNow, void0 } from './utils';
   // console.dir(results.get.markets);
   // console.dir(results.get.symbols);
   // aapl : 8049
-  const candles = await results.get.markets.candlesById('OneDay')(8049);
-  candles.map(candle => {
-    console.log(candle.hash.short);
-  });
+  const result = qt.get.accounts.balances;
+  // candles.map(candle => {
+  //   console.log(candle.hash.short);
+  // });
+  console.log(result);
 
   return credentials;
 })()
@@ -68,6 +69,13 @@ import { dateRangeFromNow, void0 } from './utils';
   .catch(error => console.log('error message:', error.message));
 
 /*
+CAD
+USD
+perCurrencyBalances:
+combinedBalances:
+sodPerCurrencyBalances:
+sodCombinedBalances:
+
   setAccount,
     getServerTime,
     get: {

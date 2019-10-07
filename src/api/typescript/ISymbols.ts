@@ -1,4 +1,5 @@
 import {
+  Currency,
   OptionDurationType,
   OptionExerciseType,
   OptionType,
@@ -16,6 +17,7 @@ export interface ISymbols {
 export interface ISymbol {
   symbol?: string;
   symbolId?: number;
+  tradeUnit: number;
   prevDayClosePrice?: number;
   highPrice52?: number;
   lowPrice52?: number;
@@ -28,31 +30,44 @@ export interface ISymbol {
   yield?: number;
   exDate?: DateTime;
   marketCap?: number;
-  optionType?: OptionType;
-  optionDurationType?: OptionDurationType;
+  optionType?: OptionType | null;
+  optionDurationType?: OptionDurationType | null;
   optionRoot?: string;
-  optionContractDeliverables?: string | [];
+  optionContractDeliverables?: string | OptionContractDeliverables;
   underlyings?: string | [];
   UnderlyingMultiplierPair?: string | [];
   multiplier?: number;
   underlyingSymbol?: string;
   underlyingSymbolId?: string;
   cashInLieu?: number;
-  optionExerciseType?: OptionExerciseType;
+  optionExerciseType?: OptionExerciseType | null;
   listingExchange?: string | [];
   description?: string;
   securityType?: SecurityType;
   dividendDate?: DateTime;
-  optionStrikePrice?: number;
+  optionExpiryDate: string | null;
+  optionStrikePrice?: number | null;
+  isTradable?: boolean;
   isQuotable?: boolean;
   hasOptions?: boolean;
-  currency?: string;
-  minTicks?: string | [];
+  currency?: Currency;
+  minTicks?: string | MinTick[];
   MinTickData?: string | [];
   pivot?: number;
   minTick?: number;
   industrySector?: string;
   industryGroup?: string;
   industrySubGroup?: string;
+  industrySubgroup: string;
   count?: number;
+}
+
+export interface MinTick {
+  pivot: number;
+  minTick: number;
+}
+
+export interface OptionContractDeliverables {
+  underlyings: any[];
+  cashInLieu: number;
 }
