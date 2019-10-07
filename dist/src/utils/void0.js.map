@@ -1,0 +1,1 @@
+{"version":3,"file":"void0.js","sourceRoot":"","sources":["../../../src/utils/void0.ts"],"names":[],"mappings":";;AAAA,wBAAwB;AAExB,SAAgB,KAAK,CAAC,GAAG,IAAW;IAClC,MAAG,CAAC,IAAI,CAAC,CAAC;IACV,OAAO,KAAK,CAAC,CAAC;AAChB,CAAC;AAHD,sBAGC","sourcesContent":["import { id0 } from '.';\n\nexport function void0(...arg0: any[]) {\n  id0(arg0);\n  return void 0;\n}\n"]}

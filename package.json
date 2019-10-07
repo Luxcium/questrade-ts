@@ -19,7 +19,7 @@
     "tslint": "tslint --project ./ --format codeFrame --fix",
     "tsc": "tsc --noEmit --pretty",
     "predist": "yarn run build:clean; yarn run rm:dist",
-    "dist": " yarn run cp:dist",
+    "dist": "yarn run cp:dist",
     "postdist": "npm publish ./dist --tag latest --dry-run && npm pack ./dist --tag latest",
     "rm:dist": "rimraf ./dist/",
     "cp:dist": "concurrently \"yarn:cp:dist:1\" \"yarn:cp:dist:2\" \"yarn:cp:dist:3\" \"yarn:cp:dist:4\" \"yarn:cp:dist:5\"",
