@@ -7,5 +7,6 @@ export const _redeemToken = (_axios: AxiosStatic = axios) => async (
 ) => {
   const credentials = await _credentialsFactory(_axios)(refreshToken);
   const questrade = _getQuestradeApi(_axios)(credentials);
-  return { qtApi: questrade, credentials, utils };
+  const qtApi = questrade;
+  return { qtApi, credentials, utils };
 };

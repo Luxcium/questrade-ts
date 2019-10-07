@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../../../../src/api/core/QuestradeApi/AccountsCalls/_getActivities/typescript/index.ts"],"names":[],"mappings":"","sourcesContent":["export { IAccountActivity, IActivities } from './IActivities';\n"]}
