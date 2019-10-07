@@ -8,17 +8,16 @@ import { dateRangeFromNow, void0 } from './utils';
 (async () => {
   void0(R);
   const { credentials, qtApi } = await _redeemToken(axios)(
-    'ztVDfShEjRDeABy0HJAJT3t9Ww7J9Pbf0'
+    'JPkAws5CSK1GkAzpVovk4Q3nwVbUTUPA0'
   );
   // console.log(credentials);
   // const serverTime = await qtApi.getServerTime();
   // console.log(serverTime);
   const [timeStart, timeEnd] = dateRangeFromNow(10);
 
-  const qt = {
+  const results = {
     setAccount: qtApi.setAccount,
     getServerTime: await qtApi.getServerTime(),
-    myBalances: await qtApi.myBalances(),
     get: {
       accounts: {
         activities: (await qtApi.get.accounts.activities(timeStart)(
@@ -39,10 +38,10 @@ import { dateRangeFromNow, void0 } from './utils';
         candlesById: qtApi.get.markets.candlesById(timeStart)(timeEnd),
         quotes: {
           byStrategies: qtApi.get.markets.quotes.byStrategies,
-          options: qtApi.get.markets.quotes.options.byIds,
+          // options: qtApi.get.markets.quotes.options.byIds,
           byIds: qtApi.get.markets.quotes.byIds,
         },
-        allMarkets: qtApi.get.markets.allMarkets,
+        allMarkets: void0(await qtApi.get.markets.allMarkets()),
       },
       symbols: {
         optionsById: qtApi.get.symbols.optionsById,
@@ -58,42 +57,17 @@ import { dateRangeFromNow, void0 } from './utils';
   // console.dir(results.get.markets);
   // console.dir(results.get.symbols);
   // aapl : 8049
-  const result = qt.myBalances;
-  // candles.map(candle => {
-  //   console.log(candle.hash.short);
-  // });
+  const candles = await results.get.markets.candlesById('OneDay')(8049);
+  candles.map(candle => {
+    console.log(candle.hash.short);
+  });
 
-  console.dir(result.CAD);
-  console.dir(result.USD);
-  console.dir(result.combined);
-  console.dir(result.current);
-  console.dir(result.perCurrency);
-  console.dir(result.startOfDay);
-
-  return { credentials };
+  return credentials;
 })()
   // .then((cred: any) => console.log(cred))
   .catch(error => console.log('error message:', error.message));
 
 /*
-
-perCurrency.USD
-startOfDay
-current
-
-perCurrency.CAD
-startOfDay
-current
-
-combined.inUSD:
-startOfDay
-current
-
-combined.inCAD:
-startOfDay
-current
-
-
   setAccount,
     getServerTime,
     get: {

@@ -104,21 +104,23 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => (
     getQuotesOptionsbyFilterAndIds(credentials),
     getSymbolSearchAndCount(credentials),
   ];
-  const allFunctions = {
+  return {
+    setAccount: () => 'NOT IMPLEMENTED',
+    getServerTime: async () => getServerTime(credentials)(),
     get: {
       accounts: {
-        accounts: async () => accounts(),
         activities: (startTime: string) => activities(startTime),
-        balances: async () => balances(),
-        executions: (startTime: string) => executions(startTime),
         orders: (stateFilter?: string) => orders(stateFilter),
         ordersAll: (startTime: string) => orders('All')(startTime),
-        serverTime: async () => serverTime,
+        ordersByIds: async (orderId: number[]) => ordersByIds(orderId),
+        executions: (startTime: string) => executions(startTime),
+        balances: async () => balances(),
         positions: async () => positions,
+        allAccounts: async () => accounts(),
+        time: async () => serverTime,
       },
       markets: {
-        candles: (startDate: string) => candles(startDate),
-        markets: async () => markets(),
+        candlesById: (startDate: string) => candles(startDate),
         quotes: {
           byStrategies: async (
             strategyVariantRequestData: StrategyVariantRequest
@@ -127,17 +129,53 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => (
             quotesOptionsbyFilterAndIds(filters),
           byIds: async (ids: number[]) => quotesByIds(ids),
         },
+        allMarkets: async () => markets(),
       },
       symbols: {
         optionsById: async (symbolId: number) => optionsById(symbolId),
         byIds: async (symbolIds: number[]) => symbolsByIds(symbolIds),
-        symbolSearchAll: async (prefix: string, offset?: number) =>
-          symbolSearchAll(prefix, offset),
         search: async (prefix: string, offset?: number) =>
           symbolSearchAndCount(prefix, offset),
+        searchAll: async (prefix: string, offset?: number) =>
+          symbolSearchAll(prefix, offset),
         searchCount: async (prefix: string) => symbolSearchCount(prefix),
       },
     },
   };
-  return { allFunctions };
 };
+/*
+  return {
+    setAccount,
+    getServerTime,
+    get: {
+      accounts: {
+        activities,
+        orders,
+        ordersAll,
+        ordersByIds,
+        executions,
+        balances,
+        positions,
+        allAccounts: allAccounts,
+        time: getServerTime,
+      },
+      markets: {
+        candlesById: marketCandlesById,
+        quotes: {
+          byStrategies,
+          options,
+          byIds: marketsQuotesByIds,
+        },
+        allMarkets: markets,
+      },
+      symbols: {
+        optionsById,
+        byIds: symbolsByIds,
+        search,
+        searchAll,
+        searchCount,
+      },
+    },
+  };
+};
+*/
