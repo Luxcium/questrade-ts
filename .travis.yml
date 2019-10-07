@@ -21,7 +21,7 @@ group: stable
 branches:
 # blocklist
   except:
-  - /.*/
+  - next/feature
 # safelist
   only:
   - master
