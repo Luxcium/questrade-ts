@@ -11,14 +11,12 @@ export const getHash = (
   const shorter: string = longer.slice(0, shortSlice);
   const hashObj = { shorter, longer };
   const returnValue: [
+    string,
+    string,
     {
       shorter: string;
       longer: string;
-    },
-    string,
-    string
-  ] = [hashObj, shorter, longer];
+    }
+  ] = [shorter, longer, hashObj];
   return returnValue;
 };
-
-console.log(getHash('42'));

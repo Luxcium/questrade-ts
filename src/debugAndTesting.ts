@@ -57,9 +57,11 @@ import { dateRangeFromNow, void0 } from './utils';
   // console.dir(results.get.markets);
   // console.dir(results.get.symbols);
   // aapl : 8049
-  console.dir(
-    JSON.stringify(await results.get.markets.candlesById('OneDay')(8049))
-  );
+  const candles = await results.get.markets.candlesById('OneDay')(8049);
+  candles.map(candle => {
+    console.log(candle.hash.short);
+  });
+
   return credentials;
 })()
   // .then((cred: any) => console.log(cred))

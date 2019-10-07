@@ -16,6 +16,7 @@ export const _getCandles = (_axios: AxiosStatic = axios) => (
   )()).candles.map(result => {
     result.symbolID = symbolID;
     result.granularity = interval;
-    result.hash = getHash(JSON.stringify(result))[0];
+    const [short, long] = getHash(JSON.stringify(result));
+    result.hash = { short, long };
     return result;
   });

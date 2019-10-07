@@ -22,5 +22,5 @@ export interface ICandle {
   VWAP?: number;
   symbolID?: number;
   granularity?: string;
-  hash: { shorter: string; longer: string };
+  hash: { short: string; long: string };
 }

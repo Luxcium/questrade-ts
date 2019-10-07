@@ -17,7 +17,6 @@
     },
     /* Additional Vebosity */
     "diagnostics": true,
-    "extendedDiagnostics": false,
     "listFiles": false,
     "listEmittedFiles": false,
     "traceResolution": false,
