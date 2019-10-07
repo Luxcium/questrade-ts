@@ -7,7 +7,8 @@ language: node_js
 node_js:
   - lts/carbon
   - lts/dubnium
-  - lts/node
+  - lts/*
+  - node
 
 dist: trusty
 
@@ -16,6 +17,15 @@ cache:
     - '$HOME/.node_packages'
 
 group: stable
+
+branches:
+# blocklist
+  except:
+  - /.*/
+# safelist
+  only:
+  - master
+  - next/version
 
 install:
   - npm i -g npm@latest
