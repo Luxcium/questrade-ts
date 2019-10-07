@@ -105,29 +105,35 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => (
   const allFunctions = {
     get: {
       accounts: {
-        accounts,
-        activities,
-        balances,
-        executions,
-        orders,
-        serverTime,
-        positions,
+        accounts: async () => accounts(),
+        activities: (startTime: string) => activities(startTime),
+        balances: async () => balances(),
+        executions: (startTime: string) => executions(startTime),
+        orders: (stateFilter?: string) => orders(stateFilter),
+        ordersAll: (startTime: string) => orders('All')(startTime),
+        serverTime: async () => serverTime,
+        positions: async () => positions,
       },
     },
     markets: {
-      candles,
-      markets,
+      candles: (startDate: string) => candles(startDate),
+      markets: async () => markets(),
       quotes: {
-        byStrategies: marketsQuotesStrategies,
-        options: quotesOptionsbyFilterAndIds,
-        byIds: quotesByIds,
+        byStrategies: async (
+          strategyVariantRequestData: StrategyVariantRequest
+        ) => marketsQuotesStrategies(strategyVariantRequestData),
+        options: async (filters: _Filters) =>
+          quotesOptionsbyFilterAndIds(filters),
+        byIds: async (ids: number[]) => quotesByIds(ids),
       },
       symbols: {
-        optionsById,
-        symbolsByIds,
-        symbolSearchAll,
-        symbolSearchAndCount,
-        symbolSearchCount,
+        optionsById: async (symbolId: number) => optionsById(symbolId),
+        byIds: async (symbolIds: number[]) => symbolsByIds(symbolIds),
+        symbolSearchAll: async (prefix: string, offset?: number) =>
+          symbolSearchAll(prefix, offset),
+        search: async (prefix: string, offset?: number) =>
+          symbolSearchAndCount(prefix, offset),
+        searchCount: async (prefix: string) => symbolSearchCount(prefix),
       },
     },
   };
