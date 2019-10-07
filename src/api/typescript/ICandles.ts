@@ -20,4 +20,7 @@ export interface ICandle {
   volume?: number;
   /** The volume weighted average price (VWAP) */
   VWAP?: number;
+  symbolID?: number;
+  granularity?: string;
+  hash: { shorter: string; longer: string };
 }
