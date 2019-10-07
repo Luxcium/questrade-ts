@@ -8,7 +8,7 @@ import { dateRangeFromNow, void0 } from './utils';
 (async () => {
   void0(R);
   const { credentials, qtApi } = await _redeemToken(axios)(
-    'gtXzC9Loal6I1fzDKNxbTdbiSVw7ALd50'
+    'ztVDfShEjRDeABy0HJAJT3t9Ww7J9Pbf0'
   );
   // console.log(credentials);
   // const serverTime = await qtApi.getServerTime();

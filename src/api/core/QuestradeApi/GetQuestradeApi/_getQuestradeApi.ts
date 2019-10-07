@@ -2,7 +2,7 @@ import { AxiosStatic, default as axios } from 'axios';
 import { Credentials } from '../../typescript';
 import { _getAccounts } from '../AccountsCalls/_getAccounts';
 import { _getActivities } from '../AccountsCalls/_getActivities';
-import { _getBalances, _myBalances } from '../AccountsCalls/_getBalances';
+import { _getBalances } from '../AccountsCalls/_getBalances';
 import { _getExecutions } from '../AccountsCalls/_getExecutions';
 import { _getOrders, _getOrdersByIds } from '../AccountsCalls/_getOrders';
 import { _getPositions } from '../AccountsCalls/_getPositions';
@@ -15,69 +15,226 @@ import { _getSymbolsByIds } from '../MarketsCalls/_getSymbolsByIds';
 import {
   _getSymbolSearchAll,
   _getSymbolSearchCount,
-  _symbolSearchAndCount,
+  _symbolSearchAndCount as _getSymbolSearchAndCount,
 } from '../MarketsCalls/_getSymbolSearch';
-import { _quotesOptionsbyFilterAndIds } from '../MarketsCalls/_marketsQuotesOptions';
-import { _marketsQuotesStrategies } from '../MarketsCalls/_marketsQuotesStrategies';
+import { _quotesOptionsbyFilterAndIds as _getQuotesOptionsbyFilterAndIds } from '../MarketsCalls/_marketsQuotesOptions';
+import { _marketsQuotesStrategies as _getMarketsQuotesStrategies } from '../MarketsCalls/_marketsQuotesStrategies';
 
 export const _getQuestradeApi = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
 ) => {
-  const setAccount = credentials.accountNumber;
-  const allAccounts = _getAccounts(_axios)(credentials);
-  const activities = _getActivities(_axios)(credentials);
-  const balances = _getBalances(_axios)(credentials);
-  const myBalances = () => _myBalances(_getBalances(_axios)(credentials)())();
-  const marketCandlesById = _getCandles(_axios)(credentials);
-  const executions = _getExecutions(_axios)(credentials);
-  const markets = _getMarkets(_axios)(credentials);
-  const optionsById = _getOptionsById(_axios)(credentials);
-  const options = _quotesOptionsbyFilterAndIds(_axios)(credentials);
-  const ordersByIds = _getOrdersByIds(_axios)(credentials);
-  const orders = _getOrders(_axios)(credentials);
-  const ordersAll = _getOrders(_axios)(credentials)('All');
-  const positions = _getPositions(_axios)(credentials);
-  const marketsQuotesByIds = _getQuotesByIds(_axios)(credentials);
-  const search = _symbolSearchAndCount(_axios)(credentials);
-  const getServerTime = _getServerTime(_axios)(credentials);
-  const symbolsByIds = _getSymbolsByIds(_axios)(credentials);
-  const searchAll = _getSymbolSearchAll(_axios)(credentials);
-  const searchCount = _getSymbolSearchCount(_axios)(credentials);
-  const byStrategies = _marketsQuotesStrategies(_axios)(credentials);
-
-  return {
-    setAccount,
+  const [
+    getAccounts,
+    getActivities,
+    getBalances,
+    getCandles,
+    getExecutions,
+    getMarkets,
+    getOptionsById,
+    getOrders,
+    getOrdersByIds,
+    getPositions,
+    getQuotesByIds,
     getServerTime,
-    myBalances,
+    getSymbolsByIds,
+    getSymbolSearchAll,
+    getSymbolSearchCount,
+    getMarketsQuotesStrategies,
+    getQuotesOptionsbyFilterAndIds,
+    getSymbolSearchAndCount,
+  ] = [
+    _getAccounts(_axios),
+    _getActivities(_axios),
+    _getBalances(_axios),
+    _getCandles(_axios),
+    _getExecutions(_axios),
+    _getMarkets(_axios),
+    _getOptionsById(_axios),
+    _getOrders(_axios),
+    _getOrdersByIds(_axios),
+    _getPositions(_axios),
+    _getQuotesByIds(_axios),
+    _getServerTime(_axios),
+    _getSymbolsByIds(_axios),
+    _getSymbolSearchAll(_axios),
+    _getSymbolSearchCount(_axios),
+    _getMarketsQuotesStrategies(_axios),
+    _getQuotesOptionsbyFilterAndIds(_axios),
+    _getSymbolSearchAndCount(_axios),
+  ];
 
+  const [
+    accounts,
+    activities,
+    balances,
+    candles,
+    executions,
+    markets,
+    optionsById,
+    orders,
+    ordersByIds,
+    positions,
+    quotesByIds,
+    serverTime,
+    symbolsByIds,
+    symbolSearchAll,
+    symbolSearchCount,
+    marketsQuotesStrategies,
+    quotesOptionsbyFilterAndIds,
+    symbolSearchAndCount,
+  ] = [
+    getAccounts(credentials),
+    getActivities(credentials),
+    getBalances(credentials),
+    getCandles(credentials),
+    getExecutions(credentials),
+    getMarkets(credentials),
+    getOptionsById(credentials),
+    getOrders(credentials),
+    getOrdersByIds(credentials),
+    getPositions(credentials),
+    getQuotesByIds(credentials),
+    getServerTime(credentials),
+    getSymbolsByIds(credentials),
+    getSymbolSearchAll(credentials),
+    getSymbolSearchCount(credentials),
+    getMarketsQuotesStrategies(credentials),
+    getQuotesOptionsbyFilterAndIds(credentials),
+    getSymbolSearchAndCount(credentials),
+  ];
+  const allFunctions = {
     get: {
       accounts: {
+        accounts,
         activities,
-        orders,
-        ordersAll,
-        ordersByIds,
-        executions,
         balances,
+        executions,
+        orders,
+        serverTime,
         positions,
-        allAccounts: allAccounts,
-        time: getServerTime,
       },
-      markets: {
-        candlesById: marketCandlesById,
-        quotes: {
-          byStrategies,
-          options,
-          byIds: marketsQuotesByIds,
-        },
-        allMarkets: markets,
+    },
+    markets: {
+      candles,
+      markets,
+      quotes: {
+        byStrategies: marketsQuotesStrategies,
+        options: quotesOptionsbyFilterAndIds,
+        byIds: quotesByIds,
       },
       symbols: {
         optionsById,
-        byIds: symbolsByIds,
-        search,
-        searchAll,
-        searchCount,
+        symbolsByIds,
+        symbolSearchAll,
+        symbolSearchAndCount,
+        symbolSearchCount,
       },
     },
   };
+
+  return { allFunctions };
 };
+// const activities ='';
+// const balances ='';
+// const executions ='';
+// const getServerTime ='';
+// const markets ='';
+// const optionsById ='';
+// const orders ='';
+// const ordersByIds ='';
+// const positions ='';
+// const symbolsByIds ='';
+// const allAccounts = '';
+// const byStrategies = '';
+// const marketCandlesById = '';
+// const marketsQuotesByIds = '';
+// const myBalances = '';
+// const options = '';
+// const ordersAll = '';
+// const search = '';
+// const searchAll = '';
+// const searchCount = '';
+// const setAccount = '';
+
+// const allAccounts = async () => _getAccounts(_axios)(credentials)();
+
+// const activities = (startDate: string) =>
+//   _getActivities(_axios)(credentials)(startDate);
+
+// const balances = async () => _getBalances(_axios)(credentials)();
+
+// const myBalances = async () =>
+//   _myBalances(_getBalances(_axios)(credentials)())();
+
+// const marketCandlesById = async () => _getCandles(_axios)(credentials);
+
+// const executions = (startDate: string) =>
+//   _getExecutions(_axios)(credentials)(startDate);
+
+// const markets = async () => _getMarkets(_axios)(credentials)();
+
+// const optionsById = async () => _getOptionsById(_axios)(credentials);
+
+// const options = async () =>
+//   _getQuotesOptionsbyFilterAndIds(_axios)(credentials);
+
+// const ordersByIds = async () => _getOrdersByIds(_axios)(credentials);
+
+// const orders = (startDate: string) =>
+//   _getOrders(_axios)(credentials)(startDate);
+
+// const ordersAll = (startDate: string) =>
+//   _getOrders(_axios)(credentials)('All')(startDate);
+
+// const positions = async () => _getPositions(_axios)(credentials)();
+
+// const marketsQuotesByIds = async () => _getQuotesByIds(_axios)(credentials);
+
+// const search = async () => _getSymbolSearchAndCount(_axios)(credentials);
+
+// const getServerTime = async () => _getServerTime(_axios)(credentials)();
+
+// const symbolsByIds = async (symbolId: number[]) =>
+//   _getSymbolsByIds(_axios)(credentials)(symbolId);
+
+// const searchAll = () => _getSymbolSearchAll(_axios)(credentials);
+
+// const searchCount = () => _getSymbolSearchCount(_axios)(credentials);
+
+// const byStrategies = () => _getMarketsQuotesStrategies(_axios)(credentials);
+
+// const setAccount = async () => credentials.accountNumber;
+
+// setAccount,
+// getServerTime: serverTime,
+// myBalances,
+
+// get: {
+//   accounts: {
+//     activities,
+//     orders,
+//     ordersAll,
+//     ordersByIds,
+//     executions,
+//     balances,
+//     positions,
+//     allAccounts,
+//     time: getServerTime,
+//   },
+//   markets: {
+//     candlesById: marketCandlesById,
+//     quotes: {
+//       byStrategies,
+//       options,
+//       byIds: marketsQuotesByIds,
+//     },
+//     allMarkets: markets,
+//   },
+//   symbols: {
+//     optionsById,
+//     byIds: symbolsByIds,
+//     search,
+//     searchAll,
+//     searchCount,
+//   },
+// },
