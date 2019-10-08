@@ -23,9 +23,9 @@ const _getAccounts = (_axios: AxiosStatic = axios) => (
 export const _credentialsFactory = (_axios: AxiosStatic = axios) => async (
   token: string
 ) => {
-  if (token.length === 4) {
-    //
-  }
+  if (!token) throw new Error('Missing Token');
+  const mock = token.length === 8 ? true : false;
+
   const credentials = await _oAuthCredentials()(token);
 
   try {
@@ -47,9 +47,21 @@ export const _credentialsFactory = (_axios: AxiosStatic = axios) => async (
 
     credentials.accountNumber = _getPrimaryAccountNumber(accounts);
 
-    console.info('Questrade Server Time:', time, '\nStatus: ready\n');
+    if (credentials.accountNumber === '00000000' && mock) {
+      console.info(
+        '🤡 🧐  LOCAL Time:',
+        new Date().toISOString(),
+        '\n 🍦 🤨  Status: !!!!00000000!!!!  \n'
+      );
+    } else {
+      if (credentials.accountNumber === '00000000') {
+        throw Error("Account should not be '00000000'");
+      }
+      console.info('Questrade Server Time:', time, '\nStatus: ready\n');
+    }
   } catch (error) {
     console.log(error.message);
+    console.info(credentials);
     throw new Error('_oAuth Error getting credentials');
   }
   return credentials;
@@ -59,8 +71,12 @@ export const _credentialsFactory = (_axios: AxiosStatic = axios) => async (
 export const _getPrimaryAccountNumber = (
   accounts: IAccount[]
 ): AcountNumberString => {
-  if (accounts.length < 1) {
-    throw new Error('No account number found');
+  if (!accounts || accounts.length < 1) {
+    console.warn(
+      "WARNING('No account number found') will default to '00000000' "
+    );
+
+    return '00000000';
   }
 
   if (accounts.length === 1) {

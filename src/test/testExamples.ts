@@ -23,35 +23,43 @@ export const testExamples = (
       const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 
       // list of all the differents api calls managed by this package
-      void0(optionNumericID);
+      void0(
+        optionNumericID,
+        stockStringID,
+        optionExpiryDate,
+        stockNumericID,
+        startTime,
+        endTime,
+        log
+      );
       // ACCOUNTS CALLS
       // GET ACCOUNTS/:ID/ACTIVITIES
-      log(await qt.get.accounts.activities(startTime)(endTime));
+      void0(await qt.get.accounts.activities(startTime)(endTime));
       // GET ACCOUNTS/:ID/ORDERS
-      log(await qt.get.accounts.orders(startTime)(endTime)('All'));
+      void0(await qt.get.accounts.orders('All')(startTime)(endTime));
       // GET ACCOUNTS/:ID/EXECUTIONS
-      log(await qt.get.accounts.executions(startTime)(endTime));
+      void0(await qt.get.accounts.executions(startTime)(endTime));
       // GET ACCOUNTS/:ID/BALANCES
-      log(await qt.get.accounts.balances());
+      void0(await qt.get.accounts.balances());
       // GET ACCOUNTS/:ID/POSITIONS
-      log(await qt.get.accounts.positions());
+      void0(await qt.get.accounts.positions());
       // GET ACCOUNTS
-      log(await qt.get.accounts.allAccounts());
+      void0(await qt.get.accounts.allAccounts());
       // GET TIME
-      log(await qt.get.accounts.time());
+      void0(await qt.get.accounts.time());
 
       // MARKET CALLS
       // GET MARKETS/CANDLES/:ID
-      log(
+      void0(
         await qt.get.markets.candlesById(startTime)(endTime)('OneDay')(
           stockNumericID
         )
       );
-      // GET MARKETS/QUOTES/STRATEGIES
-      log('NO IMPLEMENTATION AT HIS TIME');
+      // !! GET MARKETS/QUOTES/STRATEGIES
+      void0('NO IMPLEMENTATION AT HIS TIME');
 
       // GET MARKETS/QUOTES/OPTIONS (filter)
-      log(
+      void0(
         await qt.get.markets.quotes.options({
           underlyingId: stockNumericID,
           expiryDate: optionExpiryDate,
@@ -65,72 +73,73 @@ export const testExamples = (
       maxstrikePrice?: number | null; [OPTIONAL]
     */
 
-      // GET MARKETS/QUOTES/OPTIONS (byIds optionsIds array)
-      // log(await qt.get.markets.quotes.options.byIds([optionNumericID]));
+      // !! GET MARKETS/QUOTES/OPTIONS (byIds optionsIds array)
+      // !! log(await qt.get.markets.quotes.options.byIds([optionNumericID]));
       // GET MARKETS/QUOTES/:ID
-      log(await qt.get.markets.quotes.byIds([stockNumericID]));
+      void0(await qt.get.markets.quotes.byIds([stockNumericID]));
       // GET MARKETS
-      log(await qt.get.markets.allMarkets());
+      void0(await qt.get.markets.allMarkets());
       // GET SYMBOLS/:ID/OPTIONS (by single stockId)
-      log(await qt.get.symbols.optionsById(stockNumericID));
+      void0(await qt.get.symbols.optionsById(stockNumericID));
       // GET SYMBOLS/SEARCH (return fisrt result or offseted result)
-      log(await qt.get.symbols.search(stockStringID));
+      void0(await qt.get.symbols.search(stockStringID));
       // GET SYMBOLS/SEARCH (count of results or offseted results)
-      log((await qt.get.symbols.search(stockStringID)).count);
-      // GET SYMBOLS/SEARCH (count the number of results)
-      // log(await qt.get.symbols.search.count(stockStringID));
+      void0((await qt.get.symbols.search(stockStringID)).count);
+      // !! GET SYMBOLS/SEARCH (count the number of results)
+      // !! log(await qt.get.symbols.search.count(stockStringID));
       /* OR */
-      log(await qt.get.symbols.searchCount(stockStringID));
+      void0(await qt.get.symbols.searchCount(stockStringID));
       // GET SYMBOLS/SEARCH (return ALL results can profide an offset as second)
-      log(await qt.get.symbols.searchAll(stockStringID));
+      void0(await qt.get.symbols.searchAll(stockStringID));
 
       // GET SYMBOLS/:ID (stockIds array)
-      log(await qt.get.symbols.byIds([stockNumericID]));
+      void0(await qt.get.symbols.byIds([stockNumericID]));
       // Enumerations from questrade-api-enumerations NPM package (included)
       /** Specifies all supported currency codes. */
-      console.dir(Enumerations.Currency);
+      /* console.dir */ void0(Enumerations.Currency);
       /** Specifies all supported listing exchanges. */
-      console.dir(Enumerations.ListingExchange);
+      /* console.dir */ void0(Enumerations.ListingExchange);
       /** Specifies all supported user account types. */
-      console.dir(Enumerations.AccountType);
+      /* console.dir */ void0(Enumerations.AccountType);
       /** Specifies all supported account client types. */
-      console.dir(Enumerations.ClientAccountType);
+      /* console.dir */ void0(Enumerations.ClientAccountType);
       /** Specifies all supported account status values. */
-      console.dir(Enumerations.AccountStatus);
+      /* console.dir */ void0(Enumerations.AccountStatus);
       /** Specifies all supported market data tick types. */
-      console.dir(Enumerations.TickType);
+      /* console.dir */ void0(Enumerations.TickType);
       /** Specifies all supported option types. */
-      console.dir(Enumerations.OptionType);
+      /* console.dir */ void0(Enumerations.OptionType);
       /** Specifies all supported option duration types. */
-      console.dir(Enumerations.OptionDurationType);
+      /* console.dir */ void0(Enumerations.OptionDurationType);
       /** Specifies all supported option exercise types. */
-      console.dir(Enumerations.OptionExerciseType);
+      /* console.dir */ void0(Enumerations.OptionExerciseType);
       /** Specifies all supported security types. */
-      console.dir(Enumerations.SecurityType);
+      /* console.dir */ void0(Enumerations.SecurityType);
       /** Specifies all supported order state filter types. */
-      console.dir(Enumerations.OrderStateFilterType);
+      /* console.dir */ void0(Enumerations.OrderStateFilterType);
       /** Specifies all supported order side values. */
-      console.dir(Enumerations.OrderAction);
+      /* console.dir */ void0(Enumerations.OrderAction);
       /** Specifies all supported client order side values. */
-      console.dir(Enumerations.OrderSide);
+      /* console.dir */ void0(Enumerations.OrderSide);
       /** Specifies all supported order types. */
-      console.dir(Enumerations.OrderType);
+      /* console.dir */ void0(Enumerations.OrderType);
       /** Specifies all supported order Time-In-Force instructions. */
-      console.dir(Enumerations.OrderTimeInForce);
+      /* console.dir */ void0(Enumerations.OrderTimeInForce);
       /** Specifies all supported order states. */
-      console.dir(Enumerations.OrderState);
+      /* console.dir */ void0(Enumerations.OrderState);
       /** Specifies all supported order execution status values. */
-      console.dir(Enumerations.HistoricalDataGranularity);
+      /* console.dir */ void0(Enumerations.HistoricalDataGranularity);
       /** Specifies all supported bracket order components. */
-      console.dir(Enumerations.OrderClass);
+      /* console.dir */ void0(Enumerations.OrderClass);
       /** Supported types of strategies for multi-leg strategy orders. */
-      console.dir(Enumerations.StrategyTypes);
+      /* console.dir */ void0(Enumerations.StrategyTypes);
 
       // return private credentials
       log(credentials);
     } catch (error) {
       // manage your errors here if needed
       console.error(error.message);
+      throw error;
     }
   })();
 

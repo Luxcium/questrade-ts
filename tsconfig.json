@@ -35,7 +35,7 @@
     /* Compilation Options */
     "noEmit": true,
     "importHelpers": true,
-    "removeComments": true,
+    "removeComments": false,
     "noErrorTruncation": true,
     "noEmitOnError": true,
     /* Module Resolution Options */

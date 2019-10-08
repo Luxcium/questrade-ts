@@ -1,20 +1,21 @@
 import axios from 'axios';
 // tslint:disable-next-line: no-implicit-dependencies
-import { default as R } from 'ramda';
+import { default as ƒ } from 'ramda';
 import { _redeemToken } from './api';
+import { IExecution } from './api/typescript';
 import { dateRangeFromNow, void0 } from './utils';
 // import { qtEnumerations as Enumerations } from 'questrade-api-enumerations';
 
 (async () => {
-  void0(R);
+  void0(ƒ);
   const { credentials, qtApi } = await _redeemToken(axios)(
     'JPkAws5CSK1GkAzpVovk4Q3nwVbUTUPA0'
   );
+
   // console.log(credentials);
   // const serverTime = await qtApi.getServerTime();
   // console.log(serverTime);
   const [timeStart, timeEnd] = dateRangeFromNow(10);
-
   const results = {
     setAccount: qtApi.setAccount,
     getServerTime: await qtApi.getServerTime(),
@@ -101,3 +102,6 @@ import { dateRangeFromNow, void0 } from './utils';
     },
 
   */
+export type DateRange<R> = (startTime: string) => (endTime: string) => R;
+
+export type AccountExecutions = DateRange<Promise<IExecution[]>>;

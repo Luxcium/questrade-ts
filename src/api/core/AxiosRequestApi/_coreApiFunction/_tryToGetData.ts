@@ -1,4 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
+import { void0 } from '../../../../utils';
 import { _logErrors } from './';
 export async function _tryToGetData<R>(
   _config: any,
@@ -7,7 +8,8 @@ export async function _tryToGetData<R>(
 ): Promise<R> {
   //
   try {
-    const response = (await _axios(_config)) as AxiosResponse<R>;
+    void0(_axios); // _tryToGetData
+    const response = (await axios(_config)) as AxiosResponse<R>;
     if (!response.data) {
       throw _logError(new Error("Can't retrive data from call to API"));
     }

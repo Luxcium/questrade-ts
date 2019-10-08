@@ -1,5 +1,4 @@
 import { AxiosResponse, AxiosStatic, default as axios } from 'axios';
-import { void0 } from '../../../../utils';
 import { validateToken, writeToken } from '../_credentialsFactory';
 import { Credentials } from '../_credentialsFactory/typescript';
 
@@ -14,7 +13,6 @@ export const _oAuthCredentials = (_axios: AxiosStatic = axios) => async (
       refresh_token: refreshToken,
     },
   };
-  void0(_axios);
   const response: AxiosResponse<any> = await _axios(axiosConfig);
 
   if (!response.data) {

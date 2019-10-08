@@ -105,40 +105,79 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => (
     getSymbolSearchAndCount(credentials),
   ];
   return {
-    setAccount: () => 'NOT IMPLEMENTED',
-    getServerTime: async () => getServerTime(credentials)(),
+    setAccount() {
+      return 'NOT IMPLEMENTED';
+    },
+    async getServerTime() {
+      return getServerTime(credentials)();
+    },
     get: {
       accounts: {
-        activities: (startTime: string) => activities(startTime),
-        orders: (stateFilter?: string) => orders(stateFilter),
-        ordersAll: (startTime: string) => orders('All')(startTime),
-        ordersByIds: async (orderId: number[]) => ordersByIds(orderId),
-        executions: (startTime: string) => executions(startTime),
-        balances: async () => balances(),
-        positions: async () => positions,
-        allAccounts: async () => accounts(),
-        time: async () => serverTime,
+        activities(startTime: string) {
+          return activities(startTime);
+        },
+        orders(stateFilter?: string) {
+          return orders(stateFilter);
+        },
+        ordersAll(startTime: string) {
+          return orders('All')(startTime);
+        },
+        async ordersByIds(orderId: number[]) {
+          return ordersByIds(orderId);
+        },
+        executions(startTime: string) {
+          return executions(startTime);
+        },
+        async balances() {
+          return balances();
+        },
+        async positions() {
+          return positions();
+        },
+        async allAccounts() {
+          return accounts();
+        },
+        async time() {
+          return serverTime();
+        },
       },
       markets: {
-        candlesById: (startDate: string) => candles(startDate),
-        quotes: {
-          byStrategies: async (
-            strategyVariantRequestData: StrategyVariantRequest
-          ) => marketsQuotesStrategies(strategyVariantRequestData),
-          options: async (filters: _Filters) =>
-            quotesOptionsbyFilterAndIds(filters),
-          byIds: async (ids: number[]) => quotesByIds(ids),
+        candlesById(startDate: string) {
+          return candles(startDate);
         },
-        allMarkets: async () => markets(),
+        quotes: {
+          async byStrategies(
+            strategyVariantRequestData: StrategyVariantRequest
+          ) {
+            return marketsQuotesStrategies(strategyVariantRequestData);
+          },
+          async options(filters: _Filters) {
+            return quotesOptionsbyFilterAndIds(filters);
+          },
+          async byIds(ids: number[]) {
+            return quotesByIds(ids);
+          },
+        },
+        async allMarkets() {
+          return markets();
+        },
       },
       symbols: {
-        optionsById: async (symbolId: number) => optionsById(symbolId),
-        byIds: async (symbolIds: number[]) => symbolsByIds(symbolIds),
-        search: async (prefix: string, offset?: number) =>
-          symbolSearchAndCount(prefix, offset),
-        searchAll: async (prefix: string, offset?: number) =>
-          symbolSearchAll(prefix, offset),
-        searchCount: async (prefix: string) => symbolSearchCount(prefix),
+        async optionsById(symbolId: number) {
+          return optionsById(symbolId);
+        },
+        async byIds(symbolIds: number[]) {
+          return symbolsByIds(symbolIds);
+        },
+        async search(prefix: string, offset?: number) {
+          return symbolSearchAndCount(prefix, offset);
+        },
+        async searchAll(prefix: string, offset?: number) {
+          return symbolSearchAll(prefix, offset);
+        },
+        async searchCount(prefix: string) {
+          return symbolSearchCount(prefix);
+        },
       },
     },
   };

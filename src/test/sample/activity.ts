@@ -1,5 +1,5 @@
 import { Currency } from 'questrade-api-enumerations';
-import { IAccountActivity } from '../../../api/core/QuestradeApi/AccountsCalls/_getActivities/typescript';
+import { IAccountActivity } from '../../api/typescript';
 
 export const activity: IAccountActivity = {
   tradeDate: '2019-09-30T00:00:00.000000-04:00',
