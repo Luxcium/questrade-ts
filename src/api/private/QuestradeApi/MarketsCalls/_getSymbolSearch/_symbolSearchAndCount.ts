@@ -1,5 +1,5 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { _getSymbolSearchCount } from '../..';
+import { _getSymbolSearchCount } from '..';
 import { Credentials, SymbolSearchAndCount } from '../../../../typescript';
 import { _getSymbolSearch } from './_getSymbolSearch';
 

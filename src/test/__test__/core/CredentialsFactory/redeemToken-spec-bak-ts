@@ -1,4 +1,4 @@
-import { redeemToken } from '../../../..';
+import { redeemToken } from '../../../../api/public/credentialsFactory';
 
 describe('redeemToken', () => {
   it('should be using Axios', async (done: any) => {

@@ -1,4 +1,5 @@
-import { day, Enumerations, redeemToken } from '..';
+import { day, Enumerations } from '..';
+import { redeemToken } from '../api/public/credentialsFactory';
 import { void0 } from '../api/utils';
 
 // TypeScript/JavaScript

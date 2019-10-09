@@ -1,8 +1,8 @@
-import { emptyCredentials } from '..';
+import { _emptyCredentials } from '..';
 import { QuestradeAPIOptions } from '../../../typescript';
 
 export const _buildCredentialsFromToken = (token: QuestradeAPIOptions) => {
-  const credentials = emptyCredentials();
+  const credentials = _emptyCredentials();
 
   if (typeof token === 'undefined' || !token) {
     throw new Error('questrade_missing_api_key or options');

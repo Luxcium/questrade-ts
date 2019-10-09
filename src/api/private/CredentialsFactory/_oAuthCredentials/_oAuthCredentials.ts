@@ -1,6 +1,6 @@
 import { AxiosResponse, AxiosStatic, default as axios } from 'axios';
+import { validateToken, writeToken } from '..';
 import { Credentials } from '../../../typescript';
-import { validateToken, writeToken } from '../_credentialsFactory';
 
 export const _oAuthCredentials = (_axios: AxiosStatic = axios) => async (
   token: string

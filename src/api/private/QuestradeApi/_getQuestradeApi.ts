@@ -4,13 +4,28 @@ import {
   OptionsFilters,
   StrategyVariantRequest,
 } from '../../typescript';
-import { _getAccounts } from './AccountsCalls/_getAccounts';
-import { _getActivities } from './AccountsCalls/_getActivities';
-import { _getBalances } from './AccountsCalls/_getBalances';
-import { _getExecutions } from './AccountsCalls/_getExecutions';
-import { _getOrders, _getOrdersByIds } from './AccountsCalls/_getOrders';
-import { _getPositions } from './AccountsCalls/_getPositions';
-import { _getServerTime } from './AccountsCalls/_getServerTime';
+import {
+  _getAccounts,
+  _getActivities,
+  _getBalances,
+  _getExecutions,
+  _getOrders,
+  _getOrdersByIds,
+  _getPositions,
+  _getServerTime,
+} from './AccountsCalls';
+import {
+  _getCandles,
+  _getMarkets,
+  _getMarketsQuotesStrategies,
+  _getOptionsById,
+  _getQuotesByIds,
+  _getQuotesOptionsbyFilterAndIds,
+  _getSymbolsByIds,
+  _getSymbolSearchAll,
+  _getSymbolSearchAndCount,
+  _getSymbolSearchCount,
+} from './MarketsCalls';
 
 export const _getQuestradeApi = (_axios: AxiosStatic = axios) => (
   credentials: Credentials

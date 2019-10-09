@@ -1,12 +1,13 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { _axiosGetApi } from '../..';
+import { _oAuthCredentials } from '..';
 import {
   AcountNumberString,
+  Credentials,
   IAccount,
   IAccounts,
   ITime,
 } from '../../../typescript';
-import { _oAuthCredentials } from '../_oAuthCredentials';
+import { _axiosGetApi } from '../../core';
 
 const _getServerTime = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
