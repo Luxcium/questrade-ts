@@ -12,7 +12,7 @@ export interface IEquitySymbols {
 }
 export interface IEquitySymbol {
   symbol: string;
-  symbolId: number;
+  stockId: number;
   description: string;
   securityType: SecurityType;
   listingExchange: ListingExchange;

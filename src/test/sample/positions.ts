@@ -2,7 +2,7 @@ import { IPosition } from '../../api/typescript';
 
 export const position: IPosition = {
   symbol: 'EPRT18Oct19C25.00',
-  symbolId: 26845352,
+  stockId: 26845352,
   openQuantity: 5,
   closedQuantity: 0,
   currentMarketValue: 25,

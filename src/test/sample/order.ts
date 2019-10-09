@@ -8,7 +8,7 @@ import { IOrder } from '../../api/typescript';
 export const order: IOrder = {
   id: 498268725,
   symbol: 'AMD',
-  symbolId: 6770,
+  stockId: 6770,
   totalQuantity: 106,
   openQuantity: 0,
   filledQuantity: 106,

@@ -3,7 +3,7 @@ import { IQuote } from '../../api/typescript';
 
 export const quote: IQuote = {
   symbol: 'AAPL',
-  symbolId: 8049,
+  stockId: 8049,
   tier: '',
   bidPrice: 229.04,
   bidSize: 1,

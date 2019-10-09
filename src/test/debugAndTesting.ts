@@ -16,40 +16,36 @@ import { dateRangeFromNow, void0 } from '../api/utils';
   // const serverTime = await qtApi.getServerTime();
   // console.log(serverTime);
   const [timeStart, timeEnd] = dateRangeFromNow(10);
+  const qt = await qtApi;
   const results = {
-    setAccount: qtApi.setAccount,
-    getServerTime: await qtApi.getServerTime(),
+    setAccount: (await qtApi).currentAccount,
+    getServerTime: (await qtApi).serverTime,
     get: {
       accounts: {
-        activities: (await qtApi.get.accounts.activities(timeStart)(
-          timeEnd
-        ))[0],
-        orders: (await qtApi.get.accounts.orders()(timeStart)(timeEnd))[0],
-        ordersAll: (await qtApi.get.accounts.ordersAll(timeStart)(timeEnd))[0],
-        ordersByIds: qtApi.get.accounts.ordersByIds,
-        executions: (await qtApi.get.accounts.executions(timeStart)(
-          timeEnd
-        ))[0],
-        balances: await qtApi.get.accounts.balances(),
-        positions: await qtApi.get.accounts.positions(),
-        allAccounts: await qtApi.get.accounts.allAccounts(),
-        time: await qtApi.get.accounts.time(),
+        activities: (await qt.get.account.activities(timeStart)(timeEnd))[0],
+        orders: (await qt.get.account.orders()(timeStart)(timeEnd))[0],
+        ordersAll: (await qt.get.account.allOrders(timeStart)(timeEnd))[0],
+        ordersByIds: qt.get.account.ordersByIds,
+        executions: (await qt.get.account.executions(timeStart)(timeEnd))[0],
+        balances: await qt.get.account.balances(),
+        positions: await qt.get.account.positions(),
+        allAccounts: await qt.get.account.allAccounts(),
       },
       markets: {
-        candlesById: qtApi.get.markets.candlesById(timeStart)(timeEnd),
+        candlesById: qt.get.market.candlesById(timeStart)(timeEnd),
         quotes: {
-          byStrategies: qtApi.get.markets.quotes.byStrategies,
-          // options: qtApi.get.markets.quotes.options.byIds,
-          byIds: qtApi.get.markets.quotes.byIds,
+          byStrategies: qt.get.quotes.byStrategies,
+          options: qt.get.quotes.optionsQuotes,
+          byIds: qt.get.quotes.byStockIds,
         },
-        allMarkets: void0(await qtApi.get.markets.allMarkets()),
+        allMarkets: void0(await qt.get.market.allMarkets()),
       },
       symbols: {
-        optionsById: qtApi.get.symbols.optionsById,
-        byIds: qtApi.get.symbols.byIds,
-        search: qtApi.get.symbols.search,
-        searchAll: qtApi.get.symbols.searchAll,
-        searchCount: qtApi.get.symbols.searchCount,
+        optionsById: qt.get.symbols.optionChains.byStockId,
+        byIds: qt.get.symbols.byStockIds,
+        search: qt.get.search.stock,
+        searchAll: qt.get.search.allStocks,
+        searchCount: qt.get.search.countResults,
       },
     },
   };

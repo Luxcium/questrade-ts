@@ -2,7 +2,7 @@ import { Currency, SecurityType } from 'questrade-api-enumerations';
 import { ISymbol } from '../../api/typescript';
 export const stockSymbol: ISymbol = {
   symbol: 'AAPL',
-  symbolId: 8049,
+  stockId: 8049,
   prevDayClosePrice: 227.01,
   highPrice52: 232.35,
   lowPrice52: 142,

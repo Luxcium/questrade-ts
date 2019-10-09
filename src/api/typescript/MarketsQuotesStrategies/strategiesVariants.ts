@@ -27,7 +27,7 @@ export interface Leg {
   /** Numeric ration of the leg in strategy */
   ratio?: number;
   /** Internal symbol identifier */
-  symbolId?: number;
+  stockId?: number;
 }
 /**
  * Single or many multi-leg strategies

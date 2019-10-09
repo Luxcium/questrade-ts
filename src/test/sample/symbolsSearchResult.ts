@@ -3,7 +3,7 @@ import { ISymbolSearchResult } from '../../api/typescript';
 
 export const symbolSearchResult: ISymbolSearchResult = {
   symbol: 'AAPL',
-  symbolId: 8049,
+  stockId: 8049,
   description: 'APPLE INC',
   securityType: 'Stock',
   listingExchange: 'NASDAQ',

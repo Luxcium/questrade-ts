@@ -5,7 +5,7 @@ export const results = {
     settlementDate: '2019-10-01T00:00:00.000000-04:00',
     action: 'Buy',
     symbol: 'T4Oct19P37.00',
-    symbolId: 26980517,
+    stockId: 26980517,
     description:
       'PUT  T      10/04/19    37     AT&T INC                       NOUS AVONS AGI COMME AGENT      ',
     currency: 'USD',
@@ -19,7 +19,7 @@ export const results = {
   orders: {
     id: 498268725,
     symbol: 'AMD',
-    symbolId: 6770,
+    stockId: 6770,
     totalQuantity: 106,
     openQuantity: 0,
     filledQuantity: 106,
@@ -64,7 +64,7 @@ export const results = {
   ordersAll: {
     id: 498268725,
     symbol: 'AMD',
-    symbolId: 6770,
+    stockId: 6770,
     totalQuantity: 106,
     openQuantity: 0,
     filledQuantity: 106,
@@ -108,7 +108,7 @@ export const results = {
   },
   executions: {
     symbol: 'X4Oct19P11.00',
-    symbolId: 26984775,
+    stockId: 26984775,
     quantity: 2,
     side: 'STC',
     price: 0.18,
@@ -213,7 +213,7 @@ export const results = {
   positions: [
     {
       symbol: 'EPRT18Oct19C25.00',
-      symbolId: 26845352,
+      stockId: 26845352,
       openQuantity: 5,
       closedQuantity: 0,
       currentMarketValue: 100,

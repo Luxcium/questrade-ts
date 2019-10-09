@@ -24,7 +24,7 @@ export interface IAccountActivity {
   /** Symbol name */
   symbol: string;
   /** Symbol ID */
-  symbolId: string | number;
+  stockId: string | number;
   /** Description */
   description: string;
   /** Enumeration Currency */
@@ -60,7 +60,7 @@ Sample response:
             "settlementDate": "2011-02-16T00:00:00.000000-05:00",
             "action": "",
             "symbol": "",
-            "symbolId": 0,
+            "stockId": 0,
             "description":
              "INT FR 02/04 THRU02/15@ 4 3/4%BAL  205,006   AVBAL  204,966 ",
             "currency": "USD",

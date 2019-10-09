@@ -7,7 +7,7 @@ export const activity: IAccountActivity = {
   settlementDate: '2019-10-01T00:00:00.000000-04:00',
   action: 'Buy',
   symbol: 'T4Oct19P37.00',
-  symbolId: 26980517,
+  stockId: 26980517,
   description:
     'PUT  T      10/04/19    37     AT&T INC                       NOUS AVONS AGI COMME AGENT      ',
   currency: Currency.USD,

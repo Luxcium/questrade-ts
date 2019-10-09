@@ -52,6 +52,7 @@ export {
 export { IOptionsQuote, IOptionsQuotes } from './IOptionsQuotes';
 export { IOrder, IOrders } from './IOrders';
 export { IPosition, IPositions } from './IPositions';
+export { IQuestradeApi } from './IQuestradeApi';
 export {
   IQuestradeAPIOptions,
   QuestradeAPIOptions,

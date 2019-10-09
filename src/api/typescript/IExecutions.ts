@@ -9,7 +9,7 @@ export interface IExecution {
   /** Execution symbol. */
   symbol: string;
   /** Internal symbol identifier */
-  symbolId: number;
+  stockId: number;
   /** Execution quantity. */
   quantity: number;
 
@@ -74,7 +74,7 @@ Property	Type	Description
 executions	Complex	List of execution records.
 Execution	Complex
 symbol	String	Execution symbol.
-symbolId	Integer	Internal symbol identifier
+stockId	Integer	Internal symbol identifier
 quantity	Integer	Execution quantity.
 side	String	Client side of the order to which execution belongs.
 See Client Order Side section for all allowed values.
@@ -104,7 +104,7 @@ Sample JSON response
 	"executions": [
 		{
 			"symbol": "AAPL",
-			"symbolId": 8049,
+			"stockId": 8049,
 			"quantity": 10,
 			"side": "Buy",
 			"price": 536.87,

@@ -1,23 +1,11 @@
 import { AxiosStatic, default as axios } from 'axios';
 import {
   Credentials,
-  IAccount,
-  IAccountActivity,
-  IBalances,
-  ICandle,
-  IExecution,
-  IMarket,
-  IOptionChain,
-  IOptionsQuotes,
-  IOrder,
-  IPosition,
-  IQuote,
-  IStrategiesQuotes,
-  ISymbol,
-  ISymbolSearchResult,
+  IQuestradeApi,
   OptionsFilters,
   StrategyVariantRequest,
 } from '../../typescript';
+import { void0 } from '../../utils';
 import {
   _getAccounts,
   _getActivities,
@@ -46,7 +34,7 @@ import {
 
 export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
   credentials: Credentials
-) => {
+): Promise<IQuestradeApi> => {
   const [
     getAccounts,
     getActivities,
@@ -134,12 +122,13 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
     getSymbolSearchAndCount(credentials),
     getSymbolSearchCount(credentials),
   ];
+  // unused for the moment
+  void0(quotesOptionsbyFilterAndIds);
 
-  // const myBalances =  _myBalances()
   return {
-    myBalances: _myBalances(await balances()),
+    myBalances: _myBalances(await balances())(),
     currentAccount: credentials.accountNumber,
-    getServerTime: await serverTime(),
+    serverTime: await serverTime(),
     get: {
       account: {
         activities(startTime: string) {
@@ -148,7 +137,7 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
         orders(stateFilter?: string) {
           return orders(stateFilter);
         },
-        ordersAll(startTime: string) {
+        allOrders(startTime: string) {
           return orders('All')(startTime);
         },
         async ordersByIds(orderId: number[]) {
@@ -167,11 +156,11 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
           return accounts();
         },
       },
-      markets: {
+      market: {
         async allMarkets() {
           return markets();
         },
-        candlesById(startDate: string) {
+        candlesByStockId(startDate: string) {
           return candles(startDate);
         },
       },
@@ -181,19 +170,19 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
         },
 
         optionsQuotes: {
-          async optionsIds(optionIds: number[]) {
+          async byOptionsIds(optionIds: number[]) {
             return quotesOptionsByIds(optionIds);
           },
-          async filter(filters: OptionsFilters) {
+          async fromFilter(filters: OptionsFilters) {
             return quotesOptionsFilter(filters);
           },
         },
-        async stockQuotesByIds(ids: number[]) {
+        async byStockIds(ids: number[]) {
           return quotesByIds(ids);
         },
       },
       search: {
-        async stocks(prefix: string, offset?: number) {
+        async stock(prefix: string, offset?: number) {
           return symbolSearchAndCount(prefix, offset);
         },
         async allStocks(prefix: string, offset?: number) {
@@ -205,174 +194,18 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
       },
       symbols: {
         optionChains: {
-          async byStockId(symbolId: number) {
-            return optionsById(symbolId);
+          async byStockId(stockId: number) {
+            return optionsById(stockId);
           },
         },
-        async stockByIds(symbolIds: number[]) {
-          return symbolsByIds(symbolIds);
+        async byStockIds(stockIds: number[]) {
+          return symbolsByIds(stockIds);
         },
       },
     },
   };
-  // return {
-  //   qtApi,
-  //   account() {
-  //     return 'NOT IMPLEMENTED';
-  //   },
-  //   async getServerTime() {
-  //     return serverTime();
-  //   },
-  //   get: {
-  //     quotesOptionsByIds,
-  //     quotesOptionsFilter,
-
-  //     markets: {
-  //
-  //       quotes: {
-  //         async byStrategies(
-  //           strategyVariantRequestData: StrategyVariantRequest
-  //         ) {
-  //           return marketsQuotesStrategies(strategyVariantRequestData);
-  //         },
-  //         async options(filters: OptionsFilters) {
-  //           return quotesOptionsbyFilterAndIds(filters);
-  //         },
-  //         async quotesByIds(ids: number[]) {
-  //           return quotesByIds(ids);
-  //         },
-  //       },
-  //       async allMarkets() {
-  //         return markets();
-  //       },
-  //     },
-  //     symbols: {
-  //       async optionChainsById(symbolId: number) {
-  //         return optionsById(symbolId);
-  //       },
-  //       async stockByIds(symbolIds: number[]) {
-  //         return symbolsByIds(symbolIds);
-  //       },
-  //       search: {
-  //         async stocks(prefix: string, offset?: number) {
-  //           return symbolSearchAndCount(prefix, offset);
-  //         },
-  //         async allStocks(prefix: string, offset?: number) {
-  //           return symbolSearchAll(prefix, offset);
-  //         },
-  //         async countResults(prefix: string) {
-  //           return symbolSearchCount(prefix);
-  //         },
-  //       },
-  //     },
-  //   },
-  // };
 };
 
-export type GetActivities = (
-  startTime: string
-) => (endTime: string) => Promise<IAccountActivity[]>;
-
-export type GetOrders = (
-  stateFilter?: string | undefined
-) => (startDate: string) => (endDate: string) => Promise<IOrder[]>;
-export type GetOrdersAll = (
-  startTime: string
-) => (endDate: string) => Promise<IOrder[]>;
-export type GetOrdersByIds = (orderId: number[]) => Promise<IOrder[]>;
-
-export type GetExecutions = (
-  startTime: string
-) => (endDate: string) => Promise<IExecution[]>;
-
-export type GetBalances = () => Promise<IBalances>;
-
-export type GetPositions = () => Promise<IPosition[]>;
-
-export type GetAllAccounts = () => Promise<IAccount[]>;
-
-export type GetServerTime = () => Promise<Date>;
-
-export type GetCandlesById = (
-  startDate: string
-) => (
-  endDate: string
-) => (interval?: string) => (symbolID: number) => Promise<ICandle[]>;
-
-export type GetStrategies = (
-  strategyVariantRequestData: StrategyVariantRequest
-) => Promise<IStrategiesQuotes>;
-
-export type GetOptionsQuotes = (
-  filters: OptionsFilters
-) => Promise<IOptionsQuotes>;
-
-export type GetStockQuotesByIds = (ids: number[]) => Promise<IQuote[]>;
-
-export type GetAllMarkets = () => Promise<IMarket[]>;
-
-export type GetOptionsChainsById = (
-  symbolId: number
-) => Promise<IOptionChain[]>;
-
-export type GetSymbolsByIds = (symbolIds: number[]) => Promise<ISymbol[]>;
-
-export type GetStockSearch = (
-  prefix: string,
-  offset?: number | undefined
-) => Promise<ISymbolSearchResult>;
-
-export type GetSearchAll = (
-  prefix: string,
-  offset?: number | undefined
-) => Promise<ISymbolSearchResult[]>;
-
-export type GetSearchCount = (prefix: string) => Promise<number>;
-// account
-
-/*
-
-*/
-export interface IQuestradeApi {
-  myBalances: any;
-  getCurrentAccount: any;
-  getServerTime: GetServerTime;
-  get: {
-    account: {
-      activities: GetActivities;
-      allAccounts: GetAllAccounts;
-      balances: GetBalances;
-      executions: GetExecutions;
-      order: GetOrders;
-      ordersAll: GetOrdersAll;
-      ordersByIds: GetOrdersByIds;
-      positions: GetPositions;
-    };
-    markets: {
-      allMarkets: GetAllMarkets;
-      candlesById: GetCandlesById;
-    };
-    quotes: {
-      byStrategies: GetStrategies;
-      optionsQuotes: {
-        filter: any;
-        optionsIds: any;
-      };
-      stockQuotesByIds: GetStockQuotesByIds;
-    };
-    search: {
-      stocks: GetStockSearch;
-      allStocks: GetSearchAll;
-      countResults: GetSearchCount;
-    };
-    symbols: {
-      optionChains: {
-        byStockId: GetOptionsChainsById;
-      };
-      stockByIds: GetSymbolsByIds;
-    };
-  };
-}
 /*
 account
 getServerTime
@@ -394,4 +227,60 @@ stockByIds
 stocks
 allStocks
 countResults
+
+Type '{ activities(startTime: string): (endTime: string) => Promise<IAccountActivity[]>;
+   orders(stateFilter?: string | undefined): (startDate: string) => (endDate: string) => Promise<IOrder[]>;
+   ordersAll(startTime: string): (endDate: string) => Promise<IOrder[]>;
+   ordersByIds(orderId: number[]): Promise<IOrder[]>;
+   executions(startTime: string): (endDate: string) => Promise<IExecution[]>;
+   balances(): Promise<IBalances>;
+   positions(): Promise<IPosition[]>;
+   allAccounts(): Promise<IAccount[]>;
+ }' is not assignable to type '{ activities: GetActivities;
+   allAccounts: GetAllAccounts;
+   balances: GetBalances;
+   executions: GetExecutions;
+   order: GetOrders;
+   ordersAll: GetOrdersAll;
+   ordersByIds: GetOrdersByIds;
+   positions: GetPositions;
+ }'.
+  Object literal may only specify known properties, but 'orders' does not exist in type '{ activities: GetActivities;
+     allAccounts: GetAllAccounts;
+     balances: GetBalances;
+     executions: GetExecutions;
+     order: GetOrders;
+     ordersAll: GetOrdersAll;
+     ordersByIds: GetOrdersByIds;
+     positions: GetPositions;
+   }'. Did you mean to write 'order'?ts(2322)
+_getQuestradeApi.ts(343, 5): The expected type comes from property 'account' which is declared here on type '{ account: { activities: GetActivities;
+   allAccounts: GetAllAccounts;
+   balances: GetBalances;
+   executions: GetExecutions;
+   order: GetOrders;
+   ordersAll: GetOrdersAll;
+   ordersByIds: GetOrdersByIds;
+   positions: GetPositions;
+ };
+ markets: { allMarkets: GetAllMarkets;
+   candlesById: GetCandlesById;
+ };
+ quotes: { byStrategies: GetStrategies;
+   optionsQuotes: { filter: any;
+   optionsIds: any;
+ };
+ stockQuotesByIds: GetStockQuotesByIds;
+ };
+ search: { stocks: GetStockSearch;
+   allStocks: GetSearchAll;
+   countResults: GetSearchCount;
+ };
+ symbols: { optionChains: { byStockId: GetOptionsChainsById;
+ };
+ stockByIds: GetSymbolsByIds;
+ };
+ }'
+
+
 */

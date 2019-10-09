@@ -9,7 +9,7 @@ export interface IQuotes {
 }
 export interface IQuote {
   symbol: string;
-  symbolId: number;
+  stockId: number;
   bidPrice: number;
   bidSize: number;
   askPrice: number;

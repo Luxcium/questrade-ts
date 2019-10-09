@@ -2,7 +2,7 @@ import { OrderSide } from 'questrade-api-enumerations';
 import { IExecution } from '../../api/typescript';
 export const execution: IExecution = {
   symbol: 'X4Oct19P11.00',
-  symbolId: 26984775,
+  stockId: 26984775,
   quantity: 2,
   side: OrderSide.STC,
   price: 0.18,
