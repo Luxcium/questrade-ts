@@ -1,5 +1,5 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { Credentials } from '../../typescript';
+import { Credentials } from '../../../typescript';
 import { _getAccounts } from '../AccountsCalls/_getAccounts';
 import { _getActivities } from '../AccountsCalls/_getActivities';
 import { _getBalances } from '../AccountsCalls/_getBalances';

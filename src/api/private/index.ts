@@ -9,4 +9,4 @@ export {
   _getPrimaryAccountNumber,
   _redeemToken,
 } from './core/CredentialsFactory';
-export { _getQuestradeApi } from './QuestradeApi';
+export { _getQuestradeApi } from './core/QuestradeApi';
