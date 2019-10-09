@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { _axiosApiPost } from '../../..';
-import { IOptionsQuotes } from '../../../../typescript';
+import { IOptionsQuotes } from '../../../../typings';
 import { Credentials } from '../../../typescript';
 import {
   FiltersArray,

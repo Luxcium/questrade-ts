@@ -1,4 +1,4 @@
-import { IBalances } from '../../../../typescript';
+import { IBalances } from '../../../../typings';
 
 export const _myBalances = (myBalance: Promise<IBalances>) => async () => {
   const balances = await myBalance;

@@ -4,7 +4,7 @@ import {
   OrderTimeInForce,
   OrderType,
 } from 'questrade-api-enumerations';
-import { IOrder } from '../../api/typescript';
+import { IOrder } from '../../api/typings';
 export const order: IOrder = {
   id: 498268725,
   symbol: 'AMD',

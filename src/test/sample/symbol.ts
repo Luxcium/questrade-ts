@@ -1,5 +1,5 @@
 import { Currency, SecurityType } from 'questrade-api-enumerations';
-import { ISymbol } from '../../api/typescript';
+import { ISymbol } from '../../api/typings';
 export const stockSymbol: ISymbol = {
   symbol: 'AAPL',
   symbolId: 8049,

@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { _axiosGetApi } from '../../..';
-import { IOptionChain, IOptionChains } from '../../../../typescript';
+import { IOptionChain, IOptionChains } from '../../../../typings';
 import { Credentials } from '../../../typescript';
 
 // + _getOptionsById

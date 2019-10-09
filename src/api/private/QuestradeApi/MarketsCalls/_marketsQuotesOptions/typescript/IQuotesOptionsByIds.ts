@@ -1,4 +1,4 @@
-import { IOptionsQuotes } from '../../../../../typescript';
+import { IOptionsQuotes } from '../../../../../typings';
 
 export interface IQuotesOptionsByIds {
   byIds?: (optionIds: number[]) => Promise<IOptionsQuotes>;

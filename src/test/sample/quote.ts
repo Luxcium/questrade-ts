@@ -1,5 +1,5 @@
 import { TickType } from 'questrade-api-enumerations';
-import { IQuote } from '../../api/typescript';
+import { IQuote } from '../../api/typings';
 
 export const quote: IQuote = {
   symbol: 'AAPL',

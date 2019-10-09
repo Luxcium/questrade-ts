@@ -1,5 +1,5 @@
 import { OrderSide } from 'questrade-api-enumerations';
-import { IExecution } from '../../api/typescript';
+import { IExecution } from '../../api/typings';
 export const execution: IExecution = {
   symbol: 'X4Oct19P11.00',
   symbolId: 26984775,

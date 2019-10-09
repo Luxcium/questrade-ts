@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { _axiosGetApi } from '../../..';
-import { IQuote, IQuotes } from '../../../../typescript';
+import { IQuote, IQuotes } from '../../../../typings';
 import { Credentials } from '../../../typescript';
 
 // + _getQuotesByID

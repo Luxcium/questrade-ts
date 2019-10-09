@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { _axiosApiPost } from '../../..';
-import { IStrategiesQuotes } from '../../../../typescript';
+import { IStrategiesQuotes } from '../../../../typings';
 import { Credentials } from '../../../typescript';
 import { StrategyVariantRequest } from './typescript';
 

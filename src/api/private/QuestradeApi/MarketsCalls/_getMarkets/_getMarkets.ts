@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { _axiosGetApi } from '../../..';
-import { IMarket, IMarkets } from '../../../../typescript';
+import { IMarket, IMarkets } from '../../../../typings';
 import { Credentials } from '../../../typescript';
 
 // + _getMarkets

@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { _axiosAccountGetApi } from '../../..';
-import { IOrder, IOrders } from '../../../../typescript';
+import { IOrder, IOrders } from '../../../../typings';
 import { Credentials } from '../../../typescript';
 // + _getOrderByIds
 /** _getOrders */

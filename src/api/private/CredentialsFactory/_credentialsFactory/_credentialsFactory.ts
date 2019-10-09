@@ -5,7 +5,7 @@ import {
   IAccount,
   IAccounts,
   ITime,
-} from '../../../typescript';
+} from '../../../typings';
 import { _oAuthCredentials } from '../_oAuthCredentials';
 import { Credentials } from './typescript';
 

@@ -1,4 +1,4 @@
-import { IPosition } from '../../api/typescript';
+import { IPosition } from '../../api/typings';
 
 export const position: IPosition = {
   symbol: 'EPRT18Oct19C25.00',

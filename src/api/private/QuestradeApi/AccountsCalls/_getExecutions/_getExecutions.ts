@@ -1,7 +1,7 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { _axiosAccountGetApi } from '../../..';
 import { endpointFormatDateTool } from '../../../../../utils';
-import { IExecution, IExecutions } from '../../../../typescript';
+import { IExecution, IExecutions } from '../../../../typings';
 import { Credentials } from '../../../typescript';
 
 // + _getExecutions
