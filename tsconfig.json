@@ -35,7 +35,7 @@
     /* Compilation Options */
     "noEmit": true,
     "importHelpers": true,
-    "removeComments": true,
+    "removeComments": false,
     "noErrorTruncation": true,
     "noEmitOnError": true,
     /* Module Resolution Options */
@@ -62,9 +62,7 @@
   },
   "include": [
     "./src/**/*",
-    "src/debug.ts",
-    "src/test",
-    "src/core/private/questrade/.ts"
+    "src/debug.ts"
   ],
   "exclude": [
     "node_modules",
@@ -74,6 +72,7 @@
     "debug.js",
     "manualTestingAndDebug.js"
     ,"__test__"
+    ,"src/test"
   ],
   "plugins": [
     {

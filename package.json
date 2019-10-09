@@ -10,7 +10,8 @@
   "types": "./typings/index.d.ts",
   "scripts": {
     "prebuild": "yarn run test",
-    "build": "tsc -b ./configs/tsconfig.commonjs.json",
+    "build": "yarn run CI",
+    "CI": "tsc -b ./configs/tsconfig.commonjs.json",
     "pretest": "yarn run linting",
     "test": "echo 'will skip test now'",
     "posttest": "#jest --coverage",

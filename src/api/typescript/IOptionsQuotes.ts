@@ -11,7 +11,7 @@ export interface IOptionsQuotes {
 //   underlying: string; // Underlying name
 //   underlyingId: number; // Underlying ID
 //   symbol: string; // Symbol name
-//   symbolId: number; // Symbol ID
+//   stockId: number; // Symbol ID
 //   bidPrice: number; // Bid price
 //   bidSize: number; // Bid size
 //   askPrice: number; // Ask price
@@ -52,7 +52,7 @@ export interface IOptionsQuote {
   symbol?: string;
 
   /** Symbol ID */
-  symbolId?: number;
+  stockId?: number;
 
   /** Bid price */
   bidPrice?: number;

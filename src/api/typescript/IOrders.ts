@@ -14,7 +14,7 @@ export interface IOrders {
 export interface IOrder {
   id?: idType;
   symbol?: string;
-  symbolId?: idType;
+  stockId?: idType;
   totalQuantity?: number;
   openQuantity?: number;
   filledQuantity?: number;

@@ -1,1 +1,0 @@
-export { testEnumerations } from './testEnumerations';
