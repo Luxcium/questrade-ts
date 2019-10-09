@@ -1,7 +1,10 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { _axiosGetApi } from '../../..';
-import { Credentials } from '../../../typescript';
-import { ISymbolSearchResult, ISymbolSearchResults } from './typescript';
+import {
+  Credentials,
+  ISymbolSearchResult,
+  ISymbolSearchResults,
+} from '../../../../typescript';
+import { _axiosGetApi } from '../../../core';
 // + _getSymbolSearchAll
 /** _getSymbolSearch */
 export const _getSymbolSearchAll = (_axios: AxiosStatic = axios) => (

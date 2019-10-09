@@ -1,7 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { _axiosGetApi } from '../../..';
-import { ISymbol, ISymbols } from '../../../../typescript';
-import { Credentials } from '../../../typescript';
+import { Credentials, ISymbol, ISymbols } from '../../../../typescript';
+import { _axiosGetApi } from '../../../core';
 
 // + _getSymbolsByIDs
 /** _getSymbolFromSymbolID */

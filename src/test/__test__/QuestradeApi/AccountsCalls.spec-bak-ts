@@ -12,7 +12,7 @@ it('should ', async () => {
 //   _getPositions,
 //   _getServerTime,
 // } from '../../../api/private/QuestradeApi/AccountsCalls';
-// import { Credentials } from '../../../api/private/typescript';
+// import { Credentials } from ' './typescript'../../../api/private/typescript';
 // import { dateNowISO, setDateRange, void0 } from '../../../utils';
 // // const accountNumber: any[] = ['12345678'];
 // const credentials = jest.fn<Credentials, any[]>((...args: any[]) => {

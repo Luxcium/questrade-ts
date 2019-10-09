@@ -7,7 +7,6 @@ import {
   ITime,
 } from '../../../typescript';
 import { _oAuthCredentials } from '../_oAuthCredentials';
-import { Credentials } from './typescript';
 
 const _getServerTime = (_axios: AxiosStatic = axios) => (
   credentials: Credentials

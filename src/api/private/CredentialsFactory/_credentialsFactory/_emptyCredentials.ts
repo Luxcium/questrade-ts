@@ -1,5 +1,5 @@
 import { _defaultCredentials } from '.';
-import { Credentials } from './typescript';
+import { Credentials } from '../../../typescript';
 
 export const _emptyCredentials = () => {
   const credentials: Credentials = _defaultCredentials;

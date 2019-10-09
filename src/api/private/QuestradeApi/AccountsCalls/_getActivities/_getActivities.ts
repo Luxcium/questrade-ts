@@ -1,8 +1,11 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { _axiosAccountGetApi } from '../../..';
+import {
+  Credentials,
+  IAccountActivity,
+  IActivities,
+} from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
-import { Credentials } from '../../../typescript';
-import { IAccountActivity, IActivities } from './typescript';
+import { _axiosAccountGetApi } from '../../../core';
 
 // + _getActivities
 /** PROVIDE: credentials, startTime string and endTime string THEN GET: a 'Promise<IAccountActivity[]>' */

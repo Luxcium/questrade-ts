@@ -1,5 +1,5 @@
 import { Currency } from 'questrade-api-enumerations';
-import { ISymbolSearchResult } from '../../api/private/QuestradeApi/MarketsCalls/_getSymbolSearch/typescript';
+import { ISymbolSearchResult } from '../../api/typescript';
 
 export const symbolSearchResult: ISymbolSearchResult = {
   symbol: 'AAPL',

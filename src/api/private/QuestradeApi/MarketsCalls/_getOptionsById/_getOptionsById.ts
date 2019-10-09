@@ -1,7 +1,10 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { _axiosGetApi } from '../../..';
-import { IOptionChain, IOptionChains } from '../../../../typescript';
-import { Credentials } from '../../../typescript';
+import {
+  Credentials,
+  IOptionChain,
+  IOptionChains,
+} from '../../../../typescript';
+import { _axiosGetApi } from '../../../core';
 
 // + _getOptionsById
 /** _getOptionsSymbols */

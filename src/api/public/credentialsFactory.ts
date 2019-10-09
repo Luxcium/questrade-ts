@@ -1,5 +1,5 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { _redeemToken } from '../private';
+import { _redeemToken } from '../private/CredentialsFactory';
 
 const redeemToken = _redeemToken(axios as AxiosStatic);
 

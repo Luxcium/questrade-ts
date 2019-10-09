@@ -1,1 +1,0 @@
-export { CoreApiConfig } from './CoreApiConfigD';
