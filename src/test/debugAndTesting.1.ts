@@ -3,7 +3,7 @@ import axios from 'axios';
 import { default as ƒ } from 'ramda';
 import { _redeemToken } from '../api/public';
 import { IExecution } from '../api/typescript';
-import { dateRangeFromNow, void0 } from '../utils';
+import { dateRangeFromNow, void0 } from '../api/utils';
 // import { qtEnumerations as Enumerations } from 'questrade-api-enumerations';
 
 (async () => {

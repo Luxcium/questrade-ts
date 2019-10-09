@@ -1,6 +1,6 @@
-import * as utils from './utils';
+import * as utils from './api/utils';
 export { qtEnumerations as Enumerations } from 'questrade-api-enumerations';
 export { redeemToken } from './api/public';
+export { day } from './api/utils';
 export { testEnumerations } from './test';
-export { day } from './utils';
 export { utils };

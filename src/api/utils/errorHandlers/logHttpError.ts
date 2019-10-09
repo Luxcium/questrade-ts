@@ -1,5 +1,5 @@
 import { default as httpStatus } from 'http-status-codes';
-import { logError } from '.';
+import { logError } from '../errorHandlers';
 export const logHttpError = (apiError: Error) => {
   return logError(
     apiError,

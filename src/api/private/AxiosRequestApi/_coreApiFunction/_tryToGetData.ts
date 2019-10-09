@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { void0 } from '../../../../utils';
+import { void0 } from '../../../utils';
 import { _logErrors } from './';
 export async function _tryToGetData<R>(
   _config: any,
