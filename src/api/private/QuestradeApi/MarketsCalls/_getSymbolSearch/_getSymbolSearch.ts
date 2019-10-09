@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { _getSymbolSearchAll } from '.';
 import { Credentials } from '../../../typescript';
+import { _getSymbolSearchAll } from '../_getSymbolSearch';
 import { ISymbolSearchResult } from './typescript';
 
 // + _getSymbolSearch

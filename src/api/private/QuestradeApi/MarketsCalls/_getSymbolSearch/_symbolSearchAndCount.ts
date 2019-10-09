@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { _getSymbolSearch, _getSymbolSearchCount } from '.';
 import { Credentials } from '../../../typescript';
+import { _getSymbolSearch, _getSymbolSearchCount } from '../_getSymbolSearch';
 import { SymbolSearchAndCount } from './typescript';
 
 export const _symbolSearchAndCount = (_axios: AxiosStatic = axios) => (

@@ -1,7 +1,7 @@
 import axios, { AxiosStatic } from 'axios';
+import { _coreApiConfig, _tryToGetData } from '.';
 import { void0 } from '../../../../utils';
 import { Credentials } from '../../typescript';
-import { _coreApiConfig, _tryToGetData } from './';
 
 export const _coreApiFunction = (_axios: AxiosStatic = axios) => {
   //
