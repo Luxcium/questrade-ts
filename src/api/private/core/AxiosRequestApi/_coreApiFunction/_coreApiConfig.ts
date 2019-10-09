@@ -1,4 +1,4 @@
-import { Credentials } from '../../typescript';
+import { Credentials } from '../../../typescript';
 import { CoreApiConfig } from './typescript';
 export function _coreApiConfig<D>(
   credentials: Credentials,
