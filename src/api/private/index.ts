@@ -8,5 +8,5 @@ export {
   _defaultCredentials,
   _getPrimaryAccountNumber,
   _redeemToken,
-} from './CredentialsFactory';
+} from './core/CredentialsFactory';
 export { _getQuestradeApi } from './QuestradeApi';

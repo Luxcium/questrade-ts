@@ -1,1 +1,1 @@
-export { Credentials } from '../CredentialsFactory/typescript';
+export { Credentials } from '../core/CredentialsFactory/typescript';
