@@ -1,4 +1,4 @@
-import { redeemToken } from '../../../../api';
+import { redeemToken } from '../../../../api/public';
 describe('redeemToken', () => {
   it('should be using Axios', async (done: any) => {
     // (async () => {

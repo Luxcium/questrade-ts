@@ -63,8 +63,7 @@
   "include": [
     "./src/**/*",
     "src/debug.ts",
-    "src/test",
-    "src/core/private/questrade/.ts"
+    "src/test"
   ],
   "exclude": [
     "node_modules",

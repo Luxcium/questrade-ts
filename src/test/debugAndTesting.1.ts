@@ -1,9 +1,9 @@
 import axios from 'axios';
 // tslint:disable-next-line: no-implicit-dependencies
 import { default as ƒ } from 'ramda';
-import { _redeemToken } from './api';
-import { IExecution } from './api/typescript';
-import { dateRangeFromNow, void0 } from './utils';
+import { _redeemToken } from '../api/public';
+import { IExecution } from '../api/typescript';
+import { dateRangeFromNow, void0 } from '../utils';
 // import { qtEnumerations as Enumerations } from 'questrade-api-enumerations';
 
 (async () => {

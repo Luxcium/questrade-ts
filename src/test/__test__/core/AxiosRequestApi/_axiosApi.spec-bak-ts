@@ -1,4 +1,4 @@
-// import { _axiosApi } from '../../../../api/core/AxiosRequestApi/_axiosApi';
+// import { _axiosApi } from '../../../../api/private/AxiosRequestApi/_axiosApi';
 // import { axios, credentials } from '../../__mocks__';
 describe('_axiosApi', () => {
   it('should _axiosApi', async (done: any) => {

@@ -1,4 +1,4 @@
-const results = {
+export const results = {
   activities: {
     tradeDate: '2019-09-30T00:00:00.000000-04:00',
     transactionDate: '2019-10-01T00:00:00.000000-04:00',

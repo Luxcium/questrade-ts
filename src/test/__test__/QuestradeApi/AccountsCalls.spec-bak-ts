@@ -1,7 +1,7 @@
 it('should ', async () => {
   //
 });
-// import { emptyCredentials } from '../../../api/core/CredentialsFactory';
+// import { emptyCredentials } from '../../../api/private/CredentialsFactory';
 // import {
 //   _getAccounts,
 //   _getActivities,
@@ -11,8 +11,8 @@ it('should ', async () => {
 //   _getOrdersByIds,
 //   _getPositions,
 //   _getServerTime,
-// } from '../../../api/core/QuestradeApi/AccountsCalls';
-// import { Credentials } from '../../../api/core/typescript';
+// } from '../../../api/private/QuestradeApi/AccountsCalls';
+// import { Credentials } from '../../../api/private/typescript';
 // import { dateNowISO, setDateRange, void0 } from '../../../utils';
 // // const accountNumber: any[] = ['12345678'];
 // const credentials = jest.fn<Credentials, any[]>((...args: any[]) => {
