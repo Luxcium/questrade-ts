@@ -1,5 +1,5 @@
 import { day, Enumerations, redeemToken } from '..';
-import { void0 } from '../utils';
+import { void0 } from '../api/utils';
 
 // TypeScript/JavaScript
 

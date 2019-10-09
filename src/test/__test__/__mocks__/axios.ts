@@ -1,5 +1,5 @@
 import { AxiosRequestConfig, AxiosResponse, AxiosStatic } from 'axios';
-import { void0 } from '../../../utils';
+import { void0 } from '../../../api/utils';
 const _axios = jest.fn<AxiosResponse, any[]>();
 _axios.mockName('axios');
 _axios.mockImplementation((config?: AxiosRequestConfig) => {

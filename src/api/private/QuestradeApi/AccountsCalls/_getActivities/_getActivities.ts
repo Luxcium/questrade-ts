@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { _axiosAccountGetApi } from '../../..';
-import { endpointFormatDateTool } from '../../../../../utils';
+import { endpointFormatDateTool } from '../../../../utils';
 import { Credentials } from '../../../typescript';
 import { IAccountActivity, IActivities } from './typescript';
 
