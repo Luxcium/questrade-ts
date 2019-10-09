@@ -62,8 +62,7 @@
   },
   "include": [
     "./src/**/*",
-    "src/debug.ts",
-    "src/test"
+    "src/debug.ts"
   ],
   "exclude": [
     "node_modules",
@@ -73,6 +72,7 @@
     "debug.js",
     "manualTestingAndDebug.js"
     ,"__test__"
+    ,"src/test"
   ],
   "plugins": [
     {
