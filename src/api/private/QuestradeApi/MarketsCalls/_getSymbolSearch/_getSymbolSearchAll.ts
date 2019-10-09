@@ -4,7 +4,7 @@ import {
   ISymbolSearchResult,
   ISymbolSearchResults,
 } from '../../../../typescript';
-import { _axiosGetApi } from '../../../core';
+import { _axiosGetApi } from '../../../core/AxiosRequestApiFactory';
 // + _getSymbolSearchAll
 /** _getSymbolSearch */
 export const _getSymbolSearchAll = (_axios: AxiosStatic = axios) => (

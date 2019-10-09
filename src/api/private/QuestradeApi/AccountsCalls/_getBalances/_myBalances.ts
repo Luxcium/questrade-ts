@@ -1,7 +1,7 @@
 import { IBalances } from '../../../../typescript';
 
-export const _myBalances = (myBalance: Promise<IBalances>) => async () => {
-  const balances = await myBalance;
+export const _myBalances = (myBalance: IBalances) => () => {
+  const balances = myBalance;
   const [perCADcurrent, perUSDcurrent] = balances.perCurrencyBalances;
   const [combinedCADcurrent, combinedUSDcurrent] = balances.combinedBalances;
   const [perCADstartOfDay, perUSDstartOfDay] = balances.sodPerCurrencyBalances;

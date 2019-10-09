@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { Credentials, IQuote, IQuotes } from '../../../../typescript';
-import { _axiosGetApi } from '../../../core';
+import { _axiosGetApi } from '../../../core/AxiosRequestApiFactory';
 
 // + _getQuotesByID
 /** _getQuotesFromSymbolID */

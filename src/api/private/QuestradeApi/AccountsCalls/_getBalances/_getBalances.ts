@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { Credentials, IBalances } from '../../../../typescript';
-import { _axiosAccountGetApi } from '../../../core';
+import { _axiosAccountGetApi } from '../../../core/AxiosRequestApiFactory';
 
 // + _getBalances
 /** _getBalances */

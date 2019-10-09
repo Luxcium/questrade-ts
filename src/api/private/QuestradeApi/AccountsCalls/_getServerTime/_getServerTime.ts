@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { Credentials, Time } from '../../../../typescript';
-import { _axiosGetApi } from '../../../core';
+import { _axiosGetApi } from '../../../core/AxiosRequestApiFactory';
 
 // + _getServerTime
 /** _getTime */

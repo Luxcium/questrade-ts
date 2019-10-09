@@ -1,7 +1,7 @@
 import axios from 'axios';
 // tslint:disable-next-line: no-implicit-dependencies
 import { default as ƒ } from 'ramda';
-import { _redeemToken } from '../api/private/CredentialsFactory';
+import { _redeemToken } from '../api/private/core/CredentialsFactory';
 import { IExecution } from '../api/typescript';
 import { dateRangeFromNow, void0 } from '../api/utils';
 // import { qtEnumerations as Enumerations } from 'questrade-api-enumerations';

@@ -4,7 +4,7 @@ import {
   IOptionChain,
   IOptionChains,
 } from '../../../../typescript';
-import { _axiosGetApi } from '../../../core';
+import { _axiosGetApi } from '../../../core/AxiosRequestApiFactory';
 
 // + _getOptionsById
 /** _getOptionsSymbols */
