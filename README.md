@@ -40,9 +40,9 @@ npm install --save-exact questrade-ts@latest
   - **Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything you feel is not exactly as described on this page or [Questrade Page](https://www.questrade.com/api/documentation/getting-started).**
 
 ## No-any
-This project count that 3 lerters word only twice one in this title above the other one as the tslint rule forbiding the keword in the project.
+This project count that forbiden keyword only twice, once in this title above, the other one is part of the tslint rule name forbiding the keword in the project.
 
-
+![Forbiden Keyword](https://raw.githubusercontent.com/Luxcium/questrade-ts/master/images/forbidenkeyword.png)
 
 ## Examples
 
