@@ -39,12 +39,8 @@ npm install --save-exact questrade-ts@latest
   - **To obtain or provide feedback (as bug reports or enhancements):** [visit our GitHub Issue page](https://github.com/Luxcium/questrade-ts/issues)
   - **Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything you feel is not exactly as described on this page or [Questrade Page](https://www.questrade.com/api/documentation/getting-started).**
 
-## No-any
- 
-This project count that forbiden keyword only twice, once in this title above, the other one is part of the tslint rule name forbiding the keword in the project.
 
-![Forbiden Keyword](https://raw.githubusercontent.com/Luxcium/questrade-ts/master/images/forbiden-keyword.png)
- 
+
 
 ## Examples
 
@@ -64,243 +60,86 @@ const log = console.log
 
 const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
 
-const serverTime = await qt.getServerTime()
+// Validate the server time as your hello world for this package
+const serverTime = qt.serverTime
 log(serverTime)
 
+// inside an async function use await qt.get.<... some methode>
+
+
 log(credentials)
+
+// you can use a try/catch block to manage error instead:
 })().catch(error=>console.error(error.message));
-// inside and async function then use await qt.<some properties, methodes or functions>
 ```
-
-### ACCOUNTS CALLS
-
-**Retrieve account activities, including cash transactions, dividends, trades, etc.** <br />
- [accounts/:id/activities](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-activities) -> `qt.get.accounts.activities`
 
 ```TypeScript
-      // GET ACCOUNTS/:ID/ACTIVITIES
-      log(await qt.get.accounts.activities(startTime)(endTime));
-```
-**Retrieves orders for specified account** <br />
-[accounts/:id/orders](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-orders) -> `qt.get.accounts.orders`
-```TypeScript
+interface IQuestradeApi {
+  currentAccount: string;
+  myBalances: IMyBalances;
+  serverTime: Date;
+  get: {
+    account: {
+      allAccounts(): Promise<IAccount[]>;
 
-      // GET ACCOUNTS/:ID/ORDERS
-      log(await qt.get.accounts.orders(startTime)(endTime)('All'));
-```
-**Retrieves executions for a specific account.** <br />
- [accounts/:id/executions](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-executions) -> `qt.get.accounts.executions`
-```TypeScript
-      // GET ACCOUNTS/:ID/EXECUTIONS
-      log(await qt.get.accounts.executions(startTime)(endTime));
-```
-**Retrieves per-currency and combined balances for a specified account.** <br />
- [accounts/:id/balances](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-balances) -> `qt.get.accounts.balances`
-```TypeScript
-      // GET ACCOUNTS/:ID/BALANCES
-      log(await qt.get.accounts.balances());
-```
-**Retrieves positions in a specified account.** <br />
- [accounts/:id/positions](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts-id-positions) -> `qt.get.accounts.positions`
-```TypeScript
-      // GET ACCOUNTS/:ID/POSITIONS
-      log(await qt.get.accounts.positions());
-```
-**Retrieves the accounts associated with the user on behalf of which the API client is authorized.** <br />
- [accounts](https://www.questrade.com/api/documentation/rest-operations/account-calls/accounts) -> `qt.get.accounts.allAccounts`
-```TypeScript
-      // GET ACCOUNTS
-      log(await qt.get.accounts.allAccounts());
-```
-**Retrieves current server time.** <br />
- [time](https://www.questrade.com/api/documentation/rest-operations/account-calls/time) -> `qt.get.accounts.time`
-```TypeScript
-      // GET TIME
-      log(await qt.get.accounts.time());
-```
+      balances(): Promise<IBalances>;
 
-### MARKET CALLS
+      executions(startTime: string): (endDate: string) => Promise<IExecution[]>;
 
-#### CANDLES
-**Retrieves historical market data in the form of OHLC candlesticks for a specified symbol.** <br />
-[markets/candles/:id](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-candles-id) -> `qt.get.markets.candlesById`
+      orders(
+        stateFilter?: string | undefined
+      ): (startDate: string) => (endDate: string) => Promise<IOrder[]>;
 
+      allOrders(startTime: string): (endDate: string) => Promise<IOrder[]>;
 
-```TypeScript
-      // GET MARKETS/CANDLES/:ID
-      log(
-        await qt.get.markets.candlesById(startTime)(endTime)('OneDay')(
-          stockNumericID
-        )
-      );
-```
+      ordersByIds(orderId: number[]): Promise<IOrder[]>;
 
-#### QUOTES
-**Retrieve a calculated L1 market data quote for a single or many multi-leg strategies.** <br />
-[markets/quotes/strategies](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-strategies) -> `NO IMPLEMENTATION AT HIS TIME`
-```TypeScript
-      // GET MARKETS/QUOTES/STRATEGIES
-      log('NO IMPLEMENTATION AT HIS TIME');
-```
-**Retrieves a single Level 1 market data quote and Greek data for one or more option symbols.** <br />
-**Input array of OptionId Filter structures** <br />
-[markets/quotes/options](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-options) (filter) -> `qt.get.markets.quotes.options`
+      positions(): Promise<IPosition[]>;
 
-```TypeScript
-      // GET MARKETS/QUOTES/OPTIONS (filter)
-      log(
-        await qt.get.markets.quotes.options({
-          underlyingId: stockNumericID,
-          expiryDate: optionExpiryDate,
-        })
-      );
-```
+      activities(
+        startTime: string
+      ): (endTime: string) => Promise<IAccountActivity[]>;
+    };
+    market: {
+      allMarkets(): Promise<IMarket[]>;
+      candlesByStockId(
+        startDate: string
+      ): (
+        endDate: string
+      ) => (
+        interval?: string | undefined
+      ) => (symbolID: number) => Promise<ICandle[]>;
+    };
+    quotes: {
+      optionsQuotes: {
+        fromFilter(filters: OptionsFilters): Promise<IOptionsQuotes>;
+        byOptionsIds(optionIds: number[]): Promise<IOptionsQuotes>;
+      };
+      byStrategies(
+        strategyVariantRequestData: StrategyVariantRequest
+      ): Promise<IStrategiesQuotes>;
 
-**Filters structure:** <br />
-```TypeScript
-    /*
-      underlyingId: number; [REQUIRED]
-      expiryDate: string; [REQUIRED]
-      optionType?: string | null; [OPTIONAL]
-      minstrikePrice?: number | null; [OPTIONAL]
-      maxstrikePrice?: number | null; [OPTIONAL]
-    */
-```
-**Input array of option IDs.** <br />
-[markets/quotes/options](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-options) (byids optionsids array) -> `qt.get.markets.quotes.options.byIds`
-```TypeScript
-      // GET MARKETS/QUOTES/OPTIONS (byIds optionsIds array)
-      log(await qt.get.markets.quotes.options.byIds([optionNumericID]));
-```
-**Retrieves a single Level 1 market data quote for one or more symbols. (Please check "delay" parameter in response always)** <br />
-[markets/quotes/:id](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets-quotes-id) -> `qt.get.markets.quotes.byIds`
-```TypeScript
-      // GET MARKETS/QUOTES/:ID
-      log(await qt.get.markets.quotes.byIds([stockNumericID]));
-```
-
-#### LIST ALL MARKEST
-**Retrieves information about supported markets.** <br />
-[markets](https://www.questrade.com/api/documentation/rest-operations/market-calls/markets) -> `qt.get.markets.allMarkets`
-
-```TypeScript
-      // GET MARKETS
-      log(await qt.get.markets.allMarkets());
-```
-
-#### SYMBOLS
-**Retrieves an option chain for a particular underlying symbol.** <br />
-[SYMBOLS/:ID/OPTIONS (by single stockId)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-id-options) -> `qt.get.symbols.optionsById`
-```TypeScript
-      // GET SYMBOLS/:ID/OPTIONS (by single stockId)
-      log(await qt.get.symbols.optionsById(stockNumericID));
-```
-**Retrieves symbol(s) using several search criteria. (Prefix of a symbol or whichever word in the description.)** <br />
-[symbols/search (return fisrt result or offseted result)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search) -> `qt.get.symbols.search`
-
-```TypeScript
-      // GET SYMBOLS/SEARCH (return fisrt result or offseted result)
-      log(await qt.get.symbols.search(stockStringID));
-```
-
-[symbols/search (count of results or offseted results)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search) -> `(await qt.get.symbols.search(stockStringID)).count`
-
-```TypeScript
-      // GET SYMBOLS/SEARCH (count of results or offseted results)
-      log((await qt.get.symbols.search(stockStringID)).count);
-```
-
-[symbols/search (count the number of results)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search)  -> `qt.get.symbols.search.count`
-
-```TypeScript
-      // GET SYMBOLS/SEARCH (count the number of results)
-      log(await qt.get.symbols.search.count(stockStringID));
-      /* OR */
-      log(await qt.get.symbols.searchCount(stockStringID));
-```
-
-[symbols/search (return all results can provide an offset as second argument)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search) -> `qt.get.symbols.searchAll`
-
-```TypeScript
-      // GET SYMBOLS/SEARCH (return all results can provide an offset as second argument)
-      log(await qt.get.symbols.searchAll(stockStringID));
-```
-**Retrieves detailed information about one or more symbol.** <br />
-[symbols/:id (stockids array)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-id) -> `qt.get.symbols.byIds`
-
-```TypeScript
-      // GET SYMBOLS/:ID (stockIds array)
-      log(await qt.get.symbols.byIds([stockNumericID]));
-```
-
-**you can import `testExamples` to test the examples above** <br />
-
-```typescript
-import { testExamples } from 'questrade-ts';
-testExamples(
-  refreshToken,
-  exampleStartTime,
-  exampleEndTime,
-  exampleOptionExpiryDate,
-  exampleOptionNumericID,
-  exampleStockNumericID,
-  exampleStockStringID
-);
-```
-
-### Examples on this page assume theses values
-
-```typescript
-import { day } from 'questrade-ts';
-// for easier reading of the examples
-const toISOStringDate = (dateTime: number | string) =>
-  new Date(dateTime).toISOString();
-// for easier reading of the examples
-
-// convert days to miliseconds for calculations in date
-const tenDays = day(10);
-
-// to have a start and end dateTime to use in examples
-const timeNow = Date.now();
-const start = timeNow - tenDays;
-const end = timeNow;
-const exampleStartTime = toISOStringDate(start);
-const exampleEndTime = toISOStringDate(end);
-
-const exampleOptionExpiryDate: string = '2019-10-04T05:37:30.053Z';
-const exampleOptionNumericID: number = 27003348;
-const exampleStockNumericID: number = 8049; // 'aapl'
-const exampleStockStringID: string = 'aapl'; // 8049
-
-// you do not have to put the token in plain text you should import it from elsewhere
-const refreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
-```
-
-### IMPORTANT: to reproduce the examples
-all example are run inside an async IIFE within a try/catch block in the section marked
-`/* !!! HERE !!! */`
-
-```typescript
-// using async Immediately Invoked Function Expressions to avoid using then().catch()
-;(async () => {
-    // Using console.log (log) to output the
-    const log = console.log;
-    // always put your code in a try catch block
-    try {
-      // Create a questrade-ts Api (qtApi) Object redeeming your Refresh Token
-      const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
-
-      // !!! list of all the differents api calls managed by this package
-
-          /* !!! HERE !!! */
-
-      // return private credentials
-      log(credentials);
-    } catch (error) {
-      // manage your errors here if needed
-      console.error(error.message);
-    }
-  })();
+      byStockIds(ids: number[]): Promise<IQuote[]>;
+    };
+    search: {
+      stock(
+        prefix: string,
+        offset?: number | undefined
+      ): Promise<ISymbolSearchResult>;
+      allStocks(
+        prefix: string,
+        offset?: number | undefined
+      ): Promise<ISymbolSearchResult[]>;
+      countResults(prefix: string): Promise<number>;
+    };
+    symbols: {
+      optionChains: {
+        byStockId(stockId: number): Promise<IOptionChain[]>;
+      };
+      byStockIds(stockIds: number[]): Promise<ISymbol[]>;
+    };
+  };
+}
 ```
 
 ### Enumerations
@@ -352,6 +191,7 @@ all example are run inside an async IIFE within a try/catch block in the section
 ```
 
 
+
 ## Features
 
   - Token management
@@ -361,7 +201,6 @@ all example are run inside an async IIFE within a try/catch block in the section
 ### Security and Token management
 
 Questrade's security token system requires that you save the latest refresh token that it vends you. After you create one in the user apps page, our library needs to save a key somewhere onto disk. By default, this wrapper create a folder for these keys in `./keys` at your working directory,but you can change the directory location or load from a text file (with the key as its contents).
-
 
 ### Switching Accounts
 
@@ -374,13 +213,6 @@ qt.account = '12345678';
 // user on behalf of which the API client is authorized
 ```
 
-### Always use semicolons when using this package or using this code in other projects
->Why? ([airbnb/javascript](https://github.com/airbnb/javascript#semicolons)):
->When JavaScript encounters a line break without a semicolon, it uses a set of rules called [Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion) to determine whether or not it should regard that line break as the end of a statement, and (as the name implies) place a semicolon into your code before the line break if it thinks so. ASI contains a few eccentric behaviors, though, and your code will break if JavaScript misinterprets your line break. These rules will become more complicated as new features become a part of JavaScript. Explicitly terminating your statements and configuring your linter to catch missing semicolons will help prevent you from encountering issues.
-
-### Questrade does not maintain this unofficial SDK
-
-Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation/) to get help. Please always open a [questrade-ts GitHub issue](https://github.com/luxcium/questrade-ts/issues) for anything you feel doesn't match the way it should be working when referring to Questrade docs.
 
 ### Currently, this API does not have full coverage of his test suites installed
 #### No test suite is curently fully implemented but all the examples on this page have been tested manually and did not generated whichever errors at all.
@@ -389,6 +221,26 @@ Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation
 
 #### Manual testing coverage
 ![Manual testing coverage](https://raw.githubusercontent.com/Luxcium/questrade-ts/next/version/images/manual-testing.png)
+
+
+
+## No-any
+
+This project count that forbiden keyword only twice, once in this title above, the other one is part of the tslint rule name forbiding the keword in the project.
+
+![Forbiden Keyword](https://raw.githubusercontent.com/Luxcium/questrade-ts/master/images/forbiden-keyword.png)
+
+## Always use semicolons when using this package or using this code in other projects
+>Why? ([airbnb/javascript](https://github.com/airbnb/javascript#semicolons)):
+>When JavaScript encounters a line break without a semicolon, it uses a set of rules called [Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion) to determine whether or not it should regard that line break as the end of a statement, and (as the name implies) place a semicolon into your code before the line break if it thinks so. ASI contains a few eccentric behaviors, though, and your code will break if JavaScript misinterprets your line break. These rules will become more complicated as new features become a part of JavaScript. Explicitly terminating your statements and configuring your linter to catch missing semicolons will help prevent you from encountering issues.
+
+
+
+
+## Questrade does not maintain this unofficial SDK
+
+Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation/) to get help. Please always open a [questrade-ts GitHub issue](https://github.com/luxcium/questrade-ts/issues) for anything you feel doesn't match the way it should be working when referring to Questrade docs.
+
 
 ## MIT LICENSE
 
@@ -402,6 +254,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ALL KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ALL CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-### Originaly based on the work of
+## Originaly based on the work of
 
 [Leander Lee](https://github.com/leanderlee/questrade)
