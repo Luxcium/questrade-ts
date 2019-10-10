@@ -5,6 +5,7 @@ import {
   OptionType,
   SecurityType,
 } from 'questrade-api-enumerations';
+import { MinTick } from '.';
 import { DateTime } from './Types';
 
 // - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
@@ -60,11 +61,6 @@ export interface ISymbol {
   industrySubGroup?: string;
   industrySubgroup: string;
   count?: number;
-}
-
-export interface MinTick {
-  pivot: number;
-  minTick: number;
 }
 
 export interface OptionContractDeliverables {

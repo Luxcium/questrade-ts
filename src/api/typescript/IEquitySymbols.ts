@@ -35,14 +35,19 @@ export interface IEquitySymbol {
   optionType: OptionType;
   optionDurationType: OptionDurationType;
   optionRoot: string;
-  optionContractDeliverables: any;
+  optionContractDeliverables: string;
   optionExerciseType: OptionExerciseType;
   optionExpiryDate: string;
   dividendDate: string;
-  optionStrikePrice: any;
+  optionStrikePrice: number;
   hasOptions: boolean;
-  minTicks: any;
+  minTicks: MinTick[];
   industrySector: string;
   industryGroup: string;
   industrySubgroup: string;
+}
+
+export interface MinTick {
+  pivot: number;
+  minTick: number;
 }

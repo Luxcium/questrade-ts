@@ -60,9 +60,7 @@ import { dateRangeFromNow, void0 } from '../api/utils';
   });
 
   return credentials;
-})()
-  // .then((cred: any) => console.log(cred))
-  .catch(error => console.log('error message:', error.message));
+})().catch(error => console.log('error message:', error.message));
 
 /*
   setAccount,
