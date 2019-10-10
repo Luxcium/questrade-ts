@@ -42,7 +42,7 @@ npm install --save-exact questrade-ts@latest
 ## No-any
 This project count that forbiden keyword only twice, once in this title above, the other one is part of the tslint rule name forbiding the keword in the project.
 
-![Forbiden Keyword](https://raw.githubusercontent.com/Luxcium/questrade-ts/master/images/forbidenkeyword.png)
+![Forbiden Keyword](https://raw.githubusercontent.com/Luxcium/questrade-ts/master/images/forbiden-keyword.png)
 
 ## Examples
 
