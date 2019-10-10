@@ -84,6 +84,8 @@ export const x = (async () => {
     return symId(await stock(sid));
   };
 
+  qtApi.get.account.activities('');
+
   console.log(await getId('aapl'));
 
   // console.log(symId(AAPL));
