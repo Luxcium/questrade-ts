@@ -1,4 +1,11 @@
-import { Currency, ListingExchange, OptionDurationType, OptionExerciseType, OptionType, SecurityType } from 'questrade-api-enumerations';
+import {
+  Currency,
+  ListingExchange,
+  OptionDurationType,
+  OptionExerciseType,
+  OptionType,
+  SecurityType,
+} from 'questrade-api-enumerations';
 
 export interface IEquitySymbols {
   symbols: IEquitySymbol[];
