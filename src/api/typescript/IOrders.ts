@@ -6,15 +6,14 @@ import {
   OrderType,
   StrategyTypes,
 } from 'questrade-api-enumerations';
-import { DateTime, idType } from '.';
 
 export interface IOrders {
   orders: IOrder[];
 }
 export interface IOrder {
-  id?: idType;
+  id?: string | number;
   symbol?: string;
-  stockId?: idType;
+  stockId?: string | number;
   totalQuantity?: number;
   openQuantity?: number;
   filledQuantity?: number;
@@ -31,29 +30,29 @@ export interface IOrder {
   lastExecPrice?: number | null;
   source?: string;
   timeInForce?: OrderTimeInForce;
-  gtdDate?: DateTime | null;
+  gtdDate?: Date | string | null;
   state?: OrderState;
   clientReasonStr?: string;
-  chainId?: idType;
-  creationTime?: DateTime;
-  updateTime?: DateTime;
+  chainId?: string | number;
+  creationTime?: Date | string;
+  updateTime?: Date | string;
   notes?: string;
   primaryRoute?: string;
   secondaryRoute?: string;
   orderRoute?: string;
   venueHoldingOrder?: string;
   commissionCharged?: number;
-  exchangeOrderId?: idType | string;
+  exchangeOrderId?: string | number | string;
   isSignificantShareHolder?: boolean;
   isInsider?: boolean;
   isLimitOffsetInDollar?: boolean;
-  userId?: idType;
+  userId?: string | number;
   placementCommission?: number | null;
   legs?: [];
   OrderLeg?: string;
   strategyType?: StrategyTypes | 'SingleLeg';
   triggerStopPrice?: number | null;
-  orderGroupId?: idType;
+  orderGroupId?: string | number;
   orderClass?: OrderClass | null;
   rejectionReason?: string;
   comissionCharged?: number;

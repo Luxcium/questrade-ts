@@ -19,7 +19,6 @@ export interface FiltersArray {
   filters: OptionsFilters[];
 }
 
-// tslint:disable-next-line: class-name
 export interface OptionsFilters {
   underlyingId?: number;
   expiryDate?: string;

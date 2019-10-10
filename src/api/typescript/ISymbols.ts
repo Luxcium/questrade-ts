@@ -6,11 +6,6 @@ import {
   SecurityType,
 } from 'questrade-api-enumerations';
 import { MinTick } from '.';
-import { DateTime } from './Types';
-
-// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
-// - Licensed under the MIT License.
-// - See License.txt in the project root for license information.
 
 export interface ISymbols {
   symbols: ISymbol[];
@@ -29,7 +24,7 @@ export interface ISymbol {
   pe?: number;
   dividend?: number;
   yield?: number;
-  exDate?: DateTime;
+  exDate?: Date | string;
   marketCap?: number;
   optionType?: OptionType | null;
   optionDurationType?: OptionDurationType | null;
@@ -45,7 +40,7 @@ export interface ISymbol {
   listingExchange?: string | [];
   description?: string;
   securityType?: SecurityType;
-  dividendDate?: DateTime;
+  dividendDate?: Date | string;
   optionExpiryDate: string | null;
   optionStrikePrice?: number | null;
   isTradable?: boolean;
