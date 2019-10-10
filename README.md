@@ -65,7 +65,7 @@ const serverTime = qt.serverTime
 log(serverTime)
 
 // inside an async function use await qt.get.<... some methode>
-
+const balances = await qt.get.account.balances()
 
 log(credentials)
 
