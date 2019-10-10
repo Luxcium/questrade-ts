@@ -40,3 +40,7 @@ export interface IDateObject {
   quarter: number;
   locale: string;
 }
+
+export interface Time {
+  time: string;
+}

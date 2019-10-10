@@ -1,5 +1,5 @@
 import { IBalances } from '../../../../typescript';
-import { IMyBalances } from '../../../../typescript/IQuestradeApi';
+import { IMyBalances } from '../../../../typescript/QuestradeApi';
 
 export const _myBalances = (balances: IBalances): IMyBalances => {
   const myBalances = balances;
