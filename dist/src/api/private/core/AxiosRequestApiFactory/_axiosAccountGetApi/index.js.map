@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../../../src/api/private/core/AxiosRequestApiFactory/_axiosAccountGetApi/index.ts"],"names":[],"mappings":";;AAAA,6DAA4D;AAAnD,oDAAA,mBAAmB,CAAA","sourcesContent":["export { _axiosAccountGetApi } from './_axiosAccountGetApi';\n"]}
