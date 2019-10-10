@@ -1,4 +1,4 @@
-import { IOptionsQuotes } from '..';
+import { IOptionsQuotes } from '.';
 
 export interface IQuotesOptionsByIds {
   byIds?: (optionIds: number[]) => Promise<IOptionsQuotes>;

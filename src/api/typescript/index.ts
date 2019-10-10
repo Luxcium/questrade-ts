@@ -20,16 +20,6 @@ export {
   StrategyTypes,
   TickType,
 } from 'questrade-api-enumerations';
-export {
-  ISymbolSearchCount,
-  SymbolSearch,
-  SymbolSearchAndCount,
-  SymbolSearchOrCount,
-} from './GetSymbolSearch/ISymbolSearchCount';
-export {
-  ISymbolSearchResult,
-  ISymbolSearchResults,
-} from './GetSymbolSearch/ISymbolSearchResult';
 export { AcountNumberString, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
 export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';
@@ -66,11 +56,6 @@ export {
   QuestradeAPIOptions,
 } from './IQuestradeAPIOptions';
 export { IQuote, IQuotes } from './IQuotes';
-export { IStockSymbol } from './IStockSymbol';
-export { IStrategiesQuotes } from './IStrategiesQuotes';
-export { ISymbol, ISymbols } from './ISymbols';
-export { ITime, Time } from './ITime';
-export { void0, void_0 } from './Ivoid_0';
 export {
   FiltersArray,
   IQuotesOptionsByIds,
@@ -79,7 +64,9 @@ export {
   OptionsPostData,
   QuotesOptions,
   QuotesOptionsbyFilterAndIds,
-} from './MarketsQuotesOptions/IQuotesOptionsByIds';
+} from './IQuotesOptionsByIds';
+export { IStockSymbol } from './IStockSymbol';
+export { IStrategiesQuotes } from './IStrategiesQuotes';
 export {
   Leg,
   Legs,
@@ -88,4 +75,17 @@ export {
   StrategyVariantRequest,
   VariantId,
   Variants,
-} from './MarketsQuotesStrategies/strategiesVariants';
+} from './IStrategiesVariants';
+export { ISymbol, ISymbols } from './ISymbols';
+export {
+  ISymbolSearchCount,
+  SymbolSearch,
+  SymbolSearchAndCount,
+  SymbolSearchOrCount,
+} from './ISymbolSearchCount';
+export {
+  ISymbolSearchResult,
+  ISymbolSearchResults,
+} from './ISymbolSearchResult';
+export { ITime, Time } from './ITime';
+export { void0, void_0 } from './IVoid_0';

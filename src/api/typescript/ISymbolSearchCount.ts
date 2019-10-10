@@ -1,4 +1,4 @@
-import { ISymbolSearchResult } from '..';
+import { ISymbolSearchResult } from '.';
 
 export interface ISymbolSearchCount {
   count?: (prefix: string) => Promise<number>;
