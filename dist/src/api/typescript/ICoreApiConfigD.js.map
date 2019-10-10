@@ -1,0 +1,1 @@
+{"version":3,"file":"ICoreApiConfigD.js","sourceRoot":"","sources":["../../../../src/api/typescript/ICoreApiConfigD.ts"],"names":[],"mappings":"","sourcesContent":["export interface CoreApiConfig<D> {\n  url: string;\n  method: 'get' | 'post';\n  headers: {\n    Authorization: string;\n    location: string;\n  };\n  data: D | null;\n}\n"]}
