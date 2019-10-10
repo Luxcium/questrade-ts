@@ -12,6 +12,6 @@ export function _coreApiConfig<D>(
   const location: string = credentials.accountNumber;
   const data: D | null = postData;
   const headers = { Authorization, location };
-  const config = { url, method, headers, data };
+  const config: CoreApiConfig<D> = { url, method, headers, data };
   return config;
 }

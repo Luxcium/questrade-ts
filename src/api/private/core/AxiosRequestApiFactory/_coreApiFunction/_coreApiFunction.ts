@@ -17,7 +17,7 @@ export const _coreApiFunction = (_axios: AxiosStatic = axios) => {
           //
           return async (): Promise<R> => {
             //
-            return _tryToGetData<R>(
+            return _tryToGetData<R, D>(
               //
               _coreApiConfig<D>(credentials, VERB, endpoint, postData)
             );

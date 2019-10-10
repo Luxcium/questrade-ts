@@ -1,8 +1,9 @@
 import axios, { AxiosResponse, AxiosStatic } from 'axios';
+import { CoreApiConfig } from '../../../../typescript';
 import { void0 } from '../../../../utils';
 import { _logErrors } from './_logErrors';
-export async function _tryToGetData<T, R>(
-  _config: T,
+export async function _tryToGetData<R, D>(
+  _config: CoreApiConfig<D>,
   _axios: AxiosStatic = axios,
   _logError: (apiError: Error, message?: string) => Error = _logErrors
 ): Promise<R> {

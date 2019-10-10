@@ -39,6 +39,8 @@ npm install --save-exact questrade-ts@latest
   - **To obtain or provide feedback (as bug reports or enhancements):** [visit our GitHub Issue page](https://github.com/Luxcium/questrade-ts/issues)
   - **Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything you feel is not exactly as described on this page or [Questrade Page](https://www.questrade.com/api/documentation/getting-started).**
 
+## No-any
+This project count that 3 lerters word only twice one in this title above the other one as the tslint rule forbiding the keword in the project
 ## Examples
 
 You will need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx).

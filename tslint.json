@@ -15,6 +15,7 @@
   "defaultSeverity": "warning",
   "rulesDirectory": [],
   "rules": {
+    "no-any": true,
     "typedef": [
       false
     ],
