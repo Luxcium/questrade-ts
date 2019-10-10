@@ -1,1 +1,0 @@
-{"version":3,"file":"ICreds.js","sourceRoot":"","sources":["../../../../src/api/typescript/ICreds.ts"],"names":[],"mappings":"","sourcesContent":["export interface ICreds {\r\n  access_token: string;\r\n  token_type: string;\r\n  expires_in: number;\r\n  refresh_token: string;\r\n  api_server: string;\r\n}\r\n"]}
