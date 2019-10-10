@@ -7,9 +7,9 @@ import { _axiosGetApi } from '../../../core/AxiosRequestApiFactory';
 /** _getCandles */
 export const _getCandles = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
-) => (startDate: string) => (endDate: string) => (
-  interval: string = 'OneDay'
-) => async (symbolID: number): Promise<ICandle[]> =>
+) => (symbolID: number) => (interval: string = 'OneDay') => (
+  startDate: string
+) => async (endDate: string): Promise<ICandle[]> =>
   (await _axiosGetApi(_axios)(credentials)<ICandles>(
     `/markets/candles/${symbolID}?startTime=${startDate}&endTime=${endDate}&interval=${interval}`
   )()).candles.map(result => {

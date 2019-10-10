@@ -131,20 +131,18 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
     serverTime: await serverTime(),
     get: {
       account: {
-        activities(startTime: string) {
-          return activities(startTime);
+        activities() {
+          return activities();
         },
         orders(stateFilter?: string) {
           return orders(stateFilter);
         },
-        allOrders(startTime: string) {
-          return orders('All')(startTime);
-        },
+
         async ordersByIds(orderId: number[]) {
           return ordersByIds(orderId);
         },
-        executions(startTime: string) {
-          return executions(startTime);
+        executions() {
+          return executions();
         },
         async balances() {
           return balances();
@@ -160,8 +158,8 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
         async allMarkets() {
           return markets();
         },
-        candlesByStockId(startDate: string) {
-          return candles(startDate);
+        candlesByStockId(symbolID: number) {
+          return candles(symbolID);
         },
       },
       quotes: {

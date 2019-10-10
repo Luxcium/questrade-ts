@@ -7,7 +7,9 @@ import { _axiosAccountGetApi } from '../../../core/AxiosRequestApiFactory';
 /** _getExecutions */
 export const _getExecutions = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
-) => (startDate: string) => async (endDate: string): Promise<IExecution[]> => {
+) => () => (startDate: string) => async (
+  endDate: string
+): Promise<IExecution[]> => {
   //
   return (await _axiosAccountGetApi(_axios)(credentials)<IExecutions>(
     `/executions?${endpointFormatDateTool(startDate, endDate)}`

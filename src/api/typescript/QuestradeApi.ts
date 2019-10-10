@@ -80,6 +80,9 @@ export interface IMyBalances {
     };
   };
 }
+// DateRange<R>
+export type DateRange<R> = (startTime: string) => (endTime: string) => R;
+
 export interface IQuestradeApi {
   currentAccount: string;
   myBalances: IMyBalances;
@@ -90,31 +93,21 @@ export interface IQuestradeApi {
 
       balances(): Promise<IBalances>;
 
-      executions(startTime: string): (endDate: string) => Promise<IExecution[]>;
+      executions(): DateRange<Promise<IExecution[]>>;
 
-      orders(
-        stateFilter?: string | undefined
-      ): (startDate: string) => (endDate: string) => Promise<IOrder[]>;
+      activities(): DateRange<Promise<IAccountActivity[]>>;
 
-      allOrders(startTime: string): (endDate: string) => Promise<IOrder[]>;
+      orders(stateFilter?: string | undefined): DateRange<Promise<IOrder[]>>;
 
       ordersByIds(orderId: number[]): Promise<IOrder[]>;
 
       positions(): Promise<IPosition[]>;
-
-      activities(
-        startTime: string
-      ): (endTime: string) => Promise<IAccountActivity[]>;
     };
     market: {
       allMarkets(): Promise<IMarket[]>;
       candlesByStockId(
-        startDate: string
-      ): (
-        endDate: string
-      ) => (
-        interval?: string | undefined
-      ) => (symbolID: number) => Promise<ICandle[]>;
+        symbolID: number
+      ): (interval?: string | undefined) => DateRange<Promise<ICandle[]>>;
     };
     quotes: {
       optionsQuotes: {

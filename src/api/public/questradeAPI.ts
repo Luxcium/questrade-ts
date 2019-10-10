@@ -12,7 +12,7 @@ export const questradeApi = async (credentials: Credentials) => {
 
   const accountActivities = qtApi.get.account.activities;
   const accountAllAccounts = qtApi.get.account.allAccounts;
-  const accountAllOrders = qtApi.get.account.allOrders;
+  // const accountAllOrders = qtApi.get.account.allOrders;
   const accountBalances = qtApi.get.account.balances;
   const accountExecutions = qtApi.get.account.executions;
   const accountOrders = qtApi.get.account.orders;
@@ -42,7 +42,6 @@ export const questradeApi = async (credentials: Credentials) => {
       account: {
         activities: accountActivities,
         allAccounts: accountAllAccounts,
-        allOrders: accountAllOrders,
         balances: accountBalances,
         executions: accountExecutions,
         orders: accountOrders,
