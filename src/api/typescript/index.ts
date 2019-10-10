@@ -91,5 +91,5 @@ export {
   SymbolSearchAndCount,
   SymbolSearchOrCount,
 } from './ISymbolSearchResult';
-export { void0, void_0 } from './IVvoid_0';
+export { void0, void_0 } from './IVoid_0';
 export { IQuestradeApi } from './QuestradeApi';
