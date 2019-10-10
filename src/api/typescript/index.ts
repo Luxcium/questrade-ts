@@ -20,28 +20,32 @@ export {
   StrategyTypes,
   TickType,
 } from 'questrade-api-enumerations';
-export { CoreApiConfig } from './CoreApiConfigD';
-export { Credentials } from './Credentials';
-export {
-  ISymbolSearchCount,
-  SymbolSearch,
-  SymbolSearchAndCount,
-  SymbolSearchOrCount,
-} from './GetSymbolSearch/ISymbolSearchCount';
-export {
-  ISymbolSearchResult,
-  ISymbolSearchResults,
-} from './GetSymbolSearch/ISymbolSearchResult';
 export { AcountNumberString, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
 export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';
 export { ICandle, ICandles } from './ICandles';
+export { CoreApiConfig } from './ICoreApiConfigD';
+export { Credentials } from './ICredentials';
 export { ICreds } from './ICreds';
-export { IDateObject } from './IDateObject';
-export { IEquitySymbol, IEquitySymbols, MinTick } from './IEquitySymbols';
+export { IDateObject, Time } from './IDateObject';
+export {
+  IEquitySymbol,
+  IEquitySymbols,
+  ISymbol,
+  ISymbols,
+  MinTick,
+} from './IEquitySymbols';
 export { IExecution, IExecutions } from './IExecutions';
 export { IHeaders } from './IHeaders';
 export { IMarket, IMarkets } from './IMarkets';
+export { Methode } from './IMethode';
+export {
+  IFilter,
+  Optionals,
+  OrdersOptions,
+  TimeRange,
+  TimeRangeInterval,
+} from './IOptionals';
 export {
   IChainPerRoot,
   IChainPerStrike,
@@ -49,27 +53,27 @@ export {
   IOptionChain,
   IOptionChains,
 } from './IOptionsChains';
-export { IOptionsQuote, IOptionsQuotes } from './IOptionsQuotes';
+export {} from './IOptionsQuotes';
 export { IOrder, IOrders } from './IOrders';
 export { IPosition, IPositions } from './IPositions';
-export { IQuestradeApi } from './IQuestradeApi';
 export {
   IQuestradeAPIOptions,
   QuestradeAPIOptions,
 } from './IQuestradeAPIOptions';
 export { IQuote, IQuotes } from './IQuotes';
-export { IStockSymbol } from './IStockSymbol';
-export { IStrategiesQuotes } from './IStrategiesQuotes';
-export { ISymbol, ISymbols } from './ISymbols';
 export {
   FiltersArray,
+  IOptionsQuote,
+  IOptionsQuotes,
   IQuotesOptionsByIds,
   OptionsFilters,
   OptionsIdArray,
   OptionsPostData,
   QuotesOptions,
   QuotesOptionsbyFilterAndIds,
-} from './MarketsQuotesOptions/IQuotesOptionsByIds';
+} from './IQuotesOptionsByIds';
+export { IStockSymbol } from './IStockSymbol';
+export { IStrategiesQuotes } from './IStrategiesQuotes';
 export {
   Leg,
   Legs,
@@ -78,15 +82,14 @@ export {
   StrategyVariantRequest,
   VariantId,
   Variants,
-} from './MarketsQuotesStrategies/strategiesVariants';
-export { Methode } from './Methode';
+} from './IStrategiesVariants';
 export {
-  IFilter,
-  Optionals,
-  OrdersOptions,
-  TimeRange,
-  TimeRangeInterval,
-} from './Optionals';
-export { ITime, Time } from './Time';
-export { DateTime, idsType, idType } from './Types';
-export { void0, void_0 } from './void_0';
+  ISymbolSearchCount,
+  ISymbolSearchResult,
+  ISymbolSearchResults,
+  SymbolSearch,
+  SymbolSearchAndCount,
+  SymbolSearchOrCount,
+} from './ISymbolSearchResult';
+export { void0, void_0 } from './IVoid_0';
+export { IQuestradeApi } from './QuestradeApi';

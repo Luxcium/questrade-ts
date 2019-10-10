@@ -1,9 +1,5 @@
 import { TickType } from 'questrade-api-enumerations';
 
-// - Copyright (c) Benjamin Vincent Kasapoglu (Luxcium). All rights reserved.
-// - Licensed under the MIT License.
-// - See License.txt in the project root for license information.
-
 export interface IQuotes {
   quotes: IQuote[];
 }

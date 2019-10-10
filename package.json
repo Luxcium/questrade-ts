@@ -2,7 +2,7 @@
   "name": "questrade-ts",
   "displayName": "Questrade API by Luxcium (with typescript support).",
   "description": "Unofficial Questrade API wrapper for NodeJS with full TypeScript support.",
-  "version": "1.0.0-rc7",
+  "version": "1.0.0-rc8-fix",
   "author": "Luxcium <luxcium@neb401.com>",
   "license": "MIT",
   "homepage": "https://github.com/Luxcium/questrade-ts",
@@ -43,7 +43,8 @@
     "cp:enu:1": "cp-cli ./enums/README.md ./build/enums/README.md",
     "cp:enu:2": "cp-cli ./enums/package.json ./build/enums/package.json",
     "cp:enu:3": "cp-cli ./enums/.npmignore ./build/enums/.npmignore",
-    "cp:enu:4": "cp-cli ./enums/LICENSE.txt ./build/enums/LICENSE.txt"
+    "cp:enu:4": "cp-cli ./enums/LICENSE.txt ./build/enums/LICENSE.txt",
+    "merg:typings": "find ./src/api/typescript -name 'I*.ts' -print | xargs cat >> ./src/api/typescript/types.ts"
   },
   "repository": {
     "type": "git",

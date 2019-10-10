@@ -1,13 +1,12 @@
-import { DateTime } from './Types';
-
 export interface ICandles {
   candles: ICandle[];
 }
+
 export interface ICandle {
   /** Candlestick start timestamp (in ISO format). */
-  start?: DateTime;
+  start?: Date | string;
   /** Candlestick end timestamp (in ISO format). */
-  end?: DateTime;
+  end?: Date | string;
   /** Opening price. */
   open?: number;
   /** High price. */
