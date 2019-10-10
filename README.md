@@ -74,6 +74,49 @@ log(credentials)
 ```
 
 ```TypeScript
+
+const qtApi: IQuestradeApi = {
+    currentAccount,
+    myBalances,
+    serverTime,
+    get: {
+      account: {
+        activities,
+        allAccounts,
+        allOrders,
+        balances,
+        executions,
+        orders,
+        ordersByIds,
+        positions,
+      },
+      market: {
+        allMarkets,
+        candlesByStockId,
+      },
+      quotes: {
+        byStockIds,
+        byStrategies,
+        optionsQuotes: {
+          byOptionsIds,
+          fromFilter,
+        },
+      },
+      symbols: {
+        optionChains: {
+          byStockId,
+        },
+        byStockIds,
+      },
+      search: {
+        allStocks,
+        stock,
+        countResults,
+      },
+    },
+  };
+
+
 interface IQuestradeApi {
   currentAccount: string;
   myBalances: IMyBalances;
