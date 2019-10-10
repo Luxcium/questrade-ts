@@ -82,7 +82,6 @@ export interface IMyBalances {
 }
 export interface IQuestradeApi {
   currentAccount: string;
-  /** Reorganised balances */
   myBalances: IMyBalances;
   serverTime: Date;
   get: {
