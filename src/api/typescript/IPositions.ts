@@ -1,6 +1,6 @@
 export interface IPosition {
   symbol: string;
-  stockId: number;
+  symbolId: number;
   openQuantity: number;
   closedQuantity: number;
   currentMarketValue: number;

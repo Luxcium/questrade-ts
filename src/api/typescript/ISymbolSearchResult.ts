@@ -2,7 +2,7 @@ import { Currency } from 'questrade-api-enumerations';
 
 export interface ISymbolSearchResult {
   symbol: string;
-  stockId: number;
+  symbolId: number;
   description: string;
   securityType: string;
   listingExchange: string;

@@ -8,7 +8,7 @@ export interface IExecution {
   /** Execution symbol. */
   symbol: string;
   /** Internal symbol identifier */
-  stockId: number;
+  symbolId: number;
   /** Execution quantity. */
   quantity: number;
 

@@ -6,7 +6,7 @@ import {
 
 export interface IStockSymbol {
   symbol: string;
-  stockId: number;
+  symbolId: number;
   description: string;
   securityType: SecurityType;
   listingExchange: ListingExchange;
