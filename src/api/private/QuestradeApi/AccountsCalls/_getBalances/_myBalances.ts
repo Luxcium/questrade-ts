@@ -1,14 +1,18 @@
 import { IBalances } from '../../../../typescript';
+import { IMyBalances } from '../../../../typescript/IQuestradeApi';
 
-export const _myBalances = (myBalance: IBalances) => () => {
-  const balances = myBalance;
-  const [perCADcurrent, perUSDcurrent] = balances.perCurrencyBalances;
-  const [combinedCADcurrent, combinedUSDcurrent] = balances.combinedBalances;
-  const [perCADstartOfDay, perUSDstartOfDay] = balances.sodPerCurrencyBalances;
+export const _myBalances = (balances: IBalances): IMyBalances => {
+  const myBalances = balances;
+  const [perCADcurrent, perUSDcurrent] = myBalances.perCurrencyBalances;
+  const [combinedCADcurrent, combinedUSDcurrent] = myBalances.combinedBalances;
+  const [
+    perCADstartOfDay,
+    perUSDstartOfDay,
+  ] = myBalances.sodPerCurrencyBalances;
   const [
     combinedCADstartOfDay,
     combinedUSDstartOfDay,
-  ] = balances.sodCombinedBalances;
+  ] = myBalances.sodCombinedBalances;
 
   const perCurrency = {
     CAD: {

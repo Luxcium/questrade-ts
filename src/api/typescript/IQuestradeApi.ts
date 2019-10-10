@@ -1,6 +1,7 @@
 import {
   IAccount,
   IAccountActivity,
+  IBalance,
   IBalances,
   ICandle,
   IExecution,
@@ -17,105 +18,132 @@ import {
   StrategyVariantRequest,
 } from '.';
 
-export type GetActivities = (
-  startTime: string
-) => (endTime: string) => Promise<IAccountActivity[]>;
-
-export type GetOrders = (
-  stateFilter?: string | undefined
-) => (startDate: string) => (endDate: string) => Promise<IOrder[]>;
-export type GetOrdersAll = (
-  startTime: string
-) => (endDate: string) => Promise<IOrder[]>;
-export type GetOrdersByIds = (orderId: number[]) => Promise<IOrder[]>;
-
-export type GetExecutions = (
-  startTime: string
-) => (endDate: string) => Promise<IExecution[]>;
-
-export type GetBalances = () => Promise<IBalances>;
-
-export type GetPositions = () => Promise<IPosition[]>;
-
-export type GetAllAccounts = () => Promise<IAccount[]>;
-
-export type GetServerTime = () => Promise<Date>;
-
-export type GetCandlesById = (
-  startDate: string
-) => (
-  endDate: string
-) => (interval?: string) => (symbolID: number) => Promise<ICandle[]>;
-
-export type GetStrategies = (
-  strategyVariantRequestData: StrategyVariantRequest
-) => Promise<IStrategiesQuotes>;
-
-export type GetOptionsQuotes = (
-  filters: OptionsFilters
-) => Promise<IOptionsQuotes>;
-
-export type GetStockQuotesByIds = (ids: number[]) => Promise<IQuote[]>;
-
-export type GetAllMarkets = () => Promise<IMarket[]>;
-
-export type GetOptionsChainsById = (stockId: number) => Promise<IOptionChain[]>;
-
-export type GetSymbolsByIds = (stockIds: number[]) => Promise<ISymbol[]>;
-
-export type GetStockSearch = (
-  prefix: string,
-  offset?: number | undefined
-) => Promise<ISymbolSearchResult>;
-
-export type GetSearchAll = (
-  prefix: string,
-  offset?: number | undefined
-) => Promise<ISymbolSearchResult[]>;
-
-export type GetSearchCount = (prefix: string) => Promise<number>;
-// account
-
-/*
-
-*/
+export interface IMyBalances {
+  perCurrency: {
+    CAD: {
+      startOfDay: IBalance;
+      current: IBalance;
+    };
+    USD: {
+      startOfDay: IBalance;
+      current: IBalance;
+    };
+  };
+  combined: {
+    CAD: {
+      startOfDay: IBalance;
+      current: IBalance;
+    };
+    USD: {
+      startOfDay: IBalance;
+      current: IBalance;
+    };
+  };
+  current: {
+    perCurrency: {
+      CAD: IBalance;
+      USD: IBalance;
+    };
+    combined: {
+      CAD: IBalance;
+      USD: IBalance;
+    };
+  };
+  startOfDay: {
+    combined: {
+      CAD: IBalance;
+      USD: IBalance;
+    };
+    perCurrency: {
+      CAD: IBalance;
+      USD: IBalance;
+    };
+  };
+  CAD: {
+    perCurrency: {
+      startOfDay: IBalance;
+      current: IBalance;
+    };
+    combined: {
+      startOfDay: IBalance;
+      current: IBalance;
+    };
+  };
+  USD: {
+    combined: {
+      startOfDay: IBalance;
+      current: IBalance;
+    };
+    perCurrency: {
+      startOfDay: IBalance;
+      current: IBalance;
+    };
+  };
+}
 export interface IQuestradeApi {
-  myBalances: any;
-  currentAccount: any;
+  currentAccount: string;
+  /** Reorganised balances */
+  myBalances: IMyBalances;
   serverTime: Date;
   get: {
     account: {
-      activities: GetActivities;
-      allAccounts: GetAllAccounts;
-      balances: GetBalances;
-      executions: GetExecutions;
-      orders: GetOrders;
-      allOrders: GetOrdersAll;
-      ordersByIds: GetOrdersByIds;
-      positions: GetPositions;
+      allAccounts(): Promise<IAccount[]>;
+
+      balances(): Promise<IBalances>;
+
+      executions(startTime: string): (endDate: string) => Promise<IExecution[]>;
+
+      orders(
+        stateFilter?: string | undefined
+      ): (startDate: string) => (endDate: string) => Promise<IOrder[]>;
+
+      allOrders(startTime: string): (endDate: string) => Promise<IOrder[]>;
+
+      ordersByIds(orderId: number[]): Promise<IOrder[]>;
+
+      positions(): Promise<IPosition[]>;
+
+      activities(
+        startTime: string
+      ): (endTime: string) => Promise<IAccountActivity[]>;
     };
     market: {
-      allMarkets: GetAllMarkets;
-      candlesByStockId: GetCandlesById;
+      allMarkets(): Promise<IMarket[]>;
+      candlesByStockId(
+        startDate: string
+      ): (
+        endDate: string
+      ) => (
+        interval?: string | undefined
+      ) => (symbolID: number) => Promise<ICandle[]>;
     };
     quotes: {
-      byStrategies: GetStrategies;
       optionsQuotes: {
-        fromFilter: any;
-        byOptionsIds: any;
+        fromFilter(filters: OptionsFilters): Promise<IOptionsQuotes>;
+        byOptionsIds(optionIds: number[]): Promise<IOptionsQuotes>;
       };
-      byStockIds: GetStockQuotesByIds;
+      byStrategies(
+        strategyVariantRequestData: StrategyVariantRequest
+      ): Promise<IStrategiesQuotes>;
+
+      byStockIds(ids: number[]): Promise<IQuote[]>;
     };
     search: {
-      stock: GetStockSearch;
-      allStocks: GetSearchAll;
-      countResults: GetSearchCount;
+      stock(
+        prefix: string,
+        offset?: number | undefined
+      ): Promise<ISymbolSearchResult>;
+      allStocks(
+        prefix: string,
+        offset?: number | undefined
+      ): Promise<ISymbolSearchResult[]>;
+      countResults(prefix: string): Promise<number>;
     };
     symbols: {
       optionChains: {
-        byStockId: GetOptionsChainsById;
+        byStockId(stockId: number): Promise<IOptionChain[]>;
       };
-      byStockIds: GetSymbolsByIds;
+      byStockIds(stockIds: number[]): Promise<ISymbol[]>;
     };
   };
 }
