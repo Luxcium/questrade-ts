@@ -1,4 +1,5 @@
 export {
+  _credentialsFactory,
   _emptyCredentials,
   _getPrimaryAccountNumber,
   _redeemToken,

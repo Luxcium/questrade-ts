@@ -5,7 +5,6 @@ import { Credentials, IQuestradeApi } from '../typescript';
 export const getQuestradeApi = _getQuestradeApi(axios as AxiosStatic);
 
 export const questradeApi = async (credentials: Credentials) => {
-  //
   const qtApi = await getQuestradeApi(credentials);
   const currentAccount = qtApi.currentAccount;
   const myBalances = qtApi.myBalances;

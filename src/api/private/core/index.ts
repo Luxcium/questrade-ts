@@ -4,6 +4,7 @@ export {
   _axiosPostApi,
 } from './AxiosRequestApiFactory';
 export {
+  _credentialsFactory,
   _emptyCredentials,
   _getPrimaryAccountNumber,
   _redeemToken,
