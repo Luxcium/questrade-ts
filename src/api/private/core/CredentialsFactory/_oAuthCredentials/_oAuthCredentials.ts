@@ -1,7 +1,7 @@
 import { AxiosResponse, AxiosStatic, default as axios } from 'axios';
 import { Credentials } from '../../../../typescript';
 import { _validateToken } from './_validateToken';
-import { _writeToken } from './_writeToken';
+import { IRefreshCreds, _writeToken } from './_writeToken';
 
 export const _oAuthCredentials = (_axios: AxiosStatic = axios) => async (
   token: string
@@ -14,7 +14,7 @@ export const _oAuthCredentials = (_axios: AxiosStatic = axios) => async (
       refresh_token: refreshToken,
     },
   };
-  const response: AxiosResponse<any> = await _axios(axiosConfig);
+  const response: AxiosResponse<IRefreshCreds> = await _axios(axiosConfig);
 
   if (!response.data) {
     throw new Error(

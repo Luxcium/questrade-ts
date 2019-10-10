@@ -1,3 +1,3 @@
-export function id0(...param: any) {
+export function id0<T>(...param: T[]) {
   return param;
 }

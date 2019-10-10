@@ -16,10 +16,10 @@ import { dateRangeFromNow, void0 } from '../api/utils';
   // const serverTime = await qtApi.getServerTime();
   // console.log(serverTime);
   const [timeStart, timeEnd] = dateRangeFromNow(10);
-  const qt = await qtApi;
+  const qt = qtApi;
   const results = {
-    setAccount: (await qtApi).currentAccount,
-    getServerTime: (await qtApi).serverTime,
+    setAccount: qtApi.currentAccount,
+    getServerTime: qtApi.serverTime,
     get: {
       accounts: {
         activities: (await qt.get.account.activities(timeStart)(timeEnd))[0],
@@ -32,7 +32,7 @@ import { dateRangeFromNow, void0 } from '../api/utils';
         allAccounts: await qt.get.account.allAccounts(),
       },
       markets: {
-        candlesById: qt.get.market.candlesById(timeStart)(timeEnd),
+        candlesById: qt.get.market.candlesByStockId(timeStart)(timeEnd),
         quotes: {
           byStrategies: qt.get.quotes.byStrategies,
           options: qt.get.quotes.optionsQuotes,
@@ -60,9 +60,7 @@ import { dateRangeFromNow, void0 } from '../api/utils';
   });
 
   return credentials;
-})()
-  // .then((cred: any) => console.log(cred))
-  .catch(error => console.log('error message:', error.message));
+})().catch(error => console.log('error message:', error.message));
 
 /*
   setAccount,

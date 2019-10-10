@@ -38,7 +38,7 @@ export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';
 export { ICandle, ICandles } from './ICandles';
 export { ICreds } from './ICreds';
 export { IDateObject } from './IDateObject';
-export { IEquitySymbol, IEquitySymbols } from './IEquitySymbols';
+export { IEquitySymbol, IEquitySymbols, MinTick } from './IEquitySymbols';
 export { IExecution, IExecutions } from './IExecutions';
 export { IHeaders } from './IHeaders';
 export { IMarket, IMarkets } from './IMarkets';

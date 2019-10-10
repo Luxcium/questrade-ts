@@ -126,7 +126,7 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
   void0(quotesOptionsbyFilterAndIds);
 
   return {
-    myBalances: _myBalances(await balances())(),
+    myBalances: _myBalances(await balances()),
     currentAccount: credentials.accountNumber,
     serverTime: await serverTime(),
     get: {
@@ -165,18 +165,18 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
         },
       },
       quotes: {
+        optionsQuotes: {
+          async fromFilter(filters: OptionsFilters) {
+            return quotesOptionsFilter(filters);
+          },
+          async byOptionsIds(optionIds: number[]) {
+            return quotesOptionsByIds(optionIds);
+          },
+        },
         async byStrategies(strategyVariantRequestData: StrategyVariantRequest) {
           return marketsQuotesStrategies(strategyVariantRequestData);
         },
 
-        optionsQuotes: {
-          async byOptionsIds(optionIds: number[]) {
-            return quotesOptionsByIds(optionIds);
-          },
-          async fromFilter(filters: OptionsFilters) {
-            return quotesOptionsFilter(filters);
-          },
-        },
         async byStockIds(ids: number[]) {
           return quotesByIds(ids);
         },
@@ -205,82 +205,3 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
     },
   };
 };
-
-/*
-account
-getServerTime
-activities
-order
-ordersAll
-ordersByIds
-executions
-balances
-positions
-allAccounts
-candlesById
-byStrategies
-options
-quotesByIds
-allMarkets
-optionChainsById
-stockByIds
-stocks
-allStocks
-countResults
-
-Type '{ activities(startTime: string): (endTime: string) => Promise<IAccountActivity[]>;
-   orders(stateFilter?: string | undefined): (startDate: string) => (endDate: string) => Promise<IOrder[]>;
-   ordersAll(startTime: string): (endDate: string) => Promise<IOrder[]>;
-   ordersByIds(orderId: number[]): Promise<IOrder[]>;
-   executions(startTime: string): (endDate: string) => Promise<IExecution[]>;
-   balances(): Promise<IBalances>;
-   positions(): Promise<IPosition[]>;
-   allAccounts(): Promise<IAccount[]>;
- }' is not assignable to type '{ activities: GetActivities;
-   allAccounts: GetAllAccounts;
-   balances: GetBalances;
-   executions: GetExecutions;
-   order: GetOrders;
-   ordersAll: GetOrdersAll;
-   ordersByIds: GetOrdersByIds;
-   positions: GetPositions;
- }'.
-  Object literal may only specify known properties, but 'orders' does not exist in type '{ activities: GetActivities;
-     allAccounts: GetAllAccounts;
-     balances: GetBalances;
-     executions: GetExecutions;
-     order: GetOrders;
-     ordersAll: GetOrdersAll;
-     ordersByIds: GetOrdersByIds;
-     positions: GetPositions;
-   }'. Did you mean to write 'order'?ts(2322)
-_getQuestradeApi.ts(343, 5): The expected type comes from property 'account' which is declared here on type '{ account: { activities: GetActivities;
-   allAccounts: GetAllAccounts;
-   balances: GetBalances;
-   executions: GetExecutions;
-   order: GetOrders;
-   ordersAll: GetOrdersAll;
-   ordersByIds: GetOrdersByIds;
-   positions: GetPositions;
- };
- markets: { allMarkets: GetAllMarkets;
-   candlesById: GetCandlesById;
- };
- quotes: { byStrategies: GetStrategies;
-   optionsQuotes: { filter: any;
-   optionsIds: any;
- };
- stockQuotesByIds: GetStockQuotesByIds;
- };
- search: { stocks: GetStockSearch;
-   allStocks: GetSearchAll;
-   countResults: GetSearchCount;
- };
- symbols: { optionChains: { byStockId: GetOptionsChainsById;
- };
- stockByIds: GetSymbolsByIds;
- };
- }'
-
-
-*/

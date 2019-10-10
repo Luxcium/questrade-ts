@@ -39,6 +39,11 @@ npm install --save-exact questrade-ts@latest
   - **To obtain or provide feedback (as bug reports or enhancements):** [visit our GitHub Issue page](https://github.com/Luxcium/questrade-ts/issues)
   - **Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything you feel is not exactly as described on this page or [Questrade Page](https://www.questrade.com/api/documentation/getting-started).**
 
+## No-any
+This project count that 3 lerters word only twice one in this title above the other one as the tslint rule forbiding the keword in the project.
+
+
+
 ## Examples
 
 You will need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx).
@@ -188,7 +193,7 @@ log(credentials)
       // GET SYMBOLS/:ID/OPTIONS (by single stockId)
       log(await qt.get.symbols.optionsById(stockNumericID));
 ```
-**Retrieves symbol(s) using several search criteria. (Prefix of a symbol or any word in the description.)** <br />
+**Retrieves symbol(s) using several search criteria. (Prefix of a symbol or whichever word in the description.)** <br />
 [symbols/search (return fisrt result or offseted result)](https://www.questrade.com/api/documentation/rest-operations/market-calls/symbols-search) -> `qt.get.symbols.search`
 
 ```TypeScript
@@ -376,7 +381,7 @@ qt.account = '12345678';
 Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation/) to get help. Please always open a [questrade-ts GitHub issue](https://github.com/luxcium/questrade-ts/issues) for anything you feel doesn't match the way it should be working when referring to Questrade docs.
 
 ### Currently, this API does not have full coverage of his test suites installed
-#### No test suite is curently fully implemented but all the examples on this page have been tested manually and did not generated any errors.
+#### No test suite is curently fully implemented but all the examples on this page have been tested manually and did not generated whichever errors at all.
 
 [![Coverage Status](https://coveralls.io/repos/github/Luxcium/questrade-ts/badge.svg?branch=version/feature-axio-mock)](https://coveralls.io/github/Luxcium/questrade-ts?branch=version/feature-axio-mock) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
 
