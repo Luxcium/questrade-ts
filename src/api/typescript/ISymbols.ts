@@ -64,6 +64,6 @@ export interface ISymbol {
 }
 
 export interface OptionContractDeliverables {
-  underlyings: any[];
+  underlyings: [];
   cashInLieu: number;
 }

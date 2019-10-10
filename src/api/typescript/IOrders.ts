@@ -49,7 +49,7 @@ export interface IOrder {
   isLimitOffsetInDollar?: boolean;
   userId?: idType;
   placementCommission?: number | null;
-  legs?: any[];
+  legs?: [];
   OrderLeg?: string;
   strategyType?: StrategyTypes | 'SingleLeg';
   triggerStopPrice?: number | null;

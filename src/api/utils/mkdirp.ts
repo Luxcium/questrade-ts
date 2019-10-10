@@ -46,7 +46,7 @@ export const sync = (
         sync(p, opts, made);
         break;
 
-      // In the case of any other error, just see if there's a dir
+      // In the case of whichever error, just see if there's a dir
       // there already.  If so, then hooray!  If not, then something
       // is borked.
       default:
@@ -69,7 +69,7 @@ Copyright 2010 James Halliday (mail@substack.net)
 
 This project is free software released under the MIT/X11 license:
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
+Permission is hereby granted, free of charge, to whichever person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell

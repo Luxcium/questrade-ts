@@ -1,9 +1,9 @@
-import { AxiosRequestConfig, AxiosResponse, AxiosStatic } from 'axios';
+import { AxiosRequestConfig, AxiosStatic } from 'axios';
 import { void0 } from '../../../api/utils';
-const _axios = jest.fn<AxiosResponse, any[]>();
+const _axios = jest.fn();
 _axios.mockName('axios');
 _axios.mockImplementation((config?: AxiosRequestConfig) => {
-  const some: any = {
+  const some = {
     data: {
       accessToken: 'AMkwi27aqHJt0qiaAGsN0z15c5Kb19PB0',
       accountNumber: '51648972',
@@ -29,7 +29,6 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
   return some;
 });
 // jest.genMockFromModule('axios');
-// const mockAxios = jest.fn<any, any[]>(() => () => '');
 // console.log('!!! MOCK AXIOS MOCK !!!');
 // let axios =  jest.fn() ;// jest.genMockFromModule('axios');
 // axios = jest.fn; //  console.log('!!! MOCK  GET AXIOS GET  MOCK !!!');

@@ -38,9 +38,11 @@ export interface IOptionsQuotes {
 // }
 
 export interface IOptionsQuote {
-  /** List of Level1OptionData records. */
-  quotes?: any;
-  Level1OptionData?: any;
+  /** List of Level1 OptionData records. */
+  quotes?: [];
+  /** List of Level1 OptionData records. */
+
+  Level1OptionData?: [];
 
   /** Underlying name */
   underlying?: string;

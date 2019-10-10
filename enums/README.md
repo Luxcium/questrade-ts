@@ -4,7 +4,7 @@ Questrade API TypeScript Enumerations (Unofficial)
 
 [Refer to Questrade API TypeScript Enumerations for more informations](https://www.questrade.com/api/documentation/rest-operations/enumerations/enumerations)
 
-> **Open a GitHub issue for any problems**
+> **Open a GitHub issue for whichever problems**
 
 _Questrade API TypeScript Enumerations_ is part of questrade-ts library
 so you can simply start by installing the questrade-ts library:
