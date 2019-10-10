@@ -1,0 +1,1 @@
+{"version":3,"file":"IHeaders.js","sourceRoot":"","sources":["../../../../src/api/typescript/IHeaders.ts"],"names":[],"mappings":"","sourcesContent":["export interface IHeaders {\r\n  location?: number | string;\r\n  Authorization?: string;\r\n}\r\n"]}
