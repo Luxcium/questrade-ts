@@ -39,6 +39,7 @@ export { IExecution, IExecutions } from './IExecutions';
 export { IHeaders } from './IHeaders';
 export { IMarket, IMarkets } from './IMarkets';
 export { Methode } from './IMethode';
+export { IMyBalances } from './IMyBalances';
 export {
   IFilter,
   Optionals,
@@ -53,7 +54,6 @@ export {
   IOptionChain,
   IOptionChains,
 } from './IOptionsChains';
-export {} from './IOptionsQuotes';
 export { IOrder, IOrders } from './IOrders';
 export { IPosition, IPositions } from './IPositions';
 export {
@@ -92,4 +92,4 @@ export {
   SymbolSearchOrCount,
 } from './ISymbolSearchResult';
 export { void0, void_0 } from './IVoid_0';
-export { IQuestradeApi } from './QuestradeApi';
+export { DateRange, IQuestradeApi } from './QuestradeApi';

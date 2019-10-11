@@ -126,7 +126,9 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
   void0(quotesOptionsbyFilterAndIds);
 
   return {
-    myBalances: _myBalances(await balances()),
+    async myBalances() {
+      return _myBalances(balances());
+    },
     currentAccount: credentials.accountNumber,
     serverTime: await serverTime(),
     get: {
