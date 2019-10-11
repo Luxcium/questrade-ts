@@ -3,7 +3,7 @@ import {
   Credentials,
   IAccountActivity,
   IActivities,
-} from '../../../../typescript';
+} from '../../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
 import { _axiosAccountGetApi } from '../../../core/AxiosRequestApiFactory';
 

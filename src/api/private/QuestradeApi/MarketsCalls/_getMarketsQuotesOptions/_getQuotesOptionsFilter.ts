@@ -1,5 +1,5 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { Credentials, OptionsFilters } from '../../../../typescript';
+import { Credentials, OptionsFilters } from '../../../../../typescript';
 import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
 export const _getQuotesOptionsFilter = (_axios: AxiosStatic = axios) => (

@@ -5,7 +5,7 @@ import {
   IOptionsQuotes,
   OptionsIdArray,
   OptionsPostData,
-} from '../../../../typescript';
+} from '../../../../../typescript';
 import { _axiosPostApi } from '../../../core/AxiosRequestApiFactory';
 
 export const _getMarketsQuotesOptions = (_axios: AxiosStatic = axios) => (

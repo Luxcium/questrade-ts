@@ -1,5 +1,5 @@
 import { AxiosResponse, AxiosStatic, default as axios } from 'axios';
-import { Credentials } from '../../../../typescript';
+import { Credentials } from '../../../../../typescript';
 import { _validateToken } from './_validateToken';
 import { IRefreshCreds, _writeToken } from './_writeToken';
 

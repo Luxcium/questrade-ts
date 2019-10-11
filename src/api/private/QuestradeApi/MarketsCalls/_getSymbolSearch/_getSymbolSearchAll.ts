@@ -3,7 +3,7 @@ import {
   Credentials,
   ISymbolSearchResult,
   ISymbolSearchResults,
-} from '../../../../typescript';
+} from '../../../../../typescript';
 import { _axiosGetApi } from '../../../core/AxiosRequestApiFactory';
 // + _getSymbolSearchAll
 /** _getSymbolSearch */

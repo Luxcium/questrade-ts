@@ -3,7 +3,7 @@ module.exports = {
 
   coverageDirectory: 'build/coverage',
 
-  coverageReporters: ['json', 'text', 'lcov', 'clover'],
+  coverageReporters: ['text', 'lcov'],
 
   globals: {
     'ts-jest': {
@@ -30,14 +30,12 @@ module.exports = {
   // Automatically clear mock calls and instances between every test
   // clearMocks: false,
   // Indicates whether the coverage information should be collected while executing the test
-  // collectCoverage: false,
+  collectCoverage: true,
   // An array of glob patterns indicating a set of files for which coverage information should be collected
   // collectCoverageFrom: null,
   // The directory where Jest should output its coverage files
   // An array of regexp pattern strings used to skip coverage collection
-  // coveragePathIgnorePatterns: [
-  //   "/node_modules/"
-  // ],
+  coveragePathIgnorePatterns: ['/node_modules/'],
   // A list of reporter names that Jest uses when writing coverage reports
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: null,
@@ -65,15 +63,15 @@ module.exports = {
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
   // Activates notifications for test results
-  // notify: false,
+  notify: true,
   // An enum that specifies notification mode. Requires { notify: true }
-  // notifyMode: "failure-change",
+  notifyMode: 'failure-change',
   // A preset that is used as a base for Jest's configuration
   // preset: null,
   // Run tests from one or more projects
   // projects: null,
   // Use this configuration option to add custom reporters to Jest
-  // reporters: undefined,
+  // reporters: ['nyc'],
   // Automatically reset mock state between every test
   // resetMocks: false,
   // Reset the module registry before running each individual test

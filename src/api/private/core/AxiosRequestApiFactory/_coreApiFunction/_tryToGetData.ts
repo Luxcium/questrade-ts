@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, AxiosStatic } from 'axios';
-import { CoreApiConfig } from '../../../../typescript';
+import { CoreApiConfig } from '../../../../../typescript';
 import { void0 } from '../../../../utils';
 import { _logErrors } from './_logErrors';
 export async function _tryToGetData<R, D>(

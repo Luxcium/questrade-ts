@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
+import { Credentials, IQuestradeApi } from '../../typescript';
 import { _getQuestradeApi } from '../private';
-import { Credentials, IQuestradeApi } from '../typescript';
 
 export const getQuestradeApi = _getQuestradeApi(axios as AxiosStatic);
 

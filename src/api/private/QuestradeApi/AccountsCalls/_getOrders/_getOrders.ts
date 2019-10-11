@@ -1,5 +1,5 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { Credentials, IOrder, IOrders } from '../../../../typescript';
+import { Credentials, IOrder, IOrders } from '../../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
 import { _axiosAccountGetApi } from '../../../core/AxiosRequestApiFactory';
 

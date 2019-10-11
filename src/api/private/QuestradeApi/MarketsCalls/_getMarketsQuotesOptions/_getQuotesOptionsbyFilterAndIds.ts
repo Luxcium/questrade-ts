@@ -3,7 +3,7 @@ import { _getQuotesOptionsByIds, _getQuotesOptionsFilter } from '..';
 import {
   Credentials,
   QuotesOptionsbyFilterAndIds,
-} from '../../../../typescript';
+} from '../../../../../typescript';
 
 export const _getQuotesOptionsbyFilterAndIds = (
   _axios: AxiosStatic = axios

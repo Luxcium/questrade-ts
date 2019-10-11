@@ -3,7 +3,7 @@ import {
   Credentials,
   IOptionChain,
   IOptionChains,
-} from '../../../../typescript';
+} from '../../../../../typescript';
 import { _axiosGetApi } from '../../../core/AxiosRequestApiFactory';
 
 // + _getOptionsById

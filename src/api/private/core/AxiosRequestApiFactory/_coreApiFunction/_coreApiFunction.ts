@@ -1,5 +1,5 @@
 import axios, { AxiosStatic } from 'axios';
-import { Credentials } from '../../../../typescript';
+import { Credentials } from '../../../../../typescript';
 import { void0 } from '../../../../utils';
 import { _coreApiConfig } from './_coreApiConfig';
 import { _tryToGetData } from './_tryToGetData';
