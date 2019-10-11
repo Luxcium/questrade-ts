@@ -131,8 +131,8 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
     serverTime: await serverTime(),
     get: {
       account: {
-        activities() {
-          return activities();
+        activities(startTime: string) {
+          return activities(startTime);
         },
         orders(stateFilter?: string) {
           return orders(stateFilter);
@@ -141,8 +141,8 @@ export const _getQuestradeApi = (_axios: AxiosStatic = axios) => async (
         async ordersByIds(orderId: number[]) {
           return ordersByIds(orderId);
         },
-        executions() {
-          return executions();
+        executions(startTime: string) {
+          return executions(startTime);
         },
         async balances() {
           return balances();

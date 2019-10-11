@@ -22,11 +22,11 @@ import { redeemToken } from '../index';
     getServerTime: qtApi.serverTime,
     get: {
       accounts: {
-        activities: (await qt.get.account.activities()(timeStart)(timeEnd))[0],
+        activities: (await qt.get.account.activities(timeStart)(timeEnd))[0],
         orders: (await qt.get.account.orders('All')(timeStart)(timeEnd))[0],
         // ordersAll: (await qt.get.account.allOrders()(timeStart)(timeEnd))[0],
         ordersByIds: qt.get.account.ordersByIds,
-        executions: (await qt.get.account.executions()(timeStart)(timeEnd))[0],
+        executions: (await qt.get.account.executions(timeStart)(timeEnd))[0],
         balances: await qt.get.account.balances(),
         positions: await qt.get.account.positions(),
         allAccounts: await qt.get.account.allAccounts(),
@@ -71,7 +71,6 @@ const symId = getSymbolId;
 interface WithSymbolID {
   symbolId: number;
 }
-
 export const x = (async () => {
   const { qtApi } = await redeemToken('gEkuIykdwkkAGPsSo6BS1vQ7idM3uNIs0');
 
@@ -84,7 +83,7 @@ export const x = (async () => {
     return symId(await stock(sid));
   };
 
-  qtApi.get.account.activities('');
+  qtApi.get.account.activities();
 
   console.log(await getId('aapl'));
 

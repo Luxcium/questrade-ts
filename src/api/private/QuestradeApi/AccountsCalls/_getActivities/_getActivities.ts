@@ -11,7 +11,7 @@ import { _axiosAccountGetApi } from '../../../core/AxiosRequestApiFactory';
 /** PROVIDE: credentials, startTime string and endTime string THEN GET: a 'Promise<IAccountActivity[]>' */
 export const _getActivities = (_axios: AxiosStatic = axios) => {
   //
-  return (credentials: Credentials) => () => {
+  return (credentials: Credentials) => {
     //
     return (startTime: string) => {
       //

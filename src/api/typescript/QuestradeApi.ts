@@ -89,12 +89,15 @@ export interface IQuestradeApi {
   serverTime: Date;
   get: {
     account: {
-      activities(): DateRange<Promise<IAccountActivity[]>>;
+      activities(
+        startTime: string
+      ): (endTime: string) => Promise<IAccountActivity[]>;
+
       allAccounts(): Promise<IAccount[]>;
 
       balances(): Promise<IBalances>;
 
-      executions(): DateRange<Promise<IExecution[]>>;
+      executions(startTime: string): (endTime: string) => Promise<IExecution[]>;
 
       orders(stateFilter?: string | undefined): DateRange<Promise<IOrder[]>>;
 
