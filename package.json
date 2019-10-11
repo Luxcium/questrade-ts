@@ -13,8 +13,8 @@
     "build": "yarn run CI",
     "CI": "tsc -b ./configs/tsconfig.commonjs.json",
     "pretest": "yarn run linting",
-    "test": "echo 'will skip test now'",
-    "posttest": "#jest --coverage",
+    "test": "echo 'will test now'",
+    "posttest": "jest --coverage",
     "linting": "yarn run prettier && yarn run tslint && yarn run tsc",
     "prettier": "prettier --check --write --config .prettierrc './src/**/*.ts'",
     "tslint": "tslint --project ./ --format codeFrame --fix",
@@ -56,9 +56,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "http-status-codes": "^1.3.2",
-    "istanbul": "^0.4.5",
     "questrade-api-enumerations": "^1.1.4",
-    "source-map-support": "^0.5.13",
     "tslib": "^1.10.0"
   },
   "devDependencies": {
@@ -69,6 +67,7 @@
     "@babel/types": "^7.6.1",
     "@istanbuljs/nyc-config-typescript": "^0.1.3",
     "@types/jasmine": "^3.4.1",
+    "source-map-support": "^0.5.13",
     "@types/jest": "^24.0.18",
     "@types/lodash": "^4.14.141",
     "@types/node": "12.6.8",
@@ -80,7 +79,6 @@
     "coveralls": "^3.0.6",
     "cp-cli": "2.0.0",
     "jest": "^24.9.0",
-    "lodash": "^4.17.15",
     "nyc": "^14.1.1",
     "prettier": "^1.18.2",
     "ramda": "^0.26.1",
