@@ -63,9 +63,9 @@ module.exports = {
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
   // Activates notifications for test results
-  notify: true,
+  // notify: true,
   // An enum that specifies notification mode. Requires { notify: true }
-  notifyMode: 'failure-change',
+  // notifyMode: 'failure',
   // A preset that is used as a base for Jest's configuration
   // preset: null,
   // Run tests from one or more projects

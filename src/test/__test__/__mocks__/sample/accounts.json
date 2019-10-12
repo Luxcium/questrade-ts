@@ -1,0 +1,13 @@
+{
+  "accounts": [
+    {
+      "type": "TFSA",
+      "number": "00000000",
+      "status": "Active",
+      "isPrimary": false,
+      "isBilling": true,
+      "clientAccountType": "Individual"
+    }
+  ],
+  "userId": 123456
+}

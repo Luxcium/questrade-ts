@@ -1,12 +1,17 @@
 import { AxiosRequestConfig, AxiosStatic } from 'axios';
-import { void0 } from '../../../api/utils';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
 const _axios = jest.fn();
+
+const path = (s: string) => resolve(`${__dirname}/sample/${s}.json`);
+
 _axios.mockName('axios');
 _axios.mockImplementation((config?: AxiosRequestConfig) => {
-  const some = {
+  // #region cred ...
+  /*  const cred = {
     data: {
       accessToken: 'AMkwi27aqHJt0qiaAGsN0z15c5Kb19PB0',
-      accountNumber: '51648972',
+      accountNumber: 'oooooooo',
       apiServer: 'https://api02.iq.questrade.com/',
       apiUrl: 'https://api02.iq.questrade.com/v1',
       apiVersion: 'v1',
@@ -24,9 +29,24 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
       expiresAtRaw: 1570531277781,
       serverTimeRaw: 1570529477781,
     },
-  };
-  void0(config);
-  return some;
+  }; */
+  // #endregion
+  const url: string = !!config && !!config.url ? config.url : '';
+
+  console.log(config);
+  const something = ['balances', 'token', 'time', 'accounts'].reduce(
+    (previous, dir) => {
+      if (!previous) {
+        if (url.indexOf(`/${dir}`) !== -1) {
+          return readFileSync(path(dir), 'utf8');
+        }
+      }
+      return previous;
+    },
+    ''
+  );
+  // console.log('something', something);
+  return something; // cred;
 });
 // jest.genMockFromModule('axios');
 // console.log('!!! MOCK AXIOS MOCK !!!');
