@@ -43,21 +43,42 @@ export const dateToNumeric = (dateTime: string): number =>
 export const dateRangeFromNow = (backNumberOfDays: number) => {
   return dateRange(backNumberOfDays, dateNowISO());
 };
-
-export const dateRange = (backNumberOfDays: number, dateNow: string) => {
-  return [
-    dateToString(dateToNumeric(dateNow) - day(backNumberOfDays)),
-    dateToString(dateNow),
-  ];
+type StartDate = string;
+type EndDate = string;
+interface StartDateEndDateObject {
+  startDate: StartDate;
+  startTime: StartDate;
+  endDate: EndDate;
+  endTime: EndDate;
+}
+export const dateRange = (
+  backNumberOfDays: number,
+  dateNow?: string
+): StartDateEndDateObject => {
+  let now = dateNow;
+  if (!now) {
+    now = dateNowISO();
+  }
+  const startDate: StartDate = dateToString(
+    dateToNumeric(now) - day(backNumberOfDays)
+  );
+  const endDate: EndDate = dateToString(now);
+  const startTime = startDate;
+  const endTime = endDate;
+  return {
+    startDate,
+    startTime,
+    endDate,
+    endTime,
+  };
 };
 
-export const setDateRange = <T>(
-  dateNow: string,
-  backNumberOfDays: number,
-  funct: (startTime: string) => (endTime: string) => T
+export const setDateRange = (backNumberOfDays: number) => <T>(
+  funct: (startTime: string) => (endTime: string) => T,
+  fromDate?: string
 ) => {
-  const [startTime, endTime] = dateRange(backNumberOfDays, dateNow);
-  return () => funct(startTime)(endTime);
+  const { startTime, endTime } = dateRange(backNumberOfDays, fromDate);
+  return funct(startTime)(endTime);
 };
 
 // export const rangeTool = (startTime?: string | null) => (

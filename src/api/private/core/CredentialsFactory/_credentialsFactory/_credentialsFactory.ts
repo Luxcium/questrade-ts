@@ -3,7 +3,7 @@ import {
   _getAccounts,
   _getServerTime,
 } from '../../../QuestradeApi/AccountsCalls';
-import { _oAuthCredentials } from '../_oAuthCredentials';
+import { _oAuthCredentials } from '../_oAuthCredentials_AXIOS';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 // const _getServerTime = (_axios: AxiosStatic = axios) => (
 //   credentials: Credentials

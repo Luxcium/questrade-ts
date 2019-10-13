@@ -92,4 +92,21 @@ export {
   SymbolSearchOrCount,
 } from './ISymbolSearchResult';
 export { void0, void_0 } from './IVoid_0';
-export { DateRange, IQuestradeApi } from './QuestradeApi';
+export {
+  DateRange,
+  IQtApiAccount,
+  IQtApiGet,
+  IQtApiMarket,
+  IQtApiMyBalances,
+  IQtApiOptionChains,
+  IQtApiOptionsQuotes,
+  IQtApiQuotes,
+  IQtApiSearch,
+  IQtApiSymbols,
+  IQuestradeApi,
+} from './QuestradeApi';
+
+/*
+
+
+*/

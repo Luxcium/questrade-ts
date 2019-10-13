@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { Credentials } from '../../../../../typescript';
-import { _coreApiFunction } from '../_coreApiFunction';
+import { _coreApiFunction } from '../_coreApiFunction_AXIOS';
 import { _endpointFormatAccount } from '../_endpointFormatAccount';
 
 // # _axiosAccountApi

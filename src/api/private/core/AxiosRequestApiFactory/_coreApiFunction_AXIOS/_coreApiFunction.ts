@@ -2,7 +2,7 @@ import axios, { AxiosStatic } from 'axios';
 import { Credentials } from '../../../../../typescript';
 import { void0 } from '../../../../utils';
 import { _coreApiConfig } from './_coreApiConfig';
-import { _tryToGetData } from './_tryToGetData';
+import { _tryToGetData } from './_tryToGetData_AXIOS';
 
 export const _coreApiFunction = (_axios: AxiosStatic = axios) => {
   //
@@ -19,6 +19,7 @@ export const _coreApiFunction = (_axios: AxiosStatic = axios) => {
             //
             return _tryToGetData<R, D>(
               //
+              _axios,
               _coreApiConfig<D>(credentials, VERB, endpoint, postData)
             );
           };

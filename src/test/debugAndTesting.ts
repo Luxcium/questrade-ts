@@ -4,21 +4,23 @@ import { default as ƒ } from 'ramda';
 // import { dateRangeFromNow, void0 } from '../api/utils';
 // import { qtEnumerations as Enumerations } from 'questrade-api-enumerations';
 import { redeemToken } from '../';
-import { void0 } from '../api/utils';
+import { log, setDateRange, void0 } from '../api/utils';
 // tslint:disable-next-line: no-unused-expression
+
+const dateRange30 = setDateRange(30);
 (async () => {
   const { credentials, qtApi } = await redeemToken(
     'QBQAfJOCFX2iUAG309YcVGFEy3pKRCxR0'
   );
-  void0([credentials, qtApi, ƒ]);
-
+  void0([credentials, qtApi, ƒ, log]);
+  // const { startDate, endDate } = dateRange(10);
   //   // console.log(credentials);
   //   // const serverTime = await qtApi.getServerTime();
   //   // console.log(serverTime);
   //   const [timeStart, timeEnd] = dateRangeFromNow(10);
   //   const qt = qtApi;
   //   const results = {
-  void0(JSON.stringify(await qtApi.get.account.balances()));
+  void0(await dateRange30(qtApi.get.account.orders('Closed')));
   //     setAccount: qtApi.currentAccount,
   //     getServerTime: qtApi.serverTime,
   //     get: {

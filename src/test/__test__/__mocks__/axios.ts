@@ -2,7 +2,7 @@ import { AxiosRequestConfig, AxiosStatic } from 'axios';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 const _axios = jest.fn();
-
+const introspect = false;
 const path = (s: string) => resolve(`${__dirname}/sample/${s}.json`);
 
 _axios.mockName('axios');
@@ -33,12 +33,12 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
   // #endregion
   const url: string = !!config && !!config.url ? config.url : '';
 
-  console.log(config);
-  const something = ['balances', 'token', 'time', 'accounts'].reduce(
+  // console.log(config);
+  const data = ['balances', 'token', 'time', 'accounts'].reduce(
     (previous, dir) => {
       if (!previous) {
         if (url.indexOf(`/${dir}`) !== -1) {
-          return readFileSync(path(dir), 'utf8');
+          return JSON.parse(readFileSync(path(dir), 'utf8'));
         }
       }
       return previous;
@@ -46,7 +46,7 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
     ''
   );
   // console.log('something', something);
-  return something; // cred;
+  return { data, introspect }; // cred;
 });
 // jest.genMockFromModule('axios');
 // console.log('!!! MOCK AXIOS MOCK !!!');
