@@ -1,9 +1,8 @@
 import { AxiosResponse, AxiosStatic, default as axios } from 'axios';
+import { introspect } from '../../../..';
 import { Credentials } from '../../../../../typescript';
 import { _validateToken } from './_validateToken';
 import { IRefreshCreds, _writeToken } from './_writeToken';
-
-const introspect: boolean = true;
 
 export const _oAuthCredentials = (_axios: AxiosStatic = axios) => async (
   token: string
@@ -18,14 +17,14 @@ export const _oAuthCredentials = (_axios: AxiosStatic = axios) => async (
   };
   const response = (await _axios(axiosConfig)) as AxiosResponse<
     IRefreshCreds
-  > & { introspect: boolean };
+  > & { introspect: { onOff: boolean } };
 
   if (!response.data) {
     throw new Error(
       '!! validate credntials Invalid data back from axios client'
     );
   }
-  if (!!response.introspect || introspect) {
+  if (!!response.introspect.onOff || introspect.onOff) {
     console.log('\n\n_oAuthCredentials:\n');
     console.log('\naxiosCONFIG:\n');
     console.log(axiosConfig);

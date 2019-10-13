@@ -2,7 +2,7 @@ import { AxiosRequestConfig, AxiosStatic } from 'axios';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 const _axios = jest.fn();
-const introspect = false;
+const introspect = { onOff: false };
 const path = (s: string) => resolve(`${__dirname}/sample/${s}.json`);
 
 _axios.mockName('axios');

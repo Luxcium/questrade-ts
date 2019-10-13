@@ -1,9 +1,8 @@
 import axios, { AxiosResponse, AxiosStatic } from 'axios';
+import { introspect } from '../../../..';
 import { CoreApiConfig } from '../../../../../typescript';
 import { void0 } from '../../../../utils';
 import { _logErrors } from './_logErrors';
-
-const introspect: boolean = true;
 
 export async function _tryToGetData<R, D>(
   _axios: AxiosStatic = axios,
@@ -14,12 +13,12 @@ export async function _tryToGetData<R, D>(
   try {
     void0(_axios); // _tryToGetData
     const response = (await axios(_config)) as AxiosResponse<R> & {
-      introspect: boolean;
+      introspect: { onOff: boolean };
     };
     if (!response || !response.data) {
       throw _logError(new Error("Can't retrive data from call to API"));
     }
-    if (!!response.introspect || introspect) {
+    if (!!response.introspect.onOff || introspect.onOff) {
       // _tryToGetData
       console.log('\n\n_coreApiFunction_tryToGetData:\n');
 
