@@ -6,7 +6,7 @@ describe('all methods on qtApi', () => {
   let qtApi: IQuestradeApi;
   let { account, market, quotes, search, symbols } = qtApi.get;
   // let  = get;
-  void0(void0); // [accounts, market, quotes, search, symbols]);
+  // [accounts, market, quotes, search, symbols]);
   beforeAll(async done => {
     qtApi = (await redeemToken('MOCKMOCK')).qtApi;
     const get = qtApi.get;
@@ -16,6 +16,30 @@ describe('all methods on qtApi', () => {
     quotes = get.quotes;
     search = get.search;
     symbols = get.symbols;
+
+    void0({
+      account,
+      market,
+      quotes,
+      search,
+      symbols,
+    });
+    done();
+  });
+  it('myBalances', async done => {
+    console.log(await qtApi.myBalances());
+    done();
+  });
+  it('myBalances', async done => {
+    console.log(await qtApi.myBalances());
+    done();
+  });
+  it('myBalances', async done => {
+    console.log(await qtApi.myBalances());
+    done();
+  });
+  it('myBalances', async done => {
+    console.log(await qtApi.myBalances());
     done();
   });
   it('myBalances', async done => {
@@ -23,3 +47,11 @@ describe('all methods on qtApi', () => {
     done();
   });
 });
+
+/*
+touch account.spec.ts
+touch market.spec.ts
+touch quotes.spec.ts
+touch search.spec.ts
+touch symbols.spec.ts
+*/
