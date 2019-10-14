@@ -92,6 +92,11 @@ export {
   SymbolSearchOrCount,
 } from './ISymbolSearchResult';
 export { void0, void_0 } from './IVoid_0';
+/*
+
+
+*/
+export { LogErrors } from './LogErrors';
 export {
   DateRange,
   IQtApiAccount,
@@ -105,8 +110,3 @@ export {
   IQtApiSymbols,
   IQuestradeApi,
 } from './QuestradeApi';
-
-/*
-
-
-*/

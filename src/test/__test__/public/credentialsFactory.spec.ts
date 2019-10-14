@@ -1,5 +1,5 @@
 import { redeemToken } from '../../../api/public';
-import { setDateRange, void0 } from '../../../api/utils';
+import { log, setDateRange, void0 } from '../../../api/utils';
 import {
   IQtApiAccount,
   IQtApiGet,
@@ -42,58 +42,55 @@ beforeAll(async done => {
   done();
 });
 
-describe('all methods on get.account', () => {
-  // const {
-  //   activities,
-  //   balances,
-  //   allAccounts,
-  //   executions,
-  //   orders,
-  //   ordersByIds,
-  //   positions,
-  // } =  account;
-  it('Will validate activities', async done => {
+describe('methods on get.account', () => {
+  it('should validate activities', async done => {
     const activities30Days = async () =>
       dateRange30Days((await account()).activities);
-    console.log(await activities30Days());
+    void0(await activities30Days());
     done();
   });
-  it('Will validate balances', async done => {
-    console.log(await (await account()).balances());
+  it('should validate balances', async done => {
+    void0(await (await account()).balances());
     done();
   });
-  it('Will validate all(await Account())s', async done => {
-    console.log(await (await account()).allAccounts());
+  it('should validate all(await Account())s', async done => {
+    void0(await (await account()).allAccounts());
     done();
   });
-  it('Will validate executions', async done => {
+  it('should validate executions', async done => {
     const executions30Days = async () =>
       dateRange30Days((await account()).executions);
-    console.log(await executions30Days());
+    void0(await executions30Days());
     done();
   });
-  it('Will validate orders', async done => {
+  it('should validate orders', async done => {
     const orders30Days = async () =>
       dateRange30Days((await account()).orders('All'));
-    console.log(await orders30Days());
+    void0(await orders30Days());
     done();
   });
-  // it.skip('Will validate ordersByIds', async done => {
+  // it.skip('should validate ordersByIds', async done => {
   //   void0((await account()).ordersByIds);
-  //   // console.log(await ordersByIds());
+  //   // void0(await ordersByIds());
   //   done();
   // });
-  it('Will validate positions', async done => {
-    console.log(await (await account()).positions());
+  it('should validate positions', async done => {
+    void0(await (await account()).positions());
     done();
   });
 });
-// describe.skip('all methods on get.market', () => {
-//   let {} = market;
-//   beforeAll(async done => {
-//     done();
-//   });
-// });
+describe.skip('all methods on get.market', () => {
+  it('should validate allMarkets', async done => {
+    log(await (await market()).allMarkets());
+    done();
+  });
+  it('should validate candlesByStockId', async done => {
+    const candel30Day = async () =>
+      dateRange30Days((await market()).candlesByStockId(8049)('OneDay'));
+    log(await candel30Day());
+    done();
+  });
+});
 // describe.skip('all methods on get.quotes', () => {
 //   let {} = quotes;
 //   beforeAll(async done => {
@@ -116,7 +113,7 @@ describe('all methods on get.account', () => {
 /*
 
 
-  it('Will validate
+  it('should validate
 
   ', async () => {/*  *-/});
   it('
@@ -125,25 +122,25 @@ describe('all methods on get.account', () => {
 
   });
 
-it('Will validate activities', async () => {
+it('should validate activities', async () => {
   //
 });
-it('Will validate balances', async () => {
+it('should validate balances', async () => {
   //
 });
-it('Will validate allAccounts', async () => {
+it('should validate allAccounts', async () => {
   //
 });
-it('Will validate executions', async () => {
+it('should validate executions', async () => {
   //
 });
-it('Will validate orders', async () => {
+it('should validate orders', async () => {
   //
 });
-it('Will validate ordersByIds', async () => {
+it('should validate ordersByIds', async () => {
   //
 });
-it('Will validate positions', async () => {
+it('should validate positions', async () => {
   //
 });
 

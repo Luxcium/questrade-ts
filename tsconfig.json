@@ -33,6 +33,8 @@
       "jest","node"
     ],
     /* Compilation Options */
+    "allowJs": true,
+    "checkJs":true,
     "noEmit": true,
     "importHelpers": true,
     "removeComments": false,

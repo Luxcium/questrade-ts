@@ -24,7 +24,10 @@ export const _oAuthCredentials = (_axios: AxiosStatic = axios) => async (
       '!! validate credntials Invalid data back from axios client'
     );
   }
-  if (!!response.introspect.onOff || introspect.onOff) {
+  if (
+    (!!response.introspect && !!response.introspect.onOff) ||
+    (!!introspect && introspect.onOff)
+  ) {
     console.log('\n\n_oAuthCredentials:\n');
     console.log('\naxiosCONFIG:\n');
     console.log(axiosConfig);

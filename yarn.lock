@@ -376,9 +376,9 @@
   integrity sha512-KPYGmfD0/b1eXurQ59fXD1GBzhSQfz6/lKBxkaHX9dKTzjXbK68Zt7yGUxUsCS1jeTy/8aL+d9JEr+S54mpkWQ==
 
 "@types/ramda@^0.26.29":
-  version "0.26.29"
-  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.26.29.tgz#34dfaabbc0323faccc8ceaaa070b8507eabadd25"
-  integrity sha512-j0rrDm19024J0X5wHl8ZK0mQas9TVvL7KQPocDEZU0nq/OUtmh0mBBBrfSIKGJZF1VLhtW6MGw+YRojUSY+5kg==
+  version "0.26.31"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.26.31.tgz#a8e2c316b0d1e251e23103bc82182459aea0c847"
+  integrity sha512-ntAGHW5KUmEvI88y1OIXpyFHExSJ5u3D2Lr2bor4KEUc8K0ztpzBxayUcBBqR3a9dDcfX9f/dTJRnyQlIjNZvA==
   dependencies:
     ts-toolbelt "^4.7.7"
 
@@ -3719,9 +3719,9 @@ ts-node@^8.4.1:
     yn "^3.0.0"
 
 ts-toolbelt@^4.7.7:
-  version "4.8.8"
-  resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-4.8.8.tgz#0ed56ab46cf0c12c11156076a68f1caf1fd9d55c"
-  integrity sha512-5QLdemct/ssqyVgmEIK1KKY7Y39fX05kanAdnp+O529Jk7dFct+4kgasvMGXagBIvLCUviksDCZs2Lo2/fp6BQ==
+  version "4.8.13"
+  resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-4.8.13.tgz#515c5aed3688453445f4bd59c9170483870069b7"
+  integrity sha512-FbZ5Jie0f5pSnGJ3AYE5OcH9IZ/qooOQV/ZW2nOFDHTtllV1vKzWDkbCK/S8+H3AmHL7jwNPo+LhtKIvfQce6w==
 
 tslib@1.9.0:
   version "1.9.0"
@@ -3856,10 +3856,10 @@ typescript-tslint-plugin@^0.5.4:
     mock-require "^3.0.2"
     vscode-languageserver "^5.1.0"
 
-typescript@^3.6.4:
-  version "3.6.4"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.4.tgz#b18752bb3792bc1a0281335f7f6ebf1bbfc5b91d"
-  integrity sha512-unoCll1+l+YK4i4F8f22TaNVPRHcD9PA3yCuZ8g5e0qGqlVlJ/8FSateOLLSagn+Yg5+ZwuPkL8LFUc0Jcvksg==
+typescript@^3.7.0-dev.20191014:
+  version "3.7.0-dev.20191014"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.0-dev.20191014.tgz#5c35d63591627c668cedb8cddc61a85fbeb1c1c2"
+  integrity sha512-kaG+8Os48sMYj57/UvwkoADjvLgvDLWEwOj3HVJ3AhQykMJ7CKpBzaXwuNwfmO4Q3KSdcinGXLt9RIXLdhfyXw==
 
 uglify-js@^3.1.4:
   version "3.6.1"

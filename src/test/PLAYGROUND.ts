@@ -1,16 +1,13 @@
-// import axios from 'axios';
-// tslint:disable-next-line: no-implicit-dependencies
+
 import { default as ƒ } from 'ramda';
-// import { dateRangeFromNow, void0 } from '../api/utils';
-// import { qtEnumerations as Enumerations } from 'questrade-api-enumerations';
-import { redeemToken } from '../';
+import { redeemToken } from '..';
 import { log, setDateRange, void0 } from '../api/utils';
 // tslint:disable-next-line: no-unused-expression
 
-const dateRange30 = setDateRange(30);
+const dateRange20 = setDateRange(20);
 (async () => {
   const { credentials, qtApi } = await redeemToken(
-    'QBQAfJOCFX2iUAG309YcVGFEy3pKRCxR0'
+    'eKzmpSBbTR0Atb00FLvwJTJ32IfXBYXl0'
   );
   void0([credentials, qtApi, ƒ, log]);
   // const { startDate, endDate } = dateRange(10);
@@ -20,7 +17,7 @@ const dateRange30 = setDateRange(30);
   //   const [timeStart, timeEnd] = dateRangeFromNow(10);
   //   const qt = qtApi;
   //   const results = {
-  void0(await dateRange30(qtApi.get.account.orders('Closed')));
+  log(await dateRange20(qtApi.get.market.candlesByStockId(8049)('OneDay')));
   //     setAccount: qtApi.currentAccount,
   //     getServerTime: qtApi.serverTime,
   //     get: {
