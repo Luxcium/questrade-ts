@@ -1,7 +1,7 @@
 import { default as httpStatus } from 'http-status-codes';
-import { logError } from '../errorHandlers';
+import { logErrors } from '../errorHandlers';
 export const logHttpError = (apiError: Error) => {
-  return logError(
+  return logErrors(
     apiError,
     `\nHTTP error in the response from the api:
     ${httpStatus
