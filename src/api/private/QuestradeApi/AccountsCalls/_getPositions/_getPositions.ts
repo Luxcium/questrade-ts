@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { Credentials, IPosition, IPositions } from '../../../../../typescript';
-import { _axiosAccountGetApi } from '../../../core/AxiosRequestApiFactory';
+import { _axiosAccountGetApi } from '../../../core/API_RequestFactory_AXIOS';
 
 // + _getPositions
 /** _getPositions */

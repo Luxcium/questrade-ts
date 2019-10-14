@@ -2,7 +2,7 @@ export {
   _axiosAccountGetApi,
   _axiosGetApi,
   _axiosPostApi,
-} from './AxiosRequestApiFactory';
+} from './API_RequestFactory_AXIOS';
 export {
   _credentialsFactory,
   _emptyCredentials,

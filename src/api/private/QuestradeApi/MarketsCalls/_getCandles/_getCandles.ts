@@ -1,7 +1,7 @@
 import { AxiosStatic, default as axios } from 'axios';
 import { Credentials, ICandle, ICandles } from '../../../../../typescript';
 import { getHash } from '../../../../utils';
-import { _axiosGetApi } from '../../../core/AxiosRequestApiFactory';
+import { _axiosGetApi } from '../../../core/API_RequestFactory_AXIOS';
 
 // + _getCandles
 /** _getCandles */

@@ -4,7 +4,7 @@ import {
   IStrategiesQuotes,
   StrategyVariantRequest,
 } from '../../../../../typescript';
-import { _axiosPostApi } from '../../../core/AxiosRequestApiFactory';
+import { _axiosPostApi } from '../../../core/API_RequestFactory_AXIOS';
 
 export const _getMarketsQuotesStrategies = (_axios: AxiosStatic = axios) => (
   credentials: Credentials

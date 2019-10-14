@@ -5,7 +5,7 @@ import {
   IActivities,
 } from '../../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
-import { _axiosAccountGetApi } from '../../../core/AxiosRequestApiFactory';
+import { _axiosAccountGetApi } from '../../../core/API_RequestFactory_AXIOS';
 
 // + _getActivities
 /** PROVIDE: credentials, startTime string and endTime string THEN GET: a 'Promise<IAccountActivity[]>' */
