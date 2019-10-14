@@ -1,6 +1,6 @@
-import { AxiosResponse, AxiosStatic, default as axios } from 'axios';
+import { AxiosStatic, default as axios } from 'axios';
 import { introspect } from '../../../..';
-import { Credentials } from '../../../../../typescript';
+import { AxiosIntrospectRes, Credentials } from '../../../../../typescript';
 import { _validateToken } from './_validateToken';
 import { IRefreshCreds, _writeToken } from './_writeToken';
 
@@ -15,9 +15,9 @@ export const _oAuthCredentials = (_axios: AxiosStatic = axios) => async (
       refresh_token: refreshToken,
     },
   };
-  const response = (await _axios(axiosConfig)) as AxiosResponse<
+  const response = (await _axios(axiosConfig)) as AxiosIntrospectRes<
     IRefreshCreds
-  > & { introspect: { onOff: boolean } };
+  >;
 
   if (!response.data) {
     throw new Error(

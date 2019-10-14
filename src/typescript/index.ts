@@ -20,6 +20,7 @@ export {
   StrategyTypes,
   TickType,
 } from 'questrade-api-enumerations';
+export { AxiosIntrospectRes } from './AxiosIntrospectRes';
 export { AcountNumberString, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
 export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';
