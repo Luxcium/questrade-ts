@@ -34,7 +34,7 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
   const url: string = !!config && !!config.url ? config.url : '';
 
   // console.log(config);
-  const data = ['balances', 'token', 'time', 'accounts'].reduce(
+  const data = ['balances', 'token', 'time', 'accounts', 'candles'].reduce(
     (previous, dir) => {
       if (!previous) {
         if (url.indexOf(`/${dir}`) !== -1) {

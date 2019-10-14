@@ -1,9 +1,12 @@
 import { AxiosStatic, default as axios } from 'axios';
-import { _getQuotesOptionsByIds, _getQuotesOptionsFilter } from '..';
 import {
   Credentials,
   QuotesOptionsbyFilterAndIds,
 } from '../../../../../typescript';
+import {
+  _getQuotesOptionsByIds,
+  _getQuotesOptionsFilter,
+} from '../../MarketsCalls';
 
 export const _getQuotesOptionsbyFilterAndIds = (
   _axios: AxiosStatic = axios

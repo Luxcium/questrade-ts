@@ -4,7 +4,7 @@ import { AxiosIntrospectRes, Credentials } from '../../../../../typescript';
 import { _validateToken } from './_validateToken';
 import { IRefreshCreds, _writeToken } from './_writeToken';
 
-export const _oAuthCredentials = (_axios: AxiosStatic = axios) => async (
+export const _oAuthAxiosCredentials = (_axios: AxiosStatic = axios) => async (
   token: string
 ): Promise<Credentials> => {
   const { refreshToken, credentials } = _validateToken(token);

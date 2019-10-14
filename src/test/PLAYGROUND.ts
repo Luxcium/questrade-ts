@@ -4,11 +4,11 @@ import { log, setDateRange, void0 } from '../api/utils';
 // tslint:disable-next-line: no-unused-expression
 
 (async () => {
-  const dateRange = setDateRange(900);
+  const dateRange = setDateRange(1);
 
   const redeem = await redeemToken('BfHXYThKbYiRAmEMYzEvMTWeFyiYFQBJ0')
     .then(result => {
-      console.log(result);
+      // console.log(result);
       return result;
     })
     .catch(err => console.log(err));

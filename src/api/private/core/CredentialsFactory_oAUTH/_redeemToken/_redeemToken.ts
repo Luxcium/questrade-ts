@@ -1,6 +1,6 @@
 import { AxiosStatic, default as axios } from 'axios';
 import * as utils from '../../../../utils';
-import { _getQuestradeApi } from '../../../QuestradeApi';
+import { _getQuestradeApi } from '../../../QuestradeApi_QtApi';
 import { _credentialsFactory } from '../_credentialsFactory';
 
 export const _redeemToken = (_axios: AxiosStatic = axios) => async (

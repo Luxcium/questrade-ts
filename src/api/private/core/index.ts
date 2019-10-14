@@ -8,4 +8,4 @@ export {
   _emptyCredentials,
   _getPrimaryAccountNumber,
   _redeemToken,
-} from './CredentialsFactory';
+} from './CredentialsFactory_oAUTH';

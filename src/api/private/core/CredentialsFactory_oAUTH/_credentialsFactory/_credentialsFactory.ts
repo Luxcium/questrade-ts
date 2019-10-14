@@ -2,8 +2,8 @@ import { AxiosStatic, default as axios } from 'axios';
 import {
   _getAccounts,
   _getServerTime,
-} from '../../../QuestradeApi/AccountsCalls';
-import { _oAuthCredentials } from '../_oAuthCredentials_AXIOS';
+} from '../../../QuestradeApi_QtApi/AccountsCalls';
+import { _oAuthAxiosCredentials } from '../_axiosCredentials_oAUTH';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 // const _getServerTime = (_axios: AxiosStatic = axios) => (
 //   credentials: Credentials
@@ -21,7 +21,7 @@ export const _credentialsFactory = (_axios: AxiosStatic = axios) => async (
   if (!token) throw new Error('Missing Token');
   const mock = token.length === 8 ? true : false;
 
-  const credentials = await _oAuthCredentials(_axios)(token);
+  const credentials = await _oAuthAxiosCredentials(_axios)(token);
 
   try {
     const accounts = await _getAccounts(_axios)(credentials)();

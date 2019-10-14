@@ -7,7 +7,7 @@ import { redeemToken } from '..';
 import { log, setDateRange, void0 } from '../api/utils';
 // tslint:disable-next-line: no-unused-expression
 
-const dateRange20 = setDateRange(20);
+const dateRange20 = setDateRange(1);
 (async () => {
   const { credentials, qtApi } = await redeemToken(
     'eKzmpSBbTR0Atb00FLvwJTJ32IfXBYXl0'

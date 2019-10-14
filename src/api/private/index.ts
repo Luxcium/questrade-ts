@@ -4,4 +4,4 @@ export {
   _getPrimaryAccountNumber,
   _redeemToken,
 } from './core';
-export { _getQuestradeApi } from './QuestradeApi';
+export { _getQuestradeApi } from './QuestradeApi_QtApi';
