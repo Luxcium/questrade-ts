@@ -1,4 +1,3 @@
-
 import { default as ƒ } from 'ramda';
 import { redeemToken } from '..';
 import { log, setDateRange, void0 } from '../api/utils';
