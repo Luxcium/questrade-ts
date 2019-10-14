@@ -1,13 +1,13 @@
-import { AxiosStatic, default as axios } from 'axios';
-import { Credentials, ICandle, ICandles } from '../../../../../typescript';
-import { getHash } from '../../../../utils';
-import { _axiosGetApi } from '../../../core/API_Request_AXIOS';
+import { AxiosStatic, default as axios } from "axios";
+import { Credentials, ICandle, ICandles } from "../../../../../typescript";
+import { getHash } from "../../../../utils";
+import { _axiosGetApi } from "../../../core/API_Request_AXIOS";
 
 // + _getCandles
 /** _getCandles */
 export const _getCandles = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
-) => (symbolID: number) => (interval: string = 'OneDay') => (
+) => (symbolID: number) => (interval: string = "OneDay") => (
   startDate: string
 ) => async (endDate: string): Promise<ICandle[]> =>
   (await _axiosGetApi(_axios)(credentials)<ICandles>(

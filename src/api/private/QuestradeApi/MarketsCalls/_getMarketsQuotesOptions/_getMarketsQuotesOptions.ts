@@ -1,12 +1,12 @@
-import { AxiosStatic, default as axios } from 'axios';
+import { AxiosStatic, default as axios } from "axios";
 import {
   Credentials,
   FiltersArray,
   IOptionsQuotes,
   OptionsIdArray,
-  OptionsPostData,
-} from '../../../../../typescript';
-import { _axiosPostApi } from '../../../core/API_Request_AXIOS';
+  OptionsPostData
+} from "../../../../../typescript";
+import { _axiosPostApi } from "../../../core/API_Request_AXIOS";
 
 export const _getMarketsQuotesOptions = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
@@ -22,7 +22,7 @@ export const _getMarketsQuotesOptions = (_axios: AxiosStatic = axios) => (
     const postData: OptionsIdArray | FiltersArray =
       !!optionIds && optionIds.length > 0
         ? {
-            optionIds,
+            optionIds
           }
         : {
             filters: [
@@ -31,16 +31,16 @@ export const _getMarketsQuotesOptions = (_axios: AxiosStatic = axios) => (
                 expiryDate,
                 optionType: optionType || void 0,
                 minstrikePrice: minstrikePrice || 0,
-                maxstrikePrice: maxstrikePrice || 0,
-              },
-            ],
+                maxstrikePrice: maxstrikePrice || 0
+              }
+            ]
           };
 
     return _axiosPostApi(_axios)(credentials)<OptionsPostData>(postData)<
       IOptionsQuotes
-    >('/markets/quotes/options')();
+    >("/markets/quotes/options")();
   } catch (error) {
-    console.error('/markets/quotes/options', error.message);
+    console.error("/markets/quotes/options", error.message);
     throw error;
   }
 };

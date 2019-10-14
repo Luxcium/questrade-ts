@@ -1,6 +1,6 @@
-import { AxiosStatic, default as axios } from 'axios';
-import { Credentials, IPosition, IPositions } from '../../../../../typescript';
-import { _axiosAccountGetApi } from '../../../core/API_Request_AXIOS';
+import { AxiosStatic, default as axios } from "axios";
+import { Credentials, IPosition, IPositions } from "../../../../../typescript";
+import { _axiosAccountGetApi } from "../../../core/API_Request_AXIOS";
 
 // + _getPositions
 /** _getPositions */
@@ -8,6 +8,6 @@ export const _getPositions = (_axios: AxiosStatic = axios) => (
   credentials: Credentials
 ) => async (): Promise<IPosition[]> => {
   return (await _axiosAccountGetApi(_axios)(credentials)<IPositions>(
-    '/positions'
+    "/positions"
   )()).positions;
 };

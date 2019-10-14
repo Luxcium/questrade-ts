@@ -1,6 +1,6 @@
-import { AxiosStatic, default as axios } from 'axios';
-import { Credentials, IAccount, IAccounts } from '../../../../../typescript';
-import { _axiosGetApi } from '../../../core/API_Request_AXIOS';
+import { AxiosStatic, default as axios } from "axios";
+import { Credentials, IAccount, IAccounts } from "../../../../../typescript";
+import { _axiosGetApi } from "../../../core/API_Request_AXIOS";
 
 // + _getAccounts
 /** _getAccounts */
@@ -12,7 +12,7 @@ export function _getAccounts(_axios: AxiosStatic = axios) {
       //
       const getApi = _axiosGetApi(_axios);
       const getAccounts = getApi(credentials);
-      const accounts = getAccounts<IAccounts>('/accounts');
+      const accounts = getAccounts<IAccounts>("/accounts");
       const data = await accounts();
       //
       return data.accounts;

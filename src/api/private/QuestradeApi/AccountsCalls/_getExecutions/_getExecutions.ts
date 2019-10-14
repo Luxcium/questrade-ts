@@ -1,11 +1,11 @@
-import { AxiosStatic, default as axios } from 'axios';
+import { AxiosStatic, default as axios } from "axios";
 import {
   Credentials,
   IExecution,
-  IExecutions,
-} from '../../../../../typescript';
-import { endpointFormatDateTool } from '../../../../utils';
-import { _axiosAccountGetApi } from '../../../core/API_Request_AXIOS';
+  IExecutions
+} from "../../../../../typescript";
+import { endpointFormatDateTool } from "../../../../utils";
+import { _axiosAccountGetApi } from "../../../core/API_Request_AXIOS";
 
 // + _getExecutions
 /** _getExecutions */

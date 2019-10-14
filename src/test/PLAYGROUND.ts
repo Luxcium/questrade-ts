@@ -16,9 +16,7 @@ import { log, setDateRange, void0 } from '../api/utils';
     throw new Error('Redeem token did not return acceptable response');
   }
   const { credentials, qtApi } = redeem;
-  log(
-    (await dateRange(qtApi.get.market.candlesByStockId(8049)('OneDay'))).length
-  );
+  log(await dateRange(qtApi.get.market.candlesByStockId(8049)('OneDay')));
 
   void0([credentials, qtApi, ƒ, log]);
 })().catch(error => console.log('PlayGround error message:', error.message));
