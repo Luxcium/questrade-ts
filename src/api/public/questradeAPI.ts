@@ -1,11 +1,10 @@
-import { AxiosStatic, default as axios } from 'axios';
 import { Credentials, IQuestradeApi } from '../../typescript';
 import { _getQuestradeApi } from '../private';
 
-export const getQuestradeApi = _getQuestradeApi(axios as AxiosStatic);
+// export const getQuestradeApi = ;
 
 export const questradeApi = async (credentials: Credentials) => {
-  const qtApi = await getQuestradeApi(credentials);
+  const qtApi = await _getQuestradeApi(credentials);
   const currentAccount = qtApi.currentAccount;
   const myBalances = qtApi.myBalances;
   const serverTime = qtApi.serverTime;

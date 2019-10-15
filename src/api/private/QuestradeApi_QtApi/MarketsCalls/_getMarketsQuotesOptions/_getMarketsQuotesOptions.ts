@@ -1,4 +1,3 @@
-import { AxiosStatic, default as axios } from 'axios';
 import {
   Credentials,
   FiltersArray,
@@ -8,9 +7,7 @@ import {
 } from '../../../../../typescript';
 import { _axiosPostApi } from '../../../core/API_Request_AXIOS';
 
-export const _getMarketsQuotesOptions = (_axios: AxiosStatic = axios) => (
-  credentials: Credentials
-) => async (
+export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
   optionIds: void | null | undefined | number[] = [],
   underlyingId?: number,
   expiryDate?: string,
@@ -36,7 +33,7 @@ export const _getMarketsQuotesOptions = (_axios: AxiosStatic = axios) => (
             ],
           };
 
-    return _axiosPostApi(_axios)(credentials)<OptionsPostData>(postData)<
+    return _axiosPostApi(credentials)<OptionsPostData>(postData)<
       IOptionsQuotes
     >('/markets/quotes/options')();
   } catch (error) {

@@ -1,4 +1,3 @@
-import { AxiosStatic, default as axios } from 'axios';
 import {
   _getAccounts,
   _getServerTime,
@@ -7,17 +6,15 @@ import { _oAuthAxiosCredentials } from '../_axiosCredentials_oAUTH';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
-export const _credentialsFactory = (_axios: AxiosStatic = axios) => async (
-  token: string
-) => {
+export const _credentialsFactory = async (token: string) => {
   if (!token) throw new Error('Missing Token');
   const mock = token.length === 8 ? true : false;
 
-  const credentials = await _oAuthAxiosCredentials(_axios)(token);
+  const credentials = await _oAuthAxiosCredentials(token);
 
   try {
-    const accounts = await _getAccounts(_axios)(credentials)();
-    const time = await _getServerTime(_axios)(credentials)();
+    const accounts = await _getAccounts(credentials)();
+    const time = await _getServerTime(credentials)();
 
     const timZoneOffset = new Date(time).getTimezoneOffset();
     const timZone = -1 * 60 * 1000 * timZoneOffset;

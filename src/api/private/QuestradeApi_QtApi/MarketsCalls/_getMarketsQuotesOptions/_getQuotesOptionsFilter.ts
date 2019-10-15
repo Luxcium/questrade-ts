@@ -1,10 +1,9 @@
-import { AxiosStatic, default as axios } from 'axios';
 import { Credentials, OptionsFilters } from '../../../../../typescript';
 import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
-export const _getQuotesOptionsFilter = (_axios: AxiosStatic = axios) => (
-  credentials: Credentials
-) => async (filters: OptionsFilters) => {
+export const _getQuotesOptionsFilter = (credentials: Credentials) => async (
+  filters: OptionsFilters
+) => {
   const {
     underlyingId,
     expiryDate,
@@ -12,7 +11,7 @@ export const _getQuotesOptionsFilter = (_axios: AxiosStatic = axios) => (
     minstrikePrice,
     maxstrikePrice,
   } = filters;
-  return _getMarketsQuotesOptions(_axios)(credentials)(
+  return _getMarketsQuotesOptions(credentials)(
     null,
     underlyingId,
     expiryDate,

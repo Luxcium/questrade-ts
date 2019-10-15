@@ -1,13 +1,11 @@
-import { AxiosStatic, default as axios } from 'axios';
 import { Credentials, IBalances } from '../../../../../typescript';
 import { _axiosAccountGetApi } from '../../../core/API_Request_AXIOS';
 
 // + _getBalances
 /** _getBalances */
-export const _getBalances = (_axios: AxiosStatic = axios) => {
+export const _getBalances = (credentials: Credentials) => async (): Promise<
+  IBalances
+> => {
   //
-  return (credentials: Credentials) => async (): Promise<IBalances> => {
-    //
-    return _axiosAccountGetApi(_axios)(credentials)<IBalances>('/balances')();
-  };
+  return _axiosAccountGetApi(credentials)<IBalances>('/balances')();
 };

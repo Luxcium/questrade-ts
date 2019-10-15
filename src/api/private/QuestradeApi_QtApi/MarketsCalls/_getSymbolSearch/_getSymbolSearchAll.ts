@@ -1,4 +1,3 @@
-import { AxiosStatic, default as axios } from 'axios';
 import {
   Credentials,
   ISymbolSearchResult,
@@ -7,13 +6,11 @@ import {
 import { _axiosGetApi } from '../../../core/API_Request_AXIOS';
 // + _getSymbolSearchAll
 /** _getSymbolSearch */
-export const _getSymbolSearchAll = (_axios: AxiosStatic = axios) => (
-  credentials: Credentials
-) => async (
+export const _getSymbolSearchAll = (credentials: Credentials) => async (
   prefix: string,
   offset: number = 0
 ): Promise<ISymbolSearchResult[]> => {
-  const results = await _axiosGetApi(_axios)(credentials)<ISymbolSearchResults>(
+  const results = await _axiosGetApi(credentials)<ISymbolSearchResults>(
     `/symbols/search?prefix=${prefix}&offset=${offset}`
   )();
 

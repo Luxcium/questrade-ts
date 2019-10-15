@@ -1,4 +1,3 @@
-import { AxiosStatic, default as axios } from 'axios';
 import {
   Credentials,
   IExecution,
@@ -9,11 +8,11 @@ import { _axiosAccountGetApi } from '../../../core/API_Request_AXIOS';
 
 // + _getExecutions
 /** _getExecutions */
-export const _getExecutions = (_axios: AxiosStatic = axios) => (
-  credentials: Credentials
-) => (startDate: string) => async (endDate: string): Promise<IExecution[]> => {
+export const _getExecutions = (credentials: Credentials) => (
+  startDate: string
+) => async (endDate: string): Promise<IExecution[]> => {
   //
-  return (await _axiosAccountGetApi(_axios)(credentials)<IExecutions>(
+  return (await _axiosAccountGetApi(credentials)<IExecutions>(
     `/executions?${endpointFormatDateTool(startDate, endDate)}`
   )()).executions;
 };

@@ -1,4 +1,3 @@
-import { AxiosStatic, default as axios } from 'axios';
 import {
   Credentials,
   IOptionChain,
@@ -8,9 +7,9 @@ import { _axiosGetApi } from '../../../core/API_Request_AXIOS';
 
 // + _getOptionsById
 /** _getOptionsSymbols */
-export const _getOptionsById = (_axios: AxiosStatic = axios) => (
-  credentials: Credentials
-) => async (symbolID: number): Promise<IOptionChain[]> =>
-  (await _axiosGetApi(_axios)(credentials)<IOptionChains>(
+export const _getOptionsById = (credentials: Credentials) => async (
+  symbolID: number
+): Promise<IOptionChain[]> =>
+  (await _axiosGetApi(credentials)<IOptionChains>(
     `/symbols/${symbolID}/options`
   )()).optionChain;
