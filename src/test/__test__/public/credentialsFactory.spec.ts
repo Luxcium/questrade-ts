@@ -76,7 +76,7 @@ describe('methods on get.account', () => {
     void0(await orders30Days());
     done();
   });
-  it.skip('should validate ordersByIds', async done => {
+  it('should validate ordersByIds', async done => {
     void0((await account()).ordersByIds);
     done();
   });
@@ -102,15 +102,15 @@ describe('all methods on get.quotes', () => {
     void0(await (await quotes()).byStockIds([8049]));
     done();
   });
-  it.skip('should validate can thant get optionsQuotes fromFilter', async done => {
+  it('should validate can thant get optionsQuotes fromFilter', async done => {
     void0((await quotes()).optionsQuotes.fromFilter);
     done();
   });
-  it.skip('should validate thant can get optionsQuotes byOptionsIds', async done => {
+  it('should validate thant can get optionsQuotes byOptionsIds', async done => {
     void0((await quotes()).optionsQuotes.byOptionsIds);
     done();
   });
-  it.skip('should validate can thant get quotes byStrategies', async done => {
+  it('should validate can thant get quotes byStrategies', async done => {
     void0((await quotes()).byStrategies);
     done();
   });
