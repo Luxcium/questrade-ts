@@ -42,6 +42,13 @@ beforeAll(async done => {
   done();
 });
 
+describe('methods and properties on qtApi', () => {
+  it.skip('should validate qtApi myBalances', async done => {
+    log(await qtApi.myBalances());
+    done();
+  });
+});
+
 describe('methods on get.account', () => {
   it('should validate activities', async done => {
     const activities30Days = async () =>
