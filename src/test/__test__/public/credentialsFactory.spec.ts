@@ -80,11 +80,11 @@ describe.skip('methods on get.account', () => {
   });
 });
 describe('all methods on get.market', () => {
-  it.skip('should validate allMarkets', async done => {
+  it('should validate allMarkets', async done => {
     // log(await (await market()).allMarkets());
     done();
   });
-  it.only('should validate candlesByStockId', async done => {
+  it.skip('should validate candlesByStockId', async done => {
     const candel30Day = async () =>
       dateRange30Days((await market()).candlesByStockId(8049)('OneDay'));
     log(await candel30Day());

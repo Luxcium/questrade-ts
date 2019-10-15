@@ -37,17 +37,18 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
   const data = [
     'balances',
     'token',
-    'time',
-    'markets',
-    'markets/candles',
+    'candles',
     'activities',
     'orders',
     'positions',
     'executions',
+    'markets',
     'accounts',
+    'time',
   ].reduce((previous, dir) => {
     if (!previous) {
       if (url.indexOf(`/${dir}`) !== -1) {
+        console.log('dir', dir);
         return JSON.parse(readFileSync(path(dir), 'utf8'));
       }
     }
