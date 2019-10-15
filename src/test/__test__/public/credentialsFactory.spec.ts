@@ -45,17 +45,26 @@ beforeAll(async done => {
   done();
 });
 
-describe('methods and properties on qtApi', () => {
+// # QtAPI PROPERTIES
+describe('QtAPI PROPERTIES will test all properties and methods on qtApi', () => {
   it('should validate credentials toValue', async done => {
-    log(credentials.toValue());
+    void0(credentials.toValue());
     done();
   });
   it('should credentials toString', async done => {
-    log(credentials.toString());
+    void0(credentials.toString());
     done();
   });
+
   it('should validate qtApi myBalances', async done => {
-    void0((await qtApi.myBalances()).CAD.combined.current.buyingPower);
+    expect(
+      (await qtApi.myBalances()).CAD.combined.current.buyingPower
+    ).not.toBeNaN();
+    done();
+  });
+
+  it('should validate qtApi myBalances', async done => {
+    log(qtApi.serverTime);
     done();
   });
   it('should validate qtApi myBalances', async done => {
@@ -64,7 +73,8 @@ describe('methods and properties on qtApi', () => {
   });
 });
 
-describe('methods on get.account', () => {
+// # ACCOUNT METHODS
+describe('ACCOUNT METHODS will test all methods on get.account', () => {
   it('should validate activities', async done => {
     const activities30Days = async () =>
       dateRange30Days((await account()).activities);
@@ -118,7 +128,9 @@ describe('methods on get.account', () => {
     done();
   });
 });
-describe('all methods on get.market', () => {
+
+// # MARKET METHODS
+describe('MARKET METHODS will test all methods on get.market', () => {
   it('should validate allMarkets', async done => {
     void0(await (await market()).allMarkets());
     done();
@@ -136,25 +148,52 @@ describe('all methods on get.market', () => {
     done();
   });
 });
-describe('all methods on get.quotes', () => {
+
+// # QUOTES METHODES
+describe('QUOTES METHODES will test all methods on get.quotes', () => {
   it('should validate get quotes byStockIds', async done => {
     void0(await (await quotes()).byStockIds([8049]));
     done();
   });
   it('should validate can thant get optionsQuotes fromFilter', async done => {
-    void0((await quotes()).optionsQuotes.fromFilter);
+    void0(
+      (await quotes()).optionsQuotes.fromFilter({ underlyingId: 584497639 })
+    );
     done();
   });
   it('should validate thant can get optionsQuotes byOptionsIds', async done => {
-    void0((await quotes()).optionsQuotes.byOptionsIds);
+    log((await quotes()).optionsQuotes.byOptionsIds([584497639]));
     done();
   });
   it('should validate can thant get quotes byStrategies', async done => {
-    void0((await quotes()).byStrategies);
+    void0(
+      (await quotes()).byStrategies({
+        variants: [
+          {
+            variantId: 1,
+            strategy: 'Custom',
+            legs: [
+              {
+                symbolId: 27426,
+                ratio: 1000,
+                action: 'Buy',
+              },
+              {
+                symbolId: 10550014,
+                ratio: 10,
+                action: 'Sell',
+              },
+            ],
+          },
+        ],
+      })
+    );
     done();
   });
 });
-describe('all methods on get.search', () => {
+
+// # SEARCH METHODES
+describe('SEARCH METHODES will test all methods on get.search', () => {
   it('should validate allStocks ', async done => {
     void0(await (await search()).allStocks('aapl'));
     done();
@@ -168,7 +207,9 @@ describe('all methods on get.search', () => {
     done();
   });
 });
-describe('all methods on get.symbols', () => {
+
+// # SYMBOLS METHODS
+describe('SYMBOLS METHODS will test all methods on get.symbols', () => {
   it('should validate optionChains byStockId', async done => {
     void0(await (await symbols()).optionChains.byStockId(8049));
     done();

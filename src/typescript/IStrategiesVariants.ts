@@ -23,11 +23,11 @@ export interface Leg {
    * Order side (e.g. “Buy”)
    * See Order Action section for all allowed values
    */
-  action?: string;
+  action: string;
   /** Numeric ration of the leg in strategy */
-  ratio?: number;
+  ratio: number;
   /** Internal symbol identifier */
-  stockId?: number;
+  symbolId: number;
 }
 /**
  * Single or many multi-leg strategies
