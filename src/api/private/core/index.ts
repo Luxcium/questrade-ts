@@ -7,5 +7,4 @@ export {
   _credentialsFactory,
   _emptyCredentials,
   _getPrimaryAccountNumber,
-  _redeemToken,
 } from './Credentials_Factory_oAUTH';
