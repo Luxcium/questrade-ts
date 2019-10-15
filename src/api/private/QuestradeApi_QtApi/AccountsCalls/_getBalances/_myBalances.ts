@@ -4,7 +4,6 @@ import { IMyBalances } from '../../../../../typescript/IMyBalances';
 export const _myBalances = async (
   myBalances: IBalances
 ): Promise<IMyBalances> => {
-  console.log(myBalances);
   const [perCADcurrent, perUSDcurrent] = myBalances.perCurrencyBalances;
   const [combinedCADcurrent, combinedUSDcurrent] = myBalances.combinedBalances;
   const [
