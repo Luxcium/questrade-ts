@@ -43,7 +43,7 @@ beforeAll(async done => {
 });
 
 describe('methods and properties on qtApi', () => {
-  it.skip('should validate qtApi myBalances', async done => {
+  it('should validate qtApi myBalances', async done => {
     log(await qtApi.myBalances());
     done();
   });
