@@ -1,6 +1,7 @@
 import { redeemToken } from '../../../api/public';
 import { log, setDateRange, void0 } from '../../../api/utils';
 import {
+  Credentials,
   IQtApiAccount,
   IQtApiGet,
   IQtApiMarket,
@@ -13,7 +14,7 @@ import {
 const dateRange30Days = setDateRange(30);
 
 let qtApi: IQuestradeApi;
-
+let credentials: Credentials;
 let get: IQtApiGet;
 
 let account: () => Promise<IQtApiAccount>;
@@ -23,8 +24,10 @@ let search: () => Promise<IQtApiSearch>;
 let symbols: () => Promise<IQtApiSymbols>;
 
 beforeAll(async done => {
-  qtApi = (await redeemToken('MOCKMOCK')).qtApi;
+  const qtApiAndCredentials = await redeemToken('MOCKMOCK');
+  qtApi = qtApiAndCredentials.qtApi;
   get = qtApi.get;
+  credentials = qtApiAndCredentials.credentials;
 
   account = async () => get.account;
   market = async () => get.market;
@@ -43,6 +46,18 @@ beforeAll(async done => {
 });
 
 describe('methods and properties on qtApi', () => {
+  it('should validate credentials toValue', async done => {
+    log(credentials.toValue());
+    done();
+  });
+  it('should credentials toString', async done => {
+    log(credentials.toString());
+    done();
+  });
+  it('should validate qtApi myBalances', async done => {
+    void0((await qtApi.myBalances()).CAD.combined.current.buyingPower);
+    done();
+  });
   it('should validate qtApi myBalances', async done => {
     void0((await qtApi.myBalances()).CAD.combined.current.buyingPower);
     done();
@@ -108,9 +123,15 @@ describe('all methods on get.market', () => {
     void0(await (await market()).allMarkets());
     done();
   });
-  it('should validate candlesByStockId', async done => {
+  it("should validate candlesByStockId with 'OneDay' interval", async done => {
     const candel30Day = async () =>
       dateRange30Days((await market()).candlesByStockId(8049)('OneDay'));
+    void0(await candel30Day());
+    done();
+  });
+  it('should validate candlesByStockId with default interval', async done => {
+    const candel30Day = async () =>
+      dateRange30Days((await market()).candlesByStockId(8049)());
     void0(await candel30Day());
     done();
   });

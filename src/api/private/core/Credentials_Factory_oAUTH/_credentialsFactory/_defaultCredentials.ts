@@ -18,21 +18,23 @@ export const _defaultCredentials: Credentials = {
   serverTime: undefined,
   tokenType: '',
   toValue() {
-    return {
-      ...this,
-      accessToken: '[string:PRIVATE]',
-      keyFile: './keys/[PRIVATE]',
-      refreshToken: '[string:PRIVATE]',
-      seedToken: '[string:PRIVATE]',
-    }.toString();
+    return JSON.parse(
+      JSON.stringify({
+        ...this,
+        accessToken: '[string:PRIVATE]',
+        keyFile: './keys/[PRIVATE]',
+        refreshToken: '[string:PRIVATE]',
+        seedToken: '[string:PRIVATE]',
+      })
+    );
   },
   toString() {
-    return {
+    return JSON.stringify({
       ...this,
       accessToken: ' [ PRIVATE ] ',
       keyFile: './keys/[ PRIVATE ] ',
       refreshToken: ' [ PRIVATE ] ',
       seedToken: ' [ PRIVATE ] ',
-    }.toString();
+    });
   },
 };

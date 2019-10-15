@@ -17,6 +17,6 @@ export interface Credentials {
   serverTime?: Date;
   serverTimeRaw?: number;
   tokenType: string;
-  toString: () => string;
-  toValue: () => string;
+  toString(): string;
+  toValue(): string;
 }
