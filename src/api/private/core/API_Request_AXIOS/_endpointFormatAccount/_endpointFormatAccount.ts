@@ -1,13 +1,13 @@
 import { Credentials } from '../../../../../typescript';
 
 const _urlSeprator = () => '/';
-const _baseAcctUrlStr = (): string => 'account';
+const _baseAcctUrlStr = (): string => 'accounts';
 const _credAcctNmbrProp = (C: Credentials): string => C.accountNumber;
 
 const _endPtAccountBaseURL: EndPtAccountBaseURL = getCredAcctProp => urlSep => accountStr => creds => accountEndpoint =>
   `${urlSep()}${accountStr()}${urlSep()}${getCredAcctProp(
     creds
-  )}${urlSep()}${accountEndpoint}`;
+  )}${accountEndpoint}`;
 /** PROVIDE: credentials and accountEndpoint string, THEN GET: a endpoint string */
 export const _endpointFormatAccount = _endPtAccountBaseURL(_credAcctNmbrProp)(
   _urlSeprator

@@ -79,7 +79,7 @@ describe('methods on get.account', () => {
     done();
   });
 });
-describe.skip('all methods on get.market', () => {
+describe('all methods on get.market', () => {
   it('should validate allMarkets', async done => {
     log(await (await market()).allMarkets());
     done();

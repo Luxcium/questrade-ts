@@ -34,17 +34,25 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
   const url: string = !!config && !!config.url ? config.url : '';
 
   // console.log(config);
-  const data = ['balances', 'token', 'time', 'accounts', 'candles'].reduce(
-    (previous, dir) => {
-      if (!previous) {
-        if (url.indexOf(`/${dir}`) !== -1) {
-          return JSON.parse(readFileSync(path(dir), 'utf8'));
-        }
+  const data = [
+    'balances',
+    'token',
+    'time',
+    'markets',
+    'candles',
+    'activities',
+    'orders',
+    'positions',
+    'executions',
+    'accounts',
+  ].reduce((previous, dir) => {
+    if (!previous) {
+      if (url.indexOf(`/${dir}`) !== -1) {
+        return JSON.parse(readFileSync(path(dir), 'utf8'));
       }
-      return previous;
-    },
-    ''
-  );
+    }
+    return previous;
+  }, '');
   // console.log('something', something);
   return { data, introspect }; // cred;
 });

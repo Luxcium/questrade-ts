@@ -1,0 +1,585 @@
+{
+  "markets": [
+    {
+      "name": "TSX",
+      "tradingVenues": [
+        "TSX",
+        "ALPH",
+        "CXC",
+        "OMGA",
+        "PURE",
+        "CNSX",
+        "ATS",
+        "ICX",
+        "LIQ",
+        "LYX",
+        "CXD",
+        "NEOL",
+        "NEO",
+        "MATCH",
+        "CX2"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "AUTO"
+      ],
+      "secondaryOrderRoutes": [
+        "TSX",
+        "AUTO",
+        "CX2",
+        "AQN",
+        "AQL",
+        "CXC",
+        "OME",
+        "OM2",
+        "CXD"
+      ],
+      "level1Feeds": [
+        "TSX"
+      ],
+      "level2Feeds": [
+        "ALPH",
+        "CXC",
+        "NEO",
+        "NEOL",
+        "OMGA",
+        "PURE",
+        "TSX"
+      ],
+      "extendedStartTime": "2019-10-14T07:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 2147483647
+    },
+    {
+      "name": "TSXV",
+      "tradingVenues": [
+        "TSXV",
+        "ALPH",
+        "CXC",
+        "OMGA",
+        "PURE",
+        "CNSX",
+        "ATS",
+        "ICX",
+        "LIQ",
+        "LYX",
+        "CXD",
+        "NEOL",
+        "NEO",
+        "MATCH",
+        "CX2"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "AUTO"
+      ],
+      "secondaryOrderRoutes": [
+        "TSXV",
+        "AUTO",
+        "CX2",
+        "AQN",
+        "AQL",
+        "CXC",
+        "OME",
+        "OM2",
+        "CXD"
+      ],
+      "level1Feeds": [
+        "TSX"
+      ],
+      "level2Feeds": [
+        "ALPH",
+        "CXC",
+        "NEO",
+        "NEOL",
+        "OMGA",
+        "PURE",
+        "TSXV"
+      ],
+      "extendedStartTime": "2019-10-14T07:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 2147483647
+    },
+    {
+      "name": "MX",
+      "tradingVenues": [
+        "MX"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "AUTO"
+      ],
+      "secondaryOrderRoutes": [],
+      "level1Feeds": [
+        "MX"
+      ],
+      "level2Feeds": [
+        "MX"
+      ],
+      "extendedStartTime": "2019-10-14T07:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 2147483647
+    },
+    {
+      "name": "CNSX",
+      "tradingVenues": [
+        "ALPH",
+        "CXC",
+        "OMGA",
+        "CNSX",
+        "ATS"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "AUTO"
+      ],
+      "secondaryOrderRoutes": [
+        "CNSX",
+        "AUTO",
+        "CX2",
+        "AQN",
+        "AQL",
+        "CXC",
+        "OME",
+        "OM2"
+      ],
+      "level1Feeds": [
+        "TSX"
+      ],
+      "level2Feeds": [
+        "ALPH",
+        "CNSX",
+        "CXC",
+        "OMGA"
+      ],
+      "extendedStartTime": "2019-10-14T07:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 2147483647
+    },
+    {
+      "name": "NASDAQ",
+      "tradingVenues": [
+        "NASDAQ",
+        "NYSE",
+        "NYSEAM",
+        "CHX",
+        "PHLX",
+        "ARCA",
+        "BATS",
+        "BSE",
+        "ISE",
+        "NSE",
+        "IDC",
+        "EDGA",
+        "EDGX",
+        "BATSY",
+        "ISEG",
+        "IEX",
+        "ADF"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "AUTO",
+        "NASDAQ",
+        "ARCA",
+        "MNGD",
+        "BATS",
+        "EDGA",
+        "EDGX"
+      ],
+      "secondaryOrderRoutes": [],
+      "level1Feeds": [
+        "BATSY",
+        "BSE",
+        "CHX",
+        "IEX",
+        "NASDAQ",
+        "NSE",
+        "PHLX"
+      ],
+      "level2Feeds": [
+        "ARCA",
+        "BATS",
+        "EDGA",
+        "EDGX",
+        "NASDAQ",
+        "NYSE",
+        "NYSEAM"
+      ],
+      "extendedStartTime": "2019-10-14T04:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 2147483647
+    },
+    {
+      "name": "NYSE",
+      "tradingVenues": [
+        "NASDAQ",
+        "NYSE",
+        "NYSEAM",
+        "CHX",
+        "PHLX",
+        "ARCA",
+        "BATS",
+        "BSE",
+        "ISE",
+        "NSE",
+        "IDC",
+        "EDGA",
+        "EDGX",
+        "BATSY",
+        "ISEG",
+        "IEX",
+        "ADF"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "AUTO",
+        "NYSE",
+        "ARCA",
+        "NASDAQ",
+        "MNGD",
+        "BATS",
+        "EDGA",
+        "EDGX"
+      ],
+      "secondaryOrderRoutes": [],
+      "level1Feeds": [
+        "BATSY",
+        "BSE",
+        "CHX",
+        "IEX",
+        "NSE",
+        "NYSE",
+        "PHLX"
+      ],
+      "level2Feeds": [
+        "ARCA",
+        "BATS",
+        "EDGA",
+        "EDGX",
+        "NASDAQ",
+        "NYSE",
+        "NYSEAM"
+      ],
+      "extendedStartTime": "2019-10-14T04:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 2147483647
+    },
+    {
+      "name": "NYSEAM",
+      "tradingVenues": [
+        "NASDAQ",
+        "NYSE",
+        "NYSEAM",
+        "CHX",
+        "PHLX",
+        "ARCA",
+        "BATS",
+        "BSE",
+        "ISE",
+        "NSE",
+        "IDC",
+        "EDGA",
+        "EDGX",
+        "BATSY",
+        "ISEG",
+        "IEX",
+        "ADF"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "AUTO",
+        "ARCA",
+        "NASDAQ",
+        "MNGD",
+        "BATS",
+        "EDGA",
+        "EDGX"
+      ],
+      "secondaryOrderRoutes": [],
+      "level1Feeds": [
+        "BATSY",
+        "BSE",
+        "CHX",
+        "IEX",
+        "NSE",
+        "NYSEAM",
+        "PHLX"
+      ],
+      "level2Feeds": [
+        "ARCA",
+        "BATS",
+        "EDGA",
+        "EDGX",
+        "NASDAQ",
+        "NYSEAM"
+      ],
+      "extendedStartTime": "2019-10-14T04:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 2147483647
+    },
+    {
+      "name": "ARCA",
+      "tradingVenues": [
+        "NASDAQ",
+        "NYSE",
+        "NYSEAM",
+        "CHX",
+        "PHLX",
+        "ARCA",
+        "BATS",
+        "BSE",
+        "ISE",
+        "NSE",
+        "IDC",
+        "EDGA",
+        "EDGX",
+        "BATSY",
+        "ISEG",
+        "IEX",
+        "ADF"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "AUTO",
+        "ARCA",
+        "NASDAQ",
+        "MNGD",
+        "BATS",
+        "EDGA",
+        "EDGX"
+      ],
+      "secondaryOrderRoutes": [],
+      "level1Feeds": [
+        "NYSEAM"
+      ],
+      "level2Feeds": [
+        "ARCA",
+        "BATS",
+        "EDGA",
+        "EDGX",
+        "NASDAQ",
+        "NYSEAM"
+      ],
+      "extendedStartTime": "2019-10-14T04:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 2147483647
+    },
+    {
+      "name": "BATS",
+      "tradingVenues": [
+        "NASDAQ",
+        "NYSE",
+        "NYSEAM",
+        "CHX",
+        "PHLX",
+        "ARCA",
+        "BATS",
+        "BSE",
+        "ISE",
+        "NSE",
+        "IDC",
+        "EDGA",
+        "EDGX",
+        "BATSY",
+        "ISEG",
+        "IEX",
+        "ADF"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "NASDAQ",
+        "ARCA",
+        "BATS",
+        "MNGD",
+        "AUTO",
+        "EDGA",
+        "EDGX"
+      ],
+      "secondaryOrderRoutes": [],
+      "level1Feeds": [
+        "NYSEAM"
+      ],
+      "level2Feeds": [
+        "ARCA",
+        "BATS",
+        "EDGA",
+        "EDGX",
+        "NASDAQ",
+        "NYSEAM"
+      ],
+      "extendedStartTime": "2019-10-14T04:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 99999
+    },
+    {
+      "name": "OPRA",
+      "tradingVenues": [
+        "NASDAQ",
+        "NYSE",
+        "NYSEAM",
+        "AMXO",
+        "CHX",
+        "PHLX",
+        "XPHO",
+        "ARCA",
+        "ARCO",
+        "BATS",
+        "XBOX",
+        "BSE",
+        "XNDQ",
+        "XCBO",
+        "ISE",
+        "OPRA",
+        "NSE",
+        "IDC",
+        "EDGA",
+        "EDGX",
+        "C2OX",
+        "BATO",
+        "XBXO",
+        "MIAXO",
+        "MPRL",
+        "EDGO",
+        "MCRY",
+        "GMNI",
+        "MEMR"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "AUTO",
+        "MNGD"
+      ],
+      "secondaryOrderRoutes": [],
+      "level1Feeds": [
+        "AMXO",
+        "ARCO",
+        "BATO",
+        "C2OX",
+        "EDGO",
+        "GMNI",
+        "ISE",
+        "MCRY",
+        "MEMR",
+        "MIAXO",
+        "MPRL",
+        "OPRA",
+        "XBOX",
+        "XBXO",
+        "XCBO",
+        "XNDQ",
+        "XPHO"
+      ],
+      "level2Feeds": [],
+      "extendedStartTime": "2019-10-14T07:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 2147483647
+    },
+    {
+      "name": "PINX",
+      "tradingVenues": [
+        "PINX"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "AUTO",
+        "MNGD"
+      ],
+      "secondaryOrderRoutes": [],
+      "level1Feeds": [
+        "PINX"
+      ],
+      "level2Feeds": [
+        "PINX"
+      ],
+      "extendedStartTime": "2019-10-14T04:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 2147483647
+    },
+    {
+      "name": "OTCBB",
+      "tradingVenues": [
+        "NASDAQ",
+        "NYSE",
+        "ARCA",
+        "PINX",
+        "OTCBB"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "AUTO",
+        "MNGD"
+      ],
+      "secondaryOrderRoutes": [],
+      "level1Feeds": [
+        "PINX"
+      ],
+      "level2Feeds": [
+        "PINX"
+      ],
+      "extendedStartTime": "2019-10-14T04:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 2147483647
+    },
+    {
+      "name": "NEO",
+      "tradingVenues": [
+        "ALPH",
+        "CXC",
+        "OMGA",
+        "ATS",
+        "NEOL",
+        "NEO"
+      ],
+      "defaultTradingVenue": "AUTO",
+      "primaryOrderRoutes": [
+        "AUTO"
+      ],
+      "secondaryOrderRoutes": [
+        "TSX",
+        "AUTO",
+        "AQN",
+        "AQL"
+      ],
+      "level1Feeds": [
+        "TSX"
+      ],
+      "level2Feeds": [
+        "ALPH",
+        "CXC",
+        "NEO",
+        "NEOL",
+        "OMGA"
+      ],
+      "extendedStartTime": "2019-10-14T07:00:00.000000-04:00",
+      "startTime": "2019-10-14T09:30:00.000000-04:00",
+      "endTime": "2019-10-14T16:00:00.000000-04:00",
+      "extendedEndTime": "2019-10-14T20:00:00.000000-04:00",
+      "snapQuotesLimit": 99999
+    }
+  ]
+}

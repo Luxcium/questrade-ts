@@ -5,15 +5,7 @@ import {
 } from '../../../QuestradeApi_QtApi/AccountsCalls';
 import { _oAuthAxiosCredentials } from '../_axiosCredentials_oAUTH';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
-// const _getServerTime = (_axios: AxiosStatic = axios) => (
-//   credentials: Credentials
-// ) => async () => _axiosGetApi(_axios)(credentials)<ITime>('/time')();
 
-// const _getAccounts = (_axios: AxiosStatic = axios) => (
-//   credentials: Credentials
-// ) => async () => _axiosGetApi(_axios)(credentials)<IAccounts>('/accounts')();
-
-// # _credentialsFactory
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 export const _credentialsFactory = (_axios: AxiosStatic = axios) => async (
   token: string
