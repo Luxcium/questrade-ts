@@ -42,7 +42,7 @@ beforeAll(async done => {
   done();
 });
 
-describe.skip('methods on get.account', () => {
+describe('methods on get.account', () => {
   it('should validate activities', async done => {
     const activities30Days = async () =>
       dateRange30Days((await account()).activities);
@@ -53,7 +53,7 @@ describe.skip('methods on get.account', () => {
     void0(await (await account()).balances());
     done();
   });
-  it('should validate all(await Account())s', async done => {
+  it('should validate allAccount', async done => {
     void0(await (await account()).allAccounts());
     done();
   });
@@ -69,11 +69,10 @@ describe.skip('methods on get.account', () => {
     void0(await orders30Days());
     done();
   });
-  // it.skip('should validate ordersByIds', async done => {
-  //   void0((await account()).ordersByIds);
-  //   // void0(await ordersByIds());
-  //   done();
-  // });
+  it.skip('should validate ordersByIds', async done => {
+    void0((await account()).ordersByIds);
+    done();
+  });
   it('should validate positions', async done => {
     void0(await (await account()).positions());
     done();
@@ -81,35 +80,60 @@ describe.skip('methods on get.account', () => {
 });
 describe('all methods on get.market', () => {
   it('should validate allMarkets', async done => {
-    // log(await (await market()).allMarkets());
+    void0(await (await market()).allMarkets());
     done();
   });
-  it.skip('should validate candlesByStockId', async done => {
+  it('should validate candlesByStockId', async done => {
     const candel30Day = async () =>
       dateRange30Days((await market()).candlesByStockId(8049)('OneDay'));
-    log(await candel30Day());
+    void0(await candel30Day());
     done();
   });
 });
-// describe.skip('all methods on get.quotes', () => {
-//   let {} = quotes;
-//   beforeAll(async done => {
-//     done();
-//   });
-// });
-// describe.skip('all methods on get.search', () => {
-//   let {} = search;
-//   beforeAll(async done => {
-//     done();
-//   });
-// });
-// describe.skip('all methods on get.symbols', () => {
-//   let {} = symbols;
-//   beforeAll(async done => {
-//     done();
-//   });
-// });
+describe('all methods on get.quotes', () => {
+  it('should validate get quotes byStockIds', async done => {
+    void0(await (await quotes()).byStockIds([8049]));
+    done();
+  });
+  it.skip('should validate can thant get optionsQuotes fromFilter', async done => {
+    void0((await quotes()).optionsQuotes.fromFilter);
+    done();
+  });
+  it.skip('should validate thant can get optionsQuotes byOptionsIds', async done => {
+    void0((await quotes()).optionsQuotes.byOptionsIds);
+    done();
+  });
+  it.skip('should validate can thant get quotes byStrategies', async done => {
+    void0((await quotes()).byStrategies);
+    done();
+  });
+});
+describe('all methods on get.search', () => {
+  it('should validate allStocks ', async done => {
+    void0(await (await search()).allStocks('aapl'));
+    done();
+  });
+  it('should validate countResults ', async done => {
+    void0(await (await search()).countResults('aapl'));
+    done();
+  });
+  it('should validate countResults ', async done => {
+    void0(await (await search()).stock('aapl'));
+    done();
+  });
+});
+describe('all methods on get.symbols', () => {
+  it('should validate optionChains byStockId', async done => {
+    void0(await (await symbols()).optionChains.byStockId(8049));
+    done();
+  });
+  it('should validate symbols byStockIds', async done => {
+    void0(await (await symbols()).byStockIds([8049]));
 
+    done();
+  });
+});
+void0(log);
 /*
 
 

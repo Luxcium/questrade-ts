@@ -15,7 +15,7 @@
     /* ALWAYS TRUE */ "noUnusedParameters": true /*             ALWAYS TRUE  */,
     /* ALWAYS TRUE STRICT TYPE-CHECKING, ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
     /* Basic Options */
-    "target": "esnext",
+    "target": "es5",
     "lib": [
       "dom",
       "esnext"
@@ -33,8 +33,8 @@
       "jest","node"
     ],
     /* Compilation Options */
-    "allowJs": true,
-    "checkJs":true,
+    // "allowJs": true,
+    // "checkJs":true,
     "noEmit": true,
     "importHelpers": true,
     "removeComments": false,

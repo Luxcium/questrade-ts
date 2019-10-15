@@ -1,0 +1,44 @@
+{
+  "symbols": [
+    {
+      "symbol": "AAPL",
+      "symbolId": 8049,
+      "description": "APPLE INC",
+      "securityType": "Stock",
+      "listingExchange": "NASDAQ",
+      "isTradable": true,
+      "isQuotable": true,
+      "currency": "USD"
+    },
+    {
+      "symbol": "AVSPY.IN",
+      "symbolId": 28301,
+      "description": "AAPL Alpha Index",
+      "securityType": "Index",
+      "listingExchange": "NASDAQI",
+      "isTradable": false,
+      "isQuotable": true,
+      "currency": "USD"
+    },
+    {
+      "symbol": "NY2LAAPL.IN",
+      "symbolId": 19786673,
+      "description": "NYSE Leveraged 2x AAPL Index",
+      "securityType": "Index",
+      "listingExchange": "NYSEGIF",
+      "isTradable": false,
+      "isQuotable": true,
+      "currency": "USD"
+    },
+    {
+      "symbol": "J008303.90",
+      "symbolId": 943205,
+      "description": "WTS JPMORGAN CHASE BANK N A WTS REG S ON SHS AAPLE INC",
+      "securityType": "Right",
+      "listingExchange": "",
+      "isTradable": false,
+      "isQuotable": false,
+      "currency": "USD"
+    }
+  ]
+}

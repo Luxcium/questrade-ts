@@ -23,19 +23,6 @@ export const _oAuthAxiosCredentials = (_axios: AxiosStatic = axios) => async (
       '!! validate credntials Invalid data back from axios client'
     );
   }
-  // if (
-  //   (!!response.introspect && !!response.introspect.onOff) ||
-  //   (!!introspect && introspect.onOff)
-  // ) {
-  console.log('\n\n_oAuthCredentials:\n');
-  console.log('\naxiosCONFIG:\n');
-  console.log(axiosConfig);
-  console.log('\nOBJECT:\n');
-  console.log(response.data);
-  console.log('\n\nJSON:\n');
-  console.log(JSON.stringify(response.data));
-  console.log('\n--_oAuthCredentials--\n\n');
-  // }
 
   return _writeToken(credentials, response);
 };

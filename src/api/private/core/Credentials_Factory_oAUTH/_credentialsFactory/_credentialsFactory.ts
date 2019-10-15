@@ -34,9 +34,10 @@ export const _credentialsFactory = (_axios: AxiosStatic = axios) => async (
 
     if (credentials.accountNumber === '00000000' && mock) {
       console.info(
-        '🤡 🧐  LOCAL Time:',
+        '\n🧐\n🤡 MOCK Server Time:   ',
         new Date().toISOString(),
-        '\n 🍦 🤨  Status: !!!!00000000!!!!  \n'
+
+        '\n🍦 Status: MOCKING!!!\n🤨'
       );
     } else {
       if (credentials.accountNumber === '00000000') {
