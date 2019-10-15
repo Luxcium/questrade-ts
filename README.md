@@ -17,7 +17,21 @@
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/pulls)
 [![GitHub issues](https://img.shields.io/github/issues/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/issues)
 
+### Currently, this API does not have full coverage of his test suites installed
+#### Test suite is getting fully implemented but the example on this page will be changed in the near future
+
+[![Coverage Status](https://coveralls.io/repos/github/Luxcium/questrade-ts/badge.svg?branch=version/feature-axio-mock)](https://coveralls.io/github/Luxcium/questrade-ts?branch=version/feature-axio-mock) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
+
+ **The  documentation may not be up to date at this moment you may have to explore the code yourself (using autocompletion) to know how it is working and the way the code curently behave will for sure change in the next few updates prior to version 1.1.0 or above**
+
+The structure is changing and is unstable you might have to change you code for it to run after th next update until the 1.1.0 version use `--save-exact questrade-ts` and be aware that updating to a folowing version will result in a change in your code ...
+
 ## Getting Started
+
+
+
+
+
 
 This NodeJS wrapper is an easy way to use the [Questrade API](www.questrade.com/api/documentation/getting-started) immediately. It give full TypeScript support.
 
@@ -257,10 +271,6 @@ qt.account = '12345678';
 ```
 
 
-### Currently, this API does not have full coverage of his test suites installed
-#### No test suite is curently fully implemented but all the examples on this page have been tested manually and did not generated whichever errors at all.
-
-[![Coverage Status](https://coveralls.io/repos/github/Luxcium/questrade-ts/badge.svg?branch=version/feature-axio-mock)](https://coveralls.io/github/Luxcium/questrade-ts?branch=version/feature-axio-mock) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
 
 #### Manual testing coverage
 ![Manual testing coverage](https://raw.githubusercontent.com/Luxcium/questrade-ts/next/version/images/manual-testing.png)
