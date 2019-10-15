@@ -39,7 +39,7 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
     'token',
     'time',
     'markets',
-    'candles',
+    'markets/candles',
     'activities',
     'orders',
     'positions',

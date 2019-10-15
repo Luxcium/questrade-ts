@@ -79,7 +79,7 @@ export const testExamples = (
       // GET MARKETS/QUOTES/:ID
       void0(await qt.get.markets.quotes.byIds([stockNumericID]));
       // GET MARKETS
-      void0(await qt.get.markets.allMarkets());
+      // void0(await qt.get.markets.allMarkets());
       // GET SYMBOLS/:ID/OPTIONS (by single stockId)
       void0(await qt.get.symbols.optionsById(stockNumericID));
       // GET SYMBOLS/SEARCH (return fisrt result or offseted result)

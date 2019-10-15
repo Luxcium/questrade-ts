@@ -42,7 +42,7 @@ beforeAll(async done => {
   done();
 });
 
-describe('methods on get.account', () => {
+describe.skip('methods on get.account', () => {
   it('should validate activities', async done => {
     const activities30Days = async () =>
       dateRange30Days((await account()).activities);
@@ -80,11 +80,11 @@ describe('methods on get.account', () => {
   });
 });
 describe('all methods on get.market', () => {
-  it('should validate allMarkets', async done => {
-    log(await (await market()).allMarkets());
+  it.skip('should validate allMarkets', async done => {
+    // log(await (await market()).allMarkets());
     done();
   });
-  it('should validate candlesByStockId', async done => {
+  it.only('should validate candlesByStockId', async done => {
     const candel30Day = async () =>
       dateRange30Days((await market()).candlesByStockId(8049)('OneDay'));
     log(await candel30Day());
