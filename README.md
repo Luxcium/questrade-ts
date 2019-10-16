@@ -20,7 +20,7 @@
 ### Currently, this API does not have full coverage of his test suites installed
 #### Test suite is getting fully implemented but the example on this page will be changed in the near future
 
-[![Coverage Status](https://coveralls.io/repos/github/Luxcium/questrade-ts/badge.svg?branch=version/feature-axio-mock)](https://coveralls.io/github/Luxcium/questrade-ts?branch=version/feature-axio-mock) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
+[![Coverage Status](https://coveralls.io/repos/github/Luxcium/questrade-ts/badge.svg?branch=master)](https://coveralls.io/github/Luxcium/questrade-ts?branch=master) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
 
  **The  documentation may not be up to date at this moment you may have to explore the code yourself (using autocompletion) to know how it is working and the way the code curently behave will for sure change in the next few updates prior to version 1.1.0 or above**
 
