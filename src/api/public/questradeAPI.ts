@@ -1,18 +1,17 @@
-import { AxiosStatic, default as axios } from 'axios';
+import { Credentials, IQuestradeApi } from '../../typescript';
 import { _getQuestradeApi } from '../private';
-import { Credentials, IQuestradeApi } from '../typescript';
 
-export const getQuestradeApi = _getQuestradeApi(axios as AxiosStatic);
+// export const getQuestradeApi = ;
 
 export const questradeApi = async (credentials: Credentials) => {
-  const qtApi = await getQuestradeApi(credentials);
+  const qtApi = await _getQuestradeApi(credentials);
   const currentAccount = qtApi.currentAccount;
   const myBalances = qtApi.myBalances;
   const serverTime = qtApi.serverTime;
 
   const accountActivities = qtApi.get.account.activities;
   const accountAllAccounts = qtApi.get.account.allAccounts;
-  const accountAllOrders = qtApi.get.account.allOrders;
+  // const accountAllOrders = qtApi.get.account.allOrders;
   const accountBalances = qtApi.get.account.balances;
   const accountExecutions = qtApi.get.account.executions;
   const accountOrders = qtApi.get.account.orders;
@@ -42,7 +41,6 @@ export const questradeApi = async (credentials: Credentials) => {
       account: {
         activities: accountActivities,
         allAccounts: accountAllAccounts,
-        allOrders: accountAllOrders,
         balances: accountBalances,
         executions: accountExecutions,
         orders: accountOrders,

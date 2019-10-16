@@ -1,2 +1,1 @@
-export { logError } from './logError';
-export { logHttpError } from './logHttpError';
+export { logErrors } from './logErrors';

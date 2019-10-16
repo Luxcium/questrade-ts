@@ -6,7 +6,6 @@ language: node_js
 
 node_js:
   - lts/*
-  - node
 
 dist: trusty
 
@@ -40,10 +39,13 @@ script:
   - ls -alg
   - echo "Running tests against $(node -v)..."
 
-# jobs:
-#   include:
-#     - stage: Produce Coverage
-#       node_js: node
-#       script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+jobs:
+  include:
+    - stage: Produce Coverage
+      node_js: node
+      script:
+      - jest --coverage && cat ./build/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+      - ls -aRlksShg
+
 
 '.result': configured
