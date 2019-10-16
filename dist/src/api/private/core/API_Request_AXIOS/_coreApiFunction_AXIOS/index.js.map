@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../../../src/api/private/core/API_Request_AXIOS/_coreApiFunction_AXIOS/index.ts"],"names":[],"mappings":";;AAAA,uDAAsD;AAA7C,8CAAA,gBAAgB,CAAA","sourcesContent":["export { _coreApiFunction } from './_coreApiFunction';\n"]}

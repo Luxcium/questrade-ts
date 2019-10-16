@@ -8,7 +8,7 @@ import {
 import { _axiosPostApi } from '../../../core/API_Request_AXIOS';
 
 export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
-  optionIds: number[],
+  optionIds: number[] | null,
   underlyingId?: number,
   expiryDate?: string,
   optionType: string | undefined | null = void 0,
