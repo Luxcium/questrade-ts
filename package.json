@@ -13,7 +13,7 @@
     "build": "yarn run out:cjs",
     "postbuild": "echo 'Build Completed !!!'",
     "preCI": "yarn run coverage",
-    "CI": "Will validate if project can be build with COMMON-JS UMD AMD SYS",
+    "CI": "echo 'Will validate if project can be build with COMMON-JS UMD AMD SYS'",
     "postCI": "concurrently -c red,green,yellow,blue -n \"COMMON JS|UMD|AMD|SYS\" --name-separator \"|\" \"yarn:out:cjs\" \"yarn:out:umd\" \"yarn:out:amd\" \"yarn:out:sys\"",
     "prebuild:clean": "rimraf -r ./build/**/*",
     "build:clean": "echo 'Will clean and run build'",
