@@ -270,13 +270,6 @@ qt.account = '12345678';
 // user on behalf of which the API client is authorized
 ```
 
-
-
-#### Manual testing coverage
-![Manual testing coverage](https://raw.githubusercontent.com/Luxcium/questrade-ts/next/version/images/manual-testing.png)
-
-
-
 ## No-any
 
 This project count that forbiden keyword only twice, once in this title above, the other one is part of the tslint rule name forbiding the keword in the project.
