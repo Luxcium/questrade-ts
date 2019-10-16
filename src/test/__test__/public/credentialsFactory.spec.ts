@@ -1,5 +1,5 @@
 import { redeemToken } from '../../../api/public';
-import { log, setDateRange, void0 } from '../../../api/utils';
+import { log, logErrors, setDateRange, void0 } from '../../../api/utils';
 import {
   Credentials,
   IQtApiAccount,
@@ -62,7 +62,14 @@ describe('QtAPI PROPERTIES will test all properties and methods on qtApi', () =>
     ).not.toBeNaN();
     done();
   });
-
+  it('!!! !!! should validate qtApi myBalances', async done => {
+    expect(logErrors(new Error('Should log')));
+    done();
+  });
+  it('!!! !!! should validate qtApi myBalances', async done => {
+    expect(logErrors(new Error('Should log'), 'testing error messages'));
+    done();
+  });
   it('should validate qtApi myBalances', async done => {
     log(qtApi.serverTime);
     done();
