@@ -7,7 +7,7 @@ import { CoreApiConfig, Credentials } from '../../../../../typescript';
  */
 export const _coreApiConfig = <D>(credentials: Credentials) => {
   //
-  return (VERB: 'GET' | 'POST' = 'GET') => {
+  return (VERB: 'GET' | 'POST') => {
     //
     return (endpoint: string) => {
       //

@@ -8,36 +8,31 @@ import {
 import { _axiosPostApi } from '../../../core/API_Request_AXIOS';
 
 export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
-  optionIds: void | null | undefined | number[] = [],
+  optionIds: number[],
   underlyingId?: number,
   expiryDate?: string,
   optionType: string | undefined | null = void 0,
   minstrikePrice: number | undefined | null = 0,
   maxstrikePrice: number | undefined | null = 0
 ): Promise<IOptionsQuotes> => {
-  try {
-    const postData: OptionsIdArray | FiltersArray =
-      !!optionIds && optionIds.length > 0
-        ? {
-            optionIds,
-          }
-        : {
-            filters: [
-              {
-                underlyingId,
-                expiryDate,
-                optionType: optionType || void 0,
-                minstrikePrice: minstrikePrice || 0,
-                maxstrikePrice: maxstrikePrice || 0,
-              },
-            ],
-          };
+  const postData: OptionsIdArray | FiltersArray =
+    !!optionIds && optionIds.length > 0
+      ? {
+          optionIds,
+        }
+      : {
+          filters: [
+            {
+              underlyingId,
+              expiryDate,
+              optionType: optionType || void 0,
+              minstrikePrice: minstrikePrice || 0,
+              maxstrikePrice: maxstrikePrice || 0,
+            },
+          ],
+        };
 
-    return _axiosPostApi(credentials)<OptionsPostData>(postData)<
-      IOptionsQuotes
-    >('/markets/quotes/options')();
-  } catch (error) {
-    console.error('/markets/quotes/options', error.message);
-    throw error;
-  }
+  return _axiosPostApi(credentials)<OptionsPostData>(postData)<IOptionsQuotes>(
+    '/markets/quotes/options'
+  )();
 };

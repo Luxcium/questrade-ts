@@ -196,6 +196,7 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
 describe('SEARCH METHODES will test all methods on get.search', () => {
   it('should validate allStocks ', async done => {
     void0(await (await search()).allStocks('aapl'));
+    void0(await (await search()).allStocks('aapl', 0));
     done();
   });
   it('should validate countResults ', async done => {
@@ -204,6 +205,7 @@ describe('SEARCH METHODES will test all methods on get.search', () => {
   });
   it('should validate countResults ', async done => {
     void0(await (await search()).stock('aapl'));
+    void0(await (await search()).stock('aapl', 0));
     done();
   });
 });
