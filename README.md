@@ -17,8 +17,8 @@
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/pulls)
 [![GitHub issues](https://img.shields.io/github/issues/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/issues)
 
-### Currently, this API does not have full coverage of his test suites installed
-#### Test suite is getting fully implemented but the example on this page will be changed in the near future
+## Currently, this API does not have full coverage of his test suites installed
+### Test suite is getting fully implemented but the example on this page will be changed in the near future
 
 [![Coverage Status](https://coveralls.io/repos/github/Luxcium/questrade-ts/badge.svg?branch=master)](https://coveralls.io/github/Luxcium/questrade-ts?branch=master) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
 
