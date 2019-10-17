@@ -1,5 +1,5 @@
-import { redeemToken } from '../../../api/public';
-import { log, logErrors, setDateRange, void0 } from '../../../api/utils';
+import { redeemToken } from '../../api/public';
+import { log, logErrors, setDateRange, void0 } from '../../api/utils';
 import {
   Credentials,
   IQtApiAccount,
@@ -9,7 +9,7 @@ import {
   IQtApiSearch,
   IQtApiSymbols,
   IQuestradeApi,
-} from '../../../typescript';
+} from '../../typescript';
 
 const dateRange30Days = setDateRange(30);
 
@@ -206,6 +206,8 @@ describe('SEARCH METHODES will test all methods on get.search', () => {
   it('should validate allStocks ', async done => {
     void0(await (await search()).allStocks('aapl'));
     void0(await (await search()).allStocks('aapl', 0));
+
+    // https://api01.iq.questrade.com/v1/symbols/search?prefix=AAPL
     done();
   });
   it('should validate countResults ', async done => {

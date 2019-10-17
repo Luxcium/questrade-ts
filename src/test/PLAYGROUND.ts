@@ -1,13 +1,13 @@
 import { default as ƒ } from 'ramda';
 import { redeemToken } from '..';
 import { log, setDateRange, void0 } from '../api/utils';
-import { IQtApiAccount } from '../typescript';
+import { IQtApiAccount, IQtApiSearch } from '../typescript';
 // tslint:disable-next-line: no-unused-expression
 
 (async () => {
   const dateRange = setDateRange(2);
 
-  const redeem = await redeemToken('BfHXYThKbYiRAmEMYzEvMTWeFyiYFQBJ0')
+  const redeem = await redeemToken('i4grq9hRfji9WFwA316ZtpildcNUaogC0')
     .then(result => {
       return result;
     })
@@ -18,7 +18,12 @@ import { IQtApiAccount } from '../typescript';
   const today = new Date(Date.now()).toISOString();
   const { credentials, qtApi } = redeem;
   // log;
-
+  const search: () => Promise<IQtApiSearch> = async () => qtApi.get.search;
+  log(await (await search()).allStocks('aapl'));
+  log(await (await search()).allStocks('aapl', 0));
+  log(await (await search()).countResults('aapl'));
+  log(await (await search()).stock('aapl'));
+  log(await (await search()).stock('aapl', 0));
   async function totalExecutions(
     stockSymbol: string,
     side: 'STC' | 'BTO' = 'STC',
