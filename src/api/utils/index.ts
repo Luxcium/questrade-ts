@@ -1,7 +1,6 @@
 import { id0 } from './id0';
 import { void0 } from './void0';
 const log = console.log;
-export { logErrors } from './errorHandlers';
 export { getHash } from './getHash';
 export { FsImplementationSync, Made, Mode, OptionsSync, sync } from './mkdirp';
 export {

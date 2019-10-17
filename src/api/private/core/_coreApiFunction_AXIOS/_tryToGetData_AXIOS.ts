@@ -15,7 +15,8 @@ export const _tryToGetData = <R, D>(_config: CoreApiConfig<D>) => {
       // console.log(data);
       return data;
     } catch (error) {
-      throw _logError(error);
+      _logError(error);
+      throw error;
     }
   };
 };

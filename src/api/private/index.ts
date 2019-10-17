@@ -1,4 +1,4 @@
-export { _getQuestradeApi } from './controllers/QuestradeApi_QtApi';
+export { _getQuestradeApi } from './api/QuestradeApi_QtApi';
 export { _axiosAccountGetApi, _axiosGetApi, _axiosPostApi } from './core';
 export {
   _credentialsFactory,
