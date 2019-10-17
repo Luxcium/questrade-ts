@@ -24,7 +24,9 @@ let search: () => Promise<IQtApiSearch>;
 let symbols: () => Promise<IQtApiSymbols>;
 
 beforeAll(async done => {
-  const qtApiAndCredentials = await redeemToken('MOCKMOCK');
+  const qtApiAndCredentials = await redeemToken(
+    'i4grq9hRfji9WFwA316ZtpildcNUaogC0'
+  );
   qtApi = qtApiAndCredentials.qtApi;
   get = qtApi.get;
   credentials = qtApiAndCredentials.credentials;
@@ -164,12 +166,12 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
   });
   it('should validate can thant get optionsQuotes fromFilter', async done => {
     void0(
-      (await quotes()).optionsQuotes.fromFilter({ underlyingId: 584497639 })
+      (await quotes()).optionsQuotes.fromFilter({ underlyingId: 27244725 })
     );
     done();
   });
   it('should validate thant can get optionsQuotes byOptionsIds', async done => {
-    log((await quotes()).optionsQuotes.byOptionsIds([584497639]));
+    log(await (await quotes()).optionsQuotes.byOptionsIds([27244725]));
     done();
   });
   it('should validate can thant get quotes byStrategies', async done => {
