@@ -1,7 +1,7 @@
 import {
   Credentials,
   QuotesOptionsbyFilterAndIds,
-} from '../../../../../../typescript';
+} from '../../../../../typescript';
 import {
   _getQuotesOptionsByIds,
   _getQuotesOptionsFilter,

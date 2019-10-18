@@ -1,4 +1,4 @@
-import { Credentials, IQuote, IQuotes } from '../../../../../../typescript';
+import { Credentials, IQuote, IQuotes } from '../../../../../typescript';
 import { _axiosGetApi } from '../../../../client';
 
 // + _getQuotesByID

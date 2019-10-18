@@ -1,4 +1,4 @@
-import { Credentials, IAccount, IAccounts } from '../../../../../../typescript';
+import { Credentials, IAccount, IAccounts } from '../../../../../typescript';
 import { _axiosGetApi } from '../../../../client';
 
 // + _getAccounts

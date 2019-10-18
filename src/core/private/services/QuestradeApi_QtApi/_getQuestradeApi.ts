@@ -3,7 +3,7 @@ import {
   IQuestradeApi,
   OptionsFilters,
   StrategyVariantRequest,
-} from '../../../../typescript';
+} from '../../../typescript';
 import { void0 } from '../../../utils';
 import {
   _getAccounts,

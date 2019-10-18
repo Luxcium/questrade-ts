@@ -1,4 +1,4 @@
-import { QuestradeAPIOptions } from '../../../../typescript';
+import { QuestradeAPIOptions } from '../../../typescript';
 import {
   _getAccounts,
   _getServerTime,

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { CoreApiConfig, LogErrors } from '../../../../typescript';
+import { CoreApiConfig, LogErrors } from '../../../typescript';
 
 export const _tryToGetData = <R, D>(_config: CoreApiConfig<D>) => {
   return async (_logError: LogErrors): Promise<R> => {

@@ -1,4 +1,4 @@
-import { Credentials, IOrder, IOrders } from '../../../../../../typescript';
+import { Credentials, IOrder, IOrders } from '../../../../../typescript';
 import { _axiosAccountGetApi } from '../../../../client';
 // + _getOrderByIds
 /** _getOrders */

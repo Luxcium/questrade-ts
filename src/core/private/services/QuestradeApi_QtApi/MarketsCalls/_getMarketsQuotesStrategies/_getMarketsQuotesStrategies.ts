@@ -2,7 +2,7 @@ import {
   Credentials,
   IStrategiesQuotes,
   StrategyVariantRequest,
-} from '../../../../../../typescript';
+} from '../../../../../typescript';
 import { _axiosPostApi } from '../../../../client';
 
 export const _getMarketsQuotesStrategies = (credentials: Credentials) => async (

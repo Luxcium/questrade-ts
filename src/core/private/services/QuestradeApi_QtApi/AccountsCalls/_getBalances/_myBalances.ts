@@ -1,5 +1,5 @@
-import { IBalances } from '../../../../../../typescript';
-import { IMyBalances } from '../../../../../../typescript/IMyBalances';
+import { IBalances } from '../../../../../typescript';
+import { IMyBalances } from '../../../../../typescript/IMyBalances';
 
 export const _myBalances = async (
   myBalances: IBalances

@@ -1,4 +1,4 @@
-import { Credentials, ICandle, ICandles } from '../../../../../../typescript';
+import { Credentials, ICandle, ICandles } from '../../../../../typescript';
 import { getHash } from '../../../../../utils';
 import { _axiosGetApi } from '../../../../client';
 

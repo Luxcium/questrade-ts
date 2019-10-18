@@ -1,4 +1,4 @@
-import { Credentials, ISymbols } from '../../../../../../typescript';
+import { Credentials, ISymbols } from '../../../../../typescript';
 import { _axiosGetApi } from '../../../../client';
 
 // + _getSymbolSearchCount

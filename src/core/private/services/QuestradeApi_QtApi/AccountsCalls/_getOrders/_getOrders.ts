@@ -1,4 +1,4 @@
-import { Credentials, IOrder, IOrders } from '../../../../../../typescript';
+import { Credentials, IOrder, IOrders } from '../../../../../typescript';
 import { endpointFormatDateTool } from '../../../../../utils';
 import { _axiosAccountGetApi } from '../../../../client';
 

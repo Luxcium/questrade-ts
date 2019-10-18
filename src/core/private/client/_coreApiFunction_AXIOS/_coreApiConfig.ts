@@ -1,4 +1,4 @@
-import { CoreApiConfig, Credentials } from '../../../../typescript';
+import { CoreApiConfig, Credentials } from '../../../typescript';
 
 /**
  * Partial application of Core api config builder generating an

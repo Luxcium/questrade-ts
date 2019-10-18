@@ -1,4 +1,4 @@
-import { Credentials, ITime } from '../../../../../../typescript';
+import { Credentials, ITime } from '../../../../../typescript';
 import { _axiosGetApi } from '../../../../client';
 
 // + _getServerTime

@@ -2,7 +2,7 @@ import {
   Credentials,
   IExecution,
   IExecutions,
-} from '../../../../../../typescript';
+} from '../../../../../typescript';
 import { endpointFormatDateTool } from '../../../../../utils';
 import { _axiosAccountGetApi } from '../../../../client';
 

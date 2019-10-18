@@ -1,5 +1,5 @@
-import { Credentials, IQuestradeApi } from '../../typescript';
 import { _getQuestradeApi } from '../private';
+import { Credentials, IQuestradeApi } from '../typescript';
 
 // export const getQuestradeApi = ;
 

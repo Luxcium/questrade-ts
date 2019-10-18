@@ -1,4 +1,4 @@
-import { Credentials } from '../../../../typescript';
+import { Credentials } from '../../../typescript';
 import { _coreApiConfig } from './_coreApiConfig';
 import { _logErrors } from './_logErrors';
 import { _tryToGetData } from './_tryToGetData_AXIOS';

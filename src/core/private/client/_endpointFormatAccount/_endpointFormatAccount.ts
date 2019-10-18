@@ -1,4 +1,4 @@
-import { Credentials } from '../../../../typescript';
+import { Credentials } from '../../../typescript';
 
 const _urlSeprator = () => '/';
 const _baseAcctUrlStr = (): string => 'accounts';

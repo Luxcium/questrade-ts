@@ -2,7 +2,7 @@ import {
   Credentials,
   ISymbolSearchResult,
   ISymbolSearchResults,
-} from '../../../../../../typescript';
+} from '../../../../../typescript';
 import { void0 } from '../../../../../utils';
 import { _axiosGetApi } from '../../../../client';
 // + _getSymbolSearchAll
