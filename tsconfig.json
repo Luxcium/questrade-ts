@@ -64,7 +64,7 @@
   },
   "include": [
     "./src/**/*",
-    "src/debug.ts"
+    "src/debug.ts", "src/test"
   ],
   "exclude": [
     "backup",

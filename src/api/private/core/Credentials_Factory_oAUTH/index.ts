@@ -1,5 +1,0 @@
-export {
-  _credentialsFactory,
-  _emptyCredentials,
-  _getPrimaryAccountNumber,
-} from './_credentialsFactory';

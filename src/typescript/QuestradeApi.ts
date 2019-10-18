@@ -10,11 +10,9 @@ import {
   IOrder,
   IPosition,
   IQuote,
-  IStrategiesQuotes,
   ISymbol,
   ISymbolSearchResult,
   OptionsFilters,
-  StrategyVariantRequest,
 } from '.';
 import { IMyBalances } from './IMyBalances';
 
@@ -24,47 +22,38 @@ export type DateRange<R> = (startTime: string) => (endTime: string) => R;
 export interface IQuestradeApi {
   currentAccount: string;
   myBalances: IQtApiMyBalances;
-  serverTime: Date;
-  get: IQtApiGet;
-}
-export type IQtApiMyBalances = () => Promise<IMyBalances>;
-export interface IQtApiGet {
+  serverTime: Date | 'ERROR';
   account: IQtApiAccount;
   market: IQtApiMarket;
-  quotes: IQtApiQuotes;
+  getQuotes: IQtApiQuotes;
+  getOptionsQuotes: IQtApiOptionsQuotes;
   search: IQtApiSearch;
-  symbols: IQtApiSymbols;
+  getSymbols: IQtApiSymbols;
+  getOptionChains: IQtApiOptionChains;
 }
+export type IQtApiMyBalances = () => Promise<IMyBalances>;
+
 export interface IQtApiAccount {
-  activities(
+  getActivities(
     startTime: string
   ): (endTime: string) => Promise<IAccountActivity[]>;
 
-  allAccounts(): Promise<IAccount[]>;
-
-  balances(): Promise<IBalances>;
-
-  executions(startTime: string): (endTime: string) => Promise<IExecution[]>;
-
-  orders(stateFilter?: string | undefined): DateRange<Promise<IOrder[]>>;
-
-  ordersByIds(orderId: number[]): Promise<IOrder[]>;
-
-  positions(): Promise<IPosition[]>;
+  getAllAccounts(): Promise<IAccount[]>;
+  getBalances(): Promise<IBalances>;
+  getExecutions(startTime: string): (endTime: string) => Promise<IExecution[]>;
+  getOrders(stateFilter?: string | undefined): DateRange<Promise<IOrder[]>>;
+  getOrdersByIds(orderId: number[]): Promise<IOrder[]>;
+  getPositions(): Promise<IPosition[]>;
+  getServerTime(): Promise<Date>;
 }
 
 export interface IQtApiMarket {
-  allMarkets(): Promise<IMarket[]>;
-  candlesByStockId(
+  getAllMarkets(): Promise<IMarket[]>;
+  getCandlesByStockId(
     symbolID: number
   ): (interval?: string | undefined) => DateRange<Promise<ICandle[]>>;
 }
 export interface IQtApiQuotes {
-  optionsQuotes: IQtApiOptionsQuotes;
-  byStrategies(
-    strategyVariantRequestData: StrategyVariantRequest
-  ): Promise<IStrategiesQuotes>;
-
   byStockIds(ids: number[]): Promise<IQuote[]>;
 }
 
@@ -84,7 +73,6 @@ export interface IQtApiSearch {
   countResults(prefix: string): Promise<number>;
 }
 export interface IQtApiSymbols {
-  optionChains: IQtApiOptionChains;
   byStockIds(stockIds: number[]): Promise<ISymbol[]>;
 }
 

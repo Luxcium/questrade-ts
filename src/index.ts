@@ -1,1 +1,2 @@
-export { redeemToken } from './api';
+export { redeemToken } from './public';
+export const introspect = { onOff: false };
