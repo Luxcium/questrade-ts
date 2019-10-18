@@ -4,6 +4,7 @@ import {
   IQtApiAccount,
   IQtApiMarket,
   IQtApiOptionChains,
+  IQtApiOptionsQuotes,
   IQtApiQuotes,
   IQtApiSearch,
   IQtApiSymbols,
@@ -19,6 +20,7 @@ let credentials: Credentials;
 let account: () => Promise<IQtApiAccount>;
 let market: () => Promise<IQtApiMarket>;
 let getQuotes: () => Promise<IQtApiQuotes>;
+let getOptionsQuotes: () => Promise<IQtApiOptionsQuotes>;
 let search: () => Promise<IQtApiSearch>;
 let getSymbols: () => Promise<IQtApiSymbols>;
 let getOptionChains: () => Promise<IQtApiOptionChains>;
@@ -32,6 +34,7 @@ beforeAll(async done => {
   account = async () => qtApi.account;
   market = async () => qtApi.market;
   getQuotes = async () => qtApi.getQuotes;
+  getOptionsQuotes = async () => qtApi.getOptionsQuotes;
   search = async () => qtApi.search;
   getSymbols = async () => qtApi.getSymbols;
   getOptionChains = async () => qtApi.getOptionChains;
@@ -157,7 +160,7 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
   });
   it('should validate that can get optionsQuotes fromFilter', async done => {
     void0(
-      await (await getQuotes()).optionsQuotes.fromFilter({
+      await (await getOptionsQuotes()).fromFilter({
         expiryDate: '2019-10-18T00:00:00.000000-05:00',
         underlyingId: 27426,
       })
@@ -165,7 +168,7 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
     done();
   });
   it('should validate that can get optionsQuotes byOptionsIds', async done => {
-    void0(await (await getQuotes()).optionsQuotes.byOptionsIds([27244725]));
+    void0(await (await getOptionsQuotes()).byOptionsIds([27244725]));
     done();
   });
   // it.skip('should validate that can get quotes byStrategies', async done => {

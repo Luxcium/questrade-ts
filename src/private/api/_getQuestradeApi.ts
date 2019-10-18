@@ -160,15 +160,15 @@ export const _getQuestradeApi = async (
         return candles(symbolID);
       },
     },
-    getQuotes: {
-      optionsQuotes: {
-        async fromFilter(filters: OptionsFilters) {
-          return quotesOptionsFilter(filters);
-        },
-        async byOptionsIds(optionIds: number[]) {
-          return quotesOptionsByIds(optionIds);
-        },
+    getOptionsQuotes: {
+      async fromFilter(filters: OptionsFilters) {
+        return quotesOptionsFilter(filters);
       },
+      async byOptionsIds(optionIds: number[]) {
+        return quotesOptionsByIds(optionIds);
+      },
+    },
+    getQuotes: {
       // async byStrategies(strategyVariantRequestData: StrategyVariantRequest) {
       //   return marketsQuotesStrategies(strategyVariantRequestData);
       // },

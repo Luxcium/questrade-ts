@@ -26,6 +26,7 @@ export interface IQuestradeApi {
   account: IQtApiAccount;
   market: IQtApiMarket;
   getQuotes: IQtApiQuotes;
+  getOptionsQuotes: IQtApiOptionsQuotes;
   search: IQtApiSearch;
   getSymbols: IQtApiSymbols;
   getOptionChains: IQtApiOptionChains;
@@ -53,11 +54,6 @@ export interface IQtApiMarket {
   ): (interval?: string | undefined) => DateRange<Promise<ICandle[]>>;
 }
 export interface IQtApiQuotes {
-  optionsQuotes: IQtApiOptionsQuotes;
-  // byStrategies(
-  //   strategyVariantRequestData: StrategyVariantRequest
-  // ): Promise<IStrategiesQuotes>;
-
   byStockIds(ids: number[]): Promise<IQuote[]>;
 }
 

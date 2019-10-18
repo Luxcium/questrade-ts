@@ -24,13 +24,13 @@ export const questradeApi = async (credentials: Credentials) => {
       getAllMarkets: qtApi.market.getAllMarkets,
       getCandlesByStockId: qtApi.market.getCandlesByStockId,
     },
+    getOptionsQuotes: {
+      byOptionsIds: qtApi.getOptionsQuotes.byOptionsIds,
+      fromFilter: qtApi.getOptionsQuotes.fromFilter,
+    },
     getQuotes: {
       byStockIds: qtApi.getQuotes.byStockIds,
       // byStrategies: qtApi.getQuotes.byStrategies,
-      optionsQuotes: {
-        byOptionsIds: qtApi.getQuotes.optionsQuotes.byOptionsIds,
-        fromFilter: qtApi.getQuotes.optionsQuotes.fromFilter,
-      },
     },
     getOptionChains: {
       byStockId: qtApi.getOptionChains.byStockId,
