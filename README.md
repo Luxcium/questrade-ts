@@ -34,16 +34,6 @@ or
 npm install --save-exact questrade-ts@latest
 ```
 
-## Contributions
-
-### All contributions are welcome
-
-- **To contribute to this project:** [visit the GitHub Repo page of the project](https://github.com/Luxcium/questrade-ts)
-- **To obtain or provide feedback (as bug reports or enhancements):** [visit our GitHub Issue page](https://github.com/Luxcium/questrade-ts/issues)
-- **Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything you feel is not exactly as described on this page or [Questrade Page](https://www.questrade.com/api/documentation/getting-started).**
-
-## Examples
-
 You will need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx).
 
 After that, it is really simple to use:
@@ -73,6 +63,8 @@ log(credentials)
 // you can use a try/catch block to manage error instead:
 })().catch(error=>console.error(error.message));
 ```
+
+### Structure
 
 ```TypeScript
 
@@ -136,20 +128,24 @@ qt.account = '12345678';
 // user on behalf of which the API client is authorized
 ```
 
-## No-any
+### No-any
 
 This project count that forbiden keyword only twice, once in this title above, the other one is part of the tslint rule name forbiding the keword in the project.
 
 ![Forbiden Keyword](https://raw.githubusercontent.com/Luxcium/questrade-ts/master/images/forbiden-keyword.png)
 
-## Always use semicolons when using this package or using this code in other projects
+### Always use semicolons when using this package or using this code in other projects
 
 >Why? ([airbnb/javascript](https://github.com/airbnb/javascript#semicolons)):
 >When JavaScript encounters a line break without a semicolon, it uses a set of rules called [Automatic Semicolon Insertion](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion) to determine whether or not it should regard that line break as the end of a statement, and (as the name implies) place a semicolon into your code before the line break if it thinks so. ASI contains a few eccentric behaviors, though, and your code will break if JavaScript misinterprets your line break. These rules will become more complicated as new features become a part of JavaScript. Explicitly terminating your statements and configuring your linter to catch missing semicolons will help prevent you from encountering issues.
 
-## Questrade does not maintain this unofficial SDK
+## Contributions
 
-Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation/) to get help. Please always open a [questrade-ts GitHub issue](https://github.com/luxcium/questrade-ts/issues) for anything you feel doesn't match the way it should be working when referring to Questrade docs.
+### All contributions are welcome
+
+- **To contribute to this project:** [visit the GitHub Repo page of the project](https://github.com/Luxcium/questrade-ts)
+- **To obtain or provide feedback (as bug reports or enhancements):** [visit our GitHub Issue page](https://github.com/Luxcium/questrade-ts/issues)
+- **Please make sure to open a [GitHub issues](https://github.com/luxcium/questrade-ts/issues) for anything you feel is not exactly as described on this page or [Questrade Page](https://www.questrade.com/api/documentation/getting-started).**
 
 ## MIT LICENSE
 
@@ -166,3 +162,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ALL KIND, EXPRESS OR IMPLI
 ### Originaly based on the work of
 
 [Leander Lee](https://github.com/leanderlee/questrade)
+
+## Questrade does not maintain this unofficial SDK
+
+Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation/) to get help. Please always open a [questrade-ts GitHub issue](https://github.com/luxcium/questrade-ts/issues) for anything you feel doesn't match the way it should be working when referring to Questrade docs.
