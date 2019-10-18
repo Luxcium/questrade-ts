@@ -948,9 +948,9 @@ data-urls@^1.0.0:
     whatwg-url "^7.0.0"
 
 date-fns@^2.0.1:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.5.0.tgz#b939f17c2902ce81cffe449702ba22c0781b38ec"
-  integrity sha512-I6Tkis01//nRcmvMQw/MRE1HAtcuA5Ie6jGPb8bJZJub7494LGOObqkV3ParnsSVviAjk5C8mNKDqYVBzCopWg==
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.5.1.tgz#6bd76f01d3a438e9c481d4c18512ddac37585b4c"
+  integrity sha512-ZBrQmuaqH9YqIejbgu8f09ki7wdD2JxWsRTZ/+HnnLNmkI56ty0evnWzKY+ihLT0xX5VdUX0vDNZCxJJGKX2+Q==
 
 debug@=3.1.0:
   version "3.1.0"
@@ -3719,9 +3719,9 @@ ts-node@^8.4.1:
     yn "^3.0.0"
 
 ts-toolbelt@^4.7.7:
-  version "4.8.17"
-  resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-4.8.17.tgz#05e6f9fa1c70e06c016f76e4f37c1b3e1583c224"
-  integrity sha512-MNbyPT2YHmAN7PlbVG0+4RfJ9tsO2l78+MbDOLEMhAE61C3SrDcL+GcGHCxOsRALQqZBARLHt1hRUHhFu7x5/g==
+  version "4.8.19"
+  resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-4.8.19.tgz#bf99490dacc1c941cd53be926aebcdd445dc329b"
+  integrity sha512-GSUJd/2qILuLTj/ekGHsiak3MkNjK2fX4baFI/9+7YDjQQM28ZzfOYJ4I7TeODdogK+MYPvhE46byO300FmPlA==
 
 tslib@1.9.0:
   version "1.9.0"

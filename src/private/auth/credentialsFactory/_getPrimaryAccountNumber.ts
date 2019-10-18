@@ -13,7 +13,7 @@ export function _getPrimaryAccountNumber(
     return accounts[0].number;
   }
   const primary = accounts.filter(account => account.isPrimary);
-  if (primary.length > 0) {
+  if (primary.length >= 1) {
     return primary[0].number;
   }
   return accounts[0].number;
