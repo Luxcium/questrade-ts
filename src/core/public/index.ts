@@ -1,1 +1,0 @@
-export { redeemToken } from './credentialsFactory';

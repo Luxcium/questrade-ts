@@ -1,5 +1,5 @@
-import { _logErrors } from '../../core/private/client/coreApiFunction_AXIOS/_logErrors';
-import { redeemToken } from '../../core/public';
+import { _logErrors } from '../../api/private/client/core/_logErrors';
+import { redeemToken } from '../../api/public';
 import {
   Credentials,
   IQtApiAccount,
@@ -9,7 +9,7 @@ import {
   IQtApiSearch,
   IQtApiSymbols,
   IQuestradeApi,
-} from '../../core/typescript';
+} from '../../api/typescript';
 import { log, setDateRange, void0 } from '../../utils';
 
 const dateRange30Days = setDateRange(30);
@@ -49,7 +49,7 @@ beforeAll(async done => {
 });
 
 // # QtAPI PROPERTIES
-describe.skip('QtAPI PROPERTIES will test all properties and methods on qtApi', () => {
+describe('QtAPI PROPERTIES will test all properties and methods on qtApi', () => {
   it('should validate credentials toValue', async done => {
     void0(credentials.toValue());
     done();
@@ -65,13 +65,13 @@ describe.skip('QtAPI PROPERTIES will test all properties and methods on qtApi', 
     ).not.toBeNaN();
     done();
   });
-  it('!!! !!! should validate qtApi myBalances', async done => {
+  it.skip('!!! !!! should validate qtApi myBalances', async done => {
     expect(() => {
       throw _logErrors(new Error('Should ThrowError'));
     }).toThrowError('Should ThrowError');
     done();
   });
-  it('!!! !!! should validate qtApi myBalances', async done => {
+  it.skip('!!! !!! should validate qtApi myBalances', async done => {
     expect(() => {
       throw _logErrors(
         new Error('Should ThrowError'),
@@ -91,7 +91,7 @@ describe.skip('QtAPI PROPERTIES will test all properties and methods on qtApi', 
 });
 
 // # ACCOUNT METHODS
-describe.skip('ACCOUNT METHODS will test all methods on get.account', () => {
+describe('ACCOUNT METHODS will test all methods on get.account', () => {
   it('should validate activities', async done => {
     const activities30Days = async () =>
       dateRange30Days((await account()).activities);
@@ -147,7 +147,7 @@ describe.skip('ACCOUNT METHODS will test all methods on get.account', () => {
 });
 
 // # MARKET METHODS
-describe.skip('MARKET METHODS will test all methods on get.market', () => {
+describe('MARKET METHODS will test all methods on get.market', () => {
   it('should validate allMarkets', async done => {
     void0(await (await market()).allMarkets());
     done();
@@ -213,7 +213,7 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
 });
 
 // # SEARCH METHODES
-describe.skip('SEARCH METHODES will test all methods on get.search', () => {
+describe('SEARCH METHODES will test all methods on get.search', () => {
   it('should validate allStocks ', async done => {
     void0(await (await search()).allStocks('aapl'));
     void0(await (await search()).allStocks('aapl', 0));
@@ -233,7 +233,7 @@ describe.skip('SEARCH METHODES will test all methods on get.search', () => {
 });
 
 // # SYMBOLS METHODS
-describe.skip('SYMBOLS METHODS will test all methods on get.symbols', () => {
+describe('SYMBOLS METHODS will test all methods on get.symbols', () => {
   it('should validate optionChains byStockId', async done => {
     void0(await (await symbols()).optionChains.byStockId(8049));
     done();
