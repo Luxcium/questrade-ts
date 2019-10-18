@@ -100,8 +100,8 @@ const qtApi: IQuestradeApi = {
       byStockIds,
     },
     search: {
-      allStocks,
       stock,
+      allStocks,
       countResults,
     },
   };
