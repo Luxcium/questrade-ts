@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 import { writeFileSync } from 'fs';
-import { Credentials, IRefreshCreds } from '../../../typescript';
+import { Credentials, IRefreshCreds } from '../../../../typescript';
 
 export const _writeToken = (
   credentials: Credentials,

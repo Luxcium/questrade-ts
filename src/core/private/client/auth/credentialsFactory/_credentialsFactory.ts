@@ -1,6 +1,6 @@
-import { QuestradeAPIOptions } from '../../../typescript';
-import { _getAccounts, _getServerTime } from '../../service/AccountsCalls';
-import { _oAuthAxiosCredentials } from '../_axiosCredentials_oAUTH';
+import { QuestradeAPIOptions } from '../../../../typescript';
+import { _getAccounts, _getServerTime } from '../../../service/AccountsCalls';
+import { _oAuthAxiosCredentials } from '../axiosCredentials_oAUTH';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */

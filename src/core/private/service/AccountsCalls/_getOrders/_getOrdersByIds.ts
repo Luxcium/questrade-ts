@@ -1,5 +1,5 @@
-import { Credentials, IOrder, IOrders } from '../../../../../typescript';
-import { _axiosAccountGetApi } from '../../../../client';
+import { Credentials, IOrder, IOrders } from '../../../../typescript';
+import { _axiosAccountGetApi } from '../../../client';
 // + _getOrderByIds
 /** _getOrders */
 export const _getOrdersByIds = (credentials: Credentials) => async (

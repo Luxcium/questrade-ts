@@ -1,5 +1,5 @@
-import { Credentials, IBalances } from '../../../../../typescript';
-import { _axiosAccountGetApi } from '../../../../client';
+import { Credentials, IBalances } from '../../../../typescript';
+import { _axiosAccountGetApi } from '../../../client';
 
 // + _getBalances
 /** _getBalances */

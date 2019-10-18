@@ -1,4 +1,4 @@
-import { _logErrors } from '../../core/private/client/_coreApiFunction_AXIOS/_logErrors';
+import { _logErrors } from '../../core/private/client/coreApiFunction_AXIOS/_logErrors';
 import { redeemToken } from '../../core/public';
 import {
   Credentials,

@@ -1,4 +1,4 @@
-import { Credentials } from '../../../typescript';
+import { Credentials } from '../../../../typescript';
 
 export const _defaultCredentials: Credentials = {
   accessToken: '',

@@ -1,5 +1,5 @@
-import { Credentials, IPosition, IPositions } from '../../../../../typescript';
-import { _axiosAccountGetApi } from '../../../../client';
+import { Credentials, IPosition, IPositions } from '../../../../typescript';
+import { _axiosAccountGetApi } from '../../../client';
 
 // + _getPositions
 /** _getPositions */

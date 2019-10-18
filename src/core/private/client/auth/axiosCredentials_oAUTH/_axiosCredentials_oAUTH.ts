@@ -4,7 +4,7 @@ import {
   Credentials,
   IRefreshCreds,
   QuestradeAPIOptions,
-} from '../../../typescript';
+} from '../../../../typescript';
 import { _validateToken } from './_validateToken';
 import { _writeToken } from './_writeToken';
 export const _oAuthAxiosCredentials = async (

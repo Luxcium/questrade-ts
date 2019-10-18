@@ -1,10 +1,10 @@
+import { endpointFormatDateTool } from '../../../../../utils';
 import {
   Credentials,
   IAccountActivity,
   IActivities,
-} from '../../../../../typescript';
-import { endpointFormatDateTool } from '../../../../../utils';
-import { _axiosAccountGetApi } from '../../../../client';
+} from '../../../../typescript';
+import { _axiosAccountGetApi } from '../../../client';
 
 // + _getActivities
 /** PROVIDE: credentials, startTime string and endTime string THEN GET: a 'Promise<IAccountActivity[]>' */
