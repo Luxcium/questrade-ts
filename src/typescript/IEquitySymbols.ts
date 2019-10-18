@@ -5,7 +5,7 @@ import {
   OptionExerciseType,
   OptionType,
   SecurityType,
-} from 'api/enums/qtEnumerations';
+} from 'questrade-api-enumerations';
 
 export interface IEquitySymbols {
   symbols: IEquitySymbol[];

@@ -33,9 +33,7 @@ export interface IQuestradeApi {
   getOptionChains: IQtApiOptionChains;
 }
 export type IQtApiMyBalances = () => Promise<IMyBalances>;
-// export interface IQtApiGet {
 
-// }
 export interface IQtApiAccount {
   getActivities(
     startTime: string

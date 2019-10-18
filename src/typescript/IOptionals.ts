@@ -2,7 +2,7 @@ import {
   HistoricalDataGranularity,
   OptionType,
   OrderStateFilterType,
-} from 'api/enums/qtEnumerations';
+} from 'questrade-api-enumerations';
 
 export type AccountType = number | string;
 export interface IFilter {

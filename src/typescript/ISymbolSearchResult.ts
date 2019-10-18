@@ -1,4 +1,4 @@
-import { Currency } from 'api/enums/qtEnumerations';
+import { Currency } from 'questrade-api-enumerations';
 
 export interface ISymbolSearchResult {
   symbol: string;

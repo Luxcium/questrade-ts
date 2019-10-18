@@ -2,7 +2,7 @@ import {
   Currency,
   ListingExchange,
   SecurityType,
-} from 'api/enums/qtEnumerations';
+} from 'questrade-api-enumerations';
 
 export interface IStockSymbol {
   symbol: string;

@@ -5,7 +5,7 @@ import {
   OrderTimeInForce,
   OrderType,
   StrategyTypes,
-} from 'api/enums/qtEnumerations';
+} from 'questrade-api-enumerations';
 
 export interface IOrders {
   orders: IOrder[];

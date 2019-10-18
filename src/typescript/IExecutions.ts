@@ -1,4 +1,4 @@
-import { OrderSide } from 'api/enums/qtEnumerations';
+import { OrderSide } from 'questrade-api-enumerations';
 
 export interface IExecutions {
   executions: IExecution[];
