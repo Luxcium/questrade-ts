@@ -1,6 +1,6 @@
 import { Credentials } from '../../../../typescript';
-import { logErrors } from '../../../utils';
 import { _coreApiConfig } from './_coreApiConfig';
+import { _logErrors } from './_logErrors';
 import { _tryToGetData } from './_tryToGetData_AXIOS';
 
 export const _coreApiFunction = (credentials: Credentials) => {
@@ -22,7 +22,7 @@ export const _coreApiFunction = (credentials: Credentials) => {
 
           const axiosDataGetter = _tryToGetData<R, D>(getDataConfig);
           // ->
-          const data = axiosDataGetter(logErrors);
+          const data = axiosDataGetter(_logErrors);
 
           return data; // from _tryToGetData...
         };

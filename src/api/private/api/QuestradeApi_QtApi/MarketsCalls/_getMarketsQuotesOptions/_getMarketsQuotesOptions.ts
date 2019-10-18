@@ -9,11 +9,11 @@ import { _axiosPostApi } from '../../../../core';
 
 export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
   optionIds: number[] | null,
-  underlyingId?: number,
-  expiryDate?: string,
-  optionType: string | undefined | null = void 0,
-  minstrikePrice: number | undefined | null = 0,
-  maxstrikePrice: number | undefined | null = 0
+  underlyingId: number,
+  expiryDate: string,
+  optionType: string | null = null,
+  minstrikePrice: number | null = 0,
+  maxstrikePrice: number | null = 0
 ): Promise<IOptionsQuotes> => {
   const postData: OptionsIdArray | FiltersArray =
     !!optionIds && optionIds.length > 0

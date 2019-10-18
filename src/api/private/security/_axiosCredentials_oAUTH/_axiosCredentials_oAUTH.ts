@@ -1,11 +1,16 @@
 import { default as axios } from 'axios';
-import { AxiosIntrospectRes, Credentials } from '../../../../typescript';
+import {
+  AxiosIntrospectRes,
+  Credentials,
+  IRefreshCreds,
+  QuestradeAPIOptions,
+} from '../../../../typescript';
 import { _validateToken } from './_validateToken';
-import { IRefreshCreds, _writeToken } from './_writeToken';
+import { _writeToken } from './_writeToken';
 export const _oAuthAxiosCredentials = async (
-  token: string
+  options: QuestradeAPIOptions
 ): Promise<Credentials> => {
-  const { refreshToken, credentials } = _validateToken(token);
+  const { refreshToken, credentials } = _validateToken(options);
   const axiosConfig = {
     url: `${credentials.authUrl}/oauth2/token`,
     params: {

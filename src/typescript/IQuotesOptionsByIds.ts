@@ -110,8 +110,8 @@ export interface FiltersArray {
 }
 
 export interface OptionsFilters {
-  underlyingId?: number;
-  expiryDate?: string;
+  underlyingId: number;
+  expiryDate: string;
   optionType?: string | undefined | null;
   minstrikePrice?: number | undefined | null;
   maxstrikePrice?: number | undefined | null;

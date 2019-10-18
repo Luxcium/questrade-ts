@@ -73,6 +73,7 @@ export {
   QuotesOptions,
   QuotesOptionsbyFilterAndIds,
 } from './IQuotesOptionsByIds';
+export { IRefreshCreds } from './IRefreshCreds';
 export { IStockSymbol } from './IStockSymbol';
 export { IStrategiesQuotes } from './IStrategiesQuotes';
 export {
@@ -92,6 +93,7 @@ export {
   SymbolSearchAndCount,
   SymbolSearchOrCount,
 } from './ISymbolSearchResult';
+export { ITime } from './ITime';
 export { void0, void_0 } from './IVoid_0';
 /*
 

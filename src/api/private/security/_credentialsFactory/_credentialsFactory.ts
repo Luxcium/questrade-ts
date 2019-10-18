@@ -1,16 +1,22 @@
+import { QuestradeAPIOptions } from '../../../../typescript';
 import {
   _getAccounts,
   _getServerTime,
-} from '../../controllers/QuestradeApi_QtApi/AccountsCalls';
+} from '../../api/QuestradeApi_QtApi/AccountsCalls';
 import { _oAuthAxiosCredentials } from '../_axiosCredentials_oAUTH';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
-export const _credentialsFactory = async (token: string) => {
+export const _credentialsFactory = async (options: QuestradeAPIOptions) => {
+  const token: string =
+    typeof options === 'string'
+      ? options
+      : options.seedToken
+      ? options.seedToken
+      : '';
   if (!token) throw new Error('Missing Token');
-  const mock = token.length === 8 ? true : false;
 
-  const credentials = await _oAuthAxiosCredentials(token);
+  const credentials = await _oAuthAxiosCredentials(options);
 
   try {
     const accounts = await _getAccounts(credentials)();
@@ -29,7 +35,7 @@ export const _credentialsFactory = async (token: string) => {
 
     credentials.accountNumber = _getPrimaryAccountNumber(accounts);
 
-    if (credentials.accountNumber === '00000000' && mock) {
+    if (credentials.accountNumber === '00000000') {
       console.info(
         '\n🧐\n🤡 MOCK Server Time:   ',
         new Date().toISOString(),
@@ -37,9 +43,6 @@ export const _credentialsFactory = async (token: string) => {
         '\n🍦 Status: MOCKING!!!\n🤨'
       );
     } else {
-      if (credentials.accountNumber === '00000000') {
-        throw Error("Account should not be '00000000'");
-      }
       console.info('Questrade Server Time:', time, '\nStatus: ready\n');
     }
   } catch (error) {

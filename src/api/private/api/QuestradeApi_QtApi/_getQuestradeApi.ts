@@ -129,7 +129,7 @@ export const _getQuestradeApi = async (
       return _myBalances(await balances());
     },
     currentAccount: credentials.accountNumber,
-    serverTime: await serverTime(),
+    serverTime: credentials.serverTime || 'ERROR',
     get: {
       account: {
         activities(startTime: string) {
@@ -153,6 +153,9 @@ export const _getQuestradeApi = async (
         },
         async allAccounts() {
           return accounts();
+        },
+        async serverTime() {
+          return serverTime();
         },
       },
       market: {

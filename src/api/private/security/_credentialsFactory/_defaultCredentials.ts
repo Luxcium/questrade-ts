@@ -2,7 +2,7 @@ import { Credentials } from '../../../../typescript';
 
 export const _defaultCredentials: Credentials = {
   accessToken: '',
-  accountNumber: '',
+  accountNumber: '11111111',
   apiServer: '',
   apiUrl: '',
   apiVersion: 'v1',

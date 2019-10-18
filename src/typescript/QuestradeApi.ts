@@ -24,7 +24,7 @@ export type DateRange<R> = (startTime: string) => (endTime: string) => R;
 export interface IQuestradeApi {
   currentAccount: string;
   myBalances: IQtApiMyBalances;
-  serverTime: Date;
+  serverTime: Date | 'ERROR';
   get: IQtApiGet;
 }
 export type IQtApiMyBalances = () => Promise<IMyBalances>;
@@ -51,6 +51,8 @@ export interface IQtApiAccount {
   ordersByIds(orderId: number[]): Promise<IOrder[]>;
 
   positions(): Promise<IPosition[]>;
+
+  serverTime(): Promise<Date>;
 }
 
 export interface IQtApiMarket {
