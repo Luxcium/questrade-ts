@@ -1,85 +1,50 @@
 import { default as ƒ } from 'ramda';
 import { redeemToken } from '..';
-import { IQtApiAccount, IQtApiSearch } from '../core/typescript';
+import { StrategyVariantRequest } from '../typescript';
 import { log, setDateRange, void0 } from '../utils';
-// tslint:disable-next-line: no-unused-expression
 
-(async () => {
-  const dateRange = setDateRange(2);
+const myToken = '';
 
-  const redeem = await redeemToken('i4grq9hRfji9WFwA316ZtpildcNUaogC0')
+export const testingThat = async () => {
+  const qtApi = await redeemToken(myToken)
     .then(result => {
-      return result;
+      return result.qtApi;
     })
     .catch(err => console.log(err));
-  if (!redeem) {
-    throw new Error('Redeem token did not return acceptable response');
-  }
-  const today = new Date(Date.now()).toISOString();
-  const { credentials, qtApi } = redeem;
-  // log;
-  const search: () => Promise<IQtApiSearch> = async () => qtApi.get.search;
-  log(await (await search()).allStocks('aapl'));
-  log(await (await search()).allStocks('aapl', 0));
-  log(await (await search()).countResults('aapl'));
-  log(await (await search()).stock('aapl'));
-  log(await (await search()).stock('aapl', 0));
-  async function totalExecutions(
-    stockSymbol: string,
-    side: 'STC' | 'BTO' = 'STC',
-    qtApiAccount: IQtApiAccount
-  ) {
-    const stock = stockSymbol.toLowerCase();
-    return (await dateRange(qtApiAccount.executions, today))
-      .filter(item => {
-        const itemSymbol = item.symbol.toLowerCase().indexOf(stock) >= 0;
-        return !!item.price && !!itemSymbol; // (
-      })
-      .filter(item => item.side === side)
-      .map(item => {
-        // console.log(item);
-        const comissionCharged = !!item.commission ? item.commission : 0;
-        const avgExecPrice = !!item.price
-          ? item.price * item.quantity * 100
-          : 0;
-        const creationTime = !!item.timestamp ? item.timestamp : '';
-        const comission =
-          side === 'STC' ? comissionCharged * -1 : comissionCharged * 1;
+  if (!qtApi) throw new Error('Redeem token fault');
+  const theResult = await qtApi.getQuotes.byStrategies(demoRequestVariants);
+  console.log('theResult', theResult);
+  return theResult;
+};
+testingThat();
+// )().catch(error => console.log('PlayGround error message:', error.message));
 
-        const priceTotal =
-          side === 'STC'
-            ? avgExecPrice + comission
-            : -1 * (avgExecPrice + comission);
-        return [creationTime, priceTotal, comissionCharged, avgExecPrice] as [
-          string,
-          number,
-          number,
-          number
-        ];
-      })
-      .reduce((prev, item) => item[1] + prev, 0);
-  }
-  log(
-    'totalExecutions:',
-    await totalExecutions('bac', 'STC', qtApi.get.account)
-  );
-
-  const _stcTotal = (getAccount: IQtApiAccount) => (stockSymbol: string) =>
-    totalExecutions(stockSymbol, 'STC', getAccount);
-  const _btoTotal = (getAccount: IQtApiAccount) => (stockSymbol: string) =>
-    totalExecutions(stockSymbol, 'BTO', getAccount);
-  const btoTotal = _btoTotal(qtApi.get.account);
-  const stcTotal = _stcTotal(qtApi.get.account);
-  const netStcBto = async (stockSymbol: string) =>
-    (await stcTotal(stockSymbol)) + (await btoTotal(stockSymbol));
-
-  log(await stcTotal('bac'), await btoTotal('bac'), await netStcBto('bac'));
-
-  void0([dateRange, credentials, qtApi, ƒ, log]);
-})().catch(error => console.log('PlayGround error message:', error.message));
-
-export const xyz = (async () => {
+export const xyz = async () => {
   //
   return void 0 && ƒ;
-})().catch(error => console.log('error message:', error.message));
+};
+// )().catch(error => console.log('error message:', error.message));
 // order id 584497639
+
+// POST https://api01.iq.questrade.com/v1/markets/quotes/strategies
+export const demoRequestVariants: StrategyVariantRequest = {
+  variants: [
+    {
+      variantId: 1,
+      strategy: 'Custom',
+      legs: [
+        {
+          symbolId: 27244725,
+          ratio: 1000,
+          action: 'Buy',
+        },
+        {
+          symbolId: 27244738,
+          ratio: 1001,
+          action: 'Sell',
+        },
+      ],
+    },
+  ],
+};
+void0([log, setDateRange]);

@@ -2,7 +2,7 @@
 
 **This [NPM Package](https://www.npmjs.com/package/questrade-ts) is an unofficial [Questrade API](https://www.questrade.com/api/documentation/getting-started) wrapper for [NodeJS](https://nodejs.org/en/docs/) with full [TypeScript](https://www.typescriptlang.org/docs/home.html) support.**
 
-[![Build Status](https://dev.azure.com/luxcium/Questrade-ts/_apis/build/status/Luxcium.questrade-ts?branchName=master)](https://dev.azure.com/luxcium/Questrade-ts/_build/latest?definitionId=1&branchName=master)[![Coverage Status](https://coveralls.io/repos/github/Luxcium/questrade-ts/badge.svg?branch=master)](https://coveralls.io/github/Luxcium/questrade-ts?branch=master) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
+[![Build Status](https://dev.azure.com/luxcium/Questrade-ts/_apis/build/status/Luxcium.questrade-ts?branchName=master)](https://dev.azure.com/luxcium/Questrade-ts/_build/latest?definitionId=1&branchName=master) [![Coverage Status](https://coveralls.io/repos/github/Luxcium/questrade-ts/badge.svg?branch=master)](https://coveralls.io/github/Luxcium/questrade-ts?branch=master) [![CII Best Practices Summary](https://img.shields.io/cii/summary/3222?label=Best%20Practices)](https://bestpractices.coreinfrastructure.org/en/projects/3222)
 [![Travis (.org)](https://img.shields.io/travis/Luxcium/questrade-ts?label=Build&logo=travis&logoColor=white)](https://travis-ci.com/Luxcium/questrade-ts)
 [![Known Vulnerabilities](https://snyk.io/test/github/luxcium/questrade-ts/badge.svg)](https://snyk.io/test/github/luxcium/questrade-ts)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8af26b0bfa624c66b266cd83d4eb52b4)](https://www.codacy.com/manual/Luxcium/questrade-ts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Luxcium/questrade-ts&amp;utm_campaign=Badge_Grade)
@@ -16,11 +16,11 @@
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/pulls)
 [![GitHub issues](https://img.shields.io/github/issues/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/issues)
 
-The structure is changing and is unstable you might have to change you code for it to run after th next update until the 1.1.0 version use `--save-exact questrade-ts` and be aware that updating to a folowing version will result in a change in your code ...
-
 ## Getting Started
 
-This NodeJS wrapper is an easy way to use the [Questrade API](www.questrade.com/api/documentation/getting-started) immediately. It give full TypeScript support.
+The structure is changing and is unstable you might have to change you code for it to run after th next update until the 1.1.0 version use `--save-exact questrade-ts` and be aware that updating to a folowing version will result in a change in your code ...
+
+This NodeJS wrapper is an easy way to use the [Questrade API](www.questrade.com/api/documentation/getting-started) immediately. It commes with full TypeScript support.
 
 Simply start by installing this questrade-ts library:
 
@@ -49,14 +49,14 @@ const yourRefreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
 (async () => {
 const log = console.log
 
-const { qtApi: qt, credentials } = await redeemToken(yourRefreshToken);
+const { qtApi, credentials } = await redeemToken(yourRefreshToken);
 
 // Validate the server time as your hello world for this package
-const serverTime = qt.serverTime
+const serverTime = qtApi.serverTime
 log(serverTime)
 
 // inside an async function use await qt.get.<... some methode>
-const balances = await qt.account.getBalances()
+const balances = await qtApi.account.getBalances()
 
 log(credentials)
 
@@ -123,7 +123,7 @@ By default, when you instantiate the `qtApi`  it will try to find and select the
 
 ```typescript
 // Switch to account 12345678 -- All future calls will use this 8 digits account.
-qt.account = '12345678';
+qtApi.currentAccount = '12345678';
 // Must be one of the valid account number for the
 // user on behalf of which the API client is authorized
 ```

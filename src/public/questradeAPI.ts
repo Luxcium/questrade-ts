@@ -9,7 +9,7 @@ export const questradeApi = async (credentials: Credentials) => {
     currentAccount: qtApi.currentAccount,
     myBalances: qtApi.myBalances,
     serverTime: qtApi.serverTime,
-    // get: {
+
     account: {
       getActivities: qtApi.account.getActivities,
       getAllAccounts: qtApi.account.getAllAccounts,
@@ -30,7 +30,7 @@ export const questradeApi = async (credentials: Credentials) => {
     },
     getQuotes: {
       byStockIds: qtApi.getQuotes.byStockIds,
-      // byStrategies: qtApi.getQuotes.byStrategies,
+      byStrategies: qtApi.getQuotes.byStrategies,
     },
     getOptionChains: {
       byStockId: qtApi.getOptionChains.byStockId,

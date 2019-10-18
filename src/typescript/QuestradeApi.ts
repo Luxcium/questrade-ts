@@ -10,9 +10,11 @@ import {
   IOrder,
   IPosition,
   IQuote,
+  IStrategiesQuotes,
   ISymbol,
   ISymbolSearchResult,
   OptionsFilters,
+  StrategyVariantRequest,
 } from '.';
 import { IMyBalances } from './IMyBalances';
 
@@ -55,6 +57,9 @@ export interface IQtApiMarket {
 }
 export interface IQtApiQuotes {
   byStockIds(ids: number[]): Promise<IQuote[]>;
+  byStrategies(
+    strategyVariantRequestData: StrategyVariantRequest
+  ): Promise<IStrategiesQuotes>;
 }
 
 export interface IQtApiOptionsQuotes {
