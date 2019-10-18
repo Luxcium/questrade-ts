@@ -1,4 +1,5 @@
 import { redeemToken } from '../../index';
+import { void0 } from '../../utils';
 
 test('Validating all README examples', async done => {
   const yourRefreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
@@ -6,18 +7,18 @@ test('Validating all README examples', async done => {
   // inside of an async function or async IIFE
   (async doneTesting => {
     const log = console.log;
-
+    void0(log);
     const { qtApi, credentials } = await redeemToken(yourRefreshToken);
 
     // Validate the server time as your hello world for this package
     const serverTime = qtApi.serverTime;
-    log(serverTime);
+    void0(serverTime);
 
     // inside an async function use await qt.get.<... some methode>
     const balances = await qtApi.account.getBalances();
-    log(balances);
+    void0(balances);
 
-    log(credentials);
+    void0(credentials);
     return doneTesting;
     // you can use a try/catch block to manage error instead:
   })(done)

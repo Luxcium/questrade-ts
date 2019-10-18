@@ -8,7 +8,7 @@ const path = (s: string) => resolve(`${__dirname}/sample/${s}.json`);
 _axios.mockName('axios');
 _axios.mockImplementation((config?: AxiosRequestConfig) => {
   const url: string = !!config && !!config.url ? config.url : '';
-  console.log('url', url);
+  // console.log('url', url);
   const data = [
     'balances',
     'token',
