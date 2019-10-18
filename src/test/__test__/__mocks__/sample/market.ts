@@ -1,4 +1,4 @@
-import { IMarket } from '../../api/typescript';
+import { IMarket } from '../../../../typescript';
 
 export const market: IMarket = {
   name: 'TSX',

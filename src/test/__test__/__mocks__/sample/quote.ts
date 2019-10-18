@@ -1,9 +1,9 @@
 import { TickType } from 'questrade-api-enumerations';
-import { IQuote } from '../../api/typescript';
+import { IQuote } from '../../../../typescript';
 
 export const quote: IQuote = {
   symbol: 'AAPL',
-  stockId: 8049,
+  symbolId: 8049,
   tier: '',
   bidPrice: 229.04,
   bidSize: 1,

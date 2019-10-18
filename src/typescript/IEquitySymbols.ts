@@ -57,7 +57,7 @@ export interface ISymbols {
 }
 export interface ISymbol {
   symbol?: string;
-  stockId?: number;
+  symbolId?: number;
   tradeUnit: number;
   prevDayClosePrice?: number;
   highPrice52?: number;

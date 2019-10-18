@@ -1,9 +1,9 @@
 import { Currency } from 'questrade-api-enumerations';
-import { ISymbolSearchResult } from '../../api/typescript';
+import { ISymbolSearchResult } from '../../../../typescript';
 
 export const symbolSearchResult: ISymbolSearchResult = {
   symbol: 'AAPL',
-  stockId: 8049,
+  symbolId: 8049,
   description: 'APPLE INC',
   securityType: 'Stock',
   listingExchange: 'NASDAQ',
