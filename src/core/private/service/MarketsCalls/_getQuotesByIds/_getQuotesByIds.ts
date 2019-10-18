@@ -1,5 +1,5 @@
-import { Credentials, IQuote, IQuotes } from '../../../../../typescript';
-import { _axiosGetApi } from '../../../../client';
+import { Credentials, IQuote, IQuotes } from '../../../../typescript';
+import { _axiosGetApi } from '../../../client';
 
 // + _getQuotesByID
 /** _getQuotesFromSymbolID */

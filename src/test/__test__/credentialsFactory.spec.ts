@@ -1,6 +1,5 @@
-import { _logErrors } from '../../api/private/core/_coreApiFunction_AXIOS/_logErrors';
-import { redeemToken } from '../../api/public';
-import { log, setDateRange, void0 } from '../../api/utils';
+import { _logErrors } from '../../core/private/client/_coreApiFunction_AXIOS/_logErrors';
+import { redeemToken } from '../../core/public';
 import {
   Credentials,
   IQtApiAccount,
@@ -10,7 +9,8 @@ import {
   IQtApiSearch,
   IQtApiSymbols,
   IQuestradeApi,
-} from '../../typescript';
+} from '../../core/typescript';
+import { log, setDateRange, void0 } from '../../utils';
 
 const dateRange30Days = setDateRange(30);
 

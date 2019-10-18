@@ -1,5 +1,5 @@
-import { Credentials, IMarket, IMarkets } from '../../../../../typescript';
-import { _axiosGetApi } from '../../../../client';
+import { Credentials, IMarket, IMarkets } from '../../../../typescript';
+import { _axiosGetApi } from '../../../client';
 
 // + _getMarkets
 /** _getMarkets */

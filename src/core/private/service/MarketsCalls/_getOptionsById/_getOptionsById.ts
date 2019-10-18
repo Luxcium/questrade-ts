@@ -2,8 +2,8 @@ import {
   Credentials,
   IOptionChain,
   IOptionChains,
-} from '../../../../../typescript';
-import { _axiosGetApi } from '../../../../client';
+} from '../../../../typescript';
+import { _axiosGetApi } from '../../../client';
 
 // + _getOptionsById
 /** _getOptionsSymbols */

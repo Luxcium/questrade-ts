@@ -1,8 +1,5 @@
 import { QuestradeAPIOptions } from '../../../typescript';
-import {
-  _getAccounts,
-  _getServerTime,
-} from '../../services/QuestradeApi_QtApi/AccountsCalls';
+import { _getAccounts, _getServerTime } from '../../service/AccountsCalls';
 import { _oAuthAxiosCredentials } from '../_axiosCredentials_oAUTH';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 

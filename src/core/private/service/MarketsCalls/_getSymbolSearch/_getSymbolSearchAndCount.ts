@@ -1,4 +1,4 @@
-import { Credentials, SymbolSearchAndCount } from '../../../../../typescript';
+import { Credentials, SymbolSearchAndCount } from '../../../../typescript';
 import { _getSymbolSearchCount } from '../../MarketsCalls';
 import { _getSymbolSearch } from './_getSymbolSearch';
 

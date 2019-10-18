@@ -4,8 +4,8 @@ import {
   IOptionsQuotes,
   OptionsIdArray,
   OptionsPostData,
-} from '../../../../../typescript';
-import { _axiosPostApi } from '../../../../client';
+} from '../../../../typescript';
+import { _axiosPostApi } from '../../../client';
 
 export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
   optionIds: number[] | null,

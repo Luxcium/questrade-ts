@@ -1,10 +1,10 @@
+import { void0 } from '../../../../../utils';
 import {
   Credentials,
   ISymbolSearchResult,
   ISymbolSearchResults,
-} from '../../../../../typescript';
-import { void0 } from '../../../../../utils';
-import { _axiosGetApi } from '../../../../client';
+} from '../../../../typescript';
+import { _axiosGetApi } from '../../../client';
 // + _getSymbolSearchAll
 /** _getSymbolSearch */
 export const _getSymbolSearchAll = (credentials: Credentials) => async (

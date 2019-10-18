@@ -1,10 +1,10 @@
+import { void0 } from '../../../utils';
 import {
   Credentials,
   IQuestradeApi,
   OptionsFilters,
   StrategyVariantRequest,
-} from '../../../typescript';
-import { void0 } from '../../../utils';
+} from '../../typescript';
 import {
   _getAccounts,
   _getActivities,

@@ -1,5 +1,5 @@
-import { Credentials, ISymbol, ISymbols } from '../../../../../typescript';
-import { _axiosGetApi } from '../../../../client';
+import { Credentials, ISymbol, ISymbols } from '../../../../typescript';
+import { _axiosGetApi } from '../../../client';
 
 // + _getSymbolsByIDs
 /** _getSymbolFromSymbolID */

@@ -1,7 +1,7 @@
 import { default as ƒ } from 'ramda';
 import { redeemToken } from '..';
-import { log, setDateRange, void0 } from '../api/utils';
-import { IQtApiAccount, IQtApiSearch } from '../typescript';
+import { IQtApiAccount, IQtApiSearch } from '../core/typescript';
+import { log, setDateRange, void0 } from '../utils';
 // tslint:disable-next-line: no-unused-expression
 
 (async () => {
