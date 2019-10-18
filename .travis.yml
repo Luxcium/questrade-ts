@@ -6,7 +6,6 @@ language: node_js
 
 node_js:
   - lts/*
-  - node
 
 dist: trusty
 
@@ -45,7 +44,7 @@ jobs:
     - stage: Produce Coverage
       node_js: node
       script:
-      - jest --coverage && cat ./build/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+      - jest --coverage --runInBand --detectOpenHandles --colors && cat ./build/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
       - ls -alksShg
 
 
