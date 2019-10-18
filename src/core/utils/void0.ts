@@ -1,4 +1,4 @@
-import { id0 } from '.';
+import { id0 } from '../utils';
 
 export function void0<T>(...arg0: T[]) {
   id0(arg0);

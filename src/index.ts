@@ -1,1 +1,1 @@
-export { redeemToken } from './api';
+export { redeemToken } from './core';
