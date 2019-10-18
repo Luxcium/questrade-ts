@@ -1,9 +1,4 @@
-import {
-  Credentials,
-  IQuestradeApi,
-  OptionsFilters,
-  StrategyVariantRequest,
-} from '../../typescript';
+import { Credentials, IQuestradeApi, OptionsFilters } from '../../typescript';
 import { void0 } from '../../utils';
 import {
   _getAccounts,
@@ -19,7 +14,6 @@ import {
 import {
   _getCandles,
   _getMarkets,
-  _getMarketsQuotesStrategies,
   _getOptionsById,
   _getQuotesByIds,
   _getQuotesOptionsbyFilterAndIds,
@@ -85,7 +79,7 @@ export const _getQuestradeApi = async (
     candles,
     executions,
     markets,
-    marketsQuotesStrategies,
+    // marketsQuotesStrategies,
     optionsById,
     orders,
     ordersByIds,
@@ -106,7 +100,7 @@ export const _getQuestradeApi = async (
     _getCandles(credentials),
     _getExecutions(credentials),
     _getMarkets(credentials),
-    _getMarketsQuotesStrategies(credentials),
+    // _getMarketsQuotesStrategies(credentials),
     _getOptionsById(credentials),
     _getOrders(credentials),
     _getOrdersByIds(credentials),
@@ -175,9 +169,9 @@ export const _getQuestradeApi = async (
           return quotesOptionsByIds(optionIds);
         },
       },
-      async byStrategies(strategyVariantRequestData: StrategyVariantRequest) {
-        return marketsQuotesStrategies(strategyVariantRequestData);
-      },
+      // async byStrategies(strategyVariantRequestData: StrategyVariantRequest) {
+      //   return marketsQuotesStrategies(strategyVariantRequestData);
+      // },
 
       async byStockIds(ids: number[]) {
         return quotesByIds(ids);

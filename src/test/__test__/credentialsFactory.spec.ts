@@ -1,4 +1,4 @@
-import { redeemToken } from '../../public';
+import { redeemToken } from '../..';
 import {
   Credentials,
   IQtApiAccount,
@@ -24,9 +24,7 @@ let getSymbols: () => Promise<IQtApiSymbols>;
 let getOptionChains: () => Promise<IQtApiOptionChains>;
 
 beforeAll(async done => {
-  const qtApiAndCredentials = await redeemToken(
-    'i4grq9hRfji9WFwA316ZtpildcNUaogC0'
-  );
+  const qtApiAndCredentials = await redeemToken('MOCK');
   qtApi = qtApiAndCredentials.qtApi;
 
   credentials = qtApiAndCredentials.credentials;
@@ -153,7 +151,7 @@ describe('MARKET METHODS will test all methods on get.market', () => {
 
 // # QUOTES METHODES
 describe('QUOTES METHODES will test all methods on get.quotes', () => {
-  it.skip('should validate get quotes byStockIds', async done => {
+  it('should validate get quotes byStockIds', async done => {
     void0(await (await getQuotes()).byStockIds([8049]));
     done();
   });
@@ -170,31 +168,31 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
     void0(await (await getQuotes()).optionsQuotes.byOptionsIds([27244725]));
     done();
   });
-  it.skip('should validate that can get quotes byStrategies', async done => {
-    void0(
-      await (await getQuotes()).byStrategies({
-        variants: [
-          {
-            variantId: 1,
-            strategy: 'Custom',
-            legs: [
-              {
-                symbolId: 27426,
-                ratio: 1000,
-                action: 'Buy',
-              },
-              {
-                symbolId: 10550014,
-                ratio: 10,
-                action: 'Sell',
-              },
-            ],
-          },
-        ],
-      })
-    );
-    done();
-  });
+  // it.skip('should validate that can get quotes byStrategies', async done => {
+  //   void0(
+  //     await (await getQuotes()).byStrategies({
+  //       variants: [
+  //         {
+  //           variantId: 1,
+  //           strategy: 'Custom',
+  //           legs: [
+  //             {
+  //               symbolId: 27426,
+  //               ratio: 1000,
+  //               action: 'Buy',
+  //             },
+  //             {
+  //               symbolId: 10550014,
+  //               ratio: 10,
+  //               action: 'Sell',
+  //             },
+  //           ],
+  //         },
+  //       ],
+  //     })
+  //   );
+  //   done();
+  // });
 });
 
 // # SEARCH METHODES

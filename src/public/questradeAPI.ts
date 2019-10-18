@@ -26,7 +26,7 @@ export const questradeApi = async (credentials: Credentials) => {
     },
     getQuotes: {
       byStockIds: qtApi.getQuotes.byStockIds,
-      byStrategies: qtApi.getQuotes.byStrategies,
+      // byStrategies: qtApi.getQuotes.byStrategies,
       optionsQuotes: {
         byOptionsIds: qtApi.getQuotes.optionsQuotes.byOptionsIds,
         fromFilter: qtApi.getQuotes.optionsQuotes.fromFilter,
