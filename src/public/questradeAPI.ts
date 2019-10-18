@@ -39,8 +39,8 @@ export const questradeApi = async (credentials: Credentials) => {
       byStockIds: qtApi.getSymbols.byStockIds,
     },
     search: {
-      allStocks: qtApi.search.allStocks,
       stock: qtApi.search.stock,
+      allStocks: qtApi.search.allStocks,
       countResults: qtApi.search.countResults,
     },
   };

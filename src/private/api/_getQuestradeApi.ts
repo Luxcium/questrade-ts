@@ -177,6 +177,17 @@ export const _getQuestradeApi = async (
         return quotesByIds(ids);
       },
     },
+
+    getOptionChains: {
+      async byStockId(stockId: number) {
+        return optionsById(stockId);
+      },
+    },
+    getSymbols: {
+      async byStockIds(stockIds: number[]) {
+        return symbolsByIds(stockIds);
+      },
+    },
     search: {
       async stock(prefix: string, offset?: number) {
         return symbolSearchAndCount(prefix, offset);
@@ -186,16 +197,6 @@ export const _getQuestradeApi = async (
       },
       async countResults(prefix: string) {
         return symbolSearchCount(prefix);
-      },
-    },
-    getOptionChains: {
-      async byStockId(stockId: number) {
-        return optionsById(stockId);
-      },
-    },
-    getSymbols: {
-      async byStockIds(stockIds: number[]) {
-        return symbolsByIds(stockIds);
       },
     },
   };

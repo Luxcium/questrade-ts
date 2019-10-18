@@ -27,9 +27,9 @@ export interface IQuestradeApi {
   market: IQtApiMarket;
   getQuotes: IQtApiQuotes;
   getOptionsQuotes: IQtApiOptionsQuotes;
-  search: IQtApiSearch;
   getSymbols: IQtApiSymbols;
   getOptionChains: IQtApiOptionChains;
+  search: IQtApiSearch;
 }
 export type IQtApiMyBalances = () => Promise<IMyBalances>;
 
@@ -61,6 +61,14 @@ export interface IQtApiOptionsQuotes {
   fromFilter(filters: OptionsFilters): Promise<IOptionsQuotes>;
   byOptionsIds(optionIds: number[]): Promise<IOptionsQuotes>;
 }
+
+export interface IQtApiSymbols {
+  byStockIds(stockIds: number[]): Promise<ISymbol[]>;
+}
+
+export interface IQtApiOptionChains {
+  byStockId(stockId: number): Promise<IOptionChain[]>;
+}
 export interface IQtApiSearch {
   stock(
     prefix: string,
@@ -71,11 +79,4 @@ export interface IQtApiSearch {
     offset?: number | undefined
   ): Promise<ISymbolSearchResult[]>;
   countResults(prefix: string): Promise<number>;
-}
-export interface IQtApiSymbols {
-  byStockIds(stockIds: number[]): Promise<ISymbol[]>;
-}
-
-export interface IQtApiOptionChains {
-  byStockId(stockId: number): Promise<IOptionChain[]>;
 }

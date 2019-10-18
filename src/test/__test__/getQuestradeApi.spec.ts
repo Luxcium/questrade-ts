@@ -21,9 +21,9 @@ let account: () => Promise<IQtApiAccount>;
 let market: () => Promise<IQtApiMarket>;
 let getQuotes: () => Promise<IQtApiQuotes>;
 let getOptionsQuotes: () => Promise<IQtApiOptionsQuotes>;
-let search: () => Promise<IQtApiSearch>;
 let getSymbols: () => Promise<IQtApiSymbols>;
 let getOptionChains: () => Promise<IQtApiOptionChains>;
+let search: () => Promise<IQtApiSearch>;
 
 beforeAll(async done => {
   const qtApiAndCredentials = await redeemToken('MOCK');
@@ -171,49 +171,22 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
     void0(await (await getOptionsQuotes()).byOptionsIds([27244725]));
     done();
   });
-  // it.skip('should validate that can get quotes byStrategies', async done => {
-  //   void0(
-  //     await (await getQuotes()).byStrategies({
-  //       variants: [
-  //         {
-  //           variantId: 1,
-  //           strategy: 'Custom',
-  //           legs: [
-  //             {
-  //               symbolId: 27426,
-  //               ratio: 1000,
-  //               action: 'Buy',
-  //             },
-  //             {
-  //               symbolId: 10550014,
-  //               ratio: 10,
-  //               action: 'Sell',
-  //             },
-  //           ],
-  //         },
-  //       ],
-  //     })
-  //   );
-  //   done();
-  // });
 });
 
 // # SEARCH METHODES
 describe('SEARCH METHODES will test all methods on get.search', () => {
+  it('should validate countResults ', async done => {
+    void0(await (await search()).stock('aapl'));
+    void0(await (await search()).stock('aapl', 0));
+    done();
+  });
   it('should validate allStocks ', async done => {
     void0(await (await search()).allStocks('aapl'));
     void0(await (await search()).allStocks('aapl', 0));
-
-    // https://api01.iq.questrade.com/v1/symbols/search?prefix=AAPL
     done();
   });
   it('should validate countResults ', async done => {
     void0(await (await search()).countResults('aapl'));
-    done();
-  });
-  it('should validate countResults ', async done => {
-    void0(await (await search()).stock('aapl'));
-    void0(await (await search()).stock('aapl', 0));
     done();
   });
 });
