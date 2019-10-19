@@ -38,10 +38,12 @@ export const dateNowNumeric = () => new Date(Date.now()).getTime();
 export const dateToString = (dateTime: string | number): string =>
   new Date(dateTime).toISOString();
 
-export const dateToNumeric = (dateTime: string): number =>
+export const dateToNumeric = (dateTime: string | number | Date): number =>
   new Date(dateTime).getTime();
 export const dateRangeFromNow = (backNumberOfDays: number) => {
-  return dateRange(backNumberOfDays, dateNowISO());
+  const back = Math.floor(backNumberOfDays);
+  const numberOfDays = back < 0 ? back * -1 : back;
+  return dateRange(numberOfDays, dateNowISO());
 };
 type StartDate = string;
 type EndDate = string;
@@ -59,10 +61,12 @@ export const dateRange = (
   if (!now) {
     now = dateNowISO();
   }
-  const startDate: StartDate = dateToString(
+
+  const startDate: StartDate = rmvMiliSec(
     dateToNumeric(now) - day(backNumberOfDays)
   );
-  const endDate: EndDate = dateToString(now);
+
+  const endDate: EndDate = rmvMiliSec(now);
   const startTime = startDate;
   const endTime = endDate;
   return {
@@ -71,6 +75,11 @@ export const dateRange = (
     endDate,
     endTime,
   };
+};
+
+const rmvMiliSec = (date: Date | string | number): string => {
+  const floor = Math.floor;
+  return dateToString(floor(dateToNumeric(date) / 1000) * 1000);
 };
 
 export const setDateRange = (backNumberOfDays: number) => <T>(

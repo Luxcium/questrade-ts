@@ -4,7 +4,7 @@ export interface IQuestradeAPIOptions {
   keyDir?: string;
   apiVersion?: string;
   keyFile?: string;
-  seedToken?: seedToken;
+  seedToken: seedToken;
   account?: string | number;
 }
 

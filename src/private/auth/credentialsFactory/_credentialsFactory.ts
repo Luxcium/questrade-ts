@@ -5,14 +5,6 @@ import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 export const _credentialsFactory = async (options: QuestradeAPIOptions) => {
-  const token: string =
-    typeof options === 'string'
-      ? options
-      : options.seedToken
-      ? options.seedToken
-      : '';
-  if (!token) throw new Error('Missing Token');
-
   const credentials = await _oAuthAxiosCredentials(options);
 
   try {

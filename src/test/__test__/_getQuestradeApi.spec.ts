@@ -9,6 +9,7 @@ import {
   IQtApiSearch,
   IQtApiSymbols,
   IQuestradeApi,
+  StrategyVariantRequest,
 } from '../../typescript';
 import { log, setDateRange, void0 } from '../../utils';
 
@@ -66,6 +67,7 @@ describe('QtAPI PROPERTIES will test all properties and methods on qtApi', () =>
     ).not.toBeNaN();
     done();
   });
+
   it('should validate qtApi myBalances', async done => {
     void0(qtApi.serverTime);
     done();
@@ -130,6 +132,10 @@ describe('ACCOUNT METHODS will test all methods on get.account', () => {
     void0(await (await account()).getPositions());
     done();
   });
+  it('should validate serverTime', async done => {
+    void0(await (await account()).getServerTime());
+    done();
+  });
 });
 
 // # MARKET METHODS
@@ -154,8 +160,32 @@ describe('MARKET METHODS will test all methods on get.market', () => {
 
 // # QUOTES METHODES
 describe('QUOTES METHODES will test all methods on get.quotes', () => {
+  const demoRequestVariants: StrategyVariantRequest = {
+    variants: [
+      {
+        variantId: 1,
+        strategy: 'Custom',
+        legs: [
+          {
+            symbolId: 27244725,
+            ratio: 1000,
+            action: 'Buy',
+          },
+          {
+            symbolId: 27244738,
+            ratio: 1001,
+            action: 'Sell',
+          },
+        ],
+      },
+    ],
+  };
   it('should validate get quotes byStockIds', async done => {
     void0(await (await getQuotes()).byStockIds([8049]));
+    done();
+  });
+  it('should validate get quotes byStrategies', async done => {
+    void0(await (await getQuotes()).byStrategies(demoRequestVariants));
     done();
   });
   it('should validate that can get optionsQuotes fromFilter', async done => {
