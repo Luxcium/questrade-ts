@@ -1,4 +1,3 @@
-import { default as ƒ } from 'ramda';
 import { redeemToken } from '..';
 import { StrategyVariantRequest } from '../typescript';
 import { log, setDateRange, void0 } from '../utils';
@@ -21,7 +20,7 @@ testingThat();
 
 export const xyz = async () => {
   //
-  return void 0 && ƒ;
+  return void 0
 };
 // )().catch(error => console.log('error message:', error.message));
 // order id 584497639
