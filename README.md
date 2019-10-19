@@ -37,49 +37,41 @@ After that, it is really simple to use:
 
 ```TypeScript
 
-const { redeemToken } = require('questrade-ts');
-// 'require' call may be converted to an import.
-// import { redeemToken } from 'questrade-ts';
+  /* 'require' call may be converted to an import. */
+  /* import { redeemToken } from 'questrade-ts' */
+  const { redeemToken } = require('questrade-ts');
 
-// You will need to create your own API key:
-// https://login.questrade.com/APIAccess/UserApps.aspx
-const yourRefreshToken = 'RocgqWp_USE_YOUR_OWN_TOKEN_M3BCd0';
+  /* You will need to create your own API key: */
+  /* https://login.questrade.com/APIAccess/UserApps.aspx */
 
-// inside of an async function or async IIFE
-(async () => {
-const log = console.log
+  const yourRefreshToken = 'RocgqWp_USE_YOUR_OWN_TOKEN_M3BCd0';
 
-const { qtApi, credentials } = await redeemToken(yourRefreshToken);
+  /* inside of an async function or async IIFE */
+  (async () => {
+    const log = console.log
 
-// Validate the server time as your hello world for this package
-const serverTime = qtApi.serverTime
-log(serverTime)
+    const { qtApi, credentials } = await redeemToken(yourRefreshToken);
 
-// inside an async function use await qt.get.<... some methode>
-const balances = await qtApi.account.getBalances()
-log(balances)
-log(credentials)
+    /* Validate the server time as your hello world for this package */
+    const serverTime = qtApi.serverTime
+    log(serverTime)
 
-// you can use a try/catch block to manage error instead:
-})().catch(error=>console.error(error.message));
+    /* inside an async function use await qt.get.<... some properties or methods> */
+    const myBalances = await qtApi.myBalances();
+    const balances = await qtApi.account.getBalances();
+
+    log(myBalances);
+    log(balances);
+
+    log(credentials);
+
+    /* you can use a try/catch block to manage error instead: */
+  })().catch(error=>console.error(error.message));
 ```
 
 ### Structure
 
 ```TypeScript
-
-  interface IQuestradeApi {
-    currentAccount: string;
-    myBalances: IQtApiMyBalances;
-    serverTime: Date | 'ERROR';
-    account: IQtApiAccount;
-    market: IQtApiMarket;
-    getQuotes: IQtApiQuotes;
-    getOptionsQuotes: IQtApiOptionsQuotes;
-    getSymbols: IQtApiSymbols;
-    getOptionChains: IQtApiOptionChains;
-    search: IQtApiSearch;
-  }
 
   const qtApi: IQuestradeApi = {
     currentAccount,
@@ -119,60 +111,81 @@ log(credentials)
       countResults,
     },
   };
+```
 
+### IQuestradeApi describe in TypeScript terms what the `questrade-ts` api look like
 
-  type DateRange<R> = (startTime: string) => (endTime: string) => R;
+```TypeScript
+  interface IQuestradeApi {
+    currentAccount: string;
+    myBalances: IQtApiMyBalances;
+    serverTime: Date | 'ERROR';
+    account: IQtApiAccount;
+    market: IQtApiMarket;
+    getQuotes: IQtApiQuotes;
+    getOptionsQuotes: IQtApiOptionsQuotes;
+    getSymbols: IQtApiSymbols;
+    getOptionChains: IQtApiOptionChains;
+    search: IQtApiSearch;
+  }
+```
 
-  getActivities(
-    startTime: string
-  ): (endTime: string) => Promise<IAccountActivity[]>;
+### Methods signatures and parameters
 
-  getAllAccounts(): Promise<IAccount[]>;
+```TypeScript
+  getActivities(startTime: string) =>
+    (endTime: string) => Promise<IAccountActivity[]>;
 
-  getBalances(): Promise<IBalances>;
+  getAllAccounts() => Promise<IAccount[]>;
 
-  getExecutions(startTime: string): (endTime: string) => Promise<IExecution[]>;
+  getBalances() => Promise<IBalances>;
 
-  getOrders(stateFilter?: string | undefined): DateRange<Promise<IOrder[]>>;
+  getExecutions(startTime: string) => (endTime: string) => Promise<IExecution[]>;
 
-  getOrdersByIds(orderId: number[]): Promise<IOrder[]>;
+  /* type DateRange<R> = (startTime: string) => (endTime: string) => R */
+  getOrders(stateFilter?: string | undefined) => DateRange<Promise<IOrder[]>>;
 
-  getPositions(): Promise<IPosition[]>;
+  getOrdersByIds(orderId: number[]) => Promise<IOrder[]>;
 
-  getServerTime(): Promise<Date>;
+  getPositions() => Promise<IPosition[]>;
 
-  getAllMarkets(): Promise<IMarket[]>;
+  getServerTime() => Promise<Date>;
 
-  getCandlesByStockId(
-    symbolID: number
-  ): (interval?: string | undefined) => DateRange<Promise<ICandle[]>>;
+  getAllMarkets() => Promise<IMarket[]>;
 
-  byStockIds(ids: number[]): Promise<IQuote[]>;
+  /* type DateRange<R> = (startTime: string) => (endTime: string) => R */
+  getCandlesByStockId(symbolID: number) =>
+    (interval?: string | undefined) => DateRange<Promise<ICandle[]>>;
 
-  byStrategies(
-    strategyVariantRequestData: StrategyVariantRequest
-  ): Promise<IStrategiesQuotes>;
+  byStockIds(ids: number[]) => Promise<IQuote[]>;
 
-  fromFilter(filters: OptionsFilters): Promise<IOptionsQuotes>;
+  byStrategies(strategyVariantRequestData: StrategyVariantRequest) =>
+    Promise<IStrategiesQuotes>;
 
-  byOptionsIds(optionIds: number[]): Promise<IOptionsQuotes>;
+  fromFilter(filters: OptionsFilters) => Promise<IOptionsQuotes>;
 
-  byStockIds(stockIds: number[]): Promise<ISymbol[]>;
+  byOptionsIds(optionIds: number[]) => Promise<IOptionsQuotes>;
 
-  byStockId(stockId: number): Promise<IOptionChain[]>;
+  byStockIds(stockIds: number[]) => Promise<ISymbol[]>;
 
-  stock(
-    prefix: string,
-    offset?: number | undefined
-  ): Promise<ISymbolSearchResult>;
+  byStockId(stockId: number) => Promise<IOptionChain[]>;
 
-  allStocks(
-    prefix: string,
-    offset?: number | undefined
-  ): Promise<ISymbolSearchResult[]>;
+  stock(prefix: string, offset?: number | undefined) =>
+    Promise<ISymbolSearchResult>;
 
-  countResults(prefix: string): Promise<number>;
+  allStocks(prefix: string, offset?: number | undefined) =>
+    Promise<ISymbolSearchResult[]>;
 
+  countResults(prefix: string) => Promise<number>;
+```
+
+### The `qtApi.myBalances()` property
+
+Calling the property `qtApi.myBalances()` can give more user friendly "dot notation" acces to your balances than using the method `qtApi.account.getBalances()`
+
+```TypeScript
+
+ /* qtApi.myBalances() property is of type IQtApiMyBalances = () => Promise<IMyBalances> */
  interface IMyBalances {
    perCurrency: {
      CAD: {
@@ -253,10 +266,12 @@ Questrade's security token system requires that you save the latest refresh toke
 By default, when you instantiate the `qtApi`  it will try to find and select the primary account (by fetching a list of all the accounts). If you want to change the account, simply do:
 
 ```typescript
-// Switch to account 12345678 -- All future calls will use this 8 digits account.
-qtApi.currentAccount = '12345678';
-// Must be one of the valid account number for the
-// user on behalf of which the API client is authorized
+  /* Switch to account 12345678 -- All future calls will use this 8 digits account. */
+
+  qtApi.currentAccount = '12345678';
+
+  /* Must be one of the valid account number for the */
+  /* user on behalf of which the API client is authorized */
 ```
 
 ### No-any

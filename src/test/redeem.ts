@@ -1,6 +1,6 @@
 // tslint:disable-next-line: no-var-requires
-const redeem = require('../');
-const redeemToken = redeem.redeemToken;
+import { redeemToken } from '../';
+
 const yourRefreshToken = 'qw9SYpGCldlPvwuOAOmHXJADrnKLDU9H0';
 
 // inside of an async function or async IIFE
@@ -13,9 +13,13 @@ const yourRefreshToken = 'qw9SYpGCldlPvwuOAOmHXJADrnKLDU9H0';
   const serverTime = qtApi.serverTime;
   log(serverTime);
 
-  // inside an async function use await qt.get.<... some methode>
+  // inside an async function use await qt.get.<... some properties or methods>
+  const myBalances = await qtApi.myBalances();
   const balances = await qtApi.account.getBalances();
+
+  log(myBalances);
   log(balances);
+
   log(credentials);
 
   // you can use a try/catch block to manage error instead:
