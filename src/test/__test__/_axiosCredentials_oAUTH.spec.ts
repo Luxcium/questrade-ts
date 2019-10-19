@@ -58,7 +58,7 @@ describe('', () => {
   });
 
   it('should not be able to recive a file path as a string containing the token', async done => {
-    const credentials = await _oAuthAxiosCredentials('./key/MOCK');
+    const credentials = await _oAuthAxiosCredentials('./keys/MOCK');
     // console.log(credentials);
     void0(credentials);
     done();
