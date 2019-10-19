@@ -36,9 +36,14 @@ After that, it is really simple to use:
 ### TL;DR
 
 ```TypeScript
-import { redeemToken } from 'questrade-ts';
 
-const yourRefreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
+const { redeemToken } = require('questrade-ts');
+// 'require' call may be converted to an import.
+// import { redeemToken } from 'questrade-ts';
+
+// You will need to create your own API key:
+// https://login.questrade.com/APIAccess/UserApps.aspx
+const yourRefreshToken = 'RocgqWp_USE_YOUR_OWN_TOKEN_M3BCd0';
 
 // inside of an async function or async IIFE
 (async () => {
@@ -52,7 +57,7 @@ log(serverTime)
 
 // inside an async function use await qt.get.<... some methode>
 const balances = await qtApi.account.getBalances()
-
+log(balances)
 log(credentials)
 
 // you can use a try/catch block to manage error instead:
