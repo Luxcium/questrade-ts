@@ -1,2 +1,2 @@
-export type void0 = void;
-export type void_0 = (void_: void0) => void0;
+export type Void0 = void;
+export type Void_0 = (void_: Void0) => Void0;
