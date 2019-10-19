@@ -13,20 +13,20 @@
 
 This [NPM Package](https://www.npmjs.com/package/questrade-ts) is an unofficial [Questrade API](https://www.questrade.com/api/documentation/getting-started) wrapper for [NodeJS](https://nodejs.org/en/docs/) with full [TypeScript](https://www.typescriptlang.org/docs/home.html) support.
 
-The structure is changing and is unstable you might have to change you code for it to run after th next update until the 1.1.0 version use `--save-exact questrade-ts` and be aware that updating to a folowing version will result in a change in your code ...
-
 This NodeJS wrapper is an easy way to use the [Questrade API](www.questrade.com/api/documentation/getting-started) immediately. It commes with full TypeScript support.
 
 Simply start by installing this questrade-ts library:
 
+This Package conforms to [Semantic Versioning Specification (SemVer)](https://semver.org/#semantic-versioning-200)
+
 ```bash
-npm install --save-exact questrade-ts
+npm i questrade-ts@latest
 ```
 
 or
 
 ```bash
-npm install --save-exact questrade-ts@latest
+yarn add questrade-ts@latest
 ```
 
 You will need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx).
