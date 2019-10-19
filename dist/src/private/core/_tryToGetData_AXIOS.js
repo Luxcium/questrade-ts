@@ -8,12 +8,9 @@ exports._tryToGetData = function (_config) {
         return tslib_1.__generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
-                    console.log('CONFIG:::', JSON.stringify(_config));
-                    _a.label = 1;
-                case 1:
-                    _a.trys.push([1, 3, , 4]);
+                    _a.trys.push([0, 2, , 3]);
                     return [4 /*yield*/, axios_1.default(_config)];
-                case 2:
+                case 1:
                     res = _a.sent();
                     data = res.data;
                     if (!data) {
@@ -22,11 +19,11 @@ exports._tryToGetData = function (_config) {
                     // console.log('DATA:::', data);
                     // console.log('JSON STRING DATA:::', JSON.stringify(data));
                     return [2 /*return*/, data];
-                case 3:
+                case 2:
                     error_1 = _a.sent();
                     _logError(error_1);
                     throw error_1;
-                case 4: return [2 /*return*/];
+                case 3: return [2 /*return*/];
             }
         });
     }); };

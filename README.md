@@ -38,12 +38,11 @@ After that, it is really simple to use:
 ```TypeScript
 
   /* 'require' call may be converted to an import. */
-  /* import { redeemToken } from 'questrade-ts' */
+  // import { redeemToken } from 'questrade-ts'
   const { redeemToken } = require('questrade-ts');
 
   /* You will need to create your own API key: */
   /* https://login.questrade.com/APIAccess/UserApps.aspx */
-
   const yourRefreshToken = 'RocgqWp_USE_YOUR_OWN_TOKEN_M3BCd0';
 
   /* inside of an async function or async IIFE */
@@ -267,7 +266,6 @@ By default, when you instantiate the `qtApi`  it will try to find and select the
 
 ```typescript
   /* Switch to account 12345678 -- All future calls will use this 8 digits account. */
-
   qtApi.currentAccount = '12345678';
 
   /* Must be one of the valid account number for the */
