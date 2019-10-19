@@ -30,7 +30,8 @@
       "./node_modules/.registry.npmjs.org/@types"
     ],
     "types": [
-      "jest","node"
+      "jest",
+      "node"
     ],
     /* Compilation Options */
     // "allowJs": true,
@@ -64,18 +65,20 @@
   },
   "include": [
     "./src/**/*",
-    "src/debug.ts", "src/test"
+    "src/debug.ts",
+    "src/test"
   ],
   "exclude": [
+    "__test__",
     "backup",
-    "node_modules",
     "build",
-    "enums",
-    "src/legacy/proto_testing/**/*",
     "debug.js",
-    "manualTestingAndDebug.js"
-    ,"__test__"
-    ,"src/test"
+    "enums",
+    "functional.js",
+    "manualTestingAndDebug.js",
+    "node_modules",
+    "src/legacy/proto_testing/**/*",
+    "src/test"
   ],
   "plugins": [
     {
