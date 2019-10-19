@@ -1,0 +1,1 @@
+{"version":3,"file":"AxiosIntrospectRes.js","sourceRoot":"","sources":["../../../src/typescript/AxiosIntrospectRes.ts"],"names":[],"mappings":"","sourcesContent":["import { AxiosResponse } from 'axios';\n\nexport type AxiosIntrospectRes<R> = AxiosResponse<R> & {\n  introspect: { onOff: boolean };\n};\n"]}

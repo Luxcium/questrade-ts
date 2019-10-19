@@ -14,7 +14,7 @@ export const _validateToken = (options: QuestradeAPIOptions) => {
       sync(credentials.keyDir);
     }
     credentials.keyFile =
-      `${credentials.keyDir}/${credentials.seedToken}` && credentials.keyFile;
+      credentials.keyFile || `${credentials.keyDir}/${credentials.seedToken}`;
     refreshToken = readFileSync(credentials.keyFile, 'utf8');
   } catch (_) {
     credentials.keyFile =

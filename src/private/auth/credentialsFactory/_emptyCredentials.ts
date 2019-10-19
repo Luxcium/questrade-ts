@@ -3,7 +3,7 @@ import { _defaultCredentials } from './_defaultCredentials';
 
 export const _emptyCredentials = () => {
   const credentials: Credentials = _defaultCredentials;
-  credentials.accountNumber = '22222222';
+  credentials.accountNumber = '';
   credentials.apiVersion = 'v1';
   credentials.keyDir = './keys';
   credentials.keyFile = '';
