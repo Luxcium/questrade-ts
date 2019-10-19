@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../../../../src/private/routes/axiosAccountGetApi/endpointFormatAccount/index.ts"],"names":[],"mappings":";;AAAA,mEAAkE;AAAzD,0DAAA,sBAAsB,CAAA","sourcesContent":["export { _endpointFormatAccount } from './_endpointFormatAccount';\n"]}
