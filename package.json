@@ -48,7 +48,8 @@
     "cp:enu:1": "cp-cli ./enums/README.md ./build/enums/README.md",
     "cp:enu:2": "cp-cli ./enums/package.json ./build/enums/package.json",
     "cp:enu:3": "cp-cli ./enums/.npmignore ./build/enums/.npmignore",
-    "cp:enu:4": "cp-cli ./enums/LICENSE.txt ./build/enums/LICENSE.txt"
+    "cp:enu:4": "cp-cli ./enums/LICENSE.txt ./build/enums/LICENSE.txt",
+    "sort:json": "sort-json"
   },
   "repository": {
     "type": "git",

@@ -2,7 +2,7 @@ import { _oAuthAxiosCredentials } from '../../private/auth/axiosCredentials_oAUT
 import { _emptyCredentials } from '../../private/auth/credentialsFactory';
 import { void0 } from '../../utils';
 
-describe('', () => {
+describe('auth Credential from QuestradeApi via AXIOS', () => {
   it('should be able to recive a keydir', async done => {
     const credentials = await _oAuthAxiosCredentials({
       account: 12345678,
