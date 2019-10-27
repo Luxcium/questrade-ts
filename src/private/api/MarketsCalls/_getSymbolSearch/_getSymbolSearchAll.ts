@@ -9,7 +9,7 @@ import { _axiosGetApi } from '../../../routes';
 /** _getSymbolSearch */
 export const _getSymbolSearchAll = (credentials: Credentials) => async (
   prefix: string,
-  offset: number = 0
+  offset = 0
 ): Promise<ISymbolSearchResult[]> => {
   const results = await _axiosGetApi(credentials)<ISymbolSearchResults>(
     `/symbols/search?prefix=${prefix.toUpperCase()}&offset=${offset}`

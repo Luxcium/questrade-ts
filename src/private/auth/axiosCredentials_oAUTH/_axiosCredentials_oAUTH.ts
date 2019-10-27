@@ -7,6 +7,7 @@ import {
 } from '../../../typescript';
 import { _validateToken } from './_validateToken';
 import { _writeToken } from './_writeToken';
+
 export const _oAuthAxiosCredentials = async (
   options: QuestradeAPIOptions
 ): Promise<Credentials> => {

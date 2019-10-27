@@ -1,4 +1,5 @@
 import { IBalance } from '.';
+
 export interface IMyBalances {
   perCurrency: {
     CAD: {

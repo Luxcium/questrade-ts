@@ -5,7 +5,7 @@ import { _axiosGetApi } from '../../../routes';
 // + _getCandles
 /** _getCandles */
 export const _getCandles = (credentials: Credentials) => (symbolID: number) => (
-  interval: string = 'OneDay'
+  interval = 'OneDay'
 ) => (startDate: string) => async (endDate: string): Promise<ICandle[]> =>
   (await _axiosGetApi(credentials)<ICandles>(
     `/markets/candles/${symbolID}?startTime=${startDate}&endTime=${endDate}&interval=${interval}`

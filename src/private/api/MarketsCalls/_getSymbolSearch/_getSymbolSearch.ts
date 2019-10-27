@@ -5,7 +5,7 @@ import { _getSymbolSearchAll } from './_getSymbolSearchAll';
 /** _getSymbolSearch */
 export const _getSymbolSearch = (credentials: Credentials) => async (
   prefix: string,
-  offset: number = 0
+  offset = 0
 ): Promise<ISymbolSearchResult> => {
   const symbols = await _getSymbolSearchAll(credentials)(prefix, offset);
   const count = symbols.length;

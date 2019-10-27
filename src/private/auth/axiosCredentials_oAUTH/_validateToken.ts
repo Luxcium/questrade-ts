@@ -8,7 +8,7 @@ export const _validateToken = (options: QuestradeAPIOptions) => {
   const credentials = _buildCredentialsFromToken(options);
   let refreshToken: string = credentials.seedToken;
   try {
-    if (!!credentials.keyFile) {
+    if (credentials.keyFile) {
       sync(dirname(credentials.keyFile));
     } else {
       sync(credentials.keyDir);

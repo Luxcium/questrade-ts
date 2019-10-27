@@ -1,4 +1,4 @@
- {
+{
     "env": {
         "browser": true,
         "node": true
@@ -8,16 +8,32 @@
         "project": "tsconfig.json",
         "sourceType": "module"
     },
-    "extends": ["plugin:unicorn/recommended","airbnb-base", "plugin:@typescript-eslint/recommended", "prettier"],
+    "extends": [
+        "plugin:unicorn/recommended",
+        "airbnb-base",
+        "plugin:@typescript-eslint/recommended",
+        "prettier"
+    ],
     "plugins": [
         "@typescript-eslint",
         "@typescript-eslint/tslint"
     ],
     "rules": {
-        "@typescript-eslint/interface-name-prefix": "error",
+        "@typescript-eslint/no-use-before-define": 0,
+        "no-param-reassign": 0,
+        "no-bitwise": 0,
+        "import/prefer-default-export": 0,
+        "no-void": 0,
+        "no-underscore-dangle": 0,
+        "no-case-declarations": 0,
+        "@typescript-eslint/interface-name-prefix": 0,
+        "@typescript-eslint/camelcase": 0,
+        "camelcase": 0,
+        "import/no-unresolved": 0,
+        "unicorn/prevent-abbreviations": 0,
         "@typescript-eslint/no-explicit-any": "error",
         "@typescript-eslint/promise-function-async": "error",
-        "camelcase": "error",
+        "unicorn/filename-case": 0,
         "eqeqeq": [
             "error",
             "always"
@@ -27,7 +43,6 @@
         "import/order": "error",
         "max-len": "error",
         "no-console": "error",
-        "no-underscore-dangle": "error",
         "no-unused-expressions": "error",
         "object-shorthand": "error",
         "@typescript-eslint/tslint/config": [

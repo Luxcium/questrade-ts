@@ -1,3 +1,3 @@
-export function id0<T>(...param: T[]) {
-  return param;
+export function id0<T>(...parameter: T[]) {
+  return parameter;
 }

@@ -1,6 +1,6 @@
 import { id0 } from '../utils';
 
-export function void0<T>(...arg0: T[]) {
-  id0(arg0);
+export function void0<T>(...argument0: T[]) {
+  id0(argument0);
   return void 0;
 }

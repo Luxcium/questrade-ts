@@ -4,6 +4,7 @@
 
 import fs from 'fs';
 import path from 'path';
+
 export type Made = string | null;
 export type Mode = number | string | null;
 export interface FsImplementationSync {
@@ -15,19 +16,19 @@ export interface OptionsSync {
   fs?: FsImplementationSync;
 }
 
-const _0777 = parseInt('0777', 8);
+const _0777 = 0o0777;
 
 export const sync = (
   p: string,
-  opts?: Mode | OptionsSync,
+  options,
   made?: Made
 ): Made => {
-  if (!opts || typeof opts !== 'object') {
-    opts = { mode: opts };
+  if (!options || typeof options !== 'object') {
+    options = { mode: options };
   }
 
-  let mode = opts.mode;
-  const xfs = opts.fs || fs;
+  let {mode} = options;
+  const xfs = options.fs || fs;
 
   if (!mode) {
     mode = _0777 & ~process.umask();
@@ -39,11 +40,11 @@ export const sync = (
   try {
     xfs.mkdirSync(p, mode);
     made = made || p;
-  } catch (err0) {
-    switch (err0.code) {
+  } catch (error0) {
+    switch (error0.code) {
       case 'ENOENT':
-        made = sync(path.dirname(p), opts, made);
-        sync(p, opts, made);
+        made = sync(path.dirname(p), options, made);
+        sync(p, options, made);
         break;
 
       // In the case of whichever error, just see if there's a dir
@@ -53,10 +54,10 @@ export const sync = (
         let stat;
         try {
           stat = xfs.statSync(p);
-        } catch (err1) {
-          throw err0;
+        } catch (error1) {
+          throw error0;
         }
-        if (!stat.isDirectory()) throw err0;
+        if (!stat.isDirectory()) throw error0;
         break;
     }
   }
