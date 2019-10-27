@@ -2,21 +2,20 @@ import { redeemToken } from '..';
 import { StrategyVariantRequest } from '../typescript';
 import { log, setDateRange, void0 } from '../utils';
 
-const myToken = 'zrIAqPOYDZprjQOuyuI0ooSOHK2Q2YXB0';
+const myToken = 'bqYp226MFYxs9kSJV9utx8pcqd75kgDZ0';
 
-export const testingThat = async () => {
+export const testingThat = (async () => {
   const qtApi = await redeemToken(myToken)
     .then(result => {
       return result.qtApi;
     })
     .catch(err => console.log(err));
   if (!qtApi) throw new Error('Redeem token fault');
-  const theResult = await qtApi.getQuotes.byStrategies(demoRequestVariants);
+  const theResult = await qtApi.account.getPositions();
   console.log('theResult', theResult);
   return theResult;
-};
-testingThat();
-// )().catch(error => console.log('PlayGround error message:', error.message));
+})().catch(error => console.log('PlayGround error message:', error.message));
+// testingThat();
 
 export const xyz = async () => {
   //
