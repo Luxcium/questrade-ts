@@ -19,6 +19,7 @@
         "@typescript-eslint/tslint"
     ],
     "rules": {
+        "@typescript-eslint/explicit-function-return-type": 0,
         "@typescript-eslint/no-use-before-define": 0,
         "no-param-reassign": 0,
         "no-bitwise": 0,
@@ -49,13 +50,8 @@
             "error",
             {
                 "rules": {
-                    "function-name": true,
-                    "import-name": true,
                     "no-boolean-literal-compare": true,
-                    "object-literal-sort-keys": true,
-                    "object-shorthand-properties-first": true,
-                    "prettier": true,
-                    "ter-arrow-parens": true,
+                    "object-literal-sort-keys": false,
                     "typedef": true
                 }
             }

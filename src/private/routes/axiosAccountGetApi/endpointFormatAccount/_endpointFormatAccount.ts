@@ -9,9 +9,9 @@ const _endPtAccountBaseURL: EndPtAccountBaseURL = getCredAcctProperty => urlSepa
     creds
   )}${accountEndpoint}`;
 /** PROVIDE: credentials and accountEndpoint string, THEN GET: a endpoint string */
-export const _endpointFormatAccount = _endPtAccountBaseURL(_credAcctNmbrProperty)(
-  _urlSeprator
-)(_baseAcctUrlString);
+export const _endpointFormatAccount = _endPtAccountBaseURL(
+  _credAcctNmbrProperty
+)(_urlSeprator)(_baseAcctUrlString);
 
 export type EndPtAccountBaseURL = (
   getCredAcctProp: (credentials: Credentials) => string

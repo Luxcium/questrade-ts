@@ -78,7 +78,7 @@ export const dateRange = (
 };
 
 const rmvMiliSec = (date: Date | string | number): string => {
-  const {floor} = Math;
+  const { floor } = Math;
   return dateToString(floor(dateToNumeric(date) / 1000) * 1000);
 };
 

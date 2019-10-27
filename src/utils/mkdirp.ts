@@ -1,7 +1,6 @@
 // tslint:disable: no-bitwise
 // tslint:disable: no-parameter-reassignment
 // tslint:disable: interface-name
-
 import fs from 'fs';
 import path from 'path';
 
@@ -18,17 +17,14 @@ export interface OptionsSync {
 
 const _0777 = 0o0777;
 
-export const sync = (
-  p: string,
-  options,
-  made?: Made
-): Made => {
+export const sync = (p: string, options?: OptionsSync, made?: Made): Made => {
+  let opt: any = options;
   if (!options || typeof options !== 'object') {
-    options = { mode: options };
+    opt = { mode: options };
   }
 
-  let {mode} = options;
-  const xfs = options.fs || fs;
+  let { mode } = opt;
+  const xfs = (!!options && options.fs) || fs;
 
   if (!mode) {
     mode = _0777 & ~process.umask();
