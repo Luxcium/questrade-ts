@@ -1,4 +1,4 @@
-module.exports = {
+ {
     "env": {
         "browser": true,
         "node": true
@@ -8,6 +8,7 @@ module.exports = {
         "project": "tsconfig.json",
         "sourceType": "module"
     },
+    "extends": ["plugin:unicorn/recommended","airbnb-base", "plugin:@typescript-eslint/recommended", "prettier"],
     "plugins": [
         "@typescript-eslint",
         "@typescript-eslint/tslint"
@@ -45,4 +46,4 @@ module.exports = {
             }
         ]
     }
-};
+}
