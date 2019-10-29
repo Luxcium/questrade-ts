@@ -1,24 +1,32 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { CoreApiConfig, LogErrors } from '../../typescript';
-
-export const _tryToGetData = <R, D>(_config: CoreApiConfig<D>) => {
+import { Credentials } from '../../typescript/Credentials';
+import {
+  remainingRequests,
+  requestPerSecondLimit,
+} from './requestPerSecondLimit';
+export const _tryToGetData = <R, D>(
+  _config: CoreApiConfig<D>,
+  credentials: Credentials
+) => {
   return async (_logError: LogErrors): Promise<R> => {
-    // console.log('CONFIG:::', JSON.stringify(_config));
-
     try {
-      const res = await axios(_config);
-      // console.log(':::RESPONSE==>');
-      // console.dir(res);
-      // console.log('void 0', void 0);
-      // console.log('<==RESPONSE:::');
+      const possiblePerSeconds =
+        !!credentials &&
+        !!credentials.remainingRequests &&
+        !!credentials.remainingRequests.possiblePerSeconds
+          ? credentials.remainingRequests.possiblePerSeconds
+          : 20;
 
-      const data: void | R = res.data;
+      const requestLimit = requestPerSecondLimit(possiblePerSeconds);
+      const response = await requestLimit(
+        async (): Promise<AxiosResponse<R>> => axios(_config)
+      );
+      const { data } = response;
       if (!data) {
         throw _logError(new Error("Can't retrive data from call to API"));
       }
-      // console.log('DATA:::', data);
-      // console.log('JSON STRING DATA:::', JSON.stringify(data));
-
+      credentials.remainingRequests = remainingRequests(response);
       return data;
     } catch (error) {
       _logError(error);
@@ -26,3 +34,19 @@ export const _tryToGetData = <R, D>(_config: CoreApiConfig<D>) => {
     }
   };
 };
+
+// logData(response);
+// remainingRequests(response);
+// logRemanings(remainingRequests(response));
+
+// console.log(':::RESPONSE==>');
+// console.dir(res);
+// console.log('void 0', void 0);
+// console.log('<==RESPONSE:::');
+// console.log('DATA:::', data);
+// console.log('JSON STRING DATA:::', JSON.stringify(data));
+
+// console.log('CONFIG:::', JSON.stringify(_config));
+
+//  const requester = () =>''
+//  requester()
