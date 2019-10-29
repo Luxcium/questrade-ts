@@ -39,6 +39,13 @@
             "error",
             "always"
         ],
+        "no-shadow": [
+            "error",
+            {
+                "builtinGlobals": false,
+                "hoist": "all"
+            }
+        ],
         "id-blacklist": "error",
         "id-match": "error",
         "import/order": "error",

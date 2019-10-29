@@ -12,8 +12,9 @@ export const testingThat = (async () => {
     .catch(err => console.log(err));
   if (!qtApi) throw new Error('Redeem token fault');
   const theResult = await qtApi.account.getPositions();
+  const theResult2 = await qtApi.search.stock('aapl');
   console.log('theResult', theResult);
-  return theResult;
+  return { theResult, theResult2 };
 })().catch(error => console.log('PlayGround error message:', error.message));
 // testingThat();
 

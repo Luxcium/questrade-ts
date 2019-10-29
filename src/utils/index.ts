@@ -4,6 +4,7 @@ import { void0 } from './void0';
 const { log } = console;
 export { getHash } from './getHash';
 export { FsImplementationSync, Made, Mode, OptionsSync, sync } from './mkdirp';
+export { perSeconds } from './perSeconds';
 export {
   dateNowISO,
   dateNowNumeric,
