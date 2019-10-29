@@ -53,27 +53,51 @@ beforeAll(async done => {
 // # QtAPI PROPERTIES
 describe('QtAPI PROPERTIES will test all properties and methods on qtApi', () => {
   it('should validate credentials toValue', async done => {
-    void0(credentials.toValue());
+    try {
+      void0(credentials.toValue());
+    } catch (error) {
+      throw error;
+    }
     done();
   });
   it('should credentials toString', async done => {
-    void0(credentials.toString());
+    try {
+      void0(credentials.toString());
+    } catch (error) {
+      console.error(error.message);
+      throw new Error(error.message);
+    }
     done();
   });
 
   it('should validate qtApi myBalances', async done => {
-    expect(
-      (await qtApi.myBalances()).CAD.combined.current.buyingPower
-    ).not.toBeNaN();
+    try {
+      expect(
+        (await qtApi.myBalances()).CAD.combined.current.buyingPower
+      ).not.toBeNaN();
+    } catch (error) {
+      console.error(error.message);
+      throw new Error(error.message);
+    }
     done();
   });
 
   it('should validate qtApi myBalances', async done => {
-    void0(qtApi.serverTime);
+    try {
+      void0(qtApi.serverTime);
+    } catch (error) {
+      console.error(error.message);
+      throw new Error(error.message);
+    }
     done();
   });
   it('should validate qtApi myBalances', async done => {
-    void0((await qtApi.myBalances()).CAD.combined.current.buyingPower);
+    try {
+      void0((await qtApi.myBalances()).CAD.combined.current.buyingPower);
+    } catch (error) {
+      console.error(error.message);
+      throw new Error(error.message);
+    }
     done();
   });
 });
