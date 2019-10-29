@@ -7,7 +7,7 @@ import {
 } from './requestPerSecondLimit';
 export const _tryToGetData = <R, D>(
   _config: CoreApiConfig<D>,
-  credentials: Credentials
+  credentials?: Credentials
 ) => {
   return async (_logError: LogErrors): Promise<R> => {
     try {
@@ -27,7 +27,9 @@ export const _tryToGetData = <R, D>(
         throw _logError(new Error("Can't retrive data from call to API"));
       }
       try {
-        credentials.remainingRequests = remainingRequests(response);
+        if (credentials) {
+          credentials.remainingRequests = remainingRequests(response);
+        }
       } catch (error) {
         console.error(
           'To make tests pass removed error messages from code bloc'
