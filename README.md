@@ -68,7 +68,7 @@ import { tokenConnection } from 'questrade-ts';
 
     console.log(symb);
 
-    console.log(await qt.getQuote(symb.symbolId));
+    console.log(await qt.getQuote(8049));
   } catch (error) {
     // manage your errors here if needed
     console.log(error);
