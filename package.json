@@ -2,7 +2,7 @@
   "name": "questrade-ts",
   "displayName": "Questrade API by Luxcium (with typescript support).",
   "description": "Unofficial Questrade API wrapper for NodeJS with full TypeScript support.",
-  "version": "1.0.2",
+  "version": "1.0.3-next",
   "author": "Luxcium <luxcium@neb401.com>",
   "license": "MIT",
   "homepage": "https://github.com/Luxcium/questrade-ts",
@@ -11,7 +11,7 @@
   "scripts": {
     "prebuild": "yarn run test",
     "build": "yarn run out:cjs",
-    "postbuild": "echo 'Build Completed !!!'",
+    "postbuild": "#yarn run typescript:rc",
     "preCI": "yarn run coverage",
     "CI": "echo 'Will validate if project can be build with COMMON-JS UMD AMD SYS'",
     "postCI": "concurrently -c red,green,yellow,blue -n \"COMMON JS|UMD|AMD|SYS\" --name-separator \"|\" \"yarn:out:cjs\" \"yarn:out:umd\" \"yarn:out:amd\" \"yarn:out:sys\"",
@@ -53,7 +53,10 @@
     "eslint:2": "eslint --color --fix --max-warnings=0 ./src/utils/*.ts 1> /dev/null || eslint --color --fix --max-warnings=0 ./src/utils/*.ts",
     "eslint:3": "eslint --color --fix --max-warnings=0 ./src/public/*.ts 1> /dev/null || eslint --color --fix --max-warnings=0 ./src/public/*.ts ",
     "eslint:4": "eslint --color --fix --max-warnings=0 ./src/private/*.ts 1> /dev/null || eslint --color --fix --max-warnings=0 ./src/private/*.ts",
-    "eslint:0": "yarn run eslint:1 && yarn run eslint:2 && yarn run eslint:3 && yarn run eslint:4"
+    "eslint:0": "yarn run eslint:1 && yarn run eslint:2 && yarn run eslint:3 && yarn run eslint:4",
+    "typescript:latest": "yarn add --dev typescript@latest",
+    "typescript:rc": "yarn add --dev typescript@rc",
+    "typescript:next": "yarn add --dev typescript@lnext"
   },
   "repository": {
     "type": "git",

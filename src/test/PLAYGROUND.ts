@@ -2,7 +2,7 @@ import { redeemToken } from '..';
 import { StrategyVariantRequest } from '../typescript';
 import { log, setDateRange, void0 } from '../utils';
 
-const myToken = 'bqYp226MFYxs9kSJV9utx8pcqd75kgDZ0';
+const myToken = '2a15Be6L9aphlS0xdnppd8MKAADK9dxM0';
 
 export const testingThat = (async () => {
   const qtApi = await redeemToken(myToken)

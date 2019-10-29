@@ -1,3 +1,5 @@
+import { ITimeRateLimiter } from '.';
+
 export interface Credentials {
   accessToken: string;
   accountNumber: string;
@@ -17,6 +19,7 @@ export interface Credentials {
   serverTime?: Date;
   serverTimeRaw?: number;
   tokenType: string;
+  remainingRequests?: ITimeRateLimiter;
   toString(): string;
   toValue(): string;
 }
