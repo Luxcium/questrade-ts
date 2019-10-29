@@ -14,15 +14,16 @@
     /* ALWAYS TRUE */ "noUnusedLocals": true /*                 ALWAYS TRUE  */,
     /* ALWAYS TRUE */ "noUnusedParameters": true /*             ALWAYS TRUE  */,
     /* ALWAYS TRUE STRICT TYPE-CHECKING, ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
-
     /* Basic Options */
     "target": "es5",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "module": "commonjs",
     "jsx": "preserve",
     "rootDir": "./src",
     "outDir": "./build/src",
-
     /* Compilation Options */
     "importHelpers": true,
     "removeComments": true,
@@ -34,32 +35,37 @@
     "listEmittedFiles": false,
     "traceResolution": false,
     "extendedDiagnostics": true,
-
     /* Module Resolution Options */
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "types": ["node"],
+    "types": [
+      "node",
+      "jest"
+    ],
     "typeRoots": [
       "node_modules/.registry.npmjs.org/@types/**/*",
       "node_modules/@types/**/*"
     ],
-
     /* Source Map Options */
     "declaration": true,
     "inlineSourceMap": true,
     "inlineSources": true,
     "declarationDir": "./build/lib/",
-
     /* Additional Options */
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "pretty": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "build", "imports"],
-
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "imports"
+  ],
   "plugins": [
     {
       "name": "typescript-tslint-plugin",
@@ -67,7 +73,11 @@
       "configFile": "./tslint.json",
       "suppressWhileTypeErrorsPresent": false,
       "mockTypeScriptVersion": false,
-      "exclude": ["build", "node_modules", "imports"]
+      "exclude": [
+        "build",
+        "node_modules",
+        "imports"
+      ]
     }
   ]
 }
