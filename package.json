@@ -62,7 +62,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.20",
     "@types/minimist": "1.2.0",
-    "@types/node": "12.6.8",
+    "@types/node": "^12.11.7",
     "cp-cli": "2.0.0",
     "jest": "^24.9.0",
     "minimist": "1.2.0",
