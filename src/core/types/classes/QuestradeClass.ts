@@ -40,7 +40,23 @@ import { IOptionsQuotes } from '../IOptionsQuotes';
 import { IOrder, IOrders } from '../IOrders';
 import { IQuote, IQuotes } from '../IQuotes';
 
-// fetch()
+type Method =
+  | 'GET'
+  | 'get'
+  | 'delete'
+  | 'DELETE'
+  | 'head'
+  | 'HEAD'
+  | 'options'
+  | 'OPTIONS'
+  | 'post'
+  | 'POST'
+  | 'put'
+  | 'PUT'
+  | 'patch'
+  | 'PATCH'
+  | undefined;
+
 export class QuestradeClass extends EE {
   public get getServerTime(): Promise<string> {
     return this._getTime();
@@ -527,7 +543,7 @@ export class QuestradeClass extends EE {
   // ? async method _accountApi<T>
   // Method that appends the set account to the API calls so all calls are made
   private async _accountApi<T>(
-    method?: string,
+    method?: Method,
     endpoint?: string,
     options?: Optionals
   ) {
@@ -543,8 +559,9 @@ export class QuestradeClass extends EE {
   }
   // ? async method _api<T>
   // Method that actually mades the GET/POST request to Questrade
+
   private async _api<T>(
-    method?: string,
+    method?: Method,
     endpoint?: string,
     options?: Optionals,
     additionalHeaders?: IHeaders
