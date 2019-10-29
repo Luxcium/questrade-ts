@@ -39,13 +39,13 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/.registry.npmjs.org/@types"
+    ],
     "types": [
       "node",
       "jest"
-    ],
-    "typeRoots": [
-      "node_modules/.registry.npmjs.org/@types/**/*",
-      "node_modules/@types/**/*"
     ],
     /* Source Map Options */
     "declaration": true,
