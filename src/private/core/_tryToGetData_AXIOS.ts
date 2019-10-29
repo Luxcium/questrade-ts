@@ -1,16 +1,14 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
 import { CoreApiConfig, LogErrors } from '../../typescript';
-// import { requestPerSecondLimit } from './requestPerSecondLimit';
+import { requestPerSecondLimit } from './requestPerSecondLimit';
 export const _tryToGetData = <R, D>(_config: CoreApiConfig<D>) => {
   return async (_logError: LogErrors): Promise<R> => {
-    console.log('in axios 1');
     try {
-      // requestPerSecondLimit(1)(() => axios(_config));
-      // const requesLimiter = requestPerSecondLimit(5);
-      // const response = requesLimiter(() => axios(_config));
-      const response = await axios(_config);
-      // console.log('response', response());
-      const { data } = response; // await response();
+      const requestLimit = requestPerSecondLimit(0.25);
+      const response = await requestLimit(
+        async (): Promise<AxiosResponse<R>> => axios(_config)
+      );
+      const { data } = response;
       console.log('data', data);
       if (!data) {
         throw _logError(new Error("Can't retrive data from call to API"));
