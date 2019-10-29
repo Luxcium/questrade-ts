@@ -20,7 +20,10 @@ export const _coreApiFunction = (credentials: Credentials) => {
           const endPoint = getEndPoint(endpoint);
           const getDataConfig = endPoint(postData);
 
-          const axiosDataGetter = _tryToGetData<R, D>(getDataConfig);
+          const axiosDataGetter = _tryToGetData<R, D>(
+            getDataConfig,
+            credentials
+          );
           // ->
           const data = axiosDataGetter(_logErrors);
 
