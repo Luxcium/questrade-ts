@@ -1,1 +1,0 @@
-{"version":3,"file":"CallBack.js","sourceRoot":"","sources":["../../../src/typescript/CallBack.ts"],"names":[],"mappings":"","sourcesContent":["export type CallBack<T> = (error: Error | null, returnValue: T) => void;\n"]}
