@@ -2,12 +2,19 @@
   "name": "questrade-ts",
   "displayName": "Questrade API by Luxcium (with typescript support).",
   "description": "Unofficial Questrade API wrapper for NodeJS with full TypeScript support.",
-  "version": "1.0.2",
+  "version": "1.0.3-next.Rev2",
   "author": "Luxcium <luxcium@neb401.com>",
   "license": "MIT",
   "homepage": "https://github.com/Luxcium/questrade-ts",
   "main": "./src/index.js",
   "types": "./typings/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/luxcium/questrade-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luxcium/questrade-ts/issues"
+  },
   "scripts": {
     "prebuild": "yarn run test",
     "build": "yarn run out:cjs",
@@ -28,7 +35,7 @@
     "prettier": "prettier --check --write --config .prettierrc './src/**/*.ts'",
     "tslint": "tslint --project ./ --format codeFrame --fix",
     "tsc": "tsc --noEmit --pretty",
-    "predist": "yarn run build:clean; yarn run rm:dist",
+    "predist": "yi; yarn run build:clean; yarn run rm:dist",
     "dist": "yarn run cp:dist",
     "postdist": "npm publish ./dist --tag latest --dry-run && npm pack ./dist --tag latest",
     "rm:dist": "rimraf ./dist/",
@@ -50,22 +57,10 @@
     "cp:enu:3": "cp-cli ./enums/.npmignore ./build/enums/.npmignore",
     "cp:enu:4": "cp-cli ./enums/LICENSE.txt ./build/enums/LICENSE.txt"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com/luxcium/questrade-ts.git"
-  },
-  "bugs": {
-    "url": "https://github.com/luxcium/questrade-ts/issues"
-  },
-  "dependencies": {
-    "axios": "^0.19.0",
-    "questrade-api-enumerations": "^1.1.4",
-    "tslib": "^1.10.0"
-  },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@types/jest": "^24.0.18",
-    "@types/node": "^12.7.12",
+    "@types/node": "^12.12.3",
     "babel-jest": "^24.9.0",
     "concurrently": "^5.0.0",
     "coveralls": "^3.0.7",
@@ -82,20 +77,26 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-security": "^1.16.0",
     "tslint-plugin-prettier": "^2.0.1",
-    "typescript": "^3.6.4",
+    "typescript": "^3.7.1-rc",
     "typescript-tslint-plugin": "^0.5.4"
   },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "questrade-api-enumerations": "^1.1.4",
+    "tslib": "^1.10.0"
+  },
   "keywords": [
+    "TypeScript",
+    "Canadian",
+    "Stock Market API",
+    "Un-Official",
     "Questrade",
-    "stocks",
-    "trading",
-    "typescript",
-    "Unofficial",
+    "Canada",
+    "API Wrapper",
     "Questrade API",
-    "API wrapper",
-    "TypeScript support",
-    "stock market api",
-    "canada",
-    "Canadian"
+    "Stocks",
+    "Trading",
+    "Luxcium",
+    "TypeScript Support"
   ]
 }

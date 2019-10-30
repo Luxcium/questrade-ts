@@ -1,8 +1,8 @@
 {
   "name": "questrade-ts",
-  "displayName": "Questrade API by Luxcium (with typescript support).",
+  "displayName": "Questrade API by Luxcium (with TypeScript support).",
   "description": "Unofficial Questrade API wrapper for NodeJS with full TypeScript support.",
-  "version": "1.0.3-next.Rev1",
+  "version": "1.0.3-next.Rev2",
   "author": "Luxcium <luxcium@neb401.com>",
   "license": "MIT",
   "homepage": "https://github.com/Luxcium/questrade-ts",
@@ -21,16 +21,17 @@
     "tslib": "^1.10.0"
   },
   "keywords": [
-    "Questrade",
-    "Canada",
+    "TypeScript",
     "Canadian",
     "Stock Market API",
+    "Un-Official",
+    "Questrade",
+    "Canada",
+    "API Wrapper",
+    "Questrade API",
     "Stocks",
     "Trading",
-    "Typescript",
-    "Unofficial",
-    "Questrade API",
-    "API Wrapper",
+    "Luxcium",
     "TypeScript Support"
   ]
 }
