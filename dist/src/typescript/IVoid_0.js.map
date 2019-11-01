@@ -1,1 +1,0 @@
-{"version":3,"file":"IVoid_0.js","sourceRoot":"","sources":["../../../src/typescript/IVoid_0.ts"],"names":[],"mappings":"","sourcesContent":["export type Void0 = void;\r\nexport type Void_0 = (void_: Void0) => Void0;\r\n"]}
