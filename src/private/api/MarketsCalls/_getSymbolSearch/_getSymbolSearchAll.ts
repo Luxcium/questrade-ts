@@ -21,9 +21,14 @@ export const _getSymbolSearchAll = (credentials: Credentials) => async (
   // /symbols/search?prefix=aapl offset &offset=0',
   // /symbols/search?prefix=aapl',
   void0(offset);
-
-  return results.symbols.map(result => {
-    result.count = results.symbols.length;
-    return result;
-  });
+  if (results && results.symbols) {
+    return results.symbols.map(result => {
+      if (result) {
+        result.count = results.symbols.length;
+        return result;
+      }
+      return result;
+    });
+  }
+  return results.symbols;
 };

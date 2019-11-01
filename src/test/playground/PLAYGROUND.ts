@@ -1,6 +1,6 @@
-import { redeemToken } from '..';
-import { StrategyVariantRequest } from '../typescript';
-import { log, setDateRange, void0 } from '../utils';
+import { redeemToken } from '../..';
+import { StrategyVariantRequest } from '../../typescript';
+import { log, setDateRange, void0 } from '../../utils';
 
 const myToken = '2a15Be6L9aphlS0xdnppd8MKAADK9dxM0';
 

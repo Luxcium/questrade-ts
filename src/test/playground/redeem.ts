@@ -1,5 +1,5 @@
 // tslint:disable-next-line: no-var-requires
-import { redeemToken } from '../';
+import { redeemToken } from '../..';
 
 const yourRefreshToken = 'qw9SYpGCldlPvwuOAOmHXJADrnKLDU9H0';
 

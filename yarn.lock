@@ -375,6 +375,13 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.3.tgz#ebfe83507ac506bc3486314a8aa395be66af8d23"
   integrity sha512-opgSsy+cEF9N8MgaVPnWVtdJ3o4mV2aMHvDq7thkQUFt0EuOHJon4rQpJfhjmNHB+ikl0Cd6WhWIErOyQ+f7tw==
 
+"@types/ramda@^0.26.33":
+  version "0.26.33"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.26.33.tgz#5fd1f22381ccf913a3627beb16f468fb57f82d94"
+  integrity sha512-sUCQmKfAWmlbb6PpFqvndbGgTf0bCcmHLJqMYw8ErVS0UoZTTiz952aFedJhV+JERiVH7poh33358c7p0AAN8A==
+  dependencies:
+    ts-toolbelt "^4.7.7"
+
 "@types/stack-utils@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
@@ -3019,6 +3026,11 @@ questrade-api-enumerations@^1.1.4:
   resolved "https://registry.yarnpkg.com/questrade-api-enumerations/-/questrade-api-enumerations-1.1.4.tgz#dbfc5004dddf061ecf17b9384242efd661c3d28e"
   integrity sha512-xjnbatYT+vuJwRhlTLIADHsDopPVcQY/3ozIuxobWsffQ6cqBAFKAKJvc0UvlIiWJ76UicUhfx+MsCml4KMuhg==
 
+ramda@^0.26.1:
+  version "0.26.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
+  integrity sha512-hLWjpy7EnsDBb0p+Z3B7rPi3GDeRG5ZtiI33kJhTt+ORCd38AbAIjB/9zRIUoeTbE/AVX5ZkU7m6bznsvrf8eQ==
+
 rc@^1.2.7:
   version "1.2.8"
   resolved "https://registry.yarnpkg.com/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
@@ -3709,6 +3721,11 @@ ts-node@^8.4.1:
     make-error "^1.1.1"
     source-map-support "^0.5.6"
     yn "^3.0.0"
+
+ts-toolbelt@^4.7.7:
+  version "4.9.29"
+  resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-4.9.29.tgz#3a5a7e419247ad6a24796c73ef4b511f7f5d490c"
+  integrity sha512-K3UkMlNloLNT5Bib1DTsr5M3aCro0Cbr/XA4nR9uEhGrK8GKaxN3Zh7o3PiwiBEX+Om+ULfo5MOcyikX20uPYg==
 
 tslib@1.9.0:
   version "1.9.0"
