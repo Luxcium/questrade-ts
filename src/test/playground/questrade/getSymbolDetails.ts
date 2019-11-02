@@ -6,6 +6,9 @@ export function getSymbolDetails(qtApi: IQuestradeApi) {
     const getquotes = qtApi.getQuotes.byStockIds;
     if (typeof stockSymbol === 'string') {
       const symbolID = await getSymbolId(qtApi)(stockSymbol);
+      if (symbolID) {
+        //
+      }
       return {
         ...(await getSymbolsByStockIds([symbolID]))[0],
         ...(await getquotes([symbolID]))[0],

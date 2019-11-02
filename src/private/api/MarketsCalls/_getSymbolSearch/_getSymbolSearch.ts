@@ -10,6 +10,6 @@ export const _getSymbolSearch = (credentials: Credentials) => async (
   const symbols = await _getSymbolSearchAll(credentials)(prefix, offset);
   const count = symbols.length;
   const result = symbols[0];
-  result.count = count;
+  if (result) result.count = count;
   return result;
 };
