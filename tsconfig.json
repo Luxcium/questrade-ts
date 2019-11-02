@@ -77,8 +77,8 @@
     "functional.js",
     "manualTestingAndDebug.js",
     "node_modules",
-    "src/legacy/proto_testing/**/*",
-    "src/test"
+    "src/legacy/proto_testing/**/*"
+    // "src/test"
   ],
   "plugins": [
     {
