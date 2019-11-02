@@ -4,16 +4,19 @@
   // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
-
-
     {
       "type": "node",
       "request": "launch",
       "name": "Node Debug Launch",
       "protocol": "inspector",
       "runtimeExecutable": "node",
-      "runtimeArgs": ["-r", "ts-node/register"],
-      "args": ["${workspaceFolder}/build/src/debugtesting.js"],
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register"
+      ],
+      "args": [
+        "${workspaceFolder}/src/test/playground/debug/debug.ts"
+      ],
       "cwd": "${workspaceFolder}",
       "env": {
         "NODE_ENV": "development"
