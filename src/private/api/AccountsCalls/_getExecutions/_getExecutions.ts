@@ -7,8 +7,13 @@ import { _axiosAccountGetApi } from '../../../routes';
 export const _getExecutions = (credentials: Credentials) => (
   startDate: string
 ) => async (endDate: string): Promise<IExecution[]> => {
-  //
-  return (await _axiosAccountGetApi(credentials)<IExecutions>(
-    `/executions?${endpointFormatDateTool(startDate, endDate)}`
-  )()).executions;
+  try {
+    //
+    return (await _axiosAccountGetApi(credentials)<IExecutions>(
+      `/executions?${endpointFormatDateTool(startDate, endDate)}`
+    )()).executions;
+  } catch (error) {
+    console.error(error.message);
+    return [];
+  }
 };

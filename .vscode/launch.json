@@ -8,13 +8,14 @@
       "type": "node",
       "request": "launch",
       "name": "Node Debug Launch",
-      "protocol": "inspector",
+      "protocol": "auto",
       "runtimeExecutable": "node",
       "runtimeArgs": [
         "-r",
         "ts-node/register"
       ],
       "args": [
+        "--inspect",
         "${workspaceFolder}/src/test/playground/debug/debug.ts"
       ],
       "cwd": "${workspaceFolder}",

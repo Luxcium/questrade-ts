@@ -6,10 +6,25 @@ import { _getSymbolSearchAll } from './_getSymbolSearchAll';
 export const _getSymbolSearch = (credentials: Credentials) => async (
   prefix: string,
   offset: number = 0
-): Promise<ISymbolSearchResult> => {
-  const symbols = await _getSymbolSearchAll(credentials)(prefix, offset);
-  const count = symbols.length;
-  const result = symbols[0];
-  if (result) result.count = count;
-  return result;
+): Promise<ISymbolSearchResult[]> => {
+  try {
+    //
+    const symbols = await _getSymbolSearchAll(credentials)(prefix, offset);
+    const count = symbols.length;
+    let result: ISymbolSearchResult | null = null;
+    if (symbols[0]) {
+      result = symbols[0];
+      result.count = count || 0;
+      result.all = symbols;
+      return [result];
+    }
+    return [];
+    //
+  } catch (error) {
+    //
+    console.log(error.message);
+    return [];
+
+    //
+  }
 };

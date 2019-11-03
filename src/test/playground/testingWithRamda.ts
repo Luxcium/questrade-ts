@@ -17,26 +17,26 @@ export const testIt = () =>
     });
     //
     try {
-      const { qtApi } = await redeemToken('AN00tx5rD6xP5kPcZveLOJB1i74gaBX70');
-      // tslint:disable-next-line: no-debugger
-      debugger;
+      const { qtApi } = await redeemToken('C91yIxaHxs8zAK4gD2g3abtnV1y3aQAL0');
+
       const getDetailsForItems = async (item: string) => {
         try {
           return getSymbolDetails(qtApi)(item);
         } catch (error) {
-          return;
+          return console.log(error.message);
         }
       };
-      // console.log(await getDetailsForItems('AAPL'));
+      console.log('BHGE', await getDetailsForItems('BHGE'));
       const get500 = (await willGetSNP500List())[0];
-      get500./* slice(0, 10). */ map(async item => {
-        try {
-          const details = await getDetailsForItems(item);
-          console.log('details :', details);
-        } catch (error) {
-          console.log('error :', error);
-        }
+      // tslint:disable-next-line: no-any
+      // const reducer = a
+      get500.map(async (item: string) => {
+        const detailsForItems = await getDetailsForItems(item);
+
+        if (detailsForItems) return detailsForItems;
+        return null;
       });
+      // .filter(async item => await item);
 
       // try {
       //   const details = await getDetailsForItems(myItem);

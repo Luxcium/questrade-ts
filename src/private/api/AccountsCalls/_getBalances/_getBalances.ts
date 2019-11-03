@@ -6,6 +6,16 @@ import { _axiosAccountGetApi } from '../../../routes';
 export const _getBalances = (credentials: Credentials) => async (): Promise<
   IBalances
 > => {
-  //
-  return _axiosAccountGetApi(credentials)<IBalances>('/balances')();
+  try {
+    //
+    return _axiosAccountGetApi(credentials)<IBalances>('/balances')();
+  } catch (error) {
+    console.error(error.message);
+    return {
+      perCurrencyBalances: [],
+      combinedBalances: [],
+      sodPerCurrencyBalances: [],
+      sodCombinedBalances: [],
+    };
+  }
 };

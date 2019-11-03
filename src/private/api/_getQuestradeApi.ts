@@ -22,62 +22,19 @@ import {
   _getMarketsQuotesStrategies,
   _getOptionsById,
   _getQuotesByIds,
-  _getQuotesOptionsbyFilterAndIds,
+  // _getQuotesOptionsbyFilterAndIds,
   _getQuotesOptionsByIds,
   _getQuotesOptionsFilter,
   _getSymbolsByIds,
+  // _getSymbolSearchAndCount,
+  _getSymbolSearch,
   _getSymbolSearchAll,
-  _getSymbolSearchAndCount,
   _getSymbolSearchCount,
 } from './MarketsCalls';
 
 export const _getQuestradeApi = async (
   credentials: Credentials
 ): Promise<IQuestradeApi> => {
-  // const [
-  //   getAccounts,
-  //   getActivities,
-  //   getBalances,
-  //   getCandles,
-  //   getExecutions,
-  //   getMarkets,
-  //   getMarketsQuotesStrategies,
-  //   getOptionsById,
-  //   getOrders,
-  //   getOrdersByIds,
-  //   getPositions,
-  //   getQuotesByIds,
-  //   getQuotesOptionsbyFilterAndIds,
-  //   getQuotesOptionsByIds,
-  //   getQuotesOptionsFilter,
-  //   getServerTime,
-  //   getSymbolsByIds,
-  //   getSymbolSearchAll,
-  //   getSymbolSearchAndCount,
-  //   getSymbolSearchCount,
-  // ] = [
-  //   _getAccounts,
-  //   _getActivities,
-  //   _getBalances,
-  //   _getCandles,
-  //   _getExecutions,
-  //   _getMarkets,
-  //   _getMarketsQuotesStrategies,
-  //   _getOptionsById,
-  //   _getOrders,
-  //   _getOrdersByIds,
-  //   _getPositions,
-  //   _getQuotesByIds,
-  //   _getQuotesOptionsbyFilterAndIds,
-  //   _getQuotesOptionsByIds,
-  //   _getQuotesOptionsFilter,
-  //   _getServerTime,
-  //   _getSymbolsByIds,
-  //   _getSymbolSearchAll,
-  //   _getSymbolSearchAndCount,
-  //   _getSymbolSearchCount,
-  // ];
-
   const [
     accounts,
     activities,
@@ -91,13 +48,14 @@ export const _getQuestradeApi = async (
     ordersByIds,
     positions,
     quotesByIds,
-    quotesOptionsbyFilterAndIds,
+    // quotesOptionsbyFilterAndIds,
     quotesOptionsByIds,
     quotesOptionsFilter,
     serverTime,
     symbolsByIds,
     symbolSearchAll,
-    symbolSearchAndCount,
+    // symbolSearchAndCount,
+    symbolSearch,
     symbolSearchCount,
   ] = [
     _getAccounts(credentials),
@@ -112,17 +70,17 @@ export const _getQuestradeApi = async (
     _getOrdersByIds(credentials),
     _getPositions(credentials),
     _getQuotesByIds(credentials),
-    _getQuotesOptionsbyFilterAndIds(credentials),
+    // _getQuotesOptionsbyFilterAndIds(credentials),
     _getQuotesOptionsByIds(credentials),
     _getQuotesOptionsFilter(credentials),
     _getServerTime(credentials),
     _getSymbolsByIds(credentials),
     _getSymbolSearchAll(credentials),
-    _getSymbolSearchAndCount(credentials),
+    // _getSymbolSearchAndCount(credentials),
+    _getSymbolSearch(credentials),
     _getSymbolSearchCount(credentials),
   ];
   // unused for the moment
-  void0(quotesOptionsbyFilterAndIds);
 
   return {
     async myBalances() {
@@ -196,7 +154,8 @@ export const _getQuestradeApi = async (
     },
     search: {
       async stock(prefix: string, offset?: number) {
-        return symbolSearchAndCount(prefix, offset);
+        return symbolSearch(prefix, offset);
+        // return symbolSearchAndCount(prefix, offset);
       },
       async allStocks(prefix: string, offset?: number) {
         return symbolSearchAll(prefix, offset);
@@ -207,3 +166,4 @@ export const _getQuestradeApi = async (
     },
   };
 };
+void0(void0);

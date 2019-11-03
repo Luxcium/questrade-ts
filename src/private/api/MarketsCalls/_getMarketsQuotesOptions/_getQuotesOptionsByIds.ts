@@ -1,6 +1,13 @@
-import { Credentials } from '../../../../typescript';
+import { Credentials, IOptionsQuote } from '../../../../typescript';
 import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
 export const _getQuotesOptionsByIds = (credentials: Credentials) => async (
   optionIds: number[]
-) => _getMarketsQuotesOptions(credentials)(optionIds, 0, '', null, 0, 0);
+): Promise<IOptionsQuote[]> => {
+  try {
+    return _getMarketsQuotesOptions(credentials)(optionIds, 0, '', null, 0, 0);
+  } catch (error) {
+    console.error(error.message);
+    return [];
+  }
+};

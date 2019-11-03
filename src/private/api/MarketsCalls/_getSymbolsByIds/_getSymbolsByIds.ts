@@ -5,7 +5,13 @@ import { _axiosGetApi } from '../../../routes';
 /** _getSymbolFromSymbolID */
 export const _getSymbolsByIds = (credentials: Credentials) => async (
   stockId: number[]
-): Promise<ISymbol[]> =>
-  (await _axiosGetApi(credentials)<ISymbols>(
-    `/symbols?ids=${stockId.join()}`
-  )()).symbols;
+): Promise<ISymbol[]> => {
+  try {
+    return (await _axiosGetApi(credentials)<ISymbols>(
+      `/symbols?ids=${stockId.join()}`
+    )()).symbols;
+  } catch (error) {
+    console.error(error.message);
+    return [];
+  }
+};

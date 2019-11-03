@@ -16,12 +16,18 @@ export const _tryToGetData = <R, D>(
         !!credentials.remainingRequests &&
         !!credentials.remainingRequests.possiblePerSeconds
           ? credentials.remainingRequests.possiblePerSeconds
-          : 20;
+          : 21;
+      let response: AxiosResponse;
+      if (possiblePerSeconds <= 20) {
+        //
+        const requestLimit = requestPerSecondLimit(possiblePerSeconds);
+        response = await requestLimit(
+          async (): Promise<AxiosResponse<R>> => axios(_config)
+        );
+      } else {
+        response = await axios(_config);
+      }
 
-      const requestLimit = requestPerSecondLimit(possiblePerSeconds);
-      const response = await requestLimit(
-        async (): Promise<AxiosResponse<R>> => axios(_config)
-      );
       const { data } = response;
       if (!data) {
         throw _logError(new Error("Can't retrive data from call to API"));

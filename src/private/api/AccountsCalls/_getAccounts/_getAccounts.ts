@@ -6,11 +6,16 @@ import { _axiosGetApi } from '../../../routes';
 export function _getAccounts(credentials: Credentials) {
   //
   return async (): Promise<IAccount[]> => {
-    //
-    const getAccounts = _axiosGetApi(credentials);
-    const accounts = getAccounts<IAccounts>('/accounts');
-    const data = await accounts();
-    //
-    return data.accounts;
+    try {
+      //
+      const getAccounts = _axiosGetApi(credentials);
+      const accounts = getAccounts<IAccounts>('/accounts');
+      const data = await accounts();
+      //
+      return data.accounts;
+    } catch (error) {
+      console.error(error.message);
+      return [];
+    }
   };
 }

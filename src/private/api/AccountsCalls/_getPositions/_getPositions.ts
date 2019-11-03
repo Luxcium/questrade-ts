@@ -6,6 +6,11 @@ import { _axiosAccountGetApi } from '../../../routes';
 export const _getPositions = (credentials: Credentials) => async (): Promise<
   IPosition[]
 > => {
-  return (await _axiosAccountGetApi(credentials)<IPositions>('/positions')())
-    .positions;
+  try {
+    return (await _axiosAccountGetApi(credentials)<IPositions>('/positions')())
+      .positions;
+  } catch (error) {
+    console.error(error.message);
+    return [];
+  }
 };
