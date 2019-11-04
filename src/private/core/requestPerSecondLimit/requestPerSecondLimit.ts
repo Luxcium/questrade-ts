@@ -14,6 +14,7 @@ function requestLimiterFactory() {
     const callToPop = async function(): Promise<void> {
       if (callsQueue.length >= 1 && !isCalled) {
         isCalled = true;
+        console.log(' perSeconds(hertz):', hertz);
         setTimeout(async function(): Promise<void> {
           isCalled = false;
           await callToPop();

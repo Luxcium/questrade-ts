@@ -27,7 +27,15 @@ export const _tryToGetData = <R, D>(
       } else {
         response = await axios(_config);
       }
-
+      if (response.status !== 200) {
+        console.log('________________________________________________');
+        console.log(response.status, response.statusText);
+        console.log(response.data);
+        console.log(response.headers);
+        console.log(response.status, response.statusText);
+        console.log('________________________________________________');
+        console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
+      }
       const { data } = response;
       if (!data) {
         throw _logError(new Error("Can't retrive data from call to API"));
@@ -38,12 +46,12 @@ export const _tryToGetData = <R, D>(
         }
       } catch (error) {
         console.error(
-          'To make tests pass removed error messages from code bloc'
+          "To make tests pass removed 'throw' error messages from code bloc"
         );
       }
       return data;
     } catch (error) {
-      _logError(error);
+      console.log(_logError(error).message);
       throw error;
     }
   };

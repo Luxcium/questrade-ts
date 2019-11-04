@@ -17,7 +17,7 @@ export const testIt = () =>
     });
     //
     try {
-      const { qtApi } = await redeemToken('C91yIxaHxs8zAK4gD2g3abtnV1y3aQAL0');
+      const { qtApi } = await redeemToken('CYLt9gCoWuQhrPv6HEUOJ95YHtybdQ6J0');
 
       const getDetailsForItems = async (item: string) => {
         try {
@@ -26,13 +26,13 @@ export const testIt = () =>
           return console.log(error.message);
         }
       };
-      console.log('BHGE', await getDetailsForItems('BHGE'));
       const get500 = (await willGetSNP500List())[0];
       // tslint:disable-next-line: no-any
       // const reducer = a
+      console.log(await getDetailsForItems('aapl'));
       get500.map(async (item: string) => {
         const detailsForItems = await getDetailsForItems(item);
-
+        console.log(detailsForItems);
         if (detailsForItems) return detailsForItems;
         return null;
       });

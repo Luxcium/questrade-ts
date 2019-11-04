@@ -6,7 +6,7 @@ export function getSymbolId(qtApi: IQuestradeApi) {
       console.log(stockSymbol);
       throw new Error('getSymbolId failed to return a value');
     }
-    if (stock) return stock[0].symbolId;
+    if (stock.length) return stock[0].symbolId;
     return 0;
   };
 }
