@@ -27,15 +27,15 @@ export const _tryToGetData = <R, D>(
       } else {
         response = await axios(_config);
       }
-      if (response.status !== 200) {
-        console.log('________________________________________________');
-        console.log(response.status, response.statusText);
-        console.log(response.data);
-        console.log(response.headers);
-        console.log(response.status, response.statusText);
-        console.log('________________________________________________');
-        console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
-      }
+      // if (response.status !== 200) {
+      console.log('________________________________________________');
+      console.log(response.status, response.statusText);
+      console.log(response.data);
+      console.log(response.headers);
+      console.log(response.status, response.statusText);
+      console.log('________________________________________________');
+      console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
+      // }
       const { data } = response;
       if (!data) {
         throw _logError(new Error("Can't retrive data from call to API"));

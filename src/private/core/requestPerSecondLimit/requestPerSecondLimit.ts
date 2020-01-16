@@ -5,6 +5,7 @@
 // tslint:disable: no-any
 // tslint:disable: ban-types
 // tslint:disable: ter-prefer-arrow-callback
+import { CallBack } from '../../../typescript';
 import { perSeconds, void0 } from '../../../utils';
 
 function requestLimiterFactory() {
@@ -74,7 +75,6 @@ const neverCb = (error: Error | null, returnValue: any) => {
 
 export const requestPerSecondLimit = limitingRequest(requestLimiterFactory);
 
-export type CallBack = (error: Error | null, returnValue: Promise<any>) => void;
 export type ReqLimiterFactory = () => (
   fn: Function,
   hertz?: number

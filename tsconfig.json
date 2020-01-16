@@ -47,6 +47,7 @@
     "esModuleInterop": true,
     /* Source Map and declaration options */
     "declaration": true,
+    "downlevelIteration": true,
     "declarationMap": true,
     "sourceMap": true,
     "inlineSourceMap": false,
