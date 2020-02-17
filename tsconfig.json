@@ -14,6 +14,7 @@
     /* ALWAYS TRUE */ "noUnusedLocals": true /*                 ALWAYS TRUE  */,
     /* ALWAYS TRUE */ "noUnusedParameters": true /*             ALWAYS TRUE  */,
     /* ALWAYS TRUE STRICT TYPE-CHECKING, ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
+    // ...
     /* Basic Options */
     "target": "es5",
     "lib": [

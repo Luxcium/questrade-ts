@@ -23,7 +23,7 @@ export const _getSymbolSearchAll = (credentials: Credentials) => async (
     // /symbols/search?prefix=aapl',
     if (results && results.symbols) {
       return results.symbols.map(result => {
-        result.count = results.symbols.length;
+        result.count = results.symbols.length || 0;
         return result;
       });
     }
