@@ -43,6 +43,7 @@ export const _tryToGetData = <R, D>(
       try {
         if (credentials) {
           credentials.remainingRequests = remainingRequests(response);
+          console.log(credentials);
         }
       } catch (error) {
         console.error(
