@@ -3,7 +3,10 @@ import { _coreApiFunction } from '../../core';
 import { _endpointFormatAccount } from './endpointFormatAccount';
 
 // # _axiosAccountApi
-/** PROVIDE: credentials and accountEndpoint string with R return type, THEN GET: a Promise<R> */
+/**
+ * YOU PROVIDE: credentials and accountEndpoint string with R return type,
+ * THEN YOU GET: ( ) => Promise<R>
+ */
 export const _axiosAccountGetApi = (credentials: Credentials) => <R>(
   accountEndpoint: string
 ) =>
