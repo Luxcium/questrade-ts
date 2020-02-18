@@ -1,3 +1,4 @@
+// tslint:disable no-any
 import { CallBack } from '../../../typescript';
 import { perSeconds } from '../../../utils';
 // tslint:disable: prefer-array-literal
@@ -10,13 +11,14 @@ export function myRequestLimiterFactory() {
 
   // the request limiter function  itself
   const queueLimiter = <Tfn>(fn: () => Promise<Tfn>) => {
-    const queueList: Array<[() => Promise<Tfn>, CallBack]> = [];
+    const queueList: Array<[() => Promise<Tfn>, CallBack<any>]> = [];
     const shiftOutFromQueue = async () => {
       if (queueList.length >= 1 && !isRequested) {
         isRequested = true;
         const nextToExecute = shiftQueue(queueList);
         if (nextToExecute !== undefined) {
           const [myfn, mycb] = nextToExecute;
+
           mycb(null, myfn());
         }
         setTimeout(async () => {
@@ -24,10 +26,11 @@ export function myRequestLimiterFactory() {
           await shiftOutFromQueue();
         }, perSeconds(hertz));
       }
+      return void 0;
     };
 
     // when isRequested = true or if queue is empty
-    return async function pushInToQueue(cb: CallBack): Promise<void> {
+    return async function pushInToQueue(cb: CallBack<any>): Promise<void> {
       queueList.push([fn, cb]);
       return shiftOutFromQueue();
     };
@@ -35,7 +38,7 @@ export function myRequestLimiterFactory() {
   return queueLimiter;
 }
 
-const shiftQueue = <TFnct>(queueList: Array<[TFnct, CallBack]>) =>
+const shiftQueue = <TFnct>(queueList: Array<[TFnct, CallBack<any>]>) =>
   queueList.shift();
 
 //
