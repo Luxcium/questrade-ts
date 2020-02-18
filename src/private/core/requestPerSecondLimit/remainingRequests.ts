@@ -5,10 +5,9 @@ export const remainingRequests = <T>(
   response: AxiosResponse<T>,
   maximumperseconds: number = 21
 ): ITimeRateLimiter => {
-  const requestsRemainingStr: string =
-    response.headers['x-ratelimit-remaining'];
+  const remainingStr: string = response.headers['x-ratelimit-remaining'];
   const timeUntilResetStr: string = response.headers['x-ratelimit-reset'];
-  const requestsRemaining = parseInt(requestsRemainingStr, 10);
+  const requestsRemaining = parseInt(remainingStr, 10);
   const timeUntilReset = parseInt(timeUntilResetStr, 10);
 
   const timeNow = Math.floor(new Date().getTime() / 1000) + 1;
