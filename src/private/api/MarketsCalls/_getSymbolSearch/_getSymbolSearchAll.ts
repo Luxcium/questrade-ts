@@ -15,12 +15,6 @@ export const _getSymbolSearchAll = (credentials: Credentials) => async (
     const results = await _axiosGetApi(credentials)<ISymbolSearchResults>(
       `/symbols/search?prefix=${prefix.toUpperCase()}&offset=${offset}`
     )();
-    // https://api01.iq.questrade.com/v1
-
-    // /symbols/search?prefix=AAPL
-    // /symbols/search?prefix=BMO
-    // /symbols/search?prefix=aapl offset &offset=0',
-    // /symbols/search?prefix=aapl',
     if (results && results.symbols) {
       return results.symbols.map(result => {
         result.count = results.symbols.length || 0;
