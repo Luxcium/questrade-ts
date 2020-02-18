@@ -66,6 +66,7 @@ const neverWillCb = async () => {
     'NEVER: lenght is validated prior to pop this should never occur'
   );
 };
+
 const neverCb = (error: Error | null, returnValue: any) => {
   void0({ returnValue, error });
   throw new Error(
@@ -73,8 +74,7 @@ const neverCb = (error: Error | null, returnValue: any) => {
   );
 };
 
-export const requestPerSecondLimit = limitingRequest(requestLimiterFactory);
-
+export const requestPerSecondLimiter = limitingRequest(requestLimiterFactory);
 export type ReqLimiterFactory = () => (
   fn: Function,
   hertz?: number

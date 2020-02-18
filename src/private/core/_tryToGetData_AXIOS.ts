@@ -3,7 +3,7 @@ import { CoreApiConfig, LogErrors } from '../../typescript';
 import { Credentials } from '../../typescript/Credentials';
 import {
   remainingRequests,
-  requestPerSecondLimit,
+  requestPerSecondLimiter,
 } from './requestPerSecondLimit';
 export const _tryToGetData = <R, D>(
   _config: CoreApiConfig<D>,
@@ -20,8 +20,8 @@ export const _tryToGetData = <R, D>(
       let response: AxiosResponse;
       if (possiblePerSeconds <= 20) {
         //
-        const requestLimit = requestPerSecondLimit(possiblePerSeconds);
-        response = await requestLimit(
+        const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
+        response = await requestLimiter(
           async (): Promise<AxiosResponse<R>> => axios(_config)
         );
       } else {
