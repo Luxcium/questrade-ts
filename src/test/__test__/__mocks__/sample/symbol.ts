@@ -31,7 +31,10 @@ export const stockSymbol: ISymbol = {
   isQuotable: true,
   hasOptions: true,
   currency: Currency.USD,
-  minTicks: [{ pivot: 0, minTick: 0.0001 }, { pivot: 1, minTick: 0.01 }],
+  minTicks: [
+    { pivot: 0, minTick: 0.0001 },
+    { pivot: 1, minTick: 0.01 },
+  ],
   industrySector: 'Technology',
   industryGroup: 'ComputerHardware',
   industrySubgroup: 'ConsumerElectronics',

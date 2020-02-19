@@ -6,7 +6,9 @@ import { _axiosGetApi } from '../../../routes';
 export const _getSymbolSearchCount = (credentials: Credentials) => async (
   prefix: string
 ): Promise<number> => {
-  return (await _axiosGetApi(credentials)<ISymbols>(
-    `/symbols/search?prefix=${prefix}`
-  )()).symbols.length;
+  return (
+    await _axiosGetApi(credentials)<ISymbols>(
+      `/symbols/search?prefix=${prefix}`
+    )()
+  ).symbols.length;
 };

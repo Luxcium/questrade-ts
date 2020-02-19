@@ -9,9 +9,11 @@ export const _getExecutions = (credentials: Credentials) => (
 ) => async (endDate: string): Promise<IExecution[]> => {
   try {
     //
-    return (await _axiosAccountGetApi(credentials)<IExecutions>(
-      `/executions?${endpointFormatDateTool(startDate, endDate)}`
-    )()).executions;
+    return (
+      await _axiosAccountGetApi(credentials)<IExecutions>(
+        `/executions?${endpointFormatDateTool(startDate, endDate)}`
+      )()
+    ).executions;
   } catch (error) {
     console.error(error.message);
     return [];

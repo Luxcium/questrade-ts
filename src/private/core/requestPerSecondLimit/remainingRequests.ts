@@ -3,7 +3,7 @@ import { ITimeRateLimiter } from '../../../typescript/ITimeRateLimiter';
 
 export const remainingRequests = <T>(
   response: AxiosResponse<T>,
-  maximumperseconds: number = 21
+  maximumperseconds: number = 19
 ): ITimeRateLimiter => {
   const remainingStr: string = response.headers['x-ratelimit-remaining'];
   const timeUntilResetStr: string = response.headers['x-ratelimit-reset'];

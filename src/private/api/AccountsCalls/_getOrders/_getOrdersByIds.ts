@@ -7,9 +7,11 @@ export const _getOrdersByIds = (credentials: Credentials) => async (
 ): Promise<IOrder[]> => {
   try {
     //
-    return (await _axiosAccountGetApi(credentials)<IOrders>(
-      `/orders?ids=${orderId.join(',')}`
-    )()).orders;
+    return (
+      await _axiosAccountGetApi(credentials)<IOrders>(
+        `/orders?ids=${orderId.join(',')}`
+      )()
+    ).orders;
   } catch (error) {
     console.error(error.message);
     return [];

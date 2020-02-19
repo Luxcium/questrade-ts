@@ -10,7 +10,7 @@ import { perSeconds, void0 } from '../../../utils';
 
 function requestLimiterFactory() {
   let isCalled = false;
-  const callsQueue: Array<[Function, CallBack<any>]> = [];
+  const callsQueue: [Function, CallBack<any>][] = [];
   return function requestLimiter(fn: Function, hertz: number = 1) {
     const callToPop = async function(): Promise<void> {
       if (callsQueue.length >= 1 && !isCalled) {

@@ -33,7 +33,9 @@ export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
           ],
         };
 
-  return (await _axiosPostApi(credentials)<OptionsPostData>(postData)<
-    IOptionsQuotes
-  >('/markets/quotes/options')()).quotes;
+  return (
+    await _axiosPostApi(credentials)<OptionsPostData>(postData)<IOptionsQuotes>(
+      '/markets/quotes/options'
+    )()
+  ).quotes;
 };

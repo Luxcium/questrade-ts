@@ -3,6 +3,7 @@ import { CoreApiConfig, LogErrors } from '../../typescript';
 import { Credentials } from '../../typescript/Credentials';
 import {
   remainingRequests,
+  remaningTimeString,
   requestPerSecondLimiter,
 } from './requestPerSecondLimit';
 export const _tryToGetData = <R, D>(
@@ -16,9 +17,9 @@ export const _tryToGetData = <R, D>(
         !!credentials.remainingRequests &&
         !!credentials.remainingRequests.possiblePerSeconds
           ? credentials.remainingRequests.possiblePerSeconds
-          : 21;
+          : 19;
       let response: AxiosResponse;
-      if (possiblePerSeconds <= 20) {
+      if (possiblePerSeconds <= 18) {
         //
         const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
         response = await requestLimiter(
@@ -27,15 +28,30 @@ export const _tryToGetData = <R, D>(
       } else {
         response = await axios(_config);
       }
-      // if (response.status !== 200) {
-      console.log('________________________________________________');
-      console.log(response.status, response.statusText);
-      console.log(response.data);
-      console.log(response.headers);
-      console.log(response.status, response.statusText);
-      console.log('________________________________________________');
-      console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
-      // }
+      if (response.status !== 200) {
+        console.log('________________________________________________');
+        console.log(response.status, response.statusText);
+        console.log(response.data);
+        console.table(response.headers);
+        console.log(
+          remaningTimeString(
+            credentials?.remainingRequests?.secondsRemaning
+              ? credentials.remainingRequests.secondsRemaning
+              : 0
+          )
+        );
+        console.log(response.status, response.statusText);
+        console.log('________________________________________________');
+        console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
+      } else {
+        console.log(
+          remaningTimeString(
+            credentials?.remainingRequests?.secondsRemaning
+              ? credentials.remainingRequests.secondsRemaning
+              : 0
+          )
+        );
+      }
       const { data } = response;
       if (!data) {
         throw _logError(new Error("Can't retrive data from call to API"));
@@ -43,7 +59,6 @@ export const _tryToGetData = <R, D>(
       try {
         if (credentials) {
           credentials.remainingRequests = remainingRequests(response);
-          console.log(credentials);
         }
       } catch (error) {
         console.error(
@@ -52,7 +67,7 @@ export const _tryToGetData = <R, D>(
       }
       return data;
     } catch (error) {
-      console.log(_logError(error).message);
+      console.error(_logError(error).message);
       throw error;
     }
   };

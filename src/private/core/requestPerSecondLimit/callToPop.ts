@@ -11,7 +11,7 @@ export function myRequestLimiterFactory() {
 
   // the request limiter function  itself
   const queueLimiter = <Tfn>(fn: () => Promise<Tfn>) => {
-    const queueList: Array<[() => Promise<Tfn>, CallBack<any>]> = [];
+    const queueList: [() => Promise<Tfn>, CallBack<any>][] = [];
     const shiftOutFromQueue = async () => {
       if (queueList.length >= 1 && !isRequested) {
         isRequested = true;
@@ -38,7 +38,7 @@ export function myRequestLimiterFactory() {
   return queueLimiter;
 }
 
-const shiftQueue = <TFnct>(queueList: Array<[TFnct, CallBack<any>]>) =>
+const shiftQueue = <TFnct>(queueList: [TFnct, CallBack<any>][]) =>
   queueList.shift();
 
 //

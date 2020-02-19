@@ -8,12 +8,14 @@ export const _getOrders = (credentials: Credentials) => (
   stateFilter: string = 'All'
 ) => (startDate: string) => async (endDate: string): Promise<IOrder[]> => {
   try {
-    return (await _axiosAccountGetApi(credentials)<IOrders>(
-      `/orders?${endpointFormatDateTool(
-        startDate,
-        endDate
-      )}stateFilter=${stateFilter}`
-    )()).orders;
+    return (
+      await _axiosAccountGetApi(credentials)<IOrders>(
+        `/orders?${endpointFormatDateTool(
+          startDate,
+          endDate
+        )}stateFilter=${stateFilter}`
+      )()
+    ).orders;
   } catch (error) {
     console.error(error.message);
     return [];
