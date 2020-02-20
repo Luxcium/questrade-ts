@@ -17,9 +17,9 @@ export const _tryToGetData = <R, D>(
         !!credentials.remainingRequests &&
         !!credentials.remainingRequests.possiblePerSeconds
           ? credentials.remainingRequests.possiblePerSeconds
-          : 19;
+          : 21;
       let response: AxiosResponse;
-      if (possiblePerSeconds <= 18) {
+      if (possiblePerSeconds <= 20) {
         //
         const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
         response = await requestLimiter(
@@ -72,19 +72,3 @@ export const _tryToGetData = <R, D>(
     }
   };
 };
-
-// logData(response);
-// remainingRequests(response);
-// logRemanings(remainingRequests(response));
-
-// console.log(':::RESPONSE==>');
-// console.dir(res);
-// console.log('void 0', void 0);
-// console.log('<==RESPONSE:::');
-// console.log('DATA:::', data);
-// console.log('JSON STRING DATA:::', JSON.stringify(data));
-
-// console.log('CONFIG:::', JSON.stringify(_config));
-
-//  const requester = () =>''
-//  requester()
