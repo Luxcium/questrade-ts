@@ -10,7 +10,7 @@ import { perSeconds, void0 } from '../../../utils';
 
 let lastCall = Date.now();
 const lastDelay = () => Date.now() - lastCall;
-const toMilihertz = (hz: number) => hz / 1000;
+// const toMilihertz = (hz: number) => hz / 1000;
 const resetLastCall = () => {
   lastCall = Date.now();
 };
@@ -37,9 +37,9 @@ function requestLimiterFactory() {
         const poped = callsQueue.pop();
         const [myfn, mycb] = !!poped ? poped : [neverWillCb, neverCb];
 
-        while (lastDelay() > toMilihertz(hertz));
+        while (lastDelay() < perSeconds(hertz));
         {
-          // do nothing just wait until lastDelay() > toMilihertz(1 / 4)
+          // do nothing just waitwhile (lastDelay() < perSeconds(hertz));
         }
         mycb(null, myfn());
         resetLastCall();
