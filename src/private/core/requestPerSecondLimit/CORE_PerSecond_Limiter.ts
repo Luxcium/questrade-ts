@@ -39,7 +39,7 @@ function requestLimiterFactory() {
 
         while (lastDelay() < perSeconds(hertz));
         {
-          // do nothing just waitwhile (lastDelay() < perSeconds(hertz));
+          // do nothing just wait while (lastDelay() < perSeconds(hertz));
         }
         mycb(null, myfn());
         resetLastCall();
