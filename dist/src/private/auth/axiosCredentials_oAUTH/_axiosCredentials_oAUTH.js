@@ -20,14 +20,16 @@ exports._oAuthAxiosCredentials = function (options) { return tslib_1.__awaiter(v
                 return [4 /*yield*/, axios_1.default(axiosConfig)];
             case 1:
                 response = (_b.sent());
-                console.log('________________________________________________');
-                console.log(response.status, response.statusText);
-                console.log(response.data);
-                console.log(response.headers);
-                console.log(response.status, response.statusText);
-                console.log('________________________________________________');
-                console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
                 if (!response.data) {
+                    if (response) {
+                        console.log('________________________________________________');
+                        console.log(response.status, response.statusText);
+                        console.log(response.headers);
+                        console.log(response.request);
+                        console.log(response.status, response.statusText);
+                        console.log('________________________________________________');
+                        console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
+                    }
                     throw new Error('!! validate credntials Invalid data back from axios client');
                 }
                 return [2 /*return*/, _writeToken_1._writeToken(credentials, response)];

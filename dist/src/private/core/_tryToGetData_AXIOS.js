@@ -6,11 +6,11 @@ var requestPerSecondLimit_1 = require("./requestPerSecondLimit");
 exports._tryToGetData = function (_config, credentials) {
     return function (_logError) { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
         var possiblePerSeconds, response, requestLimiter, data, error_1;
-        var _a, _b, _c, _d;
-        return tslib_1.__generator(this, function (_e) {
-            switch (_e.label) {
+        var _a, _b;
+        return tslib_1.__generator(this, function (_c) {
+            switch (_c.label) {
                 case 0:
-                    _e.trys.push([0, 5, , 6]);
+                    _c.trys.push([0, 5, , 6]);
                     possiblePerSeconds = !!credentials &&
                         !!credentials.remainingRequests &&
                         !!credentials.remainingRequests.possiblePerSeconds
@@ -23,12 +23,12 @@ exports._tryToGetData = function (_config, credentials) {
                             return [2 /*return*/, axios_1.default(_config)];
                         }); }); })];
                 case 1:
-                    response = _e.sent();
+                    response = _c.sent();
                     return [3 /*break*/, 4];
                 case 2: return [4 /*yield*/, axios_1.default(_config)];
                 case 3:
-                    response = _e.sent();
-                    _e.label = 4;
+                    response = _c.sent();
+                    _c.label = 4;
                 case 4:
                     if (response.status !== 200) {
                         console.log('________________________________________________');
@@ -42,8 +42,13 @@ exports._tryToGetData = function (_config, credentials) {
                         console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
                     }
                     else {
-                        console.log(requestPerSecondLimit_1.remaningTimeString(((_d = (_c = credentials) === null || _c === void 0 ? void 0 : _c.remainingRequests) === null || _d === void 0 ? void 0 : _d.secondsRemaning) ? credentials.remainingRequests.secondsRemaning
-                            : 0));
+                        // console.log(
+                        //   remaningTimeString(
+                        //     credentials?.remainingRequests?.secondsRemaning
+                        //       /? credentials.remainingRequests.secondsRemaning
+                        //       : 0
+                        //   )
+                        // );
                     }
                     data = response.data;
                     if (!data) {
@@ -59,7 +64,7 @@ exports._tryToGetData = function (_config, credentials) {
                     }
                     return [2 /*return*/, data];
                 case 5:
-                    error_1 = _e.sent();
+                    error_1 = _c.sent();
                     console.error(_logError(error_1).message);
                     throw error_1;
                 case 6: return [2 /*return*/];

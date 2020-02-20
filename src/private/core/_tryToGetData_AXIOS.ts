@@ -44,13 +44,13 @@ export const _tryToGetData = <R, D>(
         console.log('________________________________________________');
         console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
       } else {
-        console.log(
-          remaningTimeString(
-            credentials?.remainingRequests?.secondsRemaning
-              ? credentials.remainingRequests.secondsRemaning
-              : 0
-          )
-        );
+        // console.log(
+        //   remaningTimeString(
+        //     credentials?.remainingRequests?.secondsRemaning
+        //       /? credentials.remainingRequests.secondsRemaning
+        //       : 0
+        //   )
+        // );
       }
       const { data } = response;
       if (!data) {

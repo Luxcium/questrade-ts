@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /** PROVIDE: IAccount[] THEN GET:  a 'primaryAccountNumber string'  */
 function _getPrimaryAccountNumber(accounts) {
     if (!accounts || accounts.length < 1) {
-        console.warn("WARNING('No account number found') will default to '00000000' ");
-        return '00000000';
+        console.warn("WARNING('No account number found') will default to '11111111' ");
+        return '11111111';
     }
     if (accounts.length === 1) {
         return accounts[0].number;

@@ -13,7 +13,6 @@ function requestLimiterFactory() {
                 return tslib_1.__generator(this, function (_b) {
                     if (callsQueue.length >= 1 && !isCalled) {
                         isCalled = true;
-                        console.log(' perSeconds(hertz):', hertz);
                         setTimeout(function () {
                             return tslib_1.__awaiter(this, void 0, void 0, function () {
                                 return tslib_1.__generator(this, function (_a) {
