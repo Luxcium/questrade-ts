@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.remainingRequests = function (response, maximumperseconds) {
-    if (maximumperseconds === void 0) { maximumperseconds = 19; }
+    if (maximumperseconds === void 0) { maximumperseconds = 20; }
     var remainingStr = response.headers['x-ratelimit-remaining'];
     var timeUntilResetStr = response.headers['x-ratelimit-reset'];
     var requestsRemaining = parseInt(remainingStr, 10);

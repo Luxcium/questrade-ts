@@ -2,6 +2,20 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var utils_1 = require("../../../utils");
+var lastCall = Date.now();
+var lastDelay = function () { return Date.now() - lastCall; };
+// const toMilihertz = (hz: number) => hz / 1000;
+var resetLastCall = function () {
+    lastCall = Date.now();
+};
+(function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () {
+    return tslib_1.__generator(this, function (_a) {
+        //
+        // const now = Date.now();
+        lastCall = Date.now();
+        return [2 /*return*/, void 0];
+    });
+}); })().catch(function (error) { return console.log('error message:', error.message); });
 function requestLimiterFactory() {
     var isCalled = false;
     var callsQueue = [];
@@ -29,7 +43,13 @@ function requestLimiterFactory() {
                         }, utils_1.perSeconds(hertz));
                         poped = callsQueue.pop();
                         _a = tslib_1.__read(!!poped ? poped : [neverWillCb, neverCb], 2), myfn = _a[0], mycb = _a[1];
+                        while (lastDelay() < utils_1.perSeconds(hertz))
+                            ;
+                        {
+                            // do nothing just wait while (lastDelay() < perSeconds(hertz));
+                        }
                         mycb(null, myfn());
+                        resetLastCall();
                         return [2 /*return*/, void 0];
                     }
                     return [2 /*return*/, void 0];

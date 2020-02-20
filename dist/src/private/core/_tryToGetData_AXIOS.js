@@ -15,9 +15,9 @@ exports._tryToGetData = function (_config, credentials) {
                         !!credentials.remainingRequests &&
                         !!credentials.remainingRequests.possiblePerSeconds
                         ? credentials.remainingRequests.possiblePerSeconds
-                        : 19;
+                        : 21;
                     response = void 0;
-                    if (!(possiblePerSeconds <= 18)) return [3 /*break*/, 2];
+                    if (!(possiblePerSeconds <= 20)) return [3 /*break*/, 2];
                     requestLimiter = requestPerSecondLimit_1.requestPerSecondLimiter(possiblePerSeconds);
                     return [4 /*yield*/, requestLimiter(function () { return tslib_1.__awaiter(void 0, void 0, void 0, function () { return tslib_1.__generator(this, function (_a) {
                             return [2 /*return*/, axios_1.default(_config)];
@@ -72,16 +72,4 @@ exports._tryToGetData = function (_config, credentials) {
         });
     }); };
 };
-// logData(response);
-// remainingRequests(response);
-// logRemanings(remainingRequests(response));
-// console.log(':::RESPONSE==>');
-// console.dir(res);
-// console.log('void 0', void 0);
-// console.log('<==RESPONSE:::');
-// console.log('DATA:::', data);
-// console.log('JSON STRING DATA:::', JSON.stringify(data));
-// console.log('CONFIG:::', JSON.stringify(_config));
-//  const requester = () =>''
-//  requester()
 //# sourceMappingURL=_tryToGetData_AXIOS.js.map
