@@ -8,6 +8,20 @@
 import { CallBack } from '../../../typescript';
 import { perSeconds, void0 } from '../../../utils';
 
+let lastCall = Date.now();
+const lastDelay = () => Date.now() - lastCall;
+const toMilihertz = (hz: number) => hz / 1000;
+const resetLastCall = () => {
+  lastCall = Date.now();
+};
+(async () => {
+  //
+  // const now = Date.now();
+
+  lastCall = Date.now();
+
+  return void 0;
+})().catch(error => console.log('error message:', error.message));
 function requestLimiterFactory() {
   let isCalled = false;
   const callsQueue: [Function, CallBack<any>][] = [];
@@ -22,7 +36,13 @@ function requestLimiterFactory() {
         }, perSeconds(hertz));
         const poped = callsQueue.pop();
         const [myfn, mycb] = !!poped ? poped : [neverWillCb, neverCb];
+
+        while (lastDelay() > toMilihertz(hertz));
+        {
+          // do nothing just wait until lastDelay() > toMilihertz(1 / 4)
+        }
         mycb(null, myfn());
+        resetLastCall();
         return void 0;
       }
       return void 0;
