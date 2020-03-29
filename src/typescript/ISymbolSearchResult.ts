@@ -10,6 +10,7 @@ export interface ISymbolSearchResult {
   isQuotable: boolean;
   currency: Currency;
   count?: number;
+  all?: ISymbolSearchResult[];
 }
 
 export interface ISymbolSearchResults {

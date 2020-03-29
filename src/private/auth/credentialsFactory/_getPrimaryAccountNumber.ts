@@ -5,9 +5,9 @@ export function _getPrimaryAccountNumber(
 ): AcountNumberString {
   if (!accounts || accounts.length < 1) {
     console.warn(
-      "WARNING('No account number found') will default to '00000000' "
+      "WARNING('No account number found') will default to '11111111' "
     );
-    return '00000000';
+    return '11111111';
   }
   if (accounts.length === 1) {
     return accounts[0].number;

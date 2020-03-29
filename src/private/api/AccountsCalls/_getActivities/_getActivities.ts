@@ -13,17 +13,22 @@ export const _getActivities = (credentials: Credentials) => {
   return (startTime: string) => {
     //
     return async (endTime: string): Promise<IAccountActivity[]> => {
-      //
-      const accountGetApi = _axiosAccountGetApi(credentials);
-      //
-      const dateTime = endpointFormatDateTool(startTime, endTime);
-      const endpoint = `/activities?${dateTime}`;
-      //
-      const accountGet = accountGetApi<IActivities>(endpoint);
-      const activities = await accountGet();
-      //
-      return activities.activities;
-      //
+      try {
+        //
+        const accountGetApi = _axiosAccountGetApi(credentials);
+        //
+        const dateTime = endpointFormatDateTool(startTime, endTime);
+        const endpoint = `/activities?${dateTime}`;
+        //
+        const accountGet = accountGetApi<IActivities>(endpoint);
+        const activities = await accountGet();
+        //
+        return activities.activities;
+        //
+      } catch (error) {
+        console.error(error.message);
+        return [];
+      }
     };
   };
 };

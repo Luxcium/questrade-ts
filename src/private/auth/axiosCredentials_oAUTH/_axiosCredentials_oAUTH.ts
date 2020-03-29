@@ -23,6 +23,15 @@ export const _oAuthAxiosCredentials = async (
   >;
 
   if (!response.data) {
+    if (response) {
+      console.log('________________________________________________');
+      console.log(response.status, response.statusText);
+      console.log(response.headers);
+      console.log(response.request);
+      console.log(response.status, response.statusText);
+      console.log('________________________________________________');
+      console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
+    }
     throw new Error(
       '!! validate credntials Invalid data back from axios client'
     );

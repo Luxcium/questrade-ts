@@ -5,8 +5,15 @@ import { _axiosAccountGetApi } from '../../../routes';
 export const _getOrdersByIds = (credentials: Credentials) => async (
   orderId: number[]
 ): Promise<IOrder[]> => {
-  //
-  return (await _axiosAccountGetApi(credentials)<IOrders>(
-    `/orders?ids=${orderId.join(',')}`
-  )()).orders;
+  try {
+    //
+    return (
+      await _axiosAccountGetApi(credentials)<IOrders>(
+        `/orders?ids=${orderId.join(',')}`
+      )()
+    ).orders;
+  } catch (error) {
+    console.error(error.message);
+    return [];
+  }
 };

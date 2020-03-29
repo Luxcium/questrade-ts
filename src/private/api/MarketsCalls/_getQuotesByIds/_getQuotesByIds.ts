@@ -5,7 +5,15 @@ import { _axiosGetApi } from '../../../routes';
 /** _getQuotesFromSymbolID */
 export const _getQuotesByIds = (credentials: Credentials) => async (
   ids: number[]
-): Promise<IQuote[]> =>
-  (await _axiosGetApi(credentials)<IQuotes>(
-    `/markets/quotes?ids=${ids.join(',')}`
-  )()).quotes;
+): Promise<IQuote[]> => {
+  try {
+    return (
+      await _axiosGetApi(credentials)<IQuotes>(
+        `/markets/quotes?ids=${ids.join(',')}`
+      )()
+    ).quotes;
+  } catch (error) {
+    console.error(error.message);
+    return [];
+  }
+};

@@ -1,6 +1,7 @@
 import {
   Credentials,
   FiltersArray,
+  IOptionsQuote,
   IOptionsQuotes,
   OptionsIdArray,
   OptionsPostData,
@@ -14,7 +15,7 @@ export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
   optionType: string | null = null,
   minstrikePrice: number | null = 0,
   maxstrikePrice: number | null = 0
-): Promise<IOptionsQuotes> => {
+): Promise<IOptionsQuote[]> => {
   const postData: OptionsIdArray | FiltersArray =
     !!optionIds && optionIds.length > 0
       ? {
@@ -32,7 +33,9 @@ export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
           ],
         };
 
-  return _axiosPostApi(credentials)<OptionsPostData>(postData)<IOptionsQuotes>(
-    '/markets/quotes/options'
-  )();
+  return (
+    await _axiosPostApi(credentials)<OptionsPostData>(postData)<IOptionsQuotes>(
+      '/markets/quotes/options'
+    )()
+  ).quotes;
 };

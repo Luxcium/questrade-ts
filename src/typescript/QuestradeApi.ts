@@ -6,7 +6,7 @@ import {
   IExecution,
   IMarket,
   IOptionChain,
-  IOptionsQuotes,
+  IOptionsQuote,
   IOrder,
   IPosition,
   IQuote,
@@ -63,8 +63,8 @@ export interface IQtApiQuotes {
 }
 
 export interface IQtApiOptionsQuotes {
-  fromFilter(filters: OptionsFilters): Promise<IOptionsQuotes>;
-  byOptionsIds(optionIds: number[]): Promise<IOptionsQuotes>;
+  fromFilter(filters: OptionsFilters): Promise<IOptionsQuote[]>;
+  byOptionsIds(optionIds: number[]): Promise<IOptionsQuote[]>;
 }
 
 export interface IQtApiSymbols {
@@ -78,7 +78,7 @@ export interface IQtApiSearch {
   stock(
     prefix: string,
     offset?: number | undefined
-  ): Promise<ISymbolSearchResult>;
+  ): Promise<ISymbolSearchResult[]>;
   allStocks(
     prefix: string,
     offset?: number | undefined

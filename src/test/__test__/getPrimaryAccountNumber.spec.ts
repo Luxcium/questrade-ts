@@ -10,7 +10,7 @@ test('should ', async done => {
   let dummyAccount: IAccount[] = [
     //
   ];
-  expect(_getPrimaryAccountNumber(dummyAccount)).toEqual('00000000');
+  expect(_getPrimaryAccountNumber(dummyAccount)).toEqual('11111111');
   dummyAccount = [
     {
       type: 'TFSA' as AccountType,

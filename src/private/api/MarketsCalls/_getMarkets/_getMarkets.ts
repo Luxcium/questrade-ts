@@ -5,4 +5,11 @@ import { _axiosGetApi } from '../../../routes';
 /** _getMarkets */
 export const _getMarkets = (credentials: Credentials) => async (): Promise<
   IMarket[]
-> => (await _axiosGetApi(credentials)<IMarkets>('/markets')()).markets;
+> => {
+  try {
+    return (await _axiosGetApi(credentials)<IMarkets>('/markets')()).markets;
+  } catch (error) {
+    console.error(error.message);
+    return [];
+  }
+};
