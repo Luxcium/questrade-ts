@@ -3145,6 +3145,15 @@ questrade-api-enumerations@^1.1.4:
   resolved "https://registry.yarnpkg.com/questrade-api-enumerations/-/questrade-api-enumerations-1.1.4.tgz#dbfc5004dddf061ecf17b9384242efd661c3d28e"
   integrity sha512-xjnbatYT+vuJwRhlTLIADHsDopPVcQY/3ozIuxobWsffQ6cqBAFKAKJvc0UvlIiWJ76UicUhfx+MsCml4KMuhg==
 
+questrade-ts@/Users/neb_401/Developer/LuxciumProject/questrade-ts/questrade-ts-1.0.3-next.Rev5.1.tgz:
+  version "1.0.3-next.Rev5.1"
+  resolved "/Users/neb_401/Developer/LuxciumProject/questrade-ts/questrade-ts-1.0.3-next.Rev5.1.tgz#bd366712451be8845695e9a265d0e98c4efe0c9f"
+  dependencies:
+    axios "^0.19.0"
+    questrade-api-enumerations "^1.1.4"
+    ramda "^0.26.1"
+    tslib "^1.10.0"
+
 ramda@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"
