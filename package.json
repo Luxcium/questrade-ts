@@ -68,7 +68,9 @@
     "00": "# =================================================================",
     "quick:test": "jest --runInBand --silent --detectOpenHandles; rimraf ./MOCKfile",
     "jest:clear": "jest --clearCache; rimraf ./MOCKfile",
-    "coverage": "jest --coverage --runInBand --detectOpenHandles --silent --colors; rimraf ./MOCKfile"
+    "coverage": "jest --coverage --runInBand --detectOpenHandles --silent --colors; rimraf ./MOCKfile",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -97,9 +99,9 @@
   "dependencies": {
     "axios": "^0.19.0",
     "questrade-api-enumerations": "^1.1.4",
-    "questrade-ts": "/Users/neb_401/Developer/LuxciumProject/questrade-ts/questrade-ts-1.0.3-next.Rev5.1.tgz",
-    "ramda": "^0.26.1",
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "snyk": "^1.258.2",
+    "ramda": "^0.26.1"
   },
   "keywords": [
     "TypeScript",
@@ -113,6 +115,12 @@
     "Stocks",
     "Trading",
     "Luxcium",
-    "TypeScript Support"
-  ]
+    "TypeScript Support",
+    "API wrapper",
+    "TypeScript support",
+    "stock market api",
+    "canada",
+    "Canadian"
+  ],
+  "snyk": true
 }
