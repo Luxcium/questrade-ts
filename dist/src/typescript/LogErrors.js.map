@@ -1,0 +1,1 @@
+{"version":3,"file":"LogErrors.js","sourceRoot":"","sources":["../../../src/typescript/LogErrors.ts"],"names":[],"mappings":"","sourcesContent":["export type LogErrors = (apiError: Error, message?: string) => Error;\n"]}

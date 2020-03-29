@@ -1,0 +1,1 @@
+{"version":3,"file":"IRefreshCreds.js","sourceRoot":"","sources":["../../../src/typescript/IRefreshCreds.ts"],"names":[],"mappings":"","sourcesContent":["export interface IRefreshCreds {\n  access_token: string;\n  api_server: string;\n  expires_in: number;\n  refresh_token: string;\n  token_type: string;\n}\n"]}
