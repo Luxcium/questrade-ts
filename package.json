@@ -48,7 +48,9 @@
     "cp:enu:1": "cp-cli ./enums/README.md ./build/enums/README.md",
     "cp:enu:2": "cp-cli ./enums/package.json ./build/enums/package.json",
     "cp:enu:3": "cp-cli ./enums/.npmignore ./build/enums/.npmignore",
-    "cp:enu:4": "cp-cli ./enums/LICENSE.txt ./build/enums/LICENSE.txt"
+    "cp:enu:4": "cp-cli ./enums/LICENSE.txt ./build/enums/LICENSE.txt",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -60,7 +62,8 @@
   "dependencies": {
     "axios": "^0.19.0",
     "questrade-api-enumerations": "^1.1.4",
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "snyk": "^1.258.2"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
@@ -97,5 +100,6 @@
     "stock market api",
     "canada",
     "Canadian"
-  ]
+  ],
+  "snyk": true
 }
