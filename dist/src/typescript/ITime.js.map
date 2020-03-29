@@ -1,0 +1,1 @@
+{"version":3,"file":"ITime.js","sourceRoot":"","sources":["../../../src/typescript/ITime.ts"],"names":[],"mappings":"","sourcesContent":["export interface ITime {\n  time: Date;\n}\n"]}
