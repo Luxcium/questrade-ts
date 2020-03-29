@@ -1,1 +1,0 @@
-{"version":3,"file":"WillCallBack.js","sourceRoot":"","sources":["../../../src/typescript/WillCallBack.ts"],"names":[],"mappings":"","sourcesContent":["import { CallBack } from '.';\n\nexport type WillCallBack<T> = (callBack: CallBack<T>) => Promise<void>;\n"]}
