@@ -2,7 +2,7 @@
   "name": "questrade-ts",
   "displayName": "Questrade API by Luxcium (with typescript support).",
   "description": "Unofficial Questrade API wrapper for NodeJS with full TypeScript support.",
-  "version": "1.1.1-dev.20200329b",
+  "version": "1.2.0-next",
   "author": "Luxcium <luxcium@neb401.com>",
   "license": "MIT",
   "homepage": "https://github.com/Luxcium/questrade-ts",
@@ -68,9 +68,7 @@
     "00": "# =================================================================",
     "quick:test": "jest --runInBand --silent --detectOpenHandles; rimraf ./MOCKfile",
     "jest:clear": "jest --clearCache; rimraf ./MOCKfile",
-    "coverage": "jest --coverage --runInBand --detectOpenHandles --silent --colors; rimraf ./MOCKfile",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "coverage": "jest --coverage --runInBand --detectOpenHandles --silent --colors; rimraf ./MOCKfile"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
@@ -122,5 +120,5 @@
     "canada",
     "Canadian"
   ],
-  "snyk": true
+  "snyk": false
 }
