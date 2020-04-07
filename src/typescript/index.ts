@@ -3,7 +3,14 @@ export { CallBack } from './CallBack';
 export { Credentials } from './Credentials';
 export { AcountNumberString, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
-export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';
+export {
+  Balances,
+  IBalance,
+  IBalanceCAD,
+  IBalances,
+  IBalanceUSD,
+  ICurencyBalance,
+} from './IBalances';
 export { ICandle, ICandles } from './ICandles';
 export { CoreApiConfig } from './ICoreApiConfigD';
 export { ICreds } from './ICreds';
@@ -14,6 +21,7 @@ export {
   ISymbol,
   ISymbols,
   MinTick,
+  OptionContractDeliverables,
 } from './IEquitySymbols';
 export { IExecution, IExecutions } from './IExecutions';
 export { IHeaders } from './IHeaders';
@@ -53,7 +61,7 @@ export {
   QuotesOptionsbyFilterAndIds,
 } from './IQuotesOptionsByIds';
 export { IRefreshCreds } from './IRefreshCreds';
-export { IStockSymbol } from './IStockSymbol';
+export { IStockSymbol, StockSymbol } from './IStockSymbol';
 export { IStrategiesQuotes } from './IStrategiesQuotes';
 export {
   Leg,
