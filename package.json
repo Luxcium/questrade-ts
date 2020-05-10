@@ -101,7 +101,7 @@
     "axios": "^0.19.0",
     "questrade-api-enumerations": "^1.1.4",
     "tslib": "^1.10.0",
-    "snyk": "^1.316.1"
+    "snyk": "^1.316.2"
   },
   "keywords": [
     "TypeScript",
