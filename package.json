@@ -28,7 +28,7 @@
     "preCI": "yarn run coverage",
     "CI": "echo 'Will validate if project can be build with COMMON-JS UMD AMD SYS'",
     "postCI": "concurrently -c red,green,yellow,blue -n \"COMMON JS|UMD|AMD|SYS\" --name-separator \"|\" \"yarn:out:cjs\" \"yarn:out:umd\" \"yarn:out:amd\" \"yarn:out:sys\"",
-    "SECTION:004": "# ========================================================",
+    "SECTION:004": "# ======================================================ok",
     "prebuild:clean": "yarn run rm:build; yarn run jest:clear",
     "build:clean": "echo 'Cleaning and will call run build'",
     "postbuild:clean": "yarn run linting; yarn run CI",
