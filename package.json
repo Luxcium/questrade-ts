@@ -98,7 +98,7 @@
     "ramda": "^0.26.1"
   },
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "questrade-api-enumerations": "^1.1.4",
     "tslib": "^1.10.0",
     "snyk": "^1.316.2"
