@@ -1,3 +1,4 @@
+export { getMyToken } from './get-token';
 export { redeemToken } from './public';
 export {
   AcountNumberString,
@@ -89,6 +90,6 @@ export {
   Variants,
   Void0,
   Void_0,
-  WillCallBack,
+  WillCallBack
 } from './typescript';
 export const introspect = { onOff: false };

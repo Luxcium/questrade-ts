@@ -91,7 +91,7 @@
     "unicorn/escape-case": "warn",
     "unicorn/expiring-todo-comments": "error",
     "unicorn/explicit-length-check": "warn",
-    "unicorn/filename-case": "error",
+    "unicorn/filename-case": "off",
     "unicorn/import-index": "warn",
     "unicorn/import-style": "error",
     "unicorn/new-for-builtins": "warn",

@@ -1,13 +1,15 @@
 // tslint:disable-next-line: no-var-requires
 import { redeemToken } from '../..';
+import { getMyToken } from '../../get-token';
 
-const yourRefreshToken = 'qw9SYpGCldlPvwuOAOmHXJADrnKLDU9H0';
+
+
 
 // inside of an async function or async IIFE
 (async () => {
   const log = console.log;
 
-  const { qtApi, credentials } = await redeemToken(yourRefreshToken);
+  const { qtApi, credentials } = await redeemToken(getMyToken());
 
   // Validate the server time as your hello world for this package
   const serverTime = qtApi.serverTime;
