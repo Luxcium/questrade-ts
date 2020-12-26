@@ -16,6 +16,10 @@
     "url": "https://github.com/luxcium/questrade-ts/issues"
   },
   "scripts": {
+    "pretty:fix": "prettier --config \"./.prettierrc\" --loglevel log -c --write \"./src/**/*.*\" || exit 1",
+    "pretty:fix:all": "prettier --config \"./.prettierrc\" --loglevel log -c --write \"**/*.*\" || exit 1",
+    "pretty:all": "prettier --config \"./.prettierrc\" --loglevel log -c \"**/*.*\" || exit 1",
+
     "SECTION:001": "# ========================================================",
     "predist": "yi; yarn run build:clean; yarn run rm:dist",
     "dist": "yarn run rm:playground; yarn run cp:dist",
@@ -107,7 +111,8 @@
     "eslint-plugin-unicorn": "^24.0.0",
     "jest": "^26.6.3",
     "questrade-api-enumerations": "^1.1.4",
-    "tslib": "^2.0.3"
+    "tslib": "^2.0.3",
+    "typedoc": "^0.19.2"
   },
   "keywords": [
     "TypeScript",

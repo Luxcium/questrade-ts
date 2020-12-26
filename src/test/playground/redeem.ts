@@ -2,9 +2,6 @@
 import { redeemToken } from '../..';
 import { getMyToken } from '../../get-token';
 
-
-
-
 // inside of an async function or async IIFE
 (async () => {
   const log = console.log;
@@ -14,7 +11,6 @@ import { getMyToken } from '../../get-token';
   // Validate the server time as your hello world for this package
   const serverTime = qtApi.serverTime;
   log(serverTime);
-
   // inside an async function use await qt.get.<... some properties or methods>
   const myBalances = await qtApi.myBalances();
   const balances = await qtApi.account.getBalances();

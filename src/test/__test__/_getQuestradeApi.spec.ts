@@ -167,12 +167,12 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
         strategy: 'Custom',
         legs: [
           {
-            symbolId: 27244725,
+            symbolId: 27_244_725,
             ratio: 1000,
             action: 'Buy',
           },
           {
-            symbolId: 27244738,
+            symbolId: 27_244_738,
             ratio: 1001,
             action: 'Sell',
           },
@@ -192,13 +192,13 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
     void0(
       await (await getOptionsQuotes()).fromFilter({
         expiryDate: '2019-10-18T00:00:00.000000-05:00',
-        underlyingId: 27426,
+        underlyingId: 27_426,
       })
     );
     done();
   });
   it('should validate that can get optionsQuotes byOptionsIds', async done => {
-    void0(await (await getOptionsQuotes()).byOptionsIds([27244725]));
+    void0(await (await getOptionsQuotes()).byOptionsIds([27_244_725]));
     done();
   });
 });
