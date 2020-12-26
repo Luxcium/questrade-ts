@@ -78,14 +78,14 @@ export { Void0, Void_0 } from './IVoid_0';
 export { LogErrors } from './LogErrors';
 export {
     DateRange,
-    IQtApiAccount,
-    IQtApiMarket,
-    IQtApiMyBalances,
-    IQtApiOptionChains,
-    IQtApiOptionsQuotes,
-    IQtApiQuotes,
-    IQtApiSearch,
-    IQtApiSymbols,
+    QtApiAccount,
+    QtApiMarket,
+    QtApiMyBalances,
+    QtApiOptionChains,
+    QtApiOptionsQuotes,
+    QtApiQuotes,
+    QtApiSearch,
+    QtApiSymbols,
     QuestradeApi
 } from './QuestradeApi';
 export { ReqLimiterFactory } from './ReqLimiterFactory';

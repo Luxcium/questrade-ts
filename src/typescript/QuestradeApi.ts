@@ -23,19 +23,19 @@ export type DateRange<R> = (startTime: string) => (endTime: string) => R;
 
 export interface QuestradeApi {
   currentAccount: string;
-  myBalances: IQtApiMyBalances;
+  myBalances: QtApiMyBalances;
   serverTime: Date | 'ERROR';
-  account: IQtApiAccount;
-  market: IQtApiMarket;
-  getQuotes: IQtApiQuotes;
-  getOptionsQuotes: IQtApiOptionsQuotes;
-  getSymbols: IQtApiSymbols;
-  getOptionChains: IQtApiOptionChains;
-  search: IQtApiSearch;
+  account: QtApiAccount;
+  market: QtApiMarket;
+  getQuotes: QtApiQuotes;
+  getOptionsQuotes: QtApiOptionsQuotes;
+  getSymbols: QtApiSymbols;
+  getOptionChains: QtApiOptionChains;
+  search: QtApiSearch;
 }
-export type IQtApiMyBalances = () => Promise<IMyBalances>;
+export type QtApiMyBalances = () => Promise<IMyBalances>;
 
-export interface IQtApiAccount {
+export interface QtApiAccount {
   getActivities(
     startTime: string
   ): (endTime: string) => Promise<IAccountActivity[]>;
@@ -49,32 +49,32 @@ export interface IQtApiAccount {
   getServerTime(): Promise<Date>;
 }
 
-export interface IQtApiMarket {
+export interface QtApiMarket {
   getAllMarkets(): Promise<IMarket[]>;
   getCandlesByStockId(
     symbolID: number
   ): (interval?: string | undefined) => DateRange<Promise<ICandle[]>>;
 }
-export interface IQtApiQuotes {
+export interface QtApiQuotes {
   byStockIds(ids: number[]): Promise<IQuote[]>;
   byStrategies(
     strategyVariantRequestData: StrategyVariantRequest
   ): Promise<IStrategiesQuotes>;
 }
 
-export interface IQtApiOptionsQuotes {
+export interface QtApiOptionsQuotes {
   fromFilter(filters: OptionsFilters): Promise<IOptionsQuote[]>;
   byOptionsIds(optionIds: number[]): Promise<IOptionsQuote[]>;
 }
 
-export interface IQtApiSymbols {
+export interface QtApiSymbols {
   byStockIds(stockIds: number[]): Promise<ISymbol[]>;
 }
 
-export interface IQtApiOptionChains {
+export interface QtApiOptionChains {
   byStockId(stockId: number): Promise<IOptionChain[]>;
 }
-export interface IQtApiSearch {
+export interface QtApiSearch {
   stock(
     prefix: string,
     offset?: number | undefined

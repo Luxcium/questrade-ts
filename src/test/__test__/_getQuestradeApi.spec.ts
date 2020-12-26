@@ -1,13 +1,13 @@
 import { redeemToken } from '../..';
 import {
   Credentials,
-  IQtApiAccount,
-  IQtApiMarket,
-  IQtApiOptionChains,
-  IQtApiOptionsQuotes,
-  IQtApiQuotes,
-  IQtApiSearch,
-  IQtApiSymbols,
+  QtApiAccount,
+  QtApiMarket,
+  QtApiOptionChains,
+  QtApiOptionsQuotes,
+  QtApiQuotes,
+  QtApiSearch,
+  QtApiSymbols,
   QuestradeApi,
   StrategyVariantRequest,
 } from '../../typescript';
@@ -18,13 +18,13 @@ const dateRange30Days = setDateRange(30);
 let qtApi: QuestradeApi;
 let credentials: Credentials;
 
-let account: () => Promise<IQtApiAccount>;
-let market: () => Promise<IQtApiMarket>;
-let getQuotes: () => Promise<IQtApiQuotes>;
-let getOptionsQuotes: () => Promise<IQtApiOptionsQuotes>;
-let getSymbols: () => Promise<IQtApiSymbols>;
-let getOptionChains: () => Promise<IQtApiOptionChains>;
-let search: () => Promise<IQtApiSearch>;
+let account: () => Promise<QtApiAccount>;
+let market: () => Promise<QtApiMarket>;
+let getQuotes: () => Promise<QtApiQuotes>;
+let getOptionsQuotes: () => Promise<QtApiOptionsQuotes>;
+let getSymbols: () => Promise<QtApiSymbols>;
+let getOptionChains: () => Promise<QtApiOptionChains>;
+let search: () => Promise<QtApiSearch>;
 
 beforeAll(async done => {
   const qtApiAndCredentials = await redeemToken('MOCK');

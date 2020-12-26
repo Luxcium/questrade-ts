@@ -40,14 +40,14 @@ export {
   IOrders,
   IPosition,
   IPositions,
-  IQtApiAccount,
-  IQtApiMarket,
-  IQtApiMyBalances,
-  IQtApiOptionChains,
-  IQtApiOptionsQuotes,
-  IQtApiQuotes,
-  IQtApiSearch,
-  IQtApiSymbols,
+
+
+
+
+
+
+
+
 
   IQuestradeAPIOptions,
   IQuote,
@@ -72,7 +72,39 @@ export {
   OptionsFilters,
   OptionsIdArray,
   OptionsPostData,
-  OrdersOptions, QuestradeApi,
+  OrdersOptions, QtApiAccount,
+  QtApiMarket,
+  QtApiMyBalances,
+  QtApiOptionChains,
+  QtApiOptionsQuotes,
+  QtApiQuotes,
+  QtApiSearch,
+  QtApiSymbols,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  QuestradeApi,
 
 
 

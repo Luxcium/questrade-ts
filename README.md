@@ -117,15 +117,15 @@ After that, it is really simple to use:
 ```TypeScript
   interface IQuestradeApi {
     currentAccount: string;
-    myBalances: IQtApiMyBalances;
+    myBalances: QtApiMyBalances;
     serverTime: Date | 'ERROR';
-    account: IQtApiAccount;
-    market: IQtApiMarket;
-    getQuotes: IQtApiQuotes;
-    getOptionsQuotes: IQtApiOptionsQuotes;
-    getSymbols: IQtApiSymbols;
-    getOptionChains: IQtApiOptionChains;
-    search: IQtApiSearch;
+    account: QtApiAccount;
+    market: QtApiMarket;
+    getQuotes: QtApiQuotes;
+    getOptionsQuotes: QtApiOptionsQuotes;
+    getSymbols: QtApiSymbols;
+    getOptionChains: QtApiOptionChains;
+    search: QtApiSearch;
   }
 ```
 
@@ -184,7 +184,7 @@ Calling the property `qtApi.myBalances()` can give more user friendly "dot notat
 
 ```TypeScript
 
- /* qtApi.myBalances() property is of type IQtApiMyBalances = () => Promise<IMyBalances> */
+ /* qtApi.myBalances() property is of type QtApiMyBalances = () => Promise<IMyBalances> */
  interface IMyBalances {
    perCurrency: {
      CAD: {
