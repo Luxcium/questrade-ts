@@ -48,7 +48,7 @@ export {
   IQtApiQuotes,
   IQtApiSearch,
   IQtApiSymbols,
-  IQuestradeApi,
+
   IQuestradeAPIOptions,
   IQuote,
   IQuotes,
@@ -72,7 +72,31 @@ export {
   OptionsFilters,
   OptionsIdArray,
   OptionsPostData,
-  OrdersOptions,
+  OrdersOptions, QuestradeApi,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   QuestradeAPIOptions,
   QuotesOptions,
   QuotesOptionsbyFilterAndIds,
@@ -90,6 +114,6 @@ export {
   Variants,
   Void0,
   Void_0,
-  WillCallBack,
+  WillCallBack
 } from './typescript';
 export const introspect = { onOff: false };

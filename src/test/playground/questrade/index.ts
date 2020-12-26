@@ -1,6 +1,6 @@
 /* 'require' call may be converted to an import. */
 import { redeemToken } from '../../../';
-import { IQuestradeApi } from '../../../typescript';
+import { QuestradeApi } from '../../../typescript';
 // const { redeemToken } = require('questrade-ts');
 
 /* You will need to create your own API key: */
@@ -13,10 +13,10 @@ export const qt = async () => {
   return { qtApi, credentials };
 };
 
-export const quotes = (qtApi: IQuestradeApi) => qtApi.getQuotes;
-export const symbols = (qtApi: IQuestradeApi) => qtApi.getSymbols;
-export const account = (qtApi: IQuestradeApi) => qtApi.account;
-export const search = (qtApi: IQuestradeApi) => qtApi.search;
+export const quotes = (qtApi: QuestradeApi) => qtApi.getQuotes;
+export const symbols = (qtApi: QuestradeApi) => qtApi.getSymbols;
+export const account = (qtApi: QuestradeApi) => qtApi.account;
+export const search = (qtApi: QuestradeApi) => qtApi.search;
 
 export { getSymbolDetails } from './getSymbolDetails';
 export { getSymbolId } from './getSymbolId';

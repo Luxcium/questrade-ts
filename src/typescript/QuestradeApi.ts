@@ -14,14 +14,14 @@ import {
   ISymbol,
   ISymbolSearchResult,
   OptionsFilters,
-  StrategyVariantRequest,
+  StrategyVariantRequest
 } from '.';
 import { IMyBalances } from './IMyBalances';
 
 // DateRange<R>
 export type DateRange<R> = (startTime: string) => (endTime: string) => R;
 
-export interface IQuestradeApi {
+export interface QuestradeApi {
   currentAccount: string;
   myBalances: IQtApiMyBalances;
   serverTime: Date | 'ERROR';

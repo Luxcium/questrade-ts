@@ -8,14 +8,14 @@ import {
   IQtApiQuotes,
   IQtApiSearch,
   IQtApiSymbols,
-  IQuestradeApi,
+  QuestradeApi,
   StrategyVariantRequest,
 } from '../../typescript';
 import { log, setDateRange, void0 } from '../../utils';
 
 const dateRange30Days = setDateRange(30);
 
-let qtApi: IQuestradeApi;
+let qtApi: QuestradeApi;
 let credentials: Credentials;
 
 let account: () => Promise<IQtApiAccount>;

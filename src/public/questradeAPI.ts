@@ -1,11 +1,11 @@
 import { _getQuestradeApi } from '../private';
-import { Credentials, IQuestradeApi } from '../typescript';
+import { Credentials, QuestradeApi } from '../typescript';
 
 // export const getQuestradeApi = ;
 
 export const questradeApi = async (credentials: Credentials) => {
   const qtApi = await _getQuestradeApi(credentials);
-  const api: IQuestradeApi = {
+  const api: QuestradeApi = {
     currentAccount: qtApi.currentAccount,
     myBalances: qtApi.myBalances,
     serverTime: qtApi.serverTime,

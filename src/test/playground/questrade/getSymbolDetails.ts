@@ -1,6 +1,6 @@
-import { IQuestradeApi } from '../../../typescript';
+import { QuestradeApi } from '../../../typescript';
 import { getSymbolId } from './';
-export function getSymbolDetails(qtApi: IQuestradeApi) {
+export function getSymbolDetails(qtApi: QuestradeApi) {
   return async (stockSymbol: string | number | number[]) => {
     const getSymbolsByStockIds = qtApi.getSymbols.byStockIds;
     const getquotes = qtApi.getQuotes.byStockIds;

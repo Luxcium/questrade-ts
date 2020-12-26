@@ -1,8 +1,9 @@
 import {
   Credentials,
-  IQuestradeApi,
-  OptionsFilters,
-  StrategyVariantRequest,
+
+  OptionsFilters, QuestradeApi,
+
+  StrategyVariantRequest
 } from '../../typescript';
 import { void0 } from '../../utils';
 import {
@@ -14,7 +15,7 @@ import {
   _getOrdersByIds,
   _getPositions,
   _getServerTime,
-  _myBalances,
+  _myBalances
 } from './AccountsCalls';
 import {
   _getCandles,
@@ -29,12 +30,12 @@ import {
   // _getSymbolSearchAndCount,
   _getSymbolSearch,
   _getSymbolSearchAll,
-  _getSymbolSearchCount,
+  _getSymbolSearchCount
 } from './MarketsCalls';
 
 export const _getQuestradeApi = async (
   credentials: Credentials
-): Promise<IQuestradeApi> => {
+): Promise<QuestradeApi> => {
   const [
     accounts,
     activities,
