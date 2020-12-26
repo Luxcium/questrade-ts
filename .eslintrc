@@ -1,0 +1,263 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "extends": [
+    "plugin:jsonc/base",
+    "plugin:jsonc/recommended-with-json",
+    "plugin:jsonc/recommended-with-jsonc",
+    "plugin:jsonc/recommended-with-json5",
+    "plugin:jsonc/auto-config",
+    "plugin:prettier/recommended",
+    "prettier/@typescript-eslint",
+    "prettier/babel",
+    "prettier/flowtype",
+    "prettier/react",
+    "prettier/standard",
+    "prettier/unicorn",
+    "prettier/vue"
+  ],
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true,
+    "jest": true
+  },
+  "plugins": [
+    "unicorn",
+    "prettier",
+    "simple-import-sort",
+    "import",
+    "jsdoc",
+    "@typescript-eslint"
+  ],
+  "rules": {
+    /*
+  ―― START ――――――― eslint-config-prettier ――――――――――――――――――――――――――――――――――――――
+    */
+    "prettier/prettier": "warn",
+    "arrow-body-style": "off",
+    "no-confusing-arrow": "off",
+    "prefer-arrow-callback": "off",
+    "curly": [
+      "warn",
+      "all"
+    ],
+    // "comma-dangle": [
+    //   "warn",
+    //   "only-multiline"
+    // ],
+    "lines-around-comment": "off",
+    "max-len": "off",
+    "no-mixed-operators": "off",
+    "no-tabs": "off",
+    "no-unexpected-multiline": "off",
+    // "quotes": [
+    //   "warn",
+    //   "single",
+    //   {
+    //     "avoidEscape": true,
+    //     "allowTemplateLiterals": false
+    //   }
+    // ],
+    // +++ eslint-config-prettier +++
+    "unicorn/no-nested-ternary": "off",
+    "unicorn/number-literal-case": "off",
+    "@typescript-eslint/quotes": 0,
+    // +++ eslint-config-prettier +++
+    "@typescript-eslint/brace-style": "off",
+    "@typescript-eslint/comma-dangle": "off",
+    "@typescript-eslint/comma-spacing": "off",
+    "@typescript-eslint/func-call-spacing": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/keyword-spacing": "off",
+    "@typescript-eslint/member-delimiter-style": "off",
+    "@typescript-eslint/no-extra-parens": "off",
+    "@typescript-eslint/no-extra-semi": "off",
+    "@typescript-eslint/semi": "off",
+    "@typescript-eslint/space-before-function-paren": "off",
+    "@typescript-eslint/space-infix-ops": "off",
+    "@typescript-eslint/type-annotation-spacing": "off",
+    /*
+  ―― END ―――――― eslint-config-prettier ―――――――――――――――――――――――――――――――――――――――――
+    */
+    "unicorn/better-regex": "warn",
+    "unicorn/catch-error-name": "warn",
+    "unicorn/consistent-function-scoping": "error",
+    "unicorn/custom-error-definition": "warn",
+    "unicorn/error-message": "error",
+    "unicorn/escape-case": "warn",
+    "unicorn/expiring-todo-comments": "error",
+    "unicorn/explicit-length-check": "warn",
+    "unicorn/filename-case": "error",
+    "unicorn/import-index": "warn",
+    "unicorn/import-style": "error",
+    "unicorn/new-for-builtins": "warn",
+    "unicorn/no-abusive-eslint-disable": "off",
+    "unicorn/no-array-instanceof": "warn",
+    "unicorn/no-console-spaces": "warn",
+    "unicorn/no-fn-reference-in-iterator": "off",
+    "unicorn/no-for-loop": "warn",
+    "unicorn/no-hex-escape": "warn",
+    "unicorn/no-keyword-prefix": "error",
+    "unicorn/no-new-buffer": "warn",
+    "unicorn/no-null": "off",
+    "unicorn/no-object-as-default-parameter": "off",
+    "unicorn/no-process-exit": "error",
+    "unicorn/no-reduce": "off",
+    "unicorn/no-unreadable-array-destructuring": "error",
+    "unicorn/no-unsafe-regex": "error",
+    "unicorn/no-unused-properties": "error",
+    "unicorn/no-useless-undefined": "warn",
+    "unicorn/no-zero-fractions": "warn",
+    "unicorn/numeric-separators-style": "warn",
+    "unicorn/prefer-add-event-listener": "warn",
+    "unicorn/prefer-array-find": "warn",
+    "unicorn/prefer-dataset": "warn",
+    "unicorn/prefer-event-key": "warn",
+    "unicorn/prefer-flat-map": "warn",
+    "unicorn/prefer-includes": "warn",
+    "unicorn/prefer-math-trunc": "warn",
+    "unicorn/prefer-modern-dom-apis": "warn",
+    "unicorn/prefer-negative-index": "warn",
+    "unicorn/prefer-node-append": "warn",
+    "unicorn/prefer-node-remove": "warn",
+    "unicorn/prefer-number-properties": "warn",
+    "unicorn/prefer-optional-catch-binding": "warn",
+    "unicorn/prefer-query-selector": "warn",
+    "unicorn/prefer-reflect-apply": "warn",
+    "unicorn/prefer-replace-all": "warn",
+    "unicorn/prefer-set-has": "warn",
+    "unicorn/prefer-spread": "warn",
+    "unicorn/prefer-starts-ends-with": "warn",
+    "unicorn/prefer-string-slice": "warn",
+    "unicorn/prefer-ternary": "warn",
+    "unicorn/prefer-text-content": "warn",
+    "unicorn/prefer-trim-start-end": "warn",
+    "unicorn/prefer-type-error": "warn",
+    // duplicate "unicorn/prevent-abbreviations": "off",
+    // duplicate "unicorn/throw-new-error": "warn",
+    "unicorn/prevent-abbreviations": [
+      "off",
+      {
+        "whitelist": {
+          "_db": true
+        }
+      }
+    ],
+    // "unicorn/regex-shorthand": "warn",
+    "unicorn/string-content": "warn",
+    "unicorn/throw-new-error": "warn",
+    // "unicorn/no-nested-ternary": "off",
+    // "unicorn/number-literal-case": "off",
+    /*
+  ―――――――― simple-import-sort ――――――――――――――――――――――――――――――――――――――――――――――――――
+    */
+    "sort-imports": "off",
+    "import/order": "off",
+    "simple-import-sort/imports": "warn",
+    "simple-import-sort/exports": "warn",
+    /*
+  ―――――――― eslint-plugin-import ――――――――――――――――――――――――――――――――――――――――――――――――
+    */
+    /*Static analysis*/
+    "import/no-self-import": "error",
+    "import/no-useless-path-segments": "warn",
+    "import/no-unresolved": 0,
+    "import/named": 0,
+    "import/default": 0,
+    "import/namespace": "error",
+    "import/no-restricted-paths": 0,
+    "import/no-absolute-path": "error",
+    "import/no-dynamic-require": 0,
+    "import/no-internal-modules": 0,
+    "import/no-webpack-loader-syntax": 0,
+    "import/no-cycle": 0,
+    "import/no-relative-parent-imports": 0,
+    /* Helpful warnings */
+    "import/export": "error",
+    "import/no-named-as-default": "error",
+    "import/no-named-as-default-member": "error",
+    "import/no-deprecated": "error",
+    "import/no-extraneous-dependencies": "error",
+    "import/no-mutable-exports": "error",
+    "import/no-unused-modules": "error",
+    /*Style guide*/
+    "import/first": "warn",
+    "import/newline-after-import": "warn",
+    "import/no-duplicates": "warn",
+    "import/no-namespace": "off",
+    // "import/order": 0, // ―3 managed with simple-import-sort
+    "import/exports-last": 0,
+    "import/extensions": 0,
+    "import/prefer-default-export": 0,
+    "import/max-dependencies": 0,
+    "import/no-unassigned-import": 0,
+    "import/no-named-default": 0,
+    "import/no-default-export": 0,
+    "import/no-named-export": 0,
+    "import/no-anonymous-default-export": 0,
+    "import/group-exports": "error",
+    "import/dynamic-import-chunkname": 0,
+    /*Module systems*/
+    "import/no-amd": 0,
+    "import/no-commonjs": 0,
+    "import/no-nodejs-modules": 0,
+    "import/unambiguous": 0,
+    /*
+  ―――――――― eslint-plugin-jsdoc ―――――――――――――――――――――――――――――――――――――――――――――――――
+    */
+    "jsdoc/check-access": 0, // "error", // Recommended
+    "jsdoc/check-alignment": 0, // "warn", // Recommended
+    "jsdoc/check-examples": "off",
+    "jsdoc/check-indentation": "off",
+    "jsdoc/check-line-alignment": 0, // "warn",
+    "jsdoc/check-param-names": 0, // "warn", // Recommended
+    "jsdoc/check-property-names": 0, // "warn", // Recommended
+    "jsdoc/check-syntax": "off",
+    "jsdoc/check-tag-names": 0, // "warn", // Recommended
+    "jsdoc/check-types": 0, // "warn", // Recommended
+    "jsdoc/check-values": 0, // "error", // Recommended
+    "jsdoc/empty-tags": 0, // "warn", // Recommended
+    "jsdoc/implements-on-classes": 0, // "error", // Recommended
+    "jsdoc/match-description": "off",
+    "jsdoc/newline-after-description": 0, // "warn", // Recommended
+    "jsdoc/no-bad-blocks": 0, // "warn",
+    "jsdoc/no-defaults": 0, // "warn",
+    "jsdoc/no-types": 0, // "warn",
+    "jsdoc/no-undefined-types": 0, // "error", // Recommended
+    "jsdoc/require-description": "off",
+    "jsdoc/require-description-complete-sentence": 0, // "warn",
+    "jsdoc/require-example": 0, // "warn",
+    "jsdoc/require-file-overview": "off",
+    "jsdoc/require-hyphen-before-param-description": 0, // "warn",
+    "jsdoc/require-jsdoc": 0, // "warn", // Recommended
+    "jsdoc/require-param": 0, // "warn", // Recommended
+    "jsdoc/require-param-description": 0, // "error", // Recommended
+    "jsdoc/require-param-name": 0, // "error", // Recommended
+    "jsdoc/require-param-type": 0, // "error", // Recommended
+    "jsdoc/require-property": 0, // "warn", // Recommended
+    "jsdoc/require-property-description": 0, // "error", // Recommended
+    "jsdoc/require-property-name": 0, // "error", // Recommended
+    "jsdoc/require-property-type": 0, // "error", // Recommended
+    "jsdoc/require-returns": 0, // "error", // Recommended
+    "jsdoc/require-returns-check": 0, // "error", // Recommended
+    "jsdoc/require-returns-description": 0, // "error", // Recommended
+    "jsdoc/require-returns-type": 0, // "error", // Recommended
+    "jsdoc/valid-types": 0 // "error" // Recommended
+  },
+  "overrides": [
+    {
+      // enable the rule specifically for json files
+      "files": [
+        "*.json",
+        "*.jsonc"
+      ],
+      "rules": {
+        "semi": 0
+      }
+    }
+  ]
+}
