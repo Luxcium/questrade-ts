@@ -1,1 +1,0 @@
-{"version":3,"file":"CallBack.js","sourceRoot":"","sources":["../../../src/typescript/CallBack.ts"],"names":[],"mappings":"","sourcesContent":["// tslint:disable-next-line: no-any\nexport type CallBack<T> = (\n  error: Error | null,\n  returnValue: Promise<T>\n) => void;\n"]}

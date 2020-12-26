@@ -1,1 +1,0 @@
-{"version":3,"file":"ReqLimiterFactory.js","sourceRoot":"","sources":["../../../src/typescript/ReqLimiterFactory.ts"],"names":[],"mappings":"","sourcesContent":["import { CallBack, WillCallBack } from './';\nexport type ReqLimiterFactory = () => <T>(\n  fn: WillCallBack<T>,\n  hertz?: number\n) => (willCallBack: CallBack<T>) => Promise<T>;\n"]}
