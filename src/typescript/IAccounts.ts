@@ -1,13 +1,13 @@
 import {
   AccountStatus,
-  AccountType as UserAccountType,
+  AccountType,
   ClientAccountType,
 } from 'questrade-api-enumerations';
 
 export type AcountNumberString = string;
 
 export interface IAccount {
-  type: UserAccountType;
+  type: AccountType;
   number: AcountNumberString;
   status: AccountStatus;
   isPrimary: boolean;

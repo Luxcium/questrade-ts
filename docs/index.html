@@ -1,0 +1,714 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>questrade-ts</title>
+	<meta name="description" content="Documentation for questrade-ts">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">questrade-ts</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1>questrade-ts</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#questrade-ts" id="questrade-ts" style="color: inherit; text-decoration: none;">
+					<h1>Questrade TS</h1>
+				</a>
+				<p><a href="https://coveralls.io/github/Luxcium/questrade-ts?branch=master"><img src="https://coveralls.io/repos/github/Luxcium/questrade-ts/badge.svg?branch=master&x=0" alt="Coverage Status"></a> <a href="https://travis-ci.com/Luxcium/questrade-ts"><img src="https://img.shields.io/travis/com/luxcium/questrade-ts/master?label=Build&logo=travis&logoColor=white" alt="Travis (.com) Build Status"></a> <a href="https://dev.azure.com/luxcium/Questrade-ts/_build/latest?definitionId=1&amp;branchName=master"><img src="https://dev.azure.com/luxcium/Questrade-ts/_apis/build/status/Luxcium.questrade-ts?branchName=master" alt="Build Status"></a> <a href="https://snyk.io/test/github/luxcium/questrade-ts"><img src="https://snyk.io/test/github/luxcium/questrade-ts/badge.svg" alt="Known Vulnerabilities"></a> <a href="https://www.codacy.com/manual/Luxcium/questrade-ts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Luxcium/questrade-ts&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/8af26b0bfa624c66b266cd83d4eb52b4" alt="Codacy Badge"></a> <a href="https://bestpractices.coreinfrastructure.org/en/projects/3222"><img src="https://img.shields.io/cii/summary/3222?label=Best%20Practices" alt="CII Best Practices Summary"></a></p>
+				<p><a href="https://github.com/luxcium/questrade-ts/graphs/contributors"><img src="https://img.shields.io/github/contributors-anon/luxcium/questrade-ts.svg?style=social" alt="GitHub contributors"></a>
+					<a href="https://github.com/luxcium/questrade-ts/watchers"><img src="https://img.shields.io/github/watchers/luxcium/questrade-ts.svg?style=social" alt="GitHub watchers"></a>
+					<a href="https://github.com/luxcium/questrade-ts/network/members"><img src="https://img.shields.io/github/forks/luxcium/questrade-ts.svg?style=social" alt="GitHub forks"></a>
+					<a href="https://github.com/luxcium/questrade-ts/stargazers"><img src="https://img.shields.io/github/stars/luxcium/questrade-ts.svg?style=social" alt="GitHub stars"></a>
+					<a href="https://github.com/luxcium/questrade-ts/pulls"><img src="https://img.shields.io/github/issues-pr/luxcium/questrade-ts.svg?style=social" alt="GitHub pull requests"></a>
+				<a href="https://github.com/luxcium/questrade-ts/issues"><img src="https://img.shields.io/github/issues/luxcium/questrade-ts.svg?style=social" alt="GitHub issues"></a></p>
+				<a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
+					<h2>Getting Started</h2>
+				</a>
+				<p>This <a href="https://www.npmjs.com/package/questrade-ts">NPM Package</a> is an unofficial <a href="https://www.questrade.com/api/documentation/getting-started">Questrade API</a> wrapper for <a href="https://nodejs.org/en/docs/">NodeJS</a> with full <a href="https://www.typescriptlang.org/docs/home.html">TypeScript</a> support.</p>
+				<p>This NodeJS wrapper is an easy way to use the <a href="www.questrade.com/api/documentation/getting-started">Questrade API</a> immediately. It commes with full TypeScript support.</p>
+				<p>Simply start by installing this questrade-ts library:</p>
+				<p>This Package conforms to <a href="https://semver.org/#semantic-versioning-200">Semantic Versioning Specification (SemVer)</a></p>
+				<pre><code class="language-bash">npm i questrade-ts@latest</code></pre>
+				<p>or</p>
+				<pre><code class="language-bash">yarn add questrade-ts@latest</code></pre>
+				<p>You will need to get an <a href="https://login.questrade.com/APIAccess/userapps.aspx">API key</a>.</p>
+				<p>After that, it is really simple to use:</p>
+				<a href="#tldr" id="tldr" style="color: inherit; text-decoration: none;">
+					<h3>TL;DR</h3>
+				</a>
+				<pre><code class="language-TypeScript">
+  <span class="hljs-comment">/* &#x27;require&#x27; call may be converted to an import. */</span>
+  <span class="hljs-comment">// import { redeemToken } from &#x27;questrade-ts&#x27;</span>
+  <span class="hljs-keyword">const</span> { redeemToken } = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;questrade-ts&#x27;</span>);
+
+  <span class="hljs-comment">/* You will need to create your own API key: */</span>
+  <span class="hljs-comment">/* https://login.questrade.com/APIAccess/UserApps.aspx */</span>
+  <span class="hljs-keyword">const</span> yourRefreshToken = <span class="hljs-string">&#x27;RocgqWp_USE_YOUR_OWN_TOKEN_M3BCd0&#x27;</span>;
+
+  <span class="hljs-comment">/* inside of an async function or async IIFE */</span>
+  (<span class="hljs-keyword">async</span> () =&gt; {
+    <span class="hljs-keyword">const</span> log = <span class="hljs-built_in">console</span>.log
+
+    <span class="hljs-keyword">const</span> { qtApi, credentials } = <span class="hljs-keyword">await</span> redeemToken(yourRefreshToken);
+
+    <span class="hljs-comment">/* Validate the server time as your hello world for this package */</span>
+    <span class="hljs-keyword">const</span> serverTime = qtApi.serverTime
+    log(serverTime)
+
+    <span class="hljs-comment">/* inside an async function use await qt.get.&lt;... some properties or methods&gt; */</span>
+    <span class="hljs-keyword">const</span> myBalances = <span class="hljs-keyword">await</span> qtApi.myBalances();
+    <span class="hljs-keyword">const</span> balances = <span class="hljs-keyword">await</span> qtApi.account.getBalances();
+
+    log(myBalances);
+    log(balances);
+
+    log(credentials);
+
+    <span class="hljs-comment">/* you can use a try/catch block to manage error instead: */</span>
+  })().catch(<span class="hljs-function"><span class="hljs-params">error</span>=&gt;</span><span class="hljs-built_in">console</span>.error(error.message));</code></pre>
+				<a href="#structure" id="structure" style="color: inherit; text-decoration: none;">
+					<h3>Structure</h3>
+				</a>
+				<pre><code class="language-TypeScript">
+  <span class="hljs-keyword">const</span> qtApi: IQuestradeApi = {
+    currentAccount,
+    myBalances,
+    serverTime,
+    <span class="hljs-attr">account</span>: {
+      getActivities,
+      getAllAccounts,
+      getAllOrders,
+      getBalances,
+      getExecutions,
+      getOrders,
+      getOrdersByIds,
+      getPositions,
+    },
+    <span class="hljs-attr">market</span>: {
+      getAllMarkets,
+      gtCandlesByStockId,
+    },
+    <span class="hljs-attr">getQuotes</span>: {
+      byStockIds,
+      byStrategies,
+    },
+    <span class="hljs-attr">getOptionsQuotes</span>: {
+      byOptionsIds,
+      fromFilter,
+    },
+    <span class="hljs-attr">getOptionChains</span>: {
+      byStockId,
+    },
+    <span class="hljs-attr">getSymbols</span>: {
+      byStockIds,
+    },
+    <span class="hljs-attr">search</span>: {
+      stock,
+      allStocks,
+      countResults,
+    },
+  };</code></pre>
+				<a href="#iquestradeapi-describe-in-typescript-terms-what-the-questrade-ts-api-look-like" id="iquestradeapi-describe-in-typescript-terms-what-the-questrade-ts-api-look-like" style="color: inherit; text-decoration: none;">
+					<h3>IQuestradeApi describe in TypeScript terms what the <code>questrade-ts</code> api look like</h3>
+				</a>
+				<pre><code class="language-TypeScript">  <span class="hljs-keyword">interface</span> IQuestradeApi {
+    <span class="hljs-attr">currentAccount</span>: <span class="hljs-built_in">string</span>;
+    myBalances: QtApiMyBalances;
+    serverTime: <span class="hljs-built_in">Date</span> | <span class="hljs-string">&#x27;ERROR&#x27;</span>;
+    account: QtApiAccount;
+    market: QtApiMarket;
+    getQuotes: QtApiQuotes;
+    getOptionsQuotes: QtApiOptionsQuotes;
+    getSymbols: QtApiSymbols;
+    getOptionChains: QtApiOptionChains;
+    search: QtApiSearch;
+  }</code></pre>
+				<a href="#methods-signatures-and-parameters" id="methods-signatures-and-parameters" style="color: inherit; text-decoration: none;">
+					<h3>Methods signatures and parameters</h3>
+				</a>
+				<pre><code class="language-TypeScript">  getActivities(startTime: <span class="hljs-built_in">string</span>) =&gt;
+    <span class="hljs-function">(<span class="hljs-params">endTime: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">Promise</span>&lt;IAccountActivity[]&gt;;
+
+  getAllAccounts() =&gt; <span class="hljs-built_in">Promise</span>&lt;IAccount[]&gt;;
+
+  getBalances() =&gt; <span class="hljs-built_in">Promise</span>&lt;IBalances&gt;;
+
+  getExecutions(startTime: <span class="hljs-built_in">string</span>) =&gt; <span class="hljs-function">(<span class="hljs-params">endTime: <span class="hljs-built_in">string</span></span>) =&gt;</span> <span class="hljs-built_in">Promise</span>&lt;IExecution[]&gt;;
+
+  <span class="hljs-comment">/* type DateRange&lt;R&gt; = (startTime: string) =&gt; (endTime: string) =&gt; R */</span>
+  getOrders(stateFilter?: <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span>) =&gt; DateRange&lt;<span class="hljs-built_in">Promise</span>&lt;IOrder[]&gt;&gt;;
+
+  getOrdersByIds(orderId: <span class="hljs-built_in">number</span>[]) =&gt; <span class="hljs-built_in">Promise</span>&lt;IOrder[]&gt;;
+
+  getPositions() =&gt; <span class="hljs-built_in">Promise</span>&lt;IPosition[]&gt;;
+
+  getServerTime() =&gt; <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">Date</span>&gt;;
+
+  getAllMarkets() =&gt; <span class="hljs-built_in">Promise</span>&lt;IMarket[]&gt;;
+
+  <span class="hljs-comment">/* type DateRange&lt;R&gt; = (startTime: string) =&gt; (endTime: string) =&gt; R */</span>
+  getCandlesByStockId(symbolID: <span class="hljs-built_in">number</span>) =&gt;
+    <span class="hljs-function">(<span class="hljs-params">interval?: <span class="hljs-built_in">string</span> | <span class="hljs-literal">undefined</span></span>) =&gt;</span> DateRange&lt;<span class="hljs-built_in">Promise</span>&lt;ICandle[]&gt;&gt;;
+
+  byStockIds(ids: <span class="hljs-built_in">number</span>[]) =&gt; <span class="hljs-built_in">Promise</span>&lt;IQuote[]&gt;;
+
+  byStrategies(strategyVariantRequestData: StrategyVariantRequest) =&gt;
+    <span class="hljs-built_in">Promise</span>&lt;IStrategiesQuotes&gt;;
+
+  fromFilter(filters: OptionsFilters) =&gt; <span class="hljs-built_in">Promise</span>&lt;IOptionsQuotes&gt;;
+
+  byOptionsIds(optionIds: <span class="hljs-built_in">number</span>[]) =&gt; <span class="hljs-built_in">Promise</span>&lt;IOptionsQuotes&gt;;
+
+  byStockIds(stockIds: <span class="hljs-built_in">number</span>[]) =&gt; <span class="hljs-built_in">Promise</span>&lt;ISymbol[]&gt;;
+
+  byStockId(stockId: <span class="hljs-built_in">number</span>) =&gt; <span class="hljs-built_in">Promise</span>&lt;IOptionChain[]&gt;;
+
+  stock(prefix: <span class="hljs-built_in">string</span>, offset?: <span class="hljs-built_in">number</span> | <span class="hljs-literal">undefined</span>) =&gt;
+    <span class="hljs-built_in">Promise</span>&lt;ISymbolSearchResult&gt;;
+
+  allStocks(prefix: <span class="hljs-built_in">string</span>, offset?: <span class="hljs-built_in">number</span> | <span class="hljs-literal">undefined</span>) =&gt;
+    <span class="hljs-built_in">Promise</span>&lt;ISymbolSearchResult[]&gt;;
+
+  countResults(prefix: <span class="hljs-built_in">string</span>) =&gt; <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">number</span>&gt;;</code></pre>
+				<a href="#the-qtapimybalances-property" id="the-qtapimybalances-property" style="color: inherit; text-decoration: none;">
+					<h3>The <code>qtApi.myBalances()</code> property</h3>
+				</a>
+				<p>Calling the property <code>qtApi.myBalances()</code> can give more user friendly &quot;dot notation&quot; acces to your balances than using the method <code>qtApi.account.getBalances()</code></p>
+				<pre><code class="language-TypeScript">
+ <span class="hljs-comment">/* qtApi.myBalances() property is of type QtApiMyBalances = () =&gt; Promise&lt;IMyBalances&gt; */</span>
+ <span class="hljs-keyword">interface</span> IMyBalances {
+   <span class="hljs-attr">perCurrency</span>: {
+     <span class="hljs-attr">CAD</span>: {
+       <span class="hljs-attr">startOfDay</span>: IBalance;
+       current: IBalance;
+     };
+     USD: {
+       <span class="hljs-attr">startOfDay</span>: IBalance;
+       current: IBalance;
+     };
+   };
+   combined: {
+     <span class="hljs-attr">CAD</span>: {
+       <span class="hljs-attr">startOfDay</span>: IBalance;
+       current: IBalance;
+     };
+     USD: {
+       <span class="hljs-attr">startOfDay</span>: IBalance;
+       current: IBalance;
+     };
+   };
+   current: {
+     <span class="hljs-attr">perCurrency</span>: {
+       <span class="hljs-attr">CAD</span>: IBalance;
+       USD: IBalance;
+     };
+     combined: {
+       <span class="hljs-attr">CAD</span>: IBalance;
+       USD: IBalance;
+     };
+   };
+   startOfDay: {
+     <span class="hljs-attr">combined</span>: {
+       <span class="hljs-attr">CAD</span>: IBalance;
+       USD: IBalance;
+     };
+     perCurrency: {
+       <span class="hljs-attr">CAD</span>: IBalance;
+       USD: IBalance;
+     };
+   };
+   CAD: {
+     <span class="hljs-attr">perCurrency</span>: {
+       <span class="hljs-attr">startOfDay</span>: IBalance;
+       current: IBalance;
+     };
+     combined: {
+       <span class="hljs-attr">startOfDay</span>: IBalance;
+       current: IBalance;
+     };
+   };
+   USD: {
+     <span class="hljs-attr">combined</span>: {
+       <span class="hljs-attr">startOfDay</span>: IBalance;
+       current: IBalance;
+     };
+     perCurrency: {
+       <span class="hljs-attr">startOfDay</span>: IBalance;
+       current: IBalance;
+     };
+   };
+ }</code></pre>
+				<a href="#features" id="features" style="color: inherit; text-decoration: none;">
+					<h2>Features</h2>
+				</a>
+				<ul>
+					<li>No <code>any</code> TypeScript Keyword</li>
+					<li>Token management</li>
+					<li>Easy to use API calls</li>
+					<li>Auto-select primary account</li>
+				</ul>
+				<a href="#security-and-token-management" id="security-and-token-management" style="color: inherit; text-decoration: none;">
+					<h3>Security and Token management</h3>
+				</a>
+				<p>Questrade&#39;s security token system requires that you save the latest refresh token that it vends you. After you create one in the user apps page, our library needs to save a key somewhere onto disk. By default, this wrapper create a folder for these keys in <code>./keys</code> at your working directory,but you can change the directory location or load from a text file (with the key as its contents).</p>
+				<a href="#switching-accounts" id="switching-accounts" style="color: inherit; text-decoration: none;">
+					<h3>Switching Accounts</h3>
+				</a>
+				<p>By default, when you instantiate the <code>qtApi</code>  it will try to find and select the primary account (by fetching a list of all the accounts). If you want to change the account, simply do:</p>
+				<pre><code class="language-typescript">  <span class="hljs-comment">/* Switch to account 12345678 -- All future calls will use this 8 digits account. */</span>
+  qtApi.currentAccount = <span class="hljs-string">&#x27;12345678&#x27;</span>;
+
+  <span class="hljs-comment">/* Must be one of the valid account number for the */</span>
+  <span class="hljs-comment">/* user on behalf of which the API client is authorized */</span></code></pre>
+				<a href="#no-any" id="no-any" style="color: inherit; text-decoration: none;">
+					<h3>No-any</h3>
+				</a>
+				<p>This project count that forbiden keyword only twice, once in this title above, the other one is part of the tslint rule name forbiding the keword in the project.</p>
+				<p><img src="https://raw.githubusercontent.com/Luxcium/questrade-ts/master/images/forbiden-keyword.png" alt="Forbiden Keyword"></p>
+				<a href="#always-use-semicolons-when-using-this-package-or-using-this-code-in-other-projects" id="always-use-semicolons-when-using-this-package-or-using-this-code-in-other-projects" style="color: inherit; text-decoration: none;">
+					<h3>Always use semicolons when using this package or using this code in other projects</h3>
+				</a>
+				<blockquote>
+					<p>Why? (<a href="https://github.com/airbnb/javascript#semicolons">airbnb/javascript</a>):
+					When JavaScript encounters a line break without a semicolon, it uses a set of rules called <a href="https://tc39.es/ecma262/#sec-automatic-semicolon-insertion">Automatic Semicolon Insertion</a> to determine whether or not it should regard that line break as the end of a statement, and (as the name implies) place a semicolon into your code before the line break if it thinks so. ASI contains a few eccentric behaviors, though, and your code will break if JavaScript misinterprets your line break. These rules will become more complicated as new features become a part of JavaScript. Explicitly terminating your statements and configuring your linter to catch missing semicolons will help prevent you from encountering issues.</p>
+				</blockquote>
+				<a href="#contributions" id="contributions" style="color: inherit; text-decoration: none;">
+					<h2>Contributions</h2>
+				</a>
+				<a href="#all-contributions-are-welcome" id="all-contributions-are-welcome" style="color: inherit; text-decoration: none;">
+					<h3>All contributions are welcome</h3>
+				</a>
+				<ul>
+					<li><strong>To contribute to this project:</strong> <a href="https://github.com/Luxcium/questrade-ts">visit the GitHub Repo page of the project</a></li>
+					<li><strong>To obtain or provide feedback (as bug reports or enhancements):</strong> <a href="https://github.com/Luxcium/questrade-ts/issues">visit our GitHub Issue page</a></li>
+					<li><strong>Please make sure to open a <a href="https://github.com/luxcium/questrade-ts/issues">GitHub issues</a> for anything you feel is not exactly as described on this page or <a href="https://www.questrade.com/api/documentation/getting-started">Questrade Page</a>.</strong></li>
+				</ul>
+				<a href="#mit-license-" id="mit-license-" style="color: inherit; text-decoration: none;">
+					<h2>MIT LICENSE <a href="https://raw.githubusercontent.com/Luxcium/questrade-ts/master/LICENSE"><img src="https://img.shields.io/npm/l/questrade-ts.svg" alt="NPM"></a></h2>
+				</a>
+				<p>Copyright (c) 2019 Benjamin Vincent Kasapoglu (Luxcium)</p>
+				<p>Copyright (c) 2016-2019 Leander Lee</p>
+				<p>Permission is hereby granted, free of charge, to all person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+				<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+				<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ALL KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ALL CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+				<a href="#originaly-based-on-the-work-of" id="originaly-based-on-the-work-of" style="color: inherit; text-decoration: none;">
+					<h3>Originaly based on the work of</h3>
+				</a>
+				<p><a href="https://github.com/leanderlee/questrade">Leander Lee</a></p>
+				<a href="#questrade-does-not-maintain-this-unofficial-sdk" id="questrade-does-not-maintain-this-unofficial-sdk" style="color: inherit; text-decoration: none;">
+					<h2>Questrade does not maintain this unofficial SDK</h2>
+				</a>
+				<p>Refer to <a href="https://www.questrade.com/api/documentation/">Questrade&#39;s Documentation</a> to get help. Please always open a <a href="https://github.com/luxcium/questrade-ts/issues">questrade-ts GitHub issue</a> for anything you feel doesn&#39;t match the way it should be working when referring to Questrade docs.</p>
+				<p> <a href="https://www.npmjs.com/package/questrade-ts"><img src="https://img.shields.io/npm/dt/questrade-ts.svg" alt="npm"></a></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Internals</span>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_public_index_.html">&quot;public/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_public_questradeapi_.html">&quot;public/questradeAPI&quot;</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_public_redeemtoken_.html">&quot;public/redeem<wbr>Token&quot;</a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Externals</span>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_accountscalls__getaccounts__getaccounts_.html">&quot;private/api/<wbr>Accounts<wbr>Calls/_<wbr>get<wbr>Accounts/_<wbr>get<wbr>Accounts&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_accountscalls__getactivities__getactivities_.html">&quot;private/api/<wbr>Accounts<wbr>Calls/_<wbr>get<wbr>Activities/_<wbr>get<wbr>Activities&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_accountscalls__getbalances__getbalances_.html">&quot;private/api/<wbr>Accounts<wbr>Calls/_<wbr>get<wbr>Balances/_<wbr>get<wbr>Balances&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_accountscalls__getbalances__mybalances_.html">&quot;private/api/<wbr>Accounts<wbr>Calls/_<wbr>get<wbr>Balances/_<wbr>my<wbr>Balances&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_accountscalls__getexecutions__getexecutions_.html">&quot;private/api/<wbr>Accounts<wbr>Calls/_<wbr>get<wbr>Executions/_<wbr>get<wbr>Executions&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_accountscalls__getorders__getorders_.html">&quot;private/api/<wbr>Accounts<wbr>Calls/_<wbr>get<wbr>Orders/_<wbr>get<wbr>Orders&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_accountscalls__getorders__getordersbyids_.html">&quot;private/api/<wbr>Accounts<wbr>Calls/_<wbr>get<wbr>Orders/_<wbr>get<wbr>Orders<wbr>ByIds&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_accountscalls__getpositions__getpositions_.html">&quot;private/api/<wbr>Accounts<wbr>Calls/_<wbr>get<wbr>Positions/_<wbr>get<wbr>Positions&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_accountscalls__getservertime__getservertime_.html">&quot;private/api/<wbr>Accounts<wbr>Calls/_<wbr>get<wbr>Server<wbr>Time/_<wbr>get<wbr>Server<wbr>Time&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_accountscalls_index_.html">&quot;private/api/<wbr>Accounts<wbr>Calls/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getcandles__getcandles_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Candles/_<wbr>get<wbr>Candles&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getmarkets__getmarkets_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Markets/_<wbr>get<wbr>Markets&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getmarketsquotesoptions__getmarketsquotesoptions_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Markets<wbr>Quotes<wbr>Options/_<wbr>get<wbr>Markets<wbr>Quotes<wbr>Options&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getmarketsquotesoptions__getquotesoptionsbyids_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Markets<wbr>Quotes<wbr>Options/_<wbr>get<wbr>Quotes<wbr>Options<wbr>ByIds&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getmarketsquotesoptions__getquotesoptionsfilter_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Markets<wbr>Quotes<wbr>Options/_<wbr>get<wbr>Quotes<wbr>Options<wbr>Filter&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getmarketsquotesoptions_index_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Markets<wbr>Quotes<wbr>Options/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getmarketsquotesstrategies__getmarketsquotesstrategies_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Markets<wbr>Quotes<wbr>Strategies/_<wbr>get<wbr>Markets<wbr>Quotes<wbr>Strategies&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getmarketsquotesstrategies_index_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Markets<wbr>Quotes<wbr>Strategies/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getoptionsbyid__getoptionsbyid_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Options<wbr>ById/_<wbr>get<wbr>Options<wbr>ById&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getquotesbyids__getquotesbyids_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Quotes<wbr>ByIds/_<wbr>get<wbr>Quotes<wbr>ByIds&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getsymbolsearch__getsymbolsearch_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Symbol<wbr>Search/_<wbr>get<wbr>Symbol<wbr>Search&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getsymbolsearch__getsymbolsearchall_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Symbol<wbr>Search/_<wbr>get<wbr>Symbol<wbr>Search<wbr>All&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getsymbolsearch__getsymbolsearchcount_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Symbol<wbr>Search/_<wbr>get<wbr>Symbol<wbr>Search<wbr>Count&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getsymbolsearch_index_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Symbol<wbr>Search/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls__getsymbolsbyids__getsymbolsbyids_.html">&quot;private/api/<wbr>Markets<wbr>Calls/_<wbr>get<wbr>Symbols<wbr>ByIds/_<wbr>get<wbr>Symbols<wbr>ByIds&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_marketscalls_index_.html">&quot;private/api/<wbr>Markets<wbr>Calls/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api__getquestradeapi_.html">&quot;private/api/_<wbr>get<wbr>Questrade<wbr>Api&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_api_index_.html">&quot;private/api/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_auth_axioscredentials_oauth__axioscredentials_oauth_.html">&quot;private/auth/axios<wbr>Credentials_<wbr>oAUTH/_<wbr>axios<wbr>Credentials_<wbr>oAUTH&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_auth_axioscredentials_oauth__validatetoken_.html">&quot;private/auth/axios<wbr>Credentials_<wbr>oAUTH/_<wbr>validate<wbr>Token&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_auth_axioscredentials_oauth__writetoken_.html">&quot;private/auth/axios<wbr>Credentials_<wbr>oAUTH/_<wbr>write<wbr>Token&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_auth_axioscredentials_oauth_index_.html">&quot;private/auth/axios<wbr>Credentials_<wbr>oAUTH/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_auth_credentialsfactory__buildcredentialsfromtoken_.html">&quot;private/auth/credentials<wbr>Factory/_<wbr>build<wbr>Credentials<wbr>From<wbr>Token&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_auth_credentialsfactory__credentialsfactory_.html">&quot;private/auth/credentials<wbr>Factory/_<wbr>credentials<wbr>Factory&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_auth_credentialsfactory__defaultcredentials_.html">&quot;private/auth/credentials<wbr>Factory/_<wbr>default<wbr>Credentials&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_auth_credentialsfactory__emptycredentials_.html">&quot;private/auth/credentials<wbr>Factory/_<wbr>empty<wbr>Credentials&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_auth_credentialsfactory__getprimaryaccountnumber_.html">&quot;private/auth/credentials<wbr>Factory/_<wbr>get<wbr>Primary<wbr>Account<wbr>Number&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_auth_credentialsfactory_index_.html">&quot;private/auth/credentials<wbr>Factory/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_auth_index_.html">&quot;private/auth/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_core__coreapiconfig_.html">&quot;private/core/_<wbr>core<wbr>Api<wbr>Config&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_core__coreapifunction_.html">&quot;private/core/_<wbr>core<wbr>Api<wbr>Function&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_core__logerrors_.html">&quot;private/core/_<wbr>log<wbr>Errors&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_core__trytogetdata_axios_.html">&quot;private/core/_<wbr>try<wbr>ToGet<wbr>Data_<wbr>AXIOS&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_core_index_.html">&quot;private/core/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_core_requestpersecondlimit_core_persecond_limiter_.html">&quot;private/core/request<wbr>Per<wbr>Second<wbr>Limit/CORE_<wbr><wbr>Per<wbr>Second_<wbr><wbr>Limiter&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_core_requestpersecondlimit_index_.html">&quot;private/core/request<wbr>Per<wbr>Second<wbr>Limit/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_core_requestpersecondlimit_logdata_.html">&quot;private/core/request<wbr>Per<wbr>Second<wbr>Limit/log<wbr>Data&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_core_requestpersecondlimit_logremanings_.html">&quot;private/core/request<wbr>Per<wbr>Second<wbr>Limit/log<wbr>Remanings&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_core_requestpersecondlimit_remainingrequests_.html">&quot;private/core/request<wbr>Per<wbr>Second<wbr>Limit/remaining<wbr>Requests&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_core_requestpersecondlimit_remaningtimestring_.html">&quot;private/core/request<wbr>Per<wbr>Second<wbr>Limit/remaning<wbr>Time<wbr>String&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_index_.html">&quot;private/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_routes_axiosaccountgetapi__axiosaccountgetapi_.html">&quot;private/routes/axios<wbr>Account<wbr>Get<wbr>Api/_<wbr>axios<wbr>Account<wbr>Get<wbr>Api&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_routes_axiosaccountgetapi_endpointformataccount__endpointformataccount_.html">&quot;private/routes/axios<wbr>Account<wbr>Get<wbr>Api/endpoint<wbr>Format<wbr>Account/_<wbr>endpoint<wbr>Format<wbr>Account&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_routes_axiosaccountgetapi_endpointformataccount_index_.html">&quot;private/routes/axios<wbr>Account<wbr>Get<wbr>Api/endpoint<wbr>Format<wbr>Account/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_routes_axiosaccountgetapi_index_.html">&quot;private/routes/axios<wbr>Account<wbr>Get<wbr>Api/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_routes_axiosgetapi__axiosgetapi_.html">&quot;private/routes/axios<wbr>Get<wbr>Api/_<wbr>axios<wbr>Get<wbr>Api&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_routes_axiosgetapi_index_.html">&quot;private/routes/axios<wbr>Get<wbr>Api/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_routes_axiospostapi__axiospostapi_.html">&quot;private/routes/axios<wbr>Post<wbr>Api/_<wbr>axios<wbr>Post<wbr>Api&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_routes_axiospostapi_index_.html">&quot;private/routes/axios<wbr>Post<wbr>Api/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_private_routes_index_.html">&quot;private/routes/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_axiosintrospectres_.html">&quot;typescript/<wbr>Axios<wbr>Introspect<wbr>Res&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_callback_.html">&quot;typescript/<wbr>Call<wbr>Back&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_credentials_.html">&quot;typescript/<wbr>Credentials&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_iaccounts_.html">&quot;typescript/IAccounts&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_iactivities_.html">&quot;typescript/IActivities&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_ibalances_.html">&quot;typescript/IBalances&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_icandles_.html">&quot;typescript/ICandles&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_icoreapiconfigd_.html">&quot;typescript/ICore<wbr>Api<wbr>Config<wbr>D&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_icreds_.html">&quot;typescript/ICreds&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_idateobject_.html">&quot;typescript/IDate<wbr>Object&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_iequitysymbols_.html">&quot;typescript/IEquity<wbr>Symbols&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_iexecutions_.html">&quot;typescript/IExecutions&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_iheaders_.html">&quot;typescript/IHeaders&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_imarkets_.html">&quot;typescript/IMarkets&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_imethode_.html">&quot;typescript/IMethode&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_imybalances_.html">&quot;typescript/IMy<wbr>Balances&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_ioptionals_.html">&quot;typescript/IOptionals&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_ioptionschains_.html">&quot;typescript/IOptions<wbr>Chains&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_iorders_.html">&quot;typescript/IOrders&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_ipositions_.html">&quot;typescript/IPositions&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_iquestradeapioptions_.html">&quot;typescript/IQuestradeAPIOptions&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_iquotes_.html">&quot;typescript/IQuotes&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_iquotesoptionsbyids_.html">&quot;typescript/IQuotes<wbr>Options<wbr>ByIds&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_irefreshcreds_.html">&quot;typescript/IRefresh<wbr>Creds&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_istocksymbol_.html">&quot;typescript/IStock<wbr>Symbol&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_istrategiesquotes_.html">&quot;typescript/IStrategies<wbr>Quotes&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_istrategiesvariants_.html">&quot;typescript/IStrategies<wbr>Variants&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_isymbolsearchresult_.html">&quot;typescript/ISymbol<wbr>Search<wbr>Result&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_itime_.html">&quot;typescript/ITime&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_itimeratelimiter_.html">&quot;typescript/ITime<wbr>Rate<wbr>Limiter&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_ivoid_0_.html">&quot;typescript/IVoid_<wbr>0&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_logerrors_.html">&quot;typescript/<wbr>Log<wbr>Errors&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_questradeapi_.html">&quot;typescript/<wbr>Questrade<wbr>Api&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_reqlimiterfactory_.html">&quot;typescript/<wbr>Req<wbr>Limiter<wbr>Factory&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_willcallback_.html">&quot;typescript/<wbr>Will<wbr>Call<wbr>Back&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_typescript_index_.html">&quot;typescript/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_utils_gethash_.html">&quot;utils/get<wbr>Hash&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_utils_id0_.html">&quot;utils/id0&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_utils_index_.html">&quot;utils/index&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_utils_mkdirp_.html">&quot;utils/mkdirp&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_utils_perseconds_.html">&quot;utils/per<wbr>Seconds&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_utils_timeutil_.html">&quot;utils/timeutil&quot;</a>
+					</li>
+					<li class=" tsd-kind-module tsd-is-external">
+						<a href="modules/_utils_void0_.html">&quot;utils/void0&quot;</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
