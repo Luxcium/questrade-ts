@@ -1,8 +1,11 @@
 import { access, constants, readFileSync, writeFileSync } from 'fs';
-import { dirname } from 'path';
+import path from 'path';
+
 import { QuestradeAPIOptions } from '../../../typescript';
 import { sync } from '../../../utils';
 import { _buildCredentialsFromToken } from '../credentialsFactory';
+
+const { dirname } = path;
 
 export const _validateToken = (options: QuestradeAPIOptions) => {
   const credentials = _buildCredentialsFromToken(options);
@@ -16,7 +19,7 @@ export const _validateToken = (options: QuestradeAPIOptions) => {
     credentials.keyFile =
       credentials.keyFile || `${credentials.keyDir}/${credentials.seedToken}`;
     refreshToken = readFileSync(credentials.keyFile, 'utf8');
-  } catch (_) {
+  } catch {
     credentials.keyFile =
       credentials.keyFile || `${credentials.keyDir}/${credentials.seedToken}`;
     access(credentials.keyFile, constants.F_OK, async none => {

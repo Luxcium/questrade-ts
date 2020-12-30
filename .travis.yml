@@ -1,10 +1,21 @@
-language: node_js
+language:
+  node_js
+
+  # Release  Status           Codename  Initial Release  Active LTS Start  Maintenance LTS Start  End-of-life
+  #―0000000―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+  #  v15     Current                    2020-10-20                         2021-04-01             2021-06-01
+  #  v14     Active LTS       Fermium   2020-04-21       2020-10-27        2021-10-19             2023-04-30
+  #  v12     Active LTS       Erbium    2019-04-23       2019-10-21        2020-11-30             2022-04-30
+  #  v10     Maintenance LTS  Dubnium   2018-04-24       2018-10-30        2020-05-19             2021-04-30
+
+node_js:
+  - node # latest stable Node.js release
+  - lts/* # latest LTS Node.js release
+  - 12 # latest 12.x release
+  - 10 # latest 10.x release
+
 os:
   - linux
-node_js:
-  - lts/*
-
-dist: trusty
 
 cache:
   directories:
@@ -19,7 +30,7 @@ branches:
   # safelist
   only:
     - master
-    - next/version
+    - next/from-v1.2.0-next-20201226
 
 install:
   - npm i -g npm@latest
