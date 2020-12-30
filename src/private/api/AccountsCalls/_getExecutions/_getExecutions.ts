@@ -8,14 +8,12 @@ export const _getExecutions = (credentials: Credentials) => (
   startDate: string
 ) => async (endDate: string): Promise<IExecution[]> => {
   try {
-    //
-    return (
-      await _axiosAccountGetApi(credentials)<IExecutions>(
-        `/executions?${endpointFormatDateTool(startDate, endDate)}`
-      )()
-    ).executions;
+    const executions = await _axiosAccountGetApi(credentials)<IExecutions>(
+      `/executions?${endpointFormatDateTool(startDate, endDate)}`
+    )();
+    return executions.executionList;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
     return [];
   }
 };

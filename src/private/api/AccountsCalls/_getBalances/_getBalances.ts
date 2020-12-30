@@ -10,7 +10,7 @@ export const _getBalances = (
     //
     return _axiosAccountGetApi(credentials)<IBalances>('/balances')();
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
     return {
       perCurrencyBalances: [],
       combinedBalances: [],

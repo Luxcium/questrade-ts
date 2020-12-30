@@ -6,6 +6,9 @@ import {
 import { _axiosGetApi } from '../../../routes';
 
 // + _getOptionsById
+/*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+*/
 /** _getOptionsSymbols */
 export const _getOptionsById = (credentials: Credentials) => async (
   symbolID: number
@@ -16,8 +19,14 @@ export const _getOptionsById = (credentials: Credentials) => async (
         `/symbols/${symbolID}/options`
       )()
     ).optionChain;
+    /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+    */
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
     return [];
   }
 };
+/*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+*/

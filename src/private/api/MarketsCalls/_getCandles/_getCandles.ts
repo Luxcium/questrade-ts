@@ -20,7 +20,7 @@ export const _getCandles = (credentials: Credentials) => (symbolID: number) => (
       return result;
     });
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
     return [];
   }
 };

@@ -7,10 +7,13 @@ export const _getPositions = (credentials: Credentials) => async (): Promise<
   IPosition[]
 > => {
   try {
-    return (await _axiosAccountGetApi(credentials)<IPositions>('/positions')())
-      .positions;
+    const positions = await _axiosAccountGetApi(credentials)<IPositions>(
+      '/positions'
+    )();
+
+    return positions.positionList;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
     return [];
   }
 };

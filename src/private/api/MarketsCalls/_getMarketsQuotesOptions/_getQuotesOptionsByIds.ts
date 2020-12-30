@@ -7,7 +7,7 @@ export const _getQuotesOptionsByIds = (credentials: Credentials) => async (
   try {
     return _getMarketsQuotesOptions(credentials)(optionIds, 0, '', null, 0, 0);
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
     return [];
   }
 };

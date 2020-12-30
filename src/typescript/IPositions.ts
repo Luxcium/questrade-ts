@@ -15,5 +15,5 @@ export interface IPosition {
 }
 
 export interface IPositions {
-  positions: IPosition[];
+  positionList: IPosition[];
 }

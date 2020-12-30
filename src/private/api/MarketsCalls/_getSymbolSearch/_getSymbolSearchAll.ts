@@ -1,7 +1,7 @@
 import {
   Credentials,
   ISymbolSearchResult,
-  ISymbolSearchResults,
+  ISymbolSearchResults
 } from '../../../../typescript';
 import { void0 } from '../../../../utils';
 import { _axiosGetApi } from '../../../routes';
@@ -23,7 +23,7 @@ export const _getSymbolSearchAll = (credentials: Credentials) => async (
     }
     return results.symbols;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
     return [];
   }
 };

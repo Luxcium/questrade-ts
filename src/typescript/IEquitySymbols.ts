@@ -1,10 +1,10 @@
 import {
-  Currency,
-  ListingExchange,
-  OptionDurationType,
-  OptionExerciseType,
-  OptionType,
-  SecurityType,
+    Currency,
+    ListingExchange,
+    OptionDurationType,
+    OptionExerciseType,
+    OptionType,
+    SecurityType
 } from 'questrade-api-enumerations';
 
 export interface IEquitySymbols {
@@ -53,7 +53,7 @@ export interface MinTick {
 }
 
 export interface ISymbols {
-  symbols: ISymbol[];
+  symbolList: ISymbol[];
 }
 export interface ISymbol {
   symbol?: string;

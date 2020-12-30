@@ -1,4 +1,731 @@
 {
-    "typescript.tsdk": "node_modules/typescript/lib"
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  */
+  "files.exclude": {
+    ".directory": true,
+    "dist": false,
+    "out": false
+  },
+  "search.exclude": {
+    "dist": true,
+    "out": true
+  },
+  "coverage-gutters.showLineCoverage": true,
+  "coverage-gutters.showRulerCoverage": true,
+  "coverage-gutters.showGutterCoverage": true,
+  "coverage-gutters.highlightdark": "#39F1", // rgba (45, 121, 10, 0.70)
+  "coverage-gutters.noHighlightDark": "#F363", // rgba (121, 31, 10, 0.70)
+  "coverage-gutters.partialHighlightDark": "#F802", // rgba (121, 86, 10, 0.70)
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  ―― FORMAT BEHAVIOUR
+  */
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.formatOnType": true,
+  "editor.suggest.showFiles": true,
+  "editor.suggest.showFolders": true,
+  //                                                                          ―― ~
+  // ―― FILES BEHAVIOUR
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  //                                                                          ―― ~
+  // ―― JAVASCRIPT BEHAVIOUR
+  "javascript.format.enable": true,
+  "javascript.format.semicolons": "insert",
+  "javascript.suggest.paths": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  //                                                                          ―― ~
+  // ―― TYPESCRIPT BEHAVIOUR
+  "typescript.format.enable": true,
+  "typescript.format.semicolons": "insert",
+  "typescript.suggest.paths": false,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  //                                                                          ―― ~
+  // ―― CODEACTIONSONSAVE BEHAVIOUR
+  "editor.codeActionsOnSave": [
+    "source.addMissingImports",
+    "source.organizeImports",
+    "source.fixAll.eslint",
+    "source.fixAll",
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+    // "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  ―― PATH-INTELLISENSE
+  */
+  "path-intellisense.extensionOnImport": false,
+  "path-intellisense.absolutePathToWorkspace": false,
+  "path-intellisense.autoSlashAfterDirectory": false,
+  "path-intellisense.showHiddenFiles": true,
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  ―― PRETTIER
+  */
+  "prettier.enable": true,
+  "prettier.requireConfig": true,
+  "prettier.trailingComma": "all",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // "prettier.semi": false,
+  // "prettier.insertPragma": true,
+  // "prettier.ignorePath": ".prettierignore",
+  // "prettier.prettierPath": ".prettierrc.js",
+  // "prettier.arrowParens": "always",
+  // "prettier.bracketSpacing": true,
+  // "prettier.configPath": "",
+  // "prettier.disableLanguages": [],
+  // "prettier.documentSelectors": [],
+  // "prettier.embeddedLanguageFormatting": "auto",
+  // "prettier.endOfLine": "lf",
+  // "prettier.htmlWhitespaceSensitivity": "css",
+  // "prettier.jsxBracketSameLine": false,
+  // "prettier.jsxSingleQuote": true,
+  // "prettier.packageManager": "npm",
+  // "prettier.printWidth": 80,
+  // "prettier.proseWrap": "preserve",
+  // "prettier.quoteProps": "preserve",
+  // "prettier.requirePragma": false,
+  // "prettier.resolveGlobalModules": false,
+  // "prettier.singleQuote": true,
+  // "prettier.tabWidth": 2,
+  // "prettier.trailingComma": "all",
+  // "prettier.useEditorConfig": true,
+  // "prettier.useTabs": false,
+  // "prettier.vueIndentScriptAndStyle": false,
+  // "prettier.withNodeModules": false,
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  ―― ESLINT
+  */
+  "eslint.quiet": true,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.codeActionsOnSave.mode": "all",
+  // "eslint.onIgnoredFiles": "off",
+  // "eslint.packageManager": "npm",
+  // "eslint.run": "onType",
+  // "eslint.debug": true,
+  // "eslint.trace.server": "verbose",
+  // "eslint.probe": [
+  //   "javascript",
+  //   "javascriptreact",
+  //   "typescript",
+  //   "typescriptreact",
+  //   "html",
+  //   "vue",
+  //   "markdown",
+  //   "jsonc",
+  //   "json"
+  // ],
+  // "eslint.codeAction.showDocumentation": {
+  //   "enable": true
+  // },
+  // "eslint.codeAction.disableRuleComment": {
+  //   "location": "separateLine",
+  //   "enable": true
+  // },
+  // "eslint.lintTask.options": ".",
+  // "eslint.nodeEnv": null,
+  // "eslint.nodePath": null,
+  // "eslint.options": {},
+  // "eslint.runtime": null,
+  // "eslint.validate": [],
+  // "eslint.workingDirectories": [],
+  /*
 
+
+ https: //github.com/typescript-eslint/typescript-eslint
+
+ https: //bit.ly/3fgiyZj "@typescript-eslint/eslint-plugin": "^4.7.0", "@typescript-eslint/parser": "^4.7.0", "eslint": "^7.13.0",
+"eslint-config-prettier": "^6.15.0",
+"eslint-plugin-filenames": "^1.3.2",
+"eslint-plugin-import": "^2.22.1",
+"eslint-plugin-jsdoc": "^30.7.7",
+"eslint-plugin-node": "^11.1.0",
+"eslint-plugin-prettier": "^3.1.4",
+"eslint-plugin-security": "^1.4.0",
+"eslint-plugin-simple-import-sort": "^5.0.3",
+"eslint-plugin-sort-keys-fix": "^1.1.1",
+"eslint-plugin-unicorn": "^23.0.0",
+
+ https: //github.com/prettier/eslint-config-prettier#eslint-config-prettier
+ @typescript-eslint/eslint-plugin
+ eslint-plugin-babel
+ eslint-plugin-flowtype
+ eslint-plugin-react
+ eslint-plugin-standard
+ eslint-plugin-unicorn
+ eslint-plugin-vue
+
+ https: //github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md#plugins
+ +Jest testing:
+eslint-plugin-jest
+ + ESLint comment restrictions:
+eslint-plugin-eslint-comments
+ + Import/export conventions :
+eslint-plugin-import
+ +React best practices:
+eslint-plugin-react
+eslint-plugin-react-hooks
+ +NodeJS best practices:
+eslint-plugin-node
+
+*/
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  ―― ERRORLENS
+  */
+  "errorLens.annotationPrefix": [
+    "🍒 ~> ", // ―1 error
+    "⚠️ => ", // ―2 warning
+    "🧩 ", // ―3 hint
+    "🎯 -> ", // ―4 info
+  ],
+  "errorLens.enabledDiagnosticLevels": [
+    "error",
+    "warning",
+    "hint",
+    "info",
+  ],
+  "errorLens.exclude": [
+    "may be converted to an ES6 module",
+    "is declared but its value is never read"
+  ],
+  "errorLens.addAnnotationTextPrefixes": true,
+  "errorLens.addNumberOfDiagnostics": true,
+  "errorLens.borderRadius": "10px",
+  "errorLens.delay": 0,
+  "errorLens.errorGutterIconColor": "#F36F",
+  "errorLens.errorGutterIconPath": "",
+  "errorLens.followCursor": "allLines",
+  "errorLens.followCursorMore": 0,
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.gutterIconSet": "defaultOutline",
+  "errorLens.gutterIconsFollowCursorOverride": true,
+  "errorLens.gutterIconSize": "80%",
+  "errorLens.infoGutterIconPath": "",
+  "errorLens.infoGutterIconColor": "#4AEF",
+  "errorLens.light": {},
+  "errorLens.margin": "0.75rem",
+  "errorLens.messageEnabled": true,
+  "errorLens.onSave": false,
+  "errorLens.onSaveTimeout": 1000,
+  "errorLens.padding": "0rem 0.5rem",
+  "errorLens.scrollbarHackEnabled": false,
+  "errorLens.statusBarColorsEnabled": true,
+  "errorLens.statusBarMessageEnabled": true,
+  "errorLens.statusBarMessageType": "closestProblem",
+  "errorLens.warningGutterIconColor": "#BF2",
+  "errorLens.warningGutterIconPath": "",
+  "workbench.colorCustomizations": {
+    "errorLens.errorForeground": "#F36F",
+    "errorLens.errorBackground": "#F364",
+    "errorLens.errorMessageBackground": "#F364",
+    "errorLens.statusBarErrorForeground": "#F36F",
+    "errorLens.warningForeground": "#CF3F",
+    "errorLens.warningBackground": "#CF34",
+    "errorLens.warningMessageBackground": "#CF34",
+    "errorLens.statusBarWarningForeground": "#CF3F",
+    "errorLens.hintForeground": "#39CF",
+    "errorLens.hintBackground": "#39C4",
+    "errorLens.hintMessageBackground": "#39C4",
+    "errorLens.statusBarHintForeground": "#39CF",
+    "errorLens.infoForeground": "#FB0F",
+    "errorLens.infoBackground": "#FB04",
+    "errorLens.infoMessageBackground": "#FB04",
+    "errorLens.statusBarInfoForeground": "#FB0F",
+  },
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  ―― EDITOR RULERS
+  */
+  "editor.rulers": [
+    {
+      "column": 2,
+      "color": "#FA0C"
+    },
+    {
+      "column": 80,
+      "color": "#FA0C"
+    },
+    {
+      "column": 81,
+      "color": "#F60C"
+    },
+    {
+      "column": 85,
+      "color": "#FA18"
+    },
+    {
+      "column": 89,
+      "color": "#F826"
+    },
+    {
+      "column": 94,
+      "color": "#F634"
+    },
+    {
+      "column": 100,
+      "color": "#F453"
+    },
+    {
+      "column": 106,
+      "color": "#F36D"
+    },
+    {
+      "column": 108,
+      "color": "#FA0B"
+    },
+    {
+      "column": 110,
+      "color": "#FF09"
+    },
+    {
+      "column": 112,
+      "color": "#0F08"
+    },
+    {
+      "column": 114,
+      "color": "#39FA"
+    },
+    {
+      "column": 116,
+      "color": "#93FC"
+    },
+    {
+      "column": 120,
+      "color": "#FFFC"
+    },
+    {
+      "column": 124,
+      "color": "#90BCFF22"
+    },
+    {
+      "column": 129,
+      "color": "#90BCFF33"
+    },
+    {
+      "column": 134,
+      "color": "#90BCFF44"
+    },
+    {
+      "column": 140,
+      "color": "#90BCFF55"
+    },
+    {
+      "column": 147,
+      "color": "#90BCFF66"
+    },
+    {
+      "column": 155,
+      "color": "#90BCFF77"
+    },
+    {
+      "column": 164,
+      "color": "#90BCFF88"
+    },
+    {
+      "column": 174,
+      "color": "#90BCFF99"
+    },
+    {
+      "column": 185,
+      "color": "#90BCFFAA"
+    },
+    {
+      "column": 197,
+      "color": "#90BCFFAA"
+    },
+    {
+      "column": 210,
+      "color": "#90BCFFCC"
+    },
+    {
+      "column": 224,
+      "color": "#90BCFFDD"
+    }
+  ],
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  ―― BETTER COMMENTS
+  */
+  // "color": "#F36B"
+  // "color": "#F80B"
+  // "color": "#FF0B"
+  // "color": "#0F0B"
+  // "color": "#39FB"
+  // "color": "#93FB"
+  "better-comments.highlightPlainText": false,
+  "better-comments.multilineComments": true,
+  "better-comments.tags": [
+    {
+      // WARNING:
+      "tag": "WARNING:",
+      "color": "#FD3E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // !!
+      "tag": "!!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ?
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // $
+      "tag": "$",
+      "color": "#f48e41",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // IIFE
+      "tag": "IIFE",
+      "color": "#FF3D",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // #region
+      "tag": "#region",
+      "color": "#555",
+      "strikethrough": false,
+      "backgroundColor": "#FF3D"
+    },
+    {
+      // #endregion
+      "tag": "#endregion",
+      "color": "#222",
+      "strikethrough": false,
+      "backgroundColor": "#F15E"
+    },
+    {
+      // #
+      "tag": "#",
+      "color": "#4AE",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // constructor
+      "tag": "constructor",
+      "color": "#F15E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // private
+      "tag": "private",
+      "color": "#E22E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // protected
+      "tag": "protected",
+      "color": "#FD3E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ‽
+      "tag": "‽",
+      "color": "#6CBC",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // TEST_MODULE
+      "tag": "TEST_MODULE",
+      "color": "#6CBC",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // public
+      "tag": "public",
+      "color": "#FFAA00CC", // "#FA0E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // readonly
+      "tag": "readonly",
+      "color": "#FF6600AA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // static
+      "tag": "static",
+      "color": "#FF6600",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // get
+      "tag": "get",
+      "color": "#6BFC",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // set
+      "tag": "set",
+      "color": "#85FE",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // %
+      "tag": "%",
+      "color": "#41e2f4",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // # -c-54442
+      // †
+      "tag": "†",
+      "color": "#c54442",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // +
+      "tag": "+",
+      "color": "#c5f442",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // async
+      "tag": "async",
+      "color": "#FB3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // http
+      "tag": "http",
+      "color": "#FB3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // &
+      "tag": "&",
+      "color": "#a041f4",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // todo
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // *
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // iterator
+      "tag": "iterator",
+      "color": "#c54442",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      /*
+~~============================================================================== ~~
+*/
+      // ¬
+      "tag": "¬",
+      "color": "#FF6600DD",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ~
+      "tag": "~",
+      "color": "#FF6600DD",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // -
+      "tag": "-",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+ ―1----------------------------------------------------------------------------- ~~
+    */
+    {
+      // ―1
+      "tag": "―1",
+      "color": "#F36D",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ―― END
+      "tag": "―― END",
+      "color": "#F36D",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    // "color": "#F36B"
+    // "color": "#F80B"
+    // "color": "#FF0B"
+    // "color": "#0F0B"
+    // "color": "#39FB"
+    // "color": "#93FB"
+    /*
+ ―1============================================================================= ~~
+ ―2----------------------------------------------------------------------------- ~~
+    */
+    {
+      // ―2
+      "tag": "―2",
+      "color": "#F80B",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+ ―2============================================================================= ~~
+ ―3----------------------------------------------------------------------------- ~~
+    */
+    {
+      // ―3
+      "tag": "―3",
+      "color": "#FF0D",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+ ―3============================================================================= ~~
+ ―4----------------------------------------------------------------------------- ~~
+    */
+    {
+      // ―4
+      "tag": "―4",
+      "color": "#0F0D",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ―4
+      "tag": "―― START",
+      "color": "#0F0D",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+ ―4============================================================================= ~~
+ ―5----------------------------------------------------------------------------- ~~
+    */
+    {
+      // ―5
+      "tag": "―5",
+      "color": "#39FD",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+ ―5============================================================================= ~~
+ ―6----------------------------------------------------------------------------- ~~
+    */
+    {
+      // ―6
+      "tag": "―6",
+      "color": "#93FD",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+―6============================================================================== ~
+*/
+    /*
+―6============================================================================== ~
+―0------------------------------------------------------------------------------ ~
+*/
+    {
+      // ―0
+      "tag": "―0",
+      "color": "#FFFD",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+―0============================================================================== ~
+*/
+    /*
+················································································
+================================================================================
+*/
+    {
+      // ====
+      "tag": "====",
+      "color": "#FA0C",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+
+    */
+    {
+      //                                                                      ―― ~~
+      "tag": "――",
+      "color": "#FA0C",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // |-···
+      "tag": "|-",
+      "color": "#FA0C",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    // ·········································································
+    {
+      // ···
+      "tag": "···",
+      "color": "#FA0C",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    }
+  ],
 }
+// Scientia es lux principium ✨ 🌹
+// {
+//     "typescript.tsdk": "node_modules/typescript/lib"
+// }

@@ -8,7 +8,7 @@ import {
 } from 'questrade-api-enumerations';
 
 export interface IOrders {
-  orders: IOrder[];
+  orderList: IOrder[];
 }
 export interface IOrder {
   id?: string | number;

@@ -11,9 +11,9 @@ export const _getSymbolsByIds = (credentials: Credentials) => async (
       await _axiosGetApi(credentials)<ISymbols>(
         `/symbols?ids=${stockId.join()}`
       )()
-    ).symbols;
+    ).symbolList;
   } catch (error) {
-    console.error(error.message);
+    console.error(error);
     return [];
   }
 };
