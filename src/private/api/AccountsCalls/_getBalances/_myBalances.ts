@@ -1,7 +1,6 @@
 import { Currency } from 'questrade-api-enumerations';
 import { IBalances, IMyBalances } from '../../../../typescript';
 
-
 export const _myBalances = async (
   myBalances: IBalances
 ): Promise<IMyBalances> => {

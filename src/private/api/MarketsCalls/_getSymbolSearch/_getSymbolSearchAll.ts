@@ -1,7 +1,7 @@
 import {
   Credentials,
   ISymbolSearchResult,
-  ISymbolSearchResults
+  ISymbolSearchResults,
 } from '../../../../typescript';
 import { void0 } from '../../../../utils';
 import { _axiosGetApi } from '../../../routes';

@@ -93,7 +93,6 @@ export interface QtApiSearch {
   countResults(prefix: string): Promise<number>;
 }
 
-
 export interface QuestradeApi2 {
   currentAccount: string;
   myBalances: Promise<{

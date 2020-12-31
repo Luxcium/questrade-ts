@@ -8,7 +8,7 @@ export function _getAccounts(credentials: Credentials) {
   return async (): Promise<IAccount[]> => {
     try {
       const getAccounts = _axiosGetApi(credentials);
-      const accounts = await(getAccounts<IAccounts>('/accounts'))();
+      const accounts = await getAccounts<IAccounts>('/accounts')();
 
       return accounts.accountList;
     } catch (error) {

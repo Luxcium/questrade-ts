@@ -8,7 +8,7 @@ export const _getSymbolSearchCount = (credentials: Credentials) => async (
 ): Promise<number> => {
   try {
     const endpoint = `/symbols/search?prefix=${prefix}`;
-    const getSymbols = _axiosGetApi(credentials)<ISymbols>(endpoint );
+    const getSymbols = _axiosGetApi(credentials)<ISymbols>(endpoint);
     const symbols = await getSymbols();
 
     return symbols.symbolList.length;

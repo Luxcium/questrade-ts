@@ -1,7 +1,7 @@
 import {
   Credentials,
   IAccountActivity,
-  IActivities
+  IActivities,
 } from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
 import { _axiosAccountGetApi } from '../../../routes';
@@ -14,7 +14,6 @@ export const _getActivities = (credentials: Credentials) => {
     //
     return async (endTime: string): Promise<IAccountActivity[]> => {
       try {
-
         const accountGetApi = _axiosAccountGetApi(credentials);
 
         const dateTime = endpointFormatDateTool(startTime, endTime);
@@ -24,7 +23,6 @@ export const _getActivities = (credentials: Credentials) => {
         const activities = await accountGet();
 
         return activities.activities;
-
       } catch (error) {
         console.error(error);
         return [];

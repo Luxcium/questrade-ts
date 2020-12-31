@@ -40,15 +40,6 @@ export {
   IOrders,
   IPosition,
   IPositions,
-
-
-
-
-
-
-
-
-
   IQuestradeAPIOptions,
   IQuote,
   IQuotes,
@@ -72,7 +63,8 @@ export {
   OptionsFilters,
   OptionsIdArray,
   OptionsPostData,
-  OrdersOptions, QtApiAccount,
+  OrdersOptions,
+  QtApiAccount,
   QtApiMarket,
   QtApiMyBalances,
   QtApiOptionChains,
@@ -80,55 +72,7 @@ export {
   QtApiQuotes,
   QtApiSearch,
   QtApiSymbols,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   QuestradeApi,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   QuestradeAPIOptions,
   QuotesOptions,
   QuotesOptionsbyFilterAndIds,
@@ -146,6 +90,6 @@ export {
   Variants,
   Void0,
   Void_0,
-  WillCallBack
+  WillCallBack,
 } from './typescript';
 export const introspect = { onOff: false };
