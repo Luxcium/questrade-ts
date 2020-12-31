@@ -20,6 +20,8 @@ export interface Credentials {
   serverTimeRaw?: number;
   tokenType: string;
   remainingRequests?: ITimeRateLimiter;
+  response?: any;
+  config?: any;
   toString(): string;
   toValue(): string;
 }

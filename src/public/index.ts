@@ -1,1 +1,1 @@
-export { redeemToken } from './redeemToken';
+export { _redeemToken } from './redeemToken';

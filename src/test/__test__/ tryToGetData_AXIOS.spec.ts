@@ -1,8 +1,8 @@
 import { _logErrors } from '../../private/core/_logErrors';
-import { _tryToGetData } from '../../private/core/_tryToGetData_AXIOS';
+import { _tryToGetAxiosData } from '../../private/core/_tryToGetData_AXIOS';
 
 test('should ERROR _tryToGetData', async done => {
-  const response = _tryToGetData({
+  const response = _tryToGetAxiosData({
     url: 'ERROR',
     data: null,
     method: 'get',

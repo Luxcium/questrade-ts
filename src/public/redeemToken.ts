@@ -9,5 +9,4 @@ const _redeemToken = async (refreshToken: QuestradeAPIOptions) => {
   return { qtApi, credentials };
 };
 
-const redeemToken = _redeemToken;
-export { redeemToken };
+export { _redeemToken };

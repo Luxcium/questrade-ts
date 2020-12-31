@@ -9,8 +9,10 @@ export const testingThat = (async () => {
     .then(result => {
       return result.qtApi;
     })
-    .catch(err => console.log(err));
-  if (!qtApi) throw new Error('Redeem token fault');
+    .catch(error => console.log(error));
+  if (!qtApi) {
+    throw new Error('Redeem token fault');
+  }
   const theResult = await qtApi.account.getPositions();
   const theResult2 = await qtApi.search.stock('aapl');
   console.log('theResult1', theResult);
@@ -34,12 +36,12 @@ export const demoRequestVariants: StrategyVariantRequest = {
       strategy: 'Custom',
       legs: [
         {
-          symbolId: 27244725,
+          symbolId: 27_244_725,
           ratio: 1000,
           action: 'Buy',
         },
         {
-          symbolId: 27244738,
+          symbolId: 27_244_738,
           ratio: 1001,
           action: 'Sell',
         },

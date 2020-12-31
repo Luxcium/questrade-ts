@@ -8,8 +8,8 @@ describe('Redeem Token ', () => {
       canReciveEmptyString = true;
       const { qtApi, credentials } = await redeemToken('');
       void0([qtApi, credentials]);
-    } catch (e) {
-      console.error(e.message);
+    } catch (error) {
+      console.error(error.message);
       canReciveEmptyString = false;
     }
     expect(canReciveEmptyString).toBe(false);
@@ -18,7 +18,7 @@ describe('Redeem Token ', () => {
 
   it('should be able to recive a keyfile', async done => {
     const { credentials } = await redeemToken({
-      account: 12345678,
+      account: 12_345_678,
       apiVersion: 'v1',
       test: false,
       practiceAccount: false,
@@ -30,7 +30,7 @@ describe('Redeem Token ', () => {
   });
   it('should be able to recive practice account = true', async done => {
     const { credentials } = await redeemToken({
-      account: 12345678,
+      account: 12_345_678,
       apiVersion: 'v1',
       test: false,
       practiceAccount: true,
@@ -43,7 +43,7 @@ describe('Redeem Token ', () => {
 
   it('should be able to recive no apiVersion and default to v1', async done => {
     const { credentials } = await redeemToken({
-      account: 12345678,
+      account: 12_345_678,
       test: false,
       practiceAccount: true,
       seedToken: 'MOCK',

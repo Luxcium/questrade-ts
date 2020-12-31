@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/consistent-function-scoping */
 import { redeemToken } from '../..';
 import {
   Credentials,

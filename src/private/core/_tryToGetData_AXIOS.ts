@@ -6,21 +6,18 @@ import {
   remaningTimeString,
   requestPerSecondLimiter,
 } from './requestPerSecondLimit';
-export const _tryToGetData = <R, D>(
+export const _tryToGetAxiosData = <R, D>(
   _config: CoreApiConfig<D>,
   credentials?: Credentials
 ) => {
   return async (_logError: LogErrors): Promise<R> => {
     try {
+      //-->
       const possiblePerSeconds =
-        !!credentials &&
-        !!credentials.remainingRequests &&
-        !!credentials.remainingRequests.possiblePerSeconds
-          ? credentials.remainingRequests.possiblePerSeconds
-          : 21;
+        credentials?.remainingRequests?.possiblePerSeconds ?? 21;
       let response: AxiosResponse;
       if (possiblePerSeconds <= 20) {
-        //
+        //-->
         const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
         response = await requestLimiter(
           async (): Promise<AxiosResponse<R>> => axios(_config)
@@ -43,15 +40,16 @@ export const _tryToGetData = <R, D>(
         console.log(response.status, response.statusText);
         console.log('________________________________________________');
         console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
-      } else {
-        // console.log(
-        //   remaningTimeString(
-        //     credentials?.remainingRequests?.secondsRemaning
-        //       /? credentials.remainingRequests.secondsRemaning
-        //       : 0
-        //   )
-        // );
+        // } else {
+        //   // console.log(
+        //   //   remaningTimeString(
+        //   //     credentials?.remainingRequests?.secondsRemaning
+        //   //       /? credentials.remainingRequests.secondsRemaning
+        //   //       : 0
+        //   //   )
+        //   // );
       }
+
       const { data } = response;
       if (!data) {
         throw _logError(new Error("Can't retrive data from call to API"));
@@ -59,6 +57,8 @@ export const _tryToGetData = <R, D>(
       try {
         if (credentials) {
           credentials.remainingRequests = remainingRequests(response);
+          credentials.config = _config;
+          credentials.response = response;
         }
       } catch (error) {
         console.error(
