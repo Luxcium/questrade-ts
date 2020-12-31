@@ -11,7 +11,7 @@ export const _getExecutions = (credentials: Credentials) => (
     const executions = await _axiosAccountGetApi(credentials)<IExecutions>(
       `/executions?${endpointFormatDateTool(startDate, endDate)}`
     )();
-    return executions.executionList;
+    return executions.executions;
   } catch (error) {
     console.error(error);
     return [];

@@ -11,7 +11,7 @@ export const _getPositions = (credentials: Credentials) => async (): Promise<
       '/positions'
     )();
 
-    return positions.positionList;
+    return positions.positions;
   } catch (error) {
     console.error(error);
     return [];

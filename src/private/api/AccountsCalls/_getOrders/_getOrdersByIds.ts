@@ -11,7 +11,7 @@ export const _getOrdersByIds = (credentials: Credentials) => async (
       await _axiosAccountGetApi(credentials)<IOrders>(
         `/orders?ids=${orderId.join(',')}`
       )()
-    ).orderList;
+    ).orders;
   } catch (error) {
     console.error(error);
     return [];

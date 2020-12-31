@@ -1,7 +1,7 @@
 import { OrderSide } from 'questrade-api-enumerations';
 
 export interface IExecutions {
-  executionList: IExecution[];
+  executions: IExecution[];
 }
 
 export interface IExecution {

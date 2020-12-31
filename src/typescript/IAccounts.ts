@@ -16,5 +16,5 @@ export interface IAccount {
 }
 
 export interface IAccounts {
-  accountList: IAccount[];
+  accounts: IAccount[];
 }

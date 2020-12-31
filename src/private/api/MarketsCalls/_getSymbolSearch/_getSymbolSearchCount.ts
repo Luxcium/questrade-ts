@@ -11,7 +11,7 @@ export const _getSymbolSearchCount = (credentials: Credentials) => async (
     const getSymbols = _axiosGetApi(credentials)<ISymbols>(endpoint);
     const symbols = await getSymbols();
 
-    return symbols.symbolList.length;
+    return symbols.symbols.length;
   } catch (error) {
     console.error(error);
     return Number.NaN;

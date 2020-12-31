@@ -53,7 +53,7 @@ export interface MinTick {
 }
 
 export interface ISymbols {
-  symbolList: ISymbol[];
+  symbols: ISymbol[];
 }
 export interface ISymbol {
   symbol?: string;

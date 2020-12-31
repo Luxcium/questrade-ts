@@ -14,7 +14,7 @@ export const _getOrders = (credentials: Credentials) => (
         endDate
       )}stateFilter=${stateFilter}`
     )();
-    return orders.orderList;
+    return orders.orders;
   } catch (error) {
     console.error(error);
     return [];
