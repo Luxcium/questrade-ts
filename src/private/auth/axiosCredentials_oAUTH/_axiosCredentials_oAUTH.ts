@@ -1,26 +1,33 @@
-import { default as axios } from 'axios';
+import axios from 'axios';
+
 import {
+  AuthApiConfig,
   AxiosIntrospectRes,
   Credentials,
+  IProxy,
   IRefreshCreds,
   QuestradeAPIOptions,
 } from '../../../typescript';
 import { _validateToken } from './_validateToken';
 import { _writeToken } from './_writeToken';
+
 export const _oAuthAxiosCredentials = async (
-  options: QuestradeAPIOptions
+  options: QuestradeAPIOptions,
+  proxy?: IProxy
 ): Promise<Credentials> => {
   const { refreshToken, credentials } = _validateToken(options);
-  const axiosConfig = {
+  const _config: AuthApiConfig = {
     url: `${credentials.authUrl}/oauth2/token`,
+    method: 'GET',
     params: {
       grant_type: 'refresh_token',
       refresh_token: refreshToken,
     },
   };
-  const response = (await axios(
-    axiosConfig
-  )) as AxiosIntrospectRes<IRefreshCreds>;
+
+  void proxy; // TODO: Implement usage of proxy
+  let response: AxiosIntrospectRes<IRefreshCreds>;
+  response = (await axios(_config)) as any;
 
   if (!response.data) {
     if (response) {

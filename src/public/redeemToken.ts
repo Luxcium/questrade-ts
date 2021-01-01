@@ -6,7 +6,7 @@ const _redeemToken = async (
   refreshToken: QuestradeAPIOptions,
   proxy?: IProxy
 ) => {
-  const credentials = await _credentialsFactory(refreshToken);
+  const credentials = await _credentialsFactory(refreshToken, proxy);
   const questrade = await questradeApi(credentials, proxy);
   const qtApi = questrade;
   return { qtApi, credentials };

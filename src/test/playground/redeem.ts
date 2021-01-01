@@ -5,48 +5,50 @@ import { getMyToken } from '../../get-token';
 // inside of an async function or async IIFE
 (async () => {
   const echo = console.log;
-
+  const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
+  void parser;
   const { qtApi, credentials } = await redeemToken(getMyToken());
+  echo(credentials);
+  echo(qtApi.serverTime);
 
   // Validate the server time as your hello world for this package
-  const serverTime = qtApi.serverTime;
-  echo(serverTime);
-  // inside an async function use await qt.get.<... some properties or methods>
-  echo(await qtApi.myBalances());
-  echo(credentials);
-  echo(await qtApi.account.getBalances());
-  echo(credentials);
-  echo(await qtApi.market.getAllMarkets());
-  echo(credentials);
-  echo(JSON.stringify(credentials.accessToken));
-  echo(JSON.stringify(credentials.accountNumber));
-  /*
-   echo(JSON.stringify(credentials.accessToken: string;
-   echo(JSON.stringify(credentials.accountNumber: string;
-   echo(JSON.stringify(credentials.apiServer: string;
-   echo(JSON.stringify(credentials.apiUrl: string;
-   echo(JSON.stringify(credentials.apiVersion: string;
-   echo(JSON.stringify(credentials.authUrl: string;
-   echo(JSON.stringify(credentials.expiresAt?: string;
-   echo(JSON.stringify(credentials.expiresAtRaw?: number;
-   echo(JSON.stringify(credentials.expiresIn: number;
-   echo(JSON.stringify(credentials.keyDir: string;
-   echo(JSON.stringify(credentials.keyFile: string;
-   echo(JSON.stringify(credentials.practice: boolean;
-   echo(JSON.stringify(credentials.tokenExpiration?: Date;
-   echo(JSON.stringify(credentials.refreshToken: string;
-   echo(JSON.stringify(credentials.seedToken: string;
-   echo(JSON.stringify(credentials.serverTime?: Date;
-   echo(JSON.stringify(credentials.serverTimeRaw?: number;
-   echo(JSON.stringify(credentials.tokenType: string;
-   echo(JSON.stringify(credentials.remainingRequests?: ITimeRateLimiter;
-   echo(JSON.stringify(credentials.response_?: AxiosResponse<any>;
-   echo(JSON.stringify(credentials.config_?: CoreApiConfig<any>;
-   echo(JSON.stringify(credentials.urlHash64?: string;
-   echo(JSON.stringify(credentials.urlHashHex?: string;
-   echo(JSON.stringify(credentials.urlTime?: Date;
-   echo(JSON.stringify(credentials.serverTime_?: string | number | Date;
-   echo(JSON.stringify(credentials.expiresAt_?: string | number | Date;
- */
+
+  // // inside an async function use await qt.get.<... some properties or methods>
+  // echo(await qtApi.myBalances());
+  // echo(await qtApi.account.getBalances());
+  // echo(credentials);
+  // await qtApi.market.getAllMarkets();
+  // echo('accessToken  →  ', parser(credentials.accessToken));
+  // echo('accountNumber  →  ', parser(credentials.accountNumber));
+  // echo('accessToken  →  ', parser(credentials.accessToken));
+  // echo('accountNumber  →  ', parser(credentials.accountNumber));
+  // echo('apiServer  →  ', parser(credentials.apiServer));
+  // echo('apiUrl  →  ', parser(credentials.apiUrl));
+  // echo('apiVersion  →  ', parser(credentials.apiVersion));
+  // echo('authUrl  →  ', parser(credentials.authUrl));
+  // echo('expiresAt  →  ', parser(credentials.expiresAt));
+  // echo('expiresAtRaw  →  ', parser(credentials.expiresAtRaw));
+  // echo('expiresIn  →  ', parser(credentials.expiresIn));
+  // echo('keyDir  →  ', parser(credentials.keyDir));
+  // echo('keyFile  →  ', parser(credentials.keyFile));
+  // echo('practice  →  ', parser(credentials.practice));
+  // echo('tokenExpiration  →  ', parser(credentials.tokenExpiration));
+  // echo('refreshToken  →  ', parser(credentials.refreshToken));
+  // echo('seedToken  →  ', parser(credentials.seedToken));
+  // echo('serverTime  →  ', parser(credentials.serverTime));
+  // echo('serverTimeRaw  →  ', parser(credentials.serverTimeRaw));
+  // echo('tokenType  →  ', parser(credentials.tokenType));
+  // echo('remainingRequests  →  ', parser(credentials.remainingRequests));
+  // echo('response_.headers  →  ', parser(credentials.response_?.headers));
+  // echo('response_.status  →  ', parser(credentials.response_?.status));
+  // echo('response_.statusText  →  ', parser(credentials.response_?.statusText));
+  // echo('response_.data  →  ', parser('credentials.response_.data'));
+  // echo('config_  →  ', parser(credentials.config_));
+  // echo('urlHash64  →  ', parser(credentials.urlHash64));
+  // echo('urlHashHex  →  ', parser(credentials.urlHashHex));
+  // echo('urlTime  →  ', parser(credentials.urlTime));
+  // echo('serverTime_  →  ', parser(credentials.serverTime_));
+  // echo('expiresAt_  →  ', parser(credentials.expiresAt_));
+
   // you can use a try/catch block to manage error instead:
 })().catch(error => console.error(error.message));

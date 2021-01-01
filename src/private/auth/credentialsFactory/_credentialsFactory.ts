@@ -1,15 +1,18 @@
-import { QuestradeAPIOptions } from '../../../typescript';
+import { IProxy, QuestradeAPIOptions } from '../../../typescript';
 import { _getAccounts, _getServerTime } from '../../api/AccountsCalls';
 import { _oAuthAxiosCredentials } from '../axiosCredentials_oAUTH';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
-export const _credentialsFactory = async (options: QuestradeAPIOptions) => {
-  const credentials = await _oAuthAxiosCredentials(options);
+export const _credentialsFactory = async (
+  options: QuestradeAPIOptions,
+  proxy?: IProxy
+) => {
+  const credentials = await _oAuthAxiosCredentials(options, proxy);
 
   try {
-    const accounts = await _getAccounts(credentials)();
-    const time = await _getServerTime(credentials)();
+    const accounts = await _getAccounts(credentials, proxy)();
+    const time = await _getServerTime(credentials, proxy)();
 
     const timZoneOffset = new Date(time).getTimezoneOffset();
     const timZone = -1 * 60 * 1000 * timZoneOffset;

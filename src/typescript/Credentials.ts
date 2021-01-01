@@ -24,8 +24,8 @@ export interface Credentials {
   remainingRequests?: ITimeRateLimiter;
   response_?: AxiosResponse<any>;
   config_?: CoreApiConfig<any>;
-  urlHash64?: string;
   urlHashHex?: string;
+  urlHash64?: string;
   urlTime?: Date;
   serverTime_?: string | number | Date;
   expiresAt_?: string | number | Date;

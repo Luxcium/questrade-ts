@@ -13,8 +13,6 @@ import {
   requestPerSecondLimiter,
 } from './requestPerSecondLimit';
 
-const hash = crypto.createHash('sha256');
-
 export const _tryToGetData = <R, D>(
   _config: CoreApiConfig<D>,
   credentials?: Credentials,
@@ -70,20 +68,28 @@ export const _tryToGetData = <R, D>(
           credentials.config_ = _config;
           credentials.response_ = response;
 
-          hash.update(_config.url);
-          const digest = hash.digest();
-
           const BASE64: crypto.BinaryToTextEncoding = 'base64';
           const HEX: crypto.BinaryToTextEncoding = 'hex';
 
-          credentials.urlHashHex = digest.toString(HEX);
-          credentials.urlHash64 = digest.toString(BASE64);
+          const stringToHash = _config.url;
+          credentials.urlHashHex = crypto
+            .createHash('sha256')
+            .update(stringToHash)
+            .digest(HEX);
+          credentials.urlHash64 = crypto
+            .createHash('sha256')
+            .update(stringToHash)
+            .digest(BASE64);
+
           credentials.urlTime = new Date(credentials.response_.headers.date);
         }
-      } catch {
-        console.error(
-          "To make tests pass removed 'throw' error messages from code bloc"
-        );
+      } catch (error_) {
+        console.error('error_:', error_);
+        throw error_;
+
+        // console.error(
+        //   "To make tests pass removed 'throw' error messages from code bloc"
+        // );
       }
       return data;
     } catch (error) {

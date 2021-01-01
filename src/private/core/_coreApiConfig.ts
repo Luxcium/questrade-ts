@@ -22,7 +22,7 @@ export const _coreApiConfig = <D>(credentials: Credentials, proxy?: IProxy) => {
          * Set methodh to 'get' or 'post' in the
          * request config/ header.
          */
-        const method = VERB.toLowerCase() as 'get' | 'post';
+        const method = VERB.toLowerCase() as 'GET' | 'POST';
 
         /** oAuth2 token informations added to request header. */
         const Authorization = `Bearer ${credentials.accessToken}`;

@@ -5,12 +5,12 @@ test('should ERROR _tryToGetData', async done => {
   const response = _tryToGetData({
     url: 'ERROR',
     data: null,
-    method: 'get',
+    method: 'GET',
     headers: { location: '1234567', Authorization: 'str' },
   });
   try {
     expect(await response(_logErrors)).toThrow();
-  } catch (_) {
+  } catch {
     //
   }
   // console.log();
