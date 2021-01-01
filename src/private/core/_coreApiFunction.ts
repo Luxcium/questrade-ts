@@ -1,9 +1,9 @@
-import { Credentials } from '../../typescript';
+import { Credentials, IProxy } from '../../typescript';
 import { _coreApiConfig } from './_coreApiConfig';
 import { _logErrors } from './_logErrors';
 import { _tryToGetData } from './_tryToGetData_AXIOS';
 
-export const _coreApiFunction = (credentials: Credentials) => {
+export const _coreApiFunction = (credentials: Credentials, proxy?: IProxy) => {
   //
   return (VERB: 'GET' | 'POST') => {
     //
@@ -14,7 +14,7 @@ export const _coreApiFunction = (credentials: Credentials) => {
         return async (): Promise<R> => {
           //
 
-          const configBuilder = _coreApiConfig<D>(credentials);
+          const configBuilder = _coreApiConfig<D>(credentials, proxy);
           // ->
           const getEndPoint = configBuilder(VERB);
           const endPoint = getEndPoint(endpoint);
@@ -22,7 +22,8 @@ export const _coreApiFunction = (credentials: Credentials) => {
 
           const axiosDataGetter = _tryToGetData<R, D>(
             getDataConfig,
-            credentials
+            credentials,
+            proxy
           );
           // ->
           const data = axiosDataGetter(_logErrors);

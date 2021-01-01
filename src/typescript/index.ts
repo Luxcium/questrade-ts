@@ -74,8 +74,9 @@ export {
 } from './ISymbolSearchResult';
 export { ITime } from './ITime';
 export { ITimeRateLimiter } from './ITimeRateLimiter';
-export { Void0, Void_0 } from './IVoid_0';
+export { Void_0, Void0 } from './IVoid_0';
 export { LogErrors } from './LogErrors';
+export { IProxy } from './Proxy';
 export {
   DateRange,
   QtApiAccount,

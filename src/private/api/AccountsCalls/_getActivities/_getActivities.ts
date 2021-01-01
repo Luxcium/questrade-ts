@@ -2,19 +2,19 @@ import {
   Credentials,
   IAccountActivity,
   IActivities,
+  IProxy,
 } from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
 import { _axiosAccountGetApi } from '../../../routes';
 
 // + _getActivities
 /** PROVIDE: credentials, startTime string and endTime string THEN GET: a 'Promise<IAccountActivity[]>' */
-export const _getActivities = (credentials: Credentials) => {
-  //
+export const _getActivities = (credentials: Credentials, proxy?: IProxy) => {
   return (startTime: string) => {
     //
     return async (endTime: string): Promise<IAccountActivity[]> => {
       try {
-        const accountGetApi = _axiosAccountGetApi(credentials);
+        const accountGetApi = _axiosAccountGetApi(credentials, proxy);
 
         const dateTime = endpointFormatDateTool(startTime, endTime);
         const endpoint = `/activities?${dateTime}`;

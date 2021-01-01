@@ -1,12 +1,17 @@
-import { Credentials } from '../../../../typescript';
+import { Credentials, IProxy } from '../../../../typescript';
 
 const _urlSeprator = () => '/';
 const _baseAcctUrlStr = (): string => 'accounts';
-const _credAcctNmbrProp = (C: Credentials): string => C.accountNumber;
+const _credAcctNmbrProp = (credentials: Credentials): string =>
+  credentials.accountNumber;
 
-const _endPtAccountBaseURL: EndPtAccountBaseURL = getCredAcctProp => urlSep => accountStr => creds => accountEndpoint =>
+const _endPtAccountBaseURL: EndPtAccountBaseURL = getCredAcctProp => urlSep => accountStr => (
+  credentials,
+  proxy
+) => accountEndpoint =>
   `${urlSep()}${accountStr()}${urlSep()}${getCredAcctProp(
-    creds
+    credentials,
+    proxy
   )}${accountEndpoint}`;
 /** PROVIDE: credentials and accountEndpoint string, THEN GET: a endpoint string */
 export const _endpointFormatAccount = _endPtAccountBaseURL(_credAcctNmbrProp)(
@@ -14,9 +19,12 @@ export const _endpointFormatAccount = _endPtAccountBaseURL(_credAcctNmbrProp)(
 )(_baseAcctUrlStr);
 
 export type EndPtAccountBaseURL = (
-  getCredAcctProp: (credentials: Credentials) => string
+  getCredAcctProp: (credentials: Credentials, proxy: IProxy) => string
 ) => (
   urlSep: () => string
 ) => (
   acctUrlStr: () => string
-) => (credentials: Credentials) => (accountEndpoint: string) => string;
+) => (
+  credentials: Credentials,
+  proxy: IProxy
+) => (accountEndpoint: string) => string;

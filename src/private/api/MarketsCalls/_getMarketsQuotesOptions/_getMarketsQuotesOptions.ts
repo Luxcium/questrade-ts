@@ -3,12 +3,16 @@ import {
   FiltersArray,
   IOptionsQuote,
   IOptionsQuotes,
+  IProxy,
   OptionsIdArray,
   OptionsPostData,
 } from '../../../../typescript';
 import { _axiosPostApi } from '../../../routes';
 
-export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
+export const _getMarketsQuotesOptions = (
+  credentials: Credentials,
+  proxy?: IProxy
+) => async (
   optionIds: number[] | null,
   underlyingId: number,
   expiryDate: string,
@@ -34,8 +38,9 @@ export const _getMarketsQuotesOptions = (credentials: Credentials) => async (
         };
 
   return (
-    await _axiosPostApi(credentials)<OptionsPostData>(postData)<IOptionsQuotes>(
-      '/markets/quotes/options'
-    )()
+    await _axiosPostApi(
+      credentials,
+      proxy
+    )<OptionsPostData>(postData)<IOptionsQuotes>('/markets/quotes/options')()
   ).quotes;
 };

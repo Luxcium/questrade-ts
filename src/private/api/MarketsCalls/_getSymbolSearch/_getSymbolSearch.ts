@@ -1,15 +1,25 @@
-import { Credentials, ISymbolSearchResult } from '../../../../typescript';
+import {
+  Credentials,
+  IProxy,
+  ISymbolSearchResult,
+} from '../../../../typescript';
 import { _getSymbolSearchAll } from './_getSymbolSearchAll';
 
 // + _getSymbolSearch
 /** _getSymbolSearch */
-export const _getSymbolSearch = (credentials: Credentials) => async (
+export const _getSymbolSearch = (
+  credentials: Credentials,
+  proxy?: IProxy
+) => async (
   prefix: string,
   offset: number = 0
 ): Promise<ISymbolSearchResult[]> => {
   try {
     //
-    const symbols = await _getSymbolSearchAll(credentials)(prefix, offset);
+    const symbols = await _getSymbolSearchAll(credentials, proxy)(
+      prefix,
+      offset
+    );
     const count = symbols.length;
     let result: ISymbolSearchResult | null = null;
     if (!!symbols[0]) {

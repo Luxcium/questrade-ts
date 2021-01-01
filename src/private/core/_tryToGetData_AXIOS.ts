@@ -1,8 +1,12 @@
 import axios, { AxiosResponse } from 'axios';
 import crypto from 'crypto';
 
-import { CoreApiConfig, LogErrors } from '../../typescript';
-import { Credentials } from '../../typescript/Credentials';
+import {
+  CoreApiConfig,
+  Credentials,
+  IProxy,
+  LogErrors,
+} from '../../typescript';
 import {
   remainingRequests,
   remaningTimeString,
@@ -13,7 +17,8 @@ const hash = crypto.createHash('sha256');
 
 export const _tryToGetData = <R, D>(
   _config: CoreApiConfig<D>,
-  credentials?: Credentials
+  credentials?: Credentials,
+  proxy?: IProxy
 ) => {
   return async (_logError: LogErrors): Promise<R> => {
     try {
@@ -22,6 +27,8 @@ export const _tryToGetData = <R, D>(
       let response: AxiosResponse;
       if (possiblePerSeconds <= 20) {
         //
+        // TODO: use proxy
+        void proxy;
         const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
         response = await requestLimiter(
           async (): Promise<AxiosResponse<R>> => axios(_config)

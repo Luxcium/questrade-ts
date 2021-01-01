@@ -2,6 +2,7 @@ import {
   Credentials,
   IOptionChain,
   IOptionChains,
+  IProxy,
 } from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
 
@@ -10,14 +11,16 @@ import { _axiosGetApi } from '../../../routes';
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
 */
 /** _getOptionsSymbols */
-export const _getOptionsById = (credentials: Credentials) => async (
-  symbolID: number
-): Promise<IOptionChain[]> => {
+export const _getOptionsById = (
+  credentials: Credentials,
+  proxy?: IProxy
+) => async (symbolID: number): Promise<IOptionChain[]> => {
   try {
     return (
-      await _axiosGetApi(credentials)<IOptionChains>(
-        `/symbols/${symbolID}/options`
-      )()
+      await _axiosGetApi(
+        credentials,
+        proxy
+      )<IOptionChains>(`/symbols/${symbolID}/options`)()
     ).optionChain;
     /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|

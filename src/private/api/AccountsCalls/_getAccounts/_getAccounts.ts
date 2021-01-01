@@ -1,14 +1,19 @@
-import { Credentials, IAccount, IAccounts } from '../../../../typescript';
+import {
+  Credentials,
+  IAccount,
+  IAccounts,
+  IProxy,
+} from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
 
 // + _getAccounts
 /** _getAccounts */
-export function _getAccounts(credentials: Credentials) {
+export function _getAccounts(credentials: Credentials, proxy?: IProxy) {
   //
   return async (): Promise<IAccount[]> => {
     try {
       //
-      const getAccounts = _axiosGetApi(credentials);
+      const getAccounts = _axiosGetApi(credentials, proxy);
       const accounts = getAccounts<IAccounts>('/accounts');
       const data = await accounts();
       //

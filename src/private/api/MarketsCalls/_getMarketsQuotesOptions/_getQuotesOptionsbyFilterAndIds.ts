@@ -1,6 +1,6 @@
 // import {
 //   Credentials,
-//   QuotesOptionsbyFilterAndIds,
+//   QuotesOptionsbyFilterAndIds,Proxy
 // } from '../../../../typescript';
 // import {
 //   _getQuotesOptionsByIds,
@@ -8,11 +8,11 @@
 // } from '../../MarketsCalls';
 
 // export const _getQuotesOptionsbyFilterAndIds = (
-//   credentials: Credentials
+//   credentials: Credentials,proxy?:Proxy
 // ): QuotesOptionsbyFilterAndIds => {
 //   const quotesOptionsFilter: QuotesOptionsbyFilterAndIds = _getQuotesOptionsFilter(
-//     credentials
+//     credentials,proxy
 //   );
-//   quotesOptionsFilter.byIds = _getQuotesOptionsByIds(credentials);
+//   quotesOptionsFilter.byIds = _getQuotesOptionsByIds(credentials,proxy);
 //   return quotesOptionsFilter as QuotesOptionsbyFilterAndIds;
 // };

@@ -1,5 +1,6 @@
 import {
   Credentials,
+  IProxy,
   ISymbolSearchResult,
   ISymbolSearchResults,
 } from '../../../../typescript';
@@ -7,12 +8,18 @@ import { void0 } from '../../../../utils';
 import { _axiosGetApi } from '../../../routes';
 // + _getSymbolSearchAll
 /** _getSymbolSearch */
-export const _getSymbolSearchAll = (credentials: Credentials) => async (
+export const _getSymbolSearchAll = (
+  credentials: Credentials,
+  proxy?: IProxy
+) => async (
   prefix: string,
   offset: number = 0
 ): Promise<ISymbolSearchResult[]> => {
   try {
-    const results = await _axiosGetApi(credentials)<ISymbolSearchResults>(
+    const results = await _axiosGetApi(
+      credentials,
+      proxy
+    )<ISymbolSearchResults>(
       `/symbols/search?prefix=${prefix.toUpperCase()}&offset=${offset}`
     )();
     if (results && results.symbols) {

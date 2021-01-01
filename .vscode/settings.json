@@ -8,6 +8,7 @@
     "out": false
   },
   "search.exclude": {
+    "docs": true,
     "dist": true,
     "out": true
   },
