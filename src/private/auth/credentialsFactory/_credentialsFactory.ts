@@ -21,8 +21,13 @@ export const _credentialsFactory = async (options: QuestradeAPIOptions) => {
     credentials.expiresAtRaw = expireAt;
     credentials.serverTime = new Date(timZone + serverTime);
     credentials.serverTimeRaw = serverTime;
-
     credentials.accountNumber = _getPrimaryAccountNumber(accounts);
+    credentials.expiresAt_ = new Date(
+      credentials.expiresAtRaw ?? 0
+    ).toLocaleTimeString();
+    credentials.serverTime_ = new Date(
+      credentials.serverTimeRaw ?? 0
+    ).toLocaleTimeString();
 
     if (credentials.accountNumber === '00000000') {
       console.info(

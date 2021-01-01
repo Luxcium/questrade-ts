@@ -33,7 +33,8 @@ import {
 } from './MarketsCalls';
 
 export const _getQuestradeApi = async (
-  credentials: Credentials
+  credentials: Credentials,
+  proxy?: any
 ): Promise<QuestradeApi> => {
   const [
     accounts,
@@ -58,27 +59,27 @@ export const _getQuestradeApi = async (
     symbolSearch,
     symbolSearchCount,
   ] = [
-    _getAccounts(credentials),
-    _getActivities(credentials),
-    _getBalances(credentials),
-    _getCandles(credentials),
-    _getExecutions(credentials),
-    _getMarkets(credentials),
-    _getMarketsQuotesStrategies(credentials),
-    _getOptionsById(credentials),
-    _getOrders(credentials),
-    _getOrdersByIds(credentials),
-    _getPositions(credentials),
-    _getQuotesByIds(credentials),
-    // _getQuotesOptionsbyFilterAndIds(credentials),
-    _getQuotesOptionsByIds(credentials),
-    _getQuotesOptionsFilter(credentials),
-    _getServerTime(credentials),
-    _getSymbolsByIds(credentials),
-    _getSymbolSearchAll(credentials),
-    // _getSymbolSearchAndCount(credentials),
-    _getSymbolSearch(credentials),
-    _getSymbolSearchCount(credentials),
+    _getAccounts(credentials, proxy),
+    _getActivities(credentials, proxy),
+    _getBalances(credentials, proxy),
+    _getCandles(credentials, proxy),
+    _getExecutions(credentials, proxy),
+    _getMarkets(credentials, proxy),
+    _getMarketsQuotesStrategies(credentials, proxy),
+    _getOptionsById(credentials, proxy),
+    _getOrders(credentials, proxy),
+    _getOrdersByIds(credentials, proxy),
+    _getPositions(credentials, proxy),
+    _getQuotesByIds(credentials, proxy),
+    // _getQuotesOptionsbyFilterAndIds(credentials,proxy),
+    _getQuotesOptionsByIds(credentials, proxy),
+    _getQuotesOptionsFilter(credentials, proxy),
+    _getServerTime(credentials, proxy),
+    _getSymbolsByIds(credentials, proxy),
+    _getSymbolSearchAll(credentials, proxy),
+    // _getSymbolSearchAndCount(credentials,proxy),
+    _getSymbolSearch(credentials, proxy),
+    _getSymbolSearchCount(credentials, proxy),
   ];
   // unused for the moment
 

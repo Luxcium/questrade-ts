@@ -1,4 +1,6 @@
 import axios, { AxiosResponse } from 'axios';
+import crypto from 'crypto';
+
 import { CoreApiConfig, LogErrors } from '../../typescript';
 import { Credentials } from '../../typescript/Credentials';
 import {
@@ -6,6 +8,9 @@ import {
   remaningTimeString,
   requestPerSecondLimiter,
 } from './requestPerSecondLimit';
+
+const hash = crypto.createHash('sha256');
+
 export const _tryToGetData = <R, D>(
   _config: CoreApiConfig<D>,
   credentials?: Credentials
@@ -13,11 +18,7 @@ export const _tryToGetData = <R, D>(
   return async (_logError: LogErrors): Promise<R> => {
     try {
       const possiblePerSeconds =
-        !!credentials &&
-        !!credentials.remainingRequests &&
-        !!credentials.remainingRequests.possiblePerSeconds
-          ? credentials.remainingRequests.possiblePerSeconds
-          : 21;
+        credentials?.remainingRequests?.possiblePerSeconds ?? 21;
       let response: AxiosResponse;
       if (possiblePerSeconds <= 20) {
         //
@@ -59,8 +60,20 @@ export const _tryToGetData = <R, D>(
       try {
         if (credentials) {
           credentials.remainingRequests = remainingRequests(response);
+          credentials.config_ = _config;
+          credentials.response_ = response;
+
+          hash.update(_config.url);
+          const digest = hash.digest();
+
+          const BASE64: crypto.BinaryToTextEncoding = 'base64';
+          const HEX: crypto.BinaryToTextEncoding = 'hex';
+
+          credentials.urlHashHex = digest.toString(HEX);
+          credentials.urlHash64 = digest.toString(BASE64);
+          credentials.urlTime = new Date(credentials.response_.headers.date);
         }
-      } catch (error) {
+      } catch {
         console.error(
           "To make tests pass removed 'throw' error messages from code bloc"
         );

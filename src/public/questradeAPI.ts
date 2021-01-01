@@ -3,7 +3,8 @@ import { Credentials, QuestradeApi } from '../typescript';
 
 // export const getQuestradeApi = ;
 
-export const questradeApi = async (credentials: Credentials) => {
+export const questradeApi = async (credentials: Credentials, proxy?: any) => {
+  void proxy;
   const qtApi = await _getQuestradeApi(credentials);
   const api: QuestradeApi = {
     currentAccount: qtApi.currentAccount,
