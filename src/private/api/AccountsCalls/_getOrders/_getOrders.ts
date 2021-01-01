@@ -15,7 +15,7 @@ export const _getOrders = (credentials: Credentials, proxy?: IProxy) => (
       `/orders?${endpointFormatDateTool(
         startDate,
         endDate
-      )}stateFilter=${stateFilter}`
+      )}&stateFilter=${stateFilter}`
     )();
     return orders.orders;
   } catch (error) {

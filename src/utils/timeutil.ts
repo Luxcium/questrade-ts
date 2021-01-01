@@ -28,14 +28,14 @@ export const endpointFormatDateTool = (
   startTime: string,
   endTime: string
 ): string => {
-  return `startTime=${dateToString(startTime)}&endTime=${dateToString(
+  return `startTime=${dateToISOString(startTime)}&endTime=${dateToISOString(
     endTime
-  )}&`;
+  )}`;
 };
 export const dateNowISO = () => new Date(Date.now()).toISOString();
 export const dateNowNumeric = () => new Date(Date.now()).getTime();
 
-export const dateToString = (dateTime: string | number): string =>
+export const dateToISOString = (dateTime: string | number): string =>
   new Date(dateTime).toISOString();
 
 export const dateToNumeric = (dateTime: string | number | Date): number =>
@@ -79,7 +79,7 @@ export const dateRange = (
 
 const rmvMiliSec = (date: Date | string | number): string => {
   const floor = Math.floor;
-  return dateToString(floor(dateToNumeric(date) / 1000) * 1000);
+  return dateToISOString(floor(dateToNumeric(date) / 1000) * 1000);
 };
 
 export const setDateRange = (backNumberOfDays: number) => <T>(

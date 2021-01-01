@@ -1,0 +1,43 @@
+credentials.response_ = {
+  status: 200,
+  statusText: 'OK',
+  headers: {
+    'strict-transport-security': 'max-age=31536000; includeSubDomains;',
+    'x-ratelimit-remaining': '29950',
+    'x-ratelimit-reset': '1609519187',
+    'content-type': 'application/json; charset=utf-8',
+    'content-length': '43',
+    date: 'Fri, 01 Jan 2021 16:27:55 GMT',
+    connection: 'close',
+  },
+  config: {
+    url: 'https://api02.iq.questrade.com/v1/time',
+    method: 'get',
+    data: null,
+    headers: [Object],
+    transformRequest: [Array],
+    transformResponse: [Array],
+    timeout: 0,
+    adapter: '[Function: httpAdapter]',
+    xsrfCookieName: 'XSRF-TOKEN',
+    xsrfHeaderName: 'X-XSRF-TOKEN',
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    validateStatus: ' [Function: validateStatus]',
+  },
+  request: /*  ClientRequest */ {},
+  data: { time: '2021-01-01T11:27:55.690000-05:00' },
+
+  configurl_: 'v1/time',
+  urlTimeUTC: '2021-01-01T16:27:55.000Z',
+  urlHashHex:
+    '96cd63bac26c0d1aa3c1bea5621a99e9628f2ad37632c43dbf2521b6ffa2586a',
+  urlHash64: 'ls1jusJsDRqjwb6lYhqZ6WKPKtN2MsQ9vyUhtv+iWGo=',
+  dataHashHex:
+    'e2e4fe907e0fe99ab77d98f866b3caafbdd9321ae93f7c2b6529c8ef3251e072',
+  dataHash64: '4uT+kH4P6Zq3fZj4ZrPKr73ZMhrpP3wrZSnI7zJR4HI=',
+  expiresAtRaw: 1609520275690,
+  serverTimeRaw: 1609518475690,
+  expiresAt_: '11 h 57 min 55 s',
+  serverTime_: '11 h 27 min 55 s',
+};

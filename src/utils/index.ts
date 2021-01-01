@@ -1,7 +1,7 @@
 import { id0 } from './id0';
 import { void0 } from './void0';
 
-const { log } = console;
+export { formatDate } from './dates';
 export { getHash } from './getHash';
 export { FsImplementationSync, Made, Mode, OptionsSync, sync } from './mkdirp';
 export { perSeconds } from './perSeconds';
@@ -10,10 +10,11 @@ export {
   dateNowNumeric,
   dateRange,
   dateRangeFromNow,
+  dateToISOString,
   dateToNumeric,
-  dateToString,
   day,
   endpointFormatDateTool,
   setDateRange,
 } from './timeutil';
-export { id0, void0, log };
+export { id0, log, void0 };
+const { log } = console;

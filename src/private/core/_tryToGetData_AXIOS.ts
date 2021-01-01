@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
 import crypto from 'crypto';
-
 import {
   CoreApiConfig,
   Credentials,
@@ -64,29 +63,40 @@ export const _tryToGetData = <R, D>(
       }
       try {
         if (credentials) {
-          credentials.remainingRequests = remainingRequests(response);
-          credentials.config_ = _config;
-          credentials.response_ = response;
-
           const BASE64: crypto.BinaryToTextEncoding = 'base64';
           const HEX: crypto.BinaryToTextEncoding = 'hex';
 
-          const stringToHash = _config.url;
+          credentials.remainingRequests = remainingRequests(response);
+
+          credentials.config_ = _config;
+          credentials.response_ = response;
+          credentials.configUrl_ = `${_config.url}`.split('questrade.com/')[1];
+
+          credentials.urlTimeUTC = new Date(credentials.response_.headers.date);
+
+          const urlToHash = credentials.configUrl_;
+          const dataToHash = JSON.stringify(data);
           credentials.urlHashHex = crypto
             .createHash('sha256')
-            .update(stringToHash)
+            .update(urlToHash)
             .digest(HEX);
           credentials.urlHash64 = crypto
             .createHash('sha256')
-            .update(stringToHash)
+            .update(urlToHash)
             .digest(BASE64);
-
-          credentials.urlTime = new Date(credentials.response_.headers.date);
+          credentials.dataHashHex = crypto
+            .createHash('sha256')
+            .update(dataToHash)
+            .digest(HEX);
+          credentials.dataHash64 = crypto
+            .createHash('sha256')
+            .update(dataToHash)
+            .digest(BASE64);
         }
       } catch (error_) {
         console.error('error_:', error_);
         throw error_;
-
+        // 14_984 / 1733;
         // console.error(
         //   "To make tests pass removed 'throw' error messages from code bloc"
         // );

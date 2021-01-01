@@ -725,6 +725,9 @@ eslint-plugin-node
       "backgroundColor": "transparent"
     }
   ],
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
 // Scientia es lux principium ✨ 🌹
 // {
