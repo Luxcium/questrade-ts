@@ -14,6 +14,7 @@ export const questradeApi = async (
     serverTime: qtApi.serverTime,
 
     account: {
+      getServerTime: qtApi.account.getServerTime,
       getActivities: qtApi.account.getActivities,
       getAllAccounts: qtApi.account.getAllAccounts,
       getBalances: qtApi.account.getBalances,
@@ -21,7 +22,6 @@ export const questradeApi = async (
       getOrders: qtApi.account.getOrders,
       getOrdersByIds: qtApi.account.getOrdersByIds,
       getPositions: qtApi.account.getPositions,
-      getServerTime: qtApi.account.getServerTime,
     },
     market: {
       getAllMarkets: qtApi.market.getAllMarkets,

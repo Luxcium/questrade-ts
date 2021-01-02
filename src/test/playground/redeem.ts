@@ -4,15 +4,15 @@
 
 import { redeemToken } from '../..';
 import { getMyToken } from '../../get-token';
-import { axiosConsoleLogHashesProxyHandler, void0 } from '../../utils';
+import { /* axiosConsoleLogHashesProxyHandler, */ void0 } from '../../utils';
 
 export const echo = console.log;
 export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 async function main() {
   // inside of an async function or async IIFE
   const { qtApi, credentials } = await redeemToken(
-    getMyToken(),
-    axiosConsoleLogHashesProxyHandler
+    getMyToken()
+    // axiosConsoleLogHashesProxyHandler
   );
   void0(credentials);
   void0(qtApi);
