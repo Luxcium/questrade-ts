@@ -1,7 +1,7 @@
 import { Credentials, IProxy } from '../../typescript';
+import { _tryToGetData } from './X_tryToGetData_AXIOS_X';
 import { _coreApiConfig } from './_coreApiConfig';
 import { _logErrors } from './_logErrors';
-import { _tryToGetData } from './_tryToGetData_AXIOS';
 
 export const _coreApiFunction = (credentials: Credentials, proxy?: IProxy) => {
   //

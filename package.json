@@ -111,7 +111,7 @@
     "jest": "^26.6.3",
     "questrade-api-enumerations": "^1.1.4",
     "tslib": "^2.0.3",
-    "typedoc": "^0.19.2"
+    "typedoc": "^0.20.7"
   },
   "keywords": [
     "TypeScript",

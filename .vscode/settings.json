@@ -54,14 +54,6 @@
     "source.fixAll.eslint",
     "source.fixAll",
   ],
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-    // "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
-    // "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― PATH-INTELLISENSE
@@ -189,16 +181,16 @@ eslint-plugin-node
   ―― ERRORLENS
   */
   "errorLens.annotationPrefix": [
-    "🍒 ~> ", // ―1 error
-    "⚠️ => ", // ―2 warning
-    "🧩 ", // ―3 hint
-    "🎯 -> ", // ―4 info
+    "🍒 ~~> ", // ―1 error
+    "🧩 ==> ", // ―2 warning
+    "✨ -> ", // ―3 info
+    "🎯 +> ", // ―4 hint
   ],
   "errorLens.enabledDiagnosticLevels": [
-    "error",
-    "warning",
-    "hint",
-    "info",
+    "error", //    0- #F36F
+    "warning", //  0- #CF3F
+    "info", //     0- #FB0F
+    "hint", //     0- #39CF
   ],
   "errorLens.exclude": [
     "may be converted to an ES6 module",
@@ -208,7 +200,6 @@ eslint-plugin-node
   "errorLens.addNumberOfDiagnostics": true,
   "errorLens.borderRadius": "10px",
   "errorLens.delay": 0,
-  "errorLens.errorGutterIconColor": "#F36F",
   "errorLens.errorGutterIconPath": "",
   "errorLens.followCursor": "allLines",
   "errorLens.followCursorMore": 0,
@@ -217,7 +208,6 @@ eslint-plugin-node
   "errorLens.gutterIconsFollowCursorOverride": true,
   "errorLens.gutterIconSize": "80%",
   "errorLens.infoGutterIconPath": "",
-  "errorLens.infoGutterIconColor": "#4AEF",
   "errorLens.light": {},
   "errorLens.margin": "0.75rem",
   "errorLens.messageEnabled": true,
@@ -228,8 +218,10 @@ eslint-plugin-node
   "errorLens.statusBarColorsEnabled": true,
   "errorLens.statusBarMessageEnabled": true,
   "errorLens.statusBarMessageType": "closestProblem",
-  "errorLens.warningGutterIconColor": "#BF2",
   "errorLens.warningGutterIconPath": "",
+  "errorLens.errorGutterIconColor": "#F36F",
+  "errorLens.warningGutterIconColor": "#BF2",
+  "errorLens.infoGutterIconColor": "#4AEF",
   "workbench.colorCustomizations": {
     "errorLens.errorForeground": "#F36F",
     "errorLens.errorBackground": "#F364",
@@ -239,15 +231,1140 @@ eslint-plugin-node
     "errorLens.warningBackground": "#CF34",
     "errorLens.warningMessageBackground": "#CF34",
     "errorLens.statusBarWarningForeground": "#CF3F",
-    "errorLens.hintForeground": "#39CF",
-    "errorLens.hintBackground": "#39C4",
-    "errorLens.hintMessageBackground": "#39C4",
-    "errorLens.statusBarHintForeground": "#39CF",
     "errorLens.infoForeground": "#FB0F",
     "errorLens.infoBackground": "#FB04",
     "errorLens.infoMessageBackground": "#FB04",
     "errorLens.statusBarInfoForeground": "#FB0F",
+    "errorLens.hintForeground": "#39CF",
+    "errorLens.hintBackground": "#39C4",
+    "errorLens.hintMessageBackground": "#39C4",
+    "errorLens.statusBarHintForeground": "#39CF",
   },
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  ―― BETTER COMMENTS
+  */
+  // "color": "#F36B"
+  // "color": "#F80B"
+  // "color": "#FF0B"
+  // "color": "#0F0B"
+  // "color": "#39FB"
+  // "color": "#93FB"
+  // "#F36F",
+  // "#F364",
+  // "#CF3F",
+  // "#CF34",
+  // "#39CF",
+  // "#39C4",
+  // "#FB0F",
+  // "#FB04",
+  "better-comments.highlightPlainText": false,
+  "better-comments.multilineComments": true,
+  "better-comments.tags": [
+    {
+      // #region
+      "tag": "#region",
+      "color": "#555",
+      "strikethrough": false,
+      "backgroundColor": "#FF3D"
+    },
+    {
+      // #endregion
+      "tag": "#endregion",
+      "color": "#222",
+      "strikethrough": false,
+      "backgroundColor": "#F15E"
+    },
+    // "color": "#F36B"
+    // "color": "#F80B"
+    // "color": "#FF0B"
+    // "color": "#0F0B"
+    // "color": "#39FB"
+    // "color": "#93FB"
+    {
+      // constructor
+      "tag": "constructor",
+      "color": "#F15E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // private
+      "tag": "private",
+      "color": "#E22E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // protected
+      "tag": "protected",
+      "color": "#FD3E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // </
+      "tag": "</",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // </>
+      "tag": "</>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // />
+      "tag": "/>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ~-
+      "tag": "~-",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // -~
+      "tag": "-~",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ~@
+      "tag": "~@",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <~
+      "tag": "<~",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <~>
+      "tag": "<~>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ~~
+      "tag": "~~",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <~~
+      "tag": "<~~",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ~~
+      "tag": "~~",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ~>
+      "tag": "~>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ~~
+      "tag": "~~",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ~~>
+      "tag": "~~>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // >=
+      "tag": ">=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <=
+      "tag": "<=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <!--
+      "tag": "<!--",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ##
+      "tag": "##",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ###
+      "tag": "###",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ####
+      "tag": "####",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // |-
+      "tag": "|-",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // -|
+      "tag": "-|",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // |->
+      "tag": "|->",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <-|
+      "tag": "<-|",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // >-|
+      "tag": ">-|",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // |-<
+      "tag": "|-<",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // |=
+      "tag": "|=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // |=>
+      "tag": "|=>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // >-
+      "tag": ">-",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <-
+      "tag": "<-",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <--
+      "tag": "<--",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // -->
+      "tag": "-->",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ->
+      "tag": "->",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // -<
+      "tag": "-<",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // >->
+      "tag": ">->",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // >>-
+      "tag": ">>-",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <<-
+      "tag": "<<-",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <->
+      "tag": "<->",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ->>
+      "tag": "->>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // -<<
+      "tag": "-<<",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <-<
+      "tag": "<-<",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ==>
+      "tag": "==>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // =>
+      "tag": "=>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // =/=
+      "tag": "=/=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // !==
+      "tag": "!==",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // !=
+      "tag": "!=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <==
+      "tag": "<==",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // >>=
+      "tag": ">>=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // =>>
+      "tag": "=>>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // >=>
+      "tag": ">=>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <=>
+      "tag": "<=>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <=<
+      "tag": "<=<",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <<=
+      "tag": "<<=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // =<<
+      "tag": "=<<",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // .-
+      "tag": ".-",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // .=
+      "tag": ".=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // =:=
+      "tag": "=:=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // =!=
+      "tag": "=!=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ==
+      "tag": "==",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ===
+      "tag": "===",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ::
+      "tag": "::",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // :
+      "tag": ":",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // :=
+      "tag": ":=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // :>
+      "tag": ":>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // :<
+      "tag": ":<",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // >:
+      "tag": ">:",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ;;
+      "tag": ";;",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <|
+      "tag": "<|",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <|>
+      "tag": "<|>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // |>
+      "tag": "|>",
+      "color": "#6CBC",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <>
+      "tag": "<>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <$
+      "tag": "<$",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <$>
+      "tag": "<$>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // $>
+      "tag": "$>",
+      "color": "#c54442",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <+
+      "tag": "<+",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // <+>
+      "tag": "<+>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // +>
+      "tag": "+>",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ?=
+      "tag": "?=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // /=
+      "tag": "/=",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // /==
+      "tag": "/==",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // /\
+      "tag": "/\\",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // \/
+      "tag": "\\/",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // __
+      "tag": "__",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // &&
+      "tag": "&&",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ++
+      "tag": "++",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // +++
+      "tag": "+++",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ‽
+      "tag": "‽",
+      "color": "#6CBC",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // TEST_MODULE
+      "tag": "TEST_MODULE",
+      "color": "#6CBC",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // public
+      "tag": "public",
+      "color": "#FFAA00CC", // "#FA0E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // readonly
+      "tag": "readonly",
+      "color": "#FF6600AA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // static
+      "tag": "static",
+      "color": "#FF6600",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // get
+      "tag": "get",
+      "color": "#6BFC",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // set
+      "tag": "set",
+      "color": "#85FE",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // async
+      "tag": "async",
+      "color": "#FB3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // http
+      "tag": "http",
+      "color": "#FB3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // todo
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // iterator
+      "tag": "iterator",
+      "color": "#c54442",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+~~============================================================================== ~~
+*/
+    /*
+
+
+
+ ―1----------------------------------------------------------------------------- ~~
+    */
+    {
+      // ―1
+      "tag": "―1",
+      "color": "#F36F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // 1―
+      "tag": "1―",
+      "color": "#F36F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // -1
+      "tag": "―1",
+      "color": "#F36F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // 1-
+      "tag": "1-",
+      "color": "#F36F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ―― END
+      "tag": "―― END",
+      "color": "#F36D",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // END
+      "tag": "END",
+      "color": "#F36D",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ERROR:
+      "tag": "ERROR:",
+      "color": "#F36D",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    // "color": "#F36B"
+    // "color": "#F80B"
+    // "color": "#FF0B"
+    // "color": "#0F0B"
+    // "color": "#39FB"
+    // "color": "#93FB"
+    /*
+ ―1============================================================================= ~~
+ ―2----------------------------------------------------------------------------- ~~
+    */
+    {
+      // ―2
+      "tag": "―2",
+      "color": "#CF3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // 2―
+      "tag": "2―",
+      "color": "#CF3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // -2
+      "tag": "-2",
+      "color": "#CF3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // 2-
+      "tag": "2-",
+      "color": "#CF3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // WARNING:
+      "tag": "WARNING:",
+      "color": "#CF3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ―― START
+      "tag": "―― START",
+      "color": "#CF3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // START
+      "tag": "START",
+      "color": "#CF3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+ ―2============================================================================= ~~
+ ―3----------------------------------------------------------------------------- ~~
+    */
+    {
+      // ―3
+      "tag": "―3",
+      "color": "#FB0F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // -3
+      "tag": "-3",
+      "color": "#FB0F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // 3―
+      "tag": "3―",
+      "color": "#FB0F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // 3-
+      "tag": "3-",
+      "color": "#FB0F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // INFO:
+      "tag": "INFO:",
+      "color": "#FB0F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+ ―3============================================================================= ~~
+ ―4----------------------------------------------------------------------------- ~~
+    */
+    {
+      // ―4
+      "tag": "―4",
+      "color": "#39CF",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // 4―
+      "tag": "4―",
+      "color": "#39CF",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // -4
+      "tag": "-4",
+      "color": "#39CF",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // 4-
+      "tag": "4-",
+      "color": "#39CF",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // HINT:
+      "tag": "HINT:",
+      "color": "#39CF",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+ ―4============================================================================= ~~
+ ―5----------------------------------------------------------------------------- ~~
+    */
+    {
+      // ―5
+      "tag": "―5",
+      "color": "#39FD",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+ ―5============================================================================= ~~
+ ―6----------------------------------------------------------------------------- ~~
+    */
+    {
+      // ―6
+      "tag": "―6",
+      "color": "#93FD",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+―6============================================================================== ~
+*/
+    /*
+―6============================================================================== ~
+―0------------------------------------------------------------------------------ ~
+*/
+    {
+      // ―0
+      "tag": "―0",
+      "color": "#FFFD",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // 0-
+      "tag": "0-",
+      "color": "#FFFD",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+―0============================================================================== ~
+*/
+    /*
+················································································
+================================================================================
+*/
+    {
+      // ====
+      "tag": "====",
+      "color": "#FA0C",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+
+    */
+    {
+      //                                                                      ―― ~~
+      "tag": "――",
+      "color": "#FA0C",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // |-···
+      "tag": "|-",
+      "color": "#FA0C",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    // ·········································································
+    {
+      // ···
+      "tag": "···",
+      "color": "#FA0C",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // !!
+      "tag": "!!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // @
+      "tag": "@",
+      "color": "#F36B",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // #
+      "tag": "#",
+      "color": "#4AE",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // $
+      "tag": "$",
+      "color": "#f48e41",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    //
+    {
+      // %
+      "tag": "%",
+      "color": "#41e2f4",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ?
+      "tag": "?",
+      "color": "#39FB",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // &
+      "tag": "&",
+      "color": "#93FB",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // *
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // _
+      "tag": "_",
+      "color": "#F80B",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // =
+      "tag": "=",
+      "color": "#F36B",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // +
+      "tag": "+",
+      "color": "#c5f442",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // †
+      "tag": "†",
+      "color": "#c54442",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    { // ¬
+      "tag": "¬",
+      "color": "#FF0B",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ~
+      "tag": "~",
+      "color": "#FF6600DD",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // -
+      "tag": "-",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+  ],
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― EDITOR RULERS
@@ -255,7 +1372,159 @@ eslint-plugin-node
   "editor.rulers": [
     {
       "column": 2,
-      "color": "#FA0C"
+      "color": "#FA0A"
+    },
+    {
+      "column": 4,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 6,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 8,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 10,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 12,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 14,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 16,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 18,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 20,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 22,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 24,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 26,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 28,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 30,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 32,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 34,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 36,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 38,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 40,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 42,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 44,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 46,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 48,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 50,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 52,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 54,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 56,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 58,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 60,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 62,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 64,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 66,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 68,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 70,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 72,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 74,
+      "color": "#90BCFF08",
+    },
+    {
+      "column": 76,
+      "color": "#90BCFF08"
+    },
+    {
+      "column": 78,
+      "color": "#90BCFF08"
     },
     {
       "column": 80,
@@ -264,6 +1533,10 @@ eslint-plugin-node
     {
       "column": 81,
       "color": "#F60C"
+    },
+    {
+      "column": 83,
+      "color": "#90BCFF11"
     },
     {
       "column": 85,
@@ -358,378 +1631,27 @@ eslint-plugin-node
       "color": "#90BCFFDD"
     }
   ],
-  /*
-  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
-  ―― BETTER COMMENTS
-  */
-  // "color": "#F36B"
-  // "color": "#F80B"
-  // "color": "#FF0B"
-  // "color": "#0F0B"
-  // "color": "#39FB"
-  // "color": "#93FB"
-  "better-comments.highlightPlainText": false,
-  "better-comments.multilineComments": true,
-  "better-comments.tags": [
-    {
-      // WARNING:
-      "tag": "WARNING:",
-      "color": "#FD3E",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // !!
-      "tag": "!!",
-      "color": "#FF2D00",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ?
-      "tag": "?",
-      "color": "#3498DB",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // $
-      "tag": "$",
-      "color": "#f48e41",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // IIFE
-      "tag": "IIFE",
-      "color": "#FF3D",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // #region
-      "tag": "#region",
-      "color": "#555",
-      "strikethrough": false,
-      "backgroundColor": "#FF3D"
-    },
-    {
-      // #endregion
-      "tag": "#endregion",
-      "color": "#222",
-      "strikethrough": false,
-      "backgroundColor": "#F15E"
-    },
-    {
-      // #
-      "tag": "#",
-      "color": "#4AE",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // constructor
-      "tag": "constructor",
-      "color": "#F15E",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // private
-      "tag": "private",
-      "color": "#E22E",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // protected
-      "tag": "protected",
-      "color": "#FD3E",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ‽
-      "tag": "‽",
-      "color": "#6CBC",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // TEST_MODULE
-      "tag": "TEST_MODULE",
-      "color": "#6CBC",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // public
-      "tag": "public",
-      "color": "#FFAA00CC", // "#FA0E",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // readonly
-      "tag": "readonly",
-      "color": "#FF6600AA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // static
-      "tag": "static",
-      "color": "#FF6600",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // get
-      "tag": "get",
-      "color": "#6BFC",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // set
-      "tag": "set",
-      "color": "#85FE",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // %
-      "tag": "%",
-      "color": "#41e2f4",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // # -c-54442
-      // †
-      "tag": "†",
-      "color": "#c54442",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // +
-      "tag": "+",
-      "color": "#c5f442",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // async
-      "tag": "async",
-      "color": "#FB3F",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // http
-      "tag": "http",
-      "color": "#FB3F",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // &
-      "tag": "&",
-      "color": "#a041f4",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // todo
-      "tag": "todo",
-      "color": "#FF8C00",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // *
-      "tag": "*",
-      "color": "#98C379",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // iterator
-      "tag": "iterator",
-      "color": "#c54442",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      /*
-~~============================================================================== ~~
-*/
-      // ¬
-      "tag": "¬",
-      "color": "#FF6600DD",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ~
-      "tag": "~",
-      "color": "#FF6600DD",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // -
-      "tag": "-",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    /*
- ―1----------------------------------------------------------------------------- ~~
-    */
-    {
-      // ―1
-      "tag": "―1",
-      "color": "#F36D",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ―― END
-      "tag": "―― END",
-      "color": "#F36D",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    // "color": "#F36B"
-    // "color": "#F80B"
-    // "color": "#FF0B"
-    // "color": "#0F0B"
-    // "color": "#39FB"
-    // "color": "#93FB"
-    /*
- ―1============================================================================= ~~
- ―2----------------------------------------------------------------------------- ~~
-    */
-    {
-      // ―2
-      "tag": "―2",
-      "color": "#F80B",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    /*
- ―2============================================================================= ~~
- ―3----------------------------------------------------------------------------- ~~
-    */
-    {
-      // ―3
-      "tag": "―3",
-      "color": "#FF0D",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    /*
- ―3============================================================================= ~~
- ―4----------------------------------------------------------------------------- ~~
-    */
-    {
-      // ―4
-      "tag": "―4",
-      "color": "#0F0D",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ―4
-      "tag": "―― START",
-      "color": "#0F0D",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    /*
- ―4============================================================================= ~~
- ―5----------------------------------------------------------------------------- ~~
-    */
-    {
-      // ―5
-      "tag": "―5",
-      "color": "#39FD",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    /*
- ―5============================================================================= ~~
- ―6----------------------------------------------------------------------------- ~~
-    */
-    {
-      // ―6
-      "tag": "―6",
-      "color": "#93FD",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    /*
-―6============================================================================== ~
-*/
-    /*
-―6============================================================================== ~
-―0------------------------------------------------------------------------------ ~
-*/
-    {
-      // ―0
-      "tag": "―0",
-      "color": "#FFFD",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    /*
-―0============================================================================== ~
-*/
-    /*
-················································································
-================================================================================
-*/
-    {
-      // ====
-      "tag": "====",
-      "color": "#FA0C",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    /*
-  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
-
-    */
-    {
-      //                                                                      ―― ~~
-      "tag": "――",
-      "color": "#FA0C",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // |-···
-      "tag": "|-",
-      "color": "#FA0C",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    // ·········································································
-    {
-      // ···
-      "tag": "···",
-      "color": "#FA0C",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    }
-  ],
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.fontFamily": "'VictorMono Nerd Font', 'hurmit Nerd Font mono','ProFontWindows Nerd Font mono','meslolgl Nerd Font mono','Iosevka Nerd Font Mono','SauceCodePro Nerd Font','ProFontIIx Nerd Font',mono",
+    // "editor.fontSize": 26,
+    // "editor.fontWeight": "400",
+    // "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.fontFamily": "'VictorMono Nerd Font', 'hurmit Nerd Font mono','ProFontWindows Nerd Font mono','meslolgl Nerd Font mono','Iosevka Nerd Font Mono','SauceCodePro Nerd Font','ProFontIIx Nerd Font',mono",
+    // "editor.fontSize": 22,
+    // "editor.fontWeight": "500",
+    // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.fontFamily": "'VictorMono Nerd Font', 'hurmit Nerd Font mono','ProFontWindows Nerd Font mono','meslolgl Nerd Font mono','Iosevka Nerd Font Mono','SauceCodePro Nerd Font','ProFontIIx Nerd Font',mono",
+    // "editor.fontSize": 22,
+    // "editor.fontWeight": "500",
+    // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
 }
-// Scientia es lux principium ✨ 🌹
-// {
-//     "typescript.tsdk": "node_modules/typescript/lib"
-// }
+// Scientia es lux principium ✨

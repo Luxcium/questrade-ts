@@ -5,6 +5,7 @@ export { formatDate } from './dates';
 export { getHash } from './getHash';
 export { FsImplementationSync, Made, Mode, OptionsSync, sync } from './mkdirp';
 export { perSeconds } from './perSeconds';
+export { ProxyReflexionLoggerFunctionHandler } from './proxies/proxy';
 export {
   dateNowISO,
   dateNowNumeric,

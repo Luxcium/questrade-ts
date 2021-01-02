@@ -101,7 +101,7 @@
     "unicorn/no-fn-reference-in-iterator": "off",
     "unicorn/no-for-loop": "warn",
     "unicorn/no-hex-escape": "warn",
-    "unicorn/no-keyword-prefix": "error",
+    "unicorn/no-keyword-prefix": "off",
     "unicorn/no-new-buffer": "warn",
     "unicorn/no-null": "off",
     "unicorn/no-object-as-default-parameter": "off",

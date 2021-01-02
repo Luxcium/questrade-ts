@@ -1,5 +1,5 @@
+import { _tryToGetData } from '../../private/core/X_tryToGetData_AXIOS_X';
 import { _logErrors } from '../../private/core/_logErrors';
-import { _tryToGetData } from '../../private/core/_tryToGetData_AXIOS';
 
 test('should ERROR _tryToGetData', async done => {
   const response = _tryToGetData({

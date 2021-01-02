@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 import {
   AuthApiConfig,
   AxiosIntrospectRes,
@@ -26,6 +25,7 @@ export const _oAuthAxiosCredentials = async (
   };
 
   void proxy; // TODO: Implement usage of proxy
+
   let response: AxiosIntrospectRes<IRefreshCreds>;
   response = (await axios(_config)) as any;
 

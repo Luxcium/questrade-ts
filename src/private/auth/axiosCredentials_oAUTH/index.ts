@@ -1,1 +1,1 @@
-export { _oAuthAxiosCredentials } from './_axiosCredentials_oAUTH';
+export { _oAuthAxiosCredentials } from './X_axiosCredentials_oAUTH_X';
