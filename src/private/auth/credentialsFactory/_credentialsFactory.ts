@@ -1,4 +1,4 @@
-import { IProxy, QuestradeAPIOptions } from '../../../typescript';
+import { AxiosProxyHandler, QuestradeAPIOptions } from '../../../typescript';
 import { _getAccounts, _getServerTime } from '../../api/AccountsCalls';
 import { _oAuthAxiosCredentials } from '../axiosCredentials_oAUTH';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
@@ -6,7 +6,7 @@ import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 export const _credentialsFactory = async (
   options: QuestradeAPIOptions,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ) => {
   const credentials = await _oAuthAxiosCredentials(options, proxy);
 

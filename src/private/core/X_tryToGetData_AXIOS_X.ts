@@ -1,9 +1,10 @@
 import axios, { AxiosResponse } from 'axios';
 import crypto from 'crypto';
+
 import {
+  AxiosProxyHandler,
   CoreApiConfig,
   Credentials,
-  IProxy,
   LogErrors,
 } from '../../typescript';
 import {
@@ -15,7 +16,7 @@ import {
 export const _tryToGetData = <R, D>(
   _config: CoreApiConfig<D>,
   credentials?: Credentials,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ) => {
   return async (_logError: LogErrors): Promise<R> => {
     try {

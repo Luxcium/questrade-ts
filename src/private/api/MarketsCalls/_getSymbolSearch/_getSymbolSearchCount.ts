@@ -1,11 +1,15 @@
-import { Credentials, IProxy, ISymbols } from '../../../../typescript';
+import {
+  AxiosProxyHandler,
+  Credentials,
+  ISymbols,
+} from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
 
 // + _getSymbolSearchCount
 /** _getSymbolSearch */
 export const _getSymbolSearchCount = (
   credentials: Credentials,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ) => async (prefix: string): Promise<number> => {
   try {
     const endpoint = `/symbols/search?prefix=${prefix}`;

@@ -1,10 +1,15 @@
-import { Credentials, IOrder, IOrders, IProxy } from '../../../../typescript';
+import {
+  AxiosProxyHandler,
+  Credentials,
+  IOrder,
+  IOrders,
+} from '../../../../typescript';
 import { _axiosAccountGetApi } from '../../../routes';
 // + _getOrderByIds
 /** _getOrders */
 export const _getOrdersByIds = (
   credentials: Credentials,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ) => async (orderId: number[]): Promise<IOrder[]> => {
   try {
     //

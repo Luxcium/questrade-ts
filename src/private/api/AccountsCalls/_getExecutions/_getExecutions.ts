@@ -1,17 +1,18 @@
 import {
+  AxiosProxyHandler,
   Credentials,
   IExecution,
   IExecutions,
-  IProxy,
 } from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
 import { _axiosAccountGetApi } from '../../../routes';
 
 // + _getExecutions
 /** _getExecutions */
-export const _getExecutions = (credentials: Credentials, proxy?: IProxy) => (
-  startDate: string
-) => async (endDate: string): Promise<IExecution[]> => {
+export const _getExecutions = (
+  credentials: Credentials,
+  proxy?: AxiosProxyHandler
+) => (startDate: string) => async (endDate: string): Promise<IExecution[]> => {
   try {
     const executions = await _axiosAccountGetApi(
       credentials,

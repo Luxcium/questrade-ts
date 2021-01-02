@@ -1,4 +1,4 @@
-import { Credentials, IProxy } from '../../../../typescript';
+import { AxiosProxyHandler, Credentials } from '../../../../typescript';
 
 const _urlSeprator = () => '/';
 const _baseAcctUrlStr = (): string => 'accounts';
@@ -19,12 +19,15 @@ export const _endpointFormatAccount = _endPtAccountBaseURL(_credAcctNmbrProp)(
 )(_baseAcctUrlStr);
 
 export type EndPtAccountBaseURL = (
-  getCredAcctProp: (credentials: Credentials, proxy: IProxy) => string
+  getCredAcctProp: (
+    credentials: Credentials,
+    proxy: AxiosProxyHandler
+  ) => string
 ) => (
   urlSep: () => string
 ) => (
   acctUrlStr: () => string
 ) => (
   credentials: Credentials,
-  proxy: IProxy
+  proxy: AxiosProxyHandler
 ) => (accountEndpoint: string) => string;

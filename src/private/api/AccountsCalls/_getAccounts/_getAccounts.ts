@@ -1,14 +1,17 @@
 import {
+  AxiosProxyHandler,
   Credentials,
   IAccount,
   IAccounts,
-  IProxy,
 } from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
 
 // + _getAccounts
 /** _getAccounts */
-export function _getAccounts(credentials: Credentials, proxy?: IProxy) {
+export function _getAccounts(
+  credentials: Credentials,
+  proxy?: AxiosProxyHandler
+) {
   //
   return async (): Promise<IAccount[]> => {
     try {

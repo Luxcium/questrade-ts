@@ -1,9 +1,10 @@
 import axios from 'axios';
+
 import {
   AuthApiConfig,
   AxiosIntrospectRes,
+  AxiosProxyHandler,
   Credentials,
-  IProxy,
   IRefreshCreds,
   QuestradeAPIOptions,
 } from '../../../typescript';
@@ -12,7 +13,7 @@ import { _writeToken } from './_writeToken';
 
 export const _oAuthAxiosCredentials = async (
   options: QuestradeAPIOptions,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ): Promise<Credentials> => {
   const { refreshToken, credentials } = _validateToken(options);
   const _config: AuthApiConfig = {

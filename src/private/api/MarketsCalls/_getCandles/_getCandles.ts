@@ -1,14 +1,20 @@
-import { Credentials, ICandle, ICandles, IProxy } from '../../../../typescript';
+import {
+  AxiosProxyHandler,
+  Credentials,
+  ICandle,
+  ICandles,
+} from '../../../../typescript';
 import { endpointFormatDateTool, getHash } from '../../../../utils';
 import { _axiosGetApi } from '../../../routes';
 
 // + _getCandles endpointFormatDateTool
 /** _getCandles */
-export const _getCandles = (credentials: Credentials, proxy?: IProxy) => (
-  symbolID: number
-) => (interval: string = 'OneDay') => (startDate: string) => async (
-  endDate: string
-): Promise<ICandle[]> => {
+export const _getCandles = (
+  credentials: Credentials,
+  proxy?: AxiosProxyHandler
+) => (symbolID: number) => (interval: string = 'OneDay') => (
+  startDate: string
+) => async (endDate: string): Promise<ICandle[]> => {
   try {
     return (
       //

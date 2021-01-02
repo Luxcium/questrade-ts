@@ -1,11 +1,16 @@
-import { Credentials, IProxy, IQuote, IQuotes } from '../../../../typescript';
+import {
+  AxiosProxyHandler,
+  Credentials,
+  IQuote,
+  IQuotes,
+} from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
 
 // + _getQuotesByID
 /** _getQuotesFromSymbolID */
 export const _getQuotesByIds = (
   credentials: Credentials,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ) => async (ids: number[]): Promise<IQuote[]> => {
   try {
     return (

@@ -1,4 +1,4 @@
-import { Credentials, IProxy } from '../../../typescript';
+import { AxiosProxyHandler, Credentials } from '../../../typescript';
 import { _coreApiFunction } from '../../core';
 import { _endpointFormatAccount } from './endpointFormatAccount';
 
@@ -9,7 +9,7 @@ import { _endpointFormatAccount } from './endpointFormatAccount';
  */
 export const _axiosAccountGetApi = (
   credentials: Credentials,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ) => <R>(accountEndpoint: string) =>
   _coreApiFunction(credentials, proxy)('GET')(null)<R>(
     _endpointFormatAccount(credentials, proxy)(accountEndpoint)

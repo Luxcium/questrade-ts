@@ -1,12 +1,20 @@
-import { Credentials, IOrder, IOrders, IProxy } from '../../../../typescript';
+import {
+  AxiosProxyHandler,
+  Credentials,
+  IOrder,
+  IOrders,
+} from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
 import { _axiosAccountGetApi } from '../../../routes';
 
 // + _getOrders
 /** _getOrders */
-export const _getOrders = (credentials: Credentials, proxy?: IProxy) => (
-  stateFilter: string = 'All'
-) => (startDate: string) => async (endDate: string): Promise<IOrder[]> => {
+export const _getOrders = (
+  credentials: Credentials,
+  proxy?: AxiosProxyHandler
+) => (stateFilter: string = 'All') => (startDate: string) => async (
+  endDate: string
+): Promise<IOrder[]> => {
   try {
     const orders = await _axiosAccountGetApi(
       credentials,

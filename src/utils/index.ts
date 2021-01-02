@@ -5,7 +5,10 @@ export { formatDate } from './dates';
 export { getHash } from './getHash';
 export { FsImplementationSync, Made, Mode, OptionsSync, sync } from './mkdirp';
 export { perSeconds } from './perSeconds';
-export { ProxyReflexionLoggerFunctionHandler } from './proxies/proxy';
+export {
+  axiosProxyHandler,
+  ProxyReflexionLoggerFunctionHandler,
+} from './proxies';
 export {
   dateNowISO,
   dateNowNumeric,
@@ -18,4 +21,5 @@ export {
   setDateRange,
 } from './timeutil';
 export { id0, log, void0 };
+
 const { log } = console;

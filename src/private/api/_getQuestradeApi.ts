@@ -1,6 +1,6 @@
 import {
+  AxiosProxyHandler,
   Credentials,
-  IProxy,
   OptionsFilters,
   QuestradeApi,
   StrategyVariantRequest,
@@ -35,7 +35,7 @@ import {
 
 export const _getQuestradeApi = async (
   credentials: Credentials,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ): Promise<QuestradeApi> => {
   const [
     accounts,

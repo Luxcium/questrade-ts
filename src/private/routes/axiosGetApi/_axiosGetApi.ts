@@ -1,4 +1,4 @@
-import { Credentials, IProxy } from '../../../typescript';
+import { AxiosProxyHandler, Credentials } from '../../../typescript';
 import { _coreApiFunction } from '../../core';
 
 // # _axiosApiGet !!!
@@ -6,5 +6,7 @@ import { _coreApiFunction } from '../../core';
  * YOU PROVIDE: credentials and endpoint string with <R> return type,
  * THEN YOU GET: ( )=> Promise<R>
  */
-export const _axiosGetApi = (credentials: Credentials, proxy?: IProxy) =>
-  _coreApiFunction(credentials, proxy)('GET')(null);
+export const _axiosGetApi = (
+  credentials: Credentials,
+  proxy?: AxiosProxyHandler
+) => _coreApiFunction(credentials, proxy)('GET')(null);

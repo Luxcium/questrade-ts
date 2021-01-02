@@ -1,11 +1,16 @@
-import { Credentials, IMarket, IMarkets, IProxy } from '../../../../typescript';
+import {
+  AxiosProxyHandler,
+  Credentials,
+  IMarket,
+  IMarkets,
+} from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
 
 // + _getMarkets
 /** _getMarkets */
 export const _getMarkets = (
   credentials: Credentials,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ) => async (): Promise<IMarket[]> => {
   try {
     return (await _axiosGetApi(credentials, proxy)<IMarkets>('/markets')())

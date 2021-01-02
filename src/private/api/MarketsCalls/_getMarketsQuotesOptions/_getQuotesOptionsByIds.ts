@@ -1,9 +1,13 @@
-import { Credentials, IOptionsQuote, IProxy } from '../../../../typescript';
+import {
+  AxiosProxyHandler,
+  Credentials,
+  IOptionsQuote,
+} from '../../../../typescript';
 import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
 export const _getQuotesOptionsByIds = (
   credentials: Credentials,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ) => async (optionIds: number[]): Promise<IOptionsQuote[]> => {
   try {
     return _getMarketsQuotesOptions(credentials, proxy)(

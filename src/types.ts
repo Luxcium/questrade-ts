@@ -1,6 +1,7 @@
 export type {
   AcountNumberString,
   AxiosIntrospectRes,
+  AxiosProxyHandler,
   Balances,
   CallBack,
   CoreApiConfig,
@@ -38,7 +39,6 @@ export type {
   IOrders,
   IPosition,
   IPositions,
-  IProxy,
   IQuestradeAPIOptions,
   IQuote,
   IQuotes,

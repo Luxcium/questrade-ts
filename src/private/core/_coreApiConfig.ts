@@ -1,11 +1,18 @@
-import { CoreApiConfig, Credentials, IProxy } from '../../typescript';
+import {
+  AxiosProxyHandler,
+  CoreApiConfig,
+  Credentials,
+} from '../../typescript';
 
 /**
  * Partial application of Core api config builder generating an
  * object of strings value in the format of CoreApiConfig<D> to
  * be sent to axios as main parameter.
  */
-export const _coreApiConfig = <D>(credentials: Credentials, proxy?: IProxy) => {
+export const _coreApiConfig = <D>(
+  credentials: Credentials,
+  proxy?: AxiosProxyHandler
+) => {
   void proxy; // TODO: use proxy
   //
   return (VERB: 'GET' | 'POST') => {

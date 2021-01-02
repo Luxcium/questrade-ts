@@ -1,11 +1,15 @@
-import { Credentials, IBalances, IProxy } from '../../../../typescript';
+import {
+  AxiosProxyHandler,
+  Credentials,
+  IBalances,
+} from '../../../../typescript';
 import { _axiosAccountGetApi } from '../../../routes';
 
 // + _getBalances
 /** _getBalances */
 export const _getBalances = (
   credentials: Credentials,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ) => async (): Promise<IBalances> => {
   try {
     return _axiosAccountGetApi(credentials, proxy)<IBalances>('/balances')();

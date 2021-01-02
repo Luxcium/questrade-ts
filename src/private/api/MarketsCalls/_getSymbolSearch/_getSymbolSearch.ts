@@ -1,6 +1,6 @@
 import {
+  AxiosProxyHandler,
   Credentials,
-  IProxy,
   ISymbolSearchResult,
 } from '../../../../typescript';
 import { _getSymbolSearchAll } from './_getSymbolSearchAll';
@@ -9,7 +9,7 @@ import { _getSymbolSearchAll } from './_getSymbolSearchAll';
 /** _getSymbolSearch */
 export const _getSymbolSearch = (
   credentials: Credentials,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ) => async (
   prefix: string,
   offset: number = 0

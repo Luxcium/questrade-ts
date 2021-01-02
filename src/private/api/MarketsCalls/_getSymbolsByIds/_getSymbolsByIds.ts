@@ -1,11 +1,16 @@
-import { Credentials, IProxy, ISymbol, ISymbols } from '../../../../typescript';
+import {
+  AxiosProxyHandler,
+  Credentials,
+  ISymbol,
+  ISymbols,
+} from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
 
 // + _getSymbolsByIDs
 /** _getSymbolFromSymbolID */
 export const _getSymbolsByIds = (
   credentials: Credentials,
-  proxy?: IProxy
+  proxy?: AxiosProxyHandler
 ) => async (stockId: number[]): Promise<ISymbol[]> => {
   try {
     return (
