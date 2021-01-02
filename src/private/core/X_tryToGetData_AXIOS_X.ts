@@ -1,5 +1,4 @@
-import axios, { AxiosResponse } from 'axios';
-import crypto from 'crypto';
+import axios, { AxiosResponse, AxiosStatic } from 'axios';
 
 import {
   AxiosProxyHandler,
@@ -7,6 +6,7 @@ import {
   Credentials,
   LogErrors,
 } from '../../typescript';
+import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../utils';
 import {
   remainingRequests,
   remaningTimeString,
@@ -20,19 +20,22 @@ export const _tryToGetData = <R, D>(
 ) => {
   return async (_logError: LogErrors): Promise<R> => {
     try {
+      let axiosClient: AxiosStatic = axios;
+      if (proxy) {
+        axiosClient = proxy;
+      }
+
       const possiblePerSeconds =
         credentials?.remainingRequests?.possiblePerSeconds ?? 21;
       let response: AxiosResponse;
       if (possiblePerSeconds <= 20) {
         //
-        // TODO: use proxy
-        void proxy;
         const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
         response = await requestLimiter(
-          async (): Promise<AxiosResponse<R>> => axios(_config)
+          async (): Promise<AxiosResponse<R>> => axiosClient(_config)
         );
       } else {
-        response = await axios(_config);
+        response = await axiosClient(_config);
       }
       if (response.status !== 200) {
         console.log('________________________________________________');
@@ -64,9 +67,6 @@ export const _tryToGetData = <R, D>(
       }
       try {
         if (credentials) {
-          const BASE64: crypto.BinaryToTextEncoding = 'base64';
-          const HEX: crypto.BinaryToTextEncoding = 'hex';
-
           credentials.remainingRequests = remainingRequests(response);
 
           credentials.config_ = _config;
@@ -75,32 +75,17 @@ export const _tryToGetData = <R, D>(
 
           credentials.urlTimeUTC = new Date(credentials.response_.headers.date);
 
-          const urlToHash = credentials.configUrl_;
-          const dataToHash = JSON.stringify(data);
-          credentials.urlHashHex = crypto
-            .createHash('sha256')
-            .update(urlToHash)
-            .digest(HEX);
-          credentials.urlHash64 = crypto
-            .createHash('sha256')
-            .update(urlToHash)
-            .digest(BASE64);
-          credentials.dataHashHex = crypto
-            .createHash('sha256')
-            .update(dataToHash)
-            .digest(HEX);
-          credentials.dataHash64 = crypto
-            .createHash('sha256')
-            .update(dataToHash)
-            .digest(BASE64);
+          const urlToHash = getQtUrlPathFromArgs(_config);
+          const dataToHash = `${JSON.stringify(response.data ?? null)}`;
+
+          credentials.hashes = creatUrlAndDataHashes(urlToHash, dataToHash);
         }
       } catch (error_) {
         console.error('error_:', error_);
+        console.info(
+          "To make tests pass removed 'throw' error messages from code bloc in (Axios) _tryToGetData"
+        );
         throw error_;
-        // 14_984 / 1733;
-        // console.error(
-        //   "To make tests pass removed 'throw' error messages from code bloc"
-        // );
       }
       return data;
     } catch (error) {

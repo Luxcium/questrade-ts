@@ -1,4 +1,3 @@
-
 export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
   implements ProxyHandler<T> {
   getPrototypeOf(target: T): object | null {
@@ -120,3 +119,91 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
     return Reflect.construct(target, argArray, newTarget);
   }
 }
+
+/*
+
+
+  + Terminologie
+
+  # gestionnaire (handler)
+  Un objet qui contient les trappes qui intercepteront les opérations.
+
+  # trappes
+  Les méthodes qui fournissent l'accès aux propriétés. Ce concept est analogue
+  aux trappes utilisées dans les systèmes d'exploitations.
+
+  # cible
+  L'objet virtualisé par le proxy. Il est souvent utilisé comme objet de
+  stockage. Les invariants (c'est-à-dire les éléments de sémantique qui restent
+  inchangés) relatifs à la non-extensibilité et au caractère non-configurable
+  des propriétés sont vérifiés par rapport à la cible.
+
+  +Syntaxe
+  * var p = new Proxy(cible, gestionnaire);
+
+  + Paramètres
+
+  # cible
+  Une cible (qui peut être n'importe quel objet, un tableau, une fonction,
+  ou même un autre proxy) qu'on souhaite envelopper dans un Proxy.
+
+  # gestionnaire
+  Un objet dont les propriétés sont des fonctions qui définissent le
+  comportement du proxy lorsqu'on utilise une opération sur celui-ci.
+
+  +Méthodes
+  $> Permet de créer un objet Proxy révocable:
+  |> Proxy.revocable()
+
+  +Méthodes pour le gestionnaire
+  L'objet utilisé comme gestionnaire regroupe les différentes fonctions
+  « trappes » pour le Proxy.
+
+  Toutes ces trappes sont optionnelles. Si une trappe n'a pas été définie,
+  le comportement par défaut sera de transmettre l'opération à la cible.
+
+
+  $> Une trappe pour Object.getPrototypeOf:
+  |> handler.getPrototypeOf()
+
+  $> Une trappe pour Object.setPrototypeOf:
+  |> handler.setPrototypeOf()
+
+  $> Une trappe pour Object.isExtensible:
+  |> handler.isExtensible()
+
+  $> Une trappe pour Object.preventExtensions:
+  |> handler.preventExtensions()
+
+  $> Une trappe pour Object.getOwnPropertyDescriptor:
+  |> handler.getOwnPropertyDescriptor()
+
+  $> Une trappe pour Object.defineProperty:
+  |> handler.defineProperty()
+
+  $> Une trappe pour l'opérateur in:
+  |> handler.has()
+
+  $> Une trappe pour l'accès aux valeurs des propriétés:
+  |> handler.get()
+
+  $> Une trappe pour la définition des valeurs des propriétés:
+  |> handler.set()
+
+  $> Une trappe pour l'opérateur delete:
+  |> handler.deleteProperty()
+
+  $> Une trappe pour Object.getOwnPropertyNames et Object.getOwnPropertySymbols:
+  |> handler.ownKeys()
+
+  $> Une trappe pour l'appel d'une fonction:
+  |> handler.apply()
+
+  $> Une trappe pour l'opérateur new:
+  |> handler.construct()
+
+  Certaines trappes non standards sont désormais obsolètes et ont été supprimées.
+
+
+
+*/

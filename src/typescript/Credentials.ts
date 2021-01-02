@@ -1,5 +1,6 @@
 import { AxiosResponse } from 'axios';
-import { CoreApiConfig, ITimeRateLimiter } from '.';
+
+import { CoreApiConfig, ITimeRateLimiter, UrlDataAndHashes } from '.';
 
 export interface Credentials {
   accessToken: string;
@@ -22,15 +23,12 @@ export interface Credentials {
   remainingRequests?: ITimeRateLimiter;
   response_?: AxiosResponse<any>;
   config_?: CoreApiConfig<any>;
-  urlHashHex?: string;
-  urlHash64?: string;
-  dataHashHex?: string;
-  dataHash64?: string;
   urlTimeUTC?: Date;
   apiServer: string;
   configUrl_?: string;
   serverTime_?: string | number | Date;
   expiresAt_?: string | number | Date;
+  hashes?: UrlDataAndHashes;
   toString(): string;
   toValue(): string;
 }

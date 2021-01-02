@@ -1,2 +1,4 @@
+import { AxiosStatic } from 'axios';
+
 /** IProxy placeholder will be an interface at term  */
-export type AxiosProxyHandler = any;
+export type AxiosProxyHandler = AxiosStatic | undefined;

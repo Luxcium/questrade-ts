@@ -1,12 +1,15 @@
 import { id0 } from './id0';
 import { void0 } from './void0';
 
+export { creatUrlAndDataHashes } from './create-url-and-data-hashes';
 export { formatDate } from './dates';
+export { getQtUrlPathFromArgs } from './get-qt-url-path-from-args';
 export { getHash } from './getHash';
 export { FsImplementationSync, Made, Mode, OptionsSync, sync } from './mkdirp';
 export { perSeconds } from './perSeconds';
 export {
-  axiosProxyHandler,
+  axiosConsoleLogHashesProxyHandler,
+  axiosProxyFactory,
   ProxyReflexionLoggerFunctionHandler,
 } from './proxies';
 export {

@@ -90,4 +90,5 @@ export {
   QuestradeApi,
 } from './QuestradeApi';
 export { ReqLimiterFactory } from './ReqLimiterFactory';
+export { UrlDataAndHashes } from './UrlAndDataHashes';
 export { WillCallBack } from './WillCallBack';

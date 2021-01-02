@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosStatic } from 'axios';
 
 import {
   AuthApiConfig,
@@ -26,9 +26,12 @@ export const _oAuthAxiosCredentials = async (
   };
 
   void proxy; // TODO: Implement usage of proxy
-
+  let axiosClient: AxiosStatic = axios;
+  if (proxy) {
+    axiosClient = proxy;
+  }
   let response: AxiosIntrospectRes<IRefreshCreds>;
-  response = (await axios(_config)) as any;
+  response = (await axiosClient(_config)) as any;
 
   if (!response.data) {
     if (response) {
