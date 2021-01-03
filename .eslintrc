@@ -85,7 +85,7 @@
     */
     "unicorn/better-regex": "warn",
     "unicorn/catch-error-name": "warn",
-    "unicorn/consistent-function-scoping": "error",
+    "unicorn/consistent-function-scoping": "off",
     "unicorn/custom-error-definition": "warn",
     "unicorn/error-message": "error",
     "unicorn/escape-case": "warn",
@@ -93,7 +93,7 @@
     "unicorn/explicit-length-check": "warn",
     "unicorn/filename-case": "off",
     "unicorn/import-index": "warn",
-    "unicorn/import-style": "error",
+    "unicorn/import-style": "off",
     "unicorn/new-for-builtins": "warn",
     "unicorn/no-abusive-eslint-disable": "off",
     "unicorn/no-array-instanceof": "warn",

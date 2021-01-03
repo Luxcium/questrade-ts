@@ -1,11 +1,11 @@
 const path = require('path');
-
+//  false | "warning" | "error"
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   cache: true,
   devtool: false, // 'eval',
   performance: {
-    hints: 'error',
+    hints: 'warning',
   },
   entry: './build/src/index.js',
   output: {
@@ -24,6 +24,15 @@ module.exports = {
 
 // { "path": require.resolve("path-browserify") }
 /*
+
+ * ./build/src/private/api/AccountsCalls/_getBalances/_myBalances.js 5:35-72
+ * ./build/src/private/api/AccountsCalls/index.js 10:20-57
+ * ./build/src/private/api/_getQuestradeApi.js 6:22-48
+ * ./build/src/private/api/index.js 4:25-54
+ * ./build/src/private/index.js 4:12-28
+ * ./build/src/public/redeemToken.js 5:16-37
+ * ./build/src/public/index.js 4:20-44
+ * ./build/src/index.js 6:15-34
 
 WARNING in ./node_modules/questrade-api-enumerations/qtEnumerations.js 3:24-31
 WARNING in configuration
@@ -130,4 +139,71 @@ npm ERR! command sh -c webpack
 
 npm ERR! A complete log of this run can be found in:
 npm ERR!     /home/luxcium/.npm/_logs/2021-01-03T17_08_54_075Z-debug.log
+
+
+
+
+yarn upgrade v1.22.10
+[1/4] Resolving packages...
+
+warning babel-jest > @jest/transform > jest-haste-map > sane > micromatch > snapdragon > source-map-resolve > resolve-url@0.2.1: https://github.com/lydell/resolve-url#deprecated
+
+warning babel-jest > @jest/transform > jest-haste-map > sane > micromatch > snapdragon > source-map-resolve > urix@0.1.0: Please see https://github.com/lydell/urix#deprecated
+
+warning coveralls > request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+
+warning coveralls > request > har-validator@5.1.5: this library is no longer supported
+
+warning jest > jest-cli > jest-config > jest-environment-jsdom > jsdom > request@2.88.2: request has been deprecated, see https://github.com/request/request/issues/3142
+
+warning jest > jest-cli > jest-config > jest-environment-jsdom > jsdom > request-promise-native@1.0.9: request-promise-native has been deprecated because it extends the now deprecated request package, see https://github.com/request/request/issues/3142
+[2/4] Fetching packages...
+info fsevents@2.2.1: The platform "linux" is incompatible with this module.
+info "fsevents@2.2.1" is an optional dependency and failed compatibility check. Excluding it from installation.
+[3/4] Linking dependencies...
+[4/4] Rebuilding all packages...
+success Saved lockfile.
+success Saved 728 new dependencies.
+info Direct dependencies
+├─ @babel/preset-env@7.12.11
+├─ @types/eslint-config-prettier@6.11.0
+├─ @types/eslint-plugin-prettier@3.1.0
+├─ @types/jest@26.0.19
+├─ @types/ramda@0.27.34
+├─ @types/redis@2.8.28
+├─ @typescript-eslint/eslint-plugin@4.11.1
+├─ @typescript-eslint/parser@4.11.1
+├─ axios@0.21.1
+├─ concurrently@5.3.0
+├─ copyfiles@2.4.1
+├─ coveralls@3.1.0
+├─ crypto-browserify@3.12.0
+├─ dotenv@8.2.0
+├─ eslint-config-prettier@7.1.0
+├─ eslint-plugin-import@2.22.1
+├─ eslint-plugin-jsdoc@30.7.13
+├─ eslint-plugin-jsonc@0.8.1
+├─ eslint-plugin-prettier@3.3.0
+├─ eslint-plugin-simple-import-sort@7.0.0
+├─ eslint-plugin-unicorn@24.0.0
+├─ eslint@7.17.0
+├─ jest@26.6.3
+├─ path-browserify@1.0.1
+├─ prettier@2.2.1
+├─ questrade-api-enumerations@1.1.4
+├─ ramda@0.27.1
+├─ redis@3.0.2
+├─ snyk@1.437.3
+├─ sort-json@2.0.0
+├─ source-map-support@0.5.19
+├─ tedis@0.1.12
+├─ ts-jest@26.4.4
+├─ ts-loader@8.0.13
+├─ ts-node@9.1.1
+├─ tslib@2.0.3
+├─ typedoc@0.20.10
+├─ typescript-tslint-plugin@1.0.1
+├─ typescript@4.1.3
+├─ webpack-cli@4.3.1
+└─ webpack@5.11.1
  */
