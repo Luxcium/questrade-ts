@@ -1,11 +1,11 @@
 import { AcountNumberString, IAccount } from '../../../typescript';
 /** PROVIDE: IAccount[] THEN GET:  a 'primaryAccountNumber string'  */
 export function _getPrimaryAccountNumber(
-  accounts: IAccount[]
+  accounts: IAccount[],
 ): AcountNumberString {
   if (!accounts || accounts.length < 1) {
     console.warn(
-      "WARNING('No account number found') will default to '11111111' "
+      "WARNING('No account number found') will default to '11111111' ",
     );
     return '11111111';
   }

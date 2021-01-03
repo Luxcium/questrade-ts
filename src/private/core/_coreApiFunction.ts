@@ -5,7 +5,7 @@ import { _tryToGetData } from './X_tryToGetData_AXIOS_X';
 
 export const _coreApiFunction = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => {
   // ~~>
   return (VERB: 'GET' | 'POST') => {
@@ -27,7 +27,7 @@ export const _coreApiFunction = (
           const axiosDataGetter = _tryToGetData<R, D>(
             getDataConfig,
             credentials,
-            proxy
+            proxy,
           );
           // ->
           const data = axiosDataGetter(_logErrors);

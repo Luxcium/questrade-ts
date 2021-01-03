@@ -95,7 +95,7 @@ export interface IQuotesOptionsByIds {
 }
 
 export type QuotesOptions = (
-  filters: OptionsFilters
+  filters: OptionsFilters,
 ) => Promise<IOptionsQuotes>;
 
 export type QuotesOptionsbyFilterAndIds = IQuotesOptionsByIds & QuotesOptions;

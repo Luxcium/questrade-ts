@@ -1,11 +1,10 @@
 import { BinaryToTextEncoding, createHash } from 'crypto';
-import { stringify } from 'querystring';
 
 import { UrlDataAndHashes } from '../typescript';
 
 export const creatUrlAndDataHashes = (
   urlPath: string = '',
-  dataToHash?: any
+  dataToHash?: any,
 ): UrlDataAndHashes => {
   const BASE64: BinaryToTextEncoding = 'base64';
   const HEX: BinaryToTextEncoding = 'hex';
@@ -20,9 +19,9 @@ export const creatUrlAndDataHashes = (
       : createHash('sha256').update(urlPath).digest(BASE64),
     DATA_HASH_HEX: !dataToHash
       ? null
-      : createHash('sha256').update(stringify(dataToHash)).digest(HEX),
+      : createHash('sha256').update(JSON.stringify(dataToHash)).digest(HEX),
     DATA_HASH_64: !dataToHash
       ? null
-      : createHash('sha256').update(stringify(dataToHash)).digest(BASE64),
+      : createHash('sha256').update(JSON.stringify(dataToHash)).digest(BASE64),
   };
 };

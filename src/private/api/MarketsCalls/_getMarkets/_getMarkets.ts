@@ -10,7 +10,7 @@ import { _axiosGetApi } from '../../../routes';
 /** _getMarkets */
 export const _getMarkets = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (): Promise<IMarket[]> => {
   try {
     return (await _axiosGetApi(credentials, proxy)<IMarkets>('/markets')())

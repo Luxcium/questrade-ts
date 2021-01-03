@@ -1,7 +1,7 @@
 import axios, { AxiosStatic } from 'axios';
 
 export const axiosProxyFactory = (
-  handler: ProxyHandler<AxiosStatic>
+  handler: ProxyHandler<AxiosStatic>,
 ): AxiosStatic => {
   return new Proxy(axios, handler);
 };

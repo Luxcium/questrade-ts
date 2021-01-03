@@ -11,7 +11,7 @@ import { _axiosAccountGetApi } from '../../../routes';
 /** PROVIDE: credentials, startTime string and endTime string THEN GET: a 'Promise<IAccountActivity[]>' */
 export const _getActivities = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => {
   return (startTime: string) => {
     //

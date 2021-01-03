@@ -22,7 +22,7 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
 
   getOwnPropertyDescriptor(
     target: T,
-    p: PropertyKey
+    p: PropertyKey,
   ): PropertyDescriptor | undefined {
     console.log('PROXY:', 'getOwnPropertyDescriptor', 'target', target, 'p', p);
     return Reflect.getOwnPropertyDescriptor(target, p);
@@ -42,7 +42,7 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
       'p',
       p,
       'receiver',
-      receiver
+      receiver,
     );
     return Reflect.get(target, p, receiver);
   }
@@ -58,7 +58,7 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
       'value',
       value,
       'receiver',
-      receiver
+      receiver,
     );
     return Reflect.set(target, p, value, receiver);
   }
@@ -71,7 +71,7 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
   defineProperty(
     target: T,
     p: PropertyKey,
-    attributes: PropertyDescriptor
+    attributes: PropertyDescriptor,
   ): boolean {
     console.log(
       'PROXY:',
@@ -81,7 +81,7 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
       'p',
       p,
       'attributes',
-      attributes
+      attributes,
     );
     return Reflect.defineProperty(target, p, attributes);
   }
@@ -100,7 +100,7 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
       'thisArg',
       thisArg,
       'argArray',
-      argArray
+      argArray,
     );
     return Reflect.apply(target, thisArg, argArray);
   }
@@ -114,7 +114,7 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
       'argArray',
       argArray,
       'newTarget',
-      newTarget
+      newTarget,
     );
     return Reflect.construct(target, argArray, newTarget);
   }

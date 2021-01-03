@@ -64,7 +64,7 @@ export const _defaultCredentials: Credentials = {
         keyFile: './keys/[Private]',
         refreshToken: '[string:Private]',
         seedToken: '[string:Private]',
-      })
+      }),
     );
   },
   toString(indent: string | number | undefined = 4) {
@@ -111,7 +111,7 @@ export const _defaultCredentials: Credentials = {
                 Authorization: `${
                   (this.config_?.headers?.Authorization as string).slice(
                     0,
-                    15
+                    15,
                   ) ?? ''
                 } [Redacted] ...`,
               },
@@ -124,7 +124,7 @@ export const _defaultCredentials: Credentials = {
         seedToken: '[string:Private]',
       },
       null,
-      indent
+      indent,
     );
   },
 };
@@ -296,7 +296,7 @@ export function JSONjs() {
             Object.keys(value).forEach(function (name) {
               nu[name] = derez(
                 value[name],
-                path + '[' + JSON.stringify(name) + ']'
+                path + '[' + JSON.stringify(name) + ']',
               );
             });
           }

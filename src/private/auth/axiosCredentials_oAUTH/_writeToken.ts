@@ -4,7 +4,7 @@ import { Credentials, IRefreshCreds } from '../../../typescript';
 
 export const _writeToken = (
   credentials: Credentials,
-  response: AxiosResponse<IRefreshCreds>
+  response: AxiosResponse<IRefreshCreds>,
 ): Credentials => {
   const { data: refreshCreds } = response;
   credentials.accessToken = refreshCreds.access_token;

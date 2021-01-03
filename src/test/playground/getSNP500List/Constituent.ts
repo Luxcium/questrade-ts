@@ -5,7 +5,7 @@ export interface Constituent {
 }
 export type ConstituentsSymbolsAndList = [
   ConstituentsSymbols,
-  ConstituentsList
+  ConstituentsList,
 ];
 export type ConstituentsSymbols = string[];
 export type ConstituentsList = Constituent[];

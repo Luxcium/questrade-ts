@@ -22,6 +22,6 @@ export const logRemanings = ({
   console.log(
     '[maximum total in remaining period, maximum per second]',
     maximums,
-    maximumperseconds
+    maximumperseconds,
   );
 };

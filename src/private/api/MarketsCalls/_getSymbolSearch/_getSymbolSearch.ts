@@ -9,16 +9,16 @@ import { _getSymbolSearchAll } from './_getSymbolSearchAll';
 /** _getSymbolSearch */
 export const _getSymbolSearch = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (
   prefix: string,
-  offset: number = 0
+  offset: number = 0,
 ): Promise<ISymbolSearchResult[]> => {
   try {
     //
     const symbols = await _getSymbolSearchAll(credentials, proxy)(
       prefix,
-      offset
+      offset,
     );
     const count = symbols.length;
     let result: ISymbolSearchResult | null = null;

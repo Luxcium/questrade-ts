@@ -11,7 +11,7 @@ import {
  */
 export const _coreApiConfig = <D>(
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => {
   void proxy; // TODO: use proxy
   //

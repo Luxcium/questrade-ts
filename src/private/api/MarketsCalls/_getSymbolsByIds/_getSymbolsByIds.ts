@@ -10,13 +10,13 @@ import { _axiosGetApi } from '../../../routes';
 /** _getSymbolFromSymbolID */
 export const _getSymbolsByIds = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (stockId: number[]): Promise<ISymbol[]> => {
   try {
     return (
       await _axiosGetApi(
         credentials,
-        proxy
+        proxy,
       )<ISymbols>(`/symbols?ids=${stockId.join()}`)()
     ).symbols;
   } catch (error) {

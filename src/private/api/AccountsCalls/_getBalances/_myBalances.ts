@@ -1,8 +1,7 @@
-import { Currency } from 'questrade-api-enumerations';
 import { IBalances, IMyBalances } from '../../../../typescript';
 
 export const _myBalances = async (
-  myBalances: IBalances
+  myBalances: IBalances,
 ): Promise<IMyBalances> => {
   try {
     const [perCADcurrent, perUSDcurrent] = myBalances.perCurrencyBalances;
@@ -88,7 +87,7 @@ export const _myBalances = async (
       perCurrency: {
         CAD: {
           startOfDay: {
-            currency: Currency.CAD,
+            currency: 'CAD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -97,7 +96,7 @@ export const _myBalances = async (
             isRealTime: false,
           },
           current: {
-            currency: Currency.CAD,
+            currency: 'CAD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -108,7 +107,7 @@ export const _myBalances = async (
         },
         USD: {
           startOfDay: {
-            currency: Currency.CAD,
+            currency: 'USD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -117,7 +116,7 @@ export const _myBalances = async (
             isRealTime: false,
           },
           current: {
-            currency: Currency.CAD,
+            currency: 'USD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -130,7 +129,7 @@ export const _myBalances = async (
       combined: {
         CAD: {
           startOfDay: {
-            currency: Currency.CAD,
+            currency: 'CAD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -139,7 +138,7 @@ export const _myBalances = async (
             isRealTime: false,
           },
           current: {
-            currency: Currency.CAD,
+            currency: 'CAD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -150,7 +149,7 @@ export const _myBalances = async (
         },
         USD: {
           startOfDay: {
-            currency: Currency.CAD,
+            currency: 'USD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -159,7 +158,7 @@ export const _myBalances = async (
             isRealTime: false,
           },
           current: {
-            currency: Currency.CAD,
+            currency: 'USD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -172,7 +171,7 @@ export const _myBalances = async (
       current: {
         perCurrency: {
           CAD: {
-            currency: Currency.CAD,
+            currency: 'CAD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -181,7 +180,7 @@ export const _myBalances = async (
             isRealTime: false,
           },
           USD: {
-            currency: Currency.CAD,
+            currency: 'USD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -192,7 +191,7 @@ export const _myBalances = async (
         },
         combined: {
           CAD: {
-            currency: Currency.CAD,
+            currency: 'CAD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -201,7 +200,7 @@ export const _myBalances = async (
             isRealTime: false,
           },
           USD: {
-            currency: Currency.CAD,
+            currency: 'USD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -214,7 +213,7 @@ export const _myBalances = async (
       startOfDay: {
         combined: {
           CAD: {
-            currency: Currency.CAD,
+            currency: 'CAD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -223,7 +222,7 @@ export const _myBalances = async (
             isRealTime: false,
           },
           USD: {
-            currency: Currency.CAD,
+            currency: 'USD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -234,7 +233,7 @@ export const _myBalances = async (
         },
         perCurrency: {
           CAD: {
-            currency: Currency.CAD,
+            currency: 'CAD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -243,7 +242,7 @@ export const _myBalances = async (
             isRealTime: false,
           },
           USD: {
-            currency: Currency.CAD,
+            currency: 'USD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -256,7 +255,7 @@ export const _myBalances = async (
       CAD: {
         perCurrency: {
           startOfDay: {
-            currency: Currency.CAD,
+            currency: 'CAD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -265,7 +264,7 @@ export const _myBalances = async (
             isRealTime: false,
           },
           current: {
-            currency: Currency.CAD,
+            currency: 'CAD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -276,7 +275,7 @@ export const _myBalances = async (
         },
         combined: {
           startOfDay: {
-            currency: Currency.CAD,
+            currency: 'CAD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -285,7 +284,7 @@ export const _myBalances = async (
             isRealTime: false,
           },
           current: {
-            currency: Currency.CAD,
+            currency: 'CAD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -298,7 +297,7 @@ export const _myBalances = async (
       USD: {
         combined: {
           startOfDay: {
-            currency: Currency.CAD,
+            currency: 'USD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -307,7 +306,7 @@ export const _myBalances = async (
             isRealTime: false,
           },
           current: {
-            currency: Currency.CAD,
+            currency: 'USD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -318,7 +317,7 @@ export const _myBalances = async (
         },
         perCurrency: {
           startOfDay: {
-            currency: Currency.CAD,
+            currency: 'USD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
@@ -327,7 +326,7 @@ export const _myBalances = async (
             isRealTime: false,
           },
           current: {
-            currency: Currency.CAD,
+            currency: 'USD',
             cash: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,

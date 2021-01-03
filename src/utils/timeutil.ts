@@ -26,10 +26,10 @@ export const day = (days: number) => days * DAY;
 
 export const endpointFormatDateTool = (
   startTime: string,
-  endTime: string
+  endTime: string,
 ): string => {
   return `startTime=${dateToISOString(startTime)}&endTime=${dateToISOString(
-    endTime
+    endTime,
   )}`;
 };
 export const dateNowISO = () => new Date(Date.now()).toISOString();
@@ -55,7 +55,7 @@ interface StartDateEndDateObject {
 }
 export const dateRange = (
   backNumberOfDays: number,
-  dateNow?: string
+  dateNow?: string,
 ): StartDateEndDateObject => {
   let now = dateNow;
   if (!now) {
@@ -63,7 +63,7 @@ export const dateRange = (
   }
 
   const startDate: StartDate = rmvMiliSec(
-    dateToNumeric(now) - day(backNumberOfDays)
+    dateToNumeric(now) - day(backNumberOfDays),
   );
 
   const endDate: EndDate = rmvMiliSec(now);
@@ -84,7 +84,7 @@ const rmvMiliSec = (date: Date | string | number): string => {
 
 export const setDateRange = (backNumberOfDays: number) => <T>(
   funct: (startTime: string) => (endTime: string) => T,
-  fromDate?: string
+  fromDate?: string,
 ) => {
   const { startTime, endTime } = dateRange(backNumberOfDays, fromDate);
   return funct(startTime)(endTime);

@@ -20,7 +20,7 @@ const _0777 = parseInt('0777', 8);
 export const sync = (
   p: string,
   opts?: Mode | OptionsSync,
-  made?: Made
+  made?: Made,
 ): Made => {
   if (!opts || typeof opts !== 'object') {
     opts = { mode: opts };

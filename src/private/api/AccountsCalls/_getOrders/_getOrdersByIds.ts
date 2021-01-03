@@ -9,14 +9,14 @@ import { _axiosAccountGetApi } from '../../../routes';
 /** _getOrders */
 export const _getOrdersByIds = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (orderId: number[]): Promise<IOrder[]> => {
   try {
     //
     return (
       await _axiosAccountGetApi(
         credentials,
-        proxy
+        proxy,
       )<IOrders>(`/orders?ids=${orderId.join(',')}`)()
     ).orders;
   } catch (error) {

@@ -7,7 +7,7 @@ import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
 export const _getQuotesOptionsByIds = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (optionIds: number[]): Promise<IOptionsQuote[]> => {
   try {
     return _getMarketsQuotesOptions(credentials, proxy)(
@@ -16,7 +16,7 @@ export const _getQuotesOptionsByIds = (
       '',
       null,
       0,
-      0
+      0,
     );
   } catch (error) {
     console.error(error);

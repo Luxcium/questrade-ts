@@ -39,7 +39,7 @@ export const testIt = () =>
           //  console.log(null);
           // }
           // }
-        })
+        }),
       );
 
       I([qtApi, R]);

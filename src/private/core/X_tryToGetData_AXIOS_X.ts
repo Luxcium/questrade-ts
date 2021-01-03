@@ -16,7 +16,7 @@ import {
 export const _tryToGetData = <R, D>(
   _config: CoreApiConfig<D>,
   credentials?: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => {
   return async (_logError: LogErrors): Promise<R> => {
     try {
@@ -32,7 +32,7 @@ export const _tryToGetData = <R, D>(
         //
         const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
         response = await requestLimiter(
-          async (): Promise<AxiosResponse<R>> => axiosClient(_config)
+          async (): Promise<AxiosResponse<R>> => axiosClient(_config),
         );
       } else {
         response = await axiosClient(_config);
@@ -46,8 +46,8 @@ export const _tryToGetData = <R, D>(
           remaningTimeString(
             credentials?.remainingRequests?.secondsRemaning
               ? credentials.remainingRequests.secondsRemaning
-              : 0
-          )
+              : 0,
+          ),
         );
         console.log(response.status, response.statusText);
         console.log('________________________________________________');
@@ -83,7 +83,7 @@ export const _tryToGetData = <R, D>(
       } catch (error_) {
         console.error('error_:', error_);
         console.info(
-          "To make tests pass removed 'throw' error messages from code bloc in (Axios) _tryToGetData"
+          "To make tests pass removed 'throw' error messages from code bloc in (Axios) _tryToGetData",
         );
         throw error_;
       }

@@ -23,7 +23,7 @@ export interface ISymbolSearchCount {
 
 export type SymbolSearch = (
   prefix: string,
-  offset?: number
+  offset?: number,
 ) => Promise<ISymbolSearchResult>;
 
 export type SymbolSearchAndCount = SymbolSearch & ISymbolSearchCount;

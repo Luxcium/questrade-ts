@@ -11,14 +11,14 @@ import { _axiosPostApi } from '../../../routes';
 
 export const _getMarketsQuotesOptions = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (
   optionIds: number[] | null,
   underlyingId: number,
   expiryDate: string,
   optionType: string | null = null,
   minstrikePrice: number | null = 0,
-  maxstrikePrice: number | null = 0
+  maxstrikePrice: number | null = 0,
 ): Promise<IOptionsQuote[]> => {
   const postData: OptionsIdArray | FiltersArray =
     !!optionIds && optionIds.length > 0
@@ -40,7 +40,7 @@ export const _getMarketsQuotesOptions = (
   return (
     await _axiosPostApi(
       credentials,
-      proxy
+      proxy,
     )<OptionsPostData>(postData)<IOptionsQuotes>('/markets/quotes/options')()
   ).quotes;
 };

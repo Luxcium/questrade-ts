@@ -9,5 +9,5 @@ import { _coreApiFunction } from '../../core';
  */
 export const _axiosPostApi = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => _coreApiFunction(credentials, proxy)('POST');

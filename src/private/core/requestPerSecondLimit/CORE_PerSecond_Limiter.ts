@@ -82,19 +82,19 @@ function limitingRequest(limiterFactory: ReqLimiterFactory) {
 const neverWillCb = async () => {
   void0();
   throw new Error(
-    'NEVER: lenght is validated prior to pop this should never occur'
+    'NEVER: lenght is validated prior to pop this should never occur',
   );
 };
 
 const neverCb = (error: Error | null, returnValue: any) => {
   void0({ returnValue, error });
   throw new Error(
-    'NEVER: lenght is validated prior to pop this should never occur'
+    'NEVER: lenght is validated prior to pop this should never occur',
   );
 };
 
 export const requestPerSecondLimiter = limitingRequest(requestLimiterFactory);
 export type ReqLimiterFactory = () => (
   fn: Function,
-  hertz?: number
+  hertz?: number,
 ) => (cb: CallBack<any>) => Promise<void>;

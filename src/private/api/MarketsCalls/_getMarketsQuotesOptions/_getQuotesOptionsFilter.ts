@@ -7,7 +7,7 @@ import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
 export const _getQuotesOptionsFilter = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (filters: OptionsFilters) => {
   const {
     underlyingId,
@@ -22,6 +22,6 @@ export const _getQuotesOptionsFilter = (
     expiryDate,
     optionType,
     minstrikePrice,
-    maxstrikePrice
+    maxstrikePrice,
   );
 };

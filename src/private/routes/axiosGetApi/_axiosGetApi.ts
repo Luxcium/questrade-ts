@@ -8,5 +8,5 @@ import { _coreApiFunction } from '../../core';
  */
 export const _axiosGetApi = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => _coreApiFunction(credentials, proxy)('GET')(null);

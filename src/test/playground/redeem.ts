@@ -11,7 +11,7 @@ export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 async function main() {
   // inside of an async function or async IIFE
   const { qtApi, credentials } = await redeemToken(
-    getMyToken()
+    getMyToken(),
     // axiosConsoleLogHashesProxyHandler
   );
   void0(credentials);

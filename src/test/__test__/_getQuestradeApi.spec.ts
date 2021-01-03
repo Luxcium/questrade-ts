@@ -63,7 +63,7 @@ describe('QtAPI PROPERTIES will test all properties and methods on qtApi', () =>
 
   it('should validate qtApi myBalances', async done => {
     expect(
-      (await qtApi.myBalances()).CAD.combined.current.buyingPower
+      (await qtApi.myBalances()).CAD.combined.current.buyingPower,
     ).not.toBeNaN();
     done();
   });
@@ -193,7 +193,7 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
       await (await getOptionsQuotes()).fromFilter({
         expiryDate: '2019-10-18T00:00:00.000000-05:00',
         underlyingId: 27_426,
-      })
+      }),
     );
     done();
   });

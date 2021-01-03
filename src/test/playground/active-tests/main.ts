@@ -11,7 +11,7 @@ import { Credentials, QuestradeApi, QuestradeAPIOptions } from '../../../types';
 // export { credentials, qtApi };
 
 export function redeemTokenThen(
-  refreshToken: QuestradeAPIOptions
+  refreshToken: QuestradeAPIOptions,
 ): PartialyResolved {
   const redeem: QtAPIOptionsThen = redeemToken(refreshToken);
   const qtApi = redeem.then(value => value.qtApi);

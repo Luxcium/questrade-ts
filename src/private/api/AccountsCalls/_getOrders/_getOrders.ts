@@ -11,19 +11,19 @@ import { _axiosAccountGetApi } from '../../../routes';
 /** _getOrders */
 export const _getOrders = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => (stateFilter: string = 'All') => (startDate: string) => async (
-  endDate: string
+  endDate: string,
 ): Promise<IOrder[]> => {
   try {
     const orders = await _axiosAccountGetApi(
       credentials,
-      proxy
+      proxy,
     )<IOrders>(
       `/orders?${endpointFormatDateTool(
         startDate,
-        endDate
-      )}&stateFilter=${stateFilter}`
+        endDate,
+      )}&stateFilter=${stateFilter}`,
     )();
     return orders.orders;
   } catch (error) {

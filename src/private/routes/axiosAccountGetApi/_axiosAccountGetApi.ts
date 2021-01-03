@@ -9,8 +9,8 @@ import { _endpointFormatAccount } from './endpointFormatAccount';
  */
 export const _axiosAccountGetApi = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => <R>(accountEndpoint: string) =>
   _coreApiFunction(credentials, proxy)('GET')(null)<R>(
-    _endpointFormatAccount(credentials, proxy)(accountEndpoint)
+    _endpointFormatAccount(credentials, proxy)(accountEndpoint),
   );

@@ -6,7 +6,7 @@ import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 export const _credentialsFactory = async (
   options: QuestradeAPIOptions,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => {
   const credentials = await _oAuthAxiosCredentials(options, proxy);
 
@@ -26,10 +26,10 @@ export const _credentialsFactory = async (
     credentials.serverTimeRaw = serverTime;
     credentials.accountNumber = _getPrimaryAccountNumber(accounts);
     credentials.expiresAt_ = new Date(
-      credentials.expiresAtRaw ?? 0
+      credentials.expiresAtRaw ?? 0,
     ).toLocaleTimeString();
     credentials.serverTime_ = new Date(
-      credentials.serverTimeRaw ?? 0
+      credentials.serverTimeRaw ?? 0,
     ).toLocaleTimeString();
 
     if (credentials.accountNumber === '00000000') {
@@ -37,7 +37,7 @@ export const _credentialsFactory = async (
         '\n🧐\n🤡 MOCK Server Time:   ',
         new Date().toISOString(),
 
-        '\n🍦 Status: MOCKING!!!\n🤨'
+        '\n🍦 Status: MOCKING!!!\n🤨',
       );
     } else {
       console.info('Questrade Server Time:', time, '\nStatus: ready\n');

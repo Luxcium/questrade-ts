@@ -36,5 +36,5 @@ class AxiosConsoleLogHashesHandlerClass
 }
 
 export const axiosConsoleLogHashesProxyHandler = axiosProxyFactory(
-  new AxiosConsoleLogHashesHandlerClass()
+  new AxiosConsoleLogHashesHandlerClass(),
 );

@@ -13,7 +13,7 @@ import { _writeToken } from './_writeToken';
 
 export const _oAuthAxiosCredentials = async (
   options: QuestradeAPIOptions,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ): Promise<Credentials> => {
   const { refreshToken, credentials } = _validateToken(options);
   const _config: AuthApiConfig = {
@@ -44,7 +44,7 @@ export const _oAuthAxiosCredentials = async (
       console.log('++++++++++++++++++++++++++++++++++++++++++++++++');
     }
     throw new Error(
-      '!! validate credntials Invalid data back from axios client'
+      '!! validate credntials Invalid data back from axios client',
     );
   }
 

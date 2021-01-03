@@ -44,7 +44,7 @@ export type QtApiMyBalances = () => Promise<IMyBalances>;
 
 export interface QtApiAccount {
   getActivities(
-    startTime: string
+    startTime: string,
   ): (endTime: string) => Promise<IAccountActivity[]>;
 
   getAllAccounts(): Promise<IAccount[]>;
@@ -59,13 +59,13 @@ export interface QtApiAccount {
 export interface QtApiMarket {
   getAllMarkets(): Promise<IMarket[]>;
   getCandlesByStockId(
-    symbolID: number
+    symbolID: number,
   ): (interval?: string | undefined) => DateRange<Promise<ICandle[]>>;
 }
 export interface QtApiQuotes {
   byStockIds(ids: number[]): Promise<IQuote[]>;
   byStrategies(
-    strategyVariantRequestData: StrategyVariantRequest
+    strategyVariantRequestData: StrategyVariantRequest,
   ): Promise<IStrategiesQuotes>;
 }
 
@@ -84,11 +84,11 @@ export interface QtApiOptionChains {
 export interface QtApiSearch {
   stock(
     prefix: string,
-    offset?: number | undefined
+    offset?: number | undefined,
   ): Promise<ISymbolSearchResult[]>;
   allStocks(
     prefix: string,
-    offset?: number | undefined
+    offset?: number | undefined,
   ): Promise<ISymbolSearchResult[]>;
   countResults(prefix: string): Promise<number>;
 }
@@ -396,9 +396,9 @@ export interface QuestradeApi2 {
   serverTime: Date | 'ERROR';
   account: {
     getActivities(
-      startTime: string
+      startTime: string,
     ): (
-      endTime: string
+      endTime: string,
     ) => Promise<
       {
         /** Trade date */
@@ -444,7 +444,7 @@ export interface QuestradeApi2 {
     >;
     getBalances(): Promise<IBalances>;
     getExecutions(
-      startTime: string
+      startTime: string,
     ): (endTime: string) => Promise<IExecution[]>;
     getOrders(stateFilter?: string | undefined): DateRange<Promise<IOrder[]>>;
     getOrdersByIds(orderId: number[]): Promise<IOrder[]>;
@@ -454,13 +454,13 @@ export interface QuestradeApi2 {
   market: {
     getAllMarkets(): Promise<IMarket[]>;
     getCandlesByStockId(
-      symbolID: number
+      symbolID: number,
     ): (interval?: string | undefined) => DateRange<Promise<ICandle[]>>;
   };
   getQuotes: {
     byStockIds(ids: number[]): Promise<IQuote[]>;
     byStrategies(
-      strategyVariantRequestData: StrategyVariantRequest
+      strategyVariantRequestData: StrategyVariantRequest,
     ): Promise<IStrategiesQuotes>;
   };
   getOptionsQuotes: {
@@ -476,11 +476,11 @@ export interface QuestradeApi2 {
   search: {
     stock(
       prefix: string,
-      offset?: number | undefined
+      offset?: number | undefined,
     ): Promise<ISymbolSearchResult[]>;
     allStocks(
       prefix: string,
-      offset?: number | undefined
+      offset?: number | undefined,
     ): Promise<ISymbolSearchResult[]>;
     countResults(prefix: string): Promise<number>;
   };

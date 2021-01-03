@@ -1033,8 +1033,8 @@ eslint-plugin-node
       "backgroundColor": "transparent"
     },
     {
-      // ERROR:
-      "tag": "ERROR:",
+      // ERROR
+      "tag": "ERROR",
       "color": "#F36D",
       "strikethrough": false,
       "backgroundColor": "transparent"
@@ -1078,8 +1078,8 @@ eslint-plugin-node
       "backgroundColor": "transparent"
     },
     {
-      // WARNING:
-      "tag": "WARNING:",
+      // WARNING
+      "tag": "WARNING",
       "color": "#CF3F",
       "strikethrough": false,
       "backgroundColor": "transparent"
@@ -1131,8 +1131,8 @@ eslint-plugin-node
       "backgroundColor": "transparent"
     },
     {
-      // INFO:
-      "tag": "INFO:",
+      // INFO
+      "tag": "INFO",
       "color": "#FB0F",
       "strikethrough": false,
       "backgroundColor": "transparent"
@@ -1170,8 +1170,8 @@ eslint-plugin-node
       "backgroundColor": "transparent"
     },
     {
-      // HINT:
-      "tag": "HINT:",
+      // HINT
+      "tag": "HINT",
       "color": "#39CF",
       "strikethrough": false,
       "backgroundColor": "transparent"

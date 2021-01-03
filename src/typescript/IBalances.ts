@@ -8,7 +8,7 @@ export interface IBalances {
 }
 
 export interface IBalance {
-  currency: Currency;
+  currency: Currency | 'USD' | 'CAD';
   cash: number;
   marketValue: number;
   totalEquity: number;

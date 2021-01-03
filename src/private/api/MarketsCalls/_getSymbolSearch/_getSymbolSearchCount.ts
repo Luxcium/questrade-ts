@@ -9,7 +9,7 @@ import { _axiosGetApi } from '../../../routes';
 /** _getSymbolSearch */
 export const _getSymbolSearchCount = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (prefix: string): Promise<number> => {
   try {
     const endpoint = `/symbols/search?prefix=${prefix}`;

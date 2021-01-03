@@ -8,15 +8,15 @@ import { _axiosPostApi } from '../../../routes';
 
 export const _getMarketsQuotesStrategies = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (
-  strategyVariantRequestData: StrategyVariantRequest
+  strategyVariantRequestData: StrategyVariantRequest,
 ): Promise<IStrategiesQuotes> =>
   _axiosPostApi(
     credentials,
-    proxy
+    proxy,
   )<StrategyVariantRequest>(strategyVariantRequestData)<IStrategiesQuotes>(
-    '/markets/quotes/strategies'
+    '/markets/quotes/strategies',
   )();
 
 // https://api01.iq.questrade.com/v1/markets/quotes/strategies

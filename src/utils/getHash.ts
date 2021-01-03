@@ -3,7 +3,7 @@ import crypto from 'crypto';
 export const getHash = (
   data: string,
   hashAlgo: string = 'sha1',
-  shortSlice: number = 6
+  shortSlice: number = 6,
 ) => {
   const hAlgo = crypto.createHash(hashAlgo);
   hAlgo.write(data);
@@ -16,7 +16,7 @@ export const getHash = (
     {
       shorter: string;
       longer: string;
-    }
+    },
   ] = [shorter, longer, hashObj];
   return returnValue;
 };

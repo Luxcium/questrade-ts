@@ -9,7 +9,7 @@ import { _axiosAccountGetApi } from '../../../routes';
 /** _getBalances */
 export const _getBalances = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (): Promise<IBalances> => {
   try {
     return _axiosAccountGetApi(credentials, proxy)<IBalances>('/balances')();

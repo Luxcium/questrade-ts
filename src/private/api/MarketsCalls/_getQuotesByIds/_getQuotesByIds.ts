@@ -10,13 +10,13 @@ import { _axiosGetApi } from '../../../routes';
 /** _getQuotesFromSymbolID */
 export const _getQuotesByIds = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (ids: number[]): Promise<IQuote[]> => {
   try {
     return (
       await _axiosGetApi(
         credentials,
-        proxy
+        proxy,
       )<IQuotes>(`/markets/quotes?ids=${ids.join(',')}`)()
     ).quotes;
   } catch (error) {

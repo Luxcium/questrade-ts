@@ -4,7 +4,7 @@ import { questradeApi } from './questradeAPI';
 
 const _redeemToken = async (
   refreshToken: QuestradeAPIOptions,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => {
   const credentials = await _credentialsFactory(refreshToken, proxy);
   const questrade = await questradeApi(credentials, proxy);

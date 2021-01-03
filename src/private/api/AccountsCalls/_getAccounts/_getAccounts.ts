@@ -10,7 +10,7 @@ import { _axiosGetApi } from '../../../routes';
 /** _getAccounts */
 export function _getAccounts(
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) {
   //
   return async (): Promise<IAccount[]> => {

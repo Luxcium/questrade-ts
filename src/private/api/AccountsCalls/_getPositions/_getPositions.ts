@@ -10,12 +10,12 @@ import { _axiosAccountGetApi } from '../../../routes';
 /** _getPositions */
 export const _getPositions = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (): Promise<IPosition[]> => {
   try {
     const positions = await _axiosAccountGetApi(
       credentials,
-      proxy
+      proxy,
     )<IPositions>('/positions')();
 
     return positions.positions;

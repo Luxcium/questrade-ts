@@ -55,7 +55,7 @@ describe('Redeem Token ', () => {
   });
   it('should not be able to recive a file path as a string containing the token', async done => {
     const credentials = await redeemToken(
-      './keys/RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0'
+      './keys/RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0',
     );
 
     void0(credentials);

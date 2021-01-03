@@ -5,6 +5,6 @@ import { _axiosGetApi } from '../../../routes';
 /** _getTime */
 export const _getServerTime = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (): Promise<Date> =>
   new Date((await _axiosGetApi(credentials, proxy)<ITime>('/time')()).time);

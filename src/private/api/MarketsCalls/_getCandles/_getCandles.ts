@@ -11,9 +11,9 @@ import { _axiosGetApi } from '../../../routes';
 /** _getCandles */
 export const _getCandles = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => (symbolID: number) => (interval: string = 'OneDay') => (
-  startDate: string
+  startDate: string,
 ) => async (endDate: string): Promise<ICandle[]> => {
   try {
     return (
@@ -21,12 +21,12 @@ export const _getCandles = (
       (
         await _axiosGetApi(
           credentials,
-          proxy
+          proxy,
         )<ICandles>(
           `/markets/candles/${symbolID}?${endpointFormatDateTool(
             startDate,
-            endDate
-          )}&interval=${interval}`
+            endDate,
+          )}&interval=${interval}`,
         )()
       ).candles.map(result => {
         result.symbolID = symbolID;

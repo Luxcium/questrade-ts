@@ -13,10 +13,10 @@ export async function willGetSNP500List(): Promise<ConstituentsSymbolsAndList> {
   return (async (url): Promise<ConstituentsSymbolsAndList> => {
     const data: Constituent[] = (await axios.get(url)).data;
     const constituentsSymbols: ConstituentsSymbols = data.map(
-      (obj: Constituent) => obj.Symbol
+      (obj: Constituent) => obj.Symbol,
     );
     const constituentsList: ConstituentsList = data.map(
-      (obj: Constituent) => obj
+      (obj: Constituent) => obj,
     );
     return [
       constituentsSymbols,

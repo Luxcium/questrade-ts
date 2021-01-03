@@ -10,17 +10,17 @@ import { _axiosGetApi } from '../../../routes';
 /** _getSymbolSearch */
 export const _getSymbolSearchAll = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler
+  proxy?: AxiosProxyHandler,
 ) => async (
   prefix: string,
-  offset: number = 0
+  offset: number = 0,
 ): Promise<ISymbolSearchResult[]> => {
   try {
     const results = await _axiosGetApi(
       credentials,
-      proxy
+      proxy,
     )<ISymbolSearchResults>(
-      `/symbols/search?prefix=${prefix.toUpperCase()}&offset=${offset}`
+      `/symbols/search?prefix=${prefix.toUpperCase()}&offset=${offset}`,
     )();
     if (results && results.symbols) {
       return results.symbols.map(result => {
