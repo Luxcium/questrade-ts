@@ -968,8 +968,8 @@ eslint-plugin-node
       "backgroundColor": "transparent"
     },
     {
-      // todo
-      "tag": "todo",
+      // TODO:
+      "tag": "TODO:",
       "color": "#FF8C00",
       "strikethrough": false,
       "backgroundColor": "transparent"

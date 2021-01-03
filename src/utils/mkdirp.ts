@@ -6,6 +6,9 @@ import fs from 'fs';
 import path from 'path';
 export type Made = string | null;
 export type Mode = number | string | null;
+
+// TODO: remove dependencies to file system making it optional ...
+
 export interface FsImplementationSync {
   mkdirSync: typeof fs.mkdirSync;
   statSync: typeof fs.statSync;
