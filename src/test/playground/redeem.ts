@@ -1,5 +1,4 @@
 /* eslint-disable unicorn/no-keyword-prefix */
-// tslint:disable-next-line: no-var-requires
 // import axios, { AxiosStatic } from 'axios';
 
 import { redeemToken } from '../..';

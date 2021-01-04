@@ -1,7 +1,5 @@
-// tslint:disable no-any
 import { CallBack } from '../../../typescript';
 import { perSeconds } from '../../../utils';
-// tslint:disable: prefer-array-literal
 
 // create the function required to have a request limiter
 // set the initial state

@@ -1,4 +1,3 @@
-// tslint:disable  no-implicit-dependencies
 import { default as R, identity as I } from 'ramda';
 
 import { redeemToken } from '../..';
@@ -32,7 +31,6 @@ export const testIt = () =>
           // for (const fieldName in detailsForItem) {
           // if (detailsForItem.hasOwnProperty(fieldName)) {
           // detailsForItem Object.
-          // tslint:disable-next-line: no-any
           // const value = (detailsForItem as any)[fieldName];
           // const status = await tedis.hset(
           //   item,

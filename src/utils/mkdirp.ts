@@ -1,7 +1,3 @@
-// tslint:disable: no-bitwise
-// tslint:disable: no-parameter-reassignment
-// tslint:disable: interface-name
-
 import fs from 'fs';
 import path from 'path';
 

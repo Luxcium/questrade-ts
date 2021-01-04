@@ -1,5 +1,4 @@
 // import { Dataset } from 'data.js';
-// tslint:disable-next-line: variable-name
 export const uriToConstituents_json =
   'https://pkgstore.datahub.io/' +
   'core/s-and-p-500-companies/' +
@@ -13,7 +12,6 @@ export const uriToConstituents_json =
 // (async () => {
 //   const dataset = await Dataset.load(path);
 //   // get list of all resources:
-//   // tslint:disable-next-line: forin
 //   for (const id in dataset.resources) {
 //   }
 //   // get all tabular data(if exists any)
