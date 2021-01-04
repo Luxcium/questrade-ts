@@ -36,12 +36,13 @@ branches:
 install:
   - npm i -g npm@latest
   - npm i -g typescript@latest @types/node@latest
-  - npm i -g ts-jest@latest
+  - npm i -g ts-jest@latest concurrently
   - npm i -g jest@latest @types/jest@latest
-  - npm i -g tslint-config-airbnb@latest tslint-config-prettier@latest tslint-react@latest
-  - npm i -g tslint@latest
-  - npm i -g coveralls@latest
+  - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
+  # - npm i -g coveralls@latest
+
   - yarn install
+  - yarn add -D coveralls
 
 script:
   - yarn run CI
