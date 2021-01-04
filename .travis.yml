@@ -1,4 +1,5 @@
 # testing config: travis ci
+os: linux
 language: node_js
 
 branches:
@@ -14,90 +15,90 @@ cache:
   yarn: true
 
 install:
-  - yarn install
-  - yarn add -D coveralls
+  - npm install
+  - npm i -D coveralls
   - npm i -g typescript@latest @types/node@latest ts-jest@latest concurrently jest@latest @types/jest@latest eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
 
 jobs:
   fast_finish: true
   include:
-    - name: First Job (node)
-      stage: test
-      os: linux
-      dist: focal
-      virt: lxd
-      language: node_js
-      node_js:
-        - node # latest stable Node.js release
-      script:
-        - yarn run CI
-        - ls -alg
-        - echo "Running tests against $(node -v)..."
-
-    - name: Second Job (lts/*)
+    - name: Linux bionic arm64-graviton2 (node) npm run CI
       stage: test
       os: linux
       dist: bionic
-      virt: lxd
-      language: node_js
+      arch: arm64-graviton2
+      node_js:
+        - node # latest stable Node.js release
+      script:
+        - npm run CI
+        - ls -alg
+        - echo "Running tests against $(node -v)..."
+
+    - name: Linux bionic arm64-graviton2 (lts/*) npm run CI
+      stage: test
+      os: linux
+      dist: bionic
+      arch: arm64-graviton2
       node_js:
         - lts/* # latest LTS Node.js release
       script:
-        - yarn run CI
+        - npm run CI
         - ls -alg
         - echo "Running tests against $(node -v)..."
 
-    - name: Third Job (node 12.x)
+    - name: Linux bionic arm64-graviton2 (node 12.x) npm run CI
       stage: test
       os: linux
-      dist: trusty
-      virt: vm
-      language: node_js
+      dist: bionic
+      arch: arm64-graviton2
       node_js:
         - 12 # latest 12.x release
       script:
-        - yarn run CI
+        - npm run CI
         - ls -alg
         - echo "Running tests against $(node -v)..."
 
-    - name: Fourth Job (node 10.x)
+    - name: Linux bionic arm64-graviton2 (node 10.x) npm run CI
       stage: test
       os: linux
-      dist: precise
-      virt: vm
-      language: node_js
+      dist: bionic
+      arch: arm64-graviton2
       node_js:
         - 10 # latest 10.x release
       script:
-        - yarn run CI
+        - npm run CI
         - ls -alg
         - echo "Running tests against $(node -v)..."
 
-    - name: Main arm64-graviton2 focal-lxd
-      stage: main
+    - name: Main arm64 xenial lts/* yarn install
+      stage: yarn/npm
       os: linux
-      dist: focal
-      arch: arm64-graviton2
-      virt: lxd
-      language: node_js
+      dist: xenial
+      arch: arm64
       node_js:
-        - node # latest stable Node.js release
+        - lts/* # latest LTS Node.js release
+      install:
+        - yarn install
+        - yarn i -D coveralls
+        - yarn i -g typescript@latest @types/node@latest ts-jest@latest concurrently jest@latest @types/jest@latest eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
       script:
         - yarn run CI
         - ls -alg
         - echo "Running tests against $(node -v)..."
 
-    - name: Main arm64-graviton2 focal-vm
-      stage: main
+    - name: Main arm64 xenial lts/* npm install
+      stage: yarn/npm
       os: linux
-      dist: focal
-      arch: arm64-graviton2
-      virt: vm
-      language: node_js
+      dist: xenial
+      arch: arm64
       node_js:
-        - node # latest stable Node.js release
+        - lts/* # latest LTS Node.js release
+      install:
+        - npm install
+        - npm i -D coveralls
+        - npm i -g typescript@latest @types/node@latest ts-jest@latest concurrently jest@latest @types/jest@latest eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
       script:
-        - yarn run CI
+        - npm run CI
         - ls -alg
         - echo "Running tests against $(node -v)..."
 # language: node_js
