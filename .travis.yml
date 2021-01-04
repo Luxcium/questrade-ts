@@ -17,6 +17,7 @@ node_js:
 
 os:
   - linux
+  - windows
 
 cache:
   directories:
