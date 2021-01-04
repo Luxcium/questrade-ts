@@ -1,109 +1,98 @@
 # testing config: travis ci
 language: node_js
 
+branches:
+  only: # — Branches to include (type: sequence of string, or string, e.g.: master)
+    - master
+    - next/from-v1.2.0-next-20201226
+  except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
+    - next/feature
+cache:
+  directories:
+    - "$HOME/.node_packages"
+  npm: true
+  yarn: true
+
+install:
+  - yarn install
+  - yarn add -D coveralls
+  - npm i -g typescript@latest @types/node@latest
+  - npm i -g ts-jest@latest concurrently
+  - npm i -g jest@latest @types/jest@latest
+  - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
+
 jobs:
   fast_finish: true
   include:
-    - name: First Job (1)
+    - name: First Job (node)
       stage: test
       os: linux
       dist: xenial
       language: node_js
       node_js:
         - node # latest stable Node.js release
-        - lts/* # latest LTS Node.js release
-        - 12 # latest 12.x release
-        - 10 # latest 10.x release
-        # NOT COMPATIBLE WITH VERSION 8.X and earlier
-      branches:
-        only: # — Branches to include (type: sequence of string, or string, e.g.: master)
-          - master
-          - next/from-v1.2.0-next-20201226
-        except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
-          - next/feature
-      cache:
-        directories:
-          - "$HOME/.node_packages"
-        npm: true
-        yarn: true
-      install:
-        - yarn install
-        - yarn add -D coveralls
-        - npm i -g npm@latest
-        - npm i -g typescript@latest @types/node@latest
-        - npm i -g ts-jest@latest concurrently
-        - npm i -g jest@latest @types/jest@latest
-        - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
       script:
         - yarn run CI
         - ls -alg
         - echo "Running tests against $(node -v)..."
 
-    - name: Second Job (2)
+    - name: Second Job (lts/*)
       stage: test
       os: linux
       dist: xenial
       language: node_js
       node_js:
-        # - node # latest stable Node.js release
         - lts/* # latest LTS Node.js release
-        - 12 # latest 12.x release
-        - 10 # latest 10.x release
-        # NOT COMPATIBLE WITH VERSION 8.X and earlier
-      branches:
-        only: # — Branches to include (type: sequence of string, or string, e.g.: master)
-          - master
-          - next/from-v1.2.0-next-20201226
-        except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
-          - next/feature
-      cache:
-        directories:
-          - "$HOME/.node_packages"
-        npm: true
-        yarn: true
-      install:
-        - yarn install
-        - yarn add -D coveralls
-        - npm i -g npm@latest
-        - npm i -g typescript@latest @types/node@latest
-        - npm i -g ts-jest@latest concurrently
-        - npm i -g jest@latest @types/jest@latest
-        - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
       script:
         - yarn run CI
         - ls -alg
         - echo "Running tests against $(node -v)..."
 
-    - name: Third Job (3)
+    - name: Third Job (node 12.x)
       stage: test
       os: linux
       dist: xenial
       language: node_js
       node_js:
-        # - node # latest stable Node.js release
-        # - lts/* # latest LTS Node.js release
         - 12 # latest 12.x release
+      script:
+        - yarn run CI
+        - ls -alg
+        - echo "Running tests against $(node -v)..."
+
+    - name: Fourth Job (node 10.x)
+      stage: test
+      os: linux
+      dist: xenial
+      language: node_js
+      node_js:
         - 10 # latest 10.x release
-        # NOT COMPATIBLE WITH VERSION 8.X and earlier
-      branches:
-        only: # — Branches to include (type: sequence of string, or string, e.g.: master)
-          - master
-          - next/from-v1.2.0-next-20201226
-        except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
-          - next/feature
-      cache:
-        directories:
-          - "$HOME/.node_packages"
-        npm: true
-        yarn: true
-      install:
-        - yarn install
-        - yarn add -D coveralls
-        - npm i -g npm@latest
-        - npm i -g typescript@latest @types/node@latest
-        - npm i -g ts-jest@latest concurrently
-        - npm i -g jest@latest @types/jest@latest
-        - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
+      script:
+        - yarn run CI
+        - ls -alg
+        - echo "Running tests against $(node -v)..."
+
+    - name: Main Virt=lxd
+      stage: main
+      os: linux
+      dist: xenial
+      virt: lxd
+      language: node_js
+      node_js:
+        - node # latest stable Node.js release
+      script:
+        - yarn run CI
+        - ls -alg
+        - echo "Running tests against $(node -v)..."
+
+    - name: Main Virt=VM
+      stage: main
+      os: linux
+      dist: xenial
+      virt: vm
+      language: node_js
+      node_js:
+        - node # latest stable Node.js release
       script:
         - yarn run CI
         - ls -alg
@@ -157,7 +146,6 @@ jobs:
 #   - yarn run CI
 #   - ls -alg
 #   - echo "Running tests against $(node -v)..."
-# # ou can select Linux virtualization type by setting a virt tag to either vm or lxd
 
 # group: stable
 
@@ -182,6 +170,9 @@ jobs:
 # - name: precise
 
 # - node_js: node
+# # ou can select Linux virtualization type by setting a virt tag to either vm or lxd
+# virt: vm
+# virt: lxd
 
 # os: linux
 # virt: lxd
