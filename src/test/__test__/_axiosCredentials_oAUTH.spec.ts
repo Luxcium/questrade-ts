@@ -12,7 +12,6 @@ describe('auth Credential from QuestradeApi via AXIOS', () => {
       seedToken: 'MOCK',
       keyDir: './keys/MOCKdir',
     });
-    // console.log(credentials);
     void0(credentials);
     done();
   });
@@ -25,7 +24,6 @@ describe('auth Credential from QuestradeApi via AXIOS', () => {
       seedToken: 'MOCK',
       keyFile: 'MOCKfile',
     });
-    // console.log(credentials);
     void0(credentials);
     done();
   });
@@ -35,8 +33,7 @@ describe('auth Credential from QuestradeApi via AXIOS', () => {
     try {
       canReciveEmptyString = true;
       credentials = await _oAuthAxiosCredentials('');
-    } catch (error) {
-      console.error(error.message);
+    } catch {
       canReciveEmptyString = false;
     }
     expect(canReciveEmptyString).toBe(false);
@@ -52,14 +49,12 @@ describe('auth Credential from QuestradeApi via AXIOS', () => {
       seedToken: 'MOCK',
       keyFile: 'MOCKfile',
     });
-    // console.log(credentials);
     void0(credentials);
     done();
   });
 
   it('should not be able to recive a file path as a string containing the token', async done => {
     const credentials = await _oAuthAxiosCredentials('./keys/MOCK');
-    // console.log(credentials);
     void0(credentials);
     done();
   });

@@ -13,6 +13,5 @@ test('should ERROR _tryToGetData', async done => {
   } catch {
     //
   }
-  // console.log();
   done();
 });

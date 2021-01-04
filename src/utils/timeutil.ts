@@ -137,10 +137,9 @@ export const setDateRange = (backNumberOfDays: number) => <T>(
 // await will.get.supported.markets(),
 // await will.get.market.quotes([9292, 9292])
 // (pre: number, curent, _index) =>
-// console.log("\n", each.description, "\n")
 // {
 //   const void0: unknown =
-//   if (!!curent.commission.valueOf()) console.log(curent.commission);
+//   if (!!curent.commission.valueOf())
 //   return curent.commission + pre;
 //  },
 // 0

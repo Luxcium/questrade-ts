@@ -9,7 +9,8 @@ describe('Redeem Token ', () => {
       const { qtApi, credentials } = await redeemToken('');
       void0([qtApi, credentials]);
     } catch (error) {
-      console.error(error.message);
+      console.error(error.message); // TODO: List the side effects
+
       canReciveEmptyString = false;
     }
     expect(canReciveEmptyString).toBe(false);

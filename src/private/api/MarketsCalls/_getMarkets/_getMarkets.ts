@@ -16,7 +16,8 @@ export const _getMarkets = (
     return (await _axiosGetApi(credentials, proxy)<IMarkets>('/markets')())
       .markets;
   } catch (error) {
-    console.error(error);
+    console.error(error); // TODO: List the side effects
+
     return [];
   }
 };

@@ -32,7 +32,8 @@ export const _getSymbolSearch = (
     //
   } catch (error) {
     //
-    console.log(error);
+    console.error(error); // TODO: List the side effects
+
     return [];
 
     //

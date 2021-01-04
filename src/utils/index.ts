@@ -25,4 +25,4 @@ export {
 } from './timeutil';
 export { id0, log, void0 };
 
-const { log } = console;
+const { log } = console; // TODO: List the side effects

@@ -9,23 +9,26 @@ export const testingThat = (async () => {
     .then(result => {
       return result.qtApi;
     })
-    .catch(error => console.log(error));
+    .catch(error => console.log(error)); // TODO: List the side effects
+
   if (!qtApi) {
     throw new Error('Redeem token fault');
   }
   const theResult = await qtApi.account.getPositions();
   const theResult2 = await qtApi.search.stock('aapl');
-  console.log('theResult1', theResult);
-  console.log('theResult2', theResult2);
+  console.log('theResult1', theResult); // TODO: List the side effects
+
+  console.log('theResult2', theResult2); // TODO: List the side effects
+
   return { theResult, theResult2 };
-})().catch(error => console.log('PlayGround error message:', error.message));
+})().catch(error => console.log('PlayGround error message:', error.message)); // TODO: List the side effects
+
 // testingThat();
 
 export const xyz = async () => {
   //
   return void 0;
 };
-// )().catch(error => console.log('error message:', error.message));
 // order id 584497639
 
 // POST https://api01.iq.questrade.com/v1/markets/quotes/strategies

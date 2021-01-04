@@ -6,7 +6,8 @@ import { redeemToken } from '../..';
 import { getMyToken } from '../../get-token';
 import { /* axiosConsoleLogHashesProxyHandler, */ void0 } from '../../utils';
 
-export const echo = console.log;
+export const echo = console.log; // TODO: List the side effects
+
 export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 async function main() {
   // inside of an async function or async IIFE
@@ -18,6 +19,6 @@ async function main() {
   void0(qtApi);
   return (async () => {
     echo(await qtApi.account.getServerTime());
-  })().catch(error => console.error(error.message));
+  })().catch(error => console.error(error.message)); // TODO: List the side effects
 }
 main();

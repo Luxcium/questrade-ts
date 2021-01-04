@@ -10,18 +10,18 @@ export const logRemanings = ({
   requestsRemaining,
   maximums,
 }: ITimeRateLimiter) => {
-  console.log();
-  console.log('time remaning', remaningTimeString(secondsRemaning));
-  console.log('time now', timeNow);
-  console.log('time then', timeThen);
-  console.log('time remaining until reset', secondsRemaning, '(sec)');
-  console.log();
-  console.log('requsts remaning', requestsRemaining);
-  console.log();
-  console.log('Requests per seconds possible', possiblePerSeconds);
+  console.log(); // TODO: List the side effects
+  console.log('time remaning', remaningTimeString(secondsRemaning)); // TODO: List the side effects
+  console.log('time now', timeNow); // TODO: List the side effects
+  console.log('time then', timeThen); // TODO: List the side effects
+  console.log('time remaining until reset', secondsRemaning, '(sec)'); // TODO: List the side effects
+  console.log(); // TODO: List the side effects
+  console.log('requsts remaning', requestsRemaining); // TODO: List the side effects
+  console.log(); // TODO: List the side effects
+  console.log('Requests per seconds possible', possiblePerSeconds); // TODO: List the side effects
   console.log(
     '[maximum total in remaining period, maximum per second]',
     maximums,
     maximumperseconds,
-  );
+  ); // TODO: List the side effects
 };

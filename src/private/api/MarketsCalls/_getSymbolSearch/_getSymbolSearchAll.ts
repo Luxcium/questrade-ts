@@ -30,7 +30,8 @@ export const _getSymbolSearchAll = (
     }
     return results.symbols;
   } catch (error) {
-    console.error(error);
+    console.error(error); // TODO: List the side effects
+
     return [];
   }
 };

@@ -26,7 +26,3 @@ export async function willGetSNP500List(): Promise<ConstituentsSymbolsAndList> {
     ] as ConstituentsSymbolsAndList;
   })(path);
 }
-// willGetSNP500List().then(
-//   symbolsAndList => console.log(symbolsAndList)
-//   // symbolsAndList[0].forEach((item, index) => console.log(index + 1, item))
-// );

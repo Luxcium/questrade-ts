@@ -19,7 +19,8 @@ export const _getQuotesOptionsByIds = (
       0,
     );
   } catch (error) {
-    console.error(error);
+    console.error(error); // TODO: List the side effects
+
     return [];
   }
 };

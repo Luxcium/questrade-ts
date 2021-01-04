@@ -20,7 +20,8 @@ export const _getOrdersByIds = (
       )<IOrders>(`/orders?ids=${orderId.join(',')}`)()
     ).orders;
   } catch (error) {
-    console.error(error);
+    console.error(error); // TODO: List the side effects
+
     return [];
   }
 };

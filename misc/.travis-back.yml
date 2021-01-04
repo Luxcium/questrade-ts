@@ -1,0 +1,366 @@
+# testing config: travis ci
+os: linux
+dist: xenial
+arch: arm64
+language: node_js
+
+cache:
+  directories:
+    - "$HOME/.node_packages"
+  npm: true
+  yarn: true
+
+install:
+  - npm install
+  - npm i -D coveralls
+
+branches:
+  only: # — Branches to include (type: sequence of string, or string, e.g.: master)
+    - master
+  except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
+    - next/feature
+
+jobs:
+  fast_finish: true
+  include:
+    - name: Linux bionic arm64-graviton2 (node) npm run CI
+      stage: test
+      node_js:
+        - node # latest stable Node.js release
+      script:
+        - npm run CI
+        - ls -alg
+        - echo "Running tests against $(node -v)..."
+
+    - name: Linux bionic arm64-graviton2 (lts/*) npm run CI
+      stage: test
+      node_js:
+        - lts/* # latest LTS Node.js release
+      script:
+        - npm run CI
+        - ls -alg
+        - echo "Running tests against $(node -v)..."
+
+    - name: Linux bionic arm64-graviton2 (node 12.x) npm run CI
+      stage: test
+      node_js:
+        - 12 # latest 12.x release
+      script:
+        - npm run CI
+        - ls -alg
+        - echo "Running tests against $(node -v)..."
+
+    - name: Linux bionic arm64-graviton2 (node 10.x) npm run CI
+      stage: test
+      node_js:
+        - 10 # latest 10.x release
+      script:
+        - npm run CI
+        - ls -alg
+        - echo "Running tests against $(node -v)..."
+    # - name: Main arm64 xenial lts/* yarn install
+    #   stage: yarn/npm
+    #   os: linux
+    #   dist: xenial
+    #   arch: arm64
+    #   node_js:
+    #     - lts/* # latest LTS Node.js release
+    #   install:
+    #     - yarn install
+    #     - yarn i -D coveralls
+    #     - yarn i -g typescript@latest @types/node@latest ts-jest@latest concurrently jest@latest @types/jest@latest eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
+    #   script:
+    #     - yarn run CI
+    #     - ls -alg
+    #     - echo "Running tests against $(node -v)..."
+    # - name: Main arm64 xenial lts/* npm install
+    #   stage: yarn/npm
+    #   os: linux
+    #   dist: xenial
+    #   arch: arm64
+    #   node_js:
+    #     - lts/* # latest LTS Node.js release
+    #   install:
+    #     - npm install
+    #     - npm i -D coveralls
+    #     - npm i -g typescript@latest @types/node@latest ts-jest@latest concurrently jest@latest @types/jest@latest eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
+    #   script:
+    #     - npm run CI
+    #     - ls -alg
+    #     - echo "Running tests against $(node -v)..."
+# language: node_js
+
+# # Release  Status           Codename  Initial Release  Active LTS Start  Maintenance LTS Start  End-of-life
+# #―0000000―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+# #  v15     Current                    2020-10-20                         2021-04-01             2021-06-01
+# #  v14     Active LTS       Fermium   2020-04-21       2020-10-27        2021-10-19             2023-04-30
+# #  v12     Active LTS       Erbium    2019-04-23       2019-10-21        2020-11-30             2022-04-30
+# #  v10     Maintenance LTS  Dubnium   2018-04-24       2018-10-30        2020-05-19             2021-04-30
+
+# node_js:
+#   - node # latest stable Node.js release
+#   # - lts/* # latest LTS Node.js release
+#   # - 12 # latest 12.x release
+#   # - 10 # latest 10.x release
+#   # NOT COMPATIBLE WITH VERSION 8.X and earlier
+
+# os:
+#   - linux
+
+# arch: amd64
+# dist: xenial
+# virt: lxd
+
+# branches:
+#   only: # — Branches to include (type: sequence of string, or string, e.g.: master)
+#     - master
+#     - next/from-v1.2.0-next-20201226
+#   except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
+#     - next/feature
+
+# cache:
+#   directories:
+#     - "$HOME/.node_packages"
+#   npm: true
+#   yarn: true
+
+# install:
+#   - yarn install
+#   - yarn add -D coveralls
+#   - npm i -g npm@latest
+#   - npm i -g typescript@latest @types/node@latest
+#   - npm i -g ts-jest@latest concurrently
+#   - npm i -g jest@latest @types/jest@latest
+#   - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
+
+# script:
+#   - yarn run CI
+#   - ls -alg
+#   - echo "Running tests against $(node -v)..."
+
+# group: stable
+
+# dist: focal
+# dist: bionic
+# dist: xenial
+# dist: trusty
+# dist: precise
+
+# - focal
+# - bionic
+# - xenial
+# - trusty
+# - precise
+
+#   stage: two
+# - name: focal
+# - stage: three
+# - name: bionic
+# - name: xenial
+# - name: trusty
+# - name: precise
+
+# - node_js: node
+# # ou can select Linux virtualization type by setting a virt tag to either vm or lxd
+# virt: vm
+# virt: lxd
+
+# os: linux
+# virt: lxd
+# dist: focal
+
+# - node # latest stable Node.js release
+# - lts/* # latest LTS Node.js release
+# - 12 # latest 12.x release
+# - 10 # latest 10.x release
+
+# dist: focal
+# dist: bionic
+# dist: xenial
+# dist: trusty
+# dist: precise
+# exclude:
+#   - language: node_js
+#     os: linux
+# allow_failures:
+#   - language: node_js
+#     os: linux
+
+# ---
+# jobs:
+#   include:
+#     - stage: Produce Coverage
+#       node_js: node
+#       script:
+#         - jest --coverage --runInBand --detectOpenHandles --colors && cat ./build/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./build/coverage
+#         - ls -alksShg
+
+# ".result": configured
+
+# include
+# exclude
+# allow_failures
+# fast_finish
+
+# language
+# os
+# dist
+# arch
+# osx_image
+# env
+# compiler
+# name
+# stage
+
+# addons
+# branches
+# cache
+# deploy
+# git
+# if
+# services
+# before_install
+# install
+# before_script
+# script
+# before_cache
+# after_success
+# after_failure
+# before_deploy
+# after_deploy
+# after_script
+
+## Jobs keys
+# If given a map, the following keys are supported:
+
+# include — Jobs to include to the build matrix (type: sequence of job matrix entry, or job matrix entry) details
+
+# exclude — Attributes of jobs to exclude from the build matrix (type: sequence of job matrix entry, or job matrix entry) details
+
+# allow_failures — Attributes of jobs that are allowed to fail (type: sequence of job matrix entry, or job matrix entry, alias: allowed_failures) details
+
+# fast_finish — Allow the build to fail fast (type: boolean, alias: fast_failure)
+
+## Keys
+# language — Language support to enable (type: enum (string), known values: android, c, clojure, cpp, crystal, csharp, d, dart, elixir, elm, ..., default: ruby, objective-c, e.g.: ruby, see: Languages, Build Matrix)
+
+# os — (type: enum (string), known values: linux, osx, windows, default: linux, osx, windows)
+
+# dist — Build environment distribution (type: enum (string), known values: trusty, precise, xenial, bionic, server-2016, see: Virtualization environments)
+
+# arch — Build environment architecture (type: enum (string), known values: amd64, arm64, ppc64le, s390x)
+
+# osx_image — OSX image to use for the build environment (type: string)
+
+# sudo — Whether to allow sudo access (deprecated, type: boolean, or string, e.g.: required)
+
+# env — Environment variables to set up (type: sequence of map, sequence of secure, sequence of string, map, secure, or string)
+
+# compiler — (type: string, e.g.: gcc)
+
+# name — (type: string)
+
+# stage — (type: string)
+
+## Shared keys
+# addons: Build addons to activate details
+# branches: Include or exclude branches from being built details
+# cache: Cache settings to speed up the build details
+# deploy: Deployment target configurations details
+# git: Git settings details
+# if: Condition to determine if a build, stage, or job should be run, a config source imported, or a notification sent details
+# services: Services to set up and start details
+# before_install: Scripts to run before the install stage
+# install: Scripts to run at the install stage
+# before_script: Scripts to run before the script stage
+# script: Scripts to run at the script stage
+# before_cache: Scripts to run before storing a build cache
+# after_success: Scripts to run after a successful script stage
+# after_failure: Scripts to run after a failing script stage
+# before_deploy: Scripts to run before the deploy stage
+# after_deploy: Scripts to run after the deploy stage
+# after_script: Scripts to run as the last stage
+
+# matrix:
+#   fast_finish: true
+#   include:
+#     - node_js: "lts/*"
+#       env: PRETEST=true
+#     - node_js: "lts/*"
+#       env: POSTTEST=true
+#     - node_js: "10.6"
+#       env: TEST=true ALLOW_FAILURE=true
+#     - node_js: "10.5"
+#       env: TEST=true ALLOW_FAILURE=true
+#     - node_js: "10.4"
+#       env: TEST=true ALLOW_FAILURE=true
+#     - node_js: "10.3"
+#       env: TEST=true ALLOW_FAILURE=true
+#     - node_js: "10.2"
+#       env: TEST=true ALLOW_FAILURE=true
+#     - node_js: "10.1"
+#       env: TEST=true ALLOW_FAILURE=true
+#     - node_js: "10.0"
+#   allow_failures:
+#     - os: osx
+#     - env: TEST=true ALLOW_FAILURE=true
+
+# {
+#   "language": "node_js",
+#   "os": [
+#     "linux",
+#     "windows"
+#   ],
+#   "dist": "xenial",
+#   "node_js": [
+#     "node",
+#     "lts/*",
+#     "12",
+#     "10"
+#   ],
+#   "cache": {
+#     "directories": [
+#       "$HOME/.node_packages"
+#     ],
+#     "npm": true,
+#     "yarn": true
+#   },
+#   "group": "stable",
+#   "branches": {
+#     "except": [
+#       "next/feature"
+#     ],
+#     "only": [
+#       "master",
+#       "next/from-v1.2.0-next-20201226"
+#     ]
+#   },
+#   "install": [
+#     "npm i -g npm@latest",
+#     "npm i -g typescript@latest @types/node@latest",
+#     "npm i -g ts-jest@latest concurrently",
+#     "npm i -g jest@latest @types/jest@latest",
+#     "npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest",
+#     "yarn install",
+#     "yarn add -D coveralls"
+#   ],
+#   "script": [
+#     "yarn run CI",
+#     "ls -alg",
+#     "echo \"Running tests against $(node -v)...\""
+#   ],
+#   "jobs": {
+#     "include": [
+#       {
+#         "stage": "Produce Coverage",
+#         "node_js": "node",
+#         "script": [
+#           "jest --coverage --runInBand --detectOpenHandles --colors && cat ./build/coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./build/coverage",
+#           "ls -alksShg"
+#         ]
+#       }
+#     ]
+#   }
+# }
+
+# - npm i -g typescript@latest @types/node@latest ts-jest@latest concurrently jest@latest @types/jest@latest eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest

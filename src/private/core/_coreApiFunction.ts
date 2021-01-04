@@ -16,7 +16,7 @@ export const _coreApiFunction = (
         // ~~>
         return async (): Promise<R> => {
           // ->
-          const configBuilder = _coreApiConfig<D>(credentials, proxy);
+          const configBuilder = _coreApiConfig<D>(credentials);
           // ->
           const getEndPoint = configBuilder(VERB);
           // ->

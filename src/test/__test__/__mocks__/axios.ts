@@ -9,7 +9,6 @@ const path = (s: string) => resolve(`${__dirname}/sample/${s}.json`);
 _axios.mockName('axios');
 _axios.mockImplementation((config?: AxiosRequestConfig) => {
   const url: string = !!config && !!config.url ? config.url : '';
-  // console.log('url', url);
   const data = [
     'balances',
     'token',
@@ -31,7 +30,8 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
       if (url.includes(`/${dir}`)) {
         if (dir === 'ERROR') {
           const errMessage: string = 'Testing Errors';
-          console.warn(errMessage);
+          console.warn(errMessage); // TODO: List the side effects
+
           throw new Error(errMessage);
         }
         return JSON.parse(readFileSync(path(dir), 'utf8'));

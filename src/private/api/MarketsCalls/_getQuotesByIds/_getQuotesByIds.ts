@@ -20,7 +20,8 @@ export const _getQuotesByIds = (
       )<IQuotes>(`/markets/quotes?ids=${ids.join(',')}`)()
     ).quotes;
   } catch (error) {
-    console.error(error);
+    console.error(error); // TODO: List the side effects
+
     return [];
   }
 };

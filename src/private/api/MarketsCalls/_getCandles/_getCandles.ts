@@ -40,7 +40,8 @@ export const _getCandles = (
       })
     );
   } catch (error) {
-    console.error(error);
+    console.error(error); // TODO: List the side effects
+
     return [];
   }
 };

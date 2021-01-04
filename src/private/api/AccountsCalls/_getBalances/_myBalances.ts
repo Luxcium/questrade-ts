@@ -81,7 +81,7 @@ export const _myBalances = async (
     };
     return { perCurrency, combined, current, startOfDay, CAD, USD };
   } catch (error) {
-    console.error(error);
+    console.error(error); // TODO: List the side effects
 
     return {
       perCurrency: {

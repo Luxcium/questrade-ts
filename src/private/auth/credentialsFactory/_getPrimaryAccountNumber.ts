@@ -6,7 +6,8 @@ export function _getPrimaryAccountNumber(
   if (!accounts || accounts.length === 0) {
     console.warn(
       "WARNING('No account number found') will default to '11111111' ",
-    );
+    ); // TODO: List the side effects
+
     return '11111111';
   }
   if (accounts.length === 1) {

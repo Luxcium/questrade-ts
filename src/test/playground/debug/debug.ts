@@ -1,4 +1,5 @@
 import { testIt } from '../testingWithRamda';
 
-console.log('testIt()');
+console.log('testIt()'); // TODO: List the side effects
+
 testIt();

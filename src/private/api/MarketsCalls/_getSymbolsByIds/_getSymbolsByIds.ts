@@ -20,7 +20,8 @@ export const _getSymbolsByIds = (
       )<ISymbols>(`/symbols?ids=${stockId.join()}`)()
     ).symbols;
   } catch (error) {
-    console.error(error);
+    console.error(error); // TODO: List the side effects
+
     return [];
   }
 };

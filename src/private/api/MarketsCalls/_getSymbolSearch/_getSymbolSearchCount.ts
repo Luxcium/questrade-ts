@@ -18,7 +18,8 @@ export const _getSymbolSearchCount = (
 
     return symbols.symbols.length;
   } catch (error) {
-    console.error(error);
+    console.error(error); // TODO: List the side effects
+
     return Number.NaN;
   }
 };

@@ -25,7 +25,8 @@ export const testIt = () =>
       await Promise.all(
         get500List.map(async (item: string) => {
           const detailsForItem = await getDetailsForItem(item);
-          console.log(detailsForItem);
+          console.log(detailsForItem); // TODO: List the side effects
+
           // for (const fieldName in detailsForItem) {
           // if (detailsForItem.hasOwnProperty(fieldName)) {
           // detailsForItem Object.
@@ -36,8 +37,10 @@ export const testIt = () =>
           //   fieldName,
           //   JSON.stringify(value)
           // );
-          // console.log(item, fieldName, value);
-          //  console.log(null);
+          // console.log(item, fieldName, value);// TODO: List the side effects
+
+          //  console.log(null);// TODO: List the side effects
+
           // }
           // }
         }),
@@ -45,10 +48,10 @@ export const testIt = () =>
 
       I([qtApi, R]);
     } catch (error) {
-      console.log(error.message);
+      console.error(error.message); // TODO: List the side effects
     } finally {
       // tedis.close();
     }
 
     return void 0;
-  })().catch(error => console.log('error message:', error.message));
+  })().catch(error => console.error('error message:', error.message)); // TODO: List the side effects

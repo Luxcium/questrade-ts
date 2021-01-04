@@ -6,7 +6,8 @@ test('Validating all README examples', async done => {
 
   // inside of an async function or async IIFE
   (async doneTesting => {
-    const log = console.log;
+    const log = console.log; // TODO: List the side effects
+
     void0(log);
     const { qtApi, credentials } = await redeemToken(yourRefreshToken);
 
@@ -23,5 +24,5 @@ test('Validating all README examples', async done => {
     // you can use a try/catch block to manage error instead:
   })(done)
     .then(doneTesting => doneTesting())
-    .catch(error => console.error(error.message));
+    .catch(error => console.error(error.message)); // TODO: List the side effects
 });

@@ -15,7 +15,6 @@ export const uriToConstituents_json =
 //   // get list of all resources:
 //   // tslint:disable-next-line: forin
 //   for (const id in dataset.resources) {
-//     console.log(dataset.resources[id]._descriptor.name);
 //   }
 //   // get all tabular data(if exists any)
 //   for (const id in dataset.resources) {
