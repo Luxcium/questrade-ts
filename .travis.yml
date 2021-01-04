@@ -1,3 +1,14 @@
+jobs:
+  fast_finish: true
+  include:
+    - name: lxd
+      stage: test
+      os: linux
+      virt: lxd
+      dist: focal
+      script:
+        - ls -alksShg
+
 language: node_js
 
 # Release  Status           Codename  Initial Release  Active LTS Start  Maintenance LTS Start  End-of-life
@@ -9,9 +20,9 @@ language: node_js
 
 node_js:
   - node # latest stable Node.js release
-  - lts/* # latest LTS Node.js release
-  - 12 # latest 12.x release
-  - 10 # latest 10.x release
+  # - lts/* # latest LTS Node.js release
+  # - 12 # latest 12.x release
+  # - 10 # latest 10.x release
   # NOT COMPATIBLE WITH VERSION 8.X and earlier
 
 os:
@@ -47,17 +58,8 @@ script:
   - yarn run CI
   - ls -alg
   - echo "Running tests against $(node -v)..."
+# ou can select Linux virtualization type by setting a virt tag to either vm or lxd
 
-jobs:
-  fast_finish: true
-  include:
-    - name: focal
-      stage: one
-      os: linux
-      virt: lxd
-      dist: focal
-      script:
-        - ls -alksShg
 # group: stable
 
 # dist: focal
