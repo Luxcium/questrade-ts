@@ -1,9 +1,11 @@
-# testing config: travis ci removed virt: lxd
+# testing config: travis ci
+language: node_js
+
 jobs:
   fast_finish: true
   include:
-    - name: lxd
-      stage: test
+    - stage: test
+      name: First Job (1)
       os: linux
       dist: focal
       language: node_js
