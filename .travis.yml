@@ -1,3 +1,4 @@
+# testing config: travis ci
 jobs:
   fast_finish: true
   include:
@@ -6,59 +7,91 @@ jobs:
       os: linux
       virt: lxd
       dist: focal
+      language: node_js
+
+      node_js:
+        - node # latest stable Node.js release
+        - lts/* # latest LTS Node.js release
+        - 12 # latest 12.x release
+        - 10 # latest 10.x release
+        # NOT COMPATIBLE WITH VERSION 8.X and earlier
+
+      branches:
+        only: # — Branches to include (type: sequence of string, or string, e.g.: master)
+          - master
+          - next/from-v1.2.0-next-20201226
+        except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
+          - next/feature
+
+      cache:
+        directories:
+          - "$HOME/.node_packages"
+        npm: true
+        yarn: true
+
+      install:
+        - yarn install
+        - yarn add -D coveralls
+        - npm i -g npm@latest
+        - npm i -g typescript@latest @types/node@latest
+        - npm i -g ts-jest@latest concurrently
+        - npm i -g jest@latest @types/jest@latest
+        - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
+
       script:
-        - ls -alksShg
+        - yarn run CI
+        - ls -alg
+        - echo "Running tests against $(node -v)..."
+# language: node_js
 
-language: node_js
+# # Release  Status           Codename  Initial Release  Active LTS Start  Maintenance LTS Start  End-of-life
+# #―0000000―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
+# #  v15     Current                    2020-10-20                         2021-04-01             2021-06-01
+# #  v14     Active LTS       Fermium   2020-04-21       2020-10-27        2021-10-19             2023-04-30
+# #  v12     Active LTS       Erbium    2019-04-23       2019-10-21        2020-11-30             2022-04-30
+# #  v10     Maintenance LTS  Dubnium   2018-04-24       2018-10-30        2020-05-19             2021-04-30
 
-# Release  Status           Codename  Initial Release  Active LTS Start  Maintenance LTS Start  End-of-life
-#―0000000―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――
-#  v15     Current                    2020-10-20                         2021-04-01             2021-06-01
-#  v14     Active LTS       Fermium   2020-04-21       2020-10-27        2021-10-19             2023-04-30
-#  v12     Active LTS       Erbium    2019-04-23       2019-10-21        2020-11-30             2022-04-30
-#  v10     Maintenance LTS  Dubnium   2018-04-24       2018-10-30        2020-05-19             2021-04-30
+# node_js:
+#   - node # latest stable Node.js release
+#   # - lts/* # latest LTS Node.js release
+#   # - 12 # latest 12.x release
+#   # - 10 # latest 10.x release
+#   # NOT COMPATIBLE WITH VERSION 8.X and earlier
 
-node_js:
-  - node # latest stable Node.js release
-  # - lts/* # latest LTS Node.js release
-  # - 12 # latest 12.x release
-  # - 10 # latest 10.x release
-  # NOT COMPATIBLE WITH VERSION 8.X and earlier
+# os:
+#   - linux
 
-os:
-  - linux
+# arch: amd64
+# dist: xenial
+# virt: lxd
 
-arch: amd64
-dist: xenial
-virt: lxd
+# branches:
+#   only: # — Branches to include (type: sequence of string, or string, e.g.: master)
+#     - master
+#     - next/from-v1.2.0-next-20201226
+#   except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
+#     - next/feature
 
-branches:
-  only: # — Branches to include (type: sequence of string, or string, e.g.: master)
-    - master
-    - next/from-v1.2.0-next-20201226
-  except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
-    - next/feature
+# cache:
+#   directories:
+#     - "$HOME/.node_packages"
+#   npm: true
+#   yarn: true
 
-cache:
-  directories:
-    - "$HOME/.node_packages"
-  npm: true
-  yarn: true
+# install:
+#   - yarn install
+#   - yarn add -D coveralls
+#   - npm i -g npm@latest
+#   - npm i -g typescript@latest @types/node@latest
+#   - npm i -g ts-jest@latest concurrently
+#   - npm i -g jest@latest @types/jest@latest
+#   - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
 
-install:
-  - yarn install
-  - yarn add -D coveralls
-  - npm i -g npm@latest
-  - npm i -g typescript@latest @types/node@latest
-  - npm i -g ts-jest@latest concurrently
-  - npm i -g jest@latest @types/jest@latest
-  - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
-
-script:
-  - yarn run CI
-  - ls -alg
-  - echo "Running tests against $(node -v)..."
-# ou can select Linux virtualization type by setting a virt tag to either vm or lxd
+# script:
+#   - yarn run CI
+#   - ls -alg
+#   - echo "Running tests against $(node -v)..."
+# # ou can select Linux virtualization type by setting a virt tag to either vm or lxd
 
 # group: stable
 
