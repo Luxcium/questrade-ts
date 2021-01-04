@@ -16,10 +16,7 @@ cache:
 install:
   - yarn install
   - yarn add -D coveralls
-  - npm i -g typescript@latest @types/node@latest
-  - npm i -g ts-jest@latest concurrently
-  - npm i -g jest@latest @types/jest@latest
-  - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
+  - npm i -g typescript@latest @types/node@latest ts-jest@latest concurrently jest@latest @types/jest@latest eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
 
 jobs:
   fast_finish: true
@@ -27,7 +24,8 @@ jobs:
     - name: First Job (node)
       stage: test
       os: linux
-      dist: xenial
+      dist: focal
+      virt: lxd
       language: node_js
       node_js:
         - node # latest stable Node.js release
@@ -39,7 +37,8 @@ jobs:
     - name: Second Job (lts/*)
       stage: test
       os: linux
-      dist: xenial
+      dist: bionic
+      virt: lxd
       language: node_js
       node_js:
         - lts/* # latest LTS Node.js release
@@ -51,7 +50,8 @@ jobs:
     - name: Third Job (node 12.x)
       stage: test
       os: linux
-      dist: xenial
+      dist: trusty
+      virt: vm
       language: node_js
       node_js:
         - 12 # latest 12.x release
@@ -63,7 +63,8 @@ jobs:
     - name: Fourth Job (node 10.x)
       stage: test
       os: linux
-      dist: xenial
+      dist: precise
+      virt: vm
       language: node_js
       node_js:
         - 10 # latest 10.x release
@@ -72,10 +73,11 @@ jobs:
         - ls -alg
         - echo "Running tests against $(node -v)..."
 
-    - name: Main Virt=lxd
+    - name: Main arm64-graviton2 focal-lxd
       stage: main
       os: linux
-      dist: xenial
+      dist: focal
+      arch: arm64-graviton2
       virt: lxd
       language: node_js
       node_js:
@@ -85,10 +87,11 @@ jobs:
         - ls -alg
         - echo "Running tests against $(node -v)..."
 
-    - name: Main Virt=VM
+    - name: Main arm64-graviton2 focal-vm
       stage: main
       os: linux
-      dist: xenial
+      dist: focal
+      arch: arm64-graviton2
       virt: vm
       language: node_js
       node_js:
