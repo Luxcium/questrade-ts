@@ -10,7 +10,6 @@ export const echo = console.log; // LOG: List the side effects
 
 export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 async function main() {
-  // inside of an async function or async IIFE
   const { qtApi, credentials } = await redeemToken(
     getMyToken(),
     axiosConsoleLogHashesProxyHandler,

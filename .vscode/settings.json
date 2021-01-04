@@ -14,15 +14,24 @@
   */
   "workbench.colorTheme": "Pop N' Lock Theme by Luxcium ✨",
   "workbench.iconTheme": "material-icon-theme",
-  "window.zoomLevel": 1,
-  "editor.fontFamily": "VictorMono Nerd Font",
-  "editor.fontSize": 24,
+  "window.zoomLevel": 0,
+  "editor.fontFamily": "'VictorMono Nerd Font'",
+  "editor.fontSize": 26,
   "editor.fontWeight": "500",
   "editor.fontLigatures": true,
   "terminal.integrated.fontFamily": "'FuraCode Nerd Font mono','TerminessTTF Nerd Font Mono'",
-  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontSize": 14,
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.fontWeightBold": "900",
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+  },
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― FORMAT BEHAVIOUR
@@ -1612,27 +1621,6 @@
       "color": "#90BCFFDD"
     }
   ],
-  "[typescript]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
-    "editor.fontFamily": "'VictorMono Nerd Font', 'hurmit Nerd Font mono','ProFontWindows Nerd Font mono','meslolgl Nerd Font mono','Iosevka Nerd Font Mono','SauceCodePro Nerd Font','ProFontIIx Nerd Font',mono",
-    // "editor.fontSize": 26,
-    // "editor.fontWeight": "400",
-    // "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features",
-    "editor.fontFamily": "'VictorMono Nerd Font', 'hurmit Nerd Font mono','ProFontWindows Nerd Font mono','meslolgl Nerd Font mono','Iosevka Nerd Font Mono','SauceCodePro Nerd Font','ProFontIIx Nerd Font',mono",
-    // "editor.fontSize": 22,
-    // "editor.fontWeight": "500",
-    // "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features",
-    "editor.fontFamily": "'VictorMono Nerd Font', 'hurmit Nerd Font mono','ProFontWindows Nerd Font mono','meslolgl Nerd Font mono','Iosevka Nerd Font Mono','SauceCodePro Nerd Font','ProFontIIx Nerd Font',mono",
-    // "editor.fontSize": 22,
-    // "editor.fontWeight": "500",
-    // "editor.defaultFormatter": "esbenp.prettier-vscode",
-  },
   "typescript.tsdk": "node_modules/typescript/lib",
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
