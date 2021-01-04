@@ -4,8 +4,8 @@ language: node_js
 jobs:
   fast_finish: true
   include:
-    - stage: test
-      name: First Job (1)
+    - name: First Job (1)
+      stage: test
       os: linux
       dist: xenial
       language: node_js
@@ -39,8 +39,8 @@ jobs:
         - ls -alg
         - echo "Running tests against $(node -v)..."
 
-    - stage: test
-      name: Second Job (2)
+    - name: Second Job (2)
+      stage: test
       os: linux
       dist: xenial
       language: node_js
@@ -74,8 +74,8 @@ jobs:
         - ls -alg
         - echo "Running tests against $(node -v)..."
 
-    - stage: test
-      name: Third Job (3)
+    - name: Third Job (3)
+      stage: test
       os: linux
       dist: xenial
       language: node_js
