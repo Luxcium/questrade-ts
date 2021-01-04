@@ -7,29 +7,25 @@ jobs:
     - stage: test
       name: First Job (1)
       os: linux
-      dist: focal
+      dist: xenial
       language: node_js
-
       node_js:
         - node # latest stable Node.js release
         - lts/* # latest LTS Node.js release
         - 12 # latest 12.x release
         - 10 # latest 10.x release
         # NOT COMPATIBLE WITH VERSION 8.X and earlier
-
       branches:
         only: # — Branches to include (type: sequence of string, or string, e.g.: master)
           - master
           - next/from-v1.2.0-next-20201226
         except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
           - next/feature
-
       cache:
         directories:
           - "$HOME/.node_packages"
         npm: true
         yarn: true
-
       install:
         - yarn install
         - yarn add -D coveralls
@@ -38,7 +34,76 @@ jobs:
         - npm i -g ts-jest@latest concurrently
         - npm i -g jest@latest @types/jest@latest
         - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
+      script:
+        - yarn run CI
+        - ls -alg
+        - echo "Running tests against $(node -v)..."
 
+    - stage: test
+      name: Second Job (2)
+      os: linux
+      dist: xenial
+      language: node_js
+      node_js:
+        # - node # latest stable Node.js release
+        - lts/* # latest LTS Node.js release
+        - 12 # latest 12.x release
+        - 10 # latest 10.x release
+        # NOT COMPATIBLE WITH VERSION 8.X and earlier
+      branches:
+        only: # — Branches to include (type: sequence of string, or string, e.g.: master)
+          - master
+          - next/from-v1.2.0-next-20201226
+        except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
+          - next/feature
+      cache:
+        directories:
+          - "$HOME/.node_packages"
+        npm: true
+        yarn: true
+      install:
+        - yarn install
+        - yarn add -D coveralls
+        - npm i -g npm@latest
+        - npm i -g typescript@latest @types/node@latest
+        - npm i -g ts-jest@latest concurrently
+        - npm i -g jest@latest @types/jest@latest
+        - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
+      script:
+        - yarn run CI
+        - ls -alg
+        - echo "Running tests against $(node -v)..."
+
+    - stage: test
+      name: Third Job (3)
+      os: linux
+      dist: xenial
+      language: node_js
+      node_js:
+        # - node # latest stable Node.js release
+        # - lts/* # latest LTS Node.js release
+        - 12 # latest 12.x release
+        - 10 # latest 10.x release
+        # NOT COMPATIBLE WITH VERSION 8.X and earlier
+      branches:
+        only: # — Branches to include (type: sequence of string, or string, e.g.: master)
+          - master
+          - next/from-v1.2.0-next-20201226
+        except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
+          - next/feature
+      cache:
+        directories:
+          - "$HOME/.node_packages"
+        npm: true
+        yarn: true
+      install:
+        - yarn install
+        - yarn add -D coveralls
+        - npm i -g npm@latest
+        - npm i -g typescript@latest @types/node@latest
+        - npm i -g ts-jest@latest concurrently
+        - npm i -g jest@latest @types/jest@latest
+        - npm i -g eslint@latest eslint-config-prettier@latest eslint-plugin-import@latest eslint-plugin-jsdoc@latest eslint-plugin-jsonc@latest eslint-plugin-prettier@latest eslint-plugin-simple-import-sort@latest eslint-plugin-unicorn@latest
       script:
         - yarn run CI
         - ls -alg
