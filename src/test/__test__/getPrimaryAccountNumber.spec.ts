@@ -3,6 +3,7 @@ import {
   AccountType,
   ClientAccountType,
 } from 'questrade-api-enumerations';
+
 import { _getPrimaryAccountNumber } from '../../private';
 import { IAccount } from '../../typescript';
 

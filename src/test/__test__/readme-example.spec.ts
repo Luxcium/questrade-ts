@@ -1,4 +1,4 @@
-import { redeemToken } from '../../index';
+import { redeemToken } from '../..';
 import { void0 } from '../../utils';
 
 test('Validating all README examples', async done => {

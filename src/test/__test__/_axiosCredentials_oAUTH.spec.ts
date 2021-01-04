@@ -5,7 +5,7 @@ import { void0 } from '../../utils';
 describe('auth Credential from QuestradeApi via AXIOS', () => {
   it('should be able to recive a keydir', async done => {
     const credentials = await _oAuthAxiosCredentials({
-      account: 12345678,
+      account: 12_345_678,
       apiVersion: 'v1',
       test: false,
       practiceAccount: false,
@@ -18,7 +18,7 @@ describe('auth Credential from QuestradeApi via AXIOS', () => {
   });
   it('should be able to recive a keyfile', async done => {
     const credentials = await _oAuthAxiosCredentials({
-      account: 12345678,
+      account: 12_345_678,
       apiVersion: 'v1',
       test: false,
       practiceAccount: false,
@@ -35,8 +35,8 @@ describe('auth Credential from QuestradeApi via AXIOS', () => {
     try {
       canReciveEmptyString = true;
       credentials = await _oAuthAxiosCredentials('');
-    } catch (e) {
-      console.error(e.message);
+    } catch (error) {
+      console.error(error.message);
       canReciveEmptyString = false;
     }
     expect(canReciveEmptyString).toBe(false);

@@ -1,4 +1,5 @@
-import { CallBack, WillCallBack } from './';
+import { CallBack, WillCallBack } from '.';
+
 export type ReqLimiterFactory = () => <T>(
   fn: WillCallBack<T>,
   hertz?: number,

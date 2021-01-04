@@ -78,6 +78,7 @@ export const _tryToGetData = <R, D>(
           const urlToHash = getQtUrlPathFromArgs(_config);
           const dataToHash = `${JSON.stringify(response.data ?? null)}`;
 
+          // TODO: remove dependencies to nodeJS crypto module making it optional ...
           credentials.hashes = creatUrlAndDataHashes(urlToHash, dataToHash);
         }
       } catch (error_) {

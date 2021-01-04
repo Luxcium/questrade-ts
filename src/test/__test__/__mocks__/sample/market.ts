@@ -38,5 +38,5 @@ export const market: IMarket = {
   startTime: '2019-10-07T09:30:00.000000-04:00',
   endTime: '2019-10-07T16:00:00.000000-04:00',
   extendedEndTime: '2019-10-07T20:00:00.000000-04:00',
-  snapQuotesLimit: 2147483647,
+  snapQuotesLimit: 2_147_483_647,
 };

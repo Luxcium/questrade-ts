@@ -1,6 +1,7 @@
 import { AxiosRequestConfig, AxiosStatic } from 'axios';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
+
 const _axios = jest.fn();
 const introspect = { onOff: false };
 const path = (s: string) => resolve(`${__dirname}/sample/${s}.json`);
@@ -27,7 +28,7 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
     'ERROR',
   ].reduce((previous, dir) => {
     if (!previous) {
-      if (url.indexOf(`/${dir}`) !== -1) {
+      if (url.includes(`/${dir}`)) {
         if (dir === 'ERROR') {
           const errMessage: string = 'Testing Errors';
           console.warn(errMessage);

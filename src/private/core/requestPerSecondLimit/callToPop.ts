@@ -13,7 +13,7 @@ export function myRequestLimiterFactory() {
   const queueLimiter = <Tfn>(fn: () => Promise<Tfn>) => {
     const queueList: [() => Promise<Tfn>, CallBack<any>][] = [];
     const shiftOutFromQueue = async () => {
-      if (queueList.length >= 1 && !isRequested) {
+      if (queueList.length > 0 && !isRequested) {
         isRequested = true;
         const nextToExecute = shiftQueue(queueList);
         if (nextToExecute !== undefined) {

@@ -4,6 +4,7 @@ import {
   ICandle,
   ICandles,
 } from '../../../../typescript';
+// TODO: remove dependencies to nodeJS crypt-module making it optional ...
 import { endpointFormatDateTool, getHash } from '../../../../utils';
 import { _axiosGetApi } from '../../../routes';
 
@@ -31,6 +32,8 @@ export const _getCandles = (
       ).candles.map(result => {
         result.symbolID = symbolID;
         result.granularity = interval;
+
+        // TODO: remove dependencies to nodeJS crypto module making it optional ...
         const [short, long] = getHash(JSON.stringify(result));
         result.hash = { short, long };
         return result;

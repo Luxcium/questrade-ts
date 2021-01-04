@@ -4,9 +4,11 @@ import {
   OrderTimeInForce,
   OrderType,
 } from 'questrade-api-enumerations';
+
 import { IOrder } from '../../../../typescript';
+
 export const order: IOrder = {
-  id: 498268725,
+  id: 498_268_725,
   symbol: 'AMD',
   stockId: 6770,
   totalQuantity: 106,
@@ -28,7 +30,7 @@ export const order: IOrder = {
   gtdDate: null,
   state: OrderState.EXECUTED,
   rejectionReason: '',
-  chainId: 498268725,
+  chainId: 498_268_725,
   creationTime: '2018-04-19T15:40:08.330000-04:00',
   updateTime: '2018-04-19T15:40:08.393000-04:00',
   notes: '',
@@ -36,12 +38,12 @@ export const order: IOrder = {
   secondaryRoute: '',
   orderRoute: 'MNGD',
   venueHoldingOrder: 'MNGD',
-  comissionCharged: 4.974855,
+  comissionCharged: 4.974_855,
   exchangeOrderId: '',
   isSignificantShareHolder: false,
   isInsider: false,
   isLimitOffsetInDollar: false,
-  userId: 126691,
+  userId: 126_691,
   placementCommission: null,
   legs: [],
   strategyType: 'SingleLeg',

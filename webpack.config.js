@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development', // 'development' | 'production' | 'none',
   cache: true,
   devtool: false,
   performance: {
@@ -14,15 +14,16 @@ module.exports = {
   },
   resolve: {
     fallback: {
-      path: false, // require.resolve('path-browserify'),
-      crypto: false,
+      path: false, //   require.resolve('path-browserify'),
+      crypto: false, // require.resolve('crypto-browserify'),
+      stream: false, // require.resolve('stream-browserify'),
       fs: false,
     },
   },
 };
 
 /*
-
++ _writeToken, _validateToken, setMyToken, getMyToken
 rm /home/luxcium/dev/questrade-ts/build/src/test
 - import { access, constants, readFileSync, writeFileSync } from 'fs';
 - import path from 'path';

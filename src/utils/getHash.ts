@@ -1,3 +1,4 @@
+// TODO: remove dependencies to nodeJS crypt-module making it optional ...
 import crypto from 'crypto';
 
 export const getHash = (
@@ -5,6 +6,7 @@ export const getHash = (
   hashAlgo: string = 'sha1',
   shortSlice: number = 6,
 ) => {
+  // TODO: remove dependencies to nodeJS crypt-module making it optional ...
   const hAlgo = crypto.createHash(hashAlgo);
   hAlgo.write(data);
   const longer: string = hAlgo.digest('hex').toString();

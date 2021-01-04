@@ -1,6 +1,7 @@
 // tslint:disable  no-implicit-dependencies
 import { default as R, identity as I } from 'ramda';
-import { redeemToken } from '../../';
+
+import { redeemToken } from '../..';
 import { willGetSNP500List } from './getSNP500List';
 // import { stockIdOf } from './../functions/questrade/stockIdOf';
 import { getSymbolDetails } from './questrade';

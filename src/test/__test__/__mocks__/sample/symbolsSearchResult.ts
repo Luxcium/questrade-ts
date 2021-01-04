@@ -1,4 +1,5 @@
 import { Currency } from 'questrade-api-enumerations';
+
 import { ISymbolSearchResult } from '../../../../typescript';
 
 export const symbolSearchResult: ISymbolSearchResult = {

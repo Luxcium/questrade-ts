@@ -1,5 +1,7 @@
 import { AxiosResponse } from 'axios';
+// TODO: remove dependencies to file system making it optional ...
 import { writeFileSync } from 'fs';
+
 import { Credentials, IRefreshCreds } from '../../../typescript';
 
 export const _writeToken = (
@@ -13,6 +15,7 @@ export const _writeToken = (
   credentials.refreshToken = refreshCreds.refresh_token;
   credentials.tokenType = refreshCreds.token_type;
   credentials.apiUrl = `${credentials.apiServer}${credentials.apiVersion}`;
+  // TODO: remove dependencies to file system making it optional ...
   writeFileSync(credentials.keyFile, credentials.refreshToken, 'utf8');
 
   return credentials;

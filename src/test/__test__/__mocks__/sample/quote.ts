@@ -1,4 +1,5 @@
 import { TickType } from 'questrade-api-enumerations';
+
 import { IQuote } from '../../../../typescript';
 
 export const quote: IQuote = {
@@ -14,7 +15,7 @@ export const quote: IQuote = {
   lastTradeSize: 100,
   lastTradeTick: TickType.EQUAL,
   lastTradeTime: '2019-10-07T12:27:02.036000-04:00',
-  volume: 14630570,
+  volume: 14_630_570,
   openPrice: 226.27,
   highPrice: 229.42,
   lowPrice: 225.84,
@@ -22,5 +23,5 @@ export const quote: IQuote = {
   isHalted: false,
   high52w: 232.35,
   low52w: 142,
-  VWAP: 228.007058,
+  VWAP: 228.007_058,
 };

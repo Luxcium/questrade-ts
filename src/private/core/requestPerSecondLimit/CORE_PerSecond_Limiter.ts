@@ -27,7 +27,7 @@ function requestLimiterFactory() {
   const callsQueue: [Function, CallBack<any>][] = [];
   return function requestLimiter(fn: Function, hertz: number = 1) {
     const callToPop = async function (): Promise<void> {
-      if (callsQueue.length >= 1 && !isCalled) {
+      if (callsQueue.length > 0 && !isCalled) {
         isCalled = true;
         setTimeout(async function (): Promise<void> {
           isCalled = false;
@@ -37,8 +37,7 @@ function requestLimiterFactory() {
         const poped = callsQueue.pop();
         const [myfn, mycb] = !!poped ? poped : [neverWillCb, neverCb];
 
-        while (lastDelay() < perSeconds(hertz));
-        {
+        while (lastDelay() < perSeconds(hertz)) {
           // do nothing just wait while (lastDelay() < perSeconds(hertz));
         }
         mycb(null, myfn());

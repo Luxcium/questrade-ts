@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import {
   Constituent,
   ConstituentsList,
@@ -6,6 +7,7 @@ import {
   ConstituentsSymbolsAndList,
 } from './Constituent';
 import { uriToConstituents_json as path } from './uriToConstituents_json';
+
 export const willGetSNP500StringList = async () =>
   (await willGetSNP500List())[0];
 

@@ -7,10 +7,10 @@ export const _buildCredentialsFromToken = (token: QuestradeAPIOptions) => {
   if (typeof token === 'undefined' || !token) {
     throw new Error('questrade_missing_api_key or options');
   }
-  if (typeof token === 'string' && token.indexOf('/') !== -1) {
+  if (typeof token === 'string' && token.includes('/')) {
     credentials.keyFile = token;
   }
-  if (typeof token === 'string' && token.indexOf('/') === -1) {
+  if (typeof token === 'string' && !token.includes('/')) {
     credentials.seedToken = token;
   }
   if (typeof token === 'object') {

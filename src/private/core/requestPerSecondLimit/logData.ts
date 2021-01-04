@@ -1,4 +1,5 @@
 import { AxiosResponse } from 'axios';
+
 export const logData = <T>(response: AxiosResponse<T>) => {
   const { config, data, headers, status, statusText } = response;
 

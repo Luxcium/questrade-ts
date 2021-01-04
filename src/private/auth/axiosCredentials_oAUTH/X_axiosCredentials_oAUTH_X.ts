@@ -15,6 +15,7 @@ export const _oAuthAxiosCredentials = async (
   options: QuestradeAPIOptions,
   proxy?: AxiosProxyHandler,
 ): Promise<Credentials> => {
+  // TODO: remove dependencies to file system making it optional ...
   const { refreshToken, credentials } = _validateToken(options);
   const _config: AuthApiConfig = {
     url: `${credentials.authUrl}/oauth2/token`,
@@ -25,7 +26,6 @@ export const _oAuthAxiosCredentials = async (
     },
   };
 
-  void proxy; // TODO: Implement usage of proxy
   let axiosClient: AxiosStatic = axios;
   if (proxy) {
     axiosClient = proxy;
@@ -48,5 +48,6 @@ export const _oAuthAxiosCredentials = async (
     );
   }
 
+  // TODO: remove dependencies to file system making it optional ...
   return _writeToken(credentials, response);
 };

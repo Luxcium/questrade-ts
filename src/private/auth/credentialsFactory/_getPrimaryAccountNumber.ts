@@ -3,7 +3,7 @@ import { AcountNumberString, IAccount } from '../../../typescript';
 export function _getPrimaryAccountNumber(
   accounts: IAccount[],
 ): AcountNumberString {
-  if (!accounts || accounts.length < 1) {
+  if (!accounts || accounts.length === 0) {
     console.warn(
       "WARNING('No account number found') will default to '11111111' ",
     );
@@ -13,7 +13,7 @@ export function _getPrimaryAccountNumber(
     return accounts[0].number;
   }
   const primary = accounts.filter(account => account.isPrimary);
-  if (primary.length >= 1) {
+  if (primary.length > 0) {
     return primary[0].number;
   }
   return accounts[0].number;

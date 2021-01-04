@@ -3,7 +3,7 @@ import { _validateToken } from '../../private/auth/axiosCredentials_oAUTH/_valid
 describe('oAuth Validate Token', () => {
   it('should validate with a numeric account number', async () => {
     _validateToken({
-      account: 12345678,
+      account: 12_345_678,
       apiVersion: 'v1',
       test: false,
       practiceAccount: false,

@@ -1,20 +1,22 @@
 import { Currency, SecurityType } from 'questrade-api-enumerations';
+
 import { ISymbol } from '../../../../typescript';
+
 export const stockSymbol: ISymbol = {
   symbol: 'AAPL',
   symbolId: 8049,
   prevDayClosePrice: 227.01,
   highPrice52: 232.35,
   lowPrice52: 142,
-  averageVol3Months: 27641633,
-  averageVol20Days: 30094274,
-  outstandingShares: 4519180000,
+  averageVol3Months: 27_641_633,
+  averageVol20Days: 30_094_274,
+  outstandingShares: 4_519_180_000,
   eps: 11.78,
-  pe: 18.74533,
+  pe: 18.745_33,
   dividend: 0.77,
   yield: 1.3948,
   exDate: '2019-08-09T00:00:00.000000-04:00',
-  marketCap: 997925327600,
+  marketCap: 997_925_327_600,
   tradeUnit: 1,
   optionType: null,
   optionDurationType: null,

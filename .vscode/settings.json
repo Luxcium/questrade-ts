@@ -1632,7 +1632,7 @@ eslint-plugin-node
     }
   ],
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
     "editor.fontFamily": "'VictorMono Nerd Font', 'hurmit Nerd Font mono','ProFontWindows Nerd Font mono','meslolgl Nerd Font mono','Iosevka Nerd Font Mono','SauceCodePro Nerd Font','ProFontIIx Nerd Font',mono",
     // "editor.fontSize": 26,
     // "editor.fontWeight": "400",
