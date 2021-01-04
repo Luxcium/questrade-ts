@@ -1653,5 +1653,8 @@ eslint-plugin-node
     // "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "typescript.tsdk": "node_modules/typescript/lib",
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
 }
 // Scientia es lux principium ✨
