@@ -47,6 +47,6 @@ describe('Name of the group', () => {
   it('should produce a valid date value number when using dateNowNumeric', () => {
     const dateNowNumericValue = dateNowNumeric();
     const dateNow = new Date(dateNowNumericValue);
-    console.log(dateNow); // TODO: List the side effects
+    console.log(dateNow); // CONSOLE: List the side effects
   });
 });

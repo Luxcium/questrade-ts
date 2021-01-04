@@ -14,7 +14,7 @@ export const _getBalances = (
   try {
     return _axiosAccountGetApi(credentials, proxy)<IBalances>('/balances')();
   } catch (error) {
-    console.error(error); // TODO: List the side effects
+    console.error(error); // CONSOLE: List the side effects
 
     return {
       perCurrencyBalances: [],

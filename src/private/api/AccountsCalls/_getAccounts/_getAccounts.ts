@@ -22,7 +22,7 @@ export function _getAccounts(
       //
       return data.accounts;
     } catch (error) {
-      console.error(error.message); // TODO: List the side effects
+      console.error(error.message); // CONSOLE: List the side effects
       return [];
     }
   };

@@ -7,7 +7,7 @@ const _credAcctNmbrProp = (credentials: Credentials): string =>
 
 const _endPtAccountBaseURL: EndPtAccountBaseURL = getCredAcctProp => urlSep => accountStr => (
   credentials,
-  proxy,
+  proxy?,
 ) => accountEndpoint =>
   `${urlSep()}${accountStr()}${urlSep()}${getCredAcctProp(
     credentials,
@@ -21,7 +21,7 @@ export const _endpointFormatAccount = _endPtAccountBaseURL(_credAcctNmbrProp)(
 export type EndPtAccountBaseURL = (
   getCredAcctProp: (
     credentials: Credentials,
-    proxy: AxiosProxyHandler,
+    proxy?: AxiosProxyHandler,
   ) => string,
 ) => (
   urlSep: () => string,
@@ -29,5 +29,5 @@ export type EndPtAccountBaseURL = (
   acctUrlStr: () => string,
 ) => (
   credentials: Credentials,
-  proxy: AxiosProxyHandler,
+  proxy?: AxiosProxyHandler,
 ) => (accountEndpoint: string) => string;

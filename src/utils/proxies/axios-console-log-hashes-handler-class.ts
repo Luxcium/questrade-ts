@@ -28,7 +28,7 @@ class AxiosConsoleLogHashesHandlerClass
     };
 
     // +SIDE EFFECTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-    console.log(proxyData); // TODO: List the side effects
+    console.log(proxyData); // CONSOLE: List the side effects
 
     // +RETURN VALUE ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
     return returnValue;

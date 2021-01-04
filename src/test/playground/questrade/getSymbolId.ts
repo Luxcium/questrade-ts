@@ -4,7 +4,7 @@ export function getSymbolId(qtApi: QuestradeApi) {
   return async (stockSymbol: string) => {
     const stock = await qtApi.search.stock(stockSymbol);
     if (!stock) {
-      console.log(stockSymbol); // TODO: List the side effects
+      console.log(stockSymbol); // CONSOLE: List the side effects
 
       throw new Error('getSymbolId failed to return a value');
     }

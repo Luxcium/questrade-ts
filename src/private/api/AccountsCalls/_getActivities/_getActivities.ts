@@ -27,7 +27,7 @@ export const _getActivities = (
 
         return activities.activities;
       } catch (error) {
-        console.error(error); // TODO: List the side effects
+        console.error(error); // CONSOLE: List the side effects
 
         return [];
       }

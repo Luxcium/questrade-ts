@@ -38,13 +38,13 @@ export const _credentialsFactory = async (
         new Date().toISOString(),
 
         '\n🍦 Status: MOCKING!!!\n🤨',
-      ); // TODO: List the side effects
+      ); // CONSOLE: List the side effects
     } else {
-      console.info('Questrade Server Time:', time, '\nStatus: ready\n'); // TODO: List the side effects
+      console.info('Questrade Server Time:', time, '\nStatus: ready\n'); // CONSOLE: List the side effects
     }
   } catch (error) {
-    console.error(error.message); // TODO: List the side effects
-    console.info(credentials.toValue()); // TODO: List the side effects
+    console.error(error.message); // CONSOLE: List the side effects
+    console.info(credentials.toValue()); // CONSOLE: List the side effects
     throw new Error('_oAuth Error getting credentials');
   }
   return credentials;

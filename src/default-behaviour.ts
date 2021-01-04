@@ -1,3 +1,59 @@
+import { AxiosRequestConfig, AxiosStatic } from 'axios';
+
+import { AxiosProxyHandler } from './types';
+
+export const sideEffects = {
+  client(
+    config: AxiosRequestConfig | string,
+    axioClient: AxiosStatic,
+  ): AxiosProxyHandler | undefined {
+    return axioClient(config);
+  },
+  writeToken(): unknown {
+    return;
+  },
+  validateToken(): unknown {
+    return;
+  },
+  setMyToken(): unknown {
+    return;
+  },
+  getMyToken(): unknown {
+    return;
+  },
+  getHash(): unknown {
+    return;
+  },
+  errorlog<T>(...args: T[]): T[] {
+    console.error(...args);
+    return args;
+  },
+  warninglog<T>(...args: T[]): T[] {
+    console.warn(...args);
+    return args;
+  },
+  infolog<T>(...args: T[]): T[] {
+    console.info(...args);
+    return args;
+  },
+  echo<T>(...args: T[]): T[] {
+    console.log(...args);
+    return args;
+  },
+};
+export const {
+  client: SFX_CLIENT,
+  writeToken: SFX_WRITETOKEN,
+  validateToken: SFX_VALIDATETOKEN,
+  setMyToken: SFX_SETMYTOKEN,
+  getMyToken: SFX_GETMYTOKEN,
+  getHash: SFX_GETHASH,
+  errorlog: SFX_ERRORLOG,
+  warninglog: SFX_WARNINGLOG,
+  infolog: SFX_INFOLOG,
+  echo: SFX_ECHO,
+} = sideEffects;
+
 /*
 + _writeToken, _validateToken, setMyToken, getMyToken
 rm /home/luxcium/dev/questrade-ts/build/src/test
@@ -21,12 +77,3 @@ ERROR in ./build/src/utils/mkdirp.js 9:37-52
 ERROR in ./node_modules/dotenv/lib/main.js 24:11-24
 ERROR in ./node_modules/dotenv/lib/main.js 25:13-28
  */
-
-const obj = {
-  writeToken() {},
-  validateToken() {},
-  setMyToken() {},
-  getMyToken() {},
-  getHash() {},
-  client() {},
-};

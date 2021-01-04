@@ -27,7 +27,7 @@ export const _getOrders = (
     )();
     return orders.orders;
   } catch (error) {
-    console.error(error); // TODO: List the side effects
+    console.error(error); // CONSOLE: List the side effects
 
     return [];
   }

@@ -30,7 +30,7 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
       if (url.includes(`/${dir}`)) {
         if (dir === 'ERROR') {
           const errMessage: string = 'Testing Errors';
-          console.warn(errMessage); // TODO: List the side effects
+          console.warn(errMessage); // CONSOLE: List the side effects
 
           throw new Error(errMessage);
         }

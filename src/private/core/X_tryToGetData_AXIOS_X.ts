@@ -38,20 +38,20 @@ export const _tryToGetData = <R, D>(
         response = await axiosClient(_config);
       }
       if (response.status !== 200) {
-        console.log('________________________________________________'); // TODO: List the side effects
-        console.log(response.status, response.statusText); // TODO: List the side effects
-        console.log(response.data); // TODO: List the side effects
-        console.table(response.headers); // TODO: List the side effects
+        console.log('________________________________________________'); // CONSOLE: List the side effects
+        console.log(response.status, response.statusText); // CONSOLE: List the side effects
+        console.log(response.data); // CONSOLE: List the side effects
+        console.table(response.headers); // CONSOLE: List the side effects
         console.log(
           remaningTimeString(
             credentials?.remainingRequests?.secondsRemaning
               ? credentials.remainingRequests.secondsRemaning
               : 0,
           ),
-        ); // TODO: List the side effects
-        console.log(response.status, response.statusText); // TODO: List the side effects
-        console.log('________________________________________________'); // TODO: List the side effects
-        console.log('++++++++++++++++++++++++++++++++++++++++++++++++'); // TODO: List the side effects
+        ); // CONSOLE: List the side effects
+        console.log(response.status, response.statusText); // CONSOLE: List the side effects
+        console.log('________________________________________________'); // CONSOLE: List the side effects
+        console.log('++++++++++++++++++++++++++++++++++++++++++++++++'); // CONSOLE: List the side effects
       } else {
         // console.log(
         //   remaningTimeString(
@@ -82,17 +82,17 @@ export const _tryToGetData = <R, D>(
           credentials.hashes = creatUrlAndDataHashes(urlToHash, dataToHash);
         }
       } catch (error_) {
-        console.error('error_:', error_); // TODO: List the side effects
+        console.error('error_:', error_); // CONSOLE: List the side effects
 
         console.info(
           "To make tests pass removed 'throw' error messages from code bloc in (Axios) _tryToGetData",
-        ); // TODO: List the side effects
+        ); // CONSOLE: List the side effects
 
         throw error_;
       }
       return data;
     } catch (error) {
-      console.error(_logError(error).message); // TODO: List the side effects
+      console.error(_logError(error).message); // CONSOLE: List the side effects
 
       throw error;
     }

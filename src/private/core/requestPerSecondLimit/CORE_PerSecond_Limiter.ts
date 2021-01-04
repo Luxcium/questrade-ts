@@ -21,7 +21,7 @@ const resetLastCall = () => {
   lastCall = Date.now();
 
   return void 0;
-})().catch(error => console.log('error message:', error.message)); // TODO: List the side effects
+})().catch(error => console.log('error message:', error.message)); // CONSOLE: List the side effects
 
 function requestLimiterFactory() {
   let isCalled = false;
@@ -60,7 +60,7 @@ export const myPromisify = <T>(addToQueue: (cb: any) => Promise<void>) => {
   return new Promise<T>((resolve, reject) => {
     addToQueue((error: Error, result: any) => {
       if (!!error) {
-        console.error(error); // TODO: List the side effects
+        console.error(error); // CONSOLE: List the side effects
 
         reject(error);
         return void 0;

@@ -1,7 +1,4 @@
 {
-  /*
-  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
-  */
   "files.exclude": {
     ".directory": true,
     "dist": false,
@@ -12,12 +9,20 @@
     "dist": true,
     "out": true
   },
-  "coverage-gutters.showLineCoverage": true,
-  "coverage-gutters.showRulerCoverage": true,
-  "coverage-gutters.showGutterCoverage": true,
-  "coverage-gutters.highlightdark": "#39F1", // rgba (45, 121, 10, 0.70)
-  "coverage-gutters.noHighlightDark": "#F363", // rgba (121, 31, 10, 0.70)
-  "coverage-gutters.partialHighlightDark": "#F802", // rgba (121, 86, 10, 0.70)
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  */
+  "workbench.colorTheme": "Pop N' Lock Theme by Luxcium ✨",
+  "workbench.iconTheme": "material-icon-theme",
+  "window.zoomLevel": 1,
+  "editor.fontFamily": "VictorMono Nerd Font",
+  "editor.fontSize": 24,
+  "editor.fontWeight": "500",
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontFamily": "'FuraCode Nerd Font mono','TerminessTTF Nerd Font Mono'",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.fontWeight": "500",
+  "terminal.integrated.fontWeightBold": "900",
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― FORMAT BEHAVIOUR
@@ -71,32 +76,6 @@
   "prettier.trailingComma": "all",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.packageManager": "yarn",
-  // "prettier.semi": false,
-  // "prettier.insertPragma": true,
-  // "prettier.ignorePath": ".prettierignore",
-  // "prettier.prettierPath": ".prettierrc.js",
-  // "prettier.arrowParens": "always",
-  // "prettier.bracketSpacing": true,
-  // "prettier.configPath": "",
-  // "prettier.disableLanguages": [],
-  // "prettier.documentSelectors": [],
-  // "prettier.embeddedLanguageFormatting": "auto",
-  // "prettier.endOfLine": "lf",
-  // "prettier.htmlWhitespaceSensitivity": "css",
-  // "prettier.jsxBracketSameLine": false,
-  // "prettier.jsxSingleQuote": true,
-  // "prettier.printWidth": 80,
-  // "prettier.proseWrap": "preserve",
-  // "prettier.quoteProps": "preserve",
-  // "prettier.requirePragma": false,
-  // "prettier.resolveGlobalModules": false,
-  // "prettier.singleQuote": true,
-  // "prettier.tabWidth": 2,
-  // "prettier.trailingComma": "all",
-  // "prettier.useEditorConfig": true,
-  // "prettier.useTabs": false,
-  // "prettier.vueIndentScriptAndStyle": false,
-  // "prettier.withNodeModules": false,
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― ESLINT
@@ -107,75 +86,6 @@
   "eslint.alwaysShowStatus": true,
   "eslint.codeActionsOnSave.mode": "all",
   "eslint.packageManager": "yarn",
-  // "eslint.onIgnoredFiles": "off",
-  // "eslint.run": "onType",
-  // "eslint.debug": true,
-  // "eslint.trace.server": "verbose",
-  // "eslint.probe": [
-  //   "javascript",
-  //   "javascriptreact",
-  //   "typescript",
-  //   "typescriptreact",
-  //   "html",
-  //   "vue",
-  //   "markdown",
-  //   "jsonc",
-  //   "json"
-  // ],
-  // "eslint.codeAction.showDocumentation": {
-  //   "enable": true
-  // },
-  // "eslint.codeAction.disableRuleComment": {
-  //   "location": "separateLine",
-  //   "enable": true
-  // },
-  // "eslint.lintTask.options": ".",
-  // "eslint.nodeEnv": null,
-  // "eslint.nodePath": null,
-  // "eslint.options": {},
-  // "eslint.runtime": null,
-  // "eslint.validate": [],
-  // "eslint.workingDirectories": [],
-  /*
-
-
- https: //github.com/typescript-eslint/typescript-eslint
-
- https: //bit.ly/3fgiyZj "@typescript-eslint/eslint-plugin": "^4.7.0", "@typescript-eslint/parser": "^4.7.0", "eslint": "^7.13.0",
-"eslint-config-prettier": "^6.15.0",
-"eslint-plugin-filenames": "^1.3.2",
-"eslint-plugin-import": "^2.22.1",
-"eslint-plugin-jsdoc": "^30.7.7",
-"eslint-plugin-node": "^11.1.0",
-"eslint-plugin-prettier": "^3.1.4",
-"eslint-plugin-security": "^1.4.0",
-"eslint-plugin-simple-import-sort": "^5.0.3",
-"eslint-plugin-sort-keys-fix": "^1.1.1",
-"eslint-plugin-unicorn": "^23.0.0",
-
- https: //github.com/prettier/eslint-config-prettier#eslint-config-prettier
- @typescript-eslint/eslint-plugin
- eslint-plugin-babel
- eslint-plugin-flowtype
- eslint-plugin-react
- eslint-plugin-standard
- eslint-plugin-unicorn
- eslint-plugin-vue
-
- https: //github.com/typescript-eslint/typescript-eslint/blob/master/docs/getting-started/linting/README.md#plugins
- +Jest testing:
-eslint-plugin-jest
- + ESLint comment restrictions:
-eslint-plugin-eslint-comments
- + Import/export conventions :
-eslint-plugin-import
- +React best practices:
-eslint-plugin-react
-eslint-plugin-react-hooks
- +NodeJS best practices:
-eslint-plugin-node
-
-*/
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― ERRORLENS
@@ -244,12 +154,12 @@ eslint-plugin-node
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― BETTER COMMENTS
   */
-  // "color": "#F36B"
-  // "color": "#F80B"
-  // "color": "#FF0B"
-  // "color": "#0F0B"
-  // "color": "#39FB"
-  // "color": "#93FB"
+  // "#F36F"
+  // "#F80B"
+  // "#FF0B"
+  // "#0F0B"
+  // "#39FB"
+  // "#93FB"
   // "#F36F",
   // "#F364",
   // "#CF3F",
@@ -275,12 +185,6 @@ eslint-plugin-node
       "strikethrough": false,
       "backgroundColor": "#F15E"
     },
-    // "color": "#F36B"
-    // "color": "#F80B"
-    // "color": "#FF0B"
-    // "color": "#0F0B"
-    // "color": "#39FB"
-    // "color": "#93FB"
     {
       // constructor
       "tag": "constructor",
@@ -299,6 +203,24 @@ eslint-plugin-node
       // protected
       "tag": "protected",
       "color": "#FD3E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+
+    */
+    {
+      // ――
+      "tag": "――",
+      "color": "#FA0C",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // |-···
+      "tag": "|-",
+      "color": "#FA0C",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
@@ -729,13 +651,13 @@ eslint-plugin-node
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
-    {
-      // :
-      "tag": ":",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
+    // {
+    //   // :
+    //   "tag": ":",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
     {
       // :=
       "tag": ":=",
@@ -961,8 +883,8 @@ eslint-plugin-node
       "backgroundColor": "transparent"
     },
     {
-      // http
-      "tag": "http",
+      // http:
+      "tag": "http:",
       "color": "#FB3F",
       "strikethrough": false,
       "backgroundColor": "transparent"
@@ -1039,12 +961,12 @@ eslint-plugin-node
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
-    // "color": "#F36B"
-    // "color": "#F80B"
-    // "color": "#FF0B"
-    // "color": "#0F0B"
-    // "color": "#39FB"
-    // "color": "#93FB"
+    // "#F36"
+    // "#F80B"
+    // "#FF0B"
+    // "#0F0B"
+    // "#39FB"
+    // "#93FB"
     /*
  ―1============================================================================= ~~
  ―2----------------------------------------------------------------------------- ~~
@@ -1233,24 +1155,6 @@ eslint-plugin-node
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
-    /*
-  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
-
-    */
-    {
-      //                                                                      ―― ~~
-      "tag": "――",
-      "color": "#FA0C",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // |-···
-      "tag": "|-",
-      "color": "#FA0C",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
     // ·········································································
     {
       // ···
@@ -1323,13 +1227,13 @@ eslint-plugin-node
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
-    {
-      // =
-      "tag": "=",
-      "color": "#F36B",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
+    // {
+    //   // =
+    //   "tag": "=",
+    //   "color": "#F36B",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
     {
       // +
       "tag": "+",
@@ -1350,17 +1254,94 @@ eslint-plugin-node
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
-    {
-      // ~
-      "tag": "~",
-      "color": "#FF6600DD",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
+    // {
+    //   // ~
+    //   "tag": "~",
+    //   "color": "#FF6600DD",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
     {
       // -
       "tag": "-",
       "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      //BUG:
+      "tag": "BUG:",
+      "color": "#F15",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      //CONSOLE:
+      "tag": "CONSOLE:",
+      "color": "#4B9",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      //ERROR:
+      "tag": "CONSERROROLE:",
+      "color": "#F36",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      //FIXME:
+      "tag": "FIXME:",
+      "color": "#F80",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      //HACK:
+      "tag": "HACK:",
+      "color": "#93F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      //HINT:
+      "tag": "HINT:",
+      "color": "#39C",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      //INFO:
+      "tag": "INFO:",
+      "color": "#FB0",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      //LOG:
+      "tag": "LOG:",
+      "color": "#9BE",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      //TODO:
+      "tag": "TODO:",
+      "color": "#FB3",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      //WARNING:
+      "tag": "WARNING:",
+      "color": "#BF2",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      //XXX:
+      "tag": "XXX:",
+      "color": "#E22",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
@@ -1656,5 +1637,155 @@ eslint-plugin-node
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
+  "todo-tree.highlights.backgroundColourScheme": [
+    "#F15", //BUG:
+    "#4B9", //CONSOLE:
+    "#F36", //ERROR:
+    "#F80", //FIXME:
+    "#93F", //HACK:
+    "#39C", //HINT:
+    "#FB0", //INFO:
+    "#9BE", //LOG:
+    "#FB3", //TODO:
+    "#BF2", //WARNING:
+    "#E22", //XXX:
+  ],
+  "todo-tree.general.tags": [
+    "BUG:",
+    "CONSOLE:",
+    "ERROR:",
+    "FIXME:",
+    "HACK:",
+    "HINT:",
+    "INFO:",
+    "LOG:",
+    "TODO:",
+    "WARNING:",
+    "XXX:",
+  ],
+  "todo-tree.highlights.useColourScheme": true,
+  "todo-tree.highlights.foregroundColourScheme": [
+    "#224",
+  ],
+  // "todo-tree.highlights.defaultHighlight": {},
+  "todo-tree.highlights.customHighlight": {
+    "BUG:": {
+      "icon": "bug",
+    },
+    "CONSOLE:": {
+      "icon": "terminal",
+    },
+    "ERROR:": {
+      "icon": "x-circle",
+    },
+    "FIXME:": {
+      "icon": "tools",
+    },
+    "HACK:": {
+      "icon": "squirrel",
+    },
+    "HINT:": {
+      "icon": "report",
+    },
+    "INFO:": {
+      "icon": "info",
+    },
+    "LOG:": {
+      "icon": "checklist",
+    },
+    "TODO:": {
+      "icon": "bookmark",
+    },
+    "WARNING:": {
+      "icon": "alert",
+    },
+    "XXX:": {
+      "icon": "law",
+    },
+  },
+  "todo-tree.highlights.schemes": [
+    "file",
+    "untitled",
+    "vscode-userdata",
+    "output",
+  ],
+  "todo-tree.filtering.ignoreGitSubmodules": false,
+  "todo-tree.filtering.includeHiddenFiles": false,
+  "todo-tree.filtering.passGlobsToRipgrep": true,
+  "todo-tree.general.debug": false,
+  "todo-tree.general.enableFileWatcher": true,
+  "todo-tree.highlights.enabled": true,
+  "todo-tree.regex.regexCaseSensitive": true,
+  "todo-tree.ripgrep.usePatternFile": true,
+  "todo-tree.tree.autoRefresh": true,
+  "todo-tree.tree.buttons.expand": true,
+  "todo-tree.tree.buttons.export": false,
+  "todo-tree.tree.buttons.filter": true,
+  "todo-tree.tree.buttons.groupByTag": true,
+  "todo-tree.tree.buttons.refresh": true,
+  "todo-tree.tree.buttons.reveal": true,
+  "todo-tree.tree.buttons.scanMode": false,
+  "todo-tree.tree.buttons.viewStyle": true,
+  "todo-tree.tree.disableCompactFolders": false,
+  "todo-tree.tree.expanded": true,
+  "todo-tree.tree.filterCaseSensitive": false,
+  "todo-tree.tree.flat": false,
+  "todo-tree.tree.grouped": true,
+  "todo-tree.tree.hideIconsWhenGroupedByTag": false,
+  "todo-tree.tree.hideTreeWhenEmpty": false,
+  "todo-tree.tree.scanAtStartup": true,
+  "todo-tree.tree.showBadges": true,
+  "todo-tree.tree.showCountsInTree": true,
+  "todo-tree.tree.showCurrentScanMode": true,
+  "todo-tree.tree.showScanModeButton": false,
+  "todo-tree.tree.sort": true,
+  "todo-tree.tree.sortTagsOnlyViewAlphabetically": false,
+  "todo-tree.tree.tagsOnly": true,
+  "todo-tree.tree.trackFile": true,
+  // "todo-tree.filtering.excludeGlobs": [],
+  // "todo-tree.filtering.includedWorkspaces": [],
+  // "todo-tree.filtering.excludedWorkspaces": [],
+  // "todo-tree.filtering.includeGlobs": [],
+  // "todo-tree.general.tagGroups": {},
+  "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
+  "todo-tree.general.exportPath": "~/todo-tree-%Y%m%d-%H%M.txt",
+  "todo-tree.general.fileWatcherGlob": "**/*",
+  "todo-tree.general.revealBehaviour": "end of todo",
+  "todo-tree.general.rootFolder": "",
+  "todo-tree.general.statusBar": "current file",
+  "todo-tree.general.statusBarClickBehaviour": "cycle",
+  "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^)\\s*($TAGS)|^\\s*- \\[ \\])",
+  "todo-tree.ripgrep.ripgrep": "",
+  "todo-tree.ripgrep.ripgrepArgs": "--max-columns=1000 --no-config ",
+  "todo-tree.ripgrep.ripgrepMaxBuffer": 200,
+  "todo-tree.highlights.highlightDelay": 100,
+  "todo-tree.tree.labelFormat": "${tag} ${after}",
+  "todo-tree.tree.scanMode": "workspace",
+  "todo-tree.tree.tooltipFormat": "${filepath}, line ${line}",
+  // "Toggle activity bar": true,
+  // "Toggle line comment": true,
+  // "Toggle render whitespace": true,
+  // "Toggle terminal": true,
 }
 // Scientia es lux principium ✨
+// "#41E2F4",
+// "#98C379",
+// "#C54442",
+// "#C5F442",
+// "#F48E41",
+// "#FF2D00",
+// "#FF8C00",
+// "#90BCFF08"
+// "#90BCFF11"
+// "#90BCFF22"
+// "#90BCFF33"
+// "#90BCFF44"
+// "#90BCFF55"
+// "#90BCFF66"
+// "#90BCFF77"
+// "#90BCFF88"
+// "#90BCFF99"
+// "#90BCFFAA"
+// "#90BCFFAA"
+// "#90BCFFCC"
+// "#90BCFFDD"
