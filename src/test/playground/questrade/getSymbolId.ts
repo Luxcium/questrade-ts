@@ -1,11 +1,13 @@
+import { sideEffects } from '../../../default-behaviour';
 import { QuestradeApi } from '../../../typescript';
+
+const { echo } = sideEffects;
 
 export function getSymbolId(qtApi: QuestradeApi) {
   return async (stockSymbol: string) => {
     const stock = await qtApi.search.stock(stockSymbol);
     if (!stock) {
-      console.log(stockSymbol); // CONSOLE: List the side effects
-
+      void echo(stockSymbol);
       throw new Error('getSymbolId failed to return a value');
     }
     if (stock.length > 0) {

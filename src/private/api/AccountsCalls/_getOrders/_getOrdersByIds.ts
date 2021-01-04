@@ -1,3 +1,4 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
@@ -5,6 +6,9 @@ import {
   IOrders,
 } from '../../../../typescript';
 import { _axiosAccountGetApi } from '../../../routes';
+
+const { errorlog } = sideEffects;
+
 // + _getOrderByIds
 /** _getOrders */
 export const _getOrdersByIds = (
@@ -20,7 +24,7 @@ export const _getOrdersByIds = (
       )<IOrders>(`/orders?ids=${orderId.join(',')}`)()
     ).orders;
   } catch (error) {
-    console.error(error); // CONSOLE: List the side effects
+    void errorlog(error);
 
     return [];
   }

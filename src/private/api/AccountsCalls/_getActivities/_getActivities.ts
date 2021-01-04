@@ -1,3 +1,4 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
@@ -6,6 +7,8 @@ import {
 } from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
 import { _axiosAccountGetApi } from '../../../routes';
+
+const { errorlog } = sideEffects;
 
 // + _getActivities
 /** PROVIDE: credentials, startTime string and endTime string THEN GET: a 'Promise<IAccountActivity[]>' */
@@ -27,8 +30,7 @@ export const _getActivities = (
 
         return activities.activities;
       } catch (error) {
-        console.error(error); // CONSOLE: List the side effects
-
+        void errorlog(error);
         return [];
       }
     };

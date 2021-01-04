@@ -1278,77 +1278,66 @@
       "backgroundColor": "transparent"
     },
     {
-      //BUG:
       "tag": "BUG:",
       "color": "#F15",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      //CONSOLE:
       "tag": "CONSOLE:",
-      "color": "#4B9",
+      "color": "#FB3",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      //ERROR:
       "tag": "CONSERROROLE:",
       "color": "#F36",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      //FIXME:
       "tag": "FIXME:",
       "color": "#F80",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      //HACK:
       "tag": "HACK:",
       "color": "#93F",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      //HINT:
       "tag": "HINT:",
       "color": "#39C",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      //INFO:
       "tag": "INFO:",
       "color": "#FB0",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      //LOG:
       "tag": "LOG:",
       "color": "#9BE",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
+    // {
+    //   "tag": "TODO:",
+    //   "color": "#FB3",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
     {
-      //TODO:
-      "tag": "TODO:",
-      "color": "#FB3",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      //WARNING:
       "tag": "WARNING:",
       "color": "#BF2",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      //XXX:
       "tag": "XXX:",
       "color": "#E22",
       "strikethrough": false,
@@ -1626,17 +1615,17 @@
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "todo-tree.highlights.backgroundColourScheme": [
-    "#F15", //BUG:
-    "#4B9", //CONSOLE:
-    "#F36", //ERROR:
-    "#F80", //FIXME:
-    "#93F", //HACK:
-    "#39C", //HINT:
-    "#FB0", //INFO:
-    "#9BE", //LOG:
-    "#FB3", //TODO:
-    "#BF2", //WARNING:
-    "#E22", //XXX:
+    "#F15", //BUG
+    "#4B9", //CONSOLE
+    "#F36", //ERROR
+    "#F80", //FIXME
+    "#93F", //HACK
+    "#39C", //HINT
+    "#FB0", //INFO
+    "#9BE", //LOG
+    "#FB3", //TODO
+    "#BF2", //WARNING
+    "#E22", //XXX
   ],
   "todo-tree.general.tags": [
     "BUG:",

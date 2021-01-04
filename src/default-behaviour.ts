@@ -236,19 +236,24 @@ export const sideEffects = {
   getHash(): unknown {
     return;
   },
-  errorlog<T>(...args: T[]): T[] {
+  errorlog<T = unknown>(...args: T[]): T[] {
     console.error(...args);
     return args;
   },
-  warninglog<T>(...args: T[]): T[] {
+  warnlog<T = unknown>(...args: T[]): T[] {
     console.warn(...args);
     return args;
   },
-  infolog<T>(...args: T[]): T[] {
+  infolog<T = unknown>(...args: T[]): T[] {
     console.info(...args);
     return args;
   },
-  echo<T>(...args: T[]): T[] {
+  tablelog<T = unknown>(...args: T[]): T[] {
+    console.table(...args);
+    return args;
+  },
+
+  echo<T = unknown>(...args: T[]): T[] {
     console.log(...args);
     return args;
   },
@@ -261,8 +266,9 @@ export const {
   getMyToken: SFX_GETMYTOKEN,
   getHash: SFX_GETHASH,
   errorlog: SFX_ERRORLOG,
-  warninglog: SFX_WARNINGLOG,
+  warnlog: SFX_WARNINGLOG,
   infolog: SFX_INFOLOG,
+  tablelog: SFX_TABLELOG,
   echo: SFX_ECHO,
 } = sideEffects;
 

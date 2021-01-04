@@ -1,5 +1,6 @@
 import axios, { AxiosStatic } from 'axios';
 
+import { sideEffects } from '../../../default-behaviour';
 import {
   AuthApiConfig,
   AxiosIntrospectRes,
@@ -10,6 +11,8 @@ import {
 } from '../../../typescript';
 import { _validateToken } from './_validateToken';
 import { _writeToken } from './_writeToken';
+
+const { echo } = sideEffects;
 
 export const _oAuthAxiosCredentials = async (
   options: QuestradeAPIOptions,
@@ -35,13 +38,13 @@ export const _oAuthAxiosCredentials = async (
 
   if (!response.data) {
     if (response) {
-      console.log('________________________________________________'); // CONSOLE: List the side effects
-      console.log(response.status, response.statusText); // CONSOLE: List the side effects
-      console.log(response.headers); // CONSOLE: List the side effects
-      console.log(response.request); // CONSOLE: List the side effects
-      console.log(response.status, response.statusText); // CONSOLE: List the side effects
-      console.log('________________________________________________'); // CONSOLE: List the side effects
-      console.log('++++++++++++++++++++++++++++++++++++++++++++++++'); // CONSOLE: List the side effects
+      void echo<unknown>('________________________________________________');
+      void echo<unknown>(response.status, response.statusText);
+      void echo<unknown>(response.headers);
+      void echo<unknown>(response.request);
+      void echo<unknown>(response.status, response.statusText);
+      void echo<unknown>('________________________________________________');
+      void echo<unknown>('++++++++++++++++++++++++++++++++++++++++++++++++');
     }
     throw new Error(
       '!! validate credntials Invalid data back from axios client',

@@ -1,3 +1,4 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
@@ -5,6 +6,8 @@ import {
   IOptionChains,
 } from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
+
+const { errorlog } = sideEffects;
 
 // + _getOptionsById
 /*
@@ -26,7 +29,7 @@ export const _getOptionsById = (
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
     */
   } catch (error) {
-    console.error(error); // CONSOLE: List the side effects
+    void errorlog(error);
 
     return [];
   }

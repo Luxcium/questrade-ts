@@ -1,10 +1,13 @@
-import { id0 } from './id0';
-import { void0 } from './void0';
+import { id0, void0 } from './void0';
 
 export { creatUrlAndDataHashes } from './create-url-and-data-hashes';
 export { formatDate } from './dates';
 export { getQtUrlPathFromArgs } from './get-qt-url-path-from-args';
 export { getHash } from './getHash';
+export {
+  getSymboIdBy,
+  getSymboIdByStockSymbol,
+} from './helpers/get-symbol-id-by-stock-symbol';
 export { FsImplementationSync, Made, Mode, OptionsSync, sync } from './mkdirp';
 export { perSeconds } from './perSeconds';
 export {
@@ -23,6 +26,4 @@ export {
   endpointFormatDateTool,
   setDateRange,
 } from './timeutil';
-export { id0, log, void0 };
-
-const { log } = console; // CONSOLE: List the side effects
+export { id0, void0 };

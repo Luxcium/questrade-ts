@@ -1,3 +1,4 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
@@ -5,6 +6,8 @@ import {
   IMarkets,
 } from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
+
+const { errorlog } = sideEffects;
 
 // + _getMarkets
 /** _getMarkets */
@@ -16,8 +19,7 @@ export const _getMarkets = (
     return (await _axiosGetApi(credentials, proxy)<IMarkets>('/markets')())
       .markets;
   } catch (error) {
-    console.error(error); // CONSOLE: List the side effects
-
+    void errorlog(error);
     return [];
   }
 };

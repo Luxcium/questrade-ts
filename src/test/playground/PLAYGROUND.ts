@@ -1,27 +1,30 @@
-import { redeemToken } from '../..';
+import { getMyToken, redeemToken } from '../..';
+import { sideEffects } from '../../default-behaviour';
 import { StrategyVariantRequest } from '../../typescript';
-import { log, setDateRange, void0 } from '../../utils';
 
-const myToken = '2a15Be6L9aphlS0xdnppd8MKAADK9dxM0';
+const { echo, errorlog } = sideEffects;
+const myToken = getMyToken();
 
 export const testingThat = (async () => {
   const qtApi = await redeemToken(myToken)
     .then(result => {
       return result.qtApi;
     })
-    .catch(error => console.log(error)); // CONSOLE: List the side effects
+    .catch(error => void errorlog(error));
 
   if (!qtApi) {
     throw new Error('Redeem token fault');
   }
   const theResult = await qtApi.account.getPositions();
-  const theResult2 = await qtApi.search.stock('aapl');
-  console.log('theResult1', theResult); // CONSOLE: List the side effects
+  const theResult2 = await qtApi.search.stock('tu');
+  void echo<unknown>('theResult1', theResult);
 
-  console.log('theResult2', theResult2); // CONSOLE: List the side effects
+  void echo<unknown>('theResult2', theResult2[0]);
 
   return { theResult, theResult2 };
-})().catch(error => console.log('PlayGround error message:', error.message)); // CONSOLE: List the side effects
+})().catch(
+  error => void errorlog<unknown>('PlayGround error message:', error.message),
+);
 
 // testingThat();
 
@@ -52,4 +55,3 @@ export const demoRequestVariants: StrategyVariantRequest = {
     },
   ],
 };
-void0([log, setDateRange]);

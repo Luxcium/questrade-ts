@@ -1,3 +1,4 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
@@ -5,6 +6,8 @@ import {
   ISymbols,
 } from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
+
+const { errorlog } = sideEffects;
 
 // + _getSymbolsByIDs
 /** _getSymbolFromSymbolID */
@@ -20,7 +23,7 @@ export const _getSymbolsByIds = (
       )<ISymbols>(`/symbols?ids=${stockId.join()}`)()
     ).symbols;
   } catch (error) {
-    console.error(error); // CONSOLE: List the side effects
+    void errorlog(error);
 
     return [];
   }

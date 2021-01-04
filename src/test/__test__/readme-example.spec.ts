@@ -1,14 +1,14 @@
 import { redeemToken } from '../..';
+import { sideEffects } from '../../default-behaviour';
 import { void0 } from '../../utils';
+
+const { errorlog } = sideEffects;
 
 test('Validating all README examples', async done => {
   const yourRefreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
 
   // inside of an async function or async IIFE
   (async doneTesting => {
-    const log = console.log; // CONSOLE: List the side effects
-
-    void0(log);
     const { qtApi, credentials } = await redeemToken(yourRefreshToken);
 
     // Validate the server time as your hello world for this package
@@ -24,5 +24,5 @@ test('Validating all README examples', async done => {
     // you can use a try/catch block to manage error instead:
   })(done)
     .then(doneTesting => doneTesting())
-    .catch(error => console.error(error.message)); // CONSOLE: List the side effects
+    .catch(error => errorlog(error.message));
 });

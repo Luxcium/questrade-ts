@@ -1,5 +1,6 @@
 import axios, { AxiosResponse, AxiosStatic } from 'axios';
 
+import { sideEffects } from '../../default-behaviour';
 import {
   AxiosProxyHandler,
   CoreApiConfig,
@@ -12,6 +13,8 @@ import {
   remaningTimeString,
   requestPerSecondLimiter,
 } from './requestPerSecondLimit';
+
+const { echo, infolog, errorlog, tablelog } = sideEffects;
 
 export const _tryToGetData = <R, D>(
   _config: CoreApiConfig<D>,
@@ -38,22 +41,22 @@ export const _tryToGetData = <R, D>(
         response = await axiosClient(_config);
       }
       if (response.status !== 200) {
-        console.log('________________________________________________'); // CONSOLE: List the side effects
-        console.log(response.status, response.statusText); // CONSOLE: List the side effects
-        console.log(response.data); // CONSOLE: List the side effects
-        console.table(response.headers); // CONSOLE: List the side effects
-        console.log(
+        void echo<unknown>('________________________________________________');
+        void echo<unknown>(response.status, response.statusText);
+        void echo<unknown>(response.data);
+        void tablelog(response.headers);
+        void echo<unknown>(
           remaningTimeString(
             credentials?.remainingRequests?.secondsRemaning
               ? credentials.remainingRequests.secondsRemaning
               : 0,
           ),
-        ); // CONSOLE: List the side effects
-        console.log(response.status, response.statusText); // CONSOLE: List the side effects
-        console.log('________________________________________________'); // CONSOLE: List the side effects
-        console.log('++++++++++++++++++++++++++++++++++++++++++++++++'); // CONSOLE: List the side effects
+        );
+        void echo<unknown>(response.status, response.statusText);
+        void echo<unknown>('________________________________________________');
+        void echo<unknown>('++++++++++++++++++++++++++++++++++++++++++++++++');
       } else {
-        // console.log(
+        // void echo(
         //   remaningTimeString(
         //     credentials?.remainingRequests?.secondsRemaning
         //       /? credentials.remainingRequests.secondsRemaning
@@ -82,17 +85,17 @@ export const _tryToGetData = <R, D>(
           credentials.hashes = creatUrlAndDataHashes(urlToHash, dataToHash);
         }
       } catch (error_) {
-        console.error('error_:', error_); // CONSOLE: List the side effects
+        void errorlog('error_:', error_);
 
-        console.info(
+        void infolog(
           "To make tests pass removed 'throw' error messages from code bloc in (Axios) _tryToGetData",
-        ); // CONSOLE: List the side effects
+        );
 
         throw error_;
       }
       return data;
     } catch (error) {
-      console.error(_logError(error).message); // CONSOLE: List the side effects
+      void errorlog(_logError(error).message);
 
       throw error;
     }

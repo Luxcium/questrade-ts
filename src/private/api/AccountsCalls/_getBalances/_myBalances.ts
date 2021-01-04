@@ -1,4 +1,7 @@
+import { sideEffects } from '../../../../default-behaviour';
 import { IBalances, IMyBalances } from '../../../../typescript';
+
+const { errorlog } = sideEffects;
 
 export const _myBalances = async (
   myBalances: IBalances,
@@ -81,7 +84,7 @@ export const _myBalances = async (
     };
     return { perCurrency, combined, current, startOfDay, CAD, USD };
   } catch (error) {
-    console.error(error); // CONSOLE: List the side effects
+    void errorlog(error);
 
     return {
       perCurrency: {

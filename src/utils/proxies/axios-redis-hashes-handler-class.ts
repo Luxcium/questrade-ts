@@ -1,8 +1,11 @@
 import { AxiosStatic } from 'axios';
 
+import { sideEffects } from '../../default-behaviour';
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '..';
 import { axiosProxyFactory } from './axios-proxy-factory';
 import { ProxyReflexionLoggerFunctionHandler } from './proxy-reflexion-logger-function-handler';
+
+const { echo } = sideEffects;
 
 class AxiosConsoleLogHashesHandlerClass
   extends ProxyReflexionLoggerFunctionHandler<AxiosStatic>
@@ -28,7 +31,7 @@ class AxiosConsoleLogHashesHandlerClass
     };
 
     // +SIDE EFFECTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-    console.log(proxyData); // CONSOLE: List the side effects
+    void echo(proxyData);
 
     // +RETURN VALUE ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
     return returnValue;

@@ -11,7 +11,7 @@ import {
   QuestradeApi,
   StrategyVariantRequest,
 } from '../../typescript';
-import { log, setDateRange, void0 } from '../../utils';
+import { setDateRange, void0 } from '../../utils';
 
 const dateRange30Days = setDateRange(30);
 
@@ -233,4 +233,3 @@ describe('SYMBOLS METHODS will test all methods on get.symbols', () => {
     done();
   });
 });
-void0(log);

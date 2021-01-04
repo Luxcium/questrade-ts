@@ -1,3 +1,4 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
@@ -7,6 +8,8 @@ import {
 // TODO: remove dependencies to nodeJS crypt-module making it optional ...
 import { endpointFormatDateTool, getHash } from '../../../../utils';
 import { _axiosGetApi } from '../../../routes';
+
+const { errorlog } = sideEffects;
 
 // + _getCandles endpointFormatDateTool
 /** _getCandles */
@@ -40,8 +43,7 @@ export const _getCandles = (
       })
     );
   } catch (error) {
-    console.error(error); // CONSOLE: List the side effects
-
+    void errorlog(error);
     return [];
   }
 };

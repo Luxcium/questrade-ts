@@ -1,3 +1,4 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
@@ -6,6 +7,8 @@ import {
 } from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
 
+const { errorlog } = sideEffects;
+
 // + _getAccounts
 /** _getAccounts */
 export function _getAccounts(
@@ -13,6 +16,7 @@ export function _getAccounts(
   proxy?: AxiosProxyHandler,
 ) {
   //
+
   return async (): Promise<IAccount[]> => {
     try {
       //
@@ -22,7 +26,7 @@ export function _getAccounts(
       //
       return data.accounts;
     } catch (error) {
-      console.error(error.message); // CONSOLE: List the side effects
+      void errorlog(error.message);
       return [];
     }
   };

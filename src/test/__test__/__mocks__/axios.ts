@@ -2,6 +2,10 @@ import { AxiosRequestConfig, AxiosStatic } from 'axios';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
+import { sideEffects } from '../../../default-behaviour';
+
+const { errorlog } = sideEffects;
+
 const _axios = jest.fn();
 const introspect = { onOff: false };
 const path = (s: string) => resolve(`${__dirname}/sample/${s}.json`);
@@ -30,8 +34,7 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
       if (url.includes(`/${dir}`)) {
         if (dir === 'ERROR') {
           const errMessage: string = 'Testing Errors';
-          console.warn(errMessage); // CONSOLE: List the side effects
-
+          void errorlog(errMessage);
           throw new Error(errMessage);
         }
         return JSON.parse(readFileSync(path(dir), 'utf8'));

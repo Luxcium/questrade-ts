@@ -1,3 +1,4 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
@@ -6,6 +7,8 @@ import {
 } from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
 import { _axiosAccountGetApi } from '../../../routes';
+
+const { errorlog } = sideEffects;
 
 // + _getExecutions
 /** _getExecutions */
@@ -22,7 +25,7 @@ export const _getExecutions = (
     )();
     return executions.executions;
   } catch (error) {
-    console.error(error); // CONSOLE: List the side effects
+    void errorlog(error);
 
     return [];
   }

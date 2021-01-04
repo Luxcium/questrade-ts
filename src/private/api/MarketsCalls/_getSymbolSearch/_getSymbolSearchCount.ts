@@ -1,9 +1,12 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
   ISymbols,
 } from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
+
+const { errorlog } = sideEffects;
 
 // + _getSymbolSearchCount
 /** _getSymbolSearch */
@@ -18,7 +21,7 @@ export const _getSymbolSearchCount = (
 
     return symbols.symbols.length;
   } catch (error) {
-    console.error(error); // CONSOLE: List the side effects
+    void errorlog(error);
 
     return Number.NaN;
   }

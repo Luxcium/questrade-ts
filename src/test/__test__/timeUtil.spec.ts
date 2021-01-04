@@ -1,5 +1,7 @@
-import { dateNowNumeric, dateRangeFromNow, log } from '../../utils';
+import { sideEffects } from '../../default-behaviour';
+import { dateNowNumeric, dateRangeFromNow } from '../../utils';
 
+const { echo } = sideEffects;
 describe('valiate dateRangeFromNow has 4 properties', () => {
   it('should valiate startTime is same value as startDate', () => {
     const range = dateRangeFromNow(1);
@@ -39,7 +41,7 @@ describe('valiate dateRangeFromNow has 4 properties', () => {
       dateRangeFromNow(-50),
     ];
     expect(range).toBeDefined();
-    log(range);
+    echo(range);
     expect(range).toEqual(rangeNegative);
   });
 });
@@ -47,6 +49,6 @@ describe('Name of the group', () => {
   it('should produce a valid date value number when using dateNowNumeric', () => {
     const dateNowNumericValue = dateNowNumeric();
     const dateNow = new Date(dateNowNumericValue);
-    console.log(dateNow); // CONSOLE: List the side effects
+    echo(dateNow);
   });
 });

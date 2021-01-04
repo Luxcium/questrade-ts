@@ -1,9 +1,12 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
   IBalances,
 } from '../../../../typescript';
 import { _axiosAccountGetApi } from '../../../routes';
+
+const { errorlog } = sideEffects;
 
 // + _getBalances
 /** _getBalances */
@@ -14,7 +17,7 @@ export const _getBalances = (
   try {
     return _axiosAccountGetApi(credentials, proxy)<IBalances>('/balances')();
   } catch (error) {
-    console.error(error); // CONSOLE: List the side effects
+    void errorlog(error);
 
     return {
       perCurrencyBalances: [],

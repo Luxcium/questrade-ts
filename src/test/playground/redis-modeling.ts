@@ -1,11 +1,11 @@
-/* eslint-disable unicorn/no-keyword-prefix */
-// tslint:disable-next-line: no-var-requires
-// import axios, { AxiosStatic } from 'axios';
-
 import { redeemToken } from '../..';
 import { sideEffects } from '../../default-behaviour';
 import { getMyToken } from '../../get-token';
-import { axiosConsoleLogHashesProxyHandler, void0 } from '../../utils';
+import {
+  axiosConsoleLogHashesProxyHandler,
+  getSymboIdByStockSymbol,
+  void0,
+} from '../../utils';
 
 const { echo, errorlog } = sideEffects;
 
@@ -15,10 +15,14 @@ async function main() {
     getMyToken(),
     axiosConsoleLogHashesProxyHandler,
   );
+
   void0(credentials);
   void0(qtApi);
   return (async () => {
-    echo(await qtApi.account.getServerTime());
+    // void echo(await qtApi.account.getServerTime());
+    const getSymbolId = getSymboIdByStockSymbol(qtApi);
+
+    void echo(await getSymbolId('AAPL'));
   })().catch(error => errorlog(error.message));
 }
 main();

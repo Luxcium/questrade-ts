@@ -1,5 +1,8 @@
 import { redeemToken } from '../..';
+import { sideEffects } from '../../default-behaviour';
 import { void0 } from '../../utils';
+
+const { errorlog } = sideEffects;
 
 describe('Redeem Token ', () => {
   it('should not be able to recive an empty string', async done => {
@@ -9,8 +12,7 @@ describe('Redeem Token ', () => {
       const { qtApi, credentials } = await redeemToken('');
       void0([qtApi, credentials]);
     } catch (error) {
-      console.error(error.message); // CONSOLE: List the side effects
-
+      void errorlog(error.message);
       canReciveEmptyString = false;
     }
     expect(canReciveEmptyString).toBe(false);

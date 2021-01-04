@@ -1,3 +1,4 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
@@ -5,6 +6,8 @@ import {
   IPositions,
 } from '../../../../typescript';
 import { _axiosAccountGetApi } from '../../../routes';
+
+const { errorlog } = sideEffects;
 
 // + _getPositions
 /** _getPositions */
@@ -20,7 +23,7 @@ export const _getPositions = (
 
     return positions.positions;
   } catch (error) {
-    console.error(error); // CONSOLE: List the side effects
+    void errorlog(error);
     return [];
   }
 };

@@ -1,7 +1,10 @@
+import { sideEffects } from '../../../default-behaviour';
 import { AxiosProxyHandler, QuestradeAPIOptions } from '../../../typescript';
 import { _getAccounts, _getServerTime } from '../../api/AccountsCalls';
 import { _oAuthAxiosCredentials } from '../axiosCredentials_oAUTH';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
+
+const { infolog, errorlog } = sideEffects;
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 export const _credentialsFactory = async (
@@ -33,18 +36,22 @@ export const _credentialsFactory = async (
     ).toLocaleTimeString();
 
     if (credentials.accountNumber === '00000000') {
-      console.info(
+      void infolog<unknown>(
         '\n🧐\n🤡 MOCK Server Time:   ',
         new Date().toISOString(),
 
         '\n🍦 Status: MOCKING!!!\n🤨',
-      ); // CONSOLE: List the side effects
+      );
     } else {
-      console.info('Questrade Server Time:', time, '\nStatus: ready\n'); // CONSOLE: List the side effects
+      void infolog<unknown>(
+        'Questrade Server Time:',
+        time,
+        '\nStatus: ready\n',
+      );
     }
   } catch (error) {
-    console.error(error.message); // CONSOLE: List the side effects
-    console.info(credentials.toValue()); // CONSOLE: List the side effects
+    void errorlog(error.message);
+    void infolog<unknown>(credentials.toValue());
     throw new Error('_oAuth Error getting credentials');
   }
   return credentials;

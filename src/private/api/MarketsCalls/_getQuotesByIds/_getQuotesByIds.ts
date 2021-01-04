@@ -1,3 +1,4 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
@@ -5,6 +6,8 @@ import {
   IQuotes,
 } from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
+
+const { errorlog } = sideEffects;
 
 // + _getQuotesByID
 /** _getQuotesFromSymbolID */
@@ -20,7 +23,7 @@ export const _getQuotesByIds = (
       )<IQuotes>(`/markets/quotes?ids=${ids.join(',')}`)()
     ).quotes;
   } catch (error) {
-    console.error(error); // CONSOLE: List the side effects
+    void errorlog(error);
 
     return [];
   }

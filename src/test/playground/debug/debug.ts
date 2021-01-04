@@ -1,5 +1,8 @@
+import { sideEffects } from '../../../default-behaviour';
 import { testIt } from '../testingWithRamda';
 
-console.log('testIt()'); // CONSOLE: List the side effects
+const { echo } = sideEffects;
+
+void echo('testIt()');
 
 testIt();

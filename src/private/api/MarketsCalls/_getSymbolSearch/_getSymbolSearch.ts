@@ -1,9 +1,12 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
   ISymbolSearchResult,
 } from '../../../../typescript';
 import { _getSymbolSearchAll } from './_getSymbolSearchAll';
+
+const { errorlog } = sideEffects;
 
 // + _getSymbolSearch
 /** _getSymbolSearch */
@@ -32,8 +35,7 @@ export const _getSymbolSearch = (
     //
   } catch (error) {
     //
-    console.error(error); // CONSOLE: List the side effects
-
+    void errorlog(error);
     return [];
 
     //

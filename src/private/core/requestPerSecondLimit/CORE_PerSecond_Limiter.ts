@@ -1,16 +1,11 @@
-// tslint:disable: prefer-array-literal
-// tslint:disable: only-arrow-functions
-// tslint:disable: promise-function-async
-// tslint:disable: no-any
-// tslint:disable: no-any
-// tslint:disable: ban-types
-// tslint:disable: ter-prefer-arrow-callback
+import { sideEffects } from '../../../default-behaviour';
 import { CallBack } from '../../../typescript';
 import { perSeconds, void0 } from '../../../utils';
 
+const { errorlog } = sideEffects;
+
 let lastCall = Date.now();
 const lastDelay = () => Date.now() - lastCall;
-// const toMilihertz = (hz: number) => hz / 1000;
 const resetLastCall = () => {
   lastCall = Date.now();
 };
@@ -21,7 +16,7 @@ const resetLastCall = () => {
   lastCall = Date.now();
 
   return void 0;
-})().catch(error => console.log('error message:', error.message)); // CONSOLE: List the side effects
+})().catch(error => void errorlog('error message:', error.message));
 
 function requestLimiterFactory() {
   let isCalled = false;
@@ -60,7 +55,7 @@ export const myPromisify = <T>(addToQueue: (cb: any) => Promise<void>) => {
   return new Promise<T>((resolve, reject) => {
     addToQueue((error: Error, result: any) => {
       if (!!error) {
-        console.error(error); // CONSOLE: List the side effects
+        void errorlog(error);
 
         reject(error);
         return void 0;
@@ -79,14 +74,13 @@ function limitingRequest(limiterFactory: ReqLimiterFactory) {
   };
 }
 
-const neverWillCb = async () => {
-  void0();
+const neverWillCb = (): never => {
   throw new Error(
     'NEVER: lenght is validated prior to pop this should never occur',
   );
 };
 
-const neverCb = (error: Error | null, returnValue: any) => {
+const neverCb = (error: Error | null, returnValue: any): never => {
   void0({ returnValue, error });
   throw new Error(
     'NEVER: lenght is validated prior to pop this should never occur',

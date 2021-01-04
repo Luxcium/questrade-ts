@@ -2,10 +2,12 @@
 import { default as R, identity as I } from 'ramda';
 
 import { redeemToken } from '../..';
+import { sideEffects } from '../../default-behaviour';
 import { willGetSNP500List } from './getSNP500List';
 // import { stockIdOf } from './../functions/questrade/stockIdOf';
 import { getSymbolDetails } from './questrade';
 
+const { echo, errorlog } = sideEffects;
 // no auth
 
 export const testIt = () =>
@@ -25,7 +27,7 @@ export const testIt = () =>
       await Promise.all(
         get500List.map(async (item: string) => {
           const detailsForItem = await getDetailsForItem(item);
-          console.log(detailsForItem); // CONSOLE: List the side effects
+          void echo(detailsForItem);
 
           // for (const fieldName in detailsForItem) {
           // if (detailsForItem.hasOwnProperty(fieldName)) {
@@ -37,9 +39,9 @@ export const testIt = () =>
           //   fieldName,
           //   JSON.stringify(value)
           // );
-          // console.log(item, fieldName, value);// CONSOLE: List the side effects
+          // void echo(item, fieldName, value);
 
-          //  console.log(null);// CONSOLE: List the side effects
+          //  void echo(null);
 
           // }
           // }
@@ -48,10 +50,10 @@ export const testIt = () =>
 
       I([qtApi, R]);
     } catch (error) {
-      console.error(error.message); // CONSOLE: List the side effects
+      void errorlog(error.message);
     } finally {
       // tedis.close();
     }
 
     return void 0;
-  })().catch(error => console.error('error message:', error.message)); // CONSOLE: List the side effects
+  })().catch(error => errorlog('error message:', error.message));

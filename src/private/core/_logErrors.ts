@@ -1,5 +1,8 @@
-export const _logErrors = (error: Error, message: string = '') => {
-  console.error('Error:', error.message, '\n', message); // CONSOLE: List the side effects
+import { sideEffects } from '../../default-behaviour';
 
+const { errorlog } = sideEffects;
+
+export const _logErrors = (error: Error, message: string = '') => {
+  void errorlog('Error:', error.message, '\n', message);
   return error;
 };

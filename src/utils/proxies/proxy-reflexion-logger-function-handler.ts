@@ -1,22 +1,26 @@
+import { sideEffects } from '../../default-behaviour';
+
+const { echo } = sideEffects;
+
 export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
   implements ProxyHandler<T> {
   getPrototypeOf(target: T): object | null {
-    console.log('PROXY:', 'getPrototypeOf', 'target:', target); // CONSOLE: List the side effects
+    void echo<unknown>('PROXY:', 'getPrototypeOf', 'target:', target);
     return Reflect.getPrototypeOf(target);
   }
 
   setPrototypeOf(target: T, v: any): boolean {
-    console.log('PROXY:', 'setPrototypeOf', 'target', target, 'v', v); // CONSOLE: List the side effects
+    void echo<unknown>('PROXY:', 'setPrototypeOf', 'target', target, 'v', v);
     return Reflect.setPrototypeOf(target, v);
   }
 
   isExtensible(target: T): boolean {
-    console.log('PROXY:', 'isExtensible', 'target', target); // CONSOLE: List the side effects
+    void echo<unknown>('PROXY:', 'isExtensible', 'target', target);
     return Reflect.isExtensible(target);
   }
 
   preventExtensions(target: T): boolean {
-    console.log('PROXY:', 'preventExtensions', 'target', target); // CONSOLE: List the side effects
+    void echo<unknown>('PROXY:', 'preventExtensions', 'target', target);
     return Reflect.preventExtensions(target);
   }
 
@@ -24,17 +28,24 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
     target: T,
     p: PropertyKey,
   ): PropertyDescriptor | undefined {
-    console.log('PROXY:', 'getOwnPropertyDescriptor', 'target', target, 'p', p); // CONSOLE: List the side effects
+    void echo<unknown>(
+      'PROXY:',
+      'getOwnPropertyDescriptor',
+      'target',
+      target,
+      'p',
+      p,
+    );
     return Reflect.getOwnPropertyDescriptor(target, p);
   }
 
   has(target: T, p: PropertyKey): boolean {
-    console.log('PROXY:', 'has', 'target', target, 'p', p); // CONSOLE: List the side effects
+    void echo<unknown>('PROXY:', 'has', 'target', target, 'p', p);
     return Reflect.has(target, p);
   }
 
   get(target: T, p: PropertyKey, receiver: any): any {
-    console.log(
+    void echo<unknown>(
       'PROXY:',
       'get',
       'target',
@@ -43,13 +54,13 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
       p,
       'receiver',
       receiver,
-    ); // CONSOLE: List the side effects
+    );
 
     return Reflect.get(target, p, receiver);
   }
 
   set(target: T, p: PropertyKey, value: any, receiver: any): boolean {
-    console.log(
+    void echo<unknown>(
       'PROXY:',
       'set',
       'target',
@@ -60,13 +71,13 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
       value,
       'receiver',
       receiver,
-    ); // CONSOLE: List the side effects
+    );
 
     return Reflect.set(target, p, value, receiver);
   }
 
   deleteProperty(target: T, p: PropertyKey): boolean {
-    console.log('PROXY:', 'deleteProperty', 'target', target, 'p', p); // CONSOLE: List the side effects
+    void echo<unknown>('PROXY:', 'deleteProperty', 'target', target, 'p', p);
     return Reflect.deleteProperty(target, p);
   }
 
@@ -75,7 +86,7 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
     p: PropertyKey,
     attributes: PropertyDescriptor,
   ): boolean {
-    console.log(
+    void echo<unknown>(
       'PROXY:',
       'defineProperty',
       'target',
@@ -84,18 +95,18 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
       p,
       'attributes',
       attributes,
-    ); // CONSOLE: List the side effects
+    );
 
     return Reflect.defineProperty(target, p, attributes);
   }
 
   ownKeys(target: T): PropertyKey[] {
-    console.log('PROXY:', 'ownKeys', 'target', target); // CONSOLE: List the side effects
+    void echo<unknown>('PROXY:', 'ownKeys', 'target', target);
     return Reflect.ownKeys(target);
   }
 
   apply(target: T, thisArg: any, argArray?: any): any {
-    console.log(
+    void echo<unknown>(
       'PROXY:',
       'apply',
       'target',
@@ -104,13 +115,13 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
       thisArg,
       'argArray',
       argArray,
-    ); // CONSOLE: List the side effects
+    );
 
     return Reflect.apply(target, thisArg, argArray);
   }
 
   construct(target: T, argArray: any, newTarget: any): object {
-    console.log(
+    void echo<unknown>(
       'PROXY:',
       'construct',
       'target',
@@ -119,7 +130,7 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
       argArray,
       'newTarget',
       newTarget,
-    ); // CONSOLE: List the side effects
+    );
     return Reflect.construct(target, argArray, newTarget);
   }
 }

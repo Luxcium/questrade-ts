@@ -1,9 +1,12 @@
+import { sideEffects } from '../../../../default-behaviour';
 import {
   AxiosProxyHandler,
   Credentials,
   IOptionsQuote,
 } from '../../../../typescript';
 import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
+
+const { errorlog } = sideEffects;
 
 export const _getQuotesOptionsByIds = (
   credentials: Credentials,
@@ -19,7 +22,7 @@ export const _getQuotesOptionsByIds = (
       0,
     );
   } catch (error) {
-    console.error(error); // CONSOLE: List the side effects
+    void errorlog(error);
 
     return [];
   }
