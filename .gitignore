@@ -1,3 +1,5 @@
+# 3 dir templates
+!**/**/material-dir-icons/**/**
 # Logs
 logs
 *.log
