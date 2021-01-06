@@ -1,12 +1,11 @@
-import axios from 'axios';
-
 import { sideEffects } from '../../../resources/side-effects/default-behaviour';
 import {
+  ClientRequestConfig,
   ClientResponse,
   ClientStatic,
 } from '../../../resources/side-effects/typescript';
 import {
-  AuthApiConfig,
+  // AuthApiConfig,
   ClientProxyHandler,
   Credentials,
   IRefreshCreds,
@@ -15,7 +14,7 @@ import {
 import { _validateToken } from './_validateToken';
 import { _writeToken } from './_writeToken';
 
-const { echo } = sideEffects;
+const { echo, getAxiosLikeClient } = sideEffects;
 
 // void function clientReversStaticConverter(specimen: ClientStatic):AxiosStatic  {
 //   return specimen;
@@ -27,7 +26,7 @@ export const _oAuthAxiosCredentials = async (
 ): Promise<Credentials> => {
   // TODO: remove dependencies to file system making it optional ...
   const { refreshToken, credentials } = _validateToken(options);
-  const _config: AuthApiConfig = {
+  const _config: ClientRequestConfig = {
     url: `${credentials.authUrl}/oauth2/token`,
     method: 'GET',
     params: {
@@ -36,7 +35,7 @@ export const _oAuthAxiosCredentials = async (
     },
   };
 
-  let axiosClient: ClientStatic = axios;
+  let axiosClient: ClientStatic = getAxiosLikeClient();
   if (proxy) {
     axiosClient = proxy;
   }

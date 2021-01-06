@@ -1,12 +1,12 @@
-import { AxiosResponse } from 'axios';
 // TODO: remove dependencies to file system making it optional ...
 import { writeFileSync } from 'fs';
 
+import { ClientResponse } from '../../../resources/side-effects/types';
 import { Credentials, IRefreshCreds } from '../../../typescript';
 
 export const _writeToken = (
   credentials: Credentials,
-  response: AxiosResponse<IRefreshCreds>,
+  response: ClientResponse<IRefreshCreds>,
 ): Credentials => {
   const { data: refreshCreds } = response;
   credentials.accessToken = refreshCreds.access_token;

@@ -1,9 +1,8 @@
-import { AxiosResponse } from 'axios';
-
+import { ClientResponse } from '../../../resources/side-effects/types';
 import { ITimeRateLimiter } from '../../../typescript/ITimeRateLimiter';
 
 export const remainingRequests = <T>(
-  response: AxiosResponse<T>,
+  response: ClientResponse<T>,
   maximumperseconds: number = 20,
 ): ITimeRateLimiter => {
   const remainingStr: string = response.headers['x-ratelimit-remaining'];

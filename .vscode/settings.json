@@ -16,11 +16,11 @@
   "workbench.iconTheme": "material-icon-theme",
   "window.zoomLevel": 3,
   "editor.fontFamily": "'VictorMono Nerd Font'",
-  "editor.fontSize": 20,
+  "editor.fontSize": 16,
   "editor.fontWeight": "500",
   "editor.fontLigatures": true,
   "terminal.integrated.fontFamily": "'FuraCode Nerd Font mono','TerminessTTF Nerd Font Mono'",
-  "terminal.integrated.fontSize": 10,
+  "terminal.integrated.fontSize": 8,
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.fontWeightBold": "900",
   "[typescript]": {

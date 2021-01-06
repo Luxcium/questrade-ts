@@ -1,5 +1,4 @@
-import axios from 'axios';
-
+import { sideEffects } from '../../../resources/side-effects/default-behaviour';
 import {
   Constituent,
   ConstituentsList,
@@ -8,12 +7,15 @@ import {
 } from './Constituent';
 import { uriToConstituents_json as path } from './uriToConstituents_json';
 
+const { getAxiosLikeClient } = sideEffects;
+const client = getAxiosLikeClient();
+
 export const willGetSNP500StringList = async () =>
   (await willGetSNP500List())[0];
 
 export async function willGetSNP500List(): Promise<ConstituentsSymbolsAndList> {
   return (async (url): Promise<ConstituentsSymbolsAndList> => {
-    const data: Constituent[] = (await axios.get(url)).data;
+    const data: Constituent[] = (await client.get(url)).data;
     const constituentsSymbols: ConstituentsSymbols = data.map(
       (obj: Constituent) => obj.Symbol,
     );

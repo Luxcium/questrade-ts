@@ -1,21 +1,24 @@
-import { AxiosStatic } from 'axios';
-
 import { sideEffects } from '../../resources/side-effects/default-behaviour';
+import { ClientStatic } from '../../resources/side-effects/types';
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '..';
-import { axiosProxyFactory } from './axios-proxy-factory';
+import { clientProxyFactory } from './axios-proxy-factory';
 import { ProxyReflexionLoggerFunctionHandler } from './proxy-reflexion-logger-function-handler';
 
 const { echo } = sideEffects;
 
 class AxiosRedisHandlerClass
-  extends ProxyReflexionLoggerFunctionHandler<AxiosStatic>
-  implements ProxyHandler<AxiosStatic> {
+  extends ProxyReflexionLoggerFunctionHandler<ClientStatic>
+  implements ProxyHandler<ClientStatic> {
   protected proxy = {
     class: 'AxiosHandlerClass',
-    extends: 'ProxyReflexionLoggerFunctionHandler<AxiosStatic>',
-    implements: 'ProxyHandler<AxiosStatic>',
+    extends: 'ProxyReflexionLoggerFunctionHandler<ClientStatic>',
+    implements: 'ProxyHandler<ClientStatic>',
   };
-  async apply(target: AxiosStatic, thisArg: any, argArray?: any): Promise<any> {
+  async apply(
+    target: ClientStatic,
+    thisArg: any,
+    argArray?: any,
+  ): Promise<any> {
     const returnValue = Reflect.apply(target, thisArg, argArray);
     const urlPath = getQtUrlPathFromArgs(argArray);
     const data = `${JSON.stringify((await returnValue).data ?? null)}`;
@@ -23,7 +26,7 @@ class AxiosRedisHandlerClass
       proxy: {
         ...this.proxy,
         handlerMethod:
-          'async apply(target: AxiosStatic, thisArg: any, argArray?: any): Promise<any>',
+          'async apply(target: ClientStatic, thisArg: any, argArray?: any): Promise<any>',
         sideEffects: 'console.log',
       },
       axiosConfig: argArray[0],
@@ -38,7 +41,7 @@ class AxiosRedisHandlerClass
   }
 }
 
-export const axiosConsoleLogHashesProxyHandler2 = axiosProxyFactory(
+export const axiosConsoleLogHashesProxyHandler2 = clientProxyFactory(
   new AxiosRedisHandlerClass(),
 );
 

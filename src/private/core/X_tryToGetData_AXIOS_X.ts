@@ -1,8 +1,10 @@
-import axios, { AxiosResponse } from 'axios';
-
 import { sideEffects } from '../../resources/side-effects/default-behaviour';
-import { ClientStatic } from '../../resources/side-effects/typescript';
-import { CoreApiConfig, Credentials, LogErrors } from '../../typescript';
+import {
+  ClientRequestConfig,
+  ClientResponse,
+  ClientStatic,
+} from '../../resources/side-effects/typescript';
+import { Credentials, LogErrors } from '../../typescript';
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../utils';
 import {
   remainingRequests,
@@ -10,28 +12,28 @@ import {
   requestPerSecondLimiter,
 } from './requestPerSecondLimit';
 
-const { echo, infolog, errorlog, tablelog } = sideEffects;
+const { echo, infolog, errorlog, tablelog, getAxiosLikeClient } = sideEffects;
 
-export const _tryToGetData = <R, D>(
-  _config: CoreApiConfig<D>,
+export const _tryToGetData = <R>(
+  _config: ClientRequestConfig,
   credentials?: Credentials,
   proxy?: ClientStatic,
 ) => {
   return async (_logError: LogErrors): Promise<R> => {
     try {
-      let axiosClient: ClientStatic = axios;
+      let axiosClient: ClientStatic = getAxiosLikeClient();
       if (proxy) {
         axiosClient = proxy;
       }
 
       const possiblePerSeconds =
         credentials?.remainingRequests?.possiblePerSeconds ?? 21;
-      let response: AxiosResponse;
+      let response: ClientResponse;
       if (possiblePerSeconds <= 20) {
         //
         const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
         response = await requestLimiter(
-          async (): Promise<AxiosResponse<R>> => axiosClient(_config),
+          async (): Promise<ClientResponse<R>> => axiosClient(_config),
         );
       } else {
         response = await axiosClient(_config);

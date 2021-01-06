@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { config } from 'dotenv';
 
 import { ClientPromise, ClientRequestConfig, ClientStatic } from './types';
@@ -11,6 +12,9 @@ export const sideEffects = {
       return axioLikeClient(config);
     }
     return axioLikeClient(config);
+  },
+  getAxiosLikeClient(axiosLikeClient: ClientStatic = axios): ClientStatic {
+    return axiosLikeClient;
   },
   writeToken(): unknown {
     return;

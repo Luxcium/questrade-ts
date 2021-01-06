@@ -4,7 +4,7 @@ export { AcountNumberString, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
 export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';
 export { ICandle, ICandles } from './ICandles';
-export { AuthApiConfig, CoreApiConfig } from './ICoreApiConfigD';
+// export { AuthApiConfig, CoreApiConfig } from './ICoreApiConfigD';
 export { ICreds } from './ICreds';
 export { IDateObject, Time } from './IDateObject';
 export {

@@ -3,7 +3,6 @@ export type {
   Balances,
   CallBack,
   ClientProxyHandler,
-  CoreApiConfig,
   Credentials,
   DateRange,
   FiltersArray,

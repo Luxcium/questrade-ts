@@ -16,7 +16,7 @@ export const _coreApiFunction = (
         // ~~>
         return async (): Promise<R> => {
           // ->
-          const configBuilder = _coreApiConfig<D>(credentials);
+          const configBuilder = _coreApiConfig(credentials);
           // ->
           const getEndPoint = configBuilder(VERB);
           // ->
@@ -24,13 +24,13 @@ export const _coreApiFunction = (
           // ->
           const getDataConfig = endPoint(postData);
           // ->
-          const axiosDataGetter = _tryToGetData<R, D>(
+          const clientDataGetter = _tryToGetData<R>(
             getDataConfig,
             credentials,
             proxy,
           );
           // ->
-          const data = axiosDataGetter(_logErrors);
+          const data = clientDataGetter(_logErrors);
           // ~~>
           return data; // from _tryToGetData...
         };

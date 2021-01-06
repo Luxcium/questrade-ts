@@ -1,6 +1,8 @@
-import { AxiosResponse } from 'axios';
-
-import { CoreApiConfig, ITimeRateLimiter, UrlDataAndHashes } from '.';
+import {
+  ClientRequestConfig,
+  ClientResponse,
+} from '../resources/side-effects/types';
+import { ITimeRateLimiter, UrlDataAndHashes } from '.';
 
 export interface Credentials {
   accessToken: string;
@@ -21,8 +23,8 @@ export interface Credentials {
   serverTimeRaw?: number;
   tokenType: string;
   remainingRequests?: ITimeRateLimiter;
-  response_?: AxiosResponse<any>;
-  config_?: CoreApiConfig<any>;
+  response_?: ClientResponse<any>;
+  config_?: ClientRequestConfig;
   urlTimeUTC?: Date;
   apiServer: string;
   configUrl_?: string;

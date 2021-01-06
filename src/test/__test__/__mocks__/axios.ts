@@ -1,17 +1,20 @@
-import { AxiosRequestConfig, AxiosStatic } from 'axios';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
 import { sideEffects } from '../../../resources/side-effects/default-behaviour';
+import {
+  ClientRequestConfig,
+  ClientStatic,
+} from '../../../resources/side-effects/types';
 
 const { errorlog } = sideEffects;
 
-const _axios = jest.fn();
+const _Client = jest.fn();
 const introspect = { onOff: false };
 const path = (s: string) => resolve(`${__dirname}/sample/${s}.json`);
 
-_axios.mockName('axios');
-_axios.mockImplementation((config?: AxiosRequestConfig) => {
+_Client.mockName('Client');
+_Client.mockImplementation((config?: ClientRequestConfig) => {
   const url: string = !!config && !!config.url ? config.url : '';
   const data = [
     'balances',
@@ -45,6 +48,6 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
   const resp = !!data ? data : null;
   return { data: resp, introspect };
 });
-const axios = (_axios as unknown) as AxiosStatic;
+const Client = (_Client as unknown) as ClientStatic;
 
-module.exports = axios;
+module.exports = Client;

@@ -1,4 +1,5 @@
-import { CoreApiConfig, Credentials } from '../../typescript';
+import { ClientRequestConfig } from '../../resources/side-effects/types';
+import { Credentials } from '../../typescript';
 
 /**
  * Partial application of Core api config builder generating an
@@ -11,7 +12,7 @@ export const _coreApiConfig = <D>(credentials: Credentials) => {
     // ~~>
     return (endpoint: string) => {
       // ~~>
-      return (postData: D | null): CoreApiConfig<D> => {
+      return (postData: D | null): ClientRequestConfig => {
         /**
          * Build endpoint url with apiUrl as base.
          */
@@ -42,7 +43,7 @@ export const _coreApiConfig = <D>(credentials: Credentials) => {
         };
         // ->
         /** Config builder. */
-        const config: CoreApiConfig<D> = {
+        const config: ClientRequestConfig = {
           url,
           method,
           headers,

@@ -1,9 +1,8 @@
-import { AxiosResponse } from 'axios';
-
 import { sideEffects } from '../../../resources/side-effects/default-behaviour';
+import { ClientResponse } from '../../../resources/side-effects/types';
 
 const { echo } = sideEffects;
-export const logData = <T>(response: AxiosResponse<T>) => {
+export const logData = <T>(response: ClientResponse<T>) => {
   const { config, data, headers, status, statusText } = response;
 
   void echo<unknown>('status ==============================');
