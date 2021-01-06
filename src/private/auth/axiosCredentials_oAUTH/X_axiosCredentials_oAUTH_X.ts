@@ -1,6 +1,6 @@
 import axios, { AxiosStatic } from 'axios';
 
-import { sideEffects } from '../../../default-behaviour';
+import { sideEffects } from '../../../resources/side-effects/default-behaviour';
 import {
   AuthApiConfig,
   AxiosIntrospectRes,

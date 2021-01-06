@@ -14,7 +14,7 @@
   */
   "workbench.colorTheme": "Pop N' Lock Theme by Luxcium ✨",
   "workbench.iconTheme": "material-icon-theme",
-  "window.zoomLevel": 0,
+  "window.zoomLevel": 1,
   "editor.fontFamily": "'VictorMono Nerd Font'",
   "editor.fontSize": 26,
   "editor.fontWeight": "500",
@@ -1181,7 +1181,7 @@
     },
     {
       // @
-      "tag": "@",
+      "tag": "-@",
       "color": "#F36B",
       "strikethrough": false,
       "backgroundColor": "transparent"

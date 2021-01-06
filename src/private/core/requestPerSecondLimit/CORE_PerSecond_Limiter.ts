@@ -1,4 +1,4 @@
-import { sideEffects } from '../../../default-behaviour';
+import { sideEffects } from '../../../resources/side-effects/default-behaviour';
 import { CallBack } from '../../../typescript';
 import { perSeconds, void0 } from '../../../utils';
 

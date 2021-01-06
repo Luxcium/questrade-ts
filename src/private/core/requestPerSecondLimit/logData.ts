@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 
-import { sideEffects } from '../../../default-behaviour';
+import { sideEffects } from '../../../resources/side-effects/default-behaviour';
 
 const { echo } = sideEffects;
 export const logData = <T>(response: AxiosResponse<T>) => {

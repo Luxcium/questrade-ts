@@ -1,4 +1,4 @@
-import { sideEffects } from '../../../default-behaviour';
+import { sideEffects } from '../../../resources/side-effects/default-behaviour';
 import { AxiosProxyHandler, QuestradeAPIOptions } from '../../../typescript';
 import { _getAccounts, _getServerTime } from '../../api/AccountsCalls';
 import { _oAuthAxiosCredentials } from '../axiosCredentials_oAUTH';

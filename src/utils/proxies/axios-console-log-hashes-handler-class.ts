@@ -1,6 +1,6 @@
 import { AxiosStatic } from 'axios';
 
-import { sideEffects } from '../../default-behaviour';
+import { sideEffects } from '../../resources/side-effects/default-behaviour';
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '..';
 import { axiosProxyFactory } from './axios-proxy-factory';
 import { ProxyReflexionLoggerFunctionHandler } from './proxy-reflexion-logger-function-handler';

@@ -1,8 +1,8 @@
-import { getMyToken, redeemToken } from '../..';
-import { sideEffects } from '../../default-behaviour';
+import { redeemToken } from '../..';
+import { sideEffects } from '../../resources/side-effects/default-behaviour';
 import { StrategyVariantRequest } from '../../typescript';
 
-const { echo, errorlog } = sideEffects;
+const { echo, errorlog, getMyToken } = sideEffects;
 const myToken = getMyToken();
 
 export const testingThat = (async () => {

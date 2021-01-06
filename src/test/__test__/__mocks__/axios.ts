@@ -2,7 +2,7 @@ import { AxiosRequestConfig, AxiosStatic } from 'axios';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
-import { sideEffects } from '../../../default-behaviour';
+import { sideEffects } from '../../../resources/side-effects/default-behaviour';
 
 const { errorlog } = sideEffects;
 

@@ -1,5 +1,5 @@
 import { redeemToken } from '../..';
-import { sideEffects } from '../../default-behaviour';
+import { sideEffects } from '../../resources/side-effects/default-behaviour';
 import { void0 } from '../../utils';
 
 const { errorlog } = sideEffects;

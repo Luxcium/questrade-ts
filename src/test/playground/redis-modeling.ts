@@ -1,7 +1,7 @@
 import { Tedis } from 'tedis';
 
 import { redeemToken } from '../..';
-import { sideEffects } from '../../default-behaviour';
+import { sideEffects } from '../../resources/side-effects/default-behaviour';
 import {
   axiosConsoleLogHashesProxyHandler,
   getSymboIdByStockSymbol,
