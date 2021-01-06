@@ -1,6 +1,7 @@
-import axios, { AxiosStatic } from 'axios';
+import axios from 'axios';
 
 import { sideEffects } from '../../../resources/side-effects/default-behaviour';
+import { ClientStatic } from '../../../resources/side-effects/typescript';
 import {
   AuthApiConfig,
   AxiosIntrospectRes,
@@ -13,6 +14,10 @@ import { _validateToken } from './_validateToken';
 import { _writeToken } from './_writeToken';
 
 const { echo } = sideEffects;
+
+// void function clientReversStaticConverter(specimen: ClientStatic):AxiosStatic  {
+//   return specimen;
+// }
 
 export const _oAuthAxiosCredentials = async (
   options: QuestradeAPIOptions,
@@ -29,7 +34,7 @@ export const _oAuthAxiosCredentials = async (
     },
   };
 
-  let axiosClient: AxiosStatic = axios;
+  let axiosClient: ClientStatic = axios;
   if (proxy) {
     axiosClient = proxy;
   }

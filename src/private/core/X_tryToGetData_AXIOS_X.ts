@@ -1,12 +1,8 @@
-import axios, { AxiosResponse, AxiosStatic } from 'axios';
+import axios, { AxiosResponse } from 'axios';
 
 import { sideEffects } from '../../resources/side-effects/default-behaviour';
-import {
-  ClientProxyHandler,
-  CoreApiConfig,
-  Credentials,
-  LogErrors,
-} from '../../typescript';
+import { ClientStatic } from '../../resources/side-effects/typescript';
+import { CoreApiConfig, Credentials, LogErrors } from '../../typescript';
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../utils';
 import {
   remainingRequests,
@@ -19,11 +15,11 @@ const { echo, infolog, errorlog, tablelog } = sideEffects;
 export const _tryToGetData = <R, D>(
   _config: CoreApiConfig<D>,
   credentials?: Credentials,
-  proxy?: ClientProxyHandler,
+  proxy?: ClientStatic,
 ) => {
   return async (_logError: LogErrors): Promise<R> => {
     try {
-      let axiosClient: AxiosStatic = axios;
+      let axiosClient: ClientStatic = axios;
       if (proxy) {
         axiosClient = proxy;
       }

@@ -1,10 +1,6 @@
 import { config } from 'dotenv';
 
-import {
-  ClientPromise,
-  ClientRequestConfig,
-  ClientStatic,
-} from './axios-like-client';
+import { ClientPromise, ClientRequestConfig, ClientStatic } from './types';
 
 export const sideEffects = {
   client<R>(
