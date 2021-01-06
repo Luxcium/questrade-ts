@@ -3037,11 +3037,6 @@ dot-prop@^5.2.0:
   dependencies:
     is-obj "^2.0.0"
 
-dotenv@^8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
-  integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
-
 dotnet-deps-parser@5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/dotnet-deps-parser/-/dotnet-deps-parser-5.0.0.tgz#5115c442cbefea59e4fb9f9ed8fa4863a0f3186d"
@@ -8144,10 +8139,10 @@ typedoc@^0.20.7:
     shiki "^0.2.7"
     typedoc-default-themes "0.12.0"
 
-typescript@^4.1.3:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.3.tgz#519d582bd94cba0cf8934c7d8e8467e473f53bb7"
-  integrity sha512-B3ZIOf1IKeH2ixgHhj6la6xdwR9QrLC5d1VKeCSY4tvkqhF2eqd9O7txNlS0PO3GrBAFIdr3L1ndNwteUbZLYg==
+typescript@^4.2.0-dev.20210105:
+  version "4.2.0-dev.20210105"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.0-dev.20210105.tgz#8cd6cbb30fad2d90d1990400a3dd40263e750356"
+  integrity sha512-5XgdWUw9PdtnnZeL+Df3BCtO+ZJFuqDvkGJoJcWoKC/uJ+YAumECyI8UiF8v+pSwz6b0C7WydE3tmgAjcWNr2w==
 
 uglify-js@^3.1.4:
   version "3.12.4"

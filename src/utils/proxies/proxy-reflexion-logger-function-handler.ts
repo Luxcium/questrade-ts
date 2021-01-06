@@ -100,21 +100,11 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
     return Reflect.defineProperty(target, p, attributes);
   }
 
-  // ownKeys(target: T): PropertyKey[] {
-  //   void echo<unknown>('PROXY:', 'ownKeys', 'target', target);
-  //   return Reflect.ownKeys(target);
-  // }
-  /*
+  ownKeys(target: T): (string | symbol)[] {
+    void echo<unknown>('PROXY:', 'ownKeys', 'target', target);
+    return Reflect.ownKeys(target);
+  }
 
-
-  The types returned by 'ownKeys(...)' are incompatible between these types.
-    Type '(string | number | symbol)[]' is not assignable to type 'ArrayLike<string | symbol>'.
-      Index signatures are incompatible.
-        Type 'string | number | symbol' is not assignable to type 'string | symbol'.
-          Type 'number' is not assignable to type 'string | symbol'.ts(2420)
-
-
- */
   apply(target: T, thisArg: any, argArray?: any): any {
     void echo<unknown>(
       'PROXY:',
