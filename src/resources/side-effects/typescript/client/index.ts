@@ -1,9 +1,14 @@
+export { Cancel } from './Cancel';
+export { Canceler } from './Canceler';
+export { CancelStatic } from './CancelStatic';
 export { CancelToken } from './CancelToken';
 export { CancelTokenSource } from './CancelTokenSource';
 export { CancelTokenStatic } from './CancelTokenStatic';
 export { ClientError } from './ClientError';
 export { ClientInstance } from './ClientInstance';
+export { ClientInterceptorManager } from './ClientInterceptorManager';
 export { ClientPromise } from './ClientPromise';
 export { ClientRequestConfig } from './ClientRequestConfig';
 export { ClientResponse } from './ClientResponse';
 export { ClientStatic } from './ClientStatic';
+export { ClientTransformer } from './ClientTransformer';

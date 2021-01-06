@@ -3,9 +3,8 @@ import { AxiosError } from 'axios';
 import { ClientRequestConfig } from './ClientRequestConfig';
 import { ClientResponse } from './ClientResponse';
 
-void function testFunction(specimen: AxiosError): ClientError {
-  return specimen;
-};
+type Representative = AxiosError;
+type Specimen = ClientError;
 
 export interface ClientError<T = any> extends Error {
   config: ClientRequestConfig;
@@ -15,3 +14,20 @@ export interface ClientError<T = any> extends Error {
   isAxiosError: boolean;
   toJSON: () => object;
 }
+
+interface Input {
+  sampleA: Specimen;
+  sampleB: Representative;
+}
+interface ReversedOutput {
+  sampleA: Representative;
+  sampleB: Specimen;
+}
+type Sample = Representative & Specimen;
+void function testFunction(sample: Input): ReversedOutput {
+  const returnSample: {
+    sampleA: Sample;
+    sampleB: Sample;
+  } = sample;
+  return returnSample;
+};

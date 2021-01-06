@@ -4,9 +4,8 @@ import { Cancel } from './Cancel';
 import { ClientResponse } from './ClientResponse';
 import { ClientTransformer } from './ClientTransformer';
 
-void function testFunction(specimen: AxiosRequestConfig): ClientRequestConfig {
-  return specimen;
-};
+type Representative = AxiosRequestConfig;
+type Specimen = ClientRequestConfig;
 
 export interface ClientRequestConfig {
   url?: string;
@@ -82,3 +81,20 @@ export interface ClientRequestConfig {
   };
   decompress?: boolean;
 }
+
+interface Input {
+  sampleA: Specimen;
+  sampleB: Representative;
+}
+interface ReversedOutput {
+  sampleA: Representative;
+  sampleB: Specimen;
+}
+type Sample = Representative & Specimen;
+void function testFunction(sample: Input): ReversedOutput {
+  const returnSample: {
+    sampleA: Sample;
+    sampleB: Sample;
+  } = sample;
+  return returnSample;
+};

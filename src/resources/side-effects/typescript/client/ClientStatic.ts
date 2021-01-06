@@ -6,9 +6,8 @@ import { ClientError } from './ClientError';
 import { ClientInstance } from './ClientInstance';
 import { ClientRequestConfig } from './ClientRequestConfig';
 
-void function testFunction(specimen: AxiosStatic): ClientStatic {
-  return specimen;
-};
+type Representative = AxiosStatic;
+type Specimen = ClientStatic;
 
 export interface ClientStatic extends ClientInstance {
   create(config?: ClientRequestConfig): ClientInstance;
@@ -19,3 +18,20 @@ export interface ClientStatic extends ClientInstance {
   spread<T, R>(callback: (...args: T[]) => R): (array: T[]) => R;
   isAxiosError(payload: any): payload is ClientError;
 }
+
+interface Input {
+  sampleA: Specimen;
+  sampleB: Representative;
+}
+interface ReversedOutput {
+  sampleA: Representative;
+  sampleB: Specimen;
+}
+type Sample = Representative & Specimen;
+void function testFunction(sample: Input): ReversedOutput {
+  const returnSample: {
+    sampleA: Sample;
+    sampleB: Sample;
+  } = sample;
+  return returnSample;
+};
