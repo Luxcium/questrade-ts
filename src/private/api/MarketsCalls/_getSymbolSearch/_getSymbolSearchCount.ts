@@ -4,7 +4,7 @@ import {
   Credentials,
   ISymbols,
 } from '../../../../typescript';
-import { _axiosGetApi } from '../../../routes';
+import { _clientGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
 
@@ -16,7 +16,7 @@ export const _getSymbolSearchCount = (
 ) => async (prefix: string): Promise<number> => {
   try {
     const endpoint = `/symbols/search?prefix=${prefix}`;
-    const getSymbols = _axiosGetApi(credentials, proxy)<ISymbols>(endpoint);
+    const getSymbols = _clientGetApi(credentials, proxy)<ISymbols>(endpoint);
     const symbols = await getSymbols();
 
     return symbols.symbols.length;

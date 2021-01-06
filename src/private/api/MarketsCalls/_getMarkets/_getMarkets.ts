@@ -5,7 +5,7 @@ import {
   IMarket,
   IMarkets,
 } from '../../../../typescript';
-import { _axiosGetApi } from '../../../routes';
+import { _clientGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
 
@@ -16,7 +16,7 @@ export const _getMarkets = (
   proxy?: ClientProxyHandler,
 ) => async (): Promise<IMarket[]> => {
   try {
-    return (await _axiosGetApi(credentials, proxy)<IMarkets>('/markets')())
+    return (await _clientGetApi(credentials, proxy)<IMarkets>('/markets')())
       .markets;
   } catch (error) {
     void errorlog(error);

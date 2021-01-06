@@ -5,7 +5,7 @@ import {
   IQuote,
   IQuotes,
 } from '../../../../typescript';
-import { _axiosGetApi } from '../../../routes';
+import { _clientGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
 
@@ -17,7 +17,7 @@ export const _getQuotesByIds = (
 ) => async (ids: number[]): Promise<IQuote[]> => {
   try {
     return (
-      await _axiosGetApi(
+      await _clientGetApi(
         credentials,
         proxy,
       )<IQuotes>(`/markets/quotes?ids=${ids.join(',')}`)()

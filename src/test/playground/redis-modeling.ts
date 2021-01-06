@@ -3,8 +3,8 @@ import { Tedis } from 'tedis';
 import { redeemToken } from '../..';
 import { sideEffects } from '../../resources/side-effects/default-behaviour';
 import {
-  axiosConsoleLogHashesProxyHandler,
   getSymboIdByStockSymbol,
+  httpClientConsoleLogHashesProxyHandler,
   id0,
   void0,
 } from '../../utils';
@@ -16,7 +16,7 @@ export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 async function main() {
   const { qtApi, credentials } = await redeemToken(
     getMyToken(),
-    axiosConsoleLogHashesProxyHandler,
+    httpClientConsoleLogHashesProxyHandler,
   );
 
   void0(credentials);

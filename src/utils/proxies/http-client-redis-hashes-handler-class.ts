@@ -1,16 +1,16 @@
 import { sideEffects } from '../../resources/side-effects/default-behaviour';
 import { ClientStatic } from '../../resources/side-effects/types';
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '..';
-import { clientProxyFactory } from './axios-proxy-factory';
+import { clientProxyFactory } from './http-client-proxy-factory';
 import { ProxyReflexionLoggerFunctionHandler } from './proxy-reflexion-logger-function-handler';
 
 const { echo } = sideEffects;
 
-class AxiosRedisHandlerClass
+class httpClientRedisHandlerClass
   extends ProxyReflexionLoggerFunctionHandler<ClientStatic>
   implements ProxyHandler<ClientStatic> {
   protected proxy = {
-    class: 'AxiosHandlerClass',
+    class: 'httpClientRedisHandlerClass',
     extends: 'ProxyReflexionLoggerFunctionHandler<ClientStatic>',
     implements: 'ProxyHandler<ClientStatic>',
   };
@@ -29,7 +29,7 @@ class AxiosRedisHandlerClass
           'async apply(target: ClientStatic, thisArg: any, argArray?: any): Promise<any>',
         sideEffects: 'console.log',
       },
-      axiosConfig: argArray[0],
+      clientConfig: argArray[0],
       ...creatUrlAndDataHashes(urlPath, data),
     };
 
@@ -41,8 +41,8 @@ class AxiosRedisHandlerClass
   }
 }
 
-export const axiosConsoleLogHashesProxyHandler2 = clientProxyFactory(
-  new AxiosRedisHandlerClass(),
+export const clientConsoleLogHashesProxyHandler2 = clientProxyFactory(
+  new httpClientRedisHandlerClass(),
 );
 
 /*

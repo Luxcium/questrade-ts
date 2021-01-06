@@ -1,4 +1,4 @@
-import { _validateToken } from '../../private/auth/axiosCredentials_oAUTH/_validateToken';
+import { _validateToken } from '../../private/auth/clientCredentials_oAUTH/_validateToken';
 
 describe('oAuth Validate Token', () => {
   it('should validate with a numeric account number', async () => {

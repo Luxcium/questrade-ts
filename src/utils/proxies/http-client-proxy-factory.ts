@@ -1,10 +1,10 @@
 import { sideEffects } from '../../resources/side-effects/default-behaviour';
 import { ClientStatic } from '../../resources/side-effects/types';
 
-const { getAxiosLikeClient } = sideEffects;
+const { getHttpClient } = sideEffects;
 export const clientProxyFactory = (
   handler: ProxyHandler<ClientStatic>,
-  client: ClientStatic = getAxiosLikeClient(),
+  client: ClientStatic = getHttpClient(),
 ): ClientStatic => {
   return new Proxy(client, handler);
 };

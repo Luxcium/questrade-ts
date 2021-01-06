@@ -5,7 +5,7 @@ import {
   IOptionChain,
   IOptionChains,
 } from '../../../../typescript';
-import { _axiosGetApi } from '../../../routes';
+import { _clientGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
 
@@ -20,7 +20,7 @@ export const _getOptionsById = (
 ) => async (symbolID: number): Promise<IOptionChain[]> => {
   try {
     return (
-      await _axiosGetApi(
+      await _clientGetApi(
         credentials,
         proxy,
       )<IOptionChains>(`/symbols/${symbolID}/options`)()

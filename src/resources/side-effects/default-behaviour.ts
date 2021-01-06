@@ -13,7 +13,7 @@ export const sideEffects = {
     }
     return axioLikeClient(config);
   },
-  getAxiosLikeClient(axiosLikeClient: ClientStatic = axios): ClientStatic {
+  getHttpClient(axiosLikeClient: ClientStatic = axios): ClientStatic {
     return axiosLikeClient;
   },
   writeToken(): unknown {

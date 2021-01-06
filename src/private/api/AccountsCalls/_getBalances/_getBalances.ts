@@ -4,7 +4,7 @@ import {
   Credentials,
   IBalances,
 } from '../../../../typescript';
-import { _axiosAccountGetApi } from '../../../routes';
+import { _clientAccountGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
 
@@ -15,7 +15,7 @@ export const _getBalances = (
   proxy?: ClientProxyHandler,
 ) => async (): Promise<IBalances> => {
   try {
-    return _axiosAccountGetApi(credentials, proxy)<IBalances>('/balances')();
+    return _clientAccountGetApi(credentials, proxy)<IBalances>('/balances')();
   } catch (error) {
     void errorlog(error);
 

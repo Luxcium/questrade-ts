@@ -6,7 +6,7 @@ import {
   IExecutions,
 } from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
-import { _axiosAccountGetApi } from '../../../routes';
+import { _clientAccountGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
 
@@ -17,7 +17,7 @@ export const _getExecutions = (
   proxy?: ClientProxyHandler,
 ) => (startDate: string) => async (endDate: string): Promise<IExecution[]> => {
   try {
-    const executions = await _axiosAccountGetApi(
+    const executions = await _clientAccountGetApi(
       credentials,
       proxy,
     )<IExecutions>(

@@ -5,7 +5,7 @@ import {
   IOrder,
   IOrders,
 } from '../../../../typescript';
-import { _axiosAccountGetApi } from '../../../routes';
+import { _clientAccountGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
 
@@ -18,7 +18,7 @@ export const _getOrdersByIds = (
   try {
     //
     return (
-      await _axiosAccountGetApi(
+      await _clientAccountGetApi(
         credentials,
         proxy,
       )<IOrders>(`/orders?ids=${orderId.join(',')}`)()

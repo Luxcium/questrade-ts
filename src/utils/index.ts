@@ -11,8 +11,8 @@ export {
 export { FsImplementationSync, Made, Mode, OptionsSync, sync } from './mkdirp';
 export { perSeconds } from './perSeconds';
 export {
-  axiosConsoleLogHashesProxyHandler,
   clientProxyFactory,
+  httpClientConsoleLogHashesProxyHandler,
   ProxyReflexionLoggerFunctionHandler,
 } from './proxies';
 export {

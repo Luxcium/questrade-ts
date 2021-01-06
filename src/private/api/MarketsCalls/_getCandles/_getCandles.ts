@@ -7,7 +7,7 @@ import {
 } from '../../../../typescript';
 // TODO: remove dependencies to nodeJS crypt-module making it optional ...
 import { endpointFormatDateTool, getHash } from '../../../../utils';
-import { _axiosGetApi } from '../../../routes';
+import { _clientGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
 
@@ -23,7 +23,7 @@ export const _getCandles = (
     return (
       //
       (
-        await _axiosGetApi(
+        await _clientGetApi(
           credentials,
           proxy,
         )<ICandles>(

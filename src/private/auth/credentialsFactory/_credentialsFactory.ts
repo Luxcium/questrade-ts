@@ -1,7 +1,7 @@
 import { sideEffects } from '../../../resources/side-effects/default-behaviour';
 import { ClientProxyHandler, QuestradeAPIOptions } from '../../../typescript';
 import { _getAccounts, _getServerTime } from '../../api/AccountsCalls';
-import { _oAuthAxiosCredentials } from '../axiosCredentials_oAUTH';
+import { _oAuthHttpCredentials } from '../clientCredentials_oAUTH';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 
 const { infolog, errorlog } = sideEffects;
@@ -11,7 +11,7 @@ export const _credentialsFactory = async (
   options: QuestradeAPIOptions,
   proxy?: ClientProxyHandler,
 ) => {
-  const credentials = await _oAuthAxiosCredentials(options, proxy);
+  const credentials = await _oAuthHttpCredentials(options, proxy);
 
   try {
     const accounts = await _getAccounts(credentials, proxy)();

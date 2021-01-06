@@ -2,12 +2,12 @@ import { ClientProxyHandler, Credentials } from '../../../typescript';
 import { _coreApiFunction } from '../../core';
 import { _endpointFormatAccount } from './endpointFormatAccount';
 
-// # _axiosAccountApi
+// # _clientAccountGetApi
 /**
  * YOU PROVIDE: credentials and accountEndpoint string with R return type,
  * THEN YOU GET: ( ) => Promise<R>
  */
-export const _axiosAccountGetApi = (
+export const _clientAccountGetApi = (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
 ) => <R>(accountEndpoint: string) =>

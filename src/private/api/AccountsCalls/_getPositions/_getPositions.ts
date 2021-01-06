@@ -5,7 +5,7 @@ import {
   IPosition,
   IPositions,
 } from '../../../../typescript';
-import { _axiosAccountGetApi } from '../../../routes';
+import { _clientAccountGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
 
@@ -16,7 +16,7 @@ export const _getPositions = (
   proxy?: ClientProxyHandler,
 ) => async (): Promise<IPosition[]> => {
   try {
-    const positions = await _axiosAccountGetApi(
+    const positions = await _clientAccountGetApi(
       credentials,
       proxy,
     )<IPositions>('/positions')();

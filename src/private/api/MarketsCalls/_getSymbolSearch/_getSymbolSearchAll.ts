@@ -6,7 +6,7 @@ import {
   ISymbolSearchResults,
 } from '../../../../typescript';
 import { void0 } from '../../../../utils';
-import { _axiosGetApi } from '../../../routes';
+import { _clientGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
 
@@ -20,7 +20,7 @@ export const _getSymbolSearchAll = (
   offset: number = 0,
 ): Promise<ISymbolSearchResult[]> => {
   try {
-    const results = await _axiosGetApi(
+    const results = await _clientGetApi(
       credentials,
       proxy,
     )<ISymbolSearchResults>(

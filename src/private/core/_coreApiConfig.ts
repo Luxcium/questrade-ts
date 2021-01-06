@@ -4,7 +4,7 @@ import { Credentials } from '../../typescript';
 /**
  * Partial application of Core api config builder generating an
  * object of strings value in the format of CoreApiConfig<D> to
- * be sent to axios as main parameter.
+ * be sent to client as main parameter.
  */
 export const _coreApiConfig = <D>(credentials: Credentials) => {
   // ~~>

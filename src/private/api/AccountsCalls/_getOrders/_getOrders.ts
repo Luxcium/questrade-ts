@@ -6,7 +6,7 @@ import {
   IOrders,
 } from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
-import { _axiosAccountGetApi } from '../../../routes';
+import { _clientAccountGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
 
@@ -19,7 +19,7 @@ export const _getOrders = (
   endDate: string,
 ): Promise<IOrder[]> => {
   try {
-    const orders = await _axiosAccountGetApi(
+    const orders = await _clientAccountGetApi(
       credentials,
       proxy,
     )<IOrders>(

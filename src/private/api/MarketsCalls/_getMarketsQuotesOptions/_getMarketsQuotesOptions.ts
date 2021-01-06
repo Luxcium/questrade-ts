@@ -7,7 +7,7 @@ import {
   OptionsIdArray,
   OptionsPostData,
 } from '../../../../typescript';
-import { _axiosPostApi } from '../../../routes';
+import { _clientPostApi } from '../../../routes';
 
 export const _getMarketsQuotesOptions = (
   credentials: Credentials,
@@ -38,7 +38,7 @@ export const _getMarketsQuotesOptions = (
         };
 
   return (
-    await _axiosPostApi(
+    await _clientPostApi(
       credentials,
       proxy,
     )<OptionsPostData>(postData)<IOptionsQuotes>('/markets/quotes/options')()

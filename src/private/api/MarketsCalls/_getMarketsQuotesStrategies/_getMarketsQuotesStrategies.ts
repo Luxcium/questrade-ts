@@ -4,7 +4,7 @@ import {
   IStrategiesQuotes,
   StrategyVariantRequest,
 } from '../../../../typescript';
-import { _axiosPostApi } from '../../../routes';
+import { _clientPostApi } from '../../../routes';
 
 export const _getMarketsQuotesStrategies = (
   credentials: Credentials,
@@ -12,7 +12,7 @@ export const _getMarketsQuotesStrategies = (
 ) => async (
   strategyVariantRequestData: StrategyVariantRequest,
 ): Promise<IStrategiesQuotes> =>
-  _axiosPostApi(
+  _clientPostApi(
     credentials,
     proxy,
   )<StrategyVariantRequest>(strategyVariantRequestData)<IStrategiesQuotes>(

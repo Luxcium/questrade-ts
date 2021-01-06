@@ -5,7 +5,7 @@ import {
   IAccount,
   IAccounts,
 } from '../../../../typescript';
-import { _axiosGetApi } from '../../../routes';
+import { _clientGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
 
@@ -20,7 +20,7 @@ export function _getAccounts(
   return async (): Promise<IAccount[]> => {
     try {
       //
-      const getAccounts = _axiosGetApi(credentials, proxy);
+      const getAccounts = _clientGetApi(credentials, proxy);
       const accounts = getAccounts<IAccounts>('/accounts');
       const data = await accounts();
       //

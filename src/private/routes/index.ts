@@ -1,3 +1,3 @@
-export { _axiosAccountGetApi } from './axiosAccountGetApi';
-export { _axiosGetApi } from './axiosGetApi';
-export { _axiosPostApi } from './axiosPostApi';
+export { _clientAccountGetApi } from './clientAccountGetApi';
+export { _clientGetApi } from './clientGetApi';
+export { _clientPostApi } from './clientPostApi';

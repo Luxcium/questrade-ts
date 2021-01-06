@@ -1,7 +1,7 @@
 import { ClientProxyHandler, Credentials } from '../../typescript';
 import { _coreApiConfig } from './_coreApiConfig';
 import { _logErrors } from './_logErrors';
-import { _tryToGetData } from './X_tryToGetData_AXIOS_X';
+import { _tryToGetData } from './XX-try-to-get-data-from-http-client-XX';
 
 export const _coreApiFunction = (
   credentials: Credentials,

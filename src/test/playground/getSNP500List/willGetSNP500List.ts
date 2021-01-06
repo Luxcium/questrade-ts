@@ -7,8 +7,8 @@ import {
 } from './Constituent';
 import { uriToConstituents_json as path } from './uriToConstituents_json';
 
-const { getAxiosLikeClient } = sideEffects;
-const client = getAxiosLikeClient();
+const { getHttpClient } = sideEffects;
+const client = getHttpClient();
 
 export const willGetSNP500StringList = async () =>
   (await willGetSNP500List())[0];

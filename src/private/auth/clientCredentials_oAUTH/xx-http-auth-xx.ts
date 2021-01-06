@@ -14,13 +14,9 @@ import {
 import { _validateToken } from './_validateToken';
 import { _writeToken } from './_writeToken';
 
-const { echo, getAxiosLikeClient } = sideEffects;
+const { echo, getHttpClient } = sideEffects;
 
-// void function clientReversStaticConverter(specimen: ClientStatic):AxiosStatic  {
-//   return specimen;
-// }
-
-export const _oAuthAxiosCredentials = async (
+export const _oAuthHttpCredentials = async (
   options: QuestradeAPIOptions,
   proxy?: ClientProxyHandler,
 ): Promise<Credentials> => {
@@ -35,12 +31,12 @@ export const _oAuthAxiosCredentials = async (
     },
   };
 
-  let axiosClient: ClientStatic = getAxiosLikeClient();
+  let httpClient: ClientStatic = getHttpClient();
   if (proxy) {
-    axiosClient = proxy;
+    httpClient = proxy;
   }
   let response: ClientResponse<IRefreshCreds>;
-  response = (await axiosClient(_config)) as any;
+  response = (await httpClient(_config)) as any;
 
   if (!response.data) {
     if (response) {
@@ -53,7 +49,7 @@ export const _oAuthAxiosCredentials = async (
       void echo<unknown>('++++++++++++++++++++++++++++++++++++++++++++++++');
     }
     throw new Error(
-      '!! validate credntials Invalid data back from axios client',
+      '!! validate credntials Invalid data back from http client',
     );
   }
 

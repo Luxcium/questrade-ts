@@ -12,7 +12,7 @@ import {
   requestPerSecondLimiter,
 } from './requestPerSecondLimit';
 
-const { echo, infolog, errorlog, tablelog, getAxiosLikeClient } = sideEffects;
+const { echo, infolog, errorlog, tablelog, getHttpClient } = sideEffects;
 
 export const _tryToGetData = <R>(
   _config: ClientRequestConfig,
@@ -21,9 +21,9 @@ export const _tryToGetData = <R>(
 ) => {
   return async (_logError: LogErrors): Promise<R> => {
     try {
-      let axiosClient: ClientStatic = getAxiosLikeClient();
+      let httpClient: ClientStatic = getHttpClient();
       if (proxy) {
-        axiosClient = proxy;
+        httpClient = proxy;
       }
 
       const possiblePerSeconds =
@@ -33,10 +33,10 @@ export const _tryToGetData = <R>(
         //
         const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
         response = await requestLimiter(
-          async (): Promise<ClientResponse<R>> => axiosClient(_config),
+          async (): Promise<ClientResponse<R>> => httpClient(_config),
         );
       } else {
-        response = await axiosClient(_config);
+        response = await httpClient(_config);
       }
       if (response.status !== 200) {
         void echo<unknown>('________________________________________________');
@@ -86,7 +86,7 @@ export const _tryToGetData = <R>(
         void errorlog('error_:', error_);
 
         void infolog(
-          "To make tests pass removed 'throw' error messages from code bloc in (Axios) _tryToGetData",
+          "To make tests pass removed 'throw' error messages from code bloc in (http client) _tryToGetData",
         );
 
         throw error_;
