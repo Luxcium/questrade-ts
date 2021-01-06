@@ -14,13 +14,13 @@
   */
   "workbench.colorTheme": "Pop N' Lock Theme by Luxcium ✨",
   "workbench.iconTheme": "material-icon-theme",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 3,
   "editor.fontFamily": "'VictorMono Nerd Font'",
-  "editor.fontSize": 26,
+  "editor.fontSize": 20,
   "editor.fontWeight": "500",
   "editor.fontLigatures": true,
   "terminal.integrated.fontFamily": "'FuraCode Nerd Font mono','TerminessTTF Nerd Font Mono'",
-  "terminal.integrated.fontSize": 20,
+  "terminal.integrated.fontSize": 10,
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.fontWeightBold": "900",
   "[typescript]": {
