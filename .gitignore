@@ -1,5 +1,4 @@
-# 3 dir templates
-!**/**/material-dir-icons/**/**
+
 # Logs
 logs
 *.log
@@ -40,3 +39,9 @@ test.js
 # Key files
 keys
 *.env
+
+
+# icon template dir
+!**/material-dir-icons/**
+!**/material-dir-icons/**/*
+!misc/material-dir-icons/**/*
