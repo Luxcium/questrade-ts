@@ -20,7 +20,7 @@
   "editor.fontWeight": "500",
   "editor.fontLigatures": true,
   "terminal.integrated.fontFamily": "'FuraCode Nerd Font mono','TerminessTTF Nerd Font Mono'",
-  "terminal.integrated.fontSize": 14,
+  "terminal.integrated.fontSize": 20,
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.fontWeightBold": "900",
   "[typescript]": {

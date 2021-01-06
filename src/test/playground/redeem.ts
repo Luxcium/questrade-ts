@@ -3,10 +3,9 @@
 
 import { redeemToken } from '../..';
 import { sideEffects } from '../../default-behaviour';
-import { getMyToken } from '../../get-token';
 import { axiosConsoleLogHashesProxyHandler, void0 } from '../../utils';
 
-const { echo, errorlog } = sideEffects;
+const { echo, errorlog, getMyToken } = sideEffects;
 
 export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 async function main() {

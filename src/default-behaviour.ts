@@ -1,3 +1,5 @@
+import { config } from 'dotenv';
+
 export interface CancelTokenStatic {
   new (executor: (cancel: { (cancelMessage?: string): void }) => void): {
     promise: Promise<{
@@ -211,6 +213,7 @@ export interface ClientRequestConfig {
   };
   decompress?: boolean;
 }
+
 export const sideEffects = {
   client<R>(
     config: ClientRequestConfig | string,
@@ -230,8 +233,15 @@ export const sideEffects = {
   setMyToken(): unknown {
     return;
   },
-  getMyToken(): unknown {
-    return;
+  /**
+   * QuesTrade Token
+   * in (dot).env file :
+   * QUESTRADE_API_TOKEN="PQHfjX1hPA-XXXXX_XXXXX-6vpDUDRHB0"
+   * Side Effects in: import { config } from 'dotenv'
+   */
+  getMyToken: () => {
+    config();
+    return process.env.QUESTRADE_API_TOKEN ?? '';
   },
   getHash(): unknown {
     return;
@@ -256,6 +266,11 @@ export const sideEffects = {
   echo<T = unknown>(...args: T[]): T[] {
     console.log(...args);
     return args;
+  },
+
+  ech0<T = unknown>(arg0: T): T {
+    console.log(arg0);
+    return arg0;
   },
 };
 export const {
