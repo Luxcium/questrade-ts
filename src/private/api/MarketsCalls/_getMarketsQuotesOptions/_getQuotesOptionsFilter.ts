@@ -1,5 +1,5 @@
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   OptionsFilters,
 } from '../../../../typescript';
@@ -7,7 +7,7 @@ import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
 export const _getQuotesOptionsFilter = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => async (filters: OptionsFilters) => {
   const {
     underlyingId,

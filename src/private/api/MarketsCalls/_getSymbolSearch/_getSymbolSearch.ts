@@ -1,6 +1,6 @@
 import { sideEffects } from '../../../../resources/side-effects/default-behaviour';
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   ISymbolSearchResult,
 } from '../../../../typescript';
@@ -12,7 +12,7 @@ const { errorlog } = sideEffects;
 /** _getSymbolSearch */
 export const _getSymbolSearch = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => async (
   prefix: string,
   offset: number = 0,

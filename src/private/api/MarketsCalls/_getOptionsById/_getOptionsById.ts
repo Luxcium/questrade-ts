@@ -1,6 +1,6 @@
 import { sideEffects } from '../../../../resources/side-effects/default-behaviour';
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   IOptionChain,
   IOptionChains,
@@ -16,7 +16,7 @@ const { errorlog } = sideEffects;
 /** _getOptionsSymbols */
 export const _getOptionsById = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => async (symbolID: number): Promise<IOptionChain[]> => {
   try {
     return (

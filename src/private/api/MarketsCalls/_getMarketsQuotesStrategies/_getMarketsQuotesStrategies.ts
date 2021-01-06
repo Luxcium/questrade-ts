@@ -1,5 +1,5 @@
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   IStrategiesQuotes,
   StrategyVariantRequest,
@@ -8,7 +8,7 @@ import { _axiosPostApi } from '../../../routes';
 
 export const _getMarketsQuotesStrategies = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => async (
   strategyVariantRequestData: StrategyVariantRequest,
 ): Promise<IStrategiesQuotes> =>

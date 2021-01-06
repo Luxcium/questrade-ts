@@ -1,6 +1,6 @@
 import { sideEffects } from '../../../../resources/side-effects/default-behaviour';
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   IMarket,
   IMarkets,
@@ -13,7 +13,7 @@ const { errorlog } = sideEffects;
 /** _getMarkets */
 export const _getMarkets = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => async (): Promise<IMarket[]> => {
   try {
     return (await _axiosGetApi(credentials, proxy)<IMarkets>('/markets')())

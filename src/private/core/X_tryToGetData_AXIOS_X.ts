@@ -2,7 +2,7 @@ import axios, { AxiosResponse, AxiosStatic } from 'axios';
 
 import { sideEffects } from '../../resources/side-effects/default-behaviour';
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   CoreApiConfig,
   Credentials,
   LogErrors,
@@ -19,7 +19,7 @@ const { echo, infolog, errorlog, tablelog } = sideEffects;
 export const _tryToGetData = <R, D>(
   _config: CoreApiConfig<D>,
   credentials?: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => {
   return async (_logError: LogErrors): Promise<R> => {
     try {

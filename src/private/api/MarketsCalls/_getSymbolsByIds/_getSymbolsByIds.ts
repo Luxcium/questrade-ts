@@ -1,6 +1,6 @@
 import { sideEffects } from '../../../../resources/side-effects/default-behaviour';
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   ISymbol,
   ISymbols,
@@ -13,7 +13,7 @@ const { errorlog } = sideEffects;
 /** _getSymbolFromSymbolID */
 export const _getSymbolsByIds = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => async (stockId: number[]): Promise<ISymbol[]> => {
   try {
     return (

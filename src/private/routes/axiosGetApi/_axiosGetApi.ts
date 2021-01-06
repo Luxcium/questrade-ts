@@ -1,4 +1,4 @@
-import { AxiosProxyHandler, Credentials } from '../../../typescript';
+import { ClientProxyHandler, Credentials } from '../../../typescript';
 import { _coreApiFunction } from '../../core';
 
 // # _axiosApiGet !!!
@@ -8,5 +8,5 @@ import { _coreApiFunction } from '../../core';
  */
 export const _axiosGetApi = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => _coreApiFunction(credentials, proxy)('GET')(null);

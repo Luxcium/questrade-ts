@@ -1,4 +1,4 @@
-import { AxiosStatic } from 'axios';
+import { ClientStatic } from '../resources/side-effects/typescript/client';
 
 /** IProxy placeholder will be an interface at term  */
-export type AxiosProxyHandler = AxiosStatic;
+export type ClientProxyHandler = ClientStatic;

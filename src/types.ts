@@ -1,9 +1,9 @@
 export type {
   AcountNumberString,
   AxiosIntrospectRes,
-  AxiosProxyHandler,
   Balances,
   CallBack,
+  ClientProxyHandler,
   CoreApiConfig,
   Credentials,
   DateRange,

@@ -4,7 +4,7 @@ import { sideEffects } from '../../../resources/side-effects/default-behaviour';
 import {
   AuthApiConfig,
   AxiosIntrospectRes,
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   IRefreshCreds,
   QuestradeAPIOptions,
@@ -16,7 +16,7 @@ const { echo } = sideEffects;
 
 export const _oAuthAxiosCredentials = async (
   options: QuestradeAPIOptions,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ): Promise<Credentials> => {
   // TODO: remove dependencies to file system making it optional ...
   const { refreshToken, credentials } = _validateToken(options);

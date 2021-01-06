@@ -1,6 +1,6 @@
 import { sideEffects } from '../../../../resources/side-effects/default-behaviour';
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   IAccount,
   IAccounts,
@@ -13,7 +13,7 @@ const { errorlog } = sideEffects;
 /** _getAccounts */
 export function _getAccounts(
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) {
   //
 

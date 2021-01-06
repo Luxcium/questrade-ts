@@ -1,6 +1,6 @@
 import { sideEffects } from '../../../../resources/side-effects/default-behaviour';
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   IOrder,
   IOrders,
@@ -14,7 +14,7 @@ const { errorlog } = sideEffects;
 /** _getOrders */
 export const _getOrders = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => (stateFilter: string = 'All') => (startDate: string) => async (
   endDate: string,
 ): Promise<IOrder[]> => {

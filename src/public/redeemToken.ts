@@ -1,10 +1,10 @@
 import { _credentialsFactory } from '../private';
-import { AxiosProxyHandler, QuestradeAPIOptions } from '../typescript';
+import { ClientProxyHandler, QuestradeAPIOptions } from '../typescript';
 import { questradeApi } from './questradeAPI';
 
 const _redeemToken = async (
   refreshToken: QuestradeAPIOptions,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => {
   const credentials = await _credentialsFactory(refreshToken, proxy);
   const questrade = await questradeApi(credentials, proxy);

@@ -1,6 +1,6 @@
 import { sideEffects } from '../../../../resources/side-effects/default-behaviour';
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   IBalances,
 } from '../../../../typescript';
@@ -12,7 +12,7 @@ const { errorlog } = sideEffects;
 /** _getBalances */
 export const _getBalances = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => async (): Promise<IBalances> => {
   try {
     return _axiosAccountGetApi(credentials, proxy)<IBalances>('/balances')();

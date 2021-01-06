@@ -1,6 +1,6 @@
 import { sideEffects } from '../../../../resources/side-effects/default-behaviour';
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   IQuote,
   IQuotes,
@@ -13,7 +13,7 @@ const { errorlog } = sideEffects;
 /** _getQuotesFromSymbolID */
 export const _getQuotesByIds = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => async (ids: number[]): Promise<IQuote[]> => {
   try {
     return (

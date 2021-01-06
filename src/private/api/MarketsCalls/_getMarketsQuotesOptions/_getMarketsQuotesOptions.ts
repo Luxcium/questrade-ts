@@ -1,5 +1,5 @@
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   FiltersArray,
   IOptionsQuote,
@@ -11,7 +11,7 @@ import { _axiosPostApi } from '../../../routes';
 
 export const _getMarketsQuotesOptions = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => async (
   optionIds: number[] | null,
   underlyingId: number,

@@ -1,6 +1,6 @@
 import { sideEffects } from '../../../../resources/side-effects/default-behaviour';
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   ICandle,
   ICandles,
@@ -15,7 +15,7 @@ const { errorlog } = sideEffects;
 /** _getCandles */
 export const _getCandles = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => (symbolID: number) => (interval: string = 'OneDay') => (
   startDate: string,
 ) => async (endDate: string): Promise<ICandle[]> => {

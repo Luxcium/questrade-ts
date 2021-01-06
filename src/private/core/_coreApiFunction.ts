@@ -1,11 +1,11 @@
-import { AxiosProxyHandler, Credentials } from '../../typescript';
+import { ClientProxyHandler, Credentials } from '../../typescript';
 import { _coreApiConfig } from './_coreApiConfig';
 import { _logErrors } from './_logErrors';
 import { _tryToGetData } from './X_tryToGetData_AXIOS_X';
 
 export const _coreApiFunction = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => {
   // ~~>
   return (VERB: 'GET' | 'POST') => {

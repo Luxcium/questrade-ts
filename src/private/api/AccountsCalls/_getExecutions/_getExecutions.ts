@@ -1,6 +1,6 @@
 import { sideEffects } from '../../../../resources/side-effects/default-behaviour';
 import {
-  AxiosProxyHandler,
+  ClientProxyHandler,
   Credentials,
   IExecution,
   IExecutions,
@@ -14,7 +14,7 @@ const { errorlog } = sideEffects;
 /** _getExecutions */
 export const _getExecutions = (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => (startDate: string) => async (endDate: string): Promise<IExecution[]> => {
   try {
     const executions = await _axiosAccountGetApi(

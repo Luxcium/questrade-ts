@@ -1,11 +1,11 @@
 import { _getQuestradeApi } from '../private';
-import { AxiosProxyHandler, Credentials, QuestradeApi } from '../typescript';
+import { ClientProxyHandler, Credentials, QuestradeApi } from '../typescript';
 
 // export const getQuestradeApi = ;
 
 export const questradeApi = async (
   credentials: Credentials,
-  proxy?: AxiosProxyHandler,
+  proxy?: ClientProxyHandler,
 ) => {
   const qtApi = await _getQuestradeApi(credentials, proxy);
   const api: QuestradeApi = {
