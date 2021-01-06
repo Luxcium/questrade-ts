@@ -1,4 +1,3 @@
-export { AxiosIntrospectRes } from './AxiosIntrospectRes';
 export { CallBack } from './CallBack';
 export { Credentials } from './Credentials';
 export { AcountNumberString, IAccount, IAccounts } from './IAccounts';

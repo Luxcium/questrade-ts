@@ -1,10 +1,12 @@
 import axios from 'axios';
 
 import { sideEffects } from '../../../resources/side-effects/default-behaviour';
-import { ClientStatic } from '../../../resources/side-effects/typescript';
+import {
+  ClientResponse,
+  ClientStatic,
+} from '../../../resources/side-effects/typescript';
 import {
   AuthApiConfig,
-  AxiosIntrospectRes,
   ClientProxyHandler,
   Credentials,
   IRefreshCreds,
@@ -38,7 +40,7 @@ export const _oAuthAxiosCredentials = async (
   if (proxy) {
     axiosClient = proxy;
   }
-  let response: AxiosIntrospectRes<IRefreshCreds>;
+  let response: ClientResponse<IRefreshCreds>;
   response = (await axiosClient(_config)) as any;
 
   if (!response.data) {

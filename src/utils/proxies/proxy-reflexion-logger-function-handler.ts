@@ -100,7 +100,7 @@ export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
     return Reflect.defineProperty(target, p, attributes);
   }
 
-  ownKeys(target: T): (string | symbol)[] {
+  ownKeys(target: T) /* : (string | number | symbol)[] */ {
     void echo<unknown>('PROXY:', 'ownKeys', 'target', target);
     return Reflect.ownKeys(target);
   }

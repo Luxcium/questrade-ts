@@ -1,6 +1,5 @@
 export type {
   AcountNumberString,
-  AxiosIntrospectRes,
   Balances,
   CallBack,
   ClientProxyHandler,
