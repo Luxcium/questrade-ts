@@ -49,3 +49,5 @@ export const questradeApi = async (
   };
   return api;
 };
+
+export const chainApi = {};

@@ -8,7 +8,6 @@ import {
   id0,
   void0,
 } from '../../utils';
-import { idx } from '../../utils/void0';
 
 const { ech0, errorlog, getMyToken } = sideEffects;
 
@@ -32,14 +31,3 @@ async function main() {
   })().catch(error => errorlog(error.message));
 }
 main();
-
-const A = 'A';
-const B = 'B';
-const C = 'C';
-const D = 'D';
-const E = 'E';
-
-void0(
-  console.log('idx(1,2,3,4,5):', idx(1, 2, 3, 4, 5)),
-  console.log('idx(A,B,C,D,E):', idx(A, B, C, D, E)),
-);

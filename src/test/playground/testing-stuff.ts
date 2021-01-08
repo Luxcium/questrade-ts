@@ -1,5 +1,6 @@
-import { void0 } from '../../utils';
-import { idx } from '../../utils/void0';
+import { helperFunctions } from '../../utils';
+
+const { void0, idx } = helperFunctions;
 
 export const A = 'A';
 export const B = 'B';

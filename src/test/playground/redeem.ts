@@ -5,6 +5,7 @@ import { sideEffects } from '../../resources/side-effects/default-behaviour';
 import { httpClientConsoleLogHashesProxyHandler, void0 } from '../../utils';
 
 const { echo, errorlog, getMyToken } = sideEffects;
+
 export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 async function main() {
   const { qtApi, credentials } = await redeemToken(
