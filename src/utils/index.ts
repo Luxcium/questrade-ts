@@ -1,5 +1,23 @@
-import { id0, void0 } from './void0';
+import { helperFunctions } from './void0';
 
+const {
+  id0,
+  idx,
+  void0,
+  curry,
+  thrush,
+  apply,
+  compose,
+  flip,
+  konst,
+  psi,
+} = helperFunctions;
+
+export {
+  clientProxyFactory,
+  httpClientConsoleLogHashesProxyHandler,
+  ProxyReflexionLoggerFunctionHandler,
+} from '../resources/proxies';
 export { creatUrlAndDataHashes } from './create-url-and-data-hashes';
 export { formatDate } from './dates';
 export { getQtUrlPathFromArgs } from './get-qt-url-path-from-args';
@@ -11,11 +29,6 @@ export {
 export { FsImplementationSync, Made, Mode, OptionsSync, sync } from './mkdirp';
 export { perSeconds } from './perSeconds';
 export {
-  clientProxyFactory,
-  httpClientConsoleLogHashesProxyHandler,
-  ProxyReflexionLoggerFunctionHandler,
-} from './proxies';
-export {
   dateNowISO,
   dateNowNumeric,
   dateRange,
@@ -26,4 +39,5 @@ export {
   endpointFormatDateTool,
   setDateRange,
 } from './timeutil';
-export { id0, void0 };
+export { apply, compose, curry, flip, id0, idx, konst, psi, thrush, void0 };
+export { helperFunctions };
