@@ -14,17 +14,19 @@
   */
   "workbench.colorTheme": "Pop N' Lock Theme by Luxcium ✨",
   "workbench.iconTheme": "material-icon-theme",
-  "window.zoomLevel": 3,
+  "window.zoomLevel": 2,
   "editor.fontFamily": "'VictorMono Nerd Font'",
   "editor.fontSize": 16,
   "editor.fontWeight": "500",
   "editor.fontLigatures": true,
+  "editor.wordWrapColumn": 121,
+  "editor.wordWrap": "bounded",
   "terminal.integrated.fontFamily": "'FuraCode Nerd Font mono','TerminessTTF Nerd Font Mono'",
   "terminal.integrated.fontSize": 8,
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.fontWeightBold": "900",
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features",
@@ -39,6 +41,7 @@
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "file",
+  "editor.tabSize": 2,
   "editor.formatOnType": true,
   "editor.suggest.showFiles": true,
   "editor.suggest.showFolders": true,
@@ -82,9 +85,11 @@
   */
   "prettier.enable": true,
   "prettier.requireConfig": true,
+  "prettier.printWidth": 80,
+  "prettier.proseWrap": "preserve",
   "prettier.trailingComma": "all",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "prettier.packageManager": "yarn",
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― ESLINT
@@ -892,8 +897,8 @@
       "backgroundColor": "transparent"
     },
     {
-      // http:
-      "tag": "http:",
+      // http
+      "tag": "http",
       "color": "#FB3F",
       "strikethrough": false,
       "backgroundColor": "transparent"
