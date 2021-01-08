@@ -1,5 +1,5 @@
-import { sideEffects } from '../../resources/side-effects/default-behaviour';
-import { ClientStatic } from '../../resources/side-effects/types';
+import { sideEffects } from '../side-effects/default-behaviour';
+import { ClientStatic } from '../side-effects/types';
 
 const { getHttpClient } = sideEffects;
 export const clientProxyFactory = (

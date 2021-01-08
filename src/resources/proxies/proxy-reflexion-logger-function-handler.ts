@@ -1,4 +1,4 @@
-import { sideEffects } from '../../resources/side-effects/default-behaviour';
+import { sideEffects } from '../side-effects/default-behaviour';
 
 const { echo } = sideEffects;
 
