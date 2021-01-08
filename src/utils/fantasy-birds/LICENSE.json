@@ -1,0 +1,10 @@
+{
+  "fantasy-birds/fantasy-combinators": {
+    "author": "Brian McKenna",
+    "license": "BSD-2-Clause"
+  },
+  "fantasy-birds/fantasy-helpers (curry.ts)": {
+    "author": "Simon Richardson <stickupkid@gmail.com> (https://github.com/SimonRichardson)",
+    "license": "MIT"
+  }
+}
