@@ -20,8 +20,9 @@ coverage
 # node-waf configuration
 .lock-wscript
 
-# doc
-# docs
+# ignore docs for now ,,,
+doc
+docs
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 build
 !dist

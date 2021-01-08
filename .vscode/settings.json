@@ -26,7 +26,7 @@
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.fontWeightBold": "900",
   "[typescript]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features",
@@ -1744,6 +1744,7 @@
   "todo-tree.tree.labelFormat": "${tag} ${after}",
   "todo-tree.tree.scanMode": "workspace",
   "todo-tree.tree.tooltipFormat": "${filepath}, line ${line}",
+  "god.tsconfig": "./tsconfig.json",
   // "Toggle activity bar": true,
   // "Toggle line comment": true,
   // "Toggle render whitespace": true,

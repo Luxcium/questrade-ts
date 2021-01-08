@@ -7,15 +7,11 @@ import { httpClientConsoleLogHashesProxyHandler, void0 } from '../../utils';
 const { echo, errorlog, getMyToken } = sideEffects;
 
 export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
-async function main() {
-  const { qtApi, credentials } = await redeemToken(
-    getMyToken(),
-    httpClientConsoleLogHashesProxyHandler,
-  );
+(async function main() {
+  const { qtApi, credentials } = await redeemToken(getMyToken(), httpClientConsoleLogHashesProxyHandler);
   void0(credentials);
   void0(qtApi);
-  return (async () => {
+  return (async function prime() {
     echo(await qtApi.account.getServerTime());
   })().catch(error => errorlog(error.message));
-}
-main();
+})().catch(error => errorlog(error.message));

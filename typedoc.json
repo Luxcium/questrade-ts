@@ -1,0 +1,11 @@
+{
+  "entryPoints": [
+    "./src"
+  ],
+  "exclude": [
+    "**/*+(.test|.spec|.e2e).ts",
+    "**/node_modules",
+    "src/resources"
+  ],
+  "out": "./docs"
+}
