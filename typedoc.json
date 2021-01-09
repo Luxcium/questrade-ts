@@ -3,7 +3,7 @@
     "./src"
   ],
   "exclude": [
-    "**/node_modules"
+    "./src/resources"
   ],
   "out": "./docs"
 }
