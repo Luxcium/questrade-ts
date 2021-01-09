@@ -17,7 +17,7 @@
     }
   ],
   "parser": "typescript",
-  "printWidth": 20,
+  "printWidth": 80,
   "proseWrap": "preserve",
   "quoteProps": "consistent",
   "rangeStart": 0,
