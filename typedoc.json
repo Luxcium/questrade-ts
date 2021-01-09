@@ -1,9 +1,0 @@
-{
-  "entryPoints": [
-    "./src"
-  ],
-  "exclude": [
-    "./src/resources"
-  ],
-  "out": "./docs"
-}

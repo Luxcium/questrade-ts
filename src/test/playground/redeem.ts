@@ -2,16 +2,50 @@
 
 import { redeemToken } from '../..';
 import { sideEffects } from '../../resources/side-effects/default-behaviour';
-import { httpClientConsoleLogHashesProxyHandler, void0 } from '../../utils';
+import {
+  httpClientConsoleLogHashesProxyHandler,
+  void0,
+} from '../../utils';
 
-const { echo, errorlog, getMyToken } = sideEffects;
+const {
+  echo,
+  errorlog,
+  getMyToken,
+} = sideEffects;
 
-export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
+export const parser = (
+  obj: any,
+) =>
+  JSON.parse(
+    JSON.stringify(
+      obj,
+    ),
+  );
 (async function main() {
-  const { qtApi, credentials } = await redeemToken(getMyToken(), httpClientConsoleLogHashesProxyHandler);
-  void0(credentials);
+  const {
+    qtApi,
+    credentials,
+  } = await redeemToken(
+    getMyToken(),
+    httpClientConsoleLogHashesProxyHandler,
+  );
+  void0(
+    credentials,
+  );
+
   void0(qtApi);
-  return (async function prime() {
-    echo(await qtApi.account.getServerTime());
-  })().catch(error => errorlog(error.message));
-})().catch(error => errorlog(error.message));
+  return (async function leadingPrime() {
+    echo(
+      await qtApi.account.getServerTime(),
+    );
+  })().catch(
+    error =>
+      errorlog(
+        error.message,
+      ),
+  );
+})().catch(error =>
+  errorlog(
+    error.message,
+  ),
+);

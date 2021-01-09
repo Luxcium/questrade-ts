@@ -141,8 +141,6 @@ export class ChainApiClass {
   public _startTime?: string;
   public _endTime?: string;
   public _interval?: string;
-  // public _ids?: number[];
-  // public _symbolID?: number;
   public _optionIdList?: number[];
   public _offset?: number;
   public _stateFilter?: string;

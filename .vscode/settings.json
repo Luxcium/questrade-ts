@@ -26,7 +26,7 @@
   "terminal.integrated.fontWeight": "500",
   "terminal.integrated.fontWeightBold": "900",
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features",

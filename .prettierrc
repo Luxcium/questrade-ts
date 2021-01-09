@@ -1,14 +1,23 @@
 {
   "arrowParens": "avoid",
   "bracketSpacing": true,
-  "parser": "typescript",
   "embeddedLanguageFormatting": "auto",
   "endOfLine": "lf",
   "htmlWhitespaceSensitivity": "css",
   "insertPragma": false,
   "jsxBracketSameLine": false,
   "jsxSingleQuote": false,
-  "printWidth": 200,
+  "overrides": [
+    {
+      "files": ".prettierrc",
+      "options": {
+        "parser": "json",
+        "trailingComma": "all"
+      }
+    }
+  ],
+  "parser": "typescript",
+  "printWidth": 20,
   "proseWrap": "preserve",
   "quoteProps": "consistent",
   "rangeStart": 0,
@@ -17,14 +26,5 @@
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "all",
-  "useTabs": false,
-  "overrides": [
-    {
-      "files": ".prettierrc",
-      "options": {
-        "trailingComma": "all",
-        "parser": "json"
-      }
-    }
-  ]
+  "useTabs": false
 }
