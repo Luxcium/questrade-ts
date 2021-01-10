@@ -1,5 +1,5 @@
 import { redeemToken } from '../..';
-import { sideEffects } from '../../resources/side-effects/default-behaviour';
+import { sideEffects } from '../../resources/side-effects';
 import { StrategyVariantRequest } from '../../typescript';
 
 const { echo, errorlog, getMyToken } = sideEffects;

@@ -1,4 +1,4 @@
-import { sideEffects } from '../../../resources/side-effects/default-behaviour';
+import { sideEffects } from '../../../resources/side-effects';
 import { ClientResponse } from '../../../resources/side-effects/types';
 
 const { echo } = sideEffects;

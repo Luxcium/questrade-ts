@@ -1,5 +1,6 @@
-import { _validateToken } from '../../private/auth/clientCredentials_oAUTH/_validateToken';
+import { sideEffects } from '../../resources/side-effects';
 
+const { _validateToken } = sideEffects;
 describe('oAuth Validate Token', () => {
   it('should validate with a numeric account number', async () => {
     _validateToken({

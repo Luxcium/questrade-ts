@@ -1,5 +1,5 @@
 import { _emptyCredentials, _getQuestradeApi } from '../../private';
-import { sideEffects } from '../../resources/side-effects/default-behaviour';
+import { sideEffects } from '../../resources/side-effects';
 
 const { echo } = sideEffects;
 

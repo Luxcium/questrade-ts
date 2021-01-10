@@ -1,4 +1,4 @@
-import { sideEffects } from '../../default-behaviour';
+import { sideEffects } from '../..';
 import { ClientStatic } from '../../types';
 
 const { getHttpClient } = sideEffects;

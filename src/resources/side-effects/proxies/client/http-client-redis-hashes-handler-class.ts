@@ -1,7 +1,7 @@
 import { Tedis } from 'tedis';
 
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../../../utils';
-import { sideEffects } from '../../default-behaviour';
+import { sideEffects } from '../..';
 import { ClientStatic } from '../../types';
 import { ReflexionLoggerProxyHandlerAbstractClass } from '..';
 import { clientProxyHandlerFactoryFunction } from '../core/client-proxy-handler-factory-function';

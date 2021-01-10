@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/no-keyword-prefix */
 
 import { redeemToken } from '../..';
-import { sideEffects } from '../../resources/side-effects/default-behaviour';
+import { sideEffects } from '../../resources/side-effects';
 import { httpRedisClientProxyHandler } from '../../resources/side-effects/proxies';
 
 const { echo, errorlog, getMyToken, makeTedis } = sideEffects;

@@ -1,4 +1,4 @@
-import { sideEffects } from '../../../resources/side-effects/default-behaviour';
+import { sideEffects } from '../../../resources/side-effects';
 import { ClientProxyHandler, QuestradeAPIOptions } from '../../../typescript';
 import { _getAccounts, _getServerTime } from '../../api/AccountsCalls';
 import { _oAuthHttpCredentials } from '../clientCredentials_oAUTH';

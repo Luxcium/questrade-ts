@@ -1,4 +1,4 @@
-import { sideEffects } from '../../../resources/side-effects/default-behaviour';
+import { sideEffects } from '../../../resources/side-effects';
 import { ITimeRateLimiter } from '../../../typescript/ITimeRateLimiter';
 import { remaningTimeString } from './remaningTimeString';
 

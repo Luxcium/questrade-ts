@@ -1,4 +1,4 @@
-import { sideEffects } from '../../resources/side-effects/default-behaviour';
+import { sideEffects } from '../../resources/side-effects';
 import { dateNowNumeric, dateRangeFromNow } from '../../utils';
 
 const { echo } = sideEffects;

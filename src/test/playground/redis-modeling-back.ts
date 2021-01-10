@@ -1,11 +1,9 @@
-import { Tedis } from 'tedis';
-
 import { redeemToken } from '../..';
-import { sideEffects } from '../../resources/side-effects/default-behaviour';
+import { sideEffects } from '../../resources/side-effects';
 import { httpHashLoggerClientProxyHandler } from '../../resources/side-effects/proxies';
 import { getSymboIdByStockSymbol, id0, void0 } from '../../utils';
 
-const { ech0, errorlog, getMyToken } = sideEffects;
+const { ech0, errorlog, getMyToken, makeTedis } = sideEffects;
 
 export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 async function main() {
@@ -19,7 +17,7 @@ async function main() {
   return (async () => {
     const getSymbolId = getSymboIdByStockSymbol(qtApi);
     void ech0(await getSymbolId('AAPL'));
-    const tedis = id0(new Tedis({ port: 6379 }));
+    const tedis = id0(makeTedis({ port: 6379 }));
 
     ech0(await tedis.keys('*'));
     tedis.close();

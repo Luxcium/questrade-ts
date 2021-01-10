@@ -2,12 +2,21 @@ import axios from 'axios';
 import { config } from 'dotenv';
 import { Tedis } from 'tedis';
 
-import { id0 } from '../../utils';
 import { sideEffects } from '.';
 import { ClientPromise, ClientRequestConfig, ClientStatic } from './types';
 
 export const _sideEffects = {
-  makeTedis: () => id0(new Tedis()),
+  makeTedis: (
+    options?:
+      | {
+          host?: string | undefined;
+          port?: number | undefined;
+          password?: string | undefined;
+          timeout?: number | undefined;
+          tls?: { key: Buffer; cert: Buffer } | undefined;
+        }
+      | undefined,
+  ): Tedis => new Tedis(options),
   client<R>(
     config: ClientRequestConfig | string,
     axioLikeClient: ClientStatic,

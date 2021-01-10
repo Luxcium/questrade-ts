@@ -1,4 +1,4 @@
-import { sideEffects } from '../../resources/side-effects/default-behaviour';
+import { sideEffects } from '../../resources/side-effects';
 
 const { errorlog } = sideEffects;
 
