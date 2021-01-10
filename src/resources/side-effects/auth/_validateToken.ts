@@ -2,10 +2,10 @@
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 
+import { _buildCredentialsFromToken } from '../../../private/auth/credentialsFactory';
 import { QuestradeAPIOptions } from '../../../typescript';
 // TODO: remove dependencies to sync ...
 import { sync } from '../../../utils';
-import { _buildCredentialsFromToken } from '../credentialsFactory';
 
 const { dirname } = path;
 

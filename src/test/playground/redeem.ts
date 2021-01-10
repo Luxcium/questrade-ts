@@ -1,7 +1,7 @@
 /* eslint-disable unicorn/no-keyword-prefix */
 
 import { redeemToken } from '../..';
-import { sideEffects } from '../../resources/side-effects/default-behaviour';
+import { sideEffects } from '../../resources/side-effects';
 import { httpHashLoggerClientProxyHandler } from '../../resources/side-effects/proxies';
 import { void0 } from '../../utils';
 

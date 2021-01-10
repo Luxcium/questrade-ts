@@ -3,10 +3,10 @@ import { config } from 'dotenv';
 import { Tedis } from 'tedis';
 
 import { id0 } from '../../utils';
+import { sideEffects } from '.';
 import { ClientPromise, ClientRequestConfig, ClientStatic } from './types';
 
-// export const makeTedis =;
-export const sideEffects = {
+export const _sideEffects = {
   makeTedis: () => id0(new Tedis()),
   client<R>(
     config: ClientRequestConfig | string,
