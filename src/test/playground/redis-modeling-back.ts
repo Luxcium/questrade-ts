@@ -1,14 +1,9 @@
 import { redeemToken } from '../..';
-import {
-  ech0,
-  errorlog,
-  getMyToken,
-  makeTedis,
-} from '../../resources/side-effects';
+import { sideEffects } from '../../resources/side-effects';
 import { httpHashLoggerClientProxyHandler } from '../../resources/side-effects/proxies';
 import { getSymboIdByStockSymbol, id0, void0 } from '../../utils';
 
-// const { ech0, errorlog, getMyToken, makeTedis } = sideEffects;
+const { ech0, errorlog, getMyToken, makeTedis } = sideEffects;
 
 export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 async function main() {

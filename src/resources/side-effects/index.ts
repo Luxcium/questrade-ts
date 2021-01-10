@@ -1,4 +1,4 @@
-export {
+import {
   client,
   ech0,
   echo,
@@ -15,24 +15,40 @@ export {
   writeToken,
 } from './default-behaviour';
 
-// export { sideEffects };
+export {
+  client,
+  ech0,
+  echo,
+  errorlog,
+  getHash,
+  getHttpClient,
+  getMyToken,
+  infolog,
+  makeTedis,
+  setMyToken,
+  sideEffects,
+  tablelog,
+  validateToken,
+  warnlog,
+  writeToken,
+};
 
-// const sideEffects = {
-//   client,
-//   getHttpClient,
-//   writeToken,
-//   validateToken,
-//   setMyToken,
-//   getMyToken,
-//   getHash,
-//   errorlog,
-//   warnlog,
-//   infolog,
-//   tablelog,
-//   echo,
-//   ech0,
-//   makeTedis,
-// };
+const sideEffects = {
+  client,
+  getHttpClient,
+  writeToken,
+  validateToken,
+  setMyToken,
+  getMyToken,
+  getHash,
+  errorlog,
+  warnlog,
+  infolog,
+  tablelog,
+  echo,
+  ech0,
+  makeTedis,
+};
 
 // const getHttpClient //  = SFX_GETHTTPCLIENT;
 // const writeToken //  = SFX_WRITETOKEN;

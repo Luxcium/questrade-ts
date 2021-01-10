@@ -3,7 +3,7 @@ import {
   getHttpClient,
   validateToken,
   writeToken,
-} from '../../../resources/side-effects/default-behaviour';
+} from '../../../resources/side-effects';
 import {
   ClientRequestConfig,
   ClientResponse,
@@ -17,7 +17,7 @@ import {
   QuestradeAPIOptions,
 } from '../../../typescript';
 
-// const { getHttpClient, writeToken, validateToken, echo } = sideEffects;
+// XXX: const { getHttpClient, writeToken, validateToken, echo } = sideEffects;
 
 export const _oAuthHttpCredentials = async (
   options: QuestradeAPIOptions,

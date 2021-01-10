@@ -1,7 +1,7 @@
-import { echo } from '../../../resources/side-effects';
+import { sideEffects } from '../../../resources/side-effects';
 import { testIt } from '../testingWithRamda';
 
-// const { echo } = sideEffects;
+const { echo } = sideEffects;
 
 void echo('testIt()');
 

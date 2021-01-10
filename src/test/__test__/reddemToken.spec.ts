@@ -1,8 +1,8 @@
 import { redeemToken } from '../..';
-import { errorlog } from '../../resources/side-effects';
+import { sideEffects } from '../../resources/side-effects';
 import { void0 } from '../../utils';
 
-// const { errorlog } = sideEffects;
+const { errorlog } = sideEffects;
 
 describe('Redeem Token ', () => {
   it('should not be able to recive an empty string', async done => {

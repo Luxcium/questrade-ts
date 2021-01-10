@@ -69,32 +69,3 @@ void function testFunction(sample: Input): ReversedOutput {
   } = sample;
   return returnSample;
 };
-
-/*
-
-src/resources/side-effects/typescript/client/ClientInstance.ts:80:9 - error TS2322: Type 'Input' is not assignable to type '{ sampleA: Sample; sampleB: Sample; }'.
-  Types of property 'sampleA' are incompatible.
-    Type 'ClientInstance' is not assignable to type 'Sample'.
-      Type 'ClientInstance' is not assignable to type 'AxiosInstance'.
-        The types of 'interceptors.response.use' are incompatible between these types.
-          Type '(onFulfilled?: ((value: ClientRequestConfig) => ClientRequestConfig | Promise<ClientRequestConfig>) | undefined, onRejected?: ((error: any) => any) | undefined) => number' is not assignable to type '(onFulfilled?: ((value: ClientResponse<any>) => ClientResponse<any> | Promise<ClientResponse<any>>) | undefined, onRejected?: ((error: any) => any) | undefined) => number'.
-            Types of parameters 'onFulfilled' and 'onFulfilled' are incompatible.
-              Types of parameters 'value' and 'value' are incompatible.
-
-                Type 'ClientRequestConfig' is missing the following properties from type 'ClientResponse<any>':
-                 status, statusText, config
-
-
-src/resources/side-effects/typescript/client/ClientStatic.ts:32:9 - error TS2322: Type 'Input' is not assignable to type '{ sampleA: Sample; sampleB: Sample; }'.
-  Types of property 'sampleA' are incompatible.
-    Type 'ClientStatic' is not assignable to type 'Sample'.
-      Type 'ClientStatic' is not assignable to type 'AxiosStatic'.
-        The types of 'create(...).interceptors.response.use' are incompatible between these types.
-          Type '(onFulfilled?: ((value: ClientRequestConfig) => ClientRequestConfig | Promise<ClientRequestConfig>) | undefined, onRejected?: ((error: any) => any) | undefined) => number' is not assignable to type '(onFulfilled?: ((value: ClientResponse<any>) => ClientResponse<any> | Promise<ClientResponse<any>>) | undefined, onRejected?: ((error: any) => any) | undefined) => number'.
-            Types of parameters 'onFulfilled' and 'onFulfilled' are incompatible.
-              Types of parameters 'value' and 'value' are incompatible.
-                Type 'ClientRequestConfig' is not assignable to type 'ClientResponse<any>'.
-
-32   const returnSample: {
-           ~~~~~~~~~~~~
-*/

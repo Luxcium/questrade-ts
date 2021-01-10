@@ -1,7 +1,7 @@
-import { echo } from '../../resources/side-effects';
+import { sideEffects } from '../../resources/side-effects';
 import { dateNowNumeric, dateRangeFromNow } from '../../utils';
 
-// const { echo } = sideEffects;
+const { echo } = sideEffects;
 describe('valiate dateRangeFromNow has 4 properties', () => {
   it('should valiate startTime is same value as startDate', () => {
     const range = dateRangeFromNow(1);

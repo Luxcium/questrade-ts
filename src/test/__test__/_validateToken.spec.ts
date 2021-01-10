@@ -1,6 +1,6 @@
-import { validateToken } from '../../resources/side-effects';
+import { sideEffects } from '../../resources/side-effects';
 
-// const { validateToken } = sideEffects;
+const { validateToken } = sideEffects;
 describe('oAuth Validate Token', () => {
   it('should validate with a numeric account number', async () => {
     validateToken({

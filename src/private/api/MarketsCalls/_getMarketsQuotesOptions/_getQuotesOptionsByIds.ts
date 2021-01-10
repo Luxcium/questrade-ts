@@ -1,4 +1,4 @@
-import { errorlog } from '../../../../resources/side-effects';
+import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -6,7 +6,7 @@ import {
 } from '../../../../typescript';
 import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
-// const { errorlog } = sideEffects;
+const { errorlog } = sideEffects;
 
 export const _getQuotesOptionsByIds = (
   credentials: Credentials,

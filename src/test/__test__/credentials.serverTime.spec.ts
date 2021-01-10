@@ -1,7 +1,7 @@
 import { _emptyCredentials, _getQuestradeApi } from '../../private';
-import { echo } from '../../resources/side-effects';
+import { sideEffects } from '../../resources/side-effects';
 
-// const { echo } = sideEffects;
+const { echo } = sideEffects;
 
 test("should set getServerTime to 'ERROR'", async done => {
   const qtApi = await _getQuestradeApi(_emptyCredentials());

@@ -1,7 +1,6 @@
 /* 'require' call may be converted to an import. */
 import { redeemToken } from '../../..';
 import { QuestradeApi } from '../../../typescript';
-// const { redeemToken } = require('questrade-ts');
 
 /* You will need to create your own API key: */
 /* https://login.questrade.com/APIAccess/UserApps.aspx */

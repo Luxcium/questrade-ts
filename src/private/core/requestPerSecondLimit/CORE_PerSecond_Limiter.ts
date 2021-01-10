@@ -1,8 +1,8 @@
-import { errorlog } from '../../../resources/side-effects';
+import { sideEffects } from '../../../resources/side-effects';
 import { CallBack } from '../../../typescript';
 import { perSeconds, void0 } from '../../../utils';
 
-// const { errorlog } = sideEffects;
+const { errorlog } = sideEffects;
 
 let lastCall = Date.now();
 const lastDelay = () => Date.now() - lastCall;

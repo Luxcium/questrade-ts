@@ -1,4 +1,4 @@
-import { getHttpClient } from '../../../resources/side-effects';
+import { sideEffects } from '../../../resources/side-effects';
 import {
   Constituent,
   ConstituentsList,
@@ -7,7 +7,7 @@ import {
 } from './Constituent';
 import { uriToConstituents_json as path } from './uriToConstituents_json';
 
-// const { getHttpClient } = sideEffects;
+const { getHttpClient } = sideEffects;
 const client = getHttpClient();
 
 export const willGetSNP500StringList = async () =>

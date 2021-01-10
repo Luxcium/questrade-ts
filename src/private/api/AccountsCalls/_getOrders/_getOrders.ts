@@ -1,4 +1,4 @@
-import { errorlog } from '../../../../resources/side-effects';
+import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -8,7 +8,7 @@ import {
 import { endpointFormatDateTool } from '../../../../utils';
 import { _clientAccountGetApi } from '../../../routes';
 
-// const { errorlog } = sideEffects;
+const { errorlog } = sideEffects;
 
 // + _getOrders
 /** _getOrders */

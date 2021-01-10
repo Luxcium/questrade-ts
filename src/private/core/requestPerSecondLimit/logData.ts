@@ -1,7 +1,8 @@
-import { echo } from '../../../resources/side-effects';
+// import { echo } from '../../../resources/side-effects';
+import { sideEffects } from '../../../resources/side-effects';
 import { ClientResponse } from '../../../resources/side-effects/types';
 
-// const { echo } = sideEffects;
+const { echo } = sideEffects;
 export const logData = <T>(response: ClientResponse<T>) => {
   const { config, data, headers, status, statusText } = response;
 

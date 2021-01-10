@@ -4,7 +4,7 @@ import { _getAccounts, _getServerTime } from '../../api/AccountsCalls';
 import { _oAuthHttpCredentials } from '../clientCredentials_oAUTH';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 
-// const { infolog, errorlog } = sideEffects;
+// XXX: const { infolog, errorlog } = sideEffects;
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 export const _credentialsFactory = async (

@@ -1,4 +1,5 @@
-import { errorlog } from '../../../../resources/side-effects';
+// import { errorlog } from '../../../../resources/side-effects';
+import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -9,7 +10,7 @@ import {
 import { endpointFormatDateTool, getHash } from '../../../../utils';
 import { _clientGetApi } from '../../../routes';
 
-// const { errorlog } = sideEffects;
+const { errorlog } = sideEffects;
 
 // + _getCandles endpointFormatDateTool
 /** _getCandles */

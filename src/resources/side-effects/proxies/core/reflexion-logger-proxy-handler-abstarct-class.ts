@@ -1,6 +1,8 @@
-import { echo } from '../..';
+// import { echo } from '../..';
 
-// const { echo } = sideEffects;
+import { sideEffects } from '../..';
+
+const { echo } = sideEffects;
 
 export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   T extends Function = any

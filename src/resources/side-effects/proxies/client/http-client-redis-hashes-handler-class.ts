@@ -1,12 +1,13 @@
 import { Tedis } from 'tedis';
 
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../../../utils';
-import { ech0, echo } from '../..';
+import { sideEffects } from '../..';
+// import { ech0, echo } from '../..';
 import { ClientStatic } from '../../types';
 import { clientProxyHandlerFactoryFunction } from '../core/client-proxy-handler-factory-function';
 import { ReflexionLoggerProxyHandlerAbstractClass } from '../core/reflexion-logger-proxy-handler-abstarct-class';
 
-// const { echo, ech0 } = sideEffects;
+const { echo, ech0 } = sideEffects;
 class HttpRedisClientHandlerClass
   extends ReflexionLoggerProxyHandlerAbstractClass<ClientStatic>
   implements ProxyHandler<ClientStatic> {
