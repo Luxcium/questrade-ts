@@ -1,9 +1,13 @@
 import axios from 'axios';
 import { config } from 'dotenv';
+import { Tedis } from 'tedis';
 
+import { id0 } from '../../utils';
 import { ClientPromise, ClientRequestConfig, ClientStatic } from './types';
 
+// export const makeTedis =;
 export const sideEffects = {
+  makeTedis: () => id0(new Tedis()),
   client<R>(
     config: ClientRequestConfig | string,
     axioLikeClient: ClientStatic,

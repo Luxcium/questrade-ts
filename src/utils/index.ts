@@ -13,11 +13,11 @@ const {
   psi,
 } = helperFunctions;
 
-export {
-  clientProxyFactory,
-  httpClientConsoleLogHashesProxyHandler,
-  ProxyReflexionLoggerFunctionHandler,
-} from '../resources/proxies';
+// export {
+//   clientProxyFactory,
+//   httpHashLoggerClientProxyHandler,
+//   ProxyReflexionLoggerFunctionHandler,
+// } from '../resources/proxies';
 export { creatUrlAndDataHashes } from './create-url-and-data-hashes';
 export { formatDate } from './dates';
 export { getQtUrlPathFromArgs } from './get-qt-url-path-from-args';

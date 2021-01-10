@@ -3009,11 +3009,6 @@ delayed-stream@~1.0.0:
   resolved "https://registry.yarnpkg.com/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
   integrity sha1-3zrhmayt+31ECqrgsp4icrJOxhk=
 
-denque@^1.4.1:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/denque/-/denque-1.5.0.tgz#773de0686ff2d8ec2ff92914316a47b73b1c73de"
-  integrity sha512-CYiCSgIF1p6EUByQPlGkKnP1M9g0ZV3qMIrqMqZqdwazygIA/YP2vrbcyl1h/WppKJTdl1F85cXIle+394iDAQ==
-
 depd@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/depd/-/depd-1.1.2.tgz#9bcd52e14c097763e749b274c4346ed2e560b5a9"
@@ -6669,33 +6664,6 @@ rechoir@^0.7.0:
   dependencies:
     resolve "^1.9.0"
 
-redis-commands@^1.5.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/redis-commands/-/redis-commands-1.6.0.tgz#36d4ca42ae9ed29815cdb30ad9f97982eba1ce23"
-  integrity sha512-2jnZ0IkjZxvguITjFTrGiLyzQZcTvaw8DAaCXxZq/dsHXz7KfMQ3OUJy7Tz9vnRtZRVz6VRCPDvruvU8Ts44wQ==
-
-redis-errors@^1.0.0, redis-errors@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/redis-errors/-/redis-errors-1.2.0.tgz#eb62d2adb15e4eaf4610c04afe1529384250abad"
-  integrity sha1-62LSrbFeTq9GEMBK/hUpOEJQq60=
-
-redis-parser@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/redis-parser/-/redis-parser-3.0.0.tgz#b66d828cdcafe6b4b8a428a7def4c6bcac31c8b4"
-  integrity sha1-tm2CjNyv5rS4pCin3vTGvKwxyLQ=
-  dependencies:
-    redis-errors "^1.0.0"
-
-redis@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/redis/-/redis-3.0.2.tgz#bd47067b8a4a3e6a2e556e57f71cc82c7360150a"
-  integrity sha512-PNhLCrjU6vKVuMOyFu7oSP296mwBkcE6lrAjruBYG5LgdSqtRBoVQIylrMyVZD/lkF24RSNNatzvYag6HRBHjQ==
-  dependencies:
-    denque "^1.4.1"
-    redis-commands "^1.5.0"
-    redis-errors "^1.2.0"
-    redis-parser "^3.0.0"
-
 regenerate-unicode-properties@^8.2.0:
   version "8.2.0"
   resolved "https://registry.yarnpkg.com/regenerate-unicode-properties/-/regenerate-unicode-properties-8.2.0.tgz#e5de7111d655e7ba60c057dbe9ff37c87e65cdec"
@@ -7930,13 +7898,6 @@ tar-stream@^2.1.0, tar-stream@^2.1.2:
     fs-constants "^1.0.0"
     inherits "^2.0.3"
     readable-stream "^3.1.1"
-
-tedis@^0.1.12:
-  version "0.1.12"
-  resolved "https://registry.yarnpkg.com/tedis/-/tedis-0.1.12.tgz#e3eeccc92a5d068a35e7b16efef3e4d75cc3ef12"
-  integrity sha512-bxOKYWvdF1WsjkBYIfeO+2+xZuiqHmikqTTYPm3j/FYFpxQsX2JTBh6fFSlH6jDiCL4lfPcS2woIdD3FHopS/Q==
-  dependencies:
-    uuid "^3.3.2"
 
 temp-dir@^1.0.0:
   version "1.0.0"

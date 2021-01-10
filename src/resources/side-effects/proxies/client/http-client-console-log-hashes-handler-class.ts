@@ -1,13 +1,13 @@
-import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../utils';
-import { sideEffects } from '../side-effects/default-behaviour';
-import { ClientStatic } from '../side-effects/types';
-import { clientProxyFactory } from './http-client-proxy-factory';
-import { ProxyReflexionLoggerFunctionHandler } from './proxy-reflexion-logger-function-handler';
+import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../../../utils';
+import { sideEffects } from '../../default-behaviour';
+import { ClientStatic } from '../../types';
+import { ReflexionLoggerProxyHandlerAbstractClass } from '..';
+import { clientProxyHandlerFactoryFunction } from '../core/client-proxy-handler-factory-function';
 
 const { echo } = sideEffects;
 
 class clientConsoleLogHashesHandlerClass
-  extends ProxyReflexionLoggerFunctionHandler<ClientStatic>
+  extends ReflexionLoggerProxyHandlerAbstractClass<ClientStatic>
   implements ProxyHandler<ClientStatic> {
   protected proxy = {
     class: 'clientConsoleLogHashesHandlerClass',
@@ -41,6 +41,6 @@ class clientConsoleLogHashesHandlerClass
   }
 }
 
-export const httpClientConsoleLogHashesProxyHandler = clientProxyFactory(
+export const httpHashLoggerClientProxyHandler = clientProxyHandlerFactoryFunction()(
   new clientConsoleLogHashesHandlerClass(),
 );

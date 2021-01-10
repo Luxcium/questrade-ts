@@ -41,6 +41,7 @@
     "typedoc": "^0.20.13"
   },
   "scripts": {
+    "postinstall": "(cd './src/resources/side-effects'; npm install)",
     "SECTION:001": "# ========================================================",
     "predist": "yi; yarn run build:clean; yarn run rm:dist",
     "dist": "yarn run rm:playground; yarn run cp:dist",
@@ -126,13 +127,11 @@
     "path-browserify": "^1.0.1",
     "prettier": "^2.2.1",
     "ramda": "^0.27.1",
-    "redis": "^3.0.2",
     "rimraf": "^3.0.2",
     "snyk": "^1.437.3",
     "sort-json": "^2.0.0",
     "source-map-support": "^0.5.19",
     "stream-browserify": "^3.0.0",
-    "tedis": "^0.1.12",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.13",
     "ts-node": "^9.1.1",

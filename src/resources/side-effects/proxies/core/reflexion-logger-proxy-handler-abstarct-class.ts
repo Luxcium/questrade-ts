@@ -1,9 +1,10 @@
-import { sideEffects } from '../side-effects/default-behaviour';
+import { sideEffects } from '../..';
 
 const { echo } = sideEffects;
 
-export class ProxyReflexionLoggerFunctionHandler<T extends Function = any>
-  implements ProxyHandler<T> {
+export abstract class ReflexionLoggerProxyHandlerAbstractClass<
+  T extends Function = any
+> implements ProxyHandler<T> {
   getPrototypeOf(target: T): object | null {
     void echo<unknown>('PROXY:', 'getPrototypeOf', 'target:', target);
     return Reflect.getPrototypeOf(target);
