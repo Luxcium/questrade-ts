@@ -14,7 +14,7 @@
   */
   "workbench.colorTheme": "Pop N' Lock Theme by Luxcium ✨",
   "workbench.iconTheme": "material-icon-theme",
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1,
   "editor.fontFamily": "'VictorMono Nerd Font'",
   "editor.fontSize": 16,
   "editor.fontWeight": "500",
