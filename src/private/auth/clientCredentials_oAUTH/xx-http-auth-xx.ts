@@ -1,4 +1,4 @@
-import { sideEffects } from '../../../resources/side-effects';
+import { sideEffects } from '../../../resources/side-effects/default-behaviour';
 import {
   ClientRequestConfig,
   ClientResponse,
@@ -12,13 +12,13 @@ import {
   QuestradeAPIOptions,
 } from '../../../typescript';
 
-const { echo, getHttpClient, _validateToken, _writeToken } = sideEffects;
+const { getHttpClient, writeToken, validateToken, echo } = sideEffects;
 
 export const _oAuthHttpCredentials = async (
   options: QuestradeAPIOptions,
   proxy?: ClientProxyHandler,
 ): Promise<Credentials> => {
-  const { refreshToken, credentials } = _validateToken(options);
+  const { refreshToken, credentials } = validateToken(options);
   const _config: ClientRequestConfig = {
     url: `${credentials.authUrl}/oauth2/token`,
     method: 'GET',
@@ -50,5 +50,5 @@ export const _oAuthHttpCredentials = async (
     );
   }
 
-  return _writeToken(credentials, response);
+  return writeToken(credentials, response);
 };

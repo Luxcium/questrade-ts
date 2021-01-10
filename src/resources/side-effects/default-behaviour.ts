@@ -2,67 +2,32 @@ import axios from 'axios';
 import { config } from 'dotenv';
 import { Tedis } from 'tedis';
 
-import { sideEffects } from '.';
-import { ClientPromise, ClientRequestConfig, ClientStatic } from './types';
+import { Credentials, IRefreshCreds, QuestradeAPIOptions } from '../../types';
+import { _validateToken } from './auth/_validateToken';
+import { _writeToken } from './auth/_writeToken';
+import {
+  ClientPromise,
+  ClientRequestConfig,
+  ClientResponse,
+  ClientStatic,
+} from './types';
 
-export const _sideEffects = {
-  makeTedis: (
-    options?:
-      | {
-          host?: string | undefined;
-          port?: number | undefined;
-          password?: string | undefined;
-          timeout?: number | undefined;
-          tls?: { key: Buffer; cert: Buffer } | undefined;
-        }
-      | undefined,
-  ): Tedis => new Tedis(options),
-  client<R>(
-    config: ClientRequestConfig | string,
-    axioLikeClient: ClientStatic,
-  ): ClientPromise<R> {
-    if (typeof config !== 'string') {
-      return axioLikeClient(config);
-    }
-    return axioLikeClient(config);
-  },
-  getHttpClient(axiosLikeClient: ClientStatic = axios): ClientStatic {
-    return axiosLikeClient;
-  },
-  writeToken(): unknown {
-    return;
-  },
-  validateToken(): unknown {
-    return;
-  },
-  setMyToken(): unknown {
-    return;
-  },
-  /**
-   * QuesTrade Token
-   * in (dot).env file :
-   * QUESTRADE_API_TOKEN="PQHfjX1hPA-XXXXX_XXXXX-6vpDUDRHB0"
-   * Side Effects in: import { config } from 'dotenv'
-   */
-  getMyToken: () => {
-    config();
-    return process.env.QUESTRADE_API_TOKEN ?? '';
-  },
-  getHash(): unknown {
-    return;
-  },
+export const sideEffects = {
   errorlog<T = unknown>(...args: T[]): T[] {
     console.error(...args);
     return args;
   },
+
   warnlog<T = unknown>(...args: T[]): T[] {
     console.warn(...args);
     return args;
   },
+
   infolog<T = unknown>(...args: T[]): T[] {
     console.info(...args);
     return args;
   },
+
   tablelog<T = unknown>(...args: T[]): T[] {
     console.table(...args);
     return args;
@@ -77,41 +42,82 @@ export const _sideEffects = {
     console.log(arg0);
     return arg0;
   },
+
+  getMyToken: () => {
+    config();
+    return process.env.QUESTRADE_API_TOKEN ?? '';
+  },
+
+  makeTedis: (
+    options?:
+      | {
+          host?: string | undefined;
+          port?: number | undefined;
+          password?: string | undefined;
+          timeout?: number | undefined;
+          tls?: { key: Buffer; cert: Buffer } | undefined;
+        }
+      | undefined,
+  ): Tedis => new Tedis(options),
+
+  client<R>(
+    config: ClientRequestConfig | string,
+    axioLikeClient: ClientStatic,
+  ): ClientPromise<R> {
+    if (typeof config !== 'string') {
+      return axioLikeClient(config);
+    }
+    return axioLikeClient(config);
+  },
+
+  getHttpClient(axiosLikeClient: ClientStatic = axios): ClientStatic {
+    return axiosLikeClient;
+  },
+
+  writeToken(
+    credentials: Credentials,
+    response: ClientResponse<IRefreshCreds>,
+  ): Credentials {
+    return _writeToken(credentials, response);
+  },
+
+  validateToken(
+    options: QuestradeAPIOptions,
+  ): {
+    refreshToken: string;
+    credentials: Credentials;
+  } {
+    return _validateToken(options);
+  },
+
+  setMyToken(): unknown {
+    return;
+  },
+
+  getHash(): unknown {
+    return;
+  },
 };
-export const {
-  client: SFX_CLIENT,
-  writeToken: SFX_WRITETOKEN,
-  validateToken: SFX_VALIDATETOKEN,
-  setMyToken: SFX_SETMYTOKEN,
-  getMyToken: SFX_GETMYTOKEN,
-  getHash: SFX_GETHASH,
-  errorlog: SFX_ERRORLOG,
-  warnlog: SFX_WARNINGLOG,
-  infolog: SFX_INFOLOG,
-  tablelog: SFX_TABLELOG,
-  echo: SFX_ECHO,
-} = sideEffects;
 
-/*
-+ _writeToken, _validateToken, setMyToken, getMyToken
-rm /home/luxcium/dev/questrade-ts/build/src/test
-- import { access, constants, readFileSync, writeFileSync } from 'fs';
-- import path from 'path';
-ERROR in ./build/src/private/auth/axiosCredentials_oAUTH/_validateToken.js 5:11-24
-ERROR in ./build/src/private/auth/axiosCredentials_oAUTH/_validateToken.js 6:37-52
+// export const {
+//   client: SFX_CLIENT,
+//   getHttpClient: SFX_GETHTTPCLIENT,
+//   writeToken: SFX_WRITETOKEN,
+//   validateToken: SFX_VALIDATETOKEN,
+//   setMyToken: SFX_SETMYTOKEN,
+//   getMyToken: SFX_GETMYTOKEN,
+//   getHash: SFX_GETHASH,
+//   errorlog: SFX_ERRORLOG,
+//   warnlog: SFX_WARNINGLOG,
+//   infolog: SFX_INFOLOG,
+//   tablelog: SFX_TABLELOG,
+//   echo: SFX_ECHO,
+//   ech0: SFX_ECH0,
+// } = sideEffects;
 
-- import { writeFileSync } from 'fs';
-ERROR in ./build/src/private/auth/axiosCredentials_oAUTH/_writeToken.js 4:11-24
-
-- when using crypto
-ERROR in ./build/src/utils/create-url-and-data-hashes.js 4:15-32
-ERROR in ./build/src/utils/getHash.js 5:39-56
-
-- when using FsImplementationSync, Made, Mode, OptionsSync, sync
-ERROR in ./build/src/utils/mkdirp.js 8:35-48
-ERROR in ./build/src/utils/mkdirp.js 9:37-52
-
-- in /home/luxcium/dev/questrade-ts/src/get-token.ts
-ERROR in ./node_modules/dotenv/lib/main.js 24:11-24
-ERROR in ./node_modules/dotenv/lib/main.js 25:13-28
- */
+// /**
+//  * QuesTrade Token
+//  * in (dot).env file :
+//  * QUESTRADE_API_TOKEN="PQHfjX1hPA-XXXXX_XXXXX-6vpDUDRHB0"
+//  * Side Effects in: import { config } from 'dotenv'
+//  */

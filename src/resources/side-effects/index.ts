@@ -1,9 +1,15 @@
-import { _validateToken } from './auth/_validateToken';
-import { _writeToken } from './auth/_writeToken';
-import { _sideEffects } from './default-behaviour';
+export { sideEffects } from './default-behaviour';
 
-export const sideEffects = {
-  ..._sideEffects,
-  _validateToken,
-  _writeToken,
-};
+// const getHttpClient //  = SFX_GETHTTPCLIENT;
+// const writeToken //  = SFX_WRITETOKEN;
+// const validateToken //  = SFX_VALIDATETOKEN;
+// const echo //  = SFX_ECHO;
+// const setMyToken = SFX_SETMYTOKEN;
+// const getMyToken = SFX_GETMYTOKEN;
+
+// const getHash = SFX_GETHASH;
+// const errorlog = SFX_ERRORLOG;
+// const warnlog = SFX_WARNINGLOG;
+// const infolog = SFX_INFOLOG;
+// const tablelog = SFX_TABLELOG;
+// const ech0 = SFX_ECH0;
