@@ -1,7 +1,7 @@
-import { sideEffects } from '../../../resources/side-effects';
+import { warnlog } from '../../../resources/side-effects';
 import { AcountNumberString, IAccount } from '../../../typescript';
 
-const { warnlog } = sideEffects;
+// const { warnlog } = sideEffects;
 /** PROVIDE: IAccount[] THEN GET:  a 'primaryAccountNumber string'  */
 export function _getPrimaryAccountNumber(
   accounts: IAccount[],

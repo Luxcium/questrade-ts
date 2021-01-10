@@ -12,94 +12,95 @@ import {
   ClientStatic,
 } from './types';
 
-export const sideEffects = {
-  errorlog<T = unknown>(...args: T[]): T[] {
-    console.error(...args);
-    return args;
-  },
+export const errorlog = <T = unknown>(...args: T[]): T[] => {
+  console.error(...args);
+  return args;
+};
 
-  warnlog<T = unknown>(...args: T[]): T[] {
-    console.warn(...args);
-    return args;
-  },
+export const warnlog = <T = unknown>(...args: T[]): T[] => {
+  console.warn(...args);
+  return args;
+};
 
-  infolog<T = unknown>(...args: T[]): T[] {
-    console.info(...args);
-    return args;
-  },
+export const infolog = <T = unknown>(...args: T[]): T[] => {
+  console.info(...args);
+  return args;
+};
 
-  tablelog<T = unknown>(...args: T[]): T[] {
-    console.table(...args);
-    return args;
-  },
+export const tablelog = <T = unknown>(...args: T[]): T[] => {
+  console.table(...args);
+  return args;
+};
 
-  echo<T = unknown>(...args: T[]): T[] {
-    console.log(...args);
-    return args;
-  },
+export const echo = <T = unknown>(...args: T[]): T[] => {
+  console.log(...args);
+  return args;
+};
 
-  ech0<T = unknown>(arg0: T): T {
-    console.log(arg0);
-    return arg0;
-  },
+export const ech0 = <T = unknown>(arg0: T): T => {
+  console.log(arg0);
+  return arg0;
+};
 
-  getMyToken: () => {
-    config();
-    return process.env.QUESTRADE_API_TOKEN ?? '';
-  },
+export const getMyToken = () => {
+  config();
+  return process.env.QUESTRADE_API_TOKEN ?? '';
+};
 
-  makeTedis: (
-    options?:
-      | {
-          host?: string | undefined;
-          port?: number | undefined;
-          password?: string | undefined;
-          timeout?: number | undefined;
-          tls?: { key: Buffer; cert: Buffer } | undefined;
-        }
-      | undefined,
-  ): Tedis => new Tedis(options),
+export const makeTedis = (
+  options?:
+    | {
+        host?: string | undefined;
+        port?: number | undefined;
+        password?: string | undefined;
+        timeout?: number | undefined;
+        tls?: { key: Buffer; cert: Buffer } | undefined;
+      }
+    | undefined,
+): Tedis => new Tedis(options);
 
-  client<R>(
-    config: ClientRequestConfig | string,
-    axioLikeClient: ClientStatic,
-  ): ClientPromise<R> {
-    if (typeof config !== 'string') {
-      return axioLikeClient(config);
-    }
+export const client = <R>(
+  config: ClientRequestConfig | string,
+  axioLikeClient: ClientStatic,
+): ClientPromise<R> => {
+  if (typeof config !== 'string') {
     return axioLikeClient(config);
-  },
+  }
+  return axioLikeClient(config);
+};
 
-  getHttpClient(axiosLikeClient: ClientStatic = axios): ClientStatic {
-    return axiosLikeClient;
-  },
+export const getHttpClient = (
+  axiosLikeClient: ClientStatic = axios,
+): ClientStatic => {
+  return axiosLikeClient;
+};
 
-  writeToken(
-    credentials: Credentials,
-    response: ClientResponse<IRefreshCreds>,
-  ): Credentials {
-    return _writeToken(credentials, response);
-  },
+export const writeToken = (
+  credentials: Credentials,
+  response: ClientResponse<IRefreshCreds>,
+): Credentials => {
+  return _writeToken(credentials, response);
+};
 
-  validateToken(
-    options: QuestradeAPIOptions,
-  ): {
-    refreshToken: string;
-    credentials: Credentials;
-  } {
-    return _validateToken(options);
-  },
+export const validateToken = (
+  options: QuestradeAPIOptions,
+): {
+  refreshToken: string;
+  credentials: Credentials;
+} => {
+  return _validateToken(options);
+};
 
-  setMyToken(): unknown {
-    return;
-  },
+export const setMyToken = (): unknown => {
+  return;
+};
 
-  getHash(): unknown {
-    return;
-  },
+export const getHash = (): unknown => {
+  return;
 };
 
 // export const {
+//   makeTedis: SFX_MAKETEDIS,
 //   client: SFX_CLIENT,
 //   getHttpClient: SFX_GETHTTPCLIENT,
 //   writeToken: SFX_WRITETOKEN,

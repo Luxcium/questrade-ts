@@ -1,10 +1,10 @@
-import { sideEffects } from '../../../resources/side-effects';
+import { errorlog, infolog } from '../../../resources/side-effects';
 import { ClientProxyHandler, QuestradeAPIOptions } from '../../../typescript';
 import { _getAccounts, _getServerTime } from '../../api/AccountsCalls';
 import { _oAuthHttpCredentials } from '../clientCredentials_oAUTH';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 
-const { infolog, errorlog } = sideEffects;
+// const { infolog, errorlog } = sideEffects;
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 export const _credentialsFactory = async (

@@ -1,4 +1,4 @@
-import { sideEffects } from '../../../../resources/side-effects';
+import { errorlog } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -6,7 +6,7 @@ import {
 } from '../../../../typescript';
 import { _clientGetApi } from '../../../routes';
 
-const { errorlog } = sideEffects;
+// const { errorlog } = sideEffects;
 
 // + _getSymbolSearchCount
 /** _getSymbolSearch */

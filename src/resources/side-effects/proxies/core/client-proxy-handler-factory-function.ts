@@ -1,7 +1,7 @@
-import { sideEffects } from '../..';
+import { getHttpClient } from '../..';
 import { ClientStatic } from '../../types';
 
-const { getHttpClient } = sideEffects;
+// const { getHttpClient } = sideEffects;
 export const clientProxyHandlerFactoryFunction = (
   client: ClientStatic = getHttpClient(),
 ) => (handler: ProxyHandler<ClientStatic>): ClientStatic => {

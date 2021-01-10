@@ -1,8 +1,8 @@
 import { redeemToken } from '../..';
-import { sideEffects } from '../../resources/side-effects';
+import { errorlog } from '../../resources/side-effects';
 import { void0 } from '../../utils';
 
-const { errorlog } = sideEffects;
+// const { errorlog } = sideEffects;
 
 test('Validating all README examples', async done => {
   const yourRefreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';

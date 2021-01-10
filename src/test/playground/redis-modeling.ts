@@ -1,10 +1,15 @@
 /* eslint-disable unicorn/no-keyword-prefix */
 
 import { redeemToken } from '../..';
-import { sideEffects } from '../../resources/side-effects';
+import {
+  echo,
+  errorlog,
+  getMyToken,
+  makeTedis,
+} from '../../resources/side-effects';
 import { httpRedisClientProxyHandler } from '../../resources/side-effects/proxies';
 
-const { echo, errorlog, getMyToken, makeTedis } = sideEffects;
+// const { echo, errorlog, getMyToken, makeTedis } = sideEffects;
 
 export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 

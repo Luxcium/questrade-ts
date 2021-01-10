@@ -1,7 +1,7 @@
-import { sideEffects } from '../../../resources/side-effects';
+import { echo } from '../../../resources/side-effects';
 import { QuestradeApi } from '../../../typescript';
 
-const { echo } = sideEffects;
+// const { echo } = sideEffects;
 
 export function getSymbolId(qtApi: QuestradeApi) {
   return async (stockSymbol: string) => {

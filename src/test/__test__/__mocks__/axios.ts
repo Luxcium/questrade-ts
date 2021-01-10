@@ -1,13 +1,13 @@
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
-import { sideEffects } from '../../../resources/side-effects';
+import { errorlog } from '../../../resources/side-effects';
 import {
   ClientRequestConfig,
   ClientStatic,
 } from '../../../resources/side-effects/types';
 
-const { errorlog } = sideEffects;
+// const { errorlog } = sideEffects;
 
 const _Client = jest.fn();
 const introspect = { onOff: false };

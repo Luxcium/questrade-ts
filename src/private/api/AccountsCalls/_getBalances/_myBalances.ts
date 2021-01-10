@@ -1,7 +1,7 @@
-import { sideEffects } from '../../../../resources/side-effects';
+import { errorlog } from '../../../../resources/side-effects';
 import { IBalances, IMyBalances } from '../../../../typescript';
 
-const { errorlog } = sideEffects;
+// const { errorlog } = sideEffects;
 
 export const _myBalances = async (
   myBalances: IBalances,

@@ -1,8 +1,8 @@
-import { sideEffects } from '../../../resources/side-effects';
+import { echo } from '../../../resources/side-effects';
 import { ITimeRateLimiter } from '../../../typescript/ITimeRateLimiter';
 import { remaningTimeString } from './remaningTimeString';
 
-const { echo } = sideEffects;
+// const { echo } = sideEffects;
 
 export const logRemanings = ({
   timeNow,

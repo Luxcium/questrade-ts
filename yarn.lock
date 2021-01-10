@@ -1421,7 +1421,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@14":
+"@types/node@*", "@types/node@^14.14.20":
   version "14.14.20"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.20.tgz#f7974863edd21d1f8a494a73e8e2b3658615c340"
   integrity sha512-Y93R97Ouif9JEOWPIUyU+eyIdyRqQR0I8Ez1dzku4hDx34NWh4HbtIc3WNzwB1Y9ULvNGeu5B8h8bVL5cAk4/A==
@@ -8235,10 +8235,10 @@ typescript@^3.9.3:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
   integrity sha512-BLbiRkiBzAwsjut4x/dsibSTB6yWpwT5qWmC2OfuCg3GgVQCSgMs4vEctYPhsaGtd0AeuuHMkjZ2h2WG8MSzRw==
 
-typescript@^4.1.3:
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.1.3.tgz#519d582bd94cba0cf8934c7d8e8467e473f53bb7"
-  integrity sha512-B3ZIOf1IKeH2ixgHhj6la6xdwR9QrLC5d1VKeCSY4tvkqhF2eqd9O7txNlS0PO3GrBAFIdr3L1ndNwteUbZLYg==
+typescript@^4.2.0-dev.20210108:
+  version "4.2.0-dev.20210108"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.2.0-dev.20210108.tgz#3fd59a03520b882a4272b3ff1a735404b6534c94"
+  integrity sha512-MuIWzUVlTGCJ0wgH40hjc7/LAPDf9ivTwhha2Rwc6k3B3mEaKRF46KCH2kb/KhP8rKRJHAwwQ1mQftIglY1QWQ==
 
 uglify-js@^3.1.4:
   version "3.12.4"

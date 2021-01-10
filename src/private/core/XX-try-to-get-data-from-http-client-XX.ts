@@ -1,4 +1,10 @@
-import { sideEffects } from '../../resources/side-effects';
+import {
+  echo,
+  errorlog,
+  getHttpClient,
+  infolog,
+  tablelog,
+} from '../../resources/side-effects';
 import {
   ClientRequestConfig,
   ClientResponse,
@@ -12,7 +18,7 @@ import {
   requestPerSecondLimiter,
 } from './requestPerSecondLimit';
 
-const { echo, infolog, errorlog, tablelog, getHttpClient } = sideEffects;
+// const { echo, infolog, errorlog, tablelog, getHttpClient } = sideEffects;
 
 export const _tryToGetData = <R>(
   _config: ClientRequestConfig,

@@ -1,10 +1,10 @@
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../../../utils';
-import { sideEffects } from '../..';
+import { echo } from '../..';
 import { ClientStatic } from '../../types';
-import { ReflexionLoggerProxyHandlerAbstractClass } from '..';
 import { clientProxyHandlerFactoryFunction } from '../core/client-proxy-handler-factory-function';
+import { ReflexionLoggerProxyHandlerAbstractClass } from '../core/reflexion-logger-proxy-handler-abstarct-class';
 
-const { echo } = sideEffects;
+// const { echo } = sideEffects;
 
 class clientConsoleLogHashesHandlerClass
   extends ReflexionLoggerProxyHandlerAbstractClass<ClientStatic>
