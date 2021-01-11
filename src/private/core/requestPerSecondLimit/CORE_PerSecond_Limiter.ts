@@ -1,3 +1,4 @@
+/* eslint-disable promise/avoid-new */
 import { errorlog } from '../../../resources/side-effects';
 import { CallBack } from '../../../typescript';
 import { perSeconds, void0 } from '../../../utils';

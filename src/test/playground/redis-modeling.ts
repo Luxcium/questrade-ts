@@ -26,6 +26,5 @@ const tedis = makeTedis();
     return tedis;
   })().catch(error => errorlog('in leadingPrime', error.message));
 })()
-  .then()
-  .catch(error => errorlog('in main', error.message))
-  .finally(() => tedis.close());
+  .finally(() => tedis.close())
+  .catch(error => errorlog('in main', error.message));
