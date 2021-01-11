@@ -37,6 +37,7 @@
   "dependencies": {
     "eslint-import-resolver-node": "^0.3.4",
     "eslint-plugin-functional": "^3.2.1",
+    "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-sort-keys-fix": "^1.1.1",
     "madge": "^4.0.0",
     "prettier-eslint": "^12.0.0",

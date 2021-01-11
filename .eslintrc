@@ -26,16 +26,17 @@
     "jest": true
   },
   "plugins": [
-    "unicorn",
-    "sonarjs",
-    "prettier",
-    "sort-keys-fix",
-    "simple-import-sort",
-    "import",
+    "@typescript-eslint",
     "fp",
     "functional",
+    "import",
     "jsdoc",
-    "@typescript-eslint"
+    "prettier",
+    "promise",
+    "simple-import-sort",
+    "sonarjs",
+    "sort-keys-fix",
+    "unicorn"
   ],
   "rules": {
     /*
@@ -158,6 +159,18 @@
     "unicorn/throw-new-error": "warn",
     // "unicorn/no-nested-ternary": "off",
     // "unicorn/number-literal-case": "off",
+    "promise/always-return": "error",
+    "promise/no-return-wrap": "error",
+    "promise/param-names": "warn",
+    "promise/catch-or-return": "error",
+    "promise/no-native": "error",
+    "promise/no-nesting": "error",
+    "promise/no-promise-in-callback": "error",
+    "promise/no-callback-in-promise": "error",
+    "promise/avoid-new": "error",
+    "promise/no-new-statics": "warn",
+    "promise/no-return-in-finally": "error",
+    "promise/valid-params": "error",
     /*
       ―――――――― simple-import-fp ――――――――――――――――――――――――――――――――――――――――――――――――――
     */
