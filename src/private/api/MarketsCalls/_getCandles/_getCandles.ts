@@ -7,7 +7,7 @@ import {
   ICandles,
 } from '../../../../typescript';
 // TODO: remove dependencies to nodeJS crypt-module making it optional ...
-import { endpointFormatDateTool, getHash } from '../../../../utils';
+import { endpointFormatDateTool } from '../../../../utils';
 import { _clientGetApi } from '../../../routes';
 
 const { errorlog } = sideEffects;
@@ -37,9 +37,9 @@ export const _getCandles = (
         result.symbolID = symbolID;
         result.granularity = interval;
 
-        // TODO: remove dependencies to nodeJS crypto module making it optional ...
-        const [short, long] = getHash(JSON.stringify(result));
-        result.hash = { short, long };
+        // // TODO: remove dependencies to nodeJS crypto module making it optional ...
+        // const [short, long] = getHash(JSON.stringify(result));
+        // result.hash = { short, long };
         return result;
       })
     );

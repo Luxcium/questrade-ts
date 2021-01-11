@@ -9,7 +9,7 @@ const yourRefreshToken = '9biJACDg2bZiMZYNfDhewfb1gybCNYAc0';
 
 export const qt = async () => {
   const { qtApi, credentials } = await redeemToken(yourRefreshToken);
-  return { qtApi, credentials };
+  return { credentials, qtApi };
 };
 
 export const quotes = (qtApi: QuestradeApi) => qtApi.getQuotes;

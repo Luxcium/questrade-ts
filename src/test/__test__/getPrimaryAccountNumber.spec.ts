@@ -14,51 +14,51 @@ test('should ', async done => {
   expect(_getPrimaryAccountNumber(dummyAccount)).toEqual('11111111');
   dummyAccount = [
     {
-      type: 'TFSA' as AccountType,
+      clientAccountType: 'Individual' as ClientAccountType,
+      isBilling: true,
+      isPrimary: false,
       number: '22222222',
       status: 'Active' as AccountStatus,
-      isPrimary: false,
-      isBilling: true,
-      clientAccountType: 'Individual' as ClientAccountType,
+      type: 'TFSA' as AccountType,
     },
   ];
   expect(_getPrimaryAccountNumber(dummyAccount)).toEqual('22222222');
   dummyAccount = [
     {
-      type: 'TFSA' as AccountType,
+      clientAccountType: 'Individual' as ClientAccountType,
+      isBilling: true,
+      isPrimary: false,
       number: '33333333',
       status: 'Active' as AccountStatus,
-      isPrimary: false,
-      isBilling: true,
-      clientAccountType: 'Individual' as ClientAccountType,
+      type: 'TFSA' as AccountType,
     },
     {
-      type: 'TFSA' as AccountType,
+      clientAccountType: 'Individual' as ClientAccountType,
+      isBilling: true,
+      isPrimary: true,
       number: '44444444',
       status: 'Active' as AccountStatus,
-      isPrimary: true,
-      isBilling: true,
-      clientAccountType: 'Individual' as ClientAccountType,
+      type: 'TFSA' as AccountType,
     },
   ];
   expect(_getPrimaryAccountNumber(dummyAccount)).toEqual('44444444');
 
   dummyAccount = [
     {
-      type: 'TFSA' as AccountType,
+      clientAccountType: 'Individual' as ClientAccountType,
+      isBilling: true,
+      isPrimary: false,
       number: '55555555',
       status: 'Active' as AccountStatus,
-      isPrimary: false,
-      isBilling: true,
-      clientAccountType: 'Individual' as ClientAccountType,
+      type: 'TFSA' as AccountType,
     },
     {
-      type: 'TFSA' as AccountType,
+      clientAccountType: 'Individual' as ClientAccountType,
+      isBilling: true,
+      isPrimary: false,
       number: '66666666',
       status: 'Active' as AccountStatus,
-      isPrimary: false,
-      isBilling: true,
-      clientAccountType: 'Individual' as ClientAccountType,
+      type: 'TFSA' as AccountType,
     },
   ];
   expect(_getPrimaryAccountNumber(dummyAccount)).toEqual('55555555');

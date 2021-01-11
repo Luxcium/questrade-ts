@@ -32,5 +32,5 @@ export const _validateToken = (options: QuestradeAPIOptions) => {
       }
     });
   }
-  return { refreshToken, credentials };
+  return { credentials, refreshToken };
 };

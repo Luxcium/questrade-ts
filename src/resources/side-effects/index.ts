@@ -35,17 +35,24 @@ export {
 
 const sideEffects = {
   client,
+  ech0,
+
+  echo,
+
+  errorlog,
+
+  getHash,
+
   getHttpClient,
+
+  getMyToken,
+
+  infolog,
+
+  makeTedis,
   // writeToken,
   // validateToken,
   setMyToken,
-  getMyToken,
-  getHash,
-  errorlog,
-  warnlog,
-  infolog,
   tablelog,
-  echo,
-  ech0,
-  makeTedis,
+  warnlog,
 };

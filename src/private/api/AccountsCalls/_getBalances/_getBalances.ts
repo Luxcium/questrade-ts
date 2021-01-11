@@ -20,10 +20,10 @@ export const _getBalances = (
     void errorlog(error);
 
     return {
-      perCurrencyBalances: [],
       combinedBalances: [],
-      sodPerCurrencyBalances: [],
+      perCurrencyBalances: [],
       sodCombinedBalances: [],
+      sodPerCurrencyBalances: [],
     };
   }
 };

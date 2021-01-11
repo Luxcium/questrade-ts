@@ -3,10 +3,10 @@ import { _tryToGetData } from '../../private/core/XX-try-to-get-data-from-http-c
 
 test('should ERROR _tryToGetData', async done => {
   const response = _tryToGetData({
-    url: 'ERROR',
     data: null,
+    headers: { Authorization: 'str', location: '1234567' },
     method: 'GET',
-    headers: { location: '1234567', Authorization: 'str' },
+    url: 'ERROR',
   });
   try {
     expect(await response(_logErrors)).toThrow();

@@ -28,13 +28,13 @@ export const remainingRequests = <T>(
   ];
 
   return {
-    timeNow,
-    timeThen,
-    secondsRemaning,
-    minutesRemaning,
     maximumperseconds,
+    maximums,
+    minutesRemaning,
     possiblePerSeconds,
     requestsRemaining,
-    maximums,
+    secondsRemaning,
+    timeNow,
+    timeThen,
   };
 };

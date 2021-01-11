@@ -70,10 +70,10 @@ export const dateRange = (
   const startTime = startDate;
   const endTime = endDate;
   return {
-    startDate,
-    startTime,
     endDate,
     endTime,
+    startDate,
+    startTime,
   };
 };
 

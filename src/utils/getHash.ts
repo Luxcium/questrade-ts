@@ -9,7 +9,7 @@ export const getHash = (
   hAlgo.write(data);
   const longer: string = hAlgo.digest('hex').toString();
   const shorter: string = longer.slice(0, shortSlice);
-  const hashObj = { shorter, longer };
+  const hashObj = { longer, shorter };
   return [shorter, longer, hashObj];
 };
 

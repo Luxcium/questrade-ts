@@ -5,10 +5,10 @@ describe('Name of the group', () => {
     _credentialsFactory({
       account: 12_345_678,
       apiVersion: 'v1',
-      test: false,
+      keyFile: 'MOCKfile',
       practiceAccount: false,
       seedToken: 'MOCK',
-      keyFile: 'MOCKfile',
+      test: false,
     });
 
     done();

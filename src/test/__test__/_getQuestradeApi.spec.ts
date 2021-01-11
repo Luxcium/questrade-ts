@@ -42,10 +42,10 @@ beforeAll(async done => {
 
   void0({
     dateRange30Days,
-    market,
     getQuotes,
-    search,
     getSymbols,
+    market,
+    search,
   });
   done();
 });
@@ -163,20 +163,20 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
   const demoRequestVariants: StrategyVariantRequest = {
     variants: [
       {
-        variantId: 1,
-        strategy: 'Custom',
         legs: [
           {
-            symbolId: 27_244_725,
-            ratio: 1000,
             action: 'Buy',
+            ratio: 1000,
+            symbolId: 27_244_725,
           },
           {
-            symbolId: 27_244_738,
-            ratio: 1001,
             action: 'Sell',
+            ratio: 1001,
+            symbolId: 27_244_738,
           },
         ],
+        strategy: 'Custom',
+        variantId: 1,
       },
     ],
   };

@@ -118,10 +118,10 @@ export const asyncQuestradeApi = (
     asyncOrders,
     asyncOrdersByIds,
     asyncPositions,
+    asyncQtApi,
     asyncSearch: search,
     asyncServerTime,
     asyncStock,
-    asyncQtApi,
   };
 
   return { ...all };

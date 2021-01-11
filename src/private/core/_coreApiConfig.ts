@@ -44,10 +44,10 @@ export const _coreApiConfig = <D>(credentials: Credentials) => {
         // ->
         /** Config builder. */
         return {
-          url,
-          method,
-          headers,
           data,
+          headers,
+          method,
+          url,
         };
       };
     };

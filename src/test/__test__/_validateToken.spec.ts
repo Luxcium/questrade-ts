@@ -5,33 +5,33 @@ describe('oAuth Validate Token', () => {
     validateToken({
       account: 12_345_678,
       apiVersion: 'v1',
-      test: false,
+      keyDir: '',
+      keyFile: '',
       practiceAccount: false,
       seedToken: '',
-      keyFile: '',
-      keyDir: '',
+      test: false,
     });
   });
   it('should validate with a string account number', async () => {
     validateToken({
       account: '12345678',
       apiVersion: 'v1',
-      test: false,
+      keyDir: '',
+      keyFile: '',
       practiceAccount: false,
       seedToken: '',
-      keyFile: '',
-      keyDir: '',
+      test: false,
     });
   });
   it('should validate with a key file', async () => {
     validateToken({
       account: '12345678',
       apiVersion: 'v1',
-      test: false,
+      keyDir: '',
+      keyFile: 'MOCKfile',
       practiceAccount: false,
       seedToken: '',
-      keyFile: 'MOCKfile',
-      keyDir: '',
+      test: false,
     });
   });
   it('should validate with a key dir', async done => {
@@ -39,11 +39,11 @@ describe('oAuth Validate Token', () => {
       validateToken({
         account: '12345678',
         apiVersion: 'v1',
-        test: false,
+        keyDir: './build/tmp',
+        keyFile: '',
         practiceAccount: false,
         seedToken: '',
-        keyFile: '',
-        keyDir: './build/tmp',
+        test: false,
       }))();
     done();
   });

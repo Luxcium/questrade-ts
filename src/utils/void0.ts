@@ -52,14 +52,14 @@ const psi = <R>(f: (gx: any) => (gy: any) => R) => <T>(g: (xy: T) => any) => (
   x: T,
 ) => (y: T) => f(g(x))(g(y));
 export const helperFunctions = {
-  id0,
-  idx,
-  void0,
-  curry,
-  thrush,
   apply,
   compose,
+  curry,
   flip,
+  id0,
+  idx,
   konst,
   psi,
+  thrush,
+  void0,
 };

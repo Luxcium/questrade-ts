@@ -10,7 +10,6 @@ export const _defaultCredentials: Credentials = {
   apiVersion: 'v1',
   authUrl: '',
   expiresAt: undefined,
-  tokenExpiration: undefined,
   expiresIn: 0,
   keyDir: './keys',
   keyFile: '',
@@ -18,57 +17,6 @@ export const _defaultCredentials: Credentials = {
   refreshToken: '',
   seedToken: '',
   serverTime: undefined,
-  tokenType: '',
-  // config_:null = _config;
-  // response_:null = response;
-  // configurl_:null = `${_config.url}`.split('questrade.com/')[1];
-
-  // urlTimeUTC:null = new Date(credentials.response_.headers.date);
-  toValue() {
-    return JSON.parse(
-      JSON.stringify({
-        ...this,
-        config_: {
-          ...this.config_,
-          headers: {
-            ...this.config_?.headers,
-            Authorization: `${(
-              (this.config_?.headers?.Authorization as string) ?? ''
-            ).slice(0, 15)} [Redacted] ...`,
-          },
-        },
-        response_: {
-          ...this.response_,
-          headers: {
-            ...this.response_?.headers,
-
-            Authorization: `${(
-              (this.config_?.headers?.Authorization as string) ?? ''
-            ).slice(0, 15)} [Redacted] ...`,
-          },
-          config: {
-            ...this.response_?.config,
-            // ...this.response_?.config?.headers,
-            Authorization: `${(
-              (this.config_?.headers?.Authorization as string) ?? ''
-            ).slice(0, 15)} [Redacted] ...`,
-          },
-          request: {
-            ...this.response_?.request,
-            res: '[IncomingMessage]',
-            _redirectable: '[Writable]',
-            agent: '[Agent]',
-            socket: '[TLSSocket]',
-            _header: '[HTTP Header Fields]',
-          },
-        },
-        accessToken: STRING_PRIVATE,
-        keyFile: './keys/[Private]',
-        refreshToken: STRING_PRIVATE,
-        seedToken: STRING_PRIVATE,
-      }),
-    );
-  },
   toString(indent: string | number | undefined = 4) {
     // ?.Authorization
     return JSON.stringify(
@@ -86,6 +34,9 @@ export const _defaultCredentials: Credentials = {
             },
           },
         },
+        accessToken: STRING_PRIVATE,
+        keyFile: './keys/[Private]',
+        refreshToken: STRING_PRIVATE,
         response_: {
           ...this.response_,
           headers: {
@@ -97,11 +48,11 @@ export const _defaultCredentials: Credentials = {
           },
           request: {
             ...this.response_?.request,
-            res: ' [IncomingMessage]',
+            _header: '[HTTP Header Fields]',
             _redirectable: '[Writable]',
             agent: '[Agent]',
+            res: ' [IncomingMessage]',
             socket: '[TLSSocket]',
-            _header: '[HTTP Header Fields]',
           },
           ...{
             ...this.response_?.config,
@@ -120,13 +71,63 @@ export const _defaultCredentials: Credentials = {
             },
           },
         },
-        accessToken: STRING_PRIVATE,
-        keyFile: './keys/[Private]',
-        refreshToken: STRING_PRIVATE,
         seedToken: STRING_PRIVATE,
       },
       null,
       indent,
     );
   },
+
+  // config_:null = _config;
+  // response_:null = response;
+  // configurl_:null = `${_config.url}`.split('questrade.com/')[1];
+  // urlTimeUTC:null = new Date(credentials.response_.headers.date);
+  toValue() {
+    return JSON.parse(
+      JSON.stringify({
+        ...this,
+        accessToken: STRING_PRIVATE,
+        config_: {
+          ...this.config_,
+          headers: {
+            ...this.config_?.headers,
+            Authorization: `${(
+              (this.config_?.headers?.Authorization as string) ?? ''
+            ).slice(0, 15)} [Redacted] ...`,
+          },
+        },
+        keyFile: './keys/[Private]',
+        refreshToken: STRING_PRIVATE,
+        response_: {
+          ...this.response_,
+          config: {
+            ...this.response_?.config,
+            // ...this.response_?.config?.headers,
+            Authorization: `${(
+              (this.config_?.headers?.Authorization as string) ?? ''
+            ).slice(0, 15)} [Redacted] ...`,
+          },
+          headers: {
+            ...this.response_?.headers,
+
+            Authorization: `${(
+              (this.config_?.headers?.Authorization as string) ?? ''
+            ).slice(0, 15)} [Redacted] ...`,
+          },
+          request: {
+            ...this.response_?.request,
+            _header: '[HTTP Header Fields]',
+            _redirectable: '[Writable]',
+            agent: '[Agent]',
+            res: '[IncomingMessage]',
+            socket: '[TLSSocket]',
+          },
+        },
+        seedToken: STRING_PRIVATE,
+      }),
+    );
+  },
+
+  tokenExpiration: undefined,
+  tokenType: '',
 };

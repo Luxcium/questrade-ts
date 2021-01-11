@@ -14,20 +14,11 @@ export const creatUrlAndDataHashes = (
   const HEX: BinaryToTextEncoding = 'hex';
   return {
     DATA: !dataToHash ? 'null' : dataToHash,
-    URL_PATH: !urlPath ? 'null' : urlPath,
-    URL_HASH_HEX: !urlPath
+    DATA_HASH_B62: !dataToHash
       ? 'null'
       : // TODO: remove dependencies to nodeJS crypt-module making it optional ...
-        `URL:${createHash('sha256')
-          .update(urlPath)
-          .digest(HEX)
-          .toUpperCase()
-          .slice(0, 16)}`,
-    URL_HASH_B62: !urlPath
-      ? 'null'
-      : // TODO: remove dependencies to nodeJS crypt-module making it optional ...
-        `URL:B62:${createHash('sha256')
-          .update(urlPath)
+        `DATA:B62${createHash('sha256')
+          .update(JSON.stringify(dataToHash))
           .digest(BASE64)
           .replaceAll('+', '')
           .replaceAll('/', '')
@@ -41,16 +32,25 @@ export const creatUrlAndDataHashes = (
           .digest(HEX)
           .toUpperCase()
           .slice(0, 16)}`,
-    DATA_HASH_B62: !dataToHash
+    URL_HASH_B62: !urlPath
       ? 'null'
       : // TODO: remove dependencies to nodeJS crypt-module making it optional ...
-        `DATA:B62${createHash('sha256')
-          .update(JSON.stringify(dataToHash))
+        `URL:B62:${createHash('sha256')
+          .update(urlPath)
           .digest(BASE64)
           .replaceAll('+', '')
           .replaceAll('/', '')
           .replaceAll('=', '')
           .slice(0, 8)}`,
+    URL_HASH_HEX: !urlPath
+      ? 'null'
+      : // TODO: remove dependencies to nodeJS crypt-module making it optional ...
+        `URL:${createHash('sha256')
+          .update(urlPath)
+          .digest(HEX)
+          .toUpperCase()
+          .slice(0, 16)}`,
+    URL_PATH: !urlPath ? 'null' : urlPath,
     // .slice(0, 16),
   };
 };

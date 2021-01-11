@@ -1,5 +1,5 @@
 import { _getQuestradeApi } from '../private';
-import { ClientProxyHandler, Credentials, QuestradeApi } from '../typescript';
+import { ClientProxyHandler, Credentials } from '../typescript';
 
 // export const getQuestradeApi = ;
 
@@ -9,12 +9,7 @@ export const questradeApi = async (
 ) => {
   const qtApi = await _getQuestradeApi(credentials, proxy);
   return {
-    currentAccount: qtApi.currentAccount,
-    myBalances: qtApi.myBalances,
-    serverTime: qtApi.serverTime,
-
     account: {
-      getServerTime: qtApi.account.getServerTime,
       getActivities: qtApi.account.getActivities,
       getAllAccounts: qtApi.account.getAllAccounts,
       getBalances: qtApi.account.getBalances,
@@ -22,11 +17,13 @@ export const questradeApi = async (
       getOrders: qtApi.account.getOrders,
       getOrdersByIds: qtApi.account.getOrdersByIds,
       getPositions: qtApi.account.getPositions,
+      getServerTime: qtApi.account.getServerTime,
     },
-    market: {
-      getAllMarkets: qtApi.market.getAllMarkets,
-      getCandlesByStockId: qtApi.market.getCandlesByStockId,
+    currentAccount: qtApi.currentAccount,
+    getOptionChains: {
+      byStockId: qtApi.getOptionChains.byStockId,
     },
+
     getOptionsQuotes: {
       byOptionsIds: qtApi.getOptionsQuotes.byOptionsIds,
       fromFilter: qtApi.getOptionsQuotes.fromFilter,
@@ -35,17 +32,20 @@ export const questradeApi = async (
       byStockIds: qtApi.getQuotes.byStockIds,
       byStrategies: qtApi.getQuotes.byStrategies,
     },
-    getOptionChains: {
-      byStockId: qtApi.getOptionChains.byStockId,
-    },
     getSymbols: {
       byStockIds: qtApi.getSymbols.byStockIds,
     },
+    market: {
+      getAllMarkets: qtApi.market.getAllMarkets,
+      getCandlesByStockId: qtApi.market.getCandlesByStockId,
+    },
+    myBalances: qtApi.myBalances,
     search: {
-      stock: qtApi.search.stock,
       allStocks: qtApi.search.allStocks,
       countResults: qtApi.search.countResults,
+      stock: qtApi.search.stock,
     },
+    serverTime: qtApi.serverTime,
   };
 };
 

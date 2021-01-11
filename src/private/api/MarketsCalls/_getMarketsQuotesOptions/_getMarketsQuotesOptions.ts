@@ -28,11 +28,11 @@ export const _getMarketsQuotesOptions = (
       : {
           filters: [
             {
-              underlyingId,
               expiryDate,
-              optionType: optionType || void 0,
-              minstrikePrice: minstrikePrice || 0,
               maxstrikePrice: maxstrikePrice || 0,
+              minstrikePrice: minstrikePrice || 0,
+              optionType: optionType || void 0,
+              underlyingId,
             },
           ],
         };

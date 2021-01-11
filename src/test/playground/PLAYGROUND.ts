@@ -38,20 +38,20 @@ export const xyz = async () => {
 export const demoRequestVariants: StrategyVariantRequest = {
   variants: [
     {
-      variantId: 1,
-      strategy: 'Custom',
       legs: [
         {
-          symbolId: 27_244_725,
-          ratio: 1000,
           action: 'Buy',
+          ratio: 1000,
+          symbolId: 27_244_725,
         },
         {
-          symbolId: 27_244_738,
-          ratio: 1001,
           action: 'Sell',
+          ratio: 1001,
+          symbolId: 27_244_738,
         },
       ],
+      strategy: 'Custom',
+      variantId: 1,
     },
   ],
 };

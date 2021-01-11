@@ -23,10 +23,10 @@ describe('Redeem Token ', () => {
     const { credentials } = await redeemToken({
       account: 12_345_678,
       apiVersion: 'v1',
-      test: false,
+      keyFile: 'MOCKfile',
       practiceAccount: false,
       seedToken: 'MOCK',
-      keyFile: 'MOCKfile',
+      test: false,
     });
     void0(credentials);
     done();
@@ -35,10 +35,10 @@ describe('Redeem Token ', () => {
     const { credentials } = await redeemToken({
       account: 12_345_678,
       apiVersion: 'v1',
-      test: false,
+      keyFile: 'MOCKfile',
       practiceAccount: true,
       seedToken: 'MOCK',
-      keyFile: 'MOCKfile',
+      test: false,
     });
     void0(credentials);
     done();
@@ -47,10 +47,10 @@ describe('Redeem Token ', () => {
   it('should be able to recive no apiVersion and default to v1', async done => {
     const { credentials } = await redeemToken({
       account: 12_345_678,
-      test: false,
+      keyFile: 'MOCKfile',
       practiceAccount: true,
       seedToken: 'MOCK',
-      keyFile: 'MOCKfile',
+      test: false,
     });
     expect(credentials.apiVersion).toBe('v1');
     void0(credentials);

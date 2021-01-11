@@ -28,13 +28,13 @@ class HttpRedisClientHandlerClass
     const urlPath = getQtUrlPathFromArgs(argArray);
     const data = `${JSON.stringify((await returnValue).data ?? null)}`;
     const proxyData = {
+      clientConfig: argArray[0],
       proxy: {
         ...this.proxy,
         handlerMethod:
           'async apply(target: ClientStatic, thisArg: any, argArray?: any): Promise<any>',
         sideEffects: 'console.log',
       },
-      clientConfig: argArray[0],
       ...creatUrlAndDataHashes(urlPath, data),
     };
 
@@ -50,13 +50,13 @@ class HttpRedisClientHandlerClass
     //  const data = proxyData.DATA ;
 
     await this.tedis.hmset(proxyData.URL_HASH_HEX ?? 'null', {
-      data,
-      urlPath,
       clientConfig,
-      urlHashHex,
-      urlHashB62,
-      dataHashHex,
+      data,
       dataHashB62,
+      dataHashHex,
+      urlHashB62,
+      urlHashHex,
+      urlPath,
     });
     ech0(await this.tedis.keys('*'));
 

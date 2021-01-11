@@ -24,53 +24,53 @@ export const _myBalances = async (
 
     const perCurrency = {
       CAD: {
-        startOfDay: perCADstartOfDay,
         current: perCADcurrent,
+        startOfDay: perCADstartOfDay,
       },
       USD: {
-        startOfDay: perUSDstartOfDay,
         current: perUSDcurrent,
+        startOfDay: perUSDstartOfDay,
       },
     };
     const combined = {
       CAD: {
-        startOfDay: combinedCADstartOfDay,
         current: combinedCADcurrent,
+        startOfDay: combinedCADstartOfDay,
       },
       USD: {
-        startOfDay: combinedUSDstartOfDay,
         current: combinedUSDcurrent,
+        startOfDay: combinedUSDstartOfDay,
       },
     };
     const CAD = {
-      perCurrency: {
-        startOfDay: perCADstartOfDay,
-        current: perCADcurrent,
-      },
       combined: {
-        startOfDay: combinedCADstartOfDay,
         current: combinedCADcurrent,
+        startOfDay: combinedCADstartOfDay,
+      },
+      perCurrency: {
+        current: perCADcurrent,
+        startOfDay: perCADstartOfDay,
       },
     };
     const USD = {
       combined: {
-        startOfDay: combinedUSDstartOfDay,
         current: combinedUSDcurrent,
+        startOfDay: combinedUSDstartOfDay,
       },
       perCurrency: {
-        startOfDay: perUSDstartOfDay,
         current: perUSDcurrent,
+        startOfDay: perUSDstartOfDay,
       },
     };
 
     const current = {
-      perCurrency: {
-        CAD: perCADcurrent,
-        USD: perUSDcurrent,
-      },
       combined: {
         CAD: combinedCADcurrent,
         USD: combinedUSDcurrent,
+      },
+      perCurrency: {
+        CAD: perCADcurrent,
+        USD: perUSDcurrent,
       },
     };
     const startOfDay = {
@@ -83,260 +83,260 @@ export const _myBalances = async (
         USD: perUSDstartOfDay,
       },
     };
-    return { perCurrency, combined, current, startOfDay, CAD, USD };
+    return { CAD, USD, combined, current, perCurrency, startOfDay };
   } catch (error) {
     void errorlog(error);
 
     return {
-      perCurrency: {
-        CAD: {
-          startOfDay: {
-            currency: 'CAD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
+      CAD: {
+        combined: {
           current: {
-            currency: 'CAD',
+            buyingPower: Number.NaN,
             cash: Number.NaN,
+            currency: 'CAD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
+          },
+          startOfDay: {
             buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
+            cash: Number.NaN,
+            currency: 'CAD',
             isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
           },
         },
-        USD: {
-          startOfDay: {
-            currency: 'USD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
+        perCurrency: {
           current: {
-            currency: 'USD',
+            buyingPower: Number.NaN,
             cash: Number.NaN,
+            currency: 'CAD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
+          },
+          startOfDay: {
             buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
+            cash: Number.NaN,
+            currency: 'CAD',
             isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
+          },
+        },
+      },
+      USD: {
+        combined: {
+          current: {
+            buyingPower: Number.NaN,
+            cash: Number.NaN,
+            currency: 'USD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
+          },
+          startOfDay: {
+            buyingPower: Number.NaN,
+            cash: Number.NaN,
+            currency: 'USD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
+          },
+        },
+        perCurrency: {
+          current: {
+            buyingPower: Number.NaN,
+            cash: Number.NaN,
+            currency: 'USD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
+          },
+          startOfDay: {
+            buyingPower: Number.NaN,
+            cash: Number.NaN,
+            currency: 'USD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
           },
         },
       },
       combined: {
         CAD: {
-          startOfDay: {
-            currency: 'CAD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
           current: {
-            currency: 'CAD',
+            buyingPower: Number.NaN,
             cash: Number.NaN,
+            currency: 'CAD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
+          },
+          startOfDay: {
             buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
+            cash: Number.NaN,
+            currency: 'CAD',
             isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
           },
         },
         USD: {
-          startOfDay: {
-            currency: 'USD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
           current: {
-            currency: 'USD',
+            buyingPower: Number.NaN,
             cash: Number.NaN,
+            currency: 'USD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
+          },
+          startOfDay: {
             buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
+            cash: Number.NaN,
+            currency: 'USD',
             isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
           },
         },
       },
       current: {
-        perCurrency: {
-          CAD: {
-            currency: 'CAD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
-          USD: {
-            currency: 'USD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
-        },
         combined: {
           CAD: {
-            currency: 'CAD',
+            buyingPower: Number.NaN,
             cash: Number.NaN,
+            currency: 'CAD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
           },
           USD: {
-            currency: 'USD',
+            buyingPower: Number.NaN,
             cash: Number.NaN,
+            currency: 'USD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
+          },
+        },
+        perCurrency: {
+          CAD: {
             buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
+            cash: Number.NaN,
+            currency: 'CAD',
             isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
+          },
+          USD: {
+            buyingPower: Number.NaN,
+            cash: Number.NaN,
+            currency: 'USD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
+          },
+        },
+      },
+      perCurrency: {
+        CAD: {
+          current: {
+            buyingPower: Number.NaN,
+            cash: Number.NaN,
+            currency: 'CAD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
+          },
+          startOfDay: {
+            buyingPower: Number.NaN,
+            cash: Number.NaN,
+            currency: 'CAD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
+          },
+        },
+        USD: {
+          current: {
+            buyingPower: Number.NaN,
+            cash: Number.NaN,
+            currency: 'USD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
+          },
+          startOfDay: {
+            buyingPower: Number.NaN,
+            cash: Number.NaN,
+            currency: 'USD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
+            marketValue: Number.NaN,
+            totalEquity: Number.NaN,
           },
         },
       },
       startOfDay: {
         combined: {
           CAD: {
-            currency: 'CAD',
+            buyingPower: Number.NaN,
             cash: Number.NaN,
+            currency: 'CAD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
           },
           USD: {
-            currency: 'USD',
+            buyingPower: Number.NaN,
             cash: Number.NaN,
+            currency: 'USD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
           },
         },
         perCurrency: {
           CAD: {
-            currency: 'CAD',
+            buyingPower: Number.NaN,
             cash: Number.NaN,
+            currency: 'CAD',
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
           },
           USD: {
+            buyingPower: Number.NaN,
+            cash: Number.NaN,
             currency: 'USD',
-            cash: Number.NaN,
+            isRealTime: false,
+            maintenanceExcess: Number.NaN,
             marketValue: Number.NaN,
             totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
-        },
-      },
-      CAD: {
-        perCurrency: {
-          startOfDay: {
-            currency: 'CAD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
-          current: {
-            currency: 'CAD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
-        },
-        combined: {
-          startOfDay: {
-            currency: 'CAD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
-          current: {
-            currency: 'CAD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
-        },
-      },
-      USD: {
-        combined: {
-          startOfDay: {
-            currency: 'USD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
-          current: {
-            currency: 'USD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
-        },
-        perCurrency: {
-          startOfDay: {
-            currency: 'USD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
-          },
-          current: {
-            currency: 'USD',
-            cash: Number.NaN,
-            marketValue: Number.NaN,
-            totalEquity: Number.NaN,
-            buyingPower: Number.NaN,
-            maintenanceExcess: Number.NaN,
-            isRealTime: false,
           },
         },
       },

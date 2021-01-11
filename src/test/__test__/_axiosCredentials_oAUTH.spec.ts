@@ -7,10 +7,10 @@ describe('auth Credential from QuestradeApi via HTTP CLIENT', () => {
     const credentials = await _oAuthHttpCredentials({
       account: 12_345_678,
       apiVersion: 'v1',
-      test: false,
+      keyDir: './keys/MOCKdir',
       practiceAccount: false,
       seedToken: 'MOCK',
-      keyDir: './keys/MOCKdir',
+      test: false,
     });
     void0(credentials);
     done();
@@ -19,10 +19,10 @@ describe('auth Credential from QuestradeApi via HTTP CLIENT', () => {
     const credentials = await _oAuthHttpCredentials({
       account: 12_345_678,
       apiVersion: 'v1',
-      test: false,
+      keyFile: 'MOCKfile',
       practiceAccount: false,
       seedToken: 'MOCK',
-      keyFile: 'MOCKfile',
+      test: false,
     });
     void0(credentials);
     done();
@@ -44,10 +44,10 @@ describe('auth Credential from QuestradeApi via HTTP CLIENT', () => {
     const credentials = await _oAuthHttpCredentials({
       account: '',
       apiVersion: 'v1',
-      test: false,
+      keyFile: 'MOCKfile',
       practiceAccount: false,
       seedToken: 'MOCK',
-      keyFile: 'MOCKfile',
+      test: false,
     });
     void0(credentials);
     done();

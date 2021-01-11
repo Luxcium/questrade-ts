@@ -24,13 +24,13 @@ class clientConsoleLogHashesHandlerClass
     const urlPath = getQtUrlPathFromArgs(argArray);
     const data = `${JSON.stringify((await returnValue).data ?? null)}`;
     const proxyData = {
+      clientConfig: argArray[0],
       proxy: {
         ...this.proxy,
         handlerMethod:
           'async apply(target: ClientStatic, thisArg: any, argArray?: any): Promise<any>',
         sideEffects: 'console.log',
       },
-      clientConfig: argArray[0],
       ...creatUrlAndDataHashes(urlPath, data),
     };
 

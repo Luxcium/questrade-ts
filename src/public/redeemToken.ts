@@ -9,7 +9,7 @@ async function _redeemToken(
   const credentials = await _credentialsFactory(refreshToken, proxy);
   const questrade = await questradeApi(credentials, proxy);
   const qtApi = questrade;
-  return { qtApi, credentials };
+  return { credentials, qtApi };
 }
 
 const redeemToken = _redeemToken;

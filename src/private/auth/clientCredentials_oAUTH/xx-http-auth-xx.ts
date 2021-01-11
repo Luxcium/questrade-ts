@@ -25,12 +25,12 @@ export const _oAuthHttpCredentials = async (
 ): Promise<Credentials> => {
   const { refreshToken, credentials } = validateToken(options);
   const _config: ClientRequestConfig = {
-    url: `${credentials.authUrl}/oauth2/token`,
     method: 'GET',
     params: {
       grant_type: 'refresh_token',
       refresh_token: refreshToken,
     },
+    url: `${credentials.authUrl}/oauth2/token`,
   };
 
   let httpClient: ClientStatic = getHttpClient();

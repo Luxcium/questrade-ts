@@ -83,37 +83,60 @@ export const _getQuestradeApi = async (
   // unused for the moment
 
   return {
-    async myBalances() {
-      return _myBalances(await balances());
-    },
-    currentAccount: credentials.accountNumber,
-    serverTime: credentials.serverTime || 'ERROR',
-
     account: {
       getActivities(startTime: string) {
         return activities(startTime);
       },
-      getOrders(stateFilter?: string) {
-        return orders(stateFilter);
+      async getAllAccounts() {
+        return accounts();
       },
 
-      async getOrdersByIds(orderId: number[]) {
-        return ordersByIds(orderId);
+      async getBalances() {
+        return balances();
       },
       getExecutions(startTime: string) {
         return executions(startTime);
       },
-      async getBalances() {
-        return balances();
+      getOrders(stateFilter?: string) {
+        return orders(stateFilter);
+      },
+      async getOrdersByIds(orderId: number[]) {
+        return ordersByIds(orderId);
       },
       async getPositions() {
         return positions();
       },
-      async getAllAccounts() {
-        return accounts();
-      },
       async getServerTime() {
         return serverTime();
+      },
+    },
+    currentAccount: credentials.accountNumber,
+    getOptionChains: {
+      async byStockId(stockId: number) {
+        return optionsById(stockId);
+      },
+    },
+
+    getOptionsQuotes: {
+      async byOptionsIds(optionIds: number[]) {
+        return quotesOptionsByIds(optionIds);
+      },
+      async fromFilter(filters: OptionsFilters) {
+        return quotesOptionsFilter(filters);
+      },
+    },
+    getQuotes: {
+      async byStockIds(ids: number[]) {
+        return quotesByIds(ids);
+      },
+
+      async byStrategies(strategyVariantRequestData: StrategyVariantRequest) {
+        return marketsQuotesStrategies(strategyVariantRequestData);
+      },
+    },
+    getSymbols: {
+      async byStockIds(stockIds: number[]) {
+        return symbolsByIds(stockIds);
       },
     },
     market: {
@@ -124,46 +147,23 @@ export const _getQuestradeApi = async (
         return candles(symbolID);
       },
     },
-    getOptionsQuotes: {
-      async fromFilter(filters: OptionsFilters) {
-        return quotesOptionsFilter(filters);
-      },
-      async byOptionsIds(optionIds: number[]) {
-        return quotesOptionsByIds(optionIds);
-      },
-    },
-    getQuotes: {
-      async byStrategies(strategyVariantRequestData: StrategyVariantRequest) {
-        return marketsQuotesStrategies(strategyVariantRequestData);
-      },
 
-      async byStockIds(ids: number[]) {
-        return quotesByIds(ids);
-      },
-    },
-
-    getOptionChains: {
-      async byStockId(stockId: number) {
-        return optionsById(stockId);
-      },
-    },
-    getSymbols: {
-      async byStockIds(stockIds: number[]) {
-        return symbolsByIds(stockIds);
-      },
+    async myBalances() {
+      return _myBalances(await balances());
     },
     search: {
-      async stock(prefix: string, offset?: number) {
-        return symbolSearch(prefix, offset);
-        // return symbolSearchAndCount(prefix, offset);
-      },
       async allStocks(prefix: string, offset?: number) {
         return symbolSearchAll(prefix, offset);
       },
       async countResults(prefix: string) {
         return symbolSearchCount(prefix);
       },
+      async stock(prefix: string, offset?: number) {
+        return symbolSearch(prefix, offset);
+        // return symbolSearchAndCount(prefix, offset);
+      },
     },
+    serverTime: credentials.serverTime || 'ERROR',
   };
 };
 void0(void0);
