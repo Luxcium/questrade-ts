@@ -1,13 +1,23 @@
 import { _getQuestradeApi } from '../private';
-import { ClientProxyHandler, Credentials, OptionsFilters, StrategyVariantRequest } from '../typescript';
+import {
+  ClientProxyHandler,
+  Credentials,
+  OptionsFilters,
+  StrategyVariantRequest,
+} from '../typescript';
 
-export const asyncQuestradeApi = (credentials: Credentials, proxy?: ClientProxyHandler) => {
+export const asyncQuestradeApi = (
+  credentials: Credentials,
+  proxy?: ClientProxyHandler,
+) => {
   const asyncQtApi = _getQuestradeApi(credentials, proxy);
   const asyncAccount = asyncQtApi.then(then => then.account);
   const asyncCurrentAccount = asyncQtApi.then(then => then.currentAccount);
   const asyncMyBalances = asyncQtApi.then(then => then.myBalances);
   const asyncServerTime = asyncQtApi.then(then => then.serverTime);
-  const asyncGetServerTime = asyncQtApi.then(then => then.account.getServerTime);
+  const asyncGetServerTime = asyncQtApi.then(
+    then => then.account.getServerTime,
+  );
   const asyncActivities = asyncQtApi.then(then => then.account.getActivities);
   const asyncAllAccounts = asyncQtApi.then(then => then.account.getAllAccounts);
   const asyncBalances = asyncQtApi.then(then => then.account.getBalances);
@@ -16,13 +26,27 @@ export const asyncQuestradeApi = (credentials: Credentials, proxy?: ClientProxyH
   const asyncOrdersByIds = asyncQtApi.then(then => then.account.getOrdersByIds);
   const asyncPositions = asyncQtApi.then(then => then.account.getPositions);
   const asyncAllMarkets = asyncQtApi.then(then => then.market.getAllMarkets);
-  const asyncCandlesByStockId = asyncQtApi.then(then => then.market.getCandlesByStockId);
-  const asyncByOptionsIds = asyncQtApi.then(then => then.getOptionsQuotes.byOptionsIds);
-  const asyncFromFilter = asyncQtApi.then(then => then.getOptionsQuotes.fromFilter);
-  const asyncGetQuoteByStockIds = asyncQtApi.then(then => then.getQuotes.byStockIds);
-  const asyncByStrategies = asyncQtApi.then(then => then.getQuotes.byStrategies);
-  const asyncByStockId = asyncQtApi.then(then => then.getOptionChains.byStockId);
-  const asyncGetSymbolByStockIds = asyncQtApi.then(then => then.getSymbols.byStockIds);
+  const asyncCandlesByStockId = asyncQtApi.then(
+    then => then.market.getCandlesByStockId,
+  );
+  const asyncByOptionsIds = asyncQtApi.then(
+    then => then.getOptionsQuotes.byOptionsIds,
+  );
+  const asyncFromFilter = asyncQtApi.then(
+    then => then.getOptionsQuotes.fromFilter,
+  );
+  const asyncGetQuoteByStockIds = asyncQtApi.then(
+    then => then.getQuotes.byStockIds,
+  );
+  const asyncByStrategies = asyncQtApi.then(
+    then => then.getQuotes.byStrategies,
+  );
+  const asyncByStockId = asyncQtApi.then(
+    then => then.getOptionChains.byStockId,
+  );
+  const asyncGetSymbolByStockIds = asyncQtApi.then(
+    then => then.getSymbols.byStockIds,
+  );
   const asyncStock = asyncQtApi.then(then => then.search.stock);
   const asyncAllStocks = asyncQtApi.then(then => then.search.allStocks);
   const asyncCountResults = asyncQtApi.then(then => then.search.countResults);
@@ -203,7 +227,10 @@ export class ChainApiClass {
     return this;
   }
 
-  constructor(private credentials: Credentials, private proxy?: ClientProxyHandler) {
+  constructor(
+    private credentials: Credentials,
+    private proxy?: ClientProxyHandler,
+  ) {
     this.asyncApi = asyncQuestradeApi(this.credentials, this.proxy);
     // this.asyncAccount = this.asyncApi.asyncAccount;
     // this.asyncActivities = this.asyncApi.asyncActivities;

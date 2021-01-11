@@ -87,4 +87,4 @@ function curry(f: any) {
   return a;
 }
 
-module.exports = curry;
+export { curry };

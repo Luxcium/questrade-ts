@@ -1,4 +1,8 @@
-import { AccountStatus, AccountType, ClientAccountType } from 'questrade-api-enumerations';
+import {
+  AccountStatus,
+  AccountType,
+  ClientAccountType,
+} from 'questrade-api-enumerations';
 
 import {
   AcountNumberString,
@@ -37,11 +41,15 @@ export interface QuestradeApi {
 export type QtApiMyBalances = () => Promise<IMyBalances>;
 
 export interface QtApiAccount {
-  getActivities(startTime: string): (endTime: string) => Promise<IAccountActivity[]>;
+  getActivities(
+    startTime: string,
+  ): (endTime: string) => Promise<IAccountActivity[]>;
   getAllAccounts(): Promise<IAccount[]>;
   getBalances(): Promise<IBalances>;
   getExecutions(startTime: string): (endTime: string) => Promise<IExecution[]>;
-  getOrders(stateFilter?: string | undefined): (startTime: string) => (endTime: string) => Promise<IOrder[]>;
+  getOrders(
+    stateFilter?: string | undefined,
+  ): (startTime: string) => (endTime: string) => Promise<IOrder[]>;
   getOrdersByIds(orderId: number[]): Promise<IOrder[]>;
   getPositions(): Promise<IPosition[]>;
   getServerTime(): Promise<Date>;
@@ -49,11 +57,17 @@ export interface QtApiAccount {
 
 export interface QtApiMarket {
   getAllMarkets(): Promise<IMarket[]>;
-  getCandlesByStockId(symbolID: number): (interval?: string | undefined) => (startTime: string) => (endTime: string) => Promise<ICandle[]>;
+  getCandlesByStockId(
+    symbolID: number,
+  ): (
+    interval?: string | undefined,
+  ) => (startTime: string) => (endTime: string) => Promise<ICandle[]>;
 }
 export interface QtApiQuotes {
   byStockIds(ids: number[]): Promise<IQuote[]>;
-  byStrategies(strategyVariantRequestData: StrategyVariantRequest): Promise<IStrategiesQuotes>;
+  byStrategies(
+    strategyVariantRequestData: StrategyVariantRequest,
+  ): Promise<IStrategiesQuotes>;
 }
 
 export interface QtApiOptionsQuotes {
@@ -69,8 +83,14 @@ export interface QtApiOptionChains {
   byStockId(stockId: number): Promise<IOptionChain[]>;
 }
 export interface QtApiSearch {
-  stock(prefix: string, offset?: number | undefined): Promise<ISymbolSearchResult[]>;
-  allStocks(prefix: string, offset?: number | undefined): Promise<ISymbolSearchResult[]>;
+  stock(
+    prefix: string,
+    offset?: number | undefined,
+  ): Promise<ISymbolSearchResult[]>;
+  allStocks(
+    prefix: string,
+    offset?: number | undefined,
+  ): Promise<ISymbolSearchResult[]>;
   countResults(prefix: string): Promise<number>;
 }
 
@@ -424,19 +444,29 @@ export interface QuestradeApi2 {
       }[]
     >;
     getBalances(): Promise<IBalances>;
-    getExecutions(startTime: string): (endTime: string) => Promise<IExecution[]>;
-    getOrders(stateFilter?: string | undefined): (startTime: string) => (endTime: string) => Promise<IOrder[]>;
+    getExecutions(
+      startTime: string,
+    ): (endTime: string) => Promise<IExecution[]>;
+    getOrders(
+      stateFilter?: string | undefined,
+    ): (startTime: string) => (endTime: string) => Promise<IOrder[]>;
     getOrdersByIds(orderId: number[]): Promise<IOrder[]>;
     getPositions(): Promise<IPosition[]>;
     getServerTime(): Promise<Date>;
   };
   market: {
     getAllMarkets(): Promise<IMarket[]>;
-    getCandlesByStockId(symbolID: number): (interval?: string | undefined) => (startTime: string) => (endTime: string) => Promise<ICandle[]>;
+    getCandlesByStockId(
+      symbolID: number,
+    ): (
+      interval?: string | undefined,
+    ) => (startTime: string) => (endTime: string) => Promise<ICandle[]>;
   };
   getQuotes: {
     byStockIds(ids: number[]): Promise<IQuote[]>;
-    byStrategies(strategyVariantRequestData: StrategyVariantRequest): Promise<IStrategiesQuotes>;
+    byStrategies(
+      strategyVariantRequestData: StrategyVariantRequest,
+    ): Promise<IStrategiesQuotes>;
   };
   getOptionsQuotes: {
     fromFilter(filters: OptionsFilters): Promise<IOptionsQuote[]>;
@@ -449,8 +479,14 @@ export interface QuestradeApi2 {
     byStockId(stockId: number): Promise<IOptionChain[]>;
   };
   search: {
-    stock(prefix: string, offset?: number | undefined): Promise<ISymbolSearchResult[]>;
-    allStocks(prefix: string, offset?: number | undefined): Promise<ISymbolSearchResult[]>;
+    stock(
+      prefix: string,
+      offset?: number | undefined,
+    ): Promise<ISymbolSearchResult[]>;
+    allStocks(
+      prefix: string,
+      offset?: number | undefined,
+    ): Promise<ISymbolSearchResult[]>;
     countResults(prefix: string): Promise<number>;
   };
 }
