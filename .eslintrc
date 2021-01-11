@@ -32,6 +32,7 @@
     "sort-keys-fix",
     "simple-import-sort",
     "import",
+    "functional",
     "jsdoc",
     "@typescript-eslint"
   ],
@@ -156,6 +157,35 @@
     "unicorn/throw-new-error": "warn",
     // "unicorn/no-nested-ternary": "off",
     // "unicorn/number-literal-case": "off",
+    /*
+      ―――――――― simple-import-functional ――――――――――――――――――――――――――――――――――――――――――――――――――
+    */
+    /*  No Mutations Rules */
+    "functional/immutable-data": "error",
+    "functional/no-let": "warn",
+    "functional/no-method-signature": "error",
+    "functional/prefer-readonly-type": "warn",
+    /*  No Object-Orientation Rules */
+    "functional/no-class": "error",
+    "functional/no-mixed-type": "error",
+    "functional/no-this-expression": "error",
+    "functional/prefer-type-literal": "warn",
+    /*  No Statements Rules */
+    "functional/no-conditional-statement": "error",
+    "functional/no-expression-statement": "error",
+    "functional/no-loop-statement": "error",
+    "functional/no-return-void": "error",
+    /*  No Exceptions Rules */
+    "functional/no-promise-reject": "error",
+    "functional/no-throw-statement": "error",
+    "functional/no-try-statement": "error",
+    /*  Currying Rules */
+    "functional/functional-parameters": "error",
+    /*  Stylitic Rules */
+    "functional/prefer-tacit": "warn",
+    /*
+  ―――――――― simple-import-sort-keys-fix ――――――――――――――――――――――――――――――――――――――――――――――――――
+    */
     "sort-keys-fix/sort-keys-fix": "warn",
     /*
   ―――――――― simple-import-sort ――――――――――――――――――――――――――――――――――――――――――――――――――
