@@ -120,6 +120,7 @@
     "crypto-browserify": "^3.12.0",
     "eslint": "^7.16.0",
     "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsdoc": "^30.7.9",
     "eslint-plugin-jsonc": "^0.8.0",

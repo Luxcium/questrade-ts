@@ -32,6 +32,7 @@
     "sort-keys-fix",
     "simple-import-sort",
     "import",
+    "fp",
     "functional",
     "jsdoc",
     "@typescript-eslint"
@@ -158,31 +159,52 @@
     // "unicorn/no-nested-ternary": "off",
     // "unicorn/number-literal-case": "off",
     /*
+      ―――――――― simple-import-fp ――――――――――――――――――――――――――――――――――――――――――――――――――
+    */
+    "fp/no-arguments": "error",
+    "fp/no-class": "error",
+    "fp/no-delete": "error",
+    "fp/no-events": "error",
+    "fp/no-get-set": "error",
+    "fp/no-let": "error",
+    "fp/no-loops": "error",
+    "fp/no-mutating-assign": "error",
+    "fp/no-mutating-methods": "error",
+    "fp/no-mutation": "error",
+    "fp/no-nil": "error",
+    "fp/no-proxy": "error",
+    "fp/no-rest-parameters": "error",
+    "fp/no-this": "error",
+    "fp/no-throw": "error",
+    "fp/no-unused-expression": "error",
+    "fp/no-valueof-field": "error",
+    // "no-var": "error",
+    /*
       ―――――――― simple-import-functional ――――――――――――――――――――――――――――――――――――――――――――――――――
     */
     /*  No Mutations Rules */
-    "functional/immutable-data": "error",
-    "functional/no-let": "warn",
-    "functional/no-method-signature": "error",
-    "functional/prefer-readonly-type": "warn",
+    "functional/immutable-data": 0, // "error",
+    "functional/no-let": 0, // "warn",
+    "functional/no-method-signature": 0, // "error",
+    "functional/prefer-readonly-type": 0, // "warn",
     /*  No Object-Orientation Rules */
-    "functional/no-class": "error",
-    "functional/no-mixed-type": "error",
-    "functional/no-this-expression": "error",
-    "functional/prefer-type-literal": "warn",
+    "functional/no-class": 0, // "error",
+    "functional/no-mixed-type": 0, // "error",
+    "functional/no-this-expression": 0, // "error",
+    "functional/prefer-type-literal": 0, // "warn",
     /*  No Statements Rules */
-    "functional/no-conditional-statement": "error",
-    "functional/no-expression-statement": "error",
-    "functional/no-loop-statement": "error",
-    "functional/no-return-void": "error",
+    "functional/no-conditional-statement": 0, // "error",
+    "functional/no-expression-statement": 0, // "error",
+    "functional/no-loop-statement": 0, // "error",
+    "functional/no-return-void": 0, // "error",
     /*  No Exceptions Rules */
-    "functional/no-promise-reject": "error",
-    "functional/no-throw-statement": "error",
-    "functional/no-try-statement": "error",
+    "functional/no-promise-reject": 0, // "error",
+    "functional/no-throw-statement": 0, // "error",
+    "functional/no-try-statement": 0, // "error",
     /*  Currying Rules */
-    "functional/functional-parameters": "error",
+    "functional/functional-parameters": 0, // "error",
     /*  Stylitic Rules */
-    "functional/prefer-tacit": "warn",
+    "functional/prefer-tacit": 0, // "warn",
     /*
   ―――――――― simple-import-sort-keys-fix ――――――――――――――――――――――――――――――――――――――――――――――――――
     */
