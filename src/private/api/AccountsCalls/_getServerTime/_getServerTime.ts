@@ -1,10 +1,8 @@
-import { ClientProxyHandler, Credentials, ITime } from '../../../../typescript';
-import { _clientGetApi } from '../../../routes';
+import { ITime } from '../../../../typescript';
 
-// + _getServerTime
+// +!! _getServerTime
 /** _getTime */
 export const _getServerTime = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
+  clientGetApi: <R>(endpoint: string) => () => Promise<R>,
 ) => async (): Promise<Date> =>
-  new Date((await _clientGetApi(credentials, proxy)<ITime>('/time')()).time);
+  new Date((await clientGetApi<ITime>('/time')()).time);

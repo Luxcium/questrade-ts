@@ -1,24 +1,14 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import {
-  ClientProxyHandler,
-  Credentials,
-  IPosition,
-  IPositions,
-} from '../../../../typescript';
-import { _clientAccountGetApi } from '../../../routes/clientAccountGetApi/_clientAccountGetApi';
+import { IPosition, IPositions, Logger } from '../../../../typescript';
 
 // + _getPositions
 /** _getPositions */
 export const _getPositions = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
-  errorlog: (error: any) => any = (error: any) => error,
+  clientAccountGetApi: <R>(accountEndpoint: string) => () => Promise<R>,
+  errorlog: Logger = (...error: any[]) => error,
 ) => async (): Promise<IPosition[]> => {
   try {
-    const positions = await _clientAccountGetApi(
-      credentials,
-      proxy,
-    )<IPositions>('/positions')();
+    const positions = await clientAccountGetApi<IPositions>('/positions')();
 
     return positions.positions;
   } catch (error) {

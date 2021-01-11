@@ -1,20 +1,13 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import {
-  ClientProxyHandler,
-  Credentials,
-  ICandle,
-  ICandles,
-} from '../../../../typescript';
+import { ICandle, ICandles, Logger } from '../../../../typescript';
 // TODO: remove dependencies to nodeJS crypt-module making it optional ...
 import { endpointFormatDateTool } from '../../../../utils';
-import { _clientGetApi } from '../../../routes';
 
 // + _getCandles endpointFormatDateTool
 /** _getCandles */
 export const _getCandles = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
-  errorlog: (error: any) => any = (error: any) => error,
+  clientGetApi: <R>(endpoint: string) => () => Promise<R>,
+  errorlog: Logger = (...error: any[]) => error,
 ) => (symbolID: number) => (interval: string = 'OneDay') => (
   startDate: string,
 ) => async (endDate: string): Promise<ICandle[]> => {
@@ -22,10 +15,7 @@ export const _getCandles = (
     return (
       //
       (
-        await _clientGetApi(
-          credentials,
-          proxy,
-        )<ICandles>(
+        await clientGetApi<ICandles>(
           `/markets/candles/${symbolID}?${endpointFormatDateTool(
             startDate,
             endDate,

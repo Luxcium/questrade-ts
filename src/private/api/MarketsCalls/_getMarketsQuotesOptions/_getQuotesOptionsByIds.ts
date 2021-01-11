@@ -1,17 +1,14 @@
-import {
-  ClientProxyHandler,
-  Credentials,
-  IOptionsQuote,
-} from '../../../../typescript';
+import { IOptionsQuote, Logger } from '../../../../typescript';
 import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
 export const _getQuotesOptionsByIds = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
-  errorlog: (error: any) => any = (error: any) => error,
+  clientPostApi: <D>(
+    postData: D | null,
+  ) => <R>(endpoint: string) => () => Promise<R>,
+  errorlog: Logger = (...error: any[]) => error,
 ) => async (optionIds: number[]): Promise<IOptionsQuote[]> => {
   try {
-    return _getMarketsQuotesOptions(credentials, proxy)(
+    return _getMarketsQuotesOptions(clientPostApi)(
       optionIds,
       0,
       '',

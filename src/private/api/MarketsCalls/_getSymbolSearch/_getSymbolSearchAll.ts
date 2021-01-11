@@ -1,28 +1,22 @@
 // import { errorlog } from '../../../../resources/side-effects';
 import {
-  ClientProxyHandler,
-  Credentials,
   ISymbolSearchResult,
   ISymbolSearchResults,
+  Logger,
 } from '../../../../typescript';
 import { void0 } from '../../../../utils';
-import { _clientGetApi } from '../../../routes';
 
 // + _getSymbolSearchAll
 /** _getSymbolSearch */
 export const _getSymbolSearchAll = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
-  errorlog: (error: any) => any = (error: any) => error,
+  clientGetApi: <R>(endpoint: string) => () => Promise<R>,
+  errorlog: Logger = (...error: any[]) => error,
 ) => async (
   prefix: string,
   offset: number = 0,
 ): Promise<ISymbolSearchResult[]> => {
   try {
-    const results = await _clientGetApi(
-      credentials,
-      proxy,
-    )<ISymbolSearchResults>(
+    const results = await clientGetApi<ISymbolSearchResults>(
       `/symbols/search?prefix=${prefix.toUpperCase()}&offset=${offset}`,
     )();
     if (results && results.symbols) {

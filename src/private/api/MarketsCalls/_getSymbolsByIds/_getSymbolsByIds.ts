@@ -1,26 +1,15 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import {
-  ClientProxyHandler,
-  Credentials,
-  ISymbol,
-  ISymbols,
-} from '../../../../typescript';
-import { _clientGetApi } from '../../../routes';
+import { ISymbol, ISymbols, Logger } from '../../../../typescript';
 
 // + _getSymbolsByIDs
 /** _getSymbolFromSymbolID */
 export const _getSymbolsByIds = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
-  errorlog: (error: any) => any = (error: any) => error,
+  clientGetApi: <R>(endpoint: string) => () => Promise<R>,
+  errorlog: Logger = (...error: any[]) => error,
 ) => async (stockId: number[]): Promise<ISymbol[]> => {
   try {
-    return (
-      await _clientGetApi(
-        credentials,
-        proxy,
-      )<ISymbols>(`/symbols?ids=${stockId.join()}`)()
-    ).symbols;
+    return (await clientGetApi<ISymbols>(`/symbols?ids=${stockId.join()}`)())
+      .symbols;
   } catch (error) {
     void errorlog(error);
 

@@ -1,22 +1,14 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import {
-  ClientProxyHandler,
-  Credentials,
-  IMarket,
-  IMarkets,
-} from '../../../../typescript';
-import { _clientGetApi } from '../../../routes';
+import { IMarket, IMarkets, Logger } from '../../../../typescript';
 
 // + _getMarkets
 /** _getMarkets */
 export const _getMarkets = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
-  errorlog: (error: any) => any = (error: any) => error,
+  clientGetApi: <R>(endpoint: string) => () => Promise<R>,
+  errorlog: Logger = (...error: any[]) => error,
 ) => async (): Promise<IMarket[]> => {
   try {
-    return (await _clientGetApi(credentials, proxy)<IMarkets>('/markets')())
-      .markets;
+    return (await clientGetApi<IMarkets>('/markets')()).markets;
   } catch (error) {
     void errorlog(error);
     return [];

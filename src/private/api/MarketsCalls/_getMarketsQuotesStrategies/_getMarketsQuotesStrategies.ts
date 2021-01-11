@@ -1,25 +1,21 @@
 import {
-  ClientProxyHandler,
-  Credentials,
   IStrategiesQuotes,
+  Logger,
   StrategyVariantRequest,
 } from '../../../../typescript';
-import { _clientPostApi } from '../../../routes';
 
 export const _getMarketsQuotesStrategies = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
-  errorlog: (error: any) => any = (error: any) => error,
+  clientPostApi: <D>(
+    postData: D | null,
+  ) => <R>(endpoint: string) => () => Promise<R>,
+  errorlog: Logger = (...error: any[]) => error,
 ) => async (
   strategyVariantRequestData: StrategyVariantRequest,
 ): Promise<IStrategiesQuotes> => {
   try {
-    return _clientPostApi(
-      credentials,
-      proxy,
-    )<StrategyVariantRequest>(strategyVariantRequestData)<IStrategiesQuotes>(
-      '/markets/quotes/strategies',
-    )();
+    return clientPostApi<StrategyVariantRequest>(
+      strategyVariantRequestData,
+    )<IStrategiesQuotes>('/markets/quotes/strategies')();
   } catch (error) {
     void errorlog(error);
     return {

@@ -1,19 +1,13 @@
-import {
-  ClientProxyHandler,
-  Credentials,
-  IBalances,
-} from '../../../../typescript';
-import { _clientAccountGetApi } from '../../../routes/clientAccountGetApi/_clientAccountGetApi';
+import { IBalances, Logger } from '../../../../typescript';
 
 // + _getBalances
 /** _getBalances */
 export const _getBalances = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
-  errorlog: (error: any) => any = (error: any) => error,
+  clientAccountGetApi: <R>(accountEndpoint: string) => () => Promise<R>,
+  errorlog: Logger = (...error: any[]) => error,
 ) => async (): Promise<IBalances> => {
   try {
-    return _clientAccountGetApi(credentials, proxy)<IBalances>('/balances')();
+    return clientAccountGetApi<IBalances>('/balances')();
   } catch (error) {
     void errorlog(error);
 

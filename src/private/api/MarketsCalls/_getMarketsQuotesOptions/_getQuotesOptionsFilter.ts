@@ -1,13 +1,10 @@
-import {
-  ClientProxyHandler,
-  Credentials,
-  OptionsFilters,
-} from '../../../../typescript';
+import { OptionsFilters } from '../../../../typescript';
 import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
 export const _getQuotesOptionsFilter = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
+  clientPostApi: <D>(
+    postData: D | null,
+  ) => <R>(endpoint: string) => () => Promise<R>,
 ) => async (filters: OptionsFilters) => {
   const {
     underlyingId,
@@ -16,7 +13,7 @@ export const _getQuotesOptionsFilter = (
     minstrikePrice,
     maxstrikePrice,
   } = filters;
-  return _getMarketsQuotesOptions(credentials, proxy)(
+  return _getMarketsQuotesOptions(clientPostApi)(
     null,
     underlyingId,
     expiryDate,

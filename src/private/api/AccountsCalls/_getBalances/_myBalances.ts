@@ -1,8 +1,8 @@
-import { IBalances, IMyBalances } from '../../../../typescript';
+import { IBalances, IMyBalances, Logger } from '../../../../typescript';
 
 export const _myBalances = async (
   myBalances: IBalances,
-  errorlog: (error: any) => any = (error: any) => error,
+  errorlog: Logger = (...error: any[]) => error,
 ): Promise<IMyBalances> => {
   try {
     const [perCADcurrent, perUSDcurrent] = myBalances.perCurrencyBalances;

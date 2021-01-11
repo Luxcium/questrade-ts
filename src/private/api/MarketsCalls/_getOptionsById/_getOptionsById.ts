@@ -1,10 +1,4 @@
-import {
-  ClientProxyHandler,
-  Credentials,
-  IOptionChain,
-  IOptionChains,
-} from '../../../../typescript';
-import { _clientGetApi } from '../../../routes';
+import { IOptionChain, IOptionChains, Logger } from '../../../../typescript';
 
 // + _getOptionsById
 /*
@@ -12,17 +6,12 @@ import { _clientGetApi } from '../../../routes';
 */
 /** _getOptionsSymbols */
 export const _getOptionsById = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
-  errorlog: (error: any) => any = (error: any) => error,
+  clientGetApi: <R>(endpoint: string) => () => Promise<R>,
+  errorlog: Logger = (...error: any[]) => error,
 ) => async (symbolID: number): Promise<IOptionChain[]> => {
   try {
-    return (
-      await _clientGetApi(
-        credentials,
-        proxy,
-      )<IOptionChains>(`/symbols/${symbolID}/options`)()
-    ).optionChain;
+    return (await clientGetApi<IOptionChains>(`/symbols/${symbolID}/options`)())
+      .optionChain;
     /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
     */

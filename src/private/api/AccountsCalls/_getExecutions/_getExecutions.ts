@@ -1,25 +1,16 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import {
-  ClientProxyHandler,
-  Credentials,
-  IExecution,
-  IExecutions,
-} from '../../../../typescript';
+import { IExecution, IExecutions, Logger } from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
-import { _clientAccountGetApi } from '../../../routes/clientAccountGetApi/_clientAccountGetApi';
 
 // + _getExecutions
 /** _getExecutions */
 export const _getExecutions = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
-  errorlog: (error: any) => any = (error: any) => error,
+  clientAccountGetApi: <R>(endpoint: string) => () => Promise<R>,
+
+  errorlog: Logger = (...error: any[]) => error,
 ) => (startDate: string) => async (endDate: string): Promise<IExecution[]> => {
   try {
-    const executions = await _clientAccountGetApi(
-      credentials,
-      proxy,
-    )<IExecutions>(
+    const executions = await clientAccountGetApi<IExecutions>(
       `/executions?${endpointFormatDateTool(startDate, endDate)}`,
     )();
     return executions.executions;

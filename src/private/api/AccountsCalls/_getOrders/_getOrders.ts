@@ -1,26 +1,16 @@
-import {
-  ClientProxyHandler,
-  Credentials,
-  IOrder,
-  IOrders,
-} from '../../../../typescript';
+import { IOrder, IOrders, Logger } from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
-import { _clientAccountGetApi } from '../../../routes/clientAccountGetApi/_clientAccountGetApi';
 
 // + _getOrders
 /** _getOrders */
 export const _getOrders = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
-  errorlog: (error: any) => any = (error: any) => error,
+  clientAccountGetApi: <R>(accountEndpoint: string) => () => Promise<R>,
+  errorlog: Logger = (...error: any[]) => error,
 ) => (stateFilter: string = 'All') => (startDate: string) => async (
   endDate: string,
 ): Promise<IOrder[]> => {
   try {
-    const orders = await _clientAccountGetApi(
-      credentials,
-      proxy,
-    )<IOrders>(
+    const orders = await clientAccountGetApi<IOrders>(
       `/orders?${endpointFormatDateTool(
         startDate,
         endDate,

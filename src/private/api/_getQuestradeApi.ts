@@ -1,11 +1,14 @@
 import {
   ClientProxyHandler,
   Credentials,
+  Logger,
   OptionsFilters,
   QuestradeApi,
   StrategyVariantRequest,
 } from '../../typescript';
 import { void0 } from '../../utils';
+import { _clientGetApi, _clientPostApi } from '..';
+import { _clientAccountGetApi } from '../routes/clientAccountGetApi/_clientAccountGetApi';
 import { _getAccounts } from './AccountsCalls/_getAccounts/_getAccounts';
 import { _getActivities } from './AccountsCalls/_getActivities/_getActivities';
 import { _getBalances } from './AccountsCalls/_getBalances/_getBalances';
@@ -34,6 +37,7 @@ import {
 export const _getQuestradeApi = async (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: Logger = (...error: any[]) => error,
 ): Promise<QuestradeApi> => {
   const [
     accounts,
@@ -58,28 +62,36 @@ export const _getQuestradeApi = async (
     symbolSearch,
     symbolSearchCount,
   ] = [
-    _getAccounts(credentials, proxy),
-    _getActivities(credentials, proxy),
-    _getBalances(credentials, proxy),
-    _getCandles(credentials, proxy),
-    _getExecutions(credentials, proxy),
-    _getMarkets(credentials, proxy),
-    _getMarketsQuotesStrategies(credentials, proxy),
-    _getOptionsById(credentials, proxy),
-    _getOrders(credentials, proxy),
-    _getOrdersByIds(credentials, proxy),
-    _getPositions(credentials, proxy),
-    _getQuotesByIds(credentials, proxy),
-    // _getQuotesOptionsbyFilterAndIds(credentials,proxy),
-    _getQuotesOptionsByIds(credentials, proxy),
-    _getQuotesOptionsFilter(credentials, proxy),
-    _getServerTime(credentials, proxy),
-    _getSymbolsByIds(credentials, proxy),
-    _getSymbolSearchAll(credentials, proxy),
-    // _getSymbolSearchAndCount(credentials,proxy),
-    _getSymbolSearch(credentials, proxy),
-    _getSymbolSearchCount(credentials, proxy),
+    _getAccounts(_clientGetApi(credentials, proxy), errorlog),
+    _getActivities(_clientAccountGetApi(credentials, proxy), errorlog),
+    _getBalances(_clientAccountGetApi(credentials, proxy), errorlog),
+    _getCandles(_clientGetApi(credentials, proxy), errorlog),
+    _getExecutions(_clientAccountGetApi(credentials, proxy), errorlog),
+    _getMarkets(_clientGetApi(credentials, proxy), errorlog),
+    _getMarketsQuotesStrategies(_clientPostApi(credentials, proxy), errorlog),
+    _getOptionsById(_clientGetApi(credentials, proxy), errorlog),
+    _getOrders(_clientAccountGetApi(credentials, proxy), errorlog),
+    _getOrdersByIds(_clientAccountGetApi(credentials, proxy), errorlog),
+    _getPositions(_clientAccountGetApi(credentials, proxy), errorlog),
+    _getQuotesByIds(_clientGetApi(credentials, proxy), errorlog),
+    // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),
+    _getQuotesOptionsByIds(_clientPostApi(credentials, proxy), errorlog),
+    _getQuotesOptionsFilter(
+      _clientPostApi(credentials, proxy) /* , errorlog */,
+    ),
+    _getServerTime(_clientGetApi(credentials, proxy) /* , errorlog */),
+    _getSymbolsByIds(_clientGetApi(credentials, proxy), errorlog),
+    _getSymbolSearchAll(_clientGetApi(credentials, proxy), errorlog),
+    // _getSymbolSearchAndCount(credentials,proxy, errorlog),
+    _getSymbolSearch(_clientGetApi(credentials, proxy), errorlog),
+    _getSymbolSearchCount(_clientGetApi(credentials, proxy), errorlog),
   ];
+  // clientGetApi: <R>(endpoint: string) => () => Promise<R>,
+  //
+  //  _clientGetApi(credentials, proxy),
+  //  _clientPostApi(credentials, proxy),
+  //  _clientAccountGetApi(credentials, proxy),
+  //  _clientGetApi(credentials, proxy),
   // unused for the moment
 
   return {

@@ -1,24 +1,14 @@
-import {
-  ClientProxyHandler,
-  Credentials,
-  IQuote,
-  IQuotes,
-} from '../../../../typescript';
-import { _clientGetApi } from '../../../routes';
+import { IQuote, IQuotes, Logger } from '../../../../typescript';
 
 // + _getQuotesByID
 /** _getQuotesFromSymbolID */
 export const _getQuotesByIds = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
-  errorlog: (error: any) => any = (error: any) => error,
+  clientGetApi: <R>(endpoint: string) => () => Promise<R>,
+  errorlog: Logger = (...error: any[]) => error,
 ) => async (ids: number[]): Promise<IQuote[]> => {
   try {
     return (
-      await _clientGetApi(
-        credentials,
-        proxy,
-      )<IQuotes>(`/markets/quotes?ids=${ids.join(',')}`)()
+      await clientGetApi<IQuotes>(`/markets/quotes?ids=${ids.join(',')}`)()
     ).quotes;
   } catch (error) {
     void errorlog(error);

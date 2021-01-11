@@ -1,17 +1,15 @@
 import {
-  ClientProxyHandler,
-  Credentials,
   FiltersArray,
   IOptionsQuote,
   IOptionsQuotes,
   OptionsIdArray,
   OptionsPostData,
 } from '../../../../typescript';
-import { _clientPostApi } from '../../../routes';
 
 export const _getMarketsQuotesOptions = (
-  credentials: Credentials,
-  proxy?: ClientProxyHandler,
+  clientPostApi: <D>(
+    postData: D | null,
+  ) => <R>(endpoint: string) => () => Promise<R>,
 ) => async (
   optionIds: number[] | null,
   underlyingId: number,
@@ -38,9 +36,8 @@ export const _getMarketsQuotesOptions = (
         };
 
   return (
-    await _clientPostApi(
-      credentials,
-      proxy,
-    )<OptionsPostData>(postData)<IOptionsQuotes>('/markets/quotes/options')()
+    await clientPostApi<OptionsPostData>(postData)<IOptionsQuotes>(
+      '/markets/quotes/options',
+    )()
   ).quotes;
 };
