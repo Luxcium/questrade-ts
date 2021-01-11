@@ -1,5 +1,4 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -10,13 +9,12 @@ import {
 import { endpointFormatDateTool } from '../../../../utils';
 import { _clientGetApi } from '../../../routes';
 
-const { errorlog } = sideEffects;
-
 // + _getCandles endpointFormatDateTool
 /** _getCandles */
 export const _getCandles = (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: (error: any) => any = (error: any) => error,
 ) => (symbolID: number) => (interval: string = 'OneDay') => (
   startDate: string,
 ) => async (endDate: string): Promise<ICandle[]> => {

@@ -1,4 +1,3 @@
-import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -7,13 +6,12 @@ import {
 } from '../../../../typescript';
 import { _clientGetApi } from '../../../routes';
 
-const { errorlog } = sideEffects;
-
 // + _getQuotesByID
 /** _getQuotesFromSymbolID */
 export const _getQuotesByIds = (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: (error: any) => any = (error: any) => error,
 ) => async (ids: number[]): Promise<IQuote[]> => {
   try {
     return (

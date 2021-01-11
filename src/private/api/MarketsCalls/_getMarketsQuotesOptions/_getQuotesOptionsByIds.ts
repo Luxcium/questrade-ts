@@ -1,4 +1,3 @@
-import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -6,11 +5,10 @@ import {
 } from '../../../../typescript';
 import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
-const { errorlog } = sideEffects;
-
 export const _getQuotesOptionsByIds = (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: (error: any) => any = (error: any) => error,
 ) => async (optionIds: number[]): Promise<IOptionsQuote[]> => {
   try {
     return _getMarketsQuotesOptions(credentials, proxy)(

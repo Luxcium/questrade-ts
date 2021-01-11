@@ -1,4 +1,3 @@
-import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -6,8 +5,6 @@ import {
   IOptionChains,
 } from '../../../../typescript';
 import { _clientGetApi } from '../../../routes';
-
-const { errorlog } = sideEffects;
 
 // + _getOptionsById
 /*
@@ -17,6 +14,7 @@ const { errorlog } = sideEffects;
 export const _getOptionsById = (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: (error: any) => any = (error: any) => error,
 ) => async (symbolID: number): Promise<IOptionChain[]> => {
   try {
     return (

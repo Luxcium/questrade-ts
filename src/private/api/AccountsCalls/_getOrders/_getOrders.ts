@@ -1,4 +1,3 @@
-import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -8,13 +7,12 @@ import {
 import { endpointFormatDateTool } from '../../../../utils';
 import { _clientAccountGetApi } from '../../../routes/clientAccountGetApi/_clientAccountGetApi';
 
-const { errorlog } = sideEffects;
-
 // + _getOrders
 /** _getOrders */
 export const _getOrders = (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: (error: any) => any = (error: any) => error,
 ) => (stateFilter: string = 'All') => (startDate: string) => async (
   endDate: string,
 ): Promise<IOrder[]> => {

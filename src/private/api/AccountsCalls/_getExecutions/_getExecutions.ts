@@ -1,5 +1,4 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -9,13 +8,12 @@ import {
 import { endpointFormatDateTool } from '../../../../utils';
 import { _clientAccountGetApi } from '../../../routes/clientAccountGetApi/_clientAccountGetApi';
 
-const { errorlog } = sideEffects;
-
 // + _getExecutions
 /** _getExecutions */
 export const _getExecutions = (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: (error: any) => any = (error: any) => error,
 ) => (startDate: string) => async (endDate: string): Promise<IExecution[]> => {
   try {
     const executions = await _clientAccountGetApi(

@@ -1,11 +1,8 @@
-// import { errorlog } from '../../../../resources/side-effects';
-import { sideEffects } from '../../../../resources/side-effects';
 import { IBalances, IMyBalances } from '../../../../typescript';
-
-const { errorlog } = sideEffects;
 
 export const _myBalances = async (
   myBalances: IBalances,
+  errorlog: (error: any) => any = (error: any) => error,
 ): Promise<IMyBalances> => {
   try {
     const [perCADcurrent, perUSDcurrent] = myBalances.perCurrencyBalances;

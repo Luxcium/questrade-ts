@@ -1,4 +1,3 @@
-import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -7,13 +6,12 @@ import {
 } from '../../../../typescript';
 import { _clientAccountGetApi } from '../../../routes/clientAccountGetApi/_clientAccountGetApi';
 
-const { errorlog } = sideEffects;
-
 // + _getOrderByIds
 /** _getOrders */
 export const _getOrdersByIds = (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: (error: any) => any = (error: any) => error,
 ) => async (orderId: number[]): Promise<IOrder[]> => {
   try {
     //

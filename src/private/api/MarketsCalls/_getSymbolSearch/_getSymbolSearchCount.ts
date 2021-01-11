@@ -1,5 +1,4 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -7,13 +6,12 @@ import {
 } from '../../../../typescript';
 import { _clientGetApi } from '../../../routes';
 
-const { errorlog } = sideEffects;
-
 // + _getSymbolSearchCount
 /** _getSymbolSearch */
 export const _getSymbolSearchCount = (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: (error: any) => any = (error: any) => error,
 ) => async (prefix: string): Promise<number> => {
   try {
     const endpoint = `/symbols/search?prefix=${prefix}`;

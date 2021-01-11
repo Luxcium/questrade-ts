@@ -1,5 +1,4 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -9,13 +8,12 @@ import {
 import { void0 } from '../../../../utils';
 import { _clientGetApi } from '../../../routes';
 
-const { errorlog } = sideEffects;
-
 // + _getSymbolSearchAll
 /** _getSymbolSearch */
 export const _getSymbolSearchAll = (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: (error: any) => any = (error: any) => error,
 ) => async (
   prefix: string,
   offset: number = 0,

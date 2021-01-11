@@ -1,5 +1,4 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import { sideEffects } from '../../../../resources/side-effects';
 import {
   ClientProxyHandler,
   Credentials,
@@ -7,13 +6,12 @@ import {
 } from '../../../../typescript';
 import { _getSymbolSearchAll } from './_getSymbolSearchAll';
 
-const { errorlog } = sideEffects;
-
 // + _getSymbolSearch
 /** _getSymbolSearch */
 export const _getSymbolSearch = (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: (error: any) => any = (error: any) => error,
 ) => async (
   prefix: string,
   offset: number = 0,
