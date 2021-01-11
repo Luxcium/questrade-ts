@@ -16,6 +16,3 @@ export const quotes = (qtApi: QuestradeApi) => qtApi.getQuotes;
 export const symbols = (qtApi: QuestradeApi) => qtApi.getSymbols;
 export const account = (qtApi: QuestradeApi) => qtApi.account;
 export const search = (qtApi: QuestradeApi) => qtApi.search;
-
-export { getSymbolDetails } from './getSymbolDetails';
-export { getSymbolId } from './getSymbolId';

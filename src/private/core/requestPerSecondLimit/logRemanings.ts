@@ -1,9 +1,7 @@
-// import { echo } from '../../../resources/side-effects';
-import { sideEffects } from '../../../resources/side-effects';
 import { ITimeRateLimiter } from '../../../typescript/ITimeRateLimiter';
 import { remaningTimeString } from './remaningTimeString';
 
-const { echo } = sideEffects;
+// CONSOLE: using console info is a sideEffect and will be flagged
 
 export const logRemanings = ({
   timeNow,
@@ -14,16 +12,16 @@ export const logRemanings = ({
   requestsRemaining,
   maximums,
 }: ITimeRateLimiter) => {
-  void echo<unknown>();
-  void echo<unknown>('time remaning', remaningTimeString(secondsRemaning));
-  void echo<unknown>('time now', timeNow);
-  void echo<unknown>('time then', timeThen);
-  void echo<unknown>('time remaining until reset', secondsRemaning, '(sec)');
-  void echo<unknown>();
-  void echo<unknown>('requsts remaning', requestsRemaining);
-  void echo<unknown>();
-  void echo<unknown>('Requests per seconds possible', possiblePerSeconds);
-  void echo<unknown>(
+  console.info();
+  console.info('time remaning', remaningTimeString(secondsRemaning));
+  console.info('time now', timeNow);
+  console.info('time then', timeThen);
+  console.info('time remaining until reset', secondsRemaning, '(sec)');
+  console.info();
+  console.info('requsts remaning', requestsRemaining);
+  console.info();
+  console.info('Requests per seconds possible', possiblePerSeconds);
+  console.info(
     '[maximum total in remaining period, maximum per second]',
     maximums,
     maximumperseconds,

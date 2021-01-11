@@ -1,5 +1,5 @@
 import { QuestradeApi } from '../../../typescript';
-import { getSymbolId } from '.';
+import { getSymbolId } from './getSymbolId';
 
 export function getSymbolDetails(qtApi: QuestradeApi) {
   return async (stockSymbol: string | number | number[]) => {

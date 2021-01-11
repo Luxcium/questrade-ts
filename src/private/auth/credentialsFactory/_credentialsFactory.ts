@@ -1,7 +1,8 @@
 import { errorlog, infolog } from '../../../resources/side-effects';
 import { ClientProxyHandler, QuestradeAPIOptions } from '../../../typescript';
-import { _getAccounts, _getServerTime } from '../../api/AccountsCalls';
-import { _oAuthHttpCredentials } from '../clientCredentials_oAUTH';
+import { _getAccounts } from '../../api/AccountsCalls/_getAccounts/_getAccounts';
+import { _getServerTime } from '../../api/AccountsCalls/_getServerTime/_getServerTime';
+import { _oAuthHttpCredentials } from '../clientCredentials_oAUTH/xx-http-auth-xx';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 
 // !!!

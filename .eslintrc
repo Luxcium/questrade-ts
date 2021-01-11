@@ -165,7 +165,7 @@
     /*Static analysis*/
     "import/no-self-import": "error",
     "import/no-useless-path-segments": "warn",
-    "import/no-unresolved": 0,
+    "import/no-unresolved": 0, // "error",
     "import/named": 0,
     "import/default": 0,
     "import/namespace": "error",
@@ -174,7 +174,7 @@
     "import/no-dynamic-require": 0,
     "import/no-internal-modules": 0,
     "import/no-webpack-loader-syntax": 0,
-    "import/no-cycle": 0,
+    "import/no-cycle": "error",
     "import/no-relative-parent-imports": 0,
     /* Helpful warnings */
     "import/export": "error",
@@ -205,7 +205,7 @@
     "import/no-amd": 0,
     "import/no-commonjs": 0,
     "import/no-nodejs-modules": 0,
-    "import/unambiguous": 0,
+    "import/unambiguous": "warn",
     /*
   ―――――――― eslint-plugin-jsdoc ―――――――――――――――――――――――――――――――――――――――――――――――――
     */

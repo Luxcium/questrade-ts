@@ -1,8 +1,6 @@
-import { sideEffects } from '../../../resources/side-effects';
+import { errorlog } from '../../../resources/side-effects';
 import { CallBack } from '../../../typescript';
 import { perSeconds, void0 } from '../../../utils';
-
-const { errorlog } = sideEffects;
 
 let lastCall = Date.now();
 const lastDelay = () => Date.now() - lastCall;
@@ -16,7 +14,8 @@ const resetLastCall = () => {
   lastCall = Date.now();
 
   return void 0;
-})().catch(error => void errorlog('error message:', error.message));
+  // CONSOLE:  using console error is a sideEffect and will be flagged
+})().catch(error => console.error('error message:', error.message));
 
 function requestLimiterFactory() {
   let isCalled = false;

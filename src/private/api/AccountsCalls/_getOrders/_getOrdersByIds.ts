@@ -5,7 +5,7 @@ import {
   IOrder,
   IOrders,
 } from '../../../../typescript';
-import { _clientAccountGetApi } from '../../../routes';
+import { _clientAccountGetApi } from '../../../routes/clientAccountGetApi/_clientAccountGetApi';
 
 const { errorlog } = sideEffects;
 

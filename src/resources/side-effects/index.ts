@@ -36,8 +36,8 @@ export {
 const sideEffects = {
   client,
   getHttpClient,
-  writeToken,
-  validateToken,
+  // writeToken,
+  // validateToken,
   setMyToken,
   getMyToken,
   getHash,

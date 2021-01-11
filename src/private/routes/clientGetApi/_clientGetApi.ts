@@ -1,5 +1,5 @@
 import { ClientProxyHandler, Credentials } from '../../../typescript';
-import { _coreApiFunction } from '../../core';
+import { _coreApiFunction } from '../../core/_coreApiFunction';
 
 // # _clientGetApi !!!
 /**

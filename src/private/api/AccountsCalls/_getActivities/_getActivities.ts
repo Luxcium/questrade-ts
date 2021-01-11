@@ -7,7 +7,7 @@ import {
   IActivities,
 } from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
-import { _clientAccountGetApi } from '../../../routes';
+import { _clientAccountGetApi } from '../../../routes/clientAccountGetApi/_clientAccountGetApi';
 
 const { errorlog } = sideEffects;
 

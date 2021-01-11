@@ -6,17 +6,15 @@ import {
   StrategyVariantRequest,
 } from '../../typescript';
 import { void0 } from '../../utils';
-import {
-  _getAccounts,
-  _getActivities,
-  _getBalances,
-  _getExecutions,
-  _getOrders,
-  _getOrdersByIds,
-  _getPositions,
-  _getServerTime,
-  _myBalances,
-} from './AccountsCalls';
+import { _getAccounts } from './AccountsCalls/_getAccounts/_getAccounts';
+import { _getActivities } from './AccountsCalls/_getActivities/_getActivities';
+import { _getBalances } from './AccountsCalls/_getBalances/_getBalances';
+import { _myBalances } from './AccountsCalls/_getBalances/_myBalances';
+import { _getExecutions } from './AccountsCalls/_getExecutions/_getExecutions';
+import { _getOrders } from './AccountsCalls/_getOrders/_getOrders';
+import { _getOrdersByIds } from './AccountsCalls/_getOrders/_getOrdersByIds';
+import { _getPositions } from './AccountsCalls/_getPositions/_getPositions';
+import { _getServerTime } from './AccountsCalls/_getServerTime/_getServerTime';
 import {
   _getCandles,
   _getMarkets,

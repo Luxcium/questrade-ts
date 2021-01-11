@@ -10,7 +10,6 @@ import {
   ClientStatic,
 } from '../../../resources/side-effects/typescript';
 import {
-  // AuthApiConfig,
   ClientProxyHandler,
   Credentials,
   IRefreshCreds,
@@ -18,7 +17,7 @@ import {
 } from '../../../typescript';
 
 // !!!
-// XXX: const { getHttpClient, writeToken, validateToken, echo } = sideEffects;
+// XXX: const { getHttpClient, echo } = sideEffects;
 
 export const _oAuthHttpCredentials = async (
   options: QuestradeAPIOptions,

@@ -1,6 +1,6 @@
 import { ClientProxyHandler, Credentials } from '../../../typescript';
-import { _coreApiFunction } from '../../core';
-import { _endpointFormatAccount } from './endpointFormatAccount';
+import { _coreApiFunction } from '../../core/_coreApiFunction';
+import { _endpointFormatAccount } from '..';
 
 // # _clientAccountGetApi
 /**

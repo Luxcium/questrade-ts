@@ -1,4 +1,4 @@
-import { _oAuthHttpCredentials } from '../../private/auth/clientCredentials_oAUTH';
+import { _oAuthHttpCredentials } from '../../private/auth/clientCredentials_oAUTH/xx-http-auth-xx';
 import { _emptyCredentials } from '../../private/auth/credentialsFactory';
 import { void0 } from '../../utils';
 
