@@ -1,3 +1,4 @@
+/* eslint-disable fp/no-arguments */
 //
 //  ## functionLength(f)
 //

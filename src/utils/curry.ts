@@ -1,3 +1,4 @@
+/* eslint-disable fp/no-arguments */
 // https://github.com/fantasyland/fantasy-helpers
 //
 //  ## functionLength(f)
