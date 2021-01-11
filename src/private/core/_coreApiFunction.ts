@@ -30,9 +30,7 @@ export const _coreApiFunction = (
             proxy,
           );
           // ->
-          const data = clientDataGetter(_logErrors);
-          // ~~>
-          return data; // from _tryToGetData...
+          return clientDataGetter(_logErrors); // from _tryToGetData...
         };
       };
     };

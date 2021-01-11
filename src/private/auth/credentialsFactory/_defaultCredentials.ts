@@ -1,5 +1,7 @@
 import { Credentials } from '../../../typescript';
 
+const STRING_PRIVATE = '[string:Private]';
+
 export const _defaultCredentials: Credentials = {
   accessToken: '',
   accountNumber: '',
@@ -60,10 +62,10 @@ export const _defaultCredentials: Credentials = {
             _header: '[HTTP Header Fields]',
           },
         },
-        accessToken: '[string:Private]',
+        accessToken: STRING_PRIVATE,
         keyFile: './keys/[Private]',
-        refreshToken: '[string:Private]',
-        seedToken: '[string:Private]',
+        refreshToken: STRING_PRIVATE,
+        seedToken: STRING_PRIVATE,
       }),
     );
   },
@@ -118,10 +120,10 @@ export const _defaultCredentials: Credentials = {
             },
           },
         },
-        accessToken: '[string:Private]',
+        accessToken: STRING_PRIVATE,
         keyFile: './keys/[Private]',
-        refreshToken: '[string:Private]',
-        seedToken: '[string:Private]',
+        refreshToken: STRING_PRIVATE,
+        seedToken: STRING_PRIVATE,
       },
       null,
       indent,

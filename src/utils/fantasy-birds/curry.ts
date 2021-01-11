@@ -16,7 +16,9 @@ function functionName(f: any) {
   return f._name || f.name;
 }
 
-module.exports = { functionLength, functionName };
+export { functionLength, functionName };
+export { curry };
+export { bind };
 
 //
 //  ## bind(f)(o)
@@ -51,8 +53,6 @@ function bind(this: any, f: any) {
     : curriedBind.apply(this, [].slice.call(arguments, 1) as any);
 }
 
-module.exports = bind;
-
 //
 //  ## curry(f)
 //
@@ -86,5 +86,3 @@ function curry(f: any) {
 
   return a;
 }
-
-export { curry };

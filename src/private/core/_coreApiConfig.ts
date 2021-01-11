@@ -43,14 +43,12 @@ export const _coreApiConfig = <D>(credentials: Credentials) => {
         };
         // ->
         /** Config builder. */
-        const config: ClientRequestConfig = {
+        return {
           url,
           method,
           headers,
           data,
         };
-        // ~~>
-        return config;
       };
     };
   };

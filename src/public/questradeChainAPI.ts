@@ -267,6 +267,5 @@ export class ChainApiClass {
   }
 }
 void function myFunct(credentials: Credentials) {
-  const myObj = new ChainApiClass(credentials);
-  return myObj;
+  return new ChainApiClass(credentials);
 };

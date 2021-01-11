@@ -33,15 +33,13 @@ _Client.mockImplementation((config?: ClientRequestConfig) => {
     'time',
     'ERROR',
   ].reduce((previous, dir) => {
-    if (!previous) {
-      if (url.includes(`/${dir}`)) {
-        if (dir === 'ERROR') {
-          const errMessage: string = 'Testing Errors';
-          void errorlog(errMessage);
-          throw new Error(errMessage);
-        }
-        return JSON.parse(readFileSync(path(dir), 'utf8'));
+    if (!previous && url.includes(`/${dir}`)) {
+      if (dir === 'ERROR') {
+        const errMessage: string = 'Testing Errors';
+        void errorlog(errMessage);
+        throw new Error(errMessage);
       }
+      return JSON.parse(readFileSync(path(dir), 'utf8'));
     }
     return previous;
   }, '');
@@ -50,4 +48,4 @@ _Client.mockImplementation((config?: ClientRequestConfig) => {
 });
 const Client = (_Client as unknown) as ClientStatic;
 
-module.exports = Client;
+export { Client };

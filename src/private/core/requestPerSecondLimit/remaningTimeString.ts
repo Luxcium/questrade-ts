@@ -5,15 +5,13 @@ export const remaningTimeString = (secsRemaning: number): string => {
       const minutesString = `${minutes}min`;
       const seconds = (((secsRemaning / 60) % 1) * 60).toFixed(0);
       const secondString = `${seconds}sec`;
-      const timeLeft = `${minutesString} ${secondString}`;
-      return timeLeft;
+      return `${minutesString} ${secondString}`;
     })();
   }
   // to avoid shadowing
   return (() => {
     const seconds = (((secsRemaning / 60) % 1) * 60).toFixed(0);
     const secondString = `${seconds}sec`;
-    const timeLeft = `${secondString}`;
-    return timeLeft;
+    return `${secondString}`;
   })();
 };

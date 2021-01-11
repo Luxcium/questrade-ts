@@ -27,7 +27,9 @@
   },
   "plugins": [
     "unicorn",
+    "sonarjs",
     "prettier",
+    "sort-keys-fix",
     "simple-import-sort",
     "import",
     "jsdoc",
@@ -37,6 +39,7 @@
     /*
   ―― START ――――――― eslint-config-prettier ――――――――――――――――――――――――――――――――――――――
     */
+    // +++ eslint-config-prettier +++
     "prettier/prettier": "warn",
     "arrow-body-style": "off",
     "no-confusing-arrow": "off",
@@ -80,6 +83,7 @@
     "@typescript-eslint/space-before-function-paren": "off",
     "@typescript-eslint/space-infix-ops": "off",
     "@typescript-eslint/type-annotation-spacing": "off",
+    // +++ eslint-config-prettier +++
     /*
   ―― END ―――――― eslint-config-prettier ―――――――――――――――――――――――――――――――――――――――――
     */
@@ -152,6 +156,7 @@
     "unicorn/throw-new-error": "warn",
     // "unicorn/no-nested-ternary": "off",
     // "unicorn/number-literal-case": "off",
+    "sort-keys-fix/sort-keys-fix": "warn",
     /*
   ―――――――― simple-import-sort ――――――――――――――――――――――――――――――――――――――――――――――――――
     */
@@ -165,17 +170,17 @@
     /*Static analysis*/
     "import/no-self-import": "error",
     "import/no-useless-path-segments": "warn",
-    "import/no-unresolved": 0, // "error",
-    "import/named": 0,
-    "import/default": 0,
+    "import/no-unresolved": "off", // "error",
+    "import/named": "error",
+    "import/default": "error",
     "import/namespace": "error",
-    "import/no-restricted-paths": 0,
+    "import/no-restricted-paths": "error",
     "import/no-absolute-path": "error",
-    "import/no-dynamic-require": 0,
-    "import/no-internal-modules": 0,
-    "import/no-webpack-loader-syntax": 0,
+    "import/no-dynamic-require": "error",
+    "import/no-internal-modules": "error",
+    "import/no-webpack-loader-syntax": "error",
     "import/no-cycle": "error",
-    "import/no-relative-parent-imports": 0,
+    "import/no-relative-parent-imports": "error",
     /* Helpful warnings */
     "import/export": "error",
     "import/no-named-as-default": "error",
@@ -188,24 +193,24 @@
     "import/first": "warn",
     "import/newline-after-import": "warn",
     "import/no-duplicates": "warn",
-    "import/no-namespace": "off",
-    // "import/order": 0, // ―3 managed with simple-import-sort
-    "import/exports-last": 0,
-    "import/extensions": 0,
-    "import/prefer-default-export": 0,
-    "import/max-dependencies": 0,
-    "import/no-unassigned-import": 0,
-    "import/no-named-default": 0,
-    "import/no-default-export": 0,
-    "import/no-named-export": 0,
-    "import/no-anonymous-default-export": 0,
+    "import/no-namespace": "warn",
+    // "import/order":  "error", // ―3 managed with simple-import-sort
+    "import/exports-last": "off",
+    "import/extensions": "error",
+    "import/prefer-default-export": "off",
+    "import/max-dependencies": "off",
+    "import/no-unassigned-import": "error",
+    "import/no-named-default": "error",
+    "import/no-default-export": "off",
+    "import/no-named-export": "off",
+    "import/no-anonymous-default-export": "error",
     "import/group-exports": "off",
-    "import/dynamic-import-chunkname": 0,
+    "import/dynamic-import-chunkname": "error",
     /*Module systems*/
-    "import/no-amd": 0,
-    "import/no-commonjs": 0,
-    "import/no-nodejs-modules": 0,
-    "import/unambiguous": "warn",
+    "import/no-amd": "error",
+    "import/no-commonjs": "error",
+    "import/no-nodejs-modules": "off",
+    "import/unambiguous": "error",
     /*
   ―――――――― eslint-plugin-jsdoc ―――――――――――――――――――――――――――――――――――――――――――――――――
     */
@@ -246,7 +251,35 @@
     "jsdoc/require-returns-check": 0, // "error", // Recommended
     "jsdoc/require-returns-description": 0, // "error", // Recommended
     "jsdoc/require-returns-type": 0, // "error", // Recommended
-    "jsdoc/valid-types": 0 // "error" // Recommended
+    "jsdoc/valid-types": 0, // "error" // Recommended
+    /*
+  ―――――――― eslint-plugin-sonarjs ―――――――――――――――――――――――――――――――――――――――――――――――――
+    */
+    "sonarjs/no-all-duplicated-branches": "error",
+    "sonarjs/no-element-overwrite": "error",
+    "sonarjs/no-extra-arguments": "error",
+    "sonarjs/no-identical-conditions": "error",
+    "sonarjs/no-identical-expressions": "error",
+    "sonarjs/no-one-iteration-loop": "error",
+    "sonarjs/no-use-of-empty-return-value": "error",
+    "sonarjs/cognitive-complexity": "error",
+    "sonarjs/max-switch-cases": "error",
+    "sonarjs/no-collapsible-if": "error",
+    "sonarjs/no-collection-size-mischeck": "error",
+    "sonarjs/no-duplicate-string": "error",
+    "sonarjs/no-duplicated-branches": "error",
+    "sonarjs/no-identical-functions": "error",
+    "sonarjs/no-inverted-boolean-check": "error",
+    "sonarjs/no-redundant-boolean": "error",
+    "sonarjs/no-redundant-jump": "error",
+    "sonarjs/no-same-line-conditional": "error",
+    "sonarjs/no-small-switch": "error",
+    "sonarjs/no-unused-collection": "error",
+    "sonarjs/no-useless-catch": "error",
+    "sonarjs/prefer-immediate-return": "warn",
+    "sonarjs/prefer-object-literal": "error",
+    "sonarjs/prefer-single-boolean-return": "error",
+    "sonarjs/prefer-while": "error"
   },
   "overrides": [
     {

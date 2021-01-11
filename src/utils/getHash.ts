@@ -10,15 +10,7 @@ export const getHash = (
   const longer: string = hAlgo.digest('hex').toString();
   const shorter: string = longer.slice(0, shortSlice);
   const hashObj = { shorter, longer };
-  const returnValue: [
-    string,
-    string,
-    {
-      shorter: string;
-      longer: string;
-    },
-  ] = [shorter, longer, hashObj];
-  return returnValue;
+  return [shorter, longer, hashObj];
 };
 
 export type GetHash = (

@@ -61,18 +61,18 @@ describe('QtAPI PROPERTIES will test all properties and methods on qtApi', () =>
     done();
   });
 
-  it('should validate qtApi myBalances', async done => {
+  it('should validate qtApi myBalances 1/3', async done => {
     expect(
       (await qtApi.myBalances()).CAD.combined.current.buyingPower,
     ).not.toBeNaN();
     done();
   });
 
-  it('should validate qtApi myBalances', async done => {
+  it('should validate qtApi myBalances 2/3', async done => {
     void0(qtApi.serverTime);
     done();
   }, 10_000);
-  it('should validate qtApi myBalances', async done => {
+  it('should validate qtApi myBalances 3/3', async done => {
     void0((await qtApi.myBalances()).CAD.combined.current.buyingPower);
     done();
   });

@@ -17,11 +17,8 @@ export interface OptionsSync {
 
 const _0777 = Number.parseInt('0777', 8);
 
-export const sync = (
-  p: string,
-  opts?: Mode | OptionsSync,
-  made?: Made,
-): Made => {
+// eslint-disable-next-line sonarjs/cognitive-complexity
+export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
   if (!opts || typeof opts !== 'object') {
     opts = { mode: opts };
   }
@@ -42,31 +39,24 @@ export const sync = (
     xfs.mkdirSync(p, mode);
     made = made || p;
   } catch (error) {
-    switch (error.code) {
-      case 'ENOENT':
-        made = sync(path.dirname(p), opts, made);
-        sync(p, opts, made);
-        break;
-
-      // In the case of whichever error, just see if there's a dir
-      // there already.  If so, then hooray!  If not, then something
-      // is borked.
-      default:
-        let stat;
-        try {
-          stat = xfs.statSync(p);
-        } catch {
-          throw error;
-        }
-        if (!stat.isDirectory()) {
-          throw error;
-        }
-        break;
+    if (error.code === 'ENOENT') {
+      made = sync(path.dirname(p), opts, made);
+      sync(p, opts, made);
+    } else {
+      let stat;
+      try {
+        stat = xfs.statSync(p);
+      } catch {
+        throw error;
+      }
+      if (!stat.isDirectory()) {
+        throw error;
+      }
     }
   }
 
   return made;
-};
+}
 
 /*
 Copyright 2010 James Halliday (mail@substack.net)

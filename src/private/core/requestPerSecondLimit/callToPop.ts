@@ -8,7 +8,7 @@ export function myRequestLimiterFactory() {
   const hertz: number = 1;
 
   // the request limiter function  itself
-  const queueLimiter = <Tfn>(fn: () => Promise<Tfn>) => {
+  return <Tfn>(fn: () => Promise<Tfn>) => {
     const queueList: [() => Promise<Tfn>, CallBack<any>][] = [];
     const shiftOutFromQueue = async () => {
       if (queueList.length > 0 && !isRequested) {
@@ -33,7 +33,6 @@ export function myRequestLimiterFactory() {
       return shiftOutFromQueue();
     };
   };
-  return queueLimiter;
 }
 
 const shiftQueue = <TFnct>(queueList: [TFnct, CallBack<any>][]) =>

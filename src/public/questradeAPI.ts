@@ -8,7 +8,7 @@ export const questradeApi = async (
   proxy?: ClientProxyHandler,
 ) => {
   const qtApi = await _getQuestradeApi(credentials, proxy);
-  const api: QuestradeApi = {
+  return {
     currentAccount: qtApi.currentAccount,
     myBalances: qtApi.myBalances,
     serverTime: qtApi.serverTime,
@@ -47,7 +47,6 @@ export const questradeApi = async (
       countResults: qtApi.search.countResults,
     },
   };
-  return api;
 };
 
 export const chainApi = {};
