@@ -17,7 +17,7 @@ import {
 } from '../../../typescript';
 
 // !!!
-// XXX: const { getHttpClient, echo } = sideEffects;
+// XXX: const {echo, getHttpClient, validateToken, writeToken,} = sideEffects;
 
 export const _oAuthHttpCredentials = async (
   options: QuestradeAPIOptions,
@@ -37,6 +37,7 @@ export const _oAuthHttpCredentials = async (
   if (proxy) {
     httpClient = proxy;
   }
+  // void proxy;
   let response: ClientResponse<IRefreshCreds>;
   response = (await httpClient(_config)) as any;
 

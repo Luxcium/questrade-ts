@@ -51,14 +51,5 @@ export const creatUrlAndDataHashes = (
           .toUpperCase()
           .slice(0, 16)}`,
     URL_PATH: !urlPath ? 'null' : urlPath,
-    // .slice(0, 16),
   };
 };
-
-/*
-'HEX:73B439CEB0EBEF90',
-'BASE62:SHA256:c7Q5zrDr',
-  DATA_HASH_HEX: 'HEX:F82F6522C52BB7A6',
-  DATA_HASH_64: 'BASE62:SHA256:C9lIsUrt'
-
- */

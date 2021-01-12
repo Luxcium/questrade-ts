@@ -91,3 +91,5 @@ export {
 export { ReqLimiterFactory } from './ReqLimiterFactory';
 export { UrlDataAndHashes } from './UrlAndDataHashes';
 export { WillCallBack } from './WillCallBack';
+
+export type Logger = <T = unknown>(...args: T[]) => T[];

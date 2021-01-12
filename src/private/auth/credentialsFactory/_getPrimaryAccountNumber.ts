@@ -1,5 +1,5 @@
 import { errorlog } from '../../../resources/side-effects';
-import { AcountNumberString, IAccount } from '../../../types';
+import { AcountNumberString, IAccount } from '../../../typescript';
 
 // !!!
 // XXX: const { errorlog } = sideEffects;

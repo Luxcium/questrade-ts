@@ -7,7 +7,7 @@ import {
   StrategyVariantRequest,
 } from '../../typescript';
 import { void0 } from '../../utils';
-import { _clientGetApi, _clientPostApi } from '..';
+import { _clientGetApi, _clientPostApi } from '../routes';
 import { _clientAccountGetApi } from '../routes/clientAccountGetApi/_clientAccountGetApi';
 import { _getAccounts } from './AccountsCalls/_getAccounts/_getAccounts';
 import { _getActivities } from './AccountsCalls/_getActivities/_getActivities';
@@ -86,12 +86,7 @@ export const _getQuestradeApi = async (
     _getSymbolSearch(_clientGetApi(credentials, proxy), errorlog),
     _getSymbolSearchCount(_clientGetApi(credentials, proxy), errorlog),
   ];
-  // clientGetApi: <R>(endpoint: string) => () => Promise<R>,
-  //
-  //  _clientGetApi(credentials, proxy),
-  //  _clientPostApi(credentials, proxy),
-  //  _clientAccountGetApi(credentials, proxy),
-  //  _clientGetApi(credentials, proxy),
+
   // unused for the moment
 
   return {

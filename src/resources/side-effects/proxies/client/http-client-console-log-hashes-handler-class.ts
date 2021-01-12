@@ -7,12 +7,12 @@ import { ReflexionLoggerProxyHandlerAbstractClass } from '../core/reflexion-logg
 
 const { echo } = sideEffects;
 
-class clientConsoleLogHashesHandlerClass
+class ClientConsoleLogHashesHandlerClass
   extends ReflexionLoggerProxyHandlerAbstractClass<ClientStatic>
   implements ProxyHandler<ClientStatic> {
   protected proxy = {
-    class: 'clientConsoleLogHashesHandlerClass',
-    extends: 'ProxyReflexionLoggerFunctionHandler<ClientStatic>',
+    class: 'ClientConsoleLogHashesHandlerClass',
+    extends: 'ReflexionLoggerProxyHandlerAbstractClass<ClientStatic>',
     implements: 'ProxyHandler<ClientStatic>',
   };
   async apply(
@@ -43,5 +43,5 @@ class clientConsoleLogHashesHandlerClass
 }
 
 export const httpHashLoggerClientProxyHandler = clientProxyHandlerFactoryFunction()(
-  new clientConsoleLogHashesHandlerClass(),
+  new ClientConsoleLogHashesHandlerClass(),
 );

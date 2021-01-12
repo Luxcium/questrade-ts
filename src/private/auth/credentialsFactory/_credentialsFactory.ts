@@ -2,6 +2,7 @@ import { errorlog, infolog } from '../../../resources/side-effects';
 import { ClientProxyHandler, QuestradeAPIOptions } from '../../../typescript';
 import { _getAccounts } from '../../api/AccountsCalls/_getAccounts/_getAccounts';
 import { _getServerTime } from '../../api/AccountsCalls/_getServerTime/_getServerTime';
+import { _clientGetApi } from '../../routes';
 import { _oAuthHttpCredentials } from '../clientCredentials_oAUTH/xx-http-auth-xx';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 
@@ -16,8 +17,8 @@ export const _credentialsFactory = async (
   const credentials = await _oAuthHttpCredentials(options, proxy);
 
   try {
-    const accounts = await _getAccounts(credentials, proxy)();
-    const time = await _getServerTime(credentials, proxy)();
+    const accounts = await _getAccounts(_clientGetApi(credentials, proxy))();
+    const time = await _getServerTime(_clientGetApi(credentials, proxy))();
 
     const timZoneOffset = new Date(time).getTimezoneOffset();
     const timZone = -1 * 60 * 1000 * timZoneOffset;

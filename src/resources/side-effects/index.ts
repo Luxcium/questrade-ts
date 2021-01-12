@@ -50,9 +50,11 @@ const sideEffects = {
   infolog,
 
   makeTedis,
+
+  setMyToken,
+
+  tablelog,
   // writeToken,
   // validateToken,
-  setMyToken,
-  tablelog,
   warnlog,
 };

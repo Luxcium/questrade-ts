@@ -1,5 +1,5 @@
-import { _logErrors } from '../../private/core/_logErrors';
 import { _tryToGetData } from '../../private/core/XX-try-to-get-data-from-http-client-XX';
+import { errorlog } from '../../resources/side-effects';
 
 test('should ERROR _tryToGetData', async done => {
   const response = _tryToGetData({
@@ -9,7 +9,7 @@ test('should ERROR _tryToGetData', async done => {
     url: 'ERROR',
   });
   try {
-    expect(await response(_logErrors)).toThrow();
+    expect(await response(errorlog)).toThrow();
   } catch {
     //
   }

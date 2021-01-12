@@ -1,4 +1,4 @@
-import { QuestradeApi } from '../../types';
+import { QuestradeApi } from '../../typescript';
 
 const getSymboIdByStockSymbol = (qtApi: QuestradeApi) => async (
   prefix: string,

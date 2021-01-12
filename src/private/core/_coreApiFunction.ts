@@ -1,11 +1,11 @@
-import { ClientProxyHandler, Credentials } from '../../typescript';
+import { ClientProxyHandler, Credentials, Logger } from '../../typescript';
 import { _coreApiConfig } from './_coreApiConfig';
-import { _logErrors } from './_logErrors';
 import { _tryToGetData } from './XX-try-to-get-data-from-http-client-XX';
 
 export const _coreApiFunction = (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: Logger = (...error: any[]) => error,
 ) => {
   // ~~>
   return (VERB: 'GET' | 'POST') => {
@@ -30,7 +30,7 @@ export const _coreApiFunction = (
             proxy,
           );
           // ->
-          return clientDataGetter(_logErrors); // from _tryToGetData...
+          return clientDataGetter(errorlog); // from _tryToGetData...
         };
       };
     };

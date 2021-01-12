@@ -1,6 +1,5 @@
 import {
   echo,
-  errorlog,
   getHttpClient,
   infolog,
   tablelog,
@@ -10,7 +9,7 @@ import {
   ClientResponse,
   ClientStatic,
 } from '../../resources/side-effects/typescript';
-import { Credentials, LogErrors } from '../../typescript';
+import { Credentials, Logger } from '../../typescript';
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../utils';
 import {
   remainingRequests,
@@ -18,14 +17,12 @@ import {
   requestPerSecondLimiter,
 } from './requestPerSecondLimit';
 
-// const { echo, infolog, errorlog, tablelog, getHttpClient } = sideEffects;
-
 export const _tryToGetData = <R>(
   _config: ClientRequestConfig,
   credentials?: Credentials,
   proxy?: ClientStatic,
 ) => {
-  return async (_logError: LogErrors): Promise<R> => {
+  return async (errorlog: Logger): Promise<R> => {
     try {
       let httpClient: ClientStatic = getHttpClient();
       if (proxy) {
@@ -70,7 +67,8 @@ export const _tryToGetData = <R>(
       }
       const { data } = response;
       if (!data) {
-        throw _logError(new Error("Can't retrive data from call to API"));
+        void 0;
+        throw new Error(...errorlog("Can't retrive data from call to API"));
       }
       try {
         if (credentials) {
@@ -99,7 +97,7 @@ export const _tryToGetData = <R>(
       }
       return data;
     } catch (error) {
-      void errorlog(_logError(error).message);
+      void errorlog(error.message);
 
       throw error;
     }

@@ -1,4 +1,4 @@
-import { Credentials, IRefreshCreds } from '../../../types';
+import { Credentials, IRefreshCreds } from '../../../typescript';
 import { _writeToken } from '../auth/_writeToken';
 import { ClientResponse } from '../types';
 

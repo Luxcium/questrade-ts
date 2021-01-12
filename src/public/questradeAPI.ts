@@ -6,8 +6,9 @@ import { ClientProxyHandler, Credentials } from '../typescript';
 export const questradeApi = async (
   credentials: Credentials,
   proxy?: ClientProxyHandler,
+  errorlog: (error: any) => any = (error: any) => error,
 ) => {
-  const qtApi = await _getQuestradeApi(credentials, proxy);
+  const qtApi = await _getQuestradeApi(credentials, proxy, errorlog);
   return {
     account: {
       getActivities: qtApi.account.getActivities,

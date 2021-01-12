@@ -23,7 +23,7 @@ import {
   ISymbolSearchResult,
   OptionsFilters,
   StrategyVariantRequest,
-} from './types';
+} from './typescript';
 
 export interface QuestradeApi {
   currentAccount: string;
