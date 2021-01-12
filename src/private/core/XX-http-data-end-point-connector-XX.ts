@@ -7,9 +7,8 @@ import {
 import {
   ClientRequestConfig,
   ClientResponse,
-  ClientStatic,
 } from '../../resources/side-effects/typescript';
-import { Credentials, Logger } from '../../typescript';
+import { ClientProxyHandler, Credentials, Logger } from '../../typescript';
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../utils';
 import {
   remainingRequests,
@@ -17,15 +16,15 @@ import {
   requestPerSecondLimiter,
 } from './requestPerSecondLimit';
 
-export const _tryToGetData = <R>(
+export const _httpDataEndPointConnector = <R>(
   _config: ClientRequestConfig,
   credentials?: Credentials,
-  proxy?: ClientStatic,
+  proxy?: ClientProxyHandler,
 ) => {
   return async (errorlog: Logger): Promise<R> => {
     try {
-      let httpClient: ClientStatic = getHttpClient();
-      if (proxy) {
+      let httpClient: ClientProxyHandler = getHttpClient();
+      if (proxy?.httpDataEndPointConnector) {
         httpClient = proxy;
       }
 

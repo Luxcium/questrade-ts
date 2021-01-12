@@ -7,7 +7,6 @@ import {
 import {
   ClientRequestConfig,
   ClientResponse,
-  ClientStatic,
 } from '../../../resources/side-effects/typescript';
 import {
   ClientProxyHandler,
@@ -33,11 +32,10 @@ export const _oAuthHttpCredentials = async (
     url: `${credentials.authUrl}/oauth2/token`,
   };
 
-  let httpClient: ClientStatic = getHttpClient();
-  if (proxy) {
+  let httpClient: ClientProxyHandler = getHttpClient();
+  if (proxy?.oAuthHttpCredentials) {
     httpClient = proxy;
   }
-  // void proxy;
   let response: ClientResponse<IRefreshCreds>;
   response = (await httpClient(_config)) as any;
 

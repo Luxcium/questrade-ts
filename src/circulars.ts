@@ -5,7 +5,7 @@ import './private/auth/credentialsFactory/_credentialsFactory';
 import './private/auth/credentialsFactory/_getPrimaryAccountNumber';
 import './private/core/requestPerSecondLimit';
 import './private/core/requestPerSecondLimit/CORE_PerSecond_Limiter';
-import './private/core/XX-try-to-get-data-from-http-client-XX';
+import './private/core/XX-http-data-end-point-connector-XX';
 import './private/core/_coreApiFunction';
 import './private/routes';
 import './private/routes/clientGetApi/_clientGetApi';

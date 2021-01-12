@@ -12,11 +12,11 @@ import { ReflexionLoggerProxyHandlerAbstractClass } from '../core/reflexion-logg
 
 const { echo } = sideEffects;
 
-class HttpRedisClientHandlerClass
+class redisClientProxyHandlerClass
   extends ReflexionLoggerProxyHandlerAbstractClass<ClientStatic>
   implements ProxyHandler<ClientStatic> {
   protected proxy = {
-    class: 'HttpRedisClientHandlerClass',
+    class: 'redisClientProxyHandlerClass',
     extends: 'ReflexionLoggerProxyHandlerAbstractClass<ClientStatic>',
     implements: 'ProxyHandler<ClientStatic>',
   };
@@ -26,6 +26,10 @@ class HttpRedisClientHandlerClass
     super();
     this.tedis = tedisInstance;
   }
+  get(target: any, p: any, receiver: any) {
+    void echo<any>('Proxy: → Get', this.proxy);
+    void [target, p, receiver];
+  }
   async apply(
     target: ClientStatic,
     thisArg: any,
@@ -34,6 +38,7 @@ class HttpRedisClientHandlerClass
     const returnValue = Reflect.apply(target, thisArg, argArray);
     const urlPath = getQtUrlPathFromArgs(argArray);
     const data = `${JSON.stringify((await returnValue).data ?? null)}`;
+
     const proxyData = {
       clientConfig: argArray[0],
       proxy: {
@@ -44,17 +49,28 @@ class HttpRedisClientHandlerClass
       },
       ...creatUrlAndDataHashes(urlPath, data),
     };
-
-    // +SIDE EFFECTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-    void echo(proxyData);
-    void0(this.tedis.set(proxyData.URL_HASH_HEX, proxyData.DATA));
-    void echo('this.tedis.get', await this.tedis.get(proxyData.URL_HASH_HEX));
-    // +RETURN VALUE ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-    return returnValue;
+    try {
+      // +SIDE EFFECTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
+      void echo(proxyData);
+      void0(await this.tedis.set(proxyData.URL_HASH_HEX, proxyData.DATA));
+      void0(
+        await this.tedis.command(
+          `PFADD ${proxyData.URLDATA_HEX} ${proxyData.DATA_HASH_HEX}`,
+        ),
+      );
+      void echo('this.tedis.get', await this.tedis.get(proxyData.URL_HASH_HEX));
+      // +RETURN VALUE ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
+      return returnValue;
+    } catch {
+      // void echo(error);
+      return { data: null };
+    }
   }
 }
 
 export const httpRedisClientProxyHandler = (tedisInstance: Tedis) =>
   clientProxyHandlerFactoryFunction()(
-    new HttpRedisClientHandlerClass(tedisInstance),
+    new redisClientProxyHandlerClass(tedisInstance),
+    true,
+    false,
   );

@@ -8,22 +8,29 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   T extends Function = any
 > implements ProxyHandler<T> {
   getPrototypeOf(target: T): object | null {
-    void echo<unknown>('PROXY:', 'getPrototypeOf', 'target:', target);
+    void echo<unknown>('PROXY:', '!!→ getPrototypeOf', 'target →', target);
     return Reflect.getPrototypeOf(target);
   }
 
   setPrototypeOf(target: T, v: any): boolean {
-    void echo<unknown>('PROXY:', 'setPrototypeOf', 'target', target, 'v', v);
+    void echo<unknown>(
+      'PROXY:',
+      '!!→ setPrototypeOf',
+      'target →',
+      target,
+      'v →',
+      v,
+    );
     return Reflect.setPrototypeOf(target, v);
   }
 
   isExtensible(target: T): boolean {
-    void echo<unknown>('PROXY:', 'isExtensible', 'target', target);
+    void echo<unknown>('PROXY:', '!!→ isExtensible', 'target →', target);
     return Reflect.isExtensible(target);
   }
 
   preventExtensions(target: T): boolean {
-    void echo<unknown>('PROXY:', 'preventExtensions', 'target', target);
+    void echo<unknown>('PROXY:', '!!→ preventExtensions', 'target →', target);
     return Reflect.preventExtensions(target);
   }
 
@@ -33,29 +40,29 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   ): PropertyDescriptor | undefined {
     void echo<unknown>(
       'PROXY:',
-      'getOwnPropertyDescriptor',
-      'target',
+      '!!→ getOwnPropertyDescriptor',
+      'target →',
       target,
-      'p',
+      'p →',
       p,
     );
     return Reflect.getOwnPropertyDescriptor(target, p);
   }
 
   has(target: T, p: PropertyKey): boolean {
-    void echo<unknown>('PROXY:', 'has', 'target', target, 'p', p);
+    void echo<unknown>('PROXY:', '!!→ has', 'target →', target, 'p →', p);
     return Reflect.has(target, p);
   }
 
   get(target: T, p: PropertyKey, receiver: any): any {
     void echo<unknown>(
       'PROXY:',
-      'get',
-      'target',
+      '!!→ get',
+      'target →',
       target,
-      'p',
+      'p →',
       p,
-      'receiver',
+      'receiver →',
       receiver,
     );
 
@@ -65,14 +72,14 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   set(target: T, p: PropertyKey, value: any, receiver: any): boolean {
     void echo<unknown>(
       'PROXY:',
-      'set',
-      'target',
+      '!!→ set',
+      'target →',
       target,
-      'p',
+      'p →',
       p,
-      'value',
+      'value →',
       value,
-      'receiver',
+      'receiver →',
       receiver,
     );
 
@@ -80,7 +87,14 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   }
 
   deleteProperty(target: T, p: PropertyKey): boolean {
-    void echo<unknown>('PROXY:', 'deleteProperty', 'target', target, 'p', p);
+    void echo<unknown>(
+      'PROXY:',
+      '!!→ deleteProperty',
+      'target →',
+      target,
+      'p →',
+      p,
+    );
     return Reflect.deleteProperty(target, p);
   }
 
@@ -91,12 +105,12 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   ): boolean {
     void echo<unknown>(
       'PROXY:',
-      'defineProperty',
-      'target',
+      '!!→ defineProperty',
+      'target →',
       target,
-      'p',
+      'p →',
       p,
-      'attributes',
+      'attributes →',
       attributes,
     );
 
@@ -111,12 +125,12 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   apply(target: T, thisArg: any, argArray?: any): any {
     void echo<unknown>(
       'PROXY:',
-      'apply',
-      'target',
+      '!!→ apply',
+      'target →',
       target,
-      'thisArg',
+      'thisArg →',
       thisArg,
-      'argArray',
+      'argArray →',
       argArray,
     );
 
@@ -126,12 +140,12 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   construct(target: T, argArray: any, newTarget: any): object {
     void echo<unknown>(
       'PROXY:',
-      'construct',
-      'target',
+      '!!→ construct',
+      'target →',
       target,
-      'argArray',
+      'argArray →',
       argArray,
-      'newTarget',
+      'newTarget →',
       newTarget,
     );
     return Reflect.construct(target, argArray, newTarget);

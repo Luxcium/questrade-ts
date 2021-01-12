@@ -1,6 +1,6 @@
 import { ClientProxyHandler, Credentials, Logger } from '../../typescript';
 import { _coreApiConfig } from './_coreApiConfig';
-import { _tryToGetData } from './XX-try-to-get-data-from-http-client-XX';
+import { _httpDataEndPointConnector } from './XX-http-data-end-point-connector-XX';
 
 export const _coreApiFunction = (
   credentials: Credentials,
@@ -24,7 +24,7 @@ export const _coreApiFunction = (
           // ->
           const getDataConfig = endPoint(postData);
           // ->
-          const clientDataGetter = _tryToGetData<R>(
+          const clientDataGetter = _httpDataEndPointConnector<R>(
             getDataConfig,
             credentials,
             proxy,
