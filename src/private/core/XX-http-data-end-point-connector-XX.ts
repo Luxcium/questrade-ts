@@ -24,8 +24,10 @@ export const _httpDataEndPointConnector = <R>(
   return async (errorlog: Logger): Promise<R> => {
     try {
       let httpClient: ClientProxyHandler = getHttpClient();
-      if (proxy?.httpDataEndPointConnector) {
-        httpClient = proxy;
+      if (proxy?.httpDataEndPointConnector && proxy?.activate) {
+        echo('using proxy in end point connector');
+
+        httpClient = proxy.activate();
       }
 
       const possiblePerSeconds =

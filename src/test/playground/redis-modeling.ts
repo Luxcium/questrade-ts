@@ -2,7 +2,8 @@
 
 import { redeemToken } from '../..';
 import { sideEffects } from '../../resources/side-effects';
-import { httpRedisClientProxyHandler } from '../../resources/side-effects/proxies';
+import { redisClientProxyHandler } from '../../resources/side-effects/proxies';
+import { void0 } from '../../utils';
 
 const { echo, errorlog, getMyToken, makeTedis } = sideEffects;
 
@@ -12,13 +13,12 @@ const tedis = makeTedis();
 (async function main() {
   const { qtApi } = await redeemToken(
     getMyToken(),
-    httpRedisClientProxyHandler(tedis),
+    redisClientProxyHandler(tedis),
     errorlog,
   );
   return (async function leadingPrime() {
-    echo(await qtApi.account.getServerTime());
-    echo((await qtApi.search.stock('aapl'))[0]);
-    // return /* tedis; */
+    void0(await qtApi.account.getServerTime());
+    // void0((await qtApi.search.stock('aapl'))[0]);
   })().catch(error => errorlog('in leadingPrime', error.message));
 })()
   .then(async () => echo(await tedis.keys('*')))

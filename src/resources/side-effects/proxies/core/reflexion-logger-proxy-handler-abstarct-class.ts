@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 // import { echo } from '../..';
 
 import { sideEffects } from '../..';
@@ -7,30 +8,50 @@ const { echo } = sideEffects;
 export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   T extends Function = any
 > implements ProxyHandler<T> {
+  constructor(protected debug: boolean = false) {}
+
   getPrototypeOf(target: T): object | null {
-    void echo<unknown>('PROXY:', '!!→ getPrototypeOf', 'target →', target);
+    if (this.debug === true) {
+      void echo<unknown>('PROXY:', '!!→ getPrototypeOf', 'target →', target);
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
+
     return Reflect.getPrototypeOf(target);
   }
 
   setPrototypeOf(target: T, v: any): boolean {
-    void echo<unknown>(
-      'PROXY:',
-      '!!→ setPrototypeOf',
-      'target →',
-      target,
-      'v →',
-      v,
-    );
+    if (this.debug === true) {
+      void echo<unknown>(
+        'PROXY:',
+        '!!→ setPrototypeOf',
+        'target →',
+        target,
+        'v →',
+        v,
+      );
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
     return Reflect.setPrototypeOf(target, v);
   }
 
   isExtensible(target: T): boolean {
-    void echo<unknown>('PROXY:', '!!→ isExtensible', 'target →', target);
+    if (this.debug === true) {
+      void echo<unknown>('PROXY:', '!!→ isExtensible', 'target →', target);
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
+
     return Reflect.isExtensible(target);
   }
 
   preventExtensions(target: T): boolean {
-    void echo<unknown>('PROXY:', '!!→ preventExtensions', 'target →', target);
+    if (this.debug === true) {
+      void echo<unknown>('PROXY:', '!!→ preventExtensions', 'target →', target);
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
     return Reflect.preventExtensions(target);
   }
 
@@ -38,63 +59,83 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
     target: T,
     p: PropertyKey,
   ): PropertyDescriptor | undefined {
-    void echo<unknown>(
-      'PROXY:',
-      '!!→ getOwnPropertyDescriptor',
-      'target →',
-      target,
-      'p →',
-      p,
-    );
+    if (this.debug === true) {
+      void echo<unknown>(
+        'PROXY:',
+        '!!→ getOwnPropertyDescriptor',
+        'target →',
+        target,
+        'p →',
+        p,
+      );
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
     return Reflect.getOwnPropertyDescriptor(target, p);
   }
 
   has(target: T, p: PropertyKey): boolean {
-    void echo<unknown>('PROXY:', '!!→ has', 'target →', target, 'p →', p);
+    if (this.debug === true) {
+      void echo<unknown>('PROXY:', '!!→ has', 'target →', target, 'p →', p);
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
     return Reflect.has(target, p);
   }
 
   get(target: T, p: PropertyKey, receiver: any): any {
-    void echo<unknown>(
-      'PROXY:',
-      '!!→ get',
-      'target →',
-      target,
-      'p →',
-      p,
-      'receiver →',
-      receiver,
-    );
+    if (this.debug === true) {
+      void echo<unknown>(
+        'PROXY:',
+        '!!→ get',
+        'target →',
+        target,
+        'p →',
+        p,
+        'receiver →',
+        receiver,
+      );
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
 
     return Reflect.get(target, p, receiver);
   }
 
   set(target: T, p: PropertyKey, value: any, receiver: any): boolean {
-    void echo<unknown>(
-      'PROXY:',
-      '!!→ set',
-      'target →',
-      target,
-      'p →',
-      p,
-      'value →',
-      value,
-      'receiver →',
-      receiver,
-    );
+    if (this.debug === true) {
+      void echo<unknown>(
+        'PROXY:',
+        '!!→ set',
+        'target →',
+        target,
+        'p →',
+        p,
+        'value →',
+        value,
+        'receiver →',
+        receiver,
+      );
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
 
     return Reflect.set(target, p, value, receiver);
   }
 
   deleteProperty(target: T, p: PropertyKey): boolean {
-    void echo<unknown>(
-      'PROXY:',
-      '!!→ deleteProperty',
-      'target →',
-      target,
-      'p →',
-      p,
-    );
+    if (this.debug === true) {
+      void echo<unknown>(
+        'PROXY:',
+        '!!→ deleteProperty',
+        'target →',
+        target,
+        'p →',
+        p,
+      );
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
     return Reflect.deleteProperty(target, p);
   }
 
@@ -103,51 +144,67 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
     p: PropertyKey,
     attributes: PropertyDescriptor,
   ): boolean {
-    void echo<unknown>(
-      'PROXY:',
-      '!!→ defineProperty',
-      'target →',
-      target,
-      'p →',
-      p,
-      'attributes →',
-      attributes,
-    );
+    if (this.debug === true) {
+      void echo<unknown>(
+        'PROXY:',
+        '!!→ defineProperty',
+        'target →',
+        target,
+        'p →',
+        p,
+        'attributes →',
+        attributes,
+      );
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
 
     return Reflect.defineProperty(target, p, attributes);
   }
 
   ownKeys(target: T) /* : (string | number | symbol)[] */ {
-    void echo<unknown>('PROXY:', 'ownKeys', 'target', target);
+    if (this.debug === true) {
+      void echo<unknown>('PROXY:', 'ownKeys', 'target', target);
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
     return Reflect.ownKeys(target);
   }
 
   apply(target: T, thisArg: any, argArray?: any): any {
-    void echo<unknown>(
-      'PROXY:',
-      '!!→ apply',
-      'target →',
-      target,
-      'thisArg →',
-      thisArg,
-      'argArray →',
-      argArray,
-    );
+    if (this.debug === true) {
+      void echo<unknown>(
+        'PROXY:',
+        '!!→ apply',
+        'target →',
+        target,
+        'thisArg →',
+        thisArg,
+        'argArray →',
+        argArray,
+      );
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
 
     return Reflect.apply(target, thisArg, argArray);
   }
 
   construct(target: T, argArray: any, newTarget: any): object {
-    void echo<unknown>(
-      'PROXY:',
-      '!!→ construct',
-      'target →',
-      target,
-      'argArray →',
-      argArray,
-      'newTarget →',
-      newTarget,
-    );
+    if (this.debug === true) {
+      void echo<unknown>(
+        'PROXY:',
+        '!!→ construct',
+        'target →',
+        target,
+        'argArray →',
+        argArray,
+        'newTarget →',
+        newTarget,
+      );
+
+      echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
+    }
     return Reflect.construct(target, argArray, newTarget);
   }
 }

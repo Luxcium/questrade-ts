@@ -33,9 +33,12 @@ export const _oAuthHttpCredentials = async (
   };
 
   let httpClient: ClientProxyHandler = getHttpClient();
-  if (proxy?.oAuthHttpCredentials) {
-    httpClient = proxy;
+  if (proxy?.httpDataEndPointConnector && proxy?.activate) {
+    echo('using proxy in oAuth connector');
+
+    httpClient = proxy.activate();
   }
+
   let response: ClientResponse<IRefreshCreds>;
   response = (await httpClient(_config)) as any;
 

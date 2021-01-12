@@ -1,6 +1,5 @@
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../../../utils';
 import { sideEffects } from '../..';
-// import { echo } from '../..';
 import { ClientStatic } from '../../types';
 import { clientProxyHandlerFactoryFunction } from '../core/client-proxy-handler-factory-function';
 import { ReflexionLoggerProxyHandlerAbstractClass } from '../core/reflexion-logger-proxy-handler-abstarct-class';
@@ -43,5 +42,5 @@ class ClientConsoleLogHashesHandlerClass
 }
 
 export const httpHashLoggerClientProxyHandler = clientProxyHandlerFactoryFunction()(
-  new ClientConsoleLogHashesHandlerClass(),
+  () => new ClientConsoleLogHashesHandlerClass(),
 );
