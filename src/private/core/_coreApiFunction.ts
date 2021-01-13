@@ -1,10 +1,15 @@
-import { ClientProxyHandler, Credentials, Logger } from '../../typescript';
+import { ProxyHandlerOptions } from '../../resources/side-effects/types';
+import {
+  ClientStaticHandlerFactory,
+  Credentials,
+  Logger,
+} from '../../typescript';
 import { _coreApiConfig } from './_coreApiConfig';
 import { _httpDataEndPointConnector } from './XX-http-data-end-point-connector-XX';
 
 export const _coreApiFunction = (
   credentials: Credentials,
-  proxy?: ClientProxyHandler,
+  proxy?: ClientStaticHandlerFactory,
   errorlog: Logger = (...error: any[]) => error,
 ) => {
   // ~~>
@@ -12,7 +17,10 @@ export const _coreApiFunction = (
     // ~~>
     return <D>(postData: D | null) => {
       // ~~>
-      return <R>(endpoint: string) => {
+      return <R>(
+        endpoint: string,
+        handlerOptions: ProxyHandlerOptions /* = {} */,
+      ) => {
         // ~~>
         return async (): Promise<R> => {
           // ->
@@ -30,7 +38,8 @@ export const _coreApiFunction = (
             proxy,
           );
           // ->
-          return clientDataGetter(errorlog); // from _tryToGetData...
+          void handlerOptions;
+          return clientDataGetter(errorlog, handlerOptions); // from _tryToGetData...
         };
       };
     };

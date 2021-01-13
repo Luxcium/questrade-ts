@@ -12,4 +12,5 @@ export {
   ClientResponse,
   ClientStatic,
   ClientTransformer,
+  ProxyHandlerOptions,
 } from './typescript';

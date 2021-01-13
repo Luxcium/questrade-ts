@@ -1,5 +1,8 @@
 import { errorlog, infolog } from '../../../resources/side-effects';
-import { ClientProxyHandler, QuestradeAPIOptions } from '../../../typescript';
+import {
+  ClientStaticHandlerFactory,
+  QuestradeAPIOptions,
+} from '../../../typescript';
 import { _getAccounts } from '../../api/AccountsCalls/_getAccounts/_getAccounts';
 import { _getServerTime } from '../../api/AccountsCalls/_getServerTime/_getServerTime';
 import { _clientGetApi } from '../../routes';
@@ -12,7 +15,7 @@ import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 export const _credentialsFactory = async (
   options: QuestradeAPIOptions,
-  proxy?: ClientProxyHandler,
+  proxy?: ClientStaticHandlerFactory,
 ) => {
   const credentials = await _oAuthHttpCredentials(options, proxy);
 

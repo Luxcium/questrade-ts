@@ -52,7 +52,7 @@ export const creatUrlAndDataHashes = (
       )
       .digest(HEX)
       .toUpperCase()
-      .slice(0, 32)}`,
+      .slice(0, 15)}`,
     /*
 
      //!!
@@ -73,7 +73,7 @@ export const creatUrlAndDataHashes = (
           .update(urlPath)
           .digest(HEX)
           .toUpperCase()
-          .slice(0, 16)}`,
+          .slice(0, 18)}`,
     URL_PATH: !urlPath ? 'null' : urlPath,
   };
 };

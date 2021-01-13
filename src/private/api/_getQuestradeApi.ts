@@ -1,5 +1,5 @@
 import {
-  ClientProxyHandler,
+  ClientStaticHandlerFactory,
   Credentials,
   Logger,
   OptionsFilters,
@@ -36,7 +36,7 @@ import {
 
 export const _getQuestradeApi = async (
   credentials: Credentials,
-  proxy?: ClientProxyHandler,
+  proxy?: ClientStaticHandlerFactory,
   errorlog: Logger = (...error: any[]) => error,
 ): Promise<QuestradeApi> => {
   const [
@@ -62,6 +62,14 @@ export const _getQuestradeApi = async (
     symbolSearch,
     symbolSearchCount,
   ] = [
+    /*
+    Argument of type '<R>(endpoint: string, handlerOptions: ProxyHandlerOptions) => () => Promise<R>'
+    is not assignable to
+    parameter of type '<R>(endpoint: string) => () => Promise<R>'.ts(2345)
+    ,
+    handlerOptions: ProxyHandlerOptions,
+    , { noCaching: true }
+     */
     _getAccounts(_clientGetApi(credentials, proxy), errorlog),
     _getActivities(_clientAccountGetApi(credentials, proxy), errorlog),
     _getBalances(_clientAccountGetApi(credentials, proxy), errorlog),

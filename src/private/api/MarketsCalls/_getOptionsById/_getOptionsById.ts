@@ -1,3 +1,4 @@
+import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import { IOptionChain, IOptionChains, Logger } from '../../../../typescript';
 
 // + _getOptionsById
@@ -6,12 +7,18 @@ import { IOptionChain, IOptionChains, Logger } from '../../../../typescript';
 */
 /** _getOptionsSymbols */
 export const _getOptionsById = (
-  clientGetApi: <R>(endpoint: string) => () => Promise<R>,
+  clientGetApi: <R>(
+    endpoint: string,
+    handlerOptions: ProxyHandlerOptions,
+  ) => () => Promise<R>,
   errorlog: Logger = (...error: any[]) => error,
 ) => async (symbolID: number): Promise<IOptionChain[]> => {
   try {
-    return (await clientGetApi<IOptionChains>(`/symbols/${symbolID}/options`)())
-      .optionChain;
+    return (
+      await clientGetApi<IOptionChains>(`/symbols/${symbolID}/options`, {
+        noCaching: true,
+      })()
+    ).optionChain;
     /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
     */

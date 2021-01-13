@@ -1,7 +1,7 @@
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../../../utils';
 import { sideEffects } from '../..';
-import { ClientStatic } from '../../types';
-import { clientProxyHandlerFactoryFunction } from '../core/client-proxy-handler-factory-function';
+import { ClientStatic, ProxyHandlerOptions } from '../../types';
+import { clientProxyHandlerFactory } from '../core/client-proxy-handler-factory-function';
 import { ReflexionLoggerProxyHandlerAbstractClass } from '../core/reflexion-logger-proxy-handler-abstarct-class';
 
 const { echo } = sideEffects;
@@ -9,6 +9,9 @@ const { echo } = sideEffects;
 class ClientConsoleLogHashesHandlerClass
   extends ReflexionLoggerProxyHandlerAbstractClass<ClientStatic>
   implements ProxyHandler<ClientStatic> {
+  constructor(protected handlerOptions: ProxyHandlerOptions) {
+    super(handlerOptions);
+  }
   protected proxy = {
     class: 'ClientConsoleLogHashesHandlerClass',
     extends: 'ReflexionLoggerProxyHandlerAbstractClass<ClientStatic>',
@@ -41,6 +44,13 @@ class ClientConsoleLogHashesHandlerClass
   }
 }
 
-export const httpHashLoggerClientProxyHandler = clientProxyHandlerFactoryFunction()(
-  () => new ClientConsoleLogHashesHandlerClass(),
-);
+export const clientConsoleLogHashesHandler = (
+  httpDataEndPointConnector: boolean = true,
+  oAuthHttpCredentials: boolean = false,
+) =>
+  clientProxyHandlerFactory()(
+    (proxyHandlerOptions: ProxyHandlerOptions) =>
+      new ClientConsoleLogHashesHandlerClass(proxyHandlerOptions),
+    httpDataEndPointConnector,
+    oAuthHttpCredentials,
+  );

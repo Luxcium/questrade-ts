@@ -1,4 +1,4 @@
-export {
+export type {
   Cancel,
   Canceler,
   CancelStatic,
@@ -13,3 +13,4 @@ export {
   ClientStatic,
   ClientTransformer,
 } from './client';
+export type { ProxyHandlerOptions } from './proxy/proxy-handler-options';

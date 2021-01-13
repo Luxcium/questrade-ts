@@ -1,11 +1,15 @@
 // import { errorlog } from '../../../../resources/side-effects';
+import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import { ISymbolSearchResult, Logger } from '../../../../typescript';
 import { _getSymbolSearchAll } from './_getSymbolSearchAll';
 
 // + _getSymbolSearch
 /** _getSymbolSearch */
 export const _getSymbolSearch = (
-  clientGetApi: <R>(endpoint: string) => () => Promise<R>,
+  clientGetApi: <R>(
+    endpoint: string,
+    handlerOptions: ProxyHandlerOptions,
+  ) => () => Promise<R>,
   errorlog: Logger = (...error: any[]) => error,
 ) => async (
   prefix: string,

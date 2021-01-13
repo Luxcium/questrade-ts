@@ -7,8 +7,14 @@ import {
 import {
   ClientRequestConfig,
   ClientResponse,
+  ClientStatic,
+  ProxyHandlerOptions,
 } from '../../resources/side-effects/typescript';
-import { ClientProxyHandler, Credentials, Logger } from '../../typescript';
+import {
+  ClientStaticHandlerFactory,
+  Credentials,
+  Logger,
+} from '../../typescript';
 import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../utils';
 import {
   remainingRequests,
@@ -19,15 +25,18 @@ import {
 export const _httpDataEndPointConnector = <R>(
   _config: ClientRequestConfig,
   credentials?: Credentials,
-  proxy?: ClientProxyHandler,
+  proxy?: ClientStaticHandlerFactory,
 ) => {
-  return async (errorlog: Logger): Promise<R> => {
+  return async (
+    errorlog: Logger,
+    handlerOptions: ProxyHandlerOptions,
+  ): Promise<R> => {
     try {
-      let httpClient: ClientProxyHandler = getHttpClient();
+      let httpClient: ClientStatic = getHttpClient();
       if (proxy?.httpDataEndPointConnector && proxy?.activate) {
         echo('using proxy in end point connector');
 
-        httpClient = proxy.activate();
+        httpClient = proxy.activate(handlerOptions);
       }
 
       const possiblePerSeconds =

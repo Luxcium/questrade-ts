@@ -9,7 +9,7 @@ test('should ERROR _tryToGetData', async done => {
     url: 'ERROR',
   });
   try {
-    expect(await response(errorlog)).toThrow();
+    expect(await response(errorlog, {})).toThrow();
   } catch {
     //
   }

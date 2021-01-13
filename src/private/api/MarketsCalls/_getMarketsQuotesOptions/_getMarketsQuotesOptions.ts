@@ -1,3 +1,4 @@
+import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import {
   FiltersArray,
   IOptionsQuote,
@@ -9,7 +10,10 @@ import {
 export const _getMarketsQuotesOptions = (
   clientPostApi: <D>(
     postData: D | null,
-  ) => <R>(endpoint: string) => () => Promise<R>,
+  ) => <R>(
+    endpoint: string,
+    handlerOptions: ProxyHandlerOptions,
+  ) => () => Promise<R>,
 ) => async (
   optionIds: number[] | null,
   underlyingId: number,
@@ -38,6 +42,7 @@ export const _getMarketsQuotesOptions = (
   return (
     await clientPostApi<OptionsPostData>(postData)<IOptionsQuotes>(
       '/markets/quotes/options',
+      { noCaching: true },
     )()
   ).quotes;
 };

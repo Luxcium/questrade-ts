@@ -7,22 +7,20 @@ import {
 import {
   ClientRequestConfig,
   ClientResponse,
+  ClientStatic,
 } from '../../../resources/side-effects/typescript';
 import {
-  ClientProxyHandler,
+  ClientStaticHandlerFactory,
   Credentials,
   IRefreshCreds,
   QuestradeAPIOptions,
 } from '../../../typescript';
 
-// !!!
-// XXX: const {echo, getHttpClient, validateToken, writeToken,} = sideEffects;
-
 export const _oAuthHttpCredentials = async (
-  options: QuestradeAPIOptions,
-  proxy?: ClientProxyHandler,
+  apiOptions: QuestradeAPIOptions,
+  proxy?: ClientStaticHandlerFactory,
 ): Promise<Credentials> => {
-  const { refreshToken, credentials } = validateToken(options);
+  const { refreshToken, credentials } = validateToken(apiOptions);
   const _config: ClientRequestConfig = {
     method: 'GET',
     params: {
@@ -32,15 +30,16 @@ export const _oAuthHttpCredentials = async (
     url: `${credentials.authUrl}/oauth2/token`,
   };
 
-  let httpClient: ClientProxyHandler = getHttpClient();
-  if (proxy?.httpDataEndPointConnector && proxy?.activate) {
+  let httpClient: ClientStatic = getHttpClient();
+  if (proxy?.oAuthHttpCredentials && proxy?.activate) {
     echo('using proxy in oAuth connector');
 
-    httpClient = proxy.activate();
+    httpClient = proxy.activate({});
   }
 
-  let response: ClientResponse<IRefreshCreds>;
-  response = (await httpClient(_config)) as any;
+  const response: ClientResponse<IRefreshCreds> = (await httpClient(
+    _config,
+  )) as any;
 
   if (!response.data) {
     if (response) {
@@ -53,7 +52,7 @@ export const _oAuthHttpCredentials = async (
       void echo<unknown>('++++++++++++++++++++++++++++++++++++++++++++++++');
     }
     throw new Error(
-      '!! validate credntials Invalid data back from http client',
+      '!!! validate credntials Invalid data back from http client !!!',
     );
   }
 

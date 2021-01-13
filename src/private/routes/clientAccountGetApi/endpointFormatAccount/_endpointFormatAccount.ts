@@ -1,4 +1,7 @@
-import { ClientProxyHandler, Credentials } from '../../../../typescript';
+import {
+  ClientStaticHandlerFactory,
+  Credentials,
+} from '../../../../typescript';
 
 const _urlSeprator = () => '/';
 const _baseAcctUrlStr = (): string => 'accounts';
@@ -21,7 +24,7 @@ export const _endpointFormatAccount = _endPtAccountBaseURL(_credAcctNmbrProp)(
 export type EndPtAccountBaseURL = (
   getCredAcctProp: (
     credentials: Credentials,
-    proxy?: ClientProxyHandler,
+    proxy?: ClientStaticHandlerFactory,
   ) => string,
 ) => (
   urlSep: () => string,
@@ -29,5 +32,5 @@ export type EndPtAccountBaseURL = (
   acctUrlStr: () => string,
 ) => (
   credentials: Credentials,
-  proxy?: ClientProxyHandler,
+  proxy?: ClientStaticHandlerFactory,
 ) => (accountEndpoint: string) => string;

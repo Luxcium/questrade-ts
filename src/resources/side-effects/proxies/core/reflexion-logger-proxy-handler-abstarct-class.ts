@@ -2,16 +2,17 @@
 // import { echo } from '../..';
 
 import { sideEffects } from '../..';
+import { ProxyHandlerOptions } from '../../types';
 
 const { echo } = sideEffects;
 
 export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   T extends Function = any
 > implements ProxyHandler<T> {
-  constructor(protected debug: boolean = false) {}
+  constructor(protected handlerOptions: ProxyHandlerOptions) {}
 
   getPrototypeOf(target: T): object | null {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>('PROXY:', '!!→ getPrototypeOf', 'target →', target);
 
       echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
@@ -21,7 +22,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   }
 
   setPrototypeOf(target: T, v: any): boolean {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>(
         'PROXY:',
         '!!→ setPrototypeOf',
@@ -37,7 +38,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   }
 
   isExtensible(target: T): boolean {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>('PROXY:', '!!→ isExtensible', 'target →', target);
 
       echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
@@ -47,7 +48,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   }
 
   preventExtensions(target: T): boolean {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>('PROXY:', '!!→ preventExtensions', 'target →', target);
 
       echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
@@ -59,7 +60,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
     target: T,
     p: PropertyKey,
   ): PropertyDescriptor | undefined {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>(
         'PROXY:',
         '!!→ getOwnPropertyDescriptor',
@@ -75,7 +76,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   }
 
   has(target: T, p: PropertyKey): boolean {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>('PROXY:', '!!→ has', 'target →', target, 'p →', p);
 
       echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
@@ -84,7 +85,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   }
 
   get(target: T, p: PropertyKey, receiver: any): any {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>(
         'PROXY:',
         '!!→ get',
@@ -103,7 +104,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   }
 
   set(target: T, p: PropertyKey, value: any, receiver: any): boolean {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>(
         'PROXY:',
         '!!→ set',
@@ -124,7 +125,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   }
 
   deleteProperty(target: T, p: PropertyKey): boolean {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>(
         'PROXY:',
         '!!→ deleteProperty',
@@ -144,7 +145,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
     p: PropertyKey,
     attributes: PropertyDescriptor,
   ): boolean {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>(
         'PROXY:',
         '!!→ defineProperty',
@@ -163,7 +164,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   }
 
   ownKeys(target: T) /* : (string | number | symbol)[] */ {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>('PROXY:', 'ownKeys', 'target', target);
 
       echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
@@ -172,7 +173,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   }
 
   apply(target: T, thisArg: any, argArray?: any): any {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>(
         'PROXY:',
         '!!→ apply',
@@ -191,7 +192,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   }
 
   construct(target: T, argArray: any, newTarget: any): object {
-    if (this.debug === true) {
+    if (this.handlerOptions.debug === true) {
       void echo<unknown>(
         'PROXY:',
         '!!→ construct',

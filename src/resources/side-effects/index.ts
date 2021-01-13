@@ -15,6 +15,7 @@ import {
   writeToken,
 } from './default-behaviour';
 
+export type { Tedis } from 'tedis';
 export {
   client,
   ech0,
@@ -36,7 +37,6 @@ export {
 const sideEffects = {
   client,
   ech0,
-
   echo,
 
   errorlog,

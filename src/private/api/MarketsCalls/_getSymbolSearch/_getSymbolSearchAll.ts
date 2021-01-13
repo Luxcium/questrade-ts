@@ -1,4 +1,5 @@
 // import { errorlog } from '../../../../resources/side-effects';
+import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import {
   ISymbolSearchResult,
   ISymbolSearchResults,
@@ -9,7 +10,10 @@ import { void0 } from '../../../../utils';
 // + _getSymbolSearchAll
 /** _getSymbolSearch */
 export const _getSymbolSearchAll = (
-  clientGetApi: <R>(endpoint: string) => () => Promise<R>,
+  clientGetApi: <R>(
+    endpoint: string,
+    handlerOptions: ProxyHandlerOptions,
+  ) => () => Promise<R>,
   errorlog: Logger = (...error: any[]) => error,
 ) => async (
   prefix: string,
@@ -18,6 +22,7 @@ export const _getSymbolSearchAll = (
   try {
     const results = await clientGetApi<ISymbolSearchResults>(
       `/symbols/search?prefix=${prefix.toUpperCase()}&offset=${offset}`,
+      { noCaching: true },
     )();
     if (results && results.symbols) {
       return results.symbols.map(result => {

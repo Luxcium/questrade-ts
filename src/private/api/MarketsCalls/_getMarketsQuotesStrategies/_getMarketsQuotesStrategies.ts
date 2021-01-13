@@ -1,3 +1,4 @@
+import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import {
   IStrategiesQuotes,
   Logger,
@@ -7,7 +8,10 @@ import {
 export const _getMarketsQuotesStrategies = (
   clientPostApi: <D>(
     postData: D | null,
-  ) => <R>(endpoint: string) => () => Promise<R>,
+  ) => <R>(
+    endpoint: string,
+    handlerOptions: ProxyHandlerOptions,
+  ) => () => Promise<R>,
   errorlog: Logger = (...error: any[]) => error,
 ) => async (
   strategyVariantRequestData: StrategyVariantRequest,
@@ -15,7 +19,7 @@ export const _getMarketsQuotesStrategies = (
   try {
     return clientPostApi<StrategyVariantRequest>(
       strategyVariantRequestData,
-    )<IStrategiesQuotes>('/markets/quotes/strategies')();
+    )<IStrategiesQuotes>('/markets/quotes/strategies', { noCaching: true })();
   } catch (error) {
     void errorlog(error);
     return {

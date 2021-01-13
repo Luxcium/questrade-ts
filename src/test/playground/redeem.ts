@@ -1,6 +1,6 @@
 import { redeemToken } from '../..';
 import { sideEffects } from '../../resources/side-effects';
-import { httpHashLoggerClientProxyHandler } from '../../resources/side-effects/proxies';
+import { clientConsoleLogHashesHandler } from '../../resources/side-effects/proxies';
 import { void0 } from '../../utils';
 
 const { echo, errorlog, getMyToken } = sideEffects;
@@ -9,7 +9,7 @@ export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 async function main() {
   const { qtApi, credentials } = await redeemToken(
     getMyToken(),
-    httpHashLoggerClientProxyHandler,
+    clientConsoleLogHashesHandler(),
   );
   void0(credentials);
 

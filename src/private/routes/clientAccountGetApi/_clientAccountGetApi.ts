@@ -1,4 +1,4 @@
-import { ClientProxyHandler, Credentials } from '../../../typescript';
+import { ClientStaticHandlerFactory, Credentials } from '../../../typescript';
 import { _coreApiFunction } from '../../core/_coreApiFunction';
 import { _endpointFormatAccount } from '..';
 
@@ -9,8 +9,9 @@ import { _endpointFormatAccount } from '..';
  */
 export const _clientAccountGetApi = (
   credentials: Credentials,
-  proxy?: ClientProxyHandler,
+  proxy?: ClientStaticHandlerFactory,
 ) => <R>(accountEndpoint: string) =>
   _coreApiFunction(credentials, proxy)('GET')(null)<R>(
     _endpointFormatAccount(credentials, proxy)(accountEndpoint),
+    { noCaching: true },
   );
