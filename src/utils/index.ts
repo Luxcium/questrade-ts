@@ -11,6 +11,8 @@ const {
   flip,
   konst,
   psi,
+  stringify,
+  parser,
 } = helperFunctions;
 
 // export {
@@ -39,5 +41,18 @@ export {
   endpointFormatDateTool,
   setDateRange,
 } from './timeutil';
-export { apply, compose, curry, flip, id0, idx, konst, psi, thrush, void0 };
+export {
+  apply,
+  compose,
+  curry,
+  flip,
+  id0,
+  idx,
+  konst,
+  parser,
+  psi,
+  stringify,
+  thrush,
+  void0,
+};
 export { helperFunctions };

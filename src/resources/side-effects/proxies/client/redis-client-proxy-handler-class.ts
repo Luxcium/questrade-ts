@@ -1,10 +1,6 @@
 import { Tedis } from 'tedis';
 
-import {
-  creatUrlAndDataHashes,
-  getQtUrlPathFromArgs,
-  void0,
-} from '../../../../utils';
+import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../../../utils';
 import { sideEffects } from '../..';
 import { ClientStatic, ProxyHandlerOptions } from '../../types';
 import { clientProxyHandlerFactory } from '../core/client-proxy-handler-factory-function';
@@ -141,37 +137,30 @@ class redisClientProxyHandlerClass<T extends Function = ClientStatic>
     try {
       // +SIDE EFFECTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
       void proxyData;
+      void this.tedis;
 
-      void echo('URL_HASH_HEX:', proxyData.URL_HASH_HEX);
-      void echo('DATA_HASH_HEX:', proxyData.DATA_HASH_HEX);
-      void echo('URLDATA_HEX:', proxyData.URLDATA_HEX);
       void ech0('');
-      // const COUNT = ech0(
-      //   await this.tedis.command('PFCOUNT', `HYPER:${proxyData.URLDATA_HEX}`),
-      // );
+      // void echo('URL_HASH_HEX:', proxyData.URL_HASH_HEX);
+      // void echo('DATA_HASH_HEX:', proxyData.DATA_HASH_HEX);
+      // void echo('URLDATA_HEX:', proxyData.URLDATA_HEX);
+      // void echo('URL_PATH:', proxyData.URL_PATH);
+      // void ech0('no redis write');
+
       // void0(
-      //   await this.tedis.setex(
-      //     proxyData.URL_HASH_HEX,
-      //     COUNT ** 10,
-      //     proxyData.DATA,
+      //   await this.tedis.command(
+      //     'PFADD',
+      //     `count:${proxyData.URL_HASH_HEX}:data:unique`,
+      //     `${proxyData.DATA_HASH_HEX}`,
       //   ),
       // );
-      void0(
-        await this.tedis.command(
-          'PFADD',
-          `count:${proxyData.URL_HASH_HEX}:data:unique`,
-          `${proxyData.DATA_HASH_HEX}`,
-        ),
-      );
 
-      void0(
-        await this.tedis.command(
-          'PFADD',
-          `count:${proxyData.URL_HASH_HEX}:data:same:${proxyData.URLDATA_HEX}`,
-          `${Date.now()}`,
-        ),
-      );
-      // void echo('this.tedis.get', await this.tedis.get(proxyData.URL_HASH_HEX));
+      // void0(
+      //   await this.tedis.command(
+      //     'PFADD',
+      //     `count:${proxyData.URL_HASH_HEX}:data:same:${proxyData.URLDATA_HEX}`,
+      //     `${Date.now()}`,
+      //   ),
+      // );
       // +RETURN VALUE ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
       return returnValue;
     } catch (error) {
@@ -185,10 +174,14 @@ export const redisClientProxyHandler = (
   tedisInstance: Tedis,
   httpDataEndPointConnector: boolean = true,
   oAuthHttpCredentials: boolean = false,
+  mainProxyHandlerOptions: ProxyHandlerOptions = {},
 ) =>
   clientProxyHandlerFactory()(
-    (proxyHandlerOptions: ProxyHandlerOptions) =>
-      new redisClientProxyHandlerClass(tedisInstance, proxyHandlerOptions),
+    (specificProxyHandlerOptions: ProxyHandlerOptions) =>
+      new redisClientProxyHandlerClass(tedisInstance, {
+        ...mainProxyHandlerOptions,
+        ...specificProxyHandlerOptions,
+      }),
     httpDataEndPointConnector,
     oAuthHttpCredentials,
   );

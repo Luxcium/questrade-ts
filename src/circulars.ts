@@ -11,6 +11,6 @@ import './private/routes';
 import './private/routes/clientGetApi/_clientGetApi';
 import './private/routes/clientPostApi/_clientPostApi';
 import './resources/side-effects';
+import './resources/side-effects/auth/validateToken';
 import './resources/side-effects/auth/_validateToken';
 import './resources/side-effects/default-behaviour';
-import './resources/side-effects/default-behaviour/validateToken';

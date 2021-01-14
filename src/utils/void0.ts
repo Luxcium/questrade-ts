@@ -1,6 +1,9 @@
 import { curry } from './curry';
 import { FnAtoB } from './types';
 
+export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
+export const stringify = (obj: any) => JSON.stringify(obj).toString();
+
 function id0<T>(...arg0: T[]) {
   return arg0[0];
 }
@@ -59,7 +62,9 @@ export const helperFunctions = {
   id0,
   idx,
   konst,
+  parser,
   psi,
+  stringify,
   thrush,
   void0,
 };

@@ -34,8 +34,7 @@ export const _httpDataEndPointConnector = <R>(
     try {
       let httpClient: ClientStatic = getHttpClient();
       if (proxy?.httpDataEndPointConnector && proxy?.activate) {
-        echo('using proxy in end point connector');
-
+        // echo('using proxy in end point connector');
         httpClient = proxy.activate(handlerOptions);
       }
 

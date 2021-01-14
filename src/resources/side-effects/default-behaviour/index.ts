@@ -1,3 +1,5 @@
+export { validateToken } from '../auth/validateToken';
+export { writeToken } from '../auth/writeToken';
 export { client } from './client';
 export { ech0 } from './ech0';
 export { echo } from './echo';
@@ -9,6 +11,4 @@ export { infolog } from './infolog';
 export { makeTedis } from './makeTedis';
 export { setMyToken } from './setMyToken';
 export { tablelog } from './tablelog';
-export { validateToken } from './validateToken';
 export { warnlog } from './warnlog';
-export { writeToken } from './writeToken';

@@ -1,40 +1,50 @@
 import { redeemToken } from '../..';
-import { sideEffects } from '../../resources/side-effects';
+import { sideEffects, Tedis } from '../../resources/side-effects';
 import { redisClientProxyHandler } from '../../resources/side-effects/proxies';
-import { void0 } from '../../utils';
 
-const { echo, errorlog, getMyToken, makeTedis } = sideEffects;
+const { errorlog, ech0, getMyToken, makeTedis } = sideEffects;
 
-export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
-
-const tedis = makeTedis();
-(async function main() {
+const main = async function (tedis: Tedis) {
   const { qtApi } = await redeemToken(
     getMyToken(),
-    redisClientProxyHandler(tedis, true, false),
+    redisClientProxyHandler(tedis, true, false, { debug: false }),
     errorlog,
   );
-  return (async function leadingPrime() {
-    void0(await qtApi.account.getServerTime());
-    void0((await qtApi.search.stock('aapl'))[0]);
-    return tedis;
-  })().catch(error =>
-    errorlog('in leadingPrime from redis-modeling', error.message),
-  );
-})()
-  .then(async () => {
-    echo(await tedis.keys('URL:*'));
-    echo(await tedis.keys('URLDATA:*'));
-    echo(await tedis.keys('HYPER:*'));
-    echo((await tedis.keys('count:*')).sort());
-    return void 0;
-  })
-  .finally(() => {
-    tedis.close();
+  ech0((await qtApi.search.stock('aapl'))[0].symbolId);
+
+  return tedis;
+};
+
+main(makeTedis())
+  .then(async (tedis: Tedis) => {
+    return tedis.close();
   })
   .catch(error => errorlog('in main from redis-modeling', error.message));
 
 /*
+
+ //
+
+  // void0(await tedis.keys('URL:*'));
+  // void0(await tedis.keys('URLDATA:*'));
+  // void0(await tedis.keys('HYPER:*'));
+  const step1 = ech0((await tedis.keys('count:*')).sort());
+  void0(step1);
+  // void0(await qtApi.account.getServerTime());
+
+  // const step2 = step1.map(async item => {
+  //   const count = (await tedis.command('PFCOUNT', item)) as number; // DEL
+  //   if (count === 1) {
+  //     tedis.command('DEL', item);
+  //     return 0;
+  //   }
+  //   return count;
+  // });
+
+  // void0(step2);
+  // const lastStep = await Promise.all(step2);
+  // echo(lastStep);
+
 import { redeemToken } from '../..';
 import { sideEffects, Tedis } from '../../resources/side-effects';
 import { httpHashLoggerClientProxyHandler } from '../../resources/side-effects/proxies';
