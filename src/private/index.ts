@@ -4,4 +4,3 @@ export {
   _emptyCredentials,
   _getPrimaryAccountNumber,
 } from './auth/credentialsFactory';
-// export { _clientGetApi, _clientPostApi } from './routes';

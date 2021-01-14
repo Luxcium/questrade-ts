@@ -1,5 +1,6 @@
 export { CallBack } from './CallBack';
 export { Credentials } from './Credentials';
+export { EndPtAccountBaseURL } from './EndPtAccountBaseURL';
 export { AcountNumberString, IAccount, IAccounts } from './IAccounts';
 export { IAccountActivity, IActivities } from './IActivities';
 export { Balances, IBalance, IBalances, ICurencyBalance } from './IBalances';
