@@ -4,10 +4,14 @@ import { redisClientProxyHandler } from '../../resources/side-effects/proxies';
 
 const { errorlog, ech0, getMyToken, makeTedis } = sideEffects;
 
-const main = async function (tedis: Tedis) {
+async function main(tedis: Tedis) {
   const { qtApi } = await redeemToken(
     getMyToken(),
-    redisClientProxyHandler(tedis, true, false, { debug: false }),
+    redisClientProxyHandler(tedis, {
+      debug: false,
+      httpDataEndPointConnector: true,
+      oAuthHttpCredentials: false,
+    }),
     errorlog,
   );
 
@@ -17,7 +21,7 @@ const main = async function (tedis: Tedis) {
   ech0((await qtApi.search.stock('aapl'))[0].symbolId);
 
   return tedis;
-};
+}
 
 main(makeTedis())
   .then(async (tedis: Tedis) => {

@@ -46,7 +46,8 @@
   },
   "scripts": {
     "start": "ts-node '/home/luxcium/dev/questrade-ts/src/test/playground/redis-modeling.ts'",
-    "postinstall": "(cd './src/resources/side-effects'; npm install)",
+    "preinstall": "rm -fr ./node_modules; echo ''; pwd; ls -1A; echo ''",
+    "postinstall": "(cd './src/resources/' && rm -fr ./node_modules && echo '' && pwd && ls -1A && echo '' && (npm ci || npm install) && echo -e '\n―OK―\n'  )",
     "SECTION:001": "# ========================================================",
     "predist": "yi; yarn run build:clean; yarn run rm:dist",
     "dist": "yarn run rm:playground; yarn run cp:dist",

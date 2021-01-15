@@ -9,7 +9,11 @@ export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 async function main() {
   const { qtApi, credentials } = await redeemToken(
     getMyToken(),
-    clientConsoleLogHashesHandler(),
+    clientConsoleLogHashesHandler({
+      debug: false,
+      httpDataEndPointConnector: true,
+      oAuthHttpCredentials: false,
+    }),
   );
   void0(credentials);
 

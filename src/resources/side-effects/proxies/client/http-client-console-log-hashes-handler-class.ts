@@ -45,12 +45,14 @@ class ClientConsoleLogHashesHandlerClass
 }
 
 export const clientConsoleLogHashesHandler = (
-  httpDataEndPointConnector: boolean = true,
-  oAuthHttpCredentials: boolean = false,
+  mainProxyHandlerOptions: ProxyHandlerOptions = {},
 ) =>
   clientProxyHandlerFactory()(
-    (proxyHandlerOptions: ProxyHandlerOptions) =>
-      new ClientConsoleLogHashesHandlerClass(proxyHandlerOptions),
-    httpDataEndPointConnector,
-    oAuthHttpCredentials,
+    (specificProxyHandlerOptions: ProxyHandlerOptions) =>
+      new ClientConsoleLogHashesHandlerClass({
+        ...mainProxyHandlerOptions,
+        ...specificProxyHandlerOptions,
+      }),
+    mainProxyHandlerOptions.httpDataEndPointConnector ?? true,
+    mainProxyHandlerOptions.oAuthHttpCredentials ?? false,
   );

@@ -9,7 +9,11 @@ export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
 async function main(): Promise<Tedis> {
   const { qtApi, credentials } = await redeemToken(
     getMyToken(),
-    clientConsoleLogHashesHandler(true, false),
+    clientConsoleLogHashesHandler({
+      debug: false,
+      httpDataEndPointConnector: true,
+      oAuthHttpCredentials: false,
+    }),
   );
 
   void0(credentials);

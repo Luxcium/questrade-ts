@@ -252,8 +252,6 @@ export interface ClientResponse<T = any> {
 
 export const redisClientProxyHandler = (
   tedisInstance: Tedis,
-  httpDataEndPointConnector: boolean = true,
-  oAuthHttpCredentials: boolean = false,
   mainProxyHandlerOptions: ProxyHandlerOptions = {},
 ) =>
   clientProxyHandlerFactory()(
@@ -262,8 +260,8 @@ export const redisClientProxyHandler = (
         ...mainProxyHandlerOptions,
         ...specificProxyHandlerOptions,
       }),
-    httpDataEndPointConnector,
-    oAuthHttpCredentials,
+    mainProxyHandlerOptions.httpDataEndPointConnector ?? true,
+    mainProxyHandlerOptions.oAuthHttpCredentials ?? false,
   );
 
 // void echo('URL_HASH_HEX:', proxyData.URL_HASH_HEX);
