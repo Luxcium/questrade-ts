@@ -1,6 +1,6 @@
 // import { errorlog } from '../../../../resources/side-effects';
 import { IExecution, IExecutions, Logger } from '../../../../typescript';
-import { endpointFormatDateTool } from '../../../../utils';
+import { urlEncodeDateTool } from '../../../../utils';
 
 // + _getExecutions
 /** _getExecutions */
@@ -11,7 +11,7 @@ export const _getExecutions = (
 ) => (startDate: string) => async (endDate: string): Promise<IExecution[]> => {
   try {
     const executions = await clientAccountGetApi<IExecutions>(
-      `/executions?${endpointFormatDateTool(startDate, endDate)}`,
+      `/executions?${urlEncodeDateTool(startDate, endDate)}`,
     )();
     return executions.executions;
   } catch (error) {

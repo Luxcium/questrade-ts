@@ -1,5 +1,6 @@
 import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import { IQuote, IQuotes, Logger } from '../../../../typescript';
+import { urlEncode } from '../../../../utils';
 
 // + _getQuotesByID
 /** _getQuotesFromSymbolID */
@@ -12,9 +13,12 @@ export const _getQuotesByIds = (
 ) => async (ids: number[]): Promise<IQuote[]> => {
   try {
     return (
-      await clientGetApi<IQuotes>(`/markets/quotes?ids=${ids.join(',')}`, {
-        noCaching: true,
-      })()
+      await clientGetApi<IQuotes>(
+        `/markets/quotes?ids=${urlEncode(ids.join(','))}`,
+        {
+          noCaching: true,
+        },
+      )()
     ).quotes;
   } catch (error) {
     void errorlog(error);

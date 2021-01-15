@@ -55,6 +55,9 @@ const konst = <T = any>(a: T) => (_b: unknown) => a;
 const psi = <R>(f: (gx: any) => (gy: any) => R) => <T>(g: (xy: T) => any) => (
   x: T,
 ) => (y: T) => f(g(x))(g(y));
+
+const urlEncode = encodeURIComponent;
+
 export const helperFunctions = {
   apply,
   compose,
@@ -67,5 +70,6 @@ export const helperFunctions = {
   psi,
   stringny,
   thrush,
+  urlEncode,
   void0,
 };

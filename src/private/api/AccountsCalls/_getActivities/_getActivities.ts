@@ -1,5 +1,5 @@
 import { IAccountActivity, IActivities, Logger } from '../../../../typescript';
-import { endpointFormatDateTool } from '../../../../utils';
+import { urlEncodeDateTool } from '../../../../utils';
 
 // + _getActivities
 /** PROVIDE: credentials, startTime string and endTime string THEN GET: a 'Promise<IAccountActivity[]>' */
@@ -11,7 +11,7 @@ export const _getActivities = (
     //
     return async (endTime: string): Promise<IAccountActivity[]> => {
       try {
-        const dateTime = endpointFormatDateTool(startTime, endTime);
+        const dateTime = urlEncodeDateTool(startTime, endTime);
         const endpoint = `/activities?${dateTime}`;
 
         const accountGet = accountGetApi<IActivities>(endpoint);

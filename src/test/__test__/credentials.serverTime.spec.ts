@@ -1,4 +1,5 @@
-import { _emptyCredentials, _getQuestradeApi } from '../../private';
+import { _getQuestradeApi } from '../../private/api/_getQuestradeApi';
+import { _emptyCredentials } from '../../private/auth/credentialsFactory';
 import { sideEffects } from '../../resources/side-effects';
 
 const { echo } = sideEffects;

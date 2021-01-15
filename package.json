@@ -53,7 +53,7 @@
     "dist": "yarn run rm:playground; yarn run cp:dist",
     "postdist": "npm publish ./dist --tag latest --dry-run && npm pack ./dist --tag latest",
     "SECTION:002": "# ========================================================",
-    "prebuild": "yarn run test",
+    "prebuild": "yarn run test; rm -fr ./build",
     "build": "yarn run out:cjs",
     "postbuild": "echo 'Build Completed !!!'",
     "SECTION:003": "# ========================================================",

@@ -5,7 +5,7 @@ import {
   ISymbolSearchResults,
   Logger,
 } from '../../../../typescript';
-import { void0 } from '../../../../utils';
+import { urlEncode } from '../../../../utils';
 
 // + _getSymbolSearchAll
 /** _getSymbolSearch */
@@ -20,21 +20,22 @@ export const _getSymbolSearchAll = (
   offset: number = 0,
 ): Promise<ISymbolSearchResult[]> => {
   try {
-    const results = await clientGetApi<ISymbolSearchResults>(
-      `/symbols/search?prefix=${prefix.toUpperCase()}&offset=${offset}`,
-      { noCaching: true },
-    )();
-    if (results && results.symbols) {
-      return results.symbols.map(result => {
-        result.count = results.symbols.length || 0;
+    const _prefix = urlEncode(`${prefix.toUpperCase()}`);
+    const _offset = urlEncode(`${offset}`);
+    const _endpoint = `/symbols/search?prefix=${_prefix}&offset=${_offset}`;
+    const _results = await clientGetApi<ISymbolSearchResults>(_endpoint, {
+      noCaching: true,
+    })();
+    if (_results && _results.symbols) {
+      return _results.symbols.map(result => {
+        result.count = _results.symbols.length || 0;
         return result;
       });
     }
-    return results.symbols;
+    return _results.symbols;
   } catch (error) {
     void errorlog(error);
 
     return [];
   }
 };
-void0(void0);

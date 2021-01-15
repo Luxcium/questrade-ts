@@ -1,13 +1,10 @@
+import { ClientHandlerFactory, QuestradeAPIOptions } from '../../..';
 import { errorlog, infolog } from '../../../resources/side-effects';
-import { ClientHandlerFactory, QuestradeAPIOptions } from '../../../typescript';
 import { _getAccounts } from '../../api/AccountsCalls/_getAccounts/_getAccounts';
 import { _getServerTime } from '../../api/AccountsCalls/_getServerTime/_getServerTime';
 import { _clientGetApi } from '../../routes';
-import { _oAuthHttpCredentials } from '../clientCredentials_oAUTH/xx-http-auth-xx';
-import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
-
-// !!!
-// XXX: const { infolog, errorlog } = sideEffects;
+import { _oAuthHttpCredentials } from '../xx-http-auth-xx';
+import { _getPrimaryAccountNumber } from '.';
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 export const _credentialsFactory = async (

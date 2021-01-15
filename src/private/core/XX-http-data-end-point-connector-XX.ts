@@ -23,6 +23,7 @@ function _httpDataEndPointConnector<R>(
     errorlog: Logger,
     handlerOptions: ProxyHandlerOptions,
   ): Promise<R> => {
+    // encodeURIComponent() _config
     // INFO: PROXY Block Start ***********************************************
 
     let httpClient: ClientStatic = getHttpClient();

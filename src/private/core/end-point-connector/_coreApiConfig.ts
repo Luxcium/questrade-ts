@@ -16,6 +16,8 @@ function _coreApiConfig<D>(credentials: Credentials) {
         /**
          * Build endpoint url with apiUrl as base.
          */
+
+        // const url = `${credentials.apiUrl}${encodeURIComponent(endpoint)}`;
         const url = credentials.apiUrl + endpoint;
         // ->
         /**

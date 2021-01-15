@@ -1,3 +1,5 @@
+import { urlEncode } from '.';
+
 const DAY = 24 * 60 * 60 * 1000;
 export const day = (days: number) => days * DAY;
 
@@ -24,13 +26,13 @@ export const day = (days: number) => days * DAY;
 // startDate = `2019-${offset}-13`;
 // endDate = `2019-${offset}-14`;
 
-export const endpointFormatDateTool = (
+export const urlEncodeDateTool = (
   startTime: string,
   endTime: string,
 ): string => {
-  return `startTime=${dateToISOString(startTime)}&endTime=${dateToISOString(
-    endTime,
-  )}`;
+  return `startTime=${urlEncode(
+    dateToISOString(startTime),
+  )}&endTime=${urlEncode(dateToISOString(endTime))}`;
 };
 export const dateNowISO = () => new Date(Date.now()).toISOString();
 export const dateNowNumeric = () => new Date(Date.now()).getTime();

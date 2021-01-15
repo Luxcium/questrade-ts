@@ -1,4 +1,4 @@
-import { _getQuestradeApi } from '../private';
+import { _getQuestradeApi } from '../private/api/_getQuestradeApi';
 import { ClientHandlerFactory, Credentials } from '../typescript';
 
 // export const getQuestradeApi = ;

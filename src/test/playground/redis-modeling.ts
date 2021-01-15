@@ -1,6 +1,7 @@
 import { redeemToken } from '../..';
 import { sideEffects, Tedis } from '../../resources/side-effects';
 import { redisClientProxyHandler } from '../../resources/side-effects/proxies';
+import { void0 } from '../../utils';
 
 const { errorlog, ech0, getMyToken, makeTedis } = sideEffects;
 
@@ -17,8 +18,9 @@ async function main(tedis: Tedis) {
 
   void qtApi;
   void ech0;
+  // ech0(await qtApi.getSymbols.byStockIds([7119, 7121]));
 
-  ech0((await qtApi.search.stock('aapl'))[0].symbolId);
+  void0(await qtApi.search.stock('couche tard'));
 
   return tedis;
 }

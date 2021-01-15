@@ -4,7 +4,7 @@ import {
   ClientAccountType,
 } from 'questrade-api-enumerations';
 
-import { _getPrimaryAccountNumber } from '../../private';
+import { _getPrimaryAccountNumber } from '../../private/auth/credentialsFactory';
 import { IAccount } from '../../typescript';
 
 test('should ', async done => {

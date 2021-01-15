@@ -1,5 +1,5 @@
 import { IOrder, IOrders, Logger } from '../../../../typescript';
-import { endpointFormatDateTool } from '../../../../utils';
+import { urlEncode, urlEncodeDateTool } from '../../../../utils';
 
 // + _getOrders
 /** _getOrders */
@@ -11,10 +11,9 @@ export const _getOrders = (
 ): Promise<IOrder[]> => {
   try {
     const orders = await clientAccountGetApi<IOrders>(
-      `/orders?${endpointFormatDateTool(
-        startDate,
-        endDate,
-      )}&stateFilter=${stateFilter}`,
+      `/orders?${urlEncodeDateTool(startDate, endDate)}&stateFilter=${urlEncode(
+        stateFilter,
+      )}`,
     )();
     return orders.orders;
   } catch (error) {

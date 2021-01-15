@@ -2,7 +2,7 @@
 import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import { ICandle, ICandles, Logger } from '../../../../typescript';
 // TODO: remove dependencies to nodeJS crypt-module making it optional ...
-import { endpointFormatDateTool } from '../../../../utils';
+import { urlEncode, urlEncodeDateTool } from '../../../../utils';
 
 // + _getCandles endpointFormatDateTool
 /** _getCandles */
@@ -20,19 +20,15 @@ export const _getCandles = (
       //
       (
         await clientGetApi<ICandles>(
-          `/markets/candles/${symbolID}?${endpointFormatDateTool(
+          `/markets/candles/${urlEncode(symbolID)}?${urlEncodeDateTool(
             startDate,
             endDate,
-          )}&interval=${interval}`,
+          )}&interval=${urlEncode(interval)}`,
           { noCaching: true },
         )()
       ).candles.map(result => {
         result.symbolID = symbolID;
         result.granularity = interval;
-
-        // // TODO: remove dependencies to nodeJS crypto module making it optional ...
-        // const [short, long] = getHash(JSON.stringify(result));
-        // result.hash = { short, long };
         return result;
       })
     );

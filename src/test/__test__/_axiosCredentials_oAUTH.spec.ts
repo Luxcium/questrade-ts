@@ -1,5 +1,5 @@
-import { _oAuthHttpCredentials } from '../../private/auth/clientCredentials_oAUTH/xx-http-auth-xx';
 import { _emptyCredentials } from '../../private/auth/credentialsFactory';
+import { _oAuthHttpCredentials } from '../../private/auth/xx-http-auth-xx';
 import { void0 } from '../../utils';
 
 describe('auth Credential from QuestradeApi via HTTP CLIENT', () => {

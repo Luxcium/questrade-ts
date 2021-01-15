@@ -1,4 +1,5 @@
 import { IOrder, IOrders, Logger } from '../../../../typescript';
+import { urlEncode } from '../../../../utils';
 
 // + _getOrderByIds
 /** _getOrders */
@@ -9,7 +10,9 @@ export const _getOrdersByIds = (
   try {
     //
     return (
-      await clientAccountGetApi<IOrders>(`/orders?ids=${orderId.join(',')}`)()
+      await clientAccountGetApi<IOrders>(
+        `/orders?ids=${urlEncode(orderId.join(','))}`,
+      )()
     ).orders;
   } catch (error) {
     void errorlog(error);

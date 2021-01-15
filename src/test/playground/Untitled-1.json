@@ -1,0 +1,84 @@
+{
+  "symbols": [
+    {
+      "symbol": "ANCTF",
+      "symbolId": 7120,
+      "description": "ALIMENTATION COUCHE-TARD",
+      "securityType": "Stock",
+      "listingExchange": "PINX",
+      "isTradable": true,
+      "isQuotable": true,
+      "currency": "USD"
+    },
+    {
+      "symbol": "ANCUF",
+      "symbolId": 7122,
+      "description": "ALIMENTATION COUCHE-TARD",
+      "securityType": "Stock",
+      "listingExchange": "PINX",
+      "isTradable": true,
+      "isQuotable": true,
+      "currency": "USD"
+    },
+    {
+      "symbol": "ATD.A.TO",
+      "symbolId": 7119,
+      "description": "ALIMENTATION COUCHE-TARD INC CL A MV",
+      "securityType": "Stock",
+      "listingExchange": "TSX",
+      "isTradable": true,
+      "isQuotable": true,
+      "currency": "CAD"
+    },
+    {
+      "symbol": "ATD.B.TO",
+      "symbolId": 7121,
+      "description": "ALIMENTATION COUCHE-TARD INC CL B SV",
+      "securityType": "Stock",
+      "listingExchange": "TSX",
+      "isTradable": true,
+      "isQuotable": true,
+      "currency": "CAD"
+    },
+    {
+      "symbol": "5BQBNF5.16",
+      "symbolId": 6718867,
+      "description": "ALIMENTATION COUCHE-TARD INC.SERIES 1 SNR UNSECURED NTS",
+      "securityType": "Bond",
+      "listingExchange": "",
+      "isTradable": false,
+      "isQuotable": false,
+      "currency": "CAD"
+    },
+    {
+      "symbol": "5BQBNF6.16",
+      "symbolId": 4300391,
+      "description": "ALIMENTATION COUCHE-TARD INC.SERIES 2 SNR UNSECURED NTS",
+      "securityType": "Bond",
+      "listingExchange": "",
+      "isTradable": false,
+      "isQuotable": false,
+      "currency": "CAD"
+    },
+    {
+      "symbol": "5BRHQF8.16",
+      "symbolId": 5834005,
+      "description": "ALIMENTATION COUCHE-TARD INC. SERIES 4 SNR SEC NTS",
+      "securityType": "Bond",
+      "listingExchange": "",
+      "isTradable": false,
+      "isQuotable": false,
+      "currency": "CAD"
+    },
+    {
+      "symbol": "5BXSVR0.16",
+      "symbolId": 24678239,
+      "description": "ALIMENTATION COUCHE-TARD INC SR NT SER 5",
+      "securityType": "Bond",
+      "listingExchange": "",
+      "isTradable": false,
+      "isQuotable": false,
+      "currency": "CAD"
+    }
+  ]
+}

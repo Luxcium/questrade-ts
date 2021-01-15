@@ -13,6 +13,7 @@ const {
   psi,
   stringny,
   parser,
+  urlEncode,
 } = helperFunctions;
 
 // export {
@@ -38,8 +39,8 @@ export {
   dateToISOString,
   dateToNumeric,
   day,
-  endpointFormatDateTool,
   setDateRange,
+  urlEncodeDateTool,
 } from './timeutil';
 export {
   apply,
@@ -53,6 +54,7 @@ export {
   psi,
   stringny,
   thrush,
+  urlEncode,
   void0,
 };
 export { helperFunctions };

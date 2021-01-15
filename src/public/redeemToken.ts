@@ -1,4 +1,4 @@
-import { _credentialsFactory } from '../private';
+import { _credentialsFactory } from '../private/auth/credentialsFactory';
 import {
   ClientHandlerFactory,
   Logger,
@@ -17,5 +17,4 @@ async function _redeemToken(
   return { credentials, qtApi };
 }
 
-const redeemToken = _redeemToken;
-export { redeemToken };
+export { _redeemToken as redeemToken };

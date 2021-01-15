@@ -1,5 +1,6 @@
 import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import { IOptionChain, IOptionChains, Logger } from '../../../../typescript';
+import { urlEncode } from '../../../../utils';
 
 // + _getOptionsById
 /*
@@ -15,9 +16,12 @@ export const _getOptionsById = (
 ) => async (symbolID: number): Promise<IOptionChain[]> => {
   try {
     return (
-      await clientGetApi<IOptionChains>(`/symbols/${symbolID}/options`, {
-        noCaching: true,
-      })()
+      await clientGetApi<IOptionChains>(
+        `/symbols/${urlEncode(symbolID)}/options`,
+        {
+          noCaching: true,
+        },
+      )()
     ).optionChain;
     /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
