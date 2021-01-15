@@ -1,11 +1,11 @@
 import { _getQuestradeApi } from '../private';
-import { ClientStaticHandlerFactory, Credentials } from '../typescript';
+import { ClientHandlerFactory, Credentials } from '../typescript';
 
 // export const getQuestradeApi = ;
 
 export const questradeApi = async (
   credentials: Credentials,
-  proxy?: ClientStaticHandlerFactory,
+  proxy?: ClientHandlerFactory,
   errorlog: (error: any) => any = (error: any) => error,
 ) => {
   const qtApi = await _getQuestradeApi(credentials, proxy, errorlog);

@@ -10,6 +10,10 @@ const main = async function (tedis: Tedis) {
     redisClientProxyHandler(tedis, true, false, { debug: false }),
     errorlog,
   );
+
+  void qtApi;
+  void ech0;
+
   ech0((await qtApi.search.stock('aapl'))[0].symbolId);
 
   return tedis;

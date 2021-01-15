@@ -45,6 +45,7 @@
     "typedoc": "^0.20.13"
   },
   "scripts": {
+    "start": "ts-node '/home/luxcium/dev/questrade-ts/src/test/playground/redis-modeling.ts'",
     "postinstall": "(cd './src/resources/side-effects'; npm install)",
     "SECTION:001": "# ========================================================",
     "predist": "yi; yarn run build:clean; yarn run rm:dist",

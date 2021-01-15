@@ -13,7 +13,6 @@ export interface ClientResponse<T = any> {
   config: ClientRequestConfig;
   request?: any;
 }
-
 interface Input {
   sampleA: Specimen;
   sampleB: Representative;

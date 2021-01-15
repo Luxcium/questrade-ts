@@ -11,7 +11,7 @@ const {
   flip,
   konst,
   psi,
-  stringify,
+  stringny,
   parser,
 } = helperFunctions;
 
@@ -51,7 +51,7 @@ export {
   konst,
   parser,
   psi,
-  stringify,
+  stringny,
   thrush,
   void0,
 };

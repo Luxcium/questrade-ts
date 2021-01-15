@@ -1,5 +1,5 @@
 import {
-  ClientStaticHandlerFactory,
+  ClientHandlerFactory,
   Credentials,
   Logger,
   OptionsFilters,
@@ -36,7 +36,7 @@ import {
 
 export const _getQuestradeApi = async (
   credentials: Credentials,
-  proxy?: ClientStaticHandlerFactory,
+  proxy?: ClientHandlerFactory,
   errorlog: Logger = (...error: any[]) => error,
 ): Promise<QuestradeApi> => {
   const [

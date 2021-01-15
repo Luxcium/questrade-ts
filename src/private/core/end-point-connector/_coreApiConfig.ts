@@ -1,12 +1,12 @@
-import { ClientRequestConfig } from '../../resources/side-effects/types';
-import { Credentials } from '../../typescript';
+import { Credentials } from '../../..';
+import { ClientRequestConfig } from '../../../resources/side-effects/types';
 
 /**
  * Partial application of Core api config builder generating an
  * object of strings value in the format of CoreApiConfig<D> to
  * be sent to client as main parameter.
  */
-export const _coreApiConfig = <D>(credentials: Credentials) => {
+function _coreApiConfig<D>(credentials: Credentials) {
   // ~~>
   return (VERB: 'GET' | 'POST') => {
     // ~~>
@@ -52,4 +52,6 @@ export const _coreApiConfig = <D>(credentials: Credentials) => {
       };
     };
   };
-};
+}
+
+export { _coreApiConfig };

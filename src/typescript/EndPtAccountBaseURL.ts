@@ -1,9 +1,9 @@
-import { ClientStaticHandlerFactory, Credentials } from '.';
+import { ClientHandlerFactory, Credentials } from '.';
 
 export type EndPtAccountBaseURL = (
   getCredAcctProp: (
     credentials: Credentials,
-    proxy?: ClientStaticHandlerFactory,
+    proxy?: ClientHandlerFactory,
   ) => string,
 ) => (
   urlSep: () => string,
@@ -11,5 +11,5 @@ export type EndPtAccountBaseURL = (
   acctUrlStr: () => string,
 ) => (
   credentials: Credentials,
-  proxy?: ClientStaticHandlerFactory,
+  proxy?: ClientHandlerFactory,
 ) => (accountEndpoint: string) => string;

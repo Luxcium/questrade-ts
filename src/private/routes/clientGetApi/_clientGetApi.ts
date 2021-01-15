@@ -1,5 +1,5 @@
-import { ClientStaticHandlerFactory, Credentials } from '../../../typescript';
-import { _coreApiFunction } from '../../core/_coreApiFunction';
+import { ClientHandlerFactory, Credentials } from '../../../typescript';
+import { _coreApiFunction } from '../../core/end-point-connector/_coreApiFunction';
 
 // # _clientGetApi !!!
 /**
@@ -8,5 +8,5 @@ import { _coreApiFunction } from '../../core/_coreApiFunction';
  */
 export const _clientGetApi = (
   credentials: Credentials,
-  proxy?: ClientStaticHandlerFactory,
+  proxy?: ClientHandlerFactory,
 ) => _coreApiFunction(credentials, proxy)('GET')(null);

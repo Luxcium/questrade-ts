@@ -1,17 +1,13 @@
-import { ProxyHandlerOptions } from '../../resources/side-effects/types';
-import {
-  ClientStaticHandlerFactory,
-  Credentials,
-  Logger,
-} from '../../typescript';
+import { ProxyHandlerOptions } from '../../../resources/side-effects/types';
+import { ClientHandlerFactory, Credentials, Logger } from '../../../typescript';
+import { _httpDataEndPointConnector } from '../XX-http-data-end-point-connector-XX';
 import { _coreApiConfig } from './_coreApiConfig';
-import { _httpDataEndPointConnector } from './XX-http-data-end-point-connector-XX';
 
-export const _coreApiFunction = (
+function _coreApiFunction(
   credentials: Credentials,
-  proxy?: ClientStaticHandlerFactory,
+  proxy?: ClientHandlerFactory,
   errorlog: Logger = (...error: any[]) => error,
-) => {
+) {
   // ~~>
   return (VERB: 'GET' | 'POST') => {
     // ~~>
@@ -44,4 +40,6 @@ export const _coreApiFunction = (
       };
     };
   };
-};
+}
+
+export { _coreApiFunction };

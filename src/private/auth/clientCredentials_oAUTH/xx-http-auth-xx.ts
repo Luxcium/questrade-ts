@@ -10,7 +10,7 @@ import {
   ClientStatic,
 } from '../../../resources/side-effects/typescript';
 import {
-  ClientStaticHandlerFactory,
+  ClientHandlerFactory,
   Credentials,
   IRefreshCreds,
   QuestradeAPIOptions,
@@ -18,7 +18,7 @@ import {
 
 export const _oAuthHttpCredentials = async (
   apiOptions: QuestradeAPIOptions,
-  proxy?: ClientStaticHandlerFactory,
+  proxy?: ClientHandlerFactory,
 ): Promise<Credentials> => {
   const { refreshToken, credentials } = validateToken(apiOptions);
   const _config: ClientRequestConfig = {

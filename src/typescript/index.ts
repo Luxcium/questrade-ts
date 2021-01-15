@@ -76,7 +76,7 @@ export { ITime } from './ITime';
 export { ITimeRateLimiter } from './ITimeRateLimiter';
 export { Void_0, Void0 } from './IVoid_0';
 export { LogErrors } from './LogErrors';
-export { ClientStaticHandlerFactory } from './Proxy';
+export { ClientHandlerFactory } from './Proxy';
 export {
   DateRange,
   QtApiAccount,

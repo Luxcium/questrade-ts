@@ -1612,8 +1612,8 @@
     "#F36", //ERROR
     "#F80", //FIXME
     "#93F", //HACK
-    "#39C", //HINT
-    "#FB0", //INFO
+    "#FB0", //HINT
+    "#39C", //INFO
     "#9BE", //LOG
     "#FB3", //TODO
     "#BF2", //WARNING

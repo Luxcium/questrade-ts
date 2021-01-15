@@ -3,7 +3,7 @@ export type {
   AcountNumberString,
   Balances,
   CallBack,
-  ClientStaticHandlerFactory,
+  ClientHandlerFactory,
   Credentials,
   DateRange,
   FiltersArray,

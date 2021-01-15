@@ -7,32 +7,17 @@ export const creatUrlAndDataHashes = (
   urlPath: string = '',
   dataToHash?: any,
 ): UrlDataAndHashes => {
-  const BASE64: BinaryToTextEncoding = 'base64';
+  // const BASE64: BinaryToTextEncoding = 'base64';
   const HEX: BinaryToTextEncoding = 'hex';
   return {
-    DATA: !dataToHash ? 'null' : dataToHash,
-    DATA_HASH_B62: !dataToHash
-      ? 'null'
-      : `DATA:B62${createHash('sha256')
-          .update(JSON.stringify(dataToHash))
-          .digest(BASE64)
-          .replaceAll('+', '')
-          .replaceAll('/', '')
-          .replaceAll('=', '')
-          .slice(0, 8)}`,
-    DATA_HASH_HEX: !dataToHash
+    DATA_HSH: !dataToHash
       ? 'null'
       : `DATA:${createHash('sha256')
           .update(JSON.stringify(dataToHash))
           .digest(HEX)
           .toUpperCase()
           .slice(0, 16)}`,
-    /*
-
-    //!!
-
-    */
-    URLDATA_HEX: `URLDATA:${createHash('sha256')
+    URLDATA_HSH: `URLDATA:${createHash('sha256')
       .update(
         `${
           !dataToHash
@@ -53,27 +38,34 @@ export const creatUrlAndDataHashes = (
       .digest(HEX)
       .toUpperCase()
       .slice(0, 15)}`,
-    /*
-
-     //!!
-
-     */
-    URL_HASH_B62: !urlPath
-      ? 'null'
-      : `URL:B62:${createHash('sha256')
-          .update(urlPath)
-          .digest(BASE64)
-          .replaceAll('+', '')
-          .replaceAll('/', '')
-          .replaceAll('=', '')
-          .slice(0, 8)}`,
-    URL_HASH_HEX: !urlPath
+    URL_HSH: !urlPath
       ? 'null'
       : `URL:${createHash('sha256')
           .update(urlPath)
           .digest(HEX)
           .toUpperCase()
           .slice(0, 18)}`,
-    URL_PATH: !urlPath ? 'null' : urlPath,
+    data: !dataToHash ? 'null' : dataToHash,
+    path: !urlPath ? 'null' : urlPath,
   };
 };
+
+// DATA_HASH_B62: !dataToHash
+//   ? 'null'
+//   : `DATA:B62${createHash('sha256')
+//       .update(JSON.stringify(dataToHash))
+//       .digest(BASE64)
+//       .replaceAll('+', '')
+//       .replaceAll('/', '')
+//       .replaceAll('=', '')
+//       .slice(0, 8)}`,
+
+// URL_HASH_B62: !urlPath
+//   ? 'null'
+//   : `URL:B62:${createHash('sha256')
+//       .update(urlPath)
+//       .digest(BASE64)
+//       .replaceAll('+', '')
+//       .replaceAll('/', '')
+//       .replaceAll('=', '')
+//       .slice(0, 8)}`,

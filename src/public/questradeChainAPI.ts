@@ -1,6 +1,6 @@
 import { _getQuestradeApi } from '../private';
 import {
-  ClientStaticHandlerFactory,
+  ClientHandlerFactory,
   Credentials,
   OptionsFilters,
   StrategyVariantRequest,
@@ -8,7 +8,7 @@ import {
 
 export const asyncQuestradeApi = (
   credentials: Credentials,
-  proxy?: ClientStaticHandlerFactory,
+  proxy?: ClientHandlerFactory,
 ) => {
   const asyncQtApi = _getQuestradeApi(credentials, proxy);
   const asyncAccount = asyncQtApi.then(then => then.account);
@@ -229,7 +229,7 @@ export class ChainApiClass {
 
   constructor(
     private credentials: Credentials,
-    private proxy?: ClientStaticHandlerFactory,
+    private proxy?: ClientHandlerFactory,
   ) {
     this.asyncApi = asyncQuestradeApi(this.credentials, this.proxy);
     // this.asyncAccount = this.asyncApi.asyncAccount;
