@@ -9,7 +9,6 @@
       "detail": "Output watcher for this Type-Script project",
       "type": "shell",
       "command": "tsc",
-      // "isBackground": false,
       "isBackground": true,
       "runOptions": {
         "reevaluateOnRerun": true,
@@ -18,17 +17,14 @@
       },
       "args": [
         "--build",
-        "--watch",
+        "--watch"
       ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
+      "group": "build",
       "presentation": {
         "echo": false,
         "focus": false,
         "panel": "dedicated",
-        "reveal": "never",
+        "reveal": "never"
       },
       "problemMatcher": {
         "base": "$tsc-watch",
@@ -36,7 +32,7 @@
       }
     },
     {
-      "label": "test run",
+      "label": "start run",
       "type": "shell",
       "presentation": {
         "echo": true,
@@ -46,16 +42,16 @@
         "showReuseMessage": true,
         "clear": true
       },
+      // "dependsOn": "tsc watch",
       "runOptions": {
         "instanceLimit": 1,
         "reevaluateOnRerun": true,
         "runOn": "default"
       },
-      "command": "${workspaceFolder}/scripts/F5:test:run.sh",
+      "command": "${workspaceFolder}/scripts/F5:start:run.sh",
       "problemMatcher": {
-        "base": "$tsc",
+        "base": "$tsc"
       },
-      // "dependsOn": "tsc watch",
       "group": {
         "kind": "test",
         "isDefault": true

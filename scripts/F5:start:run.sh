@@ -18,6 +18,7 @@
           builtin cd ..
           cp -r ./keys ./out
           cp .env ./out/.env
+          echo 'NODE_ENV="development"' >>./out/.env
           echo -e "\n\n―NODEjs―\n\n"
           node ./out/src/test/playground/main.js && echo -e "\n\n―NODEjs―"
         )

@@ -1,5 +1,8 @@
 /* eslint-disable import/no-unassigned-import */
-import './redis-modeling';
+import { main } from './redis-modeling';
+
+main(); //.catch(error => errorlog('in main from redis-modeling', error.message));
+
 /*
 import '../../circular';
 import '../../private/api/AccountsCalls/_getAccounts/_getAccounts';

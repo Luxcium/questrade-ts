@@ -1,11 +1,11 @@
 import { redeemToken } from '../..';
-import { sideEffects, Tedis } from '../../resources/side-effects';
+import { makeTedis, sideEffects, Tedis } from '../../resources/side-effects';
 import { redisClientProxyHandler } from '../../resources/side-effects/proxies';
 import { void0 } from '../../utils';
 
-const { errorlog, ech0, getMyToken, makeTedis } = sideEffects;
+const { errorlog, ech0, getMyToken } = sideEffects;
 
-async function main(tedis: Tedis) {
+async function mainFunction(tedis: Tedis) {
   const { qtApi } = await redeemToken(
     getMyToken(),
     redisClientProxyHandler(tedis, {
@@ -24,12 +24,15 @@ async function main(tedis: Tedis) {
   return tedis;
 }
 
-main(makeTedis())
-  .then(async (tedis: Tedis) => {
-    return tedis.close();
-  })
-  .catch(error => errorlog('in main from redis-modeling', error.message));
-
+async function main() {
+  return mainFunction(makeTedis())
+    .then(async (tedis: Tedis) => {
+      return tedis.close();
+    })
+    .catch(error => errorlog('in main from redis-modeling', error.message));
+}
+// main();
+export { main };
 /*
 
  //
