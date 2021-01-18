@@ -101,7 +101,7 @@ class redisClientProxyHandlerClass<T extends Function = ClientStatic>
 
       // void convertArrayToObject
       void0(await this.tedis.command('HSET', myKey, ...hash));
-      void0(await this.tedis.command('EXPIRE', myKey, 30));
+      void0(await this.tedis.command('EXPIRE', myKey, 300));
       echo<any>(myKey, await this.tedis.command('TTL', myKey));
       ech0(await this.tedis.command('TTL', myKey));
 
@@ -125,6 +125,7 @@ class redisClientProxyHandlerClass<T extends Function = ClientStatic>
       // void alternativeReturnValue;
       //      Then return the Data ...
       const response: ClientResponse = await returnValue;
+      void response;
       /*
 export interface ClientResponse<T = any> {
   data: T;
@@ -297,4 +298,67 @@ export const redisClientProxyHandler = (
         setTimeout(async () => {
           echo<any>(myKey, await this.tedis.command('TTL', myKey));
         }, 3000);
+
+         // echo(response);
+      echo<any>('\nresponse.status:\n\n', response.status);
+      echo('\nresponse.statusText', response.statusText);
+      echo('\nresponse.headers', response.headers);
+      echo(
+        "\nresponse.headers['strict-transport-security']:\n\n",
+        response.headers['strict-transport-security'],
+      );
+      echo(
+        "\nresponse.headers['x-ratelimit-remaining']:\n\n",
+        response.headers['x-ratelimit-remaining'],
+      );
+      echo(
+        "\nresponse.headers['x-ratelimit-reset']:\n\n",
+        response.headers['x-ratelimit-reset'],
+      );
+      echo(
+        "\nresponse.headers['content-type']:\n\n",
+        response.headers['content-type'],
+      );
+      echo(
+        "\nresponse.headers['content-length']:\n\n",
+        response.headers['content-length'],
+      );
+      echo<any>(
+        '\nresponse.config as ClientRequestConfig:\n\n',
+        response.config as ClientRequestConfig,
+      );
+      echo(
+        '\n(response.config as ClientRequestConfig).headers:\n\n',
+        (response.config as ClientRequestConfig).headers,
+      );
+      echo(
+        '\n(response.config as ClientRequestConfig).url:\n\n',
+        (response.config as ClientRequestConfig).url,
+      );
+      echo(
+        '\n(response.config as ClientRequestConfig).method:\n\n',
+        (response.config as ClientRequestConfig).method,
+      );
+      echo(
+        '\n(response.config as ClientRequestConfig).headers.Accept:\n\n',
+        (response.config as ClientRequestConfig).headers.Accept,
+      );
+      echo(
+        '\n(response.config as ClientRequestConfig).headers.Authorization:\n\n',
+        (response.config as ClientRequestConfig).headers.Authorization,
+      );
+      echo(
+        '\n(response.config as ClientRequestConfig).headers.location:\n\n',
+        (response.config as ClientRequestConfig).headers.location,
+      );
+      echo(
+        "\nresponse.headers['x-ratelimit-remaining']:\n\n",
+        response.headers['x-ratelimit-remaining'],
+      );
+      echo(
+        "\nresponse.headers['x-ratelimit-reset']:\n\n",
+        response.headers['x-ratelimit-reset'],
+      );
+      // echo(response.request);
+      // echo(response.data);
  */

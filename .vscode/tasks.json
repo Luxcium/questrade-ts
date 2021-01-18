@@ -1,27 +1,61 @@
 {
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
+  // yarn run build;
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build Task",
+      "label": "tsc watch",
+      "detail": "Output watcher for this Type-Script project",
       "type": "shell",
-      "command": "yarn run build",
-      "problemMatcher": [
-        "$tsc"
+      "command": "tsc",
+      // "isBackground": false,
+      "isBackground": true,
+      "runOptions": {
+        "reevaluateOnRerun": true,
+        "instanceLimit": 1,
+        "runOn": "folderOpen"
+      },
+      "args": [
+        "--build",
+        "--watch",
       ],
       "group": {
         "kind": "build",
         "isDefault": true
+      },
+      "presentation": {
+        "echo": false,
+        "focus": false,
+        "panel": "dedicated",
+        "reveal": "never",
+      },
+      "problemMatcher": {
+        "base": "$tsc-watch",
+        "applyTo": "allDocuments"
       }
     },
     {
-      "label": "Start Task",
+      "label": "test run",
       "type": "shell",
-      "command": "yarn run start",
-      "problemMatcher": [
-        "$tsc"
-      ],
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "showReuseMessage": true,
+        "clear": true
+      },
+      "runOptions": {
+        "instanceLimit": 1,
+        "reevaluateOnRerun": true,
+        "runOn": "default"
+      },
+      "command": "${workspaceFolder}/scripts/F5:test:run.sh",
+      "problemMatcher": {
+        "base": "$tsc",
+      },
+      // "dependsOn": "tsc watch",
       "group": {
         "kind": "test",
         "isDefault": true
@@ -29,3 +63,5 @@
     }
   ]
 }
+//
+//

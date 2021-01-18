@@ -18,7 +18,6 @@ async function main(tedis: Tedis) {
 
   void qtApi;
   void ech0;
-  // ech0(await qtApi.getSymbols.byStockIds([7119, 7121]));
 
   void0(await qtApi.search.stock('couche tard'));
 

@@ -24,6 +24,7 @@ coverage
 doc
 docs
 # Compiled binary addons (http://nodejs.org/api/addons.html)
+out
 build
 !dist
 !/dist/*.tgz

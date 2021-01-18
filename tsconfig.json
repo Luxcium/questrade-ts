@@ -1,69 +1,132 @@
 {
   "compilerOptions": {
-    /* ALWAYS TRUE STRICT TYPE-CHECKING, ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
-    /* ALWAYS TRUE */ "strict": true /*                         ALWAYS TRUE  */,
-    /* ALWAYS TRUE */ "alwaysStrict": true /*                   ALWAYS TRUE  */,
-    /* ALWAYS TRUE */ "noImplicitAny": true /*                  ALWAYS TRUE  */,
-    /* ALWAYS TRUE */ "noImplicitThis": true /*                 ALWAYS TRUE  */,
-    /* ALWAYS TRUE */ "strictBindCallApply": true /*            ALWAYS TRUE  */,
-    /* ALWAYS TRUE */ "strictFunctionTypes": true /*            ALWAYS TRUE  */,
-    /* ALWAYS TRUE */ "strictNullChecks": true /*               ALWAYS TRUE  */,
-    /* ALWAYS TRUE */ "strictPropertyInitialization": true /*   ALWAYS TRUE  */,
-    /* ALWAYS TRUE */ "noFallthroughCasesInSwitch": true /*     ALWAYS TRUE  */,
-    /* ALWAYS TRUE */ "noImplicitReturns": true /*              ALWAYS TRUE  */,
-    /* ALWAYS TRUE */ "noUnusedLocals": true /*                 ALWAYS TRUE  */,
-    /* ALWAYS TRUE */ "noUnusedParameters": true /*             ALWAYS TRUE  */,
-    /* ALWAYS TRUE STRICT TYPE-CHECKING, ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
-    // ...
     /* Basic Options */
+    "noEmit": false,
     "target": "es5",
+    "module": "commonjs",
+    "rootDir": "./src",
+    "outDir": "./out/src",
+    "declarationDir": "./out/typings",
+    /* Compilation Options */
+    "allowJs": true,
+    "checkJs": false,
+    "importHelpers": true,
+    "newLine": "lf",
+    "noEmitHelpers": false,
+    "noEmitOnError": false,
+    "noErrorTruncation": true,
+    "removeComments": false,
+    "resolveJsonModule": true,
+    "skipLibCheck": false,
+    "useDefineForClassFields": true,
+    "importsNotUsedAsValues": "remove",
+    "forceConsistentCasingInFileNames": true,
+    "assumeChangesOnlyAffectDirectDependencies": false,
+    "generateCpuProfile": "./out/cpu-info/.cpuprofile",
+    /* Incremental compilation. */
+    "incremental": true,
+    "tsBuildInfoFile": "./out/ts-build-info.lib",
+    /* Module Resolution Options */
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    // "composite": true,
+    // "isolatedModules": true,
+    /* Source Map and declaration options */
+    "declaration": true,
+    "declarationMap": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "sourceMap": false,
+    "emitDeclarationOnly": false,
+    /* Vebosity */
+    "pretty": true,
+    "diagnostics": true,
+    "extendedDiagnostics": true,
+    "listEmittedFiles": false,
+    "listFiles": false,
+    "traceResolution": false,
+    "listFilesOnly": false,
+    /* Extra settings */
+    "disableReferencedProjectLoad": false,
+    "disableSolutionSearching": false,
+    "disableSourceOfProjectReferenceRedirect": true,
+    "downlevelIteration": true,
+    "emitBOM": false,
+    "noResolve": false,
+    "noImplicitUseStrict": false,
+    "noStrictGenericChecks": false,
+    "noUncheckedIndexedAccess": false,
+    "preserveConstEnums": false,
+    "preserveSymlinks": false,
+    "stripInternal": false,
+    /* Additional Options */
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    /* List of library files to be included in the compilation. */
     "lib": [
       "dom",
       "esnext"
     ],
     "noLib": false,
-    "rootDir": "./src",
-    "outDir": "./build/src",
-    "newLine": "LF",
-    "module": "commonjs",
+    /* list of directories for type definition */
     "typeRoots": [
       "./node_modules/@types",
-      "./node_modules/.registry.npmjs.org/@types"
+      "./node_modules/.registry.npmjs.org/@types",
+      "./typings"
     ],
+    /* Type declaration files to be included in compilation. */
     "types": [
       "jest",
       "node"
     ],
-    /* Compilation Options */
-    // "allowJs": true,
-    // "checkJs":true,
-    "noEmit": true,
-    "importHelpers": true,
-    "removeComments": false,
-    "noErrorTruncation": true,
-    "noEmitOnError": true,
-    /* Module Resolution Options */
-    "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    /* Source Map and declaration options */
-    "declaration": true,
-    "downlevelIteration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "inlineSourceMap": false,
-    "inlineSources": true,
-    /* Additional Options */
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "pretty": true,
-    /* Additional Vebosity */
-    "diagnostics": true,
-    "extendedDiagnostics": true,
-    "listFiles": false,
-    "listEmittedFiles": false,
-    "traceResolution": false
+    /* ALWAYS FALSE NEVER ALLOW-UNUSED-LABELS & ALLOW-UNREACHABLE-CODE FALSE */
+    /* ALWAYS FALSE */ "allowUmdGlobalAccess": false /*         ALWAYS FALSE */,
+    /* ALWAYS FALSE */ "allowUnreachableCode": false /*         ALWAYS FALSE */,
+    /* ALWAYS FALSE */ "allowUnusedLabels": false /*            ALWAYS FALSE */,
+    /* ALWAYS FALSE NEVER ALLOW-UNUSED-LABELS & ALLOW-UNREACHABLE-CODE FALSE */
+    /*                */ "strict": true /*                                   */,
+    /* ALWAYS TRUE STRICT TYPE-CHECKING ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
+    /* ALWAYS TRUE  */ "alwaysStrict": true /*                  ALWAYS TRUE  */,
+    /* ALWAYS TRUE  */ "noImplicitAny": true /*                 ALWAYS TRUE  */,
+    /* ALWAYS TRUE  */ "noImplicitThis": true /*                ALWAYS TRUE  */,
+    /* ALWAYS TRUE  */ "strictBindCallApply": true /*           ALWAYS TRUE  */,
+    /* ALWAYS TRUE  */ "strictFunctionTypes": true /*           ALWAYS TRUE  */,
+    /* ALWAYS TRUE  */ "strictNullChecks": true /*              ALWAYS TRUE  */,
+    /* ALWAYS TRUE  */ "strictPropertyInitialization": true /*  ALWAYS TRUE  */,
+    /* ALWAYS TRUE  */ "noFallthroughCasesInSwitch": true /*    ALWAYS TRUE  */,
+    /* ALWAYS TRUE  */ "noImplicitReturns": true /*             ALWAYS TRUE  */,
+    /* ALWAYS TRUE  */ "noUnusedLocals": true /*                ALWAYS TRUE  */,
+    /* ALWAYS TRUE  */ "noUnusedParameters": true /*            ALWAYS TRUE  */,
+    /* ALWAYS TRUE STRICT TYPE-CHECKING ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
+    /*                                                                       */
+    /* Unused settings */
+    /*                                                                        */
+    // "watch": false,
+    // "baseUrl": "./",
+    // "charset": "",
+    // "disableSizeLimit": false,
+    // "fallbackPolling": "dynamicPriorityPolling",
+    // "jsx": "preserve",
+    // "jsxFactory": "React.createElement",
+    // "jsxFragmentFactory": "React.Fragment",
+    // "jsxImportSource": "react",
+    // "keyofStringsOnly": false,
+    // "mapRoot": "",
+    // "maxNodeModuleJsDepth": 0,
+    // "outFile": "",
+    // "paths": {},
+    // "plugins": [],
+    // "preserveWatchOutput": true,
+    // "reactNamespace": "React",
+    // "rootDirs": [],
+    // "skipDefaultLibCheck": false,
+    // "sourceRoot": "",
+    // "suppressExcessPropertyErrors": false,
+    // "suppressImplicitAnyIndexErrors": false,
+    // "watchDirectory": "dynamicPriorityPolling",
+    // "watchFile": "dynamicPriorityPolling",
+    /*                                                                        */
   },
   "include": [
     "./src/**/*",
@@ -96,3 +159,130 @@
     }
   ]
 }
+// "compilerOptions": {
+//   "target": "es5",
+//   "module": "CommonJS",
+//   "moduleResolution": "Node",
+//   /*                                                                        */
+//   "rootDir": "./",
+//   "noEmit": false,
+//   "outDir": "./build",
+//   "declaration": true,
+//   "declarationDir": "./build/typings",
+//   "incremental": true,
+//   "tsBuildInfoFile": "./build/ts-build-info.lib",
+//   /*                                                                        */
+//   "composite": true,
+//   "allowSyntheticDefaultImports": true,
+//   "allowUmdGlobalAccess": false,
+//   "allowUnreachableCode": false,
+//   "allowUnusedLabels": false,
+//   "assumeChangesOnlyAffectDirectDependencies": false,
+//   "useDefineForClassFields": true,
+//   /*                                                                        */
+//   "removeComments": true,
+//   "esModuleInterop": false,
+//   "downlevelIteration": true,
+//   "forceConsistentCasingInFileNames": true,
+//   "newLine": "lf",
+//   /*                                                                        */
+//   "sourceMap": false,
+//   "inlineSourceMap": true,
+//   "inlineSources": true,
+//   "declarationMap": true,
+//   "isolatedModules": true,
+//   "generateCpuProfile": "./out/cpu-info.cpuprofile",
+//   /*                                                                        */
+//   "skipLibCheck": false,
+//   "noEmitHelpers": false,
+//   "importHelpers": true,
+//   "importsNotUsedAsValues": "remove",
+//   /*                                                                        */
+//   "allowJs": true,
+//   "checkJs": false,
+//   "resolveJsonModule": true,
+//   /*                                                                        */
+//   "pretty": true,
+//   "watch": false,
+//   /*                                                                        */
+//   "listFiles": false,
+//   "diagnostics": true,
+//   "traceResolution": false,
+//   "listEmittedFiles": false,
+//   "extendedDiagnostics": true,
+//   /*                                                                        */
+//   "experimentalDecorators": true,
+//   "emitDecoratorMetadata": true,
+//   /*                                                                        */
+//   "lib": [
+//     "esnext"
+//   ],
+//   "types": [
+//     "node",
+//     "jest"
+//   ],
+//   "typeRoots": [
+//     "./node_modules/@types",
+//     "./typings"
+//   ],
+//   /* ALWAYS TRUE STRICT TYPE-CHECKING, ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
+//   /* ALWAYS TRUE */ "strict": true /*                         ALWAYS TRUE  */,
+//   /* ALWAYS TRUE */ "alwaysStrict": true /*                   ALWAYS TRUE  */,
+//   /* ALWAYS TRUE */ "noImplicitAny": true /*                  ALWAYS TRUE  */,
+//   /* ALWAYS TRUE */ "noImplicitThis": true /*                 ALWAYS TRUE  */,
+//   /* ALWAYS TRUE */ "strictBindCallApply": true /*            ALWAYS TRUE  */,
+//   /* ALWAYS TRUE */ "strictFunctionTypes": true /*            ALWAYS TRUE  */,
+//   /* ALWAYS TRUE */ "strictNullChecks": true /*               ALWAYS TRUE  */,
+//   /* ALWAYS TRUE */ "strictPropertyInitialization": true /*   ALWAYS TRUE  */,
+//   /* ALWAYS TRUE */ "noFallthroughCasesInSwitch": true /*     ALWAYS TRUE  */,
+//   /* ALWAYS TRUE */ "noImplicitReturns": true /*              ALWAYS TRUE  */,
+//   /* ALWAYS TRUE */ "noUnusedLocals": true /*                 ALWAYS TRUE  */,
+//   /* ALWAYS TRUE */ "noUnusedParameters": true /*             ALWAYS TRUE  */,
+//   /* ALWAYS TRUE STRICT TYPE-CHECKING, ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
+//   /*                                                                        */
+//   "disableReferencedProjectLoad": true,
+//   "disableSolutionSearching": false,
+//   "disableSourceOfProjectReferenceRedirect": false,
+//   "emitBOM": false,
+//   "emitDeclarationOnly": false,
+//   "listFilesOnly": false,
+//   "noEmitOnError": false,
+//   "noImplicitUseStrict": false,
+//   "noLib": false,
+//   "noResolve": false,
+//   "noStrictGenericChecks": false,
+//   "noUncheckedIndexedAccess": false,
+//   "preserveConstEnums": false,
+//   "preserveSymlinks": false,
+//   "stripInternal": false,
+//   // "baseUrl": "./"
+//   // "charset": "",
+//   // "disableSizeLimit": false,
+//   // "fallbackPolling": "dynamicPriorityPolling",
+//   // "jsx": "preserve",
+//   // "jsxFactory": "React.createElement",
+//   // "jsxFragmentFactory": "React.Fragment",
+//   // "jsxImportSource": "react",
+//   // "keyofStringsOnly": false,
+//   // "mapRoot": "",
+//   // "maxNodeModuleJsDepth": 0,
+//   // "noErrorTruncation": false,
+//   // "outFile": "",
+//   // "paths": {},
+//   // "plugins": [],
+//   // "preserveWatchOutput": false,
+//   // "reactNamespace": "React",
+//   // "rootDirs": [],
+//   // "skipDefaultLibCheck": false,
+//   // "sourceRoot": "",
+//   // "suppressExcessPropertyErrors": false,
+//   // "suppressImplicitAnyIndexErrors": false,
+//   // "watchDirectory": "dynamicPriorityPolling",
+//   // "watchFile": "dynamicPriorityPolling",
+// },
+// "compileOnSave": true,
+// //  "extends": "",
+// // "files": [],
+// // "references": [],
+// // "ts-node": {},
+// // "typeAcquisition": {},
