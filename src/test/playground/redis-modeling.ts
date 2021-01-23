@@ -1,37 +1,51 @@
-import { redeemToken } from '../..';
-import { makeTedis, sideEffects, Tedis } from '../../resources/side-effects';
+import {
+  ClientHandlerFactory,
+  Credentials,
+  QuestradeAPIOptions,
+  redeemToken,
+} from '../..';
+import {
+  errorlog,
+  getMyToken,
+  makeTedis,
+  Tedis,
+} from '../../resources/side-effects';
 import { redisClientProxyHandler } from '../../resources/side-effects/proxies';
-import { void0 } from '../../utils';
+import { Logger } from '../../typescript';
 
-const { errorlog, ech0, getMyToken } = sideEffects;
-
+export type RedeemOptions = {
+  refreshToken: QuestradeAPIOptions;
+  errorloger?: Logger;
+  proxyFactory?: (credentials?: Credentials) => ClientHandlerFactory;
+};
 async function mainFunction(tedis: Tedis) {
-  const { qtApi } = await redeemToken(
-    getMyToken(),
-    redisClientProxyHandler(tedis, {
-      debug: false,
-      httpDataEndPointConnector: true,
-      oAuthHttpCredentials: false,
-    }),
-    errorlog,
-  );
+  const refreshToken = getMyToken();
+  const errorloger = errorlog;
+  const proxyFactory = redisClientProxyHandler(tedis, {
+    httpConnectProxy: true,
+  });
+  const redeemOptions: RedeemOptions = {
+    errorloger,
+    proxyFactory,
+    refreshToken,
+  };
+  const { qtApi } = await redeemToken(redeemOptions);
 
-  void qtApi;
-  void ech0;
-
-  void0(await qtApi.search.stock('couche tard'));
+  await qtApi.search.stock('couche tard');
 
   return tedis;
 }
 
 async function main() {
-  return mainFunction(makeTedis())
+  return mainFunction(makeTedis({ port: 6379 }))
     .then(async (tedis: Tedis) => {
       return tedis.close();
     })
     .catch(error => errorlog('in main from redis-modeling', error.message));
 }
-// main();
+
+main();
+
 export { main };
 /*
 

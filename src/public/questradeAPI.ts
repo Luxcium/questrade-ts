@@ -1,14 +1,20 @@
 import { _getQuestradeApi } from '../private/api/_getQuestradeApi';
-import { ClientHandlerFactory, Credentials } from '../typescript';
+import { ClientHandlerFactory, Credentials, QuestradeApi } from '../typescript';
 
 // export const getQuestradeApi = ;
 
 export const questradeApi = async (
   credentials: Credentials,
-  proxy?: ClientHandlerFactory,
-  errorlog: (error: any) => any = (error: any) => error,
+  proxy?: (cred: Credentials) => ClientHandlerFactory,
+  errorloger: (error: any) => any = (error: any) => error,
 ) => {
-  const qtApi = await _getQuestradeApi(credentials, proxy, errorlog);
+  const qtApi: QuestradeApi = await (async (): Promise<QuestradeApi> => {
+    if (!proxy) {
+      return _getQuestradeApi(credentials, undefined, errorloger);
+    }
+    return _getQuestradeApi(credentials, proxy(credentials), errorloger);
+  })();
+
   return {
     account: {
       getActivities: qtApi.account.getActivities,

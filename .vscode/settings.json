@@ -55,7 +55,6 @@
   "editor.codeActionsOnSave": [
     "source.addMissingImports",
     "source.organizeImports",
-    "source.fixAll.eslint",
     "source.fixAll",
   ],
   /*
@@ -92,8 +91,8 @@
   ―― ERRORLENS
   */
   "errorLens.annotationPrefix": [
-    "🍒 ~~> ", // ―1 error
-    "🧩 ==> ", // ―2 warning
+    "🍒 ~> ", // ―1 error
+    "🧩 => ", // ―2 warning
     "✨ -> ", // ―3 info
     "🎯 +> ", // ―4 hint
   ],
@@ -1731,7 +1730,6 @@
   "todo-tree.tree.labelFormat": "${tag} ${after}",
   "todo-tree.tree.scanMode": "workspace",
   "todo-tree.tree.tooltipFormat": "${filepath}, line ${line}",
-  "god.tsconfig": "./tsconfig.json",
   // "Toggle activity bar": true,
   // "Toggle line comment": true,
   // "Toggle render whitespace": true,

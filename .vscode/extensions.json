@@ -1,0 +1,21 @@
+{
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "alefragnani.Bookmarks",
+    "christian-kohler.path-intellisense",
+    "CoenraadS.bracket-pair-colorizer-2",
+    "dbaeumer.vscode-eslint",
+    "dlech.chmod",
+    "esbenp.prettier-vscode",
+    "formulahendry.code-runner",
+    "ghmcadams.lintlens",
+    "Luxcium.pop-n-lock-theme-vscode",
+    "ms-vscode.typescript-javascript-grammar",
+    "ms-vscode.vscode-typescript-next",
+    "PKief.material-icon-theme",
+    "SophodorosLLC.codevalet-vscode",
+    "ue.alphabetical-sorter",
+    "usernamehw.errorlens",
+    "VisualStudioExptTeam.vscodeintellicode",
+  ]
+}

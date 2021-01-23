@@ -3,5 +3,5 @@ export interface UrlDataAndHashes<T = any> {
   data: T | 'null';
   path: string | 'null';
   URL_HSH: string | 'null';
-  URLDATA_HSH: string | 'null';
+  UDATAGRAM: string | 'null';
 }

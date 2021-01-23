@@ -10,9 +10,9 @@ async function main(): Promise<Tedis> {
   const { qtApi, credentials } = await redeemToken(
     getMyToken(),
     clientConsoleLogHashesHandler({
-      debug: false,
-      httpDataEndPointConnector: true,
-      oAuthHttpCredentials: false,
+      debuging: false,
+      httpConnectProxy: true,
+      oAuthHttpProxy: false,
     }),
   );
 
@@ -20,6 +20,7 @@ async function main(): Promise<Tedis> {
   void0(qtApi);
   return (async (): Promise<Tedis> => {
     const getSymbolId = getSymboIdByStockSymbol(qtApi);
+
     void ech0(await getSymbolId('AAPL'));
     const tedis = makeTedis({ port: 6379 });
 

@@ -3,12 +3,23 @@ import { BinaryToTextEncoding, createHash } from 'crypto';
 import { UrlDataAndHashes } from '../typescript';
 
 '73B439CEB0EBEF90782E9978FEEBF88AA1540C763CAEDABA5B16223D306437E0'.length;
-export const creatUrlAndDataHashes = (
-  urlPath: string = '',
-  dataToHash?: any,
-): UrlDataAndHashes => {
-  // const BASE64: BinaryToTextEncoding = 'base64';
+function getUrlHash(urlPath: string) {
   const HEX: BinaryToTextEncoding = 'hex';
+
+  return {
+    URL_HSH: !urlPath
+      ? 'null'
+      : `URL:${createHash('sha256')
+          .update(urlPath)
+          .digest(HEX)
+          .toUpperCase()
+          .slice(0, 18)}`,
+    path: !urlPath ? 'null' : urlPath,
+  };
+}
+function getDataHash(dataToHash: string) {
+  const HEX: BinaryToTextEncoding = 'hex';
+
   return {
     DATA_HSH: !dataToHash
       ? 'null'
@@ -17,7 +28,53 @@ export const creatUrlAndDataHashes = (
           .digest(HEX)
           .toUpperCase()
           .slice(0, 16)}`,
-    URLDATA_HSH: `URLDATA:${createHash('sha256')
+    data: !dataToHash ? 'null' : dataToHash,
+  };
+}
+function getUDatagram(urlPath: string, dataToHash: string) {
+  const HEX: BinaryToTextEncoding = 'hex';
+
+  return {
+    UDATAGRAM: `UDATAGRAM:${createHash('sha256')
+      .update(
+        `${
+          !dataToHash
+            ? 'null'
+            : `DATA:${createHash('sha256')
+                .update(JSON.stringify(dataToHash))
+                .digest(HEX)
+                .toUpperCase()}`
+        }${
+          !urlPath
+            ? 'null'
+            : `URL:${createHash('sha256')
+                .update(urlPath)
+                .digest(HEX)
+                .toUpperCase()}`
+        }`,
+      )
+      .digest(HEX)
+      .toUpperCase()
+      .slice(0, 15)}`,
+  };
+}
+
+function getUrlAndDataHashes(
+  urlPath: string = '',
+  dataToHash?: any,
+): UrlDataAndHashes {
+  // const BASE64: BinaryToTextEncoding = 'base64';
+  const HEX: BinaryToTextEncoding = 'hex';
+
+  return {
+    DATA_HSH: !dataToHash
+      ? 'null'
+      : `DATA:${createHash('sha256')
+          .update(JSON.stringify(dataToHash))
+          .digest(HEX)
+          .toUpperCase()
+          .slice(0, 16)}`,
+    UDATAGRAM: `UDATAGRAM:${createHash('sha256')
       .update(
         `${
           !dataToHash
@@ -48,7 +105,9 @@ export const creatUrlAndDataHashes = (
     data: !dataToHash ? 'null' : dataToHash,
     path: !urlPath ? 'null' : urlPath,
   };
-};
+}
+
+export { getDataHash, getUDatagram, getUrlAndDataHashes, getUrlHash };
 
 // DATA_HASH_B62: !dataToHash
 //   ? 'null'

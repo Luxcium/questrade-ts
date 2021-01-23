@@ -1,4 +1,5 @@
-import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../../../utils';
+import { ClientHandlerFactory, Credentials } from '../../../..';
+import { getQtUrlPathFromArgs, getUrlAndDataHashes } from '../../../../utils';
 import { sideEffects } from '../..';
 import { ClientStatic, ProxyHandlerOptions } from '../../types';
 import { clientProxyHandlerFactory } from '../core/client-proxy-handler-factory-function';
@@ -33,7 +34,7 @@ class ClientConsoleLogHashesHandlerClass
           'async apply(target: ClientStatic, thisArg: any, argArray?: any): Promise<any>',
         sideEffects: 'console.log',
       },
-      ...creatUrlAndDataHashes(urlPath, data),
+      ...getUrlAndDataHashes(urlPath, data),
     };
 
     // +SIDE EFFECTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
@@ -46,13 +47,17 @@ class ClientConsoleLogHashesHandlerClass
 
 export const clientConsoleLogHashesHandler = (
   mainProxyHandlerOptions: ProxyHandlerOptions = {},
+): ((credentials?: Credentials) => ClientHandlerFactory) => (
+  credentials?: Credentials,
 ) =>
-  clientProxyHandlerFactory()(
+  clientProxyHandlerFactory(credentials)(
     (specificProxyHandlerOptions: ProxyHandlerOptions) =>
       new ClientConsoleLogHashesHandlerClass({
         ...mainProxyHandlerOptions,
         ...specificProxyHandlerOptions,
       }),
-    mainProxyHandlerOptions.httpDataEndPointConnector ?? true,
-    mainProxyHandlerOptions.oAuthHttpCredentials ?? false,
+    mainProxyHandlerOptions.httpConnectProxy ?? true,
+    mainProxyHandlerOptions.oAuthHttpProxy ?? false,
   );
+
+// : (credentials?: Credentials)=>ClientHandlerFactory =>(credentials?: Credentials)=>

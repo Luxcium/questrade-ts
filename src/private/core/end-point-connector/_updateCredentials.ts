@@ -4,7 +4,7 @@ import {
   ClientRequestConfig,
   ClientResponse,
 } from '../../../resources/side-effects/types';
-import { creatUrlAndDataHashes, getQtUrlPathFromArgs } from '../../../utils';
+import { getQtUrlPathFromArgs, getUrlAndDataHashes } from '../../../utils';
 import { remainingRequests } from '../requestPerSecondLimit';
 
 function _updateCredentials(
@@ -30,7 +30,7 @@ function _updateCredentials(
       const dataToHash = `${JSON.stringify(response.data ?? null)}`;
 
       // XXX: make dependencies to nodeJS crypto module optional ***************
-      credentials.hashes = creatUrlAndDataHashes(urlToHash, dataToHash);
+      credentials.hashes = getUrlAndDataHashes(urlToHash, dataToHash);
     }
   } catch (error_) {
     void errorlog('error_:', error_);

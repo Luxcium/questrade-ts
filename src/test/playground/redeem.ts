@@ -10,11 +10,12 @@ async function main() {
   const { qtApi, credentials } = await redeemToken(
     getMyToken(),
     clientConsoleLogHashesHandler({
-      debug: false,
-      httpDataEndPointConnector: true,
-      oAuthHttpCredentials: false,
+      debuging: false,
+      httpConnectProxy: true,
+      oAuthHttpProxy: false,
     }),
   );
+
   void0(credentials);
 
   void0(qtApi);
@@ -25,3 +26,5 @@ async function main() {
 }
 
 main().catch(error => errorlog(error.message));
+
+// HTTP_PROXI_CONNECTOR

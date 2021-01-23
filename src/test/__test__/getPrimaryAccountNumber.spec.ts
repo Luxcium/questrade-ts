@@ -4,13 +4,14 @@ import {
   ClientAccountType,
 } from 'questrade-api-enumerations';
 
-import { _getPrimaryAccountNumber } from '../../private/auth/credentialsFactory';
+import { _getPrimaryAccountNumber } from '../../private/auth/_credentialsFactory';
 import { IAccount } from '../../typescript';
 
 test('should ', async done => {
   let dummyAccount: IAccount[] = [
     //
   ];
+
   expect(_getPrimaryAccountNumber(dummyAccount)).toEqual('11111111');
   dummyAccount = [
     {

@@ -1,30 +1,33 @@
 {
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
-  // yarn run build;
   "version": "2.0.0",
   "tasks": [
     {
       "label": "tsc watch",
-      "detail": "Output watcher for this Type-Script project",
       "type": "shell",
+      "detail": "Output watcher for this Type-Script project",
       "command": "tsc",
-      "isBackground": true,
+      "args": [
+        "--build",
+        // "--watch"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "runOptions": {
         "reevaluateOnRerun": true,
         "instanceLimit": 1,
-        "runOn": "folderOpen"
+        "runOn": "default"
       },
-      "args": [
-        "--build",
-        "--watch"
-      ],
-      "group": "build",
+      "isBackground": true,
       "presentation": {
         "echo": false,
         "focus": false,
         "panel": "dedicated",
-        "reveal": "never"
+        "reveal": "silent",
+        "group": "task watch"
       },
       "problemMatcher": {
         "base": "$tsc-watch",
@@ -34,15 +37,16 @@
     {
       "label": "start run",
       "type": "shell",
+      "detail": "Run project selected entry point to test the curent functionalities",
+      "dependsOn": "tsc watch",
       "presentation": {
         "echo": true,
         "reveal": "always",
         "focus": false,
         "panel": "dedicated",
-        "showReuseMessage": true,
-        "clear": true
+        "clear": true,
+        "group": "task watch"
       },
-      // "dependsOn": "tsc watch",
       "runOptions": {
         "instanceLimit": 1,
         "reevaluateOnRerun": true,
@@ -59,5 +63,3 @@
     }
   ]
 }
-//
-//

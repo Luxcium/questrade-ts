@@ -1,8 +1,8 @@
 export interface ProxyHandlerOptions {
-  debug?: boolean;
+  debuging?: boolean;
   noCaching?: boolean;
-  httpDataEndPointConnector?: boolean;
-  oAuthHttpCredentials?: boolean;
+  httpConnectProxy?: boolean;
+  oAuthHttpProxy?: boolean;
   practiceAccount?: boolean;
   test?: boolean;
   keyDir?: string;

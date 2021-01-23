@@ -39,6 +39,7 @@
     "unicorn"
   ],
   "rules": {
+    "prefer-const": "warn",
     /*
   ―― START ――――――― eslint-config-prettier ――――――――――――――――――――――――――――――――――――――
     */
@@ -191,7 +192,7 @@
     "fp/no-throw": "off",
     "fp/no-unused-expression": "off",
     "fp/no-valueof-field": "error",
-    // "no-var": "error",
+    "no-var": "error",
     /*
       ―――――――― simple-import-functional ――――――――――――――――――――――――――――――――――――――――――――――――――
     */
@@ -344,7 +345,75 @@
     "sonarjs/prefer-immediate-return": "warn",
     "sonarjs/prefer-object-literal": "error",
     "sonarjs/prefer-single-boolean-return": "error",
-    "sonarjs/prefer-while": "error"
+    "sonarjs/prefer-while": "error",
+    // # Deprecated
+    // These rules have been deprecated in accordance with the deprecation policy, and replaced by newer rules:
+
+    // Deprecated rule
+    "callback-return": "off", // (no replacement)
+    "global-require": "off", // (no replacement)
+    "handle-callback-err": "off", // (no replacement)
+    "id-blacklist": "off", //
+    "indent-legacy": "off", //
+    "lines-around-directive": "off", //
+    "newline-after-var": "off", //
+    "newline-before-return": "off", //
+    "no-buffer-constructor": "off", // (no replacement)
+    "no-catch-shadow": "off", //
+    "no-mixed-requires": "off", // (no replacement)
+    "no-native-reassign": "off", //
+    "no-negated-in-lhs": "off", //
+    "no-new-require": "off", // (no replacement)
+    "no-path-concat": "off", // (no replacement)
+    "no-process-env": "off", // (no replacement)
+    "no-process-exit": "off", // (no replacement)
+    "no-restricted-modules": "off", // (no replacement)
+    "no-spaced-func": "off", //
+    "no-sync": "off", // (no replacement)
+    "prefer-reflect": "off", // (no replacement)
+    "require-jsdoc": "off", // (no replacement)
+    "valid-jsdoc": "off", // (no replacement),
+
+     // Replaced by
+    "id-denylist": "off",
+    // "indent": [
+    //   "warn",2,{"MemberExpression":1}, { "offsetTernaryExpressions": true }], // , {"ignoredNodes": ["ConditionalExpression"] }
+    "padding-line-between-statements": [
+      "warn",
+      {
+        "blankLine": "always",
+        "prev": [
+          "const",
+          "let",
+          "var"
+        ],
+        "next": "*"
+      },
+      {
+        "blankLine": "any",
+        "prev": [
+          "const",
+          "let",
+          "var"
+        ],
+        "next": [
+          "const",
+          "let",
+          "var"
+        ]
+      }
+      // {
+      //   "blankLine": "always",
+      //   // "prev": STATEMENT_TYPE,
+      //   "next": [
+      //     "function"
+      //   ]
+      // }
+    ],
+    "no-shadow": "error",
+    "no-unsafe-negation": "error",
+    "func-call-spacing": "warn",
+    "no-global-assign": "error"
   },
   "overrides": [
     {

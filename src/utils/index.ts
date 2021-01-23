@@ -1,27 +1,24 @@
-import { helperFunctions } from './void0';
-
-const {
-  id0,
-  idx,
-  void0,
-  curry,
-  thrush,
-  apply,
-  compose,
-  flip,
-  konst,
-  psi,
-  stringny,
-  parser,
-  urlEncode,
-} = helperFunctions;
-
 // export {
 //   clientProxyFactory,
 //   httpHashLoggerClientProxyHandler,
 //   ProxyReflexionLoggerFunctionHandler,
 // } from '../resources/proxies';
-export { creatUrlAndDataHashes } from './create-url-and-data-hashes';
+import { helperFunctions } from './void0';
+
+export {
+  FsImplementationSync,
+  Made,
+  Mode,
+  OptionsSync,
+  sync,
+} from '../resources/side-effects/auth/mkdirp';
+export { HTTP_PROXI_CONNECTOR } from './constants';
+export {
+  getDataHash,
+  getUDatagram,
+  getUrlAndDataHashes,
+  getUrlHash,
+} from './create-url-and-data-hashes';
 export { formatDate } from './dates';
 export { getQtUrlPathFromArgs } from './get-qt-url-path-from-args';
 export { getHash } from './getHash';
@@ -29,7 +26,6 @@ export {
   getSymboIdBy,
   getSymboIdByStockSymbol,
 } from './helpers/get-symbol-id-by-stock-symbol';
-export { FsImplementationSync, Made, Mode, OptionsSync, sync } from './mkdirp';
 export { perSeconds } from './perSeconds';
 export {
   dateNowISO,
@@ -58,3 +54,19 @@ export {
   void0,
 };
 export { helperFunctions };
+
+const {
+  id0,
+  idx,
+  void0,
+  curry,
+  thrush,
+  apply,
+  compose,
+  flip,
+  konst,
+  psi,
+  stringny,
+  parser,
+  urlEncode,
+} = helperFunctions;

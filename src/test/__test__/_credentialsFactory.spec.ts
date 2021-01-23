@@ -1,4 +1,4 @@
-import { _credentialsFactory } from '../../private/auth/credentialsFactory';
+import { _credentialsFactory } from '../../private/auth/_credentialsFactory';
 
 describe('Name of the group', () => {
   it('should ', async done => {

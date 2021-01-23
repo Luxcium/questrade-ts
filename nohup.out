@@ -58,3 +58,140 @@ kill : utilisation :kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... o
 kill : utilisation :kill [-s sigspec | -n signum | -sigspec] pid | jobspec ... ou kill -l [sigspec]
 /home/luxcium/ahmyzsh/core/bin/enable_systemctl: ligne 41 : kill: (3315) - Opération non permise
 play FAIL sox: `default' error writing to pulse audio device: Connection terminated: Operation not permitted
+/home/luxcium/ahmyzsh/core/bin/enable_systemctl: ligne 21: erreur de syntaxe près du symbole inattendu « kill_at_shutdown_ »
+/home/luxcium/ahmyzsh/core/bin/enable_systemctl: ligne 21: `  function sudo() kill_at_shutdown_() {'
+play FAIL sox: `default' error writing to pulse audio device: Connection terminated: Operation not permitted
+Removed /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
+Removed /etc/systemd/system/graphical.target.wants/upower.service.
+Removed /etc/systemd/system/graphical.target.wants/switcheroo-control.service.
+Removed /etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service.
+Removed /etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service.
+Removed /etc/systemd/system/dbus-org.freedesktop.ModemManager1.service.
+Removed /etc/systemd/system/sockets.target.wants/libvirtd.socket.
+Removed /etc/systemd/system/sockets.target.wants/virtlogd.socket.
+Removed /etc/systemd/system/sockets.target.wants/avahi-daemon.socket.
+Removed /etc/systemd/system/sockets.target.wants/virtlockd.socket.
+Removed /etc/systemd/system/sockets.target.wants/libvirtd-ro.socket.
+Removed /etc/systemd/system/dbus-org.freedesktop.Avahi.service.
+Removed /etc/systemd/system/multi-user.target.wants/pmcd.service.
+Removed /etc/systemd/system/multi-user.target.wants/pmlogger.service.
+Removed /etc/systemd/system/multi-user.target.wants/akmods.service.
+Removed /etc/systemd/system/multi-user.target.wants/ModemManager.service.
+Removed /etc/systemd/system/multi-user.target.wants/pmie.service.
+Removed /etc/systemd/system/multi-user.target.wants/libvirtd.service.
+Removed /etc/systemd/system/multi-user.target.wants/dkms.service.
+Removed /etc/systemd/system/multi-user.target.wants/firewalld.service.
+Removed /etc/systemd/system/multi-user.target.wants/NetworkManager.service.
+Removed /etc/systemd/system/multi-user.target.wants/avahi-daemon.service.
+Removed /etc/systemd/system/sysinit.target.wants/dmraid-activation.service.
+Removed /etc/systemd/system/dbus-org.bluez.service.
+Removed /etc/systemd/system/bluetooth.target.wants/bluetooth.service.
+Warning: Stopping dnf-makecache.service, but it can still be activated by:
+  dnf-makecache.timer
+Warning: Stopping libvirtd.service, but it can still be activated by:
+  libvirtd-ro.socket
+  libvirtd-admin.socket
+  libvirtd.socket
+Warning: Stopping systemd-udevd.service, but it can still be activated by:
+  systemd-udevd-control.socket
+  systemd-udevd-kernel.socket
+redis_6379.service is not a native service, redirecting to systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install disable redis_6379
+Removed /etc/systemd/system/sockets.target.wants/docker.socket.
+Removed /etc/systemd/system/multi-user.target.wants/containerd.service.
+Removed /etc/systemd/system/multi-user.target.wants/docker.service.
+play FAIL sox: `default' error writing to pulse audio device: Connection terminated: Operation not permitted
+Removed /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
+Removed /etc/systemd/system/graphical.target.wants/upower.service.
+Removed /etc/systemd/system/graphical.target.wants/switcheroo-control.service.
+Removed /etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service.
+Removed /etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service.
+Removed /etc/systemd/system/dbus-org.freedesktop.ModemManager1.service.
+Removed /etc/systemd/system/sockets.target.wants/libvirtd.socket.
+Removed /etc/systemd/system/sockets.target.wants/virtlogd.socket.
+Removed /etc/systemd/system/sockets.target.wants/avahi-daemon.socket.
+Removed /etc/systemd/system/sockets.target.wants/virtlockd.socket.
+Removed /etc/systemd/system/sockets.target.wants/libvirtd-ro.socket.
+Removed /etc/systemd/system/dbus-org.freedesktop.Avahi.service.
+Removed /etc/systemd/system/multi-user.target.wants/pmcd.service.
+Removed /etc/systemd/system/multi-user.target.wants/pmlogger.service.
+Removed /etc/systemd/system/multi-user.target.wants/akmods.service.
+Removed /etc/systemd/system/multi-user.target.wants/ModemManager.service.
+Removed /etc/systemd/system/multi-user.target.wants/pmie.service.
+Removed /etc/systemd/system/multi-user.target.wants/libvirtd.service.
+Removed /etc/systemd/system/multi-user.target.wants/dkms.service.
+Removed /etc/systemd/system/multi-user.target.wants/firewalld.service.
+Removed /etc/systemd/system/multi-user.target.wants/NetworkManager.service.
+Removed /etc/systemd/system/multi-user.target.wants/avahi-daemon.service.
+Removed /etc/systemd/system/sysinit.target.wants/dmraid-activation.service.
+Removed /etc/systemd/system/dbus-org.bluez.service.
+Removed /etc/systemd/system/bluetooth.target.wants/bluetooth.service.
+Warning: Stopping dnf-makecache.service, but it can still be activated by:
+  dnf-makecache.timer
+Warning: Stopping libvirtd.service, but it can still be activated by:
+  libvirtd-ro.socket
+  libvirtd.socket
+  libvirtd-admin.socket
+Warning: Stopping systemd-udevd.service, but it can still be activated by:
+  systemd-udevd-kernel.socket
+  systemd-udevd-control.socket
+redis_6379.service is not a native service, redirecting to systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install disable redis_6379
+Removed /etc/systemd/system/sockets.target.wants/docker.socket.
+Removed /etc/systemd/system/multi-user.target.wants/containerd.service.
+Removed /etc/systemd/system/multi-user.target.wants/docker.service.
+kill: pas assez d'arguments
+kill: pas assez d'arguments
+play FAIL sox: `default' error writing to pulse audio device: Connection terminated: Operation not permitted
+Removed /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
+Removed /etc/systemd/system/graphical.target.wants/upower.service.
+Removed /etc/systemd/system/graphical.target.wants/switcheroo-control.service.
+Removed /etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service.
+Removed /etc/systemd/system/dbus-org.freedesktop.nm-dispatcher.service.
+Removed /etc/systemd/system/dbus-org.freedesktop.ModemManager1.service.
+Removed /etc/systemd/system/sockets.target.wants/libvirtd.socket.
+Removed /etc/systemd/system/sockets.target.wants/virtlogd.socket.
+Removed /etc/systemd/system/sockets.target.wants/avahi-daemon.socket.
+Removed /etc/systemd/system/sockets.target.wants/virtlockd.socket.
+Removed /etc/systemd/system/sockets.target.wants/libvirtd-ro.socket.
+Removed /etc/systemd/system/dbus-org.freedesktop.Avahi.service.
+Removed /etc/systemd/system/multi-user.target.wants/pmcd.service.
+Removed /etc/systemd/system/multi-user.target.wants/pmlogger.service.
+Removed /etc/systemd/system/multi-user.target.wants/akmods.service.
+Removed /etc/systemd/system/multi-user.target.wants/ModemManager.service.
+Removed /etc/systemd/system/multi-user.target.wants/pmie.service.
+Removed /etc/systemd/system/multi-user.target.wants/libvirtd.service.
+Removed /etc/systemd/system/multi-user.target.wants/dkms.service.
+Removed /etc/systemd/system/multi-user.target.wants/firewalld.service.
+Removed /etc/systemd/system/multi-user.target.wants/NetworkManager.service.
+Removed /etc/systemd/system/multi-user.target.wants/avahi-daemon.service.
+Removed /etc/systemd/system/sysinit.target.wants/dmraid-activation.service.
+Removed /etc/systemd/system/dbus-org.bluez.service.
+Removed /etc/systemd/system/bluetooth.target.wants/bluetooth.service.
+Warning: Stopping dnf-makecache.service, but it can still be activated by:
+  dnf-makecache.timer
+Warning: Stopping libvirtd.service, but it can still be activated by:
+  libvirtd-admin.socket
+  libvirtd.socket
+  libvirtd-ro.socket
+Warning: Stopping systemd-udevd.service, but it can still be activated by:
+  systemd-udevd-control.socket
+  systemd-udevd-kernel.socket
+redis_6379.service is not a native service, redirecting to systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install disable redis_6379
+Removed /etc/systemd/system/sockets.target.wants/docker.socket.
+Removed /etc/systemd/system/multi-user.target.wants/containerd.service.
+Removed /etc/systemd/system/multi-user.target.wants/docker.service.
+kill: kill: pas assez d'argumentspas assez d'arguments
+
+kill: pas assez d'arguments
+kill: pas assez d'arguments
+kill: pas assez d'arguments
+kill: pas assez d'arguments
+kill: pas assez d'arguments
+kill: pas assez d'arguments
+kill: pas assez d'arguments
+kill: pas assez d'arguments
+kill: pas assez d'arguments
+kill: pas assez d'arguments
+play FAIL sox: `default' error writing to pulse audio device: Connection terminated: Operation not permitted

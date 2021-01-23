@@ -1,8 +1,8 @@
 /* eslint-disable import/no-unassigned-import */
 import './private/auth/credentialsFactory';
-import './private/auth/credentialsFactory/_credentialsFactory';
 import './private/auth/credentialsFactory/_getPrimaryAccountNumber';
 import './private/auth/xx-http-auth-xx';
+import './private/auth/_credentialsFactory';
 import './private/core/end-point-connector';
 import './private/core/end-point-connector/_coreApiFunction';
 import './private/core/end-point-connector/_echoStatus';
