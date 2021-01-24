@@ -7,8 +7,8 @@ describe('Name of the group', () => {
       apiVersion: 'v1',
       keyFile: 'MOCKfile',
       practiceAccount: false,
-      seedToken: 'MOCK',
       test: false,
+      token: 'MOCK',
     });
 
     done();

@@ -9,8 +9,8 @@ describe('auth Credential from QuestradeApi via HTTP CLIENT', () => {
       apiVersion: 'v1',
       keyDir: './keys/MOCKdir',
       practiceAccount: false,
-      seedToken: 'MOCK',
       test: false,
+      token: 'MOCK',
     });
 
     void0(credentials);
@@ -22,8 +22,8 @@ describe('auth Credential from QuestradeApi via HTTP CLIENT', () => {
       apiVersion: 'v1',
       keyFile: 'MOCKfile',
       practiceAccount: false,
-      seedToken: 'MOCK',
       test: false,
+      token: 'MOCK',
     });
 
     void0(credentials);
@@ -49,8 +49,8 @@ describe('auth Credential from QuestradeApi via HTTP CLIENT', () => {
       apiVersion: 'v1',
       keyFile: 'MOCKfile',
       practiceAccount: false,
-      seedToken: 'MOCK',
       test: false,
+      token: 'MOCK',
     });
 
     void0(credentials);

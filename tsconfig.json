@@ -134,14 +134,14 @@
     "src/test"
   ],
   "exclude": [
-    "__test__",
+    "**/__test__/**/*.*",
     "backup",
     "build",
     "debug.js",
     "enums",
     "functional.js",
     "manualTestingAndDebug.js",
-    "node_modules",
+    "**/node_modules",
     "src/legacy/proto_testing/**/*"
     // "src/test"
   ],

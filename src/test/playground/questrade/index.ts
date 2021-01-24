@@ -8,7 +8,10 @@ import { QuestradeApi } from '../../../typescript';
 const yourRefreshToken = '9biJACDg2bZiMZYNfDhewfb1gybCNYAc0';
 
 export const qt = async () => {
-  const { qtApi, credentials } = await redeemToken(yourRefreshToken);
+  const { qtApi, credentials } = await redeemToken({
+    refreshToken: yourRefreshToken,
+  });
+
   return { credentials, qtApi };
 };
 

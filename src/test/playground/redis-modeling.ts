@@ -1,9 +1,4 @@
-import {
-  ClientHandlerFactory,
-  Credentials,
-  QuestradeAPIOptions,
-  redeemToken,
-} from '../..';
+import { ClientHandlerFactory, Credentials, redeemToken } from '../..';
 import {
   errorlog,
   getMyToken,
@@ -11,25 +6,22 @@ import {
   Tedis,
 } from '../../resources/side-effects';
 import { redisClientProxyHandler } from '../../resources/side-effects/proxies';
-import { Logger } from '../../typescript';
+import { IQuestradeAPIOptions, Logger } from '../../typescript';
 
 export type RedeemOptions = {
-  refreshToken: QuestradeAPIOptions;
+  refreshToken: string | IQuestradeAPIOptions;
   errorloger?: Logger;
   proxyFactory?: (credentials?: Credentials) => ClientHandlerFactory;
 };
 async function mainFunction(tedis: Tedis) {
-  const refreshToken = getMyToken();
-  const errorloger = errorlog;
   const proxyFactory = redisClientProxyHandler(tedis, {
     httpConnectProxy: true,
   });
-  const redeemOptions: RedeemOptions = {
-    errorloger,
+
+  const { qtApi } = await redeemToken({
     proxyFactory,
-    refreshToken,
-  };
-  const { qtApi } = await redeemToken(redeemOptions);
+    refreshToken: { token: getMyToken() },
+  });
 
   await qtApi.search.stock('couche tard');
 
@@ -44,7 +36,7 @@ async function main() {
     .catch(error => errorlog('in main from redis-modeling', error.message));
 }
 
-main();
+// main();
 
 export { main };
 /*

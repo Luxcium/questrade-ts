@@ -1,26 +1,40 @@
 import { Tedis } from 'tedis';
 
 import { ClientHandlerFactory, Credentials } from '../../../../..';
-import { ProxyHandlerOptions } from '../../../types';
-import { clientProxyHandlerFactory } from '../..';
+import { getHttpClient } from '../../..';
+import { ClientStatic, ProxyHandlerOptions } from '../../../types';
 import { redisClientProxyHandlerClass } from './redis-client-proxy-handler-class';
 
-export const redisClientProxyHandler = (
+type CredentialsProxyHandler = (
+  credentials?: Credentials,
+) => ClientHandlerFactory;
+
+export function redisClientProxyHandler(
   tedisInstance: Tedis,
   mainProxyHandlerOptions: ProxyHandlerOptions = {},
-): ((credentials?: Credentials) => ClientHandlerFactory) => (
-  credentials?: Credentials,
-) =>
-  clientProxyHandlerFactory(credentials)(
-    (specificProxyHandlerOptions: ProxyHandlerOptions) =>
-      new redisClientProxyHandlerClass(
-        tedisInstance,
-        {
-          ...mainProxyHandlerOptions,
-          ...specificProxyHandlerOptions,
-        },
-        credentials,
-      ),
-    mainProxyHandlerOptions.httpConnectProxy ?? true,
-    mainProxyHandlerOptions.oAuthHttpProxy ?? false,
-  );
+): CredentialsProxyHandler {
+  return function clientHandlerFactory(credentials?: Credentials) {
+    const client: ClientStatic = getHttpClient();
+    const newProxy: ClientHandlerFactory = {};
+
+    newProxy.activate = (proxyHandlerOptions: ProxyHandlerOptions) =>
+      new Proxy(
+        client,
+        new redisClientProxyHandlerClass(
+          tedisInstance,
+          {
+            ...mainProxyHandlerOptions,
+            ...proxyHandlerOptions,
+          },
+          credentials,
+        ),
+      );
+    newProxy.httpDataEndPointConnector =
+      mainProxyHandlerOptions.httpConnectProxy ?? true;
+    newProxy.oAuthHttpCredentials =
+      mainProxyHandlerOptions.oAuthHttpProxy ?? false;
+    newProxy.credendials = credentials;
+
+    return newProxy;
+  };
+}

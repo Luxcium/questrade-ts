@@ -6,7 +6,7 @@ const { echo, errorlog, getMyToken } = sideEffects;
 const myToken = getMyToken();
 
 export const testingThat = (async () => {
-  const qtApi = await redeemToken(myToken)
+  const qtApi = await redeemToken({ refreshToken: myToken })
     .then(result => {
       return result.qtApi;
     })
@@ -17,6 +17,7 @@ export const testingThat = (async () => {
   }
   const theResult = await qtApi.account.getPositions();
   const theResult2 = await qtApi.search.stock('tu');
+
   void echo<unknown>('theResult1', theResult);
 
   void echo<unknown>('theResult2', theResult2[0]);

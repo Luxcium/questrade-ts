@@ -8,8 +8,8 @@ describe('oAuth Validate Token', () => {
       keyDir: '',
       keyFile: '',
       practiceAccount: false,
-      seedToken: '',
       test: false,
+      token: '',
     });
   });
   it('should validate with a string account number', async () => {
@@ -19,8 +19,8 @@ describe('oAuth Validate Token', () => {
       keyDir: '',
       keyFile: '',
       practiceAccount: false,
-      seedToken: '',
       test: false,
+      token: '',
     });
   });
   it('should validate with a key file', async () => {
@@ -30,8 +30,8 @@ describe('oAuth Validate Token', () => {
       keyDir: '',
       keyFile: 'MOCKfile',
       practiceAccount: false,
-      seedToken: '',
       test: false,
+      token: '',
     });
   });
   it('should validate with a key dir', async done => {
@@ -42,8 +42,8 @@ describe('oAuth Validate Token', () => {
         keyDir: './build/tmp',
         keyFile: '',
         practiceAccount: false,
-        seedToken: '',
         test: false,
+        token: '',
       }))();
     done();
   });

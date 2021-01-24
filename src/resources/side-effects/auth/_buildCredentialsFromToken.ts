@@ -18,7 +18,7 @@ export const _buildCredentialsFromToken = (token: QuestradeAPIOptions) => {
     credentials.keyDir = token.keyDir || './keys';
     credentials.apiVersion = token.apiVersion || 'v1';
     credentials.keyFile = token.keyFile || '';
-    credentials.seedToken = token.seedToken || '';
+    credentials.seedToken = token.token || '';
     credentials.accountNumber = `${token.account}` || '';
   }
   credentials.authUrl = credentials.practice
