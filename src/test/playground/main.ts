@@ -1,8 +1,14 @@
-/* eslint-disable import/no-unassigned-import */
+// /* eslint-disable import/no-unassigned-import */
+// import { main } from './redis-modeling';
+
+import NULL from '../../resources/side-effects/proxies/client';
 import { main } from './redis-modeling';
 
-main(); //.catch(error => errorlog('in main from redis-modeling', error.message));
+main();
+// //.catch(error => errorlog('in main from redis-modeling', error.message));
+NULL
 
+// console.log('hello today')
 /*
 import '../../circular';
 import '../../private/api/AccountsCalls/_getAccounts/_getAccounts';

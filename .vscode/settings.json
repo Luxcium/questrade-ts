@@ -13,7 +13,7 @@
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   */
   "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features",
@@ -55,6 +55,7 @@
   "editor.codeActionsOnSave": [
     "source.addMissingImports",
     "source.organizeImports",
+    "sourece.eslint",
     "source.fixAll",
   ],
   /*

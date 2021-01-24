@@ -25,6 +25,7 @@
       "presentation": {
         "echo": false,
         "focus": false,
+        "clear": true,
         "panel": "dedicated",
         "reveal": "silent",
         "group": "task watch"

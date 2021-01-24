@@ -129,9 +129,7 @@
     /*                                                                        */
   },
   "include": [
-    "./src/**/*",
-    "src/debug.ts",
-    "src/test"
+    "./src/**/*.ts",
   ],
   "exclude": [
     "**/__test__/**/*.*",
@@ -142,8 +140,6 @@
     "functional.js",
     "manualTestingAndDebug.js",
     "**/node_modules",
-    "src/legacy/proto_testing/**/*"
-    // "src/test"
   ],
   "plugins": [
     {

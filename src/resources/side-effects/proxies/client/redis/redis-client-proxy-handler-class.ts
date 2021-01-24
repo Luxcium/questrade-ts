@@ -1,5 +1,8 @@
+import { Http2ServerResponse } from 'http2';
+import Redis from 'ioredis';
+import JSONCache from 'redis-json';
 import { Tedis } from 'tedis';
-
+import { ech0, sideEffects } from '../../..';
 import { Credentials } from '../../../../../typescript';
 import {
   getQtUrlPathFromArgs,
@@ -9,7 +12,7 @@ import {
   parser,
   void0,
 } from '../../../../../utils';
-import { ech0, sideEffects } from '../../..';
+import { echo1 } from '../../../default-behaviour';
 import {
   ClientRequestConfig,
   ClientResponse,
@@ -18,19 +21,56 @@ import {
 } from '../../../types';
 import { ReflexionLoggerProxyHandlerAbstractClass } from '../../core/reflexion-logger-proxy-handler-abstarct-class';
 
+type ioRedis = Redis.Redis;
+
+const redis: Redis.Redis = new Redis();
+type ResponseCache = {
+  response: {
+    clientRequest: any;
+    config: {
+      url: string;
+    };
+    data: any;
+    headers: {
+      'content-length': string;
+      'content-type': string;
+      'date': string;
+      'x-ratelimit-remaining': string;
+      'x-ratelimit-reset': string;
+    };
+    status: number;
+    statusText: string;
+  };
+
+  DATA_HSH: string;
+  path: string;
+  data: any;
+  URL_HSH: string;
+  UDATAGRAM: string;
+};
+Http2ServerResponse;
+const jsonCache = new JSONCache<ResponseCache>(redis, {
+  prefix: 'response:cache:',
+});
+
+void { jsonCache };
+
 const { echo } = sideEffects;
 
 class redisClientProxyHandlerClass<T extends Function = ClientStatic>
   extends ReflexionLoggerProxyHandlerAbstractClass<T>
   implements ProxyHandler<T> {
-  private tedis: Tedis;
   constructor(
-    tedisInstance: Tedis,
+    protected tedis: Tedis,
+    protected redisinstance: ioRedis | null,
+    protected jsonRedis: JSONCache | null,
     protected handlerOptions: ProxyHandlerOptions,
     protected credentials?: Credentials,
   ) {
     super(handlerOptions);
-    this.tedis = tedisInstance;
+    // this.tedis = tedisInstance;
+    // this.redisinstance = redisinstance;
+    // this.jsonRedis = jsonRedis;
   }
 
   protected async applyTargetReflexion(
@@ -60,12 +100,15 @@ class redisClientProxyHandlerClass<T extends Function = ClientStatic>
       // +SIDE EFFECTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
 
       // $ READ FROM TEDIS ―――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-      const isInCache: boolean =
-        (await this.tedis.command('hgetall', URL_HSH)) === 1;
+      const isInCache: boolean = echo1(
+        "this.tedis.command('hgetall', URL_HSH): ",
+        await this.tedis.command('hgetall', URL_HSH),
+      );
 
       const initialValue: any = {};
 
       if (isInCache) {
+        // if (process.exit()) { };
         const parsed = id0(
           parser<any[]>(await this.tedis.command('HGETALL', URL_HSH)),
         );

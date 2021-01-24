@@ -176,7 +176,7 @@
       ―――――――― simple-import-fp ――――――――――――――――――――――――――――――――――――――――――――――――――
     */
     "fp/no-arguments": "error",
-    "fp/no-class": "off",
+    "fp/no-class": "error",
     "fp/no-delete": "error",
     "fp/no-events": "error",
     "fp/no-get-set": "off",
@@ -348,7 +348,6 @@
     "sonarjs/prefer-while": "error",
     // # Deprecated
     // These rules have been deprecated in accordance with the deprecation policy, and replaced by newer rules:
-
     // Deprecated rule
     "callback-return": "off", // (no replacement)
     "global-require": "off", // (no replacement)
@@ -373,8 +372,7 @@
     "prefer-reflect": "off", // (no replacement)
     "require-jsdoc": "off", // (no replacement)
     "valid-jsdoc": "off", // (no replacement),
-
-     // Replaced by
+    // Replaced by
     "id-denylist": "off",
     // "indent": [
     //   "warn",2,{"MemberExpression":1}, { "offsetTernaryExpressions": true }], // , {"ignoredNodes": ["ConditionalExpression"] }

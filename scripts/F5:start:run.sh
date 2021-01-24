@@ -9,13 +9,12 @@ FLAGS=''
     ) &&
         ( 
             (
-
                 [[ -d ./out/node_modules/ ]] || exit 7
                 [[ -d ./out/src/resources/node_modules/ ]] || exit 9
-            ) && (node ./out/src/test/playground/main.js && echo -e "\n\n―NODEjs―") || exit 11
+            ) && (node ./out/src/test/playground/main.js && echo -e "\n\n― NODEjs ―") || exit 11
         ) ||
         ( 
-            (ts-node '/home/luxcium/dev/questrade-ts/src/test/playground/main.ts' && echo -e "\n\n―tsNODE―" ||  exit 13) &
+            (ts-node '/home/luxcium/dev/questrade-ts/src/test/playground/main.ts' && echo -e "\n\n― tsNODE ―" ||  exit 13) &
             (
                 tsc --build || exit 15
                 cp ./package.json ./out/
@@ -23,8 +22,8 @@ FLAGS=''
                 cp ./src/resources/package-lock.json ./out/src/resources/package-lock.json
                 cp ./src/resources/package.json ./out/src/resources/package.json
                 builtin cd ./out
-                yarn || exit 17
+                yarn -s || exit 17
             ) || exit 19
         ) || exit 21
-) || exit 23
+) && echo ― DONE ― || exit 23
 exit 0

@@ -1,7 +1,6 @@
 import { Tedis } from 'tedis';
-
-import { ClientHandlerFactory, Credentials } from '../../../../..';
 import { getHttpClient } from '../../..';
+import { ClientHandlerFactory, Credentials } from '../../../../..';
 import { ClientStatic, ProxyHandlerOptions } from '../../../types';
 import { redisClientProxyHandlerClass } from './redis-client-proxy-handler-class';
 
@@ -22,6 +21,8 @@ export function redisClientProxyHandler(
         client,
         new redisClientProxyHandlerClass(
           tedisInstance,
+          null,
+          null,
           {
             ...mainProxyHandlerOptions,
             ...proxyHandlerOptions,
