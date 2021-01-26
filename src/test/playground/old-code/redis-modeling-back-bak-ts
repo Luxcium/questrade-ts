@@ -3,7 +3,7 @@
 // import { clientConsoleLogHashesHandler } from '../../resources/side-effects/proxies';
 // import { getSymboIdByStockSymbol, void0 } from '../../utils';
 
-import { void0 } from '../../utils';
+import { void0 } from '../../../utils';
 
 // const { ech0, errorlog, getMyToken, makeTedis } = sideEffects;
 

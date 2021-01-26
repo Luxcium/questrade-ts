@@ -1,9 +1,12 @@
-import { ClientHandlerFactory, Credentials } from '../../../..';
-import { getQtUrlPathFromArgs, getUrlAndDataHashes } from '../../../../utils';
-import { sideEffects } from '../..';
-import { ClientStatic, ProxyHandlerOptions } from '../../types';
-import { clientProxyHandlerFactory } from '../core/client-proxy-handler-factory-function';
-import { ReflexionLoggerProxyHandlerAbstractClass } from '../core/reflexion-logger-proxy-handler-abstarct-class';
+import { ClientHandlerFactory, Credentials } from '../../..';
+import { sideEffects } from '../../../resources/side-effects';
+import { clientProxyHandlerFactory } from '../../../resources/side-effects/proxies/core/client-proxy-handler-factory-function';
+import { ReflexionLoggerProxyHandlerAbstractClass } from '../../../resources/side-effects/proxies/core/reflexion-logger-proxy-handler-abstarct-class';
+import {
+  ClientStatic,
+  ProxyHandlerOptions,
+} from '../../../resources/side-effects/types';
+import { getQtUrlPathFromArgs, getUrlAndDataHashes } from '../../../utils';
 
 const { echo } = sideEffects;
 

@@ -130,8 +130,6 @@
   },
   "include": [
     "./src/**/*.ts",
-    "src/resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class-bak-ts",
-    "src/resources/side-effects/proxies/client/redis/redis-client-proxy-handler-bak-ts",
   ],
   "exclude": [
     "**/__test__/**/*.*",

@@ -3,7 +3,7 @@
 // import { clientConsoleLogHashesHandler } from '../../resources/side-effects/proxies';
 // import { void0 } from '../../utils';
 
-import { void0 } from '../../utils';
+import { void0 } from '../../../utils';
 
 // const { echo, errorlog, getMyToken } = sideEffects;
 
