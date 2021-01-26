@@ -43,6 +43,7 @@ function _coreApiConfig<D>(credentials: Credentials) {
           Authorization,
           location,
         };
+
         // ->
         /** Config builder. */
         return {

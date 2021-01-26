@@ -13,6 +13,7 @@ export const _getExecutions = (
     const executions = await clientAccountGetApi<IExecutions>(
       `/executions?${urlEncodeDateTool(startDate, endDate)}`,
     )();
+
     return executions.executions;
   } catch (error) {
     void errorlog(error);

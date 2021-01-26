@@ -60,26 +60,26 @@ function getUDatagram(urlPath: string, dataToHash: string) {
 
 function getUrlAndDataHashes(
   urlPath: string = '',
-  dataToHash?: any,
+  dataToCache?: any,
 ): UrlDataAndHashes {
   // const BASE64: BinaryToTextEncoding = 'base64';
   const HEX: BinaryToTextEncoding = 'hex';
 
   return {
-    DATA_HSH: !dataToHash
+    DATA_HSH: !dataToCache
       ? 'null'
       : `DATA:${createHash('sha256')
-          .update(JSON.stringify(dataToHash))
+          .update(JSON.stringify(dataToCache))
           .digest(HEX)
           .toUpperCase()
           .slice(0, 16)}`,
     UDATAGRAM: `UDATAGRAM:${createHash('sha256')
       .update(
         `${
-          !dataToHash
+          !dataToCache
             ? 'null'
             : `DATA:${createHash('sha256')
-                .update(JSON.stringify(dataToHash))
+                .update(JSON.stringify(dataToCache))
                 .digest(HEX)
                 .toUpperCase()}`
         }${
@@ -101,16 +101,13 @@ function getUrlAndDataHashes(
           .digest(HEX)
           .toUpperCase()
           .slice(0, 18)}`,
-    data: !dataToHash ? 'null' : dataToHash,
+    dataToCache: !dataToCache ? 'null' : dataToCache,
     path: !urlPath ? 'null' : urlPath,
   };
 }
 
 export { getDataHash, getUDatagram, getUrlAndDataHashes, getUrlHash };
 
-export function camicael() {
-  arguments[0];
-}
 // DATA_HASH_B62: !dataToHash
 //   ? 'null'
 //   : `DATA:B62${createHash('sha256')

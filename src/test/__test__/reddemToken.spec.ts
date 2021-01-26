@@ -7,9 +7,11 @@ const { errorlog } = sideEffects;
 describe('Redeem Token ', () => {
   it('should not be able to recive an empty string', async done => {
     let canReciveEmptyString: boolean;
+
     try {
       canReciveEmptyString = true;
       const { qtApi, credentials } = await redeemToken('');
+
       void0([qtApi, credentials]);
     } catch (error) {
       void errorlog(error.message);
@@ -28,6 +30,7 @@ describe('Redeem Token ', () => {
       seedToken: 'MOCK',
       test: false,
     });
+
     void0(credentials);
     done();
   });
@@ -40,6 +43,7 @@ describe('Redeem Token ', () => {
       seedToken: 'MOCK',
       test: false,
     });
+
     void0(credentials);
     done();
   });
@@ -52,6 +56,7 @@ describe('Redeem Token ', () => {
       seedToken: 'MOCK',
       test: false,
     });
+
     expect(credentials.apiVersion).toBe('v1');
     void0(credentials);
     done();

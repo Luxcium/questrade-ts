@@ -14,6 +14,7 @@ export function myRequestLimiterFactory() {
       if (queueList.length > 0 && !isRequested) {
         isRequested = true;
         const nextToExecute = shiftQueue(queueList);
+
         if (nextToExecute !== undefined) {
           const [myfn, mycb] = nextToExecute;
 

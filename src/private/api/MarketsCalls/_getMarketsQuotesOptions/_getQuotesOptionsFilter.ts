@@ -17,6 +17,7 @@ export const _getQuotesOptionsFilter = (
     minstrikePrice,
     maxstrikePrice,
   } = filters;
+
   return _getMarketsQuotesOptions(clientPostApi)(
     null,
     underlyingId,

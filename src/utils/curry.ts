@@ -72,6 +72,7 @@ export function bind(this: any, f: any) {
 export function curry(f: any) {
   const a = function (this: any) {
     const g = bind(f).apply(f, [this].concat([].slice.call(arguments)));
+
     return !functionLength(g) ? g() : curry(g);
   };
 

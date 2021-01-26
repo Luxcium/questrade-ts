@@ -1,8 +1,7 @@
-import { Http2ServerResponse } from 'http2';
+// #region IMPORTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― $>
 import Redis from 'ioredis';
 import JSONCache from 'redis-json';
 import { Tedis } from 'tedis';
-import { ech0, sideEffects } from '../../..';
 import { Credentials } from '../../../../../typescript';
 import {
   getQtUrlPathFromArgs,
@@ -12,65 +11,41 @@ import {
   parser,
   void0,
 } from '../../../../../utils';
-import { echo1 } from '../../../default-behaviour';
+import { ech0, echo, echo1 } from '../../../default-behaviour';
 import {
   ClientRequestConfig,
   ClientResponse,
   ClientStatic,
+  // IoRedis,
   ProxyHandlerOptions,
 } from '../../../types';
+import { CachedApiResponse } from '../../../typescript/client/CachedApiResponse';
 import { ReflexionLoggerProxyHandlerAbstractClass } from '../../core/reflexion-logger-proxy-handler-abstarct-class';
+export type IoRedis = Redis.Redis;
+// #endregion IMPORTS ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― $>
 
-type ioRedis = Redis.Redis;
+/*
+redisinstance: IoRedis | null,
+    jsonRedis: StaticJSONCache,
 
-const redis: Redis.Redis = new Redis();
-type ResponseCache = {
-  response: {
-    clientRequest: any;
-    config: {
-      url: string;
-    };
-    data: any;
-    headers: {
-      'content-length': string;
-      'content-type': string;
-      'date': string;
-      'x-ratelimit-remaining': string;
-      'x-ratelimit-reset': string;
-    };
-    status: number;
-    statusText: string;
-  };
-
-  DATA_HSH: string;
-  path: string;
-  data: any;
-  URL_HSH: string;
-  UDATAGRAM: string;
-};
-Http2ServerResponse;
-const jsonCache = new JSONCache<ResponseCache>(redis, {
-  prefix: 'response:cache:',
-});
-
-void { jsonCache };
-
-const { echo } = sideEffects;
-
+    new jsonRedis<CachedApiResponse>(redisinstance, {
+      prefix: 'response:cache:',
+    });
+ */
 class redisClientProxyHandlerClass<T extends Function = ClientStatic>
   extends ReflexionLoggerProxyHandlerAbstractClass<T>
   implements ProxyHandler<T> {
+  private jsonCache: JSONCache<CachedApiResponse>;
   constructor(
     protected tedis: Tedis,
-    protected redisinstance: ioRedis | null,
-    protected jsonRedis: JSONCache | null,
     protected handlerOptions: ProxyHandlerOptions,
     protected credentials?: Credentials,
   ) {
     super(handlerOptions);
-    // this.tedis = tedisInstance;
-    // this.redisinstance = redisinstance;
-    // this.jsonRedis = jsonRedis;
+    this.jsonCache = new jsonRedis<CachedApiResponse>(redisinstance, {
+      prefix: 'response:cache:',
+    });
+    void this.jsonCache;
   }
 
   protected async applyTargetReflexion(
@@ -201,7 +176,7 @@ class redisClientProxyHandlerClass<T extends Function = ClientStatic>
       // echo<any>(myKey, await this.tedis.command('TTL', myKey));
       // ech0(await this.tedis.command('TTL', myKey));
 
-      // $ RETURN VALUE  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
+      // $ RETURN VALUE  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
       if ((await returnValue)?.data?.accounts) {
         ech0((await returnValue)?.data?.accounts);
       }
@@ -220,7 +195,7 @@ class redisClientProxyHandlerClass<T extends Function = ClientStatic>
               type: 'TFSA',
             },
           ],
-          time: '2011-11-11T11:11:11.282000-05:00',
+          // time: '2011-11-11T11:11:11.282000-05:00',
           userId: 126_691,
         },
         headers: {},

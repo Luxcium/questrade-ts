@@ -26,6 +26,7 @@ export const _getSymbolSearchAll = (
     const _results = await clientGetApi<ISymbolSearchResults>(_endpoint, {
       noCaching: true,
     })();
+
     if (_results && _results.symbols) {
       return _results.symbols.map(result => {
         result.count = _results.symbols.length || 0;

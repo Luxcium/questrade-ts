@@ -8,6 +8,7 @@ const lastDelay = () => Date.now() - lastCall;
 const resetLastCall = () => {
   lastCall = Date.now();
 };
+
 (async () => {
   //
   // const now = Date.now();
@@ -21,6 +22,7 @@ const resetLastCall = () => {
 function requestLimiterFactory() {
   let isCalled = false;
   const callsQueue: [Function, CallBack<any>][] = [];
+
   return function requestLimiter(fn: Function, hertz: number = 1) {
     const callToPop = async function (): Promise<void> {
       if (callsQueue.length > 0 && !isCalled) {
@@ -68,8 +70,10 @@ export const myPromisify = <T>(addToQueue: (cb: any) => Promise<void>) => {
 
 function limitingRequest(limiterFactory: ReqLimiterFactory) {
   const requestLimiter = limiterFactory();
+
   return (hz: number) => async <T>(fn: () => T) => {
     const addToQueue = requestLimiter(fn, hz);
+
     return myPromisify<T>(addToQueue);
   };
 }

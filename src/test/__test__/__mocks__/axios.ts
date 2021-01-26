@@ -36,6 +36,7 @@ _Client.mockImplementation((config?: ClientRequestConfig) => {
     if (!previous && url.includes(`/${dir}`)) {
       if (dir === 'ERROR') {
         const errMessage: string = 'Testing Errors';
+
         void errorlog(errMessage);
         throw new Error(errMessage);
       }
@@ -44,6 +45,7 @@ _Client.mockImplementation((config?: ClientRequestConfig) => {
     return previous;
   }, '');
   const resp = !!data ? data : null;
+
   return { data: resp, introspect };
 });
 const Client = (_Client as unknown) as ClientStatic;

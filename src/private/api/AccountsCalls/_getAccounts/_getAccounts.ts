@@ -14,6 +14,7 @@ export function _getAccounts(
     try {
       const accounts = getAccounts<IAccounts>(`/accounts`, { noCaching: true });
       const data = await accounts();
+
       // -
       return data.accounts;
       // -

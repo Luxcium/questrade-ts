@@ -33,6 +33,7 @@ function _coreApiFunction(
             credentials,
             proxy,
           );
+
           // ->
           void handlerOptions;
           return clientDataGetter(errorlog, handlerOptions); // from _tryToGetData...

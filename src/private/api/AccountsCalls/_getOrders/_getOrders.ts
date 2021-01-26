@@ -15,6 +15,7 @@ export const _getOrders = (
         stateFilter,
       )}`,
     )();
+
     return orders.orders;
   } catch (error) {
     void errorlog(error);

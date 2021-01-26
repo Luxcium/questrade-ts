@@ -15,6 +15,7 @@ export const clientProxyHandlerFactory = (
   oAuthHttpCredentials: boolean = false,
 ): ClientHandlerFactory => {
   const newProxy: ClientHandlerFactory = {};
+
   newProxy.activate = (proxyHandlerOptions: ProxyHandlerOptions) =>
     new Proxy(client, proxyHandler(proxyHandlerOptions));
   newProxy.httpDataEndPointConnector = httpDataEndPointConnector;

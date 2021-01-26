@@ -1,20 +1,21 @@
-import { ClientHandlerFactory, Credentials, redeemToken } from '../..';
+import { redeemToken } from '../..';
 import {
   errorlog,
   getMyToken,
   makeTedis,
   Tedis,
 } from '../../resources/side-effects';
-import { redisClientProxyHandler } from '../../resources/side-effects/proxies';
-import { IQuestradeAPIOptions, Logger } from '../../typescript';
+import { redisProxyHandler } from '../../resources/side-effects/proxies/client/redis/redis2-client-proxy-handler-class';
+/*
+    tedis: Tedis,
+    redisinstance: IoRedis | null,
+    jsonRedis: StaticJSONCache,
+    handlerOptions: ProxyHandlerOptions,
+    credentials?: Credentials,
+ */
 
-export type RedeemOptions = {
-  refreshToken: string | IQuestradeAPIOptions;
-  errorloger?: Logger;
-  proxyFactory?: (credentials?: Credentials) => ClientHandlerFactory;
-};
 async function mainFunction(tedis: Tedis) {
-  const proxyFactory = redisClientProxyHandler(tedis, {
+  const proxyFactory = redisProxyHandler({
     httpConnectProxy: true,
   });
 
@@ -25,18 +26,16 @@ async function mainFunction(tedis: Tedis) {
 
   await qtApi.search.stock('couche tard');
 
-  return tedis;
+  return () => tedis.close();
 }
 
 async function main() {
   return mainFunction(makeTedis({ port: 6379 }))
-    .then(async (tedis: Tedis) => {
-      return tedis.close();
-    })
+    .then((tedisClose: () => any) => tedisClose())
     .catch(error => errorlog('in main from redis-modeling', error.message));
 }
 
-// main();
+main();
 
 export { main };
 /*

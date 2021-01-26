@@ -13,10 +13,12 @@ test('Validating all README examples', async done => {
 
     // Validate the server time as your hello world for this package
     const serverTime = qtApi.serverTime;
+
     void0(serverTime);
 
     // inside an async function use await qt.get.<... some methode>
     const balances = await qtApi.account.getBalances();
+
     void0(balances);
 
     void0(credentials);

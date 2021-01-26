@@ -1,4 +1,5 @@
-export {
+export type {
+  CachedApiResponse,
   Cancel,
   Canceler,
   CancelStatic,
@@ -7,10 +8,13 @@ export {
   CancelTokenStatic,
   ClientError,
   ClientInstance,
+  ClientInterceptorManager,
   ClientPromise,
   ClientRequestConfig,
   ClientResponse,
   ClientStatic,
   ClientTransformer,
+  IoRedis,
   ProxyHandlerOptions,
+  StaticJSONCache,
 } from './typescript';

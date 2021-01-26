@@ -5,8 +5,10 @@ export function getSymbolDetails(qtApi: QuestradeApi) {
   return async (stockSymbol: string | number | number[]) => {
     const getSymbolsByStockIds = qtApi.getSymbols.byStockIds;
     const getquotes = qtApi.getQuotes.byStockIds;
+
     if (typeof stockSymbol === 'string') {
       const symbolID = await getSymbolId(qtApi)(stockSymbol);
+
       if (symbolID) {
         //
       }

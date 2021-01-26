@@ -1,6 +1,7 @@
 import { urlEncode } from '.';
 
 const DAY = 24 * 60 * 60 * 1000;
+
 export const day = (days: number) => days * DAY;
 
 // export function timeUtil() {
@@ -45,6 +46,7 @@ export const dateToNumeric = (dateTime: string | number | Date): number =>
 export const dateRangeFromNow = (backNumberOfDays: number) => {
   const back = Math.floor(backNumberOfDays);
   const numberOfDays = back < 0 ? back * -1 : back;
+
   return dateRange(numberOfDays, dateNowISO());
 };
 type StartDate = string;
@@ -60,6 +62,7 @@ export const dateRange = (
   dateNow?: string,
 ): StartDateEndDateObject => {
   let now = dateNow;
+
   if (!now) {
     now = dateNowISO();
   }
@@ -71,6 +74,7 @@ export const dateRange = (
   const endDate: EndDate = rmvMiliSec(now);
   const startTime = startDate;
   const endTime = endDate;
+
   return {
     endDate,
     endTime,
@@ -81,6 +85,7 @@ export const dateRange = (
 
 const rmvMiliSec = (date: Date | string | number): string => {
   const floor = Math.floor;
+
   return dateToISOString(floor(dateToNumeric(date) / 1000) * 1000);
 };
 
@@ -89,6 +94,7 @@ export const setDateRange = (backNumberOfDays: number) => <T>(
   fromDate?: string,
 ) => {
   const { startTime, endTime } = dateRange(backNumberOfDays, fromDate);
+
   return funct(startTime)(endTime);
 };
 

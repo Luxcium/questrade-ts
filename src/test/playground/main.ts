@@ -6,7 +6,7 @@ import { main } from './redis-modeling';
 
 main();
 // //.catch(error => errorlog('in main from redis-modeling', error.message));
-NULL
+NULL;
 
 // console.log('hello today')
 /*

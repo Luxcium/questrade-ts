@@ -80,6 +80,7 @@ export const _myBalances = async (
         USD: perUSDstartOfDay,
       },
     };
+
     return { CAD, USD, combined, current, perCurrency, startOfDay };
   } catch (error) {
     void errorlog(error);

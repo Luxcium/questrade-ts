@@ -27,6 +27,7 @@ function _httpDataEndPointConnector<R>(
     // INFO: PROXY Block Start ***********************************************
 
     let httpClient: ClientStatic = getHttpClient();
+
     if (proxy?.httpDataEndPointConnector && proxy?.activate) {
       httpClient = proxy.activate(handlerOptions);
     }
@@ -41,6 +42,7 @@ function _httpDataEndPointConnector<R>(
     _echoStatus(response, credentials); // INFO: ECHO STATUS ON ERROR *********
 
     const { data } = response;
+
     if (data) {
       _updateCredentials(_config, response, credentials);
       return data;

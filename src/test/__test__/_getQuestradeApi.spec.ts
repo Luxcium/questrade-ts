@@ -28,6 +28,7 @@ let search: () => Promise<QtApiSearch>;
 
 beforeAll(async done => {
   const qtApiAndCredentials = await redeemToken('MOCK');
+
   qtApi = qtApiAndCredentials.qtApi;
 
   credentials = qtApiAndCredentials.credentials;
@@ -83,6 +84,7 @@ describe('ACCOUNT METHODS will test all methods on get.account', () => {
   it('should validate activities', async done => {
     const activities30Days = async () =>
       dateRange30Days((await account()).getActivities);
+
     void0(await activities30Days());
     done();
   }, 10_000);
@@ -97,30 +99,35 @@ describe('ACCOUNT METHODS will test all methods on get.account', () => {
   it('should validate executions', async done => {
     const executions30Days = async () =>
       dateRange30Days((await account()).getExecutions);
+
     void0(await executions30Days());
     done();
   }, 10_000);
   it("should validate orders 'All' state filter", async done => {
     const orders30Days = async () =>
       dateRange30Days((await account()).getOrders('All'));
+
     void0(await orders30Days());
     done();
   }, 10_000);
   it('should validate orders default state filter', async done => {
     const orders30Days = async () =>
       dateRange30Days((await account()).getOrders());
+
     void0(await orders30Days());
     done();
   }, 10_000);
   it('should validate orders Open state filter', async done => {
     const orders30Days = async () =>
       dateRange30Days((await account()).getOrders('Open'));
+
     void0(await orders30Days());
     done();
   }, 10_000);
   it('should validate orders Closed state filter', async done => {
     const orders30Days = async () =>
       dateRange30Days((await account()).getOrders('Closed'));
+
     void0(await orders30Days());
     done();
   }, 10_000);
@@ -147,6 +154,7 @@ describe('MARKET METHODS will test all methods on get.market', () => {
   it("should validate candlesByStockId with 'OneDay' interval", async done => {
     const candel30Day = async () =>
       dateRange30Days((await market()).getCandlesByStockId(8049)('OneDay'));
+
     void0(await candel30Day());
     done();
   });
@@ -180,6 +188,7 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
       },
     ],
   };
+
   it('should validate get quotes byStockIds', async done => {
     void0(await (await getQuotes()).byStockIds([8049]));
     done();

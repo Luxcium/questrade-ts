@@ -176,7 +176,7 @@
       ―――――――― simple-import-fp ――――――――――――――――――――――――――――――――――――――――――――――――――
     */
     "fp/no-arguments": "error",
-    "fp/no-class": "error",
+    "fp/no-class": "off",
     "fp/no-delete": "error",
     "fp/no-events": "error",
     "fp/no-get-set": "off",

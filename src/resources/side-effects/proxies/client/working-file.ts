@@ -1,4 +1,144 @@
 export const NULL = null;
+// const user = {
+//   name: 'redis-json',
+//   age: 25,
+//   address: {
+//     doorNo: '12B',
+//     locality: 'pentagon',
+//     pincode: 123456,
+//   },
+//   cars: ['BMW 520i', 'Audo A8'],
+// };
+
+// await jsonCache.set('123', user);
+
+// await jsonCache.get('123');
+
+/*
+import Redis from 'ioredis';
+import JSONCache from 'redis-json';
+
+const redis = new Redis() as any;
+
+const jsonCache = new JSONCache<{
+  name: string;
+  age: number;
+  address: {
+    doorNo: string;
+    locality: string;
+    pincode: number;
+  }
+}>(redis, {prefix: 'cache:'});
+
+const user = {
+  name: 'redis-json',
+  age: 25,
+  address: {
+    doorNo: '12B',
+    locality: 'pentagon',
+    pincode: 123456
+  },
+  cars: ['BMW 520i', 'Audo A8']
+}
+
+await jsonCache.set('123', user)
+
+await jsonCache.get('123')
+// output
+// {
+//   name: 'redis-json',
+//   age: 25,
+//   address: {
+//     doorNo: '12B',
+//     locality: 'pentagon',
+//     pincode: 123456
+//   },
+//   cars: ['BMW 520i', 'Audo A8']
+// }
+
+await jsonCache.set('123', {gender: 'male'})
+await jsonCache.get('123')
+// output
+// {
+//   name: 'redis-json',
+//   age: 25,
+//   address: {
+//     doorNo: '12B',
+//     locality: 'pentagon',
+//     pincode: 123456
+//   },
+//   cars: ['BMW 520i', 'Audo A8']
+//   gender: 'male'
+// }
+
+await jsonCache.get('123', 'name', 'age');
+// output
+// {
+//   name: 'redis-json',
+//   age: 25,
+// }
+
+await jsonCache.get('123', 'name', 'address.doorNo');
+// {
+//   name: 'redis-json',
+//   address: {
+//     doorNo: '12B'
+//   }
+// }
+
+await jsonCache.clearAll();
+
+await jsonCache.get('123');
+// undefined
+
+
+await jsonCache.incr('123', {age: 1}) // increments age by 1
+With custom stringifier and parser:
+
+const jsonCache = new JSONCache(redis, {
+  stringifier: {
+    Date: (val: Date) => val.toISOString()
+  },
+  parser: {
+    Date: (str: string) => new Date(str)
+  }
+})
+
+const date = new Date()
+await jsonCache.set('test', {
+  date: date
+})
+
+// Redis hashset
+> hgetall jc:test /// data
+1) "date"
+2) "2020-05-17T14:41:45.861Z"
+> hgetall jc:test_t /// type info
+1) "date"
+2) "Date"
+
+
+const result = await jsonCache.get('test')
+result.date == date /// true
+With transactions:
+
+const transaction = redisClient.multi();
+
+transaction
+  .set('name', 'foo')
+  .set('bar', 'baz')
+
+jsonCache.setT(transaction, 'test', {name: 'testing'})
+jsonCache.delT(transaction, 'test1')
+jsonCache.rewriteT(transaction, 'test2', {name: 'testing', age: 25})
+
+transaction
+  .exec(function(err, replies) => {
+    /// your logic here after
+  })
+ */
+
+// Please note that only setT(), rewriteT() & delT() supports transaction, where as get() & clearAll() do NOT support transaction because we process those results before returning it to the calling function. Moreover there is no real usecase in adding get methods to a transaction!
 
 // defineProperty(
 //   target: T,

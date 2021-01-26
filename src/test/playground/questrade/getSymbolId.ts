@@ -6,6 +6,7 @@ const { echo } = sideEffects;
 export function getSymbolId(qtApi: QuestradeApi) {
   return async (stockSymbol: string) => {
     const stock = await qtApi.search.stock(stockSymbol);
+
     if (!stock) {
       void echo(stockSymbol);
       throw new Error('getSymbolId failed to return a value');

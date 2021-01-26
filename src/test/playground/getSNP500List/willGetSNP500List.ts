@@ -22,6 +22,7 @@ export async function willGetSNP500List(): Promise<ConstituentsSymbolsAndList> {
     const constituentsList: ConstituentsList = data.map(
       (obj: Constituent) => obj,
     );
+
     return [
       constituentsSymbols,
       constituentsList,
