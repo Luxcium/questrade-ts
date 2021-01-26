@@ -5,7 +5,7 @@ import {
   makeTedis,
   Tedis,
 } from '../../resources/side-effects';
-import { redisProxyHandler } from '../../resources/side-effects/proxies/client/redis/redis2-client-proxy-handler-class';
+import { redisProxyHandler } from '../../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 /*
     tedis: Tedis,
     redisinstance: IoRedis | null,
@@ -35,7 +35,7 @@ async function main() {
     .catch(error => errorlog('in main from redis-modeling', error.message));
 }
 
-main();
+// main();
 
 export { main };
 /*

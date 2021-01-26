@@ -2,7 +2,7 @@ import { Tedis } from 'tedis';
 import { getHttpClient } from '../../..';
 import { ClientHandlerFactory, Credentials } from '../../../../..';
 import { ClientStatic, ProxyHandlerOptions } from '../../../types';
-import { redisClientProxyHandlerClass } from './redis-client-proxy-handler-class';
+import { redisClientProxyHandlerClass } from './redis-client-proxy-handler-class-bak-ts';
 
 type CredentialsProxyHandler = (
   credentials?: Credentials,
