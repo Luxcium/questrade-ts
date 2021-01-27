@@ -7,7 +7,7 @@ export const remainingRequests = <T>(
 ): ITimeRateLimiter => {
   const remainingStr: string = response.headers['x-ratelimit-remaining'];
   const timeUntilResetStr: string = response.headers['x-ratelimit-reset'];
-  const requestsRemaining = Number.parseInt(remainingStr, 10);
+  const remaining = Number.parseInt(remainingStr, 10);
   const timeUntilReset = Number.parseInt(timeUntilResetStr, 10);
 
   const timeNow = Math.floor(new Date().getTime() / 1000) + 1;
@@ -19,10 +19,10 @@ export const remainingRequests = <T>(
   // const timeThen_ = new Date(timeThen).toLocaleTimeString();
 
   const possiblePerSeconds = Math.floor(
-    Math.min(requestsRemaining / secondsRemaning, maximumperseconds),
+    Math.max(Math.min(remaining / secondsRemaning, maximumperseconds), -1),
   );
   const maximums: [number, number, number] = [
-    requestsRemaining,
+    remaining,
     possiblePerSeconds,
     maximumperseconds,
   ];
@@ -32,7 +32,7 @@ export const remainingRequests = <T>(
     maximums,
     minutesRemaning,
     possiblePerSeconds,
-    requestsRemaining,
+    remaining,
     secondsRemaning,
     timeNow,
     timeThen,

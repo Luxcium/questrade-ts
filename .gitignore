@@ -47,3 +47,5 @@ keys
 !**/material-dir-icons/**
 !**/material-dir-icons/**/*
 !misc/material-dir-icons/**/*
+
+nohup.out

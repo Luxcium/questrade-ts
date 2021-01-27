@@ -14,7 +14,7 @@ FLAGS=''
             ) && (node ./out/src/test/playground/main.js && echo -e "\n\n― NODEjs ―") || exit 11
         ) ||
         ( 
-            (ts-node '/home/luxcium/dev/questrade-ts/src/test/playground/main.ts' && echo -e "\n\n― tsNODE ―" ||  exit 13) &
+            (ts-node '/home/luxcium/dev/questrade-ts/src/test/playground/main.ts' && echo -e "\n\n― tsNODE ―" ||  exit 13)
             (
                 tsc --build || exit 15
                 cp ./package.json ./out/

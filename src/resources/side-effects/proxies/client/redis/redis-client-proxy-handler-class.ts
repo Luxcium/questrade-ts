@@ -20,158 +20,172 @@ import { ReflexionLoggerProxyHandlerAbstractClass } from '../../core/reflexion-l
 export type IoRedis = Redis.Redis;
 export type CachedResponse = any;
 
-class RedisProxyHandlerClass<T extends Function = ClientStatic>
+class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
   extends ReflexionLoggerProxyHandlerAbstractClass<T>
   implements ProxyHandler<T> {
   // private jsonCache: JSONCache<CachedApiResponse>;
   constructor(protected handlerOptions: ProxyHandlerOptions) {
     super(handlerOptions);
+    this.handlerOptions.notFromCache = false;
+    this.handlerOptions.noCaching = false;
   }
-
+  protected proxy = {
+    proxy: 'Redis QtApi Caching Proxy',
+    class: 'RedisQtApiProxyHandlerClass',
+    extends: 'ReflexionLoggerProxyHandlerAbstractClass<T>',
+    implements: 'ProxyHandler<T>',
+  };
   async apply(target: T, thisArg: any, argArray?: any): Promise<any> {
-    const urlPath = getQtUrlPathFromArgs(argArray);
-    const { URL_HSH } = getUrlHash(urlPath);
     const myRedis = new Redis();
+    try {
+      const urlPath = getQtUrlPathFromArgs(argArray);
+      const { URL_HSH } = getUrlHash(urlPath);
+      /*
 
-    const jsonCache = new JSONCache<CachedResponse>(myRedis, {
-      prefix: 'cache:response:',
-    });
+ data: { time: '2021-01-27T00:58:33.579000-05:00' },
+  UDATAGRAM: 'UDATAGRAM:20D0F6BB5559ACF',
+  URL_HSH: 'URL:8081F947BB07DB0A4A',
+  path: '/v1/time',
+  responseFromCache: true,
+  responseFromApi: false,
+  statusText: 'OK'
+ */
+      const jsonCache = new JSONCache<CachedResponse>(myRedis, {
+        prefix: 'cache:response:',
+      });
+      // const isInExclusionList = ['URL:8081F947BB07DB0A4A'].some(
+      //   URL => URL === 'URL:8081F947BB07DB0A4A',
+      // );
+      try {
+        if (
+          this?.handlerOptions?.notFromCache !==
+          true /* && !isInExclusionList */
+        ) {
+          // $ READ FROM CACHE ―――――――――――――――――――――――――――――――――――――――――――――――――$>
+          const responseFromCache = await jsonCache.get(URL_HSH);
 
-    getUrlAndDataHashes;
-    ech0(URL_HSH);
+          if (responseFromCache?.responseFromCache === true) {
+            // +RETURN VALUE FROM CACHE ――――――――――――――――――――――――――――――――――――――――$>
+            myRedis.disconnect();
+            return ech0(responseFromCache);
+          }
+        }
+      } catch (error) {
+        myRedis.disconnect();
+        throw error;
+      }
+      // $ CREATE VALUE TO CACHE ―――――――――――――――――――――――――――――――――――――――――――――――$>
 
-    // $ READ FROM CACHE ―――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-    const responseFromCache = await jsonCache.get(URL_HSH);
-    if (responseFromCache?.responseFromCache === true) {
-      myRedis.disconnect();
-      // +RETURN VALUE FROM CACHE ――――――――――――――――――――――――――――――――――――――――――――――$>
-      return ech0(responseFromCache);
-    }
-    // $ CREATE VALUE TO CACHE ―――――――――――――――――――――――――――――――――――――――――――――――――$>
+      const responseFromApi = await Reflect.apply(target, thisArg, argArray);
+      const dataToHash = responseFromApi.data;
+      const urlAndDataHashes = getUrlAndDataHashes(urlPath, dataToHash);
+      const { dataToCache, ...urlAndDataRest } = urlAndDataHashes;
 
-    const responseFromApi = await Reflect.apply(target, thisArg, argArray);
-    const dataToHash = responseFromApi.data;
-    const urlAndDataHashes = getUrlAndDataHashes(urlPath, dataToHash);
-    const { dataToCache, ...urlAndDataRest } = urlAndDataHashes;
-    void dataToCache;
-    const configFromApi = responseFromApi.config;
-    const headersFromApi = responseFromApi.headers;
-    const requestFromApi = responseFromApi.request;
-    const dataFromApi = responseFromApi?.data;
+      const configFromApi = responseFromApi.config;
+      const headersFromApi = responseFromApi.headers;
+      const requestFromApi = responseFromApi.request;
+      const dataFromApi = responseFromApi?.data;
 
-    void [configFromApi, headersFromApi, requestFromApi, dataFromApi];
-    const responseToCache: CachedResponse = {
-      ...responseFromApi,
-      config: {
-        ...responseFromApi?.config,
-        adapter: '[Function: httpAdapter, /*NOT AVAILABLE FROM CACHE*/]',
-        availableFromCache: 'partial',
+      void [configFromApi, headersFromApi, requestFromApi, dataFromApi];
 
-        fromCache: true,
-        headers: {
-          ...responseFromApi?.config?.headers,
-          Authorization: '[Redacted] ...',
-          location: '[Redacted] ...',
+      const { DATA_HSH, path, URL_HSH: URL_HSH_, UDATAGRAM } = urlAndDataRest;
+      myRedis.incr(`cache:total:${URL_HSH_}`);
+      // const cacheTotal = ((await myRedis.get(`cache:total:${URL_HSH_}`)) ??
+      // 0) as number;
+      myRedis.incr(`cache:${configFromApi.url}`);
+      // const cacheTotalx = ((await myRedis.get(
+      //   `cache:total:${configFromApi.url}`,
+      // )) ?? 0) as number;
+      myRedis.sadd(`cache:unique:${URL_HSH_}`, DATA_HSH);
+      // const cacheUnique = await myRedis.scard(`cache:unique:${URL_HSH_}`);
+      // try {
+      //   console.log(
+      //     `total(${Number(cacheTotal)}) / unique(${Number(cacheUnique)}): `,
+      //     Number(cacheTotal) / Number(cacheUnique),
+      //   );
+      // } catch (error) {
+      //   console.error('cacheTotal / cacheUnique: ', error.message);
+      // }
+
+      void [dataToCache, DATA_HSH, path, URL_HSH_, UDATAGRAM];
+
+      const responseToCache: CachedResponse = {
+        ...responseFromApi,
+        config: {
+          fromCache: true,
+          ...responseFromApi?.config,
+          adapter: '[Function: httpAdapter, /*NOT AVAILABLE FROM CACHE*/]',
+          availableFromCache: 'partial',
+
+          headers: {
+            fromCache: true,
+            fromApi: false,
+            proxy: { ...this.proxy },
+            ...responseFromApi?.config?.headers,
+            Authorization: '[Redacted] ...',
+            location: '[Redacted] ...',
+          },
+          transformRequest: [
+            '[Function: transformRequest, /*NOT AVAILABLE FROM CACHE*/]',
+          ],
+          transformResponse: [
+            '[Function: transformResponse, /*NOT AVAILABLE FROM CACHE*/]',
+          ],
+          validateStatus:
+            '[Function: validateStatus, /*NOT AVAILABLE FROM CACHE*/]',
+          // */
         },
-        transformRequest: [
-          '[Function: transformRequest, /*NOT AVAILABLE FROM CACHE*/]',
-        ],
-        transformResponse: [
-          '[Function: transformResponse, /*NOT AVAILABLE FROM CACHE*/]',
-        ],
-        validateStatus:
-          '[Function: validateStatus, /*NOT AVAILABLE FROM CACHE*/]',
-        // */
-      },
-      headers: {
-        ...responseFromApi.headers,
-        'connection': 'CACHED',
-        'strict-transport-security': '[NOT AVAILABLE FROM CACHE]',
-        'x-ratelimit-remaining': '999',
-        'x-ratelimit-reset': '0',
-      },
-      request: {
-        availableFromCache: 'partial',
-        fromCache: true,
-        ...responseFromApi?.request,
-        _events: '[NOT AVAILABLE FROM CACHE]',
-        _redirectable: '[NOT AVAILABLE FROM CACHE]',
-        agent: '[NOT AVAILABLE FROM CACHE]',
-        res: '[NOT AVAILABLE FROM CACHE]',
-        socket: '[NOT AVAILABLE FROM CACHE]',
-        //       request: {
-        //   _closed: false,
-        //   socket: '[NOT AVAILABLE FROM CACHE]',
-        // ...responseFromApi?.request?.host, // : 'api03.iq.questrade.com',
-        //   upgradeOrConnect: false,
-        //   _hasBody: true,
-        //   socketPath: undefined,
-        //   chunkedEncoding: false,
-        //   outputData: [],
-        //   outputSize: 0,
-        //   _headerSent: true,
-        //   aborted: false,
-        //   _contentLength: 0,
-        //   res: '[NOT AVAILABLE FROM CACHE]',
-        //   sendDate: false,
-        //   _events: '[NOT AVAILABLE FROM CACHE]',
-        //   _removedContLen: false,
-        //   writable: true,
-        //   _removedTE: false,
-        //   _keepAliveTimeout: 0,
-        //   useChunkedEncodingByDefault: false,
-        //   maxHeaderSize: undefined,
-        //   agent: '[NOT AVAILABLE FROM CACHE]',
-        //   _onPendingData: 'function () { [native code] }',
-        //   reusedSocket: false,
-        //   _ended: true,
-        //   parser: null,
-        //   _maxListeners: undefined,
-        //   _redirectable: '[NOT AVAILABLE FROM CACHE]',
-        //   finished: true,
-        //   _eventsCount: 7,
-        //   _header: 'GET /v1/symbols/search?prefix=COUCHE%20TARD&offset=0 HTTP/1.1\r\n' +
-        //     'Accept: application/json, text/plain, */*\r\n' +
-        //     'Authorization: Bearer wRXMSziYRx6KytD0_2UB5coZLwjoYYx80\r\n' +
-        //     'location: 51648972\r\n' +
-        //     'User-Agent: axios/0.21.1\r\n' +
-        //     'Host: api03.iq.questrade.com\r\n' +
-        //     'Connection: close\r\n' +
-        //     '\r\n',
-        //   timeoutCb: null,
-        //   fromCache: true,
-        //   _defaultKeepAlive: true,
-        //   destroyed: false,
-        //   path: '/v1/symbols/search?prefix=COUCHE%20TARD&offset=0',
-        //   shouldKeepAlive: false,
-        //   availableFromCache: 'partial',
-        //   _trailer: '',
-        //   _removedConnection: false,
-        //   _last: true,
-        //   insecureHTTPParser: undefined,
-        //   maxHeadersCount: null,
-        //   method: 'GET',
-        //   protocol: 'https:'
-      },
-      data: { ...dataFromApi },
-      ...urlAndDataRest, // { ...urlAndDataHashes, dataToCache: '[Duplicate]' },
-      responseFromApi: false,
-      responseFromCache: true,
-    };
+        headers: {
+          'fromCache': true,
+          ...responseFromApi.headers,
+          'connection': 'CACHED',
+          'strict-transport-security': '[NOT AVAILABLE FROM CACHE]',
+          'x-ratelimit-remaining': '9999999',
+          'x-ratelimit-reset': '0',
+        },
+        request: {
+          fromCache: true,
+          availableFromCache: 'partial',
+          ...responseFromApi?.request,
+          _events: '[NOT AVAILABLE FROM CACHE]',
+          _redirectable: '[NOT AVAILABLE FROM CACHE]',
+          agent: '[NOT AVAILABLE FROM CACHE]',
+          res: '[NOT AVAILABLE FROM CACHE]',
+          socket: '[NOT AVAILABLE FROM CACHE]',
+        },
+        data: { ...dataFromApi },
+        ...urlAndDataRest, // { ...urlAndDataHashes, dataToCache: '[Duplicate]' },
+        responseFromApi: false,
+        responseFromCache: true,
+      };
+      try {
+        if (this?.handlerOptions?.noCaching !== true) {
+          // $ WRITE TO CACHE ――――――――――――――――――――――――――――――――――――――――――――――――――$>
+          // ech0('if (this?.handlerOptions?.noCaching !== true)');
+          // const options: ISetOptions = { expire: 1000 };
 
-    // $ WRITE TO CACHE ――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-    await jsonCache.set(URL_HSH, responseToCache);
+          await jsonCache.set(URL_HSH, responseToCache /* , options */);
+        }
 
-    // !! RETURN VALUE FROM API ――――――――――――――――――――――――――――――――――――――――――――――――$>
-
-    myRedis.disconnect();
-    responseFromApi.responseFromApi = true;
-    responseFromApi.responseFromCache = false;
-    return ech0(responseFromApi);
+        // !! RETURN VALUE FROM API ――――――――――――――――――――――――――――――――――――――――――――$>
+        responseFromApi.responseFromApi = true;
+        responseFromApi.headers.fromApi = true;
+        responseFromApi.responseFromCache = false;
+        responseFromApi.headers.fromCache = false;
+        myRedis.disconnect();
+        return ech0(responseFromApi);
+      } catch (error) {
+        myRedis.disconnect();
+        throw error;
+      }
+    } catch (error) {
+      myRedis.disconnect();
+      throw error;
+    }
   }
 }
 
-export { RedisProxyHandlerClass };
+export { RedisQtApiProxyHandlerClass };
 
 export function redisProxyHandler(
   mainProxyHandlerOptions: ProxyHandlerOptions = {},
@@ -183,7 +197,7 @@ export function redisProxyHandler(
     newProxy.activate = (proxyHandlerOptions: ProxyHandlerOptions) =>
       new Proxy(
         client,
-        new RedisProxyHandlerClass({
+        new RedisQtApiProxyHandlerClass({
           ...mainProxyHandlerOptions,
           ...proxyHandlerOptions,
         }),
@@ -239,7 +253,7 @@ export function redisProxyHandler(
 //   const initialValue: any = {};
 //   if (isInCache) {
 //     // if (process.exit()) { };
-//     const parsed = id0(
+//     const parsed = ech0(
 //       parser<any[]>(await this.tedis.command('HGETALL', URL_HSH)),
 //     );
 //     for (let i = 0; i < parsed.length; i += 2) {
@@ -320,8 +334,8 @@ export function redisProxyHandler(
 //   };
 //   //*/
 //   void tempResponse;
-//   void0(await this.tedis.command('HSET', myKey, ...hash));
-//   void0(await this.tedis.command('EXPIRE', myKey, 30));
+//   voech0(await this.tedis.command('HSET', myKey, ...hash));
+//   voech0(await this.tedis.command('EXPIRE', myKey, 30));
 //   // echo<any>(myKey, await this.tedis.command('TTL', myKey));
 //   // ech0(await this.tedis.command('TTL', myKey));
 //   if ((await returnValue)?.data?.accounts) {
@@ -368,7 +382,7 @@ export function redisProxyHandler(
 //       ...this.proxy,
 //       handlerMethod:
 //         'async apply(target: ClientStatic, thisArg: any, argArray?: any): Promise<any>',
-//       sideEffects: 'void echo(proxyData); void0(this.tedis);',
+//       sideEffects: 'void echo(proxyData); voech0(this.tedis);',
 //     },
 //     ...getUrlAndDataHashes(urlPath, data),
 //   };

@@ -30,7 +30,7 @@ export const _oAuthHttpCredentials = async (
     url: `${credentials.authUrl}/oauth2/token`,
   };
 
-  if (proxy) echo(proxy);
+  // if (proxy) echo(proxy);
   let httpClient: ClientStatic = getHttpClient();
 
   if (proxy?.oAuthHttpCredentials && proxy?.activate) {

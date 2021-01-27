@@ -12,6 +12,7 @@ const _defaultCredentials: Credentials = {
   expiresAt: undefined,
   expiresIn: 0,
   fromCache: false,
+  fromApi: true,
   keyDir: './keys',
   keyFile: '',
   practice: false,

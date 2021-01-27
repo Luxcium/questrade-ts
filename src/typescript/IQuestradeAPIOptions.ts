@@ -6,6 +6,10 @@ export interface IQuestradeAPIOptions {
   keyFile?: string;
   token: seedToken;
   account?: string | number;
+  accountcallsPerHour?: number;
+  accountcallsPerSecond?: number;
+  marketDatacallsPerHour?: number;
+  marketDatacallsPerSecond?: number;
 }
 
 type seedToken = string;

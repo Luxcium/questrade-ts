@@ -1,6 +1,7 @@
 export interface ProxyHandlerOptions {
   debuging?: boolean;
   noCaching?: boolean;
+  notFromCache?: boolean;
   httpConnectProxy?: boolean;
   oAuthHttpProxy?: boolean;
   practiceAccount?: boolean;

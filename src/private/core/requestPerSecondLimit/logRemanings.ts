@@ -9,7 +9,7 @@ export const logRemanings = ({
   secondsRemaning,
   maximumperseconds,
   possiblePerSeconds,
-  requestsRemaining,
+  remaining,
   maximums,
 }: ITimeRateLimiter) => {
   console.info();
@@ -18,7 +18,7 @@ export const logRemanings = ({
   console.info('time then', timeThen);
   console.info('time remaining until reset', secondsRemaning, '(sec)');
   console.info();
-  console.info('requsts remaning', requestsRemaining);
+  console.info('requsts remaning', remaining);
   console.info();
   console.info('Requests per seconds possible', possiblePerSeconds);
   console.info(

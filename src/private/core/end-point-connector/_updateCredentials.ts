@@ -4,7 +4,6 @@ import {
   ClientRequestConfig,
   ClientResponse,
 } from '../../../resources/side-effects/types';
-import { getQtUrlPathFromArgs, getUrlAndDataHashes } from '../../../utils';
 import { remainingRequests } from '../requestPerSecondLimit';
 
 function _updateCredentials(
@@ -16,21 +15,22 @@ function _updateCredentials(
     if (credentials) {
       // INFO: CREDENTIALS UPTADE  Block Start *********************************
 
-      credentials.remainingRequests = remainingRequests(response);
-
+      // response;
       credentials.config_ = _config;
       credentials.response_ = response;
       credentials.configUrl_ = `${_config.url}`.split('questrade.com/')[1];
-
+      credentials.fromCache = response?.headers?.fromCache ?? false;
+      credentials.fromApi = response?.headers?.fromApi ?? true;
+      credentials.proxy = response?.headers?.proxy ?? null;
       credentials.urlTimeUTC = new Date(
         credentials?.response_?.headers?.date ?? null,
       );
-
-      const urlToHash = getQtUrlPathFromArgs(_config);
-      const dataToHash = `${JSON.stringify(response.data ?? null)}`;
-
-      // XXX: make dependencies to nodeJS crypto module optional ***************
-      credentials.hashes = getUrlAndDataHashes(urlToHash, dataToHash);
+      let maximumperseconds = 20;
+      if (credentials.fromCache === true) maximumperseconds = 21;
+      credentials.remainingRequests = remainingRequests(
+        response,
+        maximumperseconds,
+      );
     }
   } catch (error_) {
     void errorlog('error_:', error_);

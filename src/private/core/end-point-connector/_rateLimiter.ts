@@ -17,7 +17,7 @@ async function _rateLimiter<R>(
     credentials?.remainingRequests?.possiblePerSeconds ?? 21;
   let response: ClientResponse;
 
-  if (possiblePerSeconds <= 20) {
+  if (possiblePerSeconds <= 20 && possiblePerSeconds > 0) {
     //
     const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
 

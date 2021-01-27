@@ -1,10 +1,5 @@
 import { redeemToken } from '../..';
-import {
-  errorlog,
-  getMyToken,
-  makeTedis,
-  Tedis,
-} from '../../resources/side-effects';
+import { echo, errorlog, getMyToken } from '../../resources/side-effects';
 import { redisProxyHandler } from '../../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 /*
     tedis: Tedis,
@@ -14,28 +9,59 @@ import { redisProxyHandler } from '../../resources/side-effects/proxies/client/r
     credentials?: Credentials,
  */
 
-async function mainFunction(tedis: Tedis) {
+async function mainFunction(/* tedis?: Tedis */) {
   const proxyFactory = redisProxyHandler({
     httpConnectProxy: true,
   });
 
   const { qtApi } = await redeemToken({
     proxyFactory,
-    refreshToken: { token: getMyToken() },
+    refreshToken: {
+      token: getMyToken(),
+      accountcallsPerHour: 30000,
+      accountcallsPerSecond: 30,
+      marketDatacallsPerHour: 1500,
+      marketDatacallsPerSecond: 20,
+    },
   });
+  echo('run');
+  // const snp500list = id0(await willGetSNP500StringList()); //.map(ech0);
+  // snp500list
+  //   .map(stock => qtApi.search.stock(stock))
+  //   .map(stock =>
+  //     stock.then(s => {
+  //       try {
+  //         return s[0].symbolId;
+  //       } catch (error) {
+  //         return 0;
+  //       }
+  //     }),
+  //   )
+  //   .map(t =>
+  //     t.then(sid => {
+  //       try {
+  //         return qtApi.getSymbols.byStockIds([sid]);
+  //       } catch (error) {
+  //         return {} as ISymbol[];
+  //       }
+  //     }),
+  //   );
 
-  await qtApi.search.stock('couche tard');
-
-  return () => tedis.close();
+  // await qtApi.search.stock('couche tard');
+  void qtApi;
+  // void snp500list;
+  // void tedis;
+  // return () => tedis.close();
 }
 
 async function main() {
-  return mainFunction(makeTedis({ port: 6379 }))
-    .then((tedisClose: () => any) => tedisClose())
-    .catch(error => errorlog('in main from redis-modeling', error.message));
+  return mainFunction(/* makeTedis({ port: 6379 } )*/).catch(error =>
+    errorlog('in main from redis-modeling', error),
+  );
+  // .then((tedisClose: () => any) => tedisClose())
 }
 
-// main();
+main();
 
 export { main };
 /*
@@ -94,3 +120,53 @@ main()
   .catch(error => errorlog(error.message));
 
  */
+
+/*
+  export interface ISymbol {
+  symbol?: string;
+  symbolId?: number;
+  tradeUnit: number;
+  prevDayClosePrice?: number;
+  highPrice52?: number;
+  lowPrice52?: number;
+  averageVol3Months?: number;
+  averageVol20Days?: number;
+  outstandingShares?: number;
+  eps?: number;
+  pe?: number;
+  dividend?: number;
+  yield?: number;
+  exDate?: Date | string;
+  marketCap?: number;
+  optionType?: OptionType | null;
+  optionDurationType?: OptionDurationType | null;
+  optionRoot?: string;
+  optionContractDeliverables?: string | OptionContractDeliverables;
+  underlyings?: string | [];
+  UnderlyingMultiplierPair?: string | [];
+  multiplier?: number;
+  underlyingSymbol?: string;
+  underlyingSymbolId?: string;
+  cashInLieu?: number;
+  optionExerciseType?: OptionExerciseType | null;
+  listingExchange?: string | [];
+  description?: string;
+  securityType?: SecurityType;
+  dividendDate?: Date | string;
+  optionExpiryDate: string | null;
+  optionStrikePrice?: number | null;
+  isTradable?: boolean;
+  isQuotable?: boolean;
+  hasOptions?: boolean;
+  currency?: Currency;
+  minTicks?: string | MinTick[];
+  MinTickData?: string | [];
+  pivot?: number;
+  minTick?: number;
+  industrySector?: string;
+  industryGroup?: string;
+  industrySubGroup?: string;
+  industrySubgroup: string;
+  count?: number;
+}
+   */

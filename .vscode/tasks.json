@@ -12,50 +12,55 @@
         "--build",
         // "--watch"
       ],
-      "group": {
-        "kind": "build",
-        "isDefault": true
-      },
+      "isBackground": true,
       "runOptions": {
         "reevaluateOnRerun": true,
         "instanceLimit": 1,
         "runOn": "default"
       },
-      "isBackground": true,
+      // "isBackground": true,
       "presentation": {
+        "clear": true,
         "echo": false,
         "focus": false,
-        "clear": true,
+        "revealProblems": "onProblem",
+        "group": "task watch",
         "panel": "dedicated",
         "reveal": "silent",
-        "group": "task watch"
       },
       "problemMatcher": {
         "base": "$tsc-watch",
         "applyTo": "allDocuments"
-      }
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
     },
     {
       "label": "start run",
       "type": "shell",
       "detail": "Run project selected entry point to test the curent functionalities",
+      "command": "${workspaceFolder}/scripts/F5:start:run.sh",
       "dependsOn": "tsc watch",
-      "presentation": {
-        "echo": true,
-        "reveal": "always",
-        "focus": false,
-        "panel": "dedicated",
-        "clear": true,
-        "group": "task watch"
-      },
       "runOptions": {
         "instanceLimit": 1,
         "reevaluateOnRerun": true,
         "runOn": "default"
       },
-      "command": "${workspaceFolder}/scripts/F5:start:run.sh",
+      "presentation": {
+        "echo": true,
+        "revealProblems": "never",
+        "showReuseMessage": false,
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": false,
+        "group": "task watch"
+      },
       "problemMatcher": {
-        "base": "$tsc"
+        "base": "$tsc",
+        "applyTo": "allDocuments"
       },
       "group": {
         "kind": "test",

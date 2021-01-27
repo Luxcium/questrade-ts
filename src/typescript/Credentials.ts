@@ -1,8 +1,8 @@
+import { ITimeRateLimiter, UrlDataAndHashes } from '.';
 import {
   ClientRequestConfig,
   ClientResponse,
 } from '../resources/side-effects/types';
-import { ITimeRateLimiter, UrlDataAndHashes } from '.';
 
 export interface Credentials {
   accessToken: string;
@@ -34,6 +34,8 @@ export interface Credentials {
   urlTimeUTC?: Date;
   xRatelimitRemaining?: number;
   xRatelimitReset?: number;
+  fromApi: boolean;
+  proxy?: any;
   toString(): string;
   toValue(): string;
 }

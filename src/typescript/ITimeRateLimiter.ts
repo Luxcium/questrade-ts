@@ -5,6 +5,6 @@ export interface ITimeRateLimiter {
   minutesRemaning?: number;
   maximumperseconds: number;
   possiblePerSeconds: number;
-  requestsRemaining: number;
+  remaining: number;
   maximums: [number, number, number];
 }

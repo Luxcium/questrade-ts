@@ -1,44 +1,47 @@
-import { CallBack } from '../../../typescript';
-import { perSeconds } from '../../../utils';
+import { void0 } from '../../../utils';
 
-// create the function required to have a request limiter
-// set the initial state
-export function myRequestLimiterFactory() {
-  let isRequested = false;
-  const hertz: number = 1;
+void0();
+// import { CallBack } from '../../../typescript';
+// import { perSeconds } from '../../../utils';
 
-  // the request limiter function  itself
-  return <Tfn>(fn: () => Promise<Tfn>) => {
-    const queueList: [() => Promise<Tfn>, CallBack<any>][] = [];
-    const shiftOutFromQueue = async () => {
-      if (queueList.length > 0 && !isRequested) {
-        isRequested = true;
-        const nextToExecute = shiftQueue(queueList);
+// // create the function required to have a request limiter
+// // set the initial state
+// export function myRequestLimiterFactory() {
+//   let isRequested = false;
+//   const hertz: number = 1;
 
-        if (nextToExecute !== undefined) {
-          const [myfn, mycb] = nextToExecute;
+//   // the request limiter function  itself
+//   return <Tfn>(fn: () => Promise<Tfn>) => {
+//     const queueList: [() => Promise<Tfn>, CallBack<any>][] = [];
+//     const shiftOutFromQueue = async () => {
+//       if (queueList.length > 0 && !isRequested) {
+//         isRequested = true;
+//         const nextToExecute = shiftQueue(queueList);
 
-          mycb(null, myfn());
-        }
-        setTimeout(async () => {
-          isRequested = false;
-          await shiftOutFromQueue();
-        }, perSeconds(hertz));
-      }
-      return void 0;
-    };
+//         if (nextToExecute !== undefined) {
+//           const [myfn, mycb] = nextToExecute;
 
-    // when isRequested = true or if queue is empty
-    return async function pushInToQueue(cb: CallBack<any>): Promise<void> {
-      queueList.push([fn, cb]);
-      return shiftOutFromQueue();
-    };
-  };
-}
+//           mycb(null, myfn());
+//         }
+//         setTimeout(async () => {
+//           isRequested = false;
+//           await shiftOutFromQueue();
+//         }, perSeconds(hertz));
+//       }
+//       return void 0;
+//     };
 
-const shiftQueue = <TFnct>(queueList: [TFnct, CallBack<any>][]) =>
-  queueList.shift();
+//     // when isRequested = true or if queue is empty
+//     return async function pushInToQueue(cb: CallBack<any>): Promise<void> {
+//       queueList.push([fn, cb]);
+//       return shiftOutFromQueue();
+//     };
+//   };
+// }
 
+// const shiftQueue = <TFnct>(queueList: [TFnct, CallBack<any>][]) =>
+//   queueList.shift();
+// !!
 //
 //
 // const hertz: number = 1;
