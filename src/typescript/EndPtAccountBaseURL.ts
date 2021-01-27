@@ -1,15 +1,12 @@
-import { ClientHandlerFactory, Credentials } from '.';
+import { Credentials, ProxyFactory_ } from '.';
 
 export type EndPtAccountBaseURL = (
-  getCredAcctProp: (
-    credentials: Credentials,
-    proxy?: ClientHandlerFactory,
-  ) => string,
+  getCredAcctProp: (credentials: Credentials, proxy?: ProxyFactory_) => string,
 ) => (
   urlSep: () => string,
 ) => (
   acctUrlStr: () => string,
 ) => (
   credentials: Credentials,
-  proxy?: ClientHandlerFactory,
+  proxy?: ProxyFactory_,
 ) => (accountEndpoint: string) => string;

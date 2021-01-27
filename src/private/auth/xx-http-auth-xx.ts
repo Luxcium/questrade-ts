@@ -10,32 +10,18 @@ import {
   ClientStatic,
 } from '../../resources/side-effects/typescript';
 import {
-  ClientHandlerFactory,
+  ApiOptions,
   Credentials,
   IRefreshCreds,
-  QuestradeAPIOptions,
+  ProxyFactory_,
 } from '../../typescript';
 
-export const _oAuthHttpCredentials = async (
-  apiOptions: QuestradeAPIOptions,
-  proxy?: ClientHandlerFactory,
-): Promise<Credentials> => {
-  const { refreshToken, credentials } = validateToken(apiOptions);
-  const _config: ClientRequestConfig = {
-    method: 'GET',
-    params: {
-      grant_type: 'refresh_token',
-      refresh_token: refreshToken,
-    },
-    url: `${credentials.authUrl}/oauth2/token`,
-  };
+const _oAuthHttp = async (apiOptions: ApiOptions, proxy?: ProxyFactory_) => {
+  const [_config, credentials] = config(apiOptions);
 
-  // if (proxy) echo(proxy);
   let httpClient: ClientStatic = getHttpClient();
-
   if (proxy?.oAuthHttpCredentials && proxy?.activate) {
     echo('using proxy in oAuth connector');
-
     httpClient = proxy.activate({});
   }
 
@@ -45,13 +31,13 @@ export const _oAuthHttpCredentials = async (
 
   if (!response.data) {
     if (response) {
-      void echo<unknown>('________________________________________________');
-      void echo<unknown>(response.status, response.statusText);
-      void echo<unknown>(response.headers);
-      void echo<unknown>(response.request);
-      void echo<unknown>(response.status, response.statusText);
-      void echo<unknown>('________________________________________________');
-      void echo<unknown>('++++++++++++++++++++++++++++++++++++++++++++++++');
+      void echo<any>('________________________________________________');
+      void echo<any>(response.status, response.statusText);
+      void echo<any>(response.headers);
+      void echo<any>(response.request);
+      void echo<any>(response.status, response.statusText);
+      void echo<any>('________________________________________________');
+      void echo<any>('++++++++++++++++++++++++++++++++++++++++++++++++');
     }
     throw new Error(
       '!!! validate credntials Invalid data back from http client !!!',
@@ -60,3 +46,24 @@ export const _oAuthHttpCredentials = async (
 
   return writeToken(credentials, response);
 };
+
+export { _oAuthHttp };
+
+function config(apiOptions: ApiOptions): [ClientRequestConfig, Credentials] {
+  const { refreshToken, credentials } = validateToken(apiOptions);
+  return [
+    {
+      method: 'GET',
+      params: {
+        grant_type: 'refresh_token',
+        refresh_token: refreshToken,
+      },
+      url: `${credentials.authUrl}/oauth2/token`,
+    },
+    credentials,
+  ];
+}
+
+/*
+
+ */

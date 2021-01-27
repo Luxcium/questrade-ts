@@ -2,12 +2,13 @@
 // #region IMPORTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― $>
 import Redis from 'ioredis';
 import JSONCache from 'redis-json';
-import { ech0, getHttpClient } from '../../..';
-import { ClientHandlerFactory, Credentials } from '../../../../..';
+import { getHttpClient } from '../../..';
+import { Credentials, ProxyFactory_ } from '../../../../..';
 import {
   getQtUrlPathFromArgs,
   getUrlAndDataHashes,
   getUrlHash,
+  id0,
 } from '../../../../../utils';
 import {
   ClientStatic,
@@ -56,24 +57,20 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
       // const isInExclusionList = ['URL:8081F947BB07DB0A4A'].some(
       //   URL => URL === 'URL:8081F947BB07DB0A4A',
       // );
-      try {
-        if (
-          this?.handlerOptions?.notFromCache !==
-          true /* && !isInExclusionList */
-        ) {
-          // $ READ FROM CACHE ―――――――――――――――――――――――――――――――――――――――――――――――――$>
-          const responseFromCache = await jsonCache.get(URL_HSH);
 
-          if (responseFromCache?.responseFromCache === true) {
-            // +RETURN VALUE FROM CACHE ――――――――――――――――――――――――――――――――――――――――$>
-            myRedis.disconnect();
-            return ech0(responseFromCache);
-          }
+      if (
+        this?.handlerOptions?.notFromCache !== true /* && !isInExclusionList */
+      ) {
+        // $ READ FROM CACHE ―――――――――――――――――――――――――――――――――――――――――――――――――$>
+        const responseFromCache = await jsonCache.get(URL_HSH);
+
+        if (responseFromCache?.responseFromCache === true) {
+          // +RETURN VALUE FROM CACHE ――――――――――――――――――――――――――――――――――――――――$>
+          myRedis.disconnect();
+          return id0(responseFromCache);
         }
-      } catch (error) {
-        myRedis.disconnect();
-        throw error;
       }
+
       // $ CREATE VALUE TO CACHE ―――――――――――――――――――――――――――――――――――――――――――――――$>
 
       const responseFromApi = await Reflect.apply(target, thisArg, argArray);
@@ -158,26 +155,22 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
         responseFromApi: false,
         responseFromCache: true,
       };
-      try {
-        if (this?.handlerOptions?.noCaching !== true) {
-          // $ WRITE TO CACHE ――――――――――――――――――――――――――――――――――――――――――――――――――$>
-          // ech0('if (this?.handlerOptions?.noCaching !== true)');
-          // const options: ISetOptions = { expire: 1000 };
 
-          await jsonCache.set(URL_HSH, responseToCache /* , options */);
-        }
+      if (this?.handlerOptions?.noCaching !== true) {
+        // $ WRITE TO CACHE ――――――――――――――――――――――――――――――――――――――――――――――――――$>
+        // id0('if (this?.handlerOptions?.noCaching !== true)');
+        // const options: ISetOptions = { expire: 1000 };
 
-        // !! RETURN VALUE FROM API ――――――――――――――――――――――――――――――――――――――――――――$>
-        responseFromApi.responseFromApi = true;
-        responseFromApi.headers.fromApi = true;
-        responseFromApi.responseFromCache = false;
-        responseFromApi.headers.fromCache = false;
-        myRedis.disconnect();
-        return ech0(responseFromApi);
-      } catch (error) {
-        myRedis.disconnect();
-        throw error;
+        await jsonCache.set(URL_HSH, responseToCache /* , options */);
       }
+
+      // !! RETURN VALUE FROM API ――――――――――――――――――――――――――――――――――――――――――――$>
+      responseFromApi.responseFromApi = true;
+      responseFromApi.headers.fromApi = true;
+      responseFromApi.responseFromCache = false;
+      responseFromApi.headers.fromCache = false;
+      myRedis.disconnect();
+      return id0(responseFromApi);
     } catch (error) {
       myRedis.disconnect();
       throw error;
@@ -192,7 +185,7 @@ export function redisProxyHandler(
 ) {
   return function clientHandlerFactory(credentials?: Credentials) {
     const client: ClientStatic = getHttpClient();
-    const newProxy: ClientHandlerFactory = {};
+    const newProxy: ProxyFactory_ = {};
 
     newProxy.activate = (proxyHandlerOptions: ProxyHandlerOptions) =>
       new Proxy(

@@ -1,23 +1,23 @@
-import { ClientHandlerFactory, QuestradeAPIOptions } from '../..';
+import { ApiOptions, ProxyFactory_ } from '../..';
 import { errorlog, infolog } from '../../resources/side-effects';
 import { AcountNumberString, IAccount } from '../../typescript';
 import { _getAccounts } from '../api/AccountsCalls/_getAccounts/_getAccounts';
 import { _getServerTime } from '../api/AccountsCalls/_getServerTime/_getServerTime';
 import { _clientGetApi } from '../routes';
-import { _oAuthHttpCredentials } from './xx-http-auth-xx';
+import { _oAuthHttp } from './xx-http-auth-xx';
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 const _credentialsFactory = async (
-  options: QuestradeAPIOptions,
-  proxyFactory?: () => ClientHandlerFactory,
+  options: ApiOptions,
+  proxyFactory?: () => ProxyFactory_,
 ) => {
-  let proxy: ClientHandlerFactory | undefined;
+  let proxy: ProxyFactory_ | undefined;
 
   if (proxyFactory) {
     proxy = proxyFactory();
   }
 
-  const credentials = await _oAuthHttpCredentials(options, proxy);
+  const credentials = await _oAuthHttp(options, proxy);
 
   try {
     const accounts = await _getAccounts(_clientGetApi(credentials, proxy))();

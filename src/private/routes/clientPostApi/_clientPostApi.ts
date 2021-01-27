@@ -1,4 +1,4 @@
-import { ClientHandlerFactory, Credentials } from '../../../typescript';
+import { Credentials, ProxyFactory_ } from '../../../typescript';
 import { _coreApiFunction } from '../../core/end-point-connector/_coreApiFunction';
 
 // # _clientApiPost !!!
@@ -9,5 +9,5 @@ import { _coreApiFunction } from '../../core/end-point-connector/_coreApiFunctio
  */
 export const _clientPostApi = (
   credentials: Credentials,
-  proxy?: ClientHandlerFactory,
+  proxy?: ProxyFactory_,
 ) => _coreApiFunction(credentials, proxy)('POST');

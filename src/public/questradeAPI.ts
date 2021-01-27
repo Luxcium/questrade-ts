@@ -1,11 +1,11 @@
 import { _getQuestradeApi } from '../private/api/_getQuestradeApi';
-import { ClientHandlerFactory, Credentials, QuestradeApi } from '../typescript';
+import { Credentials, ProxyFactory_, QuestradeApi } from '../typescript';
 
 // export const getQuestradeApi = ;
 
 export const questradeApi = async (
   credentials: Credentials,
-  proxy?: (cred: Credentials) => ClientHandlerFactory,
+  proxy?: (cred: Credentials) => ProxyFactory_,
   errorloger: (error: any) => any = (error: any) => error,
 ) => {
   const qtApi: QuestradeApi = await (async (): Promise<QuestradeApi> => {

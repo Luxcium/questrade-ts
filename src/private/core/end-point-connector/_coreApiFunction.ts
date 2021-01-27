@@ -1,11 +1,11 @@
 import { ProxyHandlerOptions } from '../../../resources/side-effects/types';
-import { ClientHandlerFactory, Credentials, Logger } from '../../../typescript';
+import { Credentials, Logger, ProxyFactory_ } from '../../../typescript';
 import { _httpDataEndPointConnector } from '../XX-http-data-end-point-connector-XX';
 import { _coreApiConfig } from './_coreApiConfig';
 
 function _coreApiFunction(
   credentials: Credentials,
-  proxy?: ClientHandlerFactory,
+  proxy?: ProxyFactory_,
   errorlog: Logger = (...error: any[]) => error,
 ) {
   // ~~>

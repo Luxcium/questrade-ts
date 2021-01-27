@@ -36,10 +36,7 @@ export {
 } from './IOptionsChains';
 export { IOrder, IOrders } from './IOrders';
 export { IPosition, IPositions } from './IPositions';
-export {
-  IQuestradeAPIOptions,
-  QuestradeAPIOptions,
-} from './IQuestradeAPIOptions';
+export { ApiOptions, IQuestradeAPIOptions } from './IQuestradeAPIOptions';
 export { IQuote, IQuotes } from './IQuotes';
 export {
   FiltersArray,
@@ -74,9 +71,9 @@ export {
 } from './ISymbolSearchResult';
 export { ITime } from './ITime';
 export { ITimeRateLimiter } from './ITimeRateLimiter';
-export { Void_0, Void0 } from './IVoid_0';
+export { Void0, Void_0 } from './IVoid_0';
 export { LogErrors } from './LogErrors';
-export { ClientHandlerFactory } from './Proxy';
+export { ProxyFactory_ } from './Proxy';
 export {
   DateRange,
   QtApiAccount,

@@ -1,5 +1,5 @@
-import { ClientHandlerFactory, Credentials } from '../../../..';
 import { sideEffects } from '../..';
+import { Credentials, ProxyFactory_ } from '../../../..';
 import { ClientStatic, ProxyHandlerOptions } from '../../types';
 
 const { getHttpClient } = sideEffects;
@@ -13,8 +13,8 @@ export const clientProxyHandlerFactory = (
   ) => ProxyHandler<ClientStatic>,
   httpDataEndPointConnector: boolean = true,
   oAuthHttpCredentials: boolean = false,
-): ClientHandlerFactory => {
-  const newProxy: ClientHandlerFactory = {};
+): ProxyFactory_ => {
+  const newProxy: ProxyFactory_ = {};
 
   newProxy.activate = (proxyHandlerOptions: ProxyHandlerOptions) =>
     new Proxy(client, proxyHandler(proxyHandlerOptions));

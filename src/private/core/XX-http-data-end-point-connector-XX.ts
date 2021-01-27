@@ -5,7 +5,7 @@ import {
   ClientStatic,
   ProxyHandlerOptions,
 } from '../../resources/side-effects/types';
-import { ClientHandlerFactory, Credentials, Logger } from '../../typescript';
+import { Credentials, Logger, ProxyFactory_ } from '../../typescript';
 import {
   _echoStatus,
   _rateLimiter,
@@ -17,7 +17,7 @@ const { getHttpClient } = sideEffects;
 function _httpDataEndPointConnector<R>(
   _config: ClientRequestConfig,
   credentials?: Credentials,
-  proxy?: ClientHandlerFactory,
+  proxy?: ProxyFactory_,
 ) {
   return async (
     errorlog: Logger,

@@ -7,7 +7,7 @@ export function echo1<T = any>(arg0: string, arg1: T): T {
   return arg1;
 }
 
-export function echo<T = any>(...args: T[]): T[] {
+export function echo<T = unknown>(...args: T[]): T[] {
   console.log(...args);
   return args;
 }

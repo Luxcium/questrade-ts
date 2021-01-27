@@ -1,14 +1,14 @@
 import { _getQuestradeApi } from '../private/api/_getQuestradeApi';
 import {
-  ClientHandlerFactory,
   Credentials,
   OptionsFilters,
+  ProxyFactory_,
   StrategyVariantRequest,
 } from '../typescript';
 
 export const asyncQuestradeApi = (
   credentials: Credentials,
-  proxy?: ClientHandlerFactory,
+  proxy?: ProxyFactory_,
 ) => {
   const asyncQtApi = _getQuestradeApi(credentials, proxy);
   const asyncAccount = asyncQtApi.then(then => then.account);
@@ -227,10 +227,7 @@ export class ChainApiClass {
     return this;
   }
 
-  constructor(
-    private credentials: Credentials,
-    private proxy?: ClientHandlerFactory,
-  ) {
+  constructor(private credentials: Credentials, private proxy?: ProxyFactory_) {
     this.asyncApi = asyncQuestradeApi(this.credentials, this.proxy);
     // this.asyncAccount = this.asyncApi.asyncAccount;
     // this.asyncActivities = this.asyncApi.asyncActivities;

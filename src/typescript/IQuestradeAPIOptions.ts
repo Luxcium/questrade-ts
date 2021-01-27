@@ -16,4 +16,4 @@ type seedToken = string;
 
 type keyFile = string;
 
-export type QuestradeAPIOptions = IQuestradeAPIOptions | seedToken | keyFile;
+export type ApiOptions = IQuestradeAPIOptions | seedToken | keyFile;

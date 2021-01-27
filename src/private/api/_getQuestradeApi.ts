@@ -1,8 +1,8 @@
 import {
-  ClientHandlerFactory,
   Credentials,
   Logger,
   OptionsFilters,
+  ProxyFactory_,
   QuestradeApi,
   StrategyVariantRequest,
 } from '../../typescript';
@@ -36,7 +36,7 @@ import {
 
 export const _getQuestradeApi = async (
   credentials: Credentials,
-  proxy?: ClientHandlerFactory,
+  proxy?: ProxyFactory_,
   errorlog: Logger = (...error: any[]) => error,
 ): Promise<QuestradeApi> => {
   const [

@@ -1,9 +1,9 @@
 export { redeemToken } from './public';
 export type {
   AcountNumberString,
+  ApiOptions,
   Balances,
   CallBack,
-  ClientHandlerFactory,
   Credentials,
   DateRange,
   FiltersArray,
@@ -62,6 +62,7 @@ export type {
   OptionsIdArray,
   OptionsPostData,
   OrdersOptions,
+  ProxyFactory_,
   QtApiAccount,
   QtApiMarket,
   QtApiMyBalances,
@@ -71,7 +72,6 @@ export type {
   QtApiSearch,
   QtApiSymbols,
   QuestradeApi,
-  QuestradeAPIOptions,
   QuotesOptions,
   QuotesOptionsbyFilterAndIds,
   ReqLimiterFactory,
@@ -86,7 +86,7 @@ export type {
   TimeRangeInterval,
   VariantId,
   Variants,
-  Void_0,
   Void0,
+  Void_0,
   WillCallBack,
 } from './typescript';

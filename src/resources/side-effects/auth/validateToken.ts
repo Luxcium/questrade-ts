@@ -1,13 +1,12 @@
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
-
-import { QuestradeAPIOptions } from '../../../typescript';
+import { ApiOptions } from '../../../typescript';
 import { sync } from '../../../utils';
 import { _buildCredentialsFromToken } from './_buildCredentialsFromToken';
 
 const { dirname } = path;
 
-export const validateToken = (options: QuestradeAPIOptions) => {
+export const validateToken = (options: ApiOptions) => {
   const credentials = _buildCredentialsFromToken(options);
   let refreshToken: string = credentials.seedToken;
 

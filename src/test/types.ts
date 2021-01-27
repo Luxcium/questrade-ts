@@ -1,8 +1,8 @@
-import { ClientHandlerFactory, Credentials, IQuestradeAPIOptions } from '..';
+import { Credentials, IQuestradeAPIOptions, ProxyFactory_ } from '..';
 import { Logger } from '../typescript';
 
 export type RedeemOptions = {
   refreshToken: string | IQuestradeAPIOptions;
   errorloger?: Logger;
-  proxyFactory?: (credentials?: Credentials) => ClientHandlerFactory;
+  proxyFactory?: (credentials?: Credentials) => ProxyFactory_;
 };
