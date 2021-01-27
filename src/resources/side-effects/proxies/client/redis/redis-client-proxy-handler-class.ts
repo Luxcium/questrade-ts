@@ -61,12 +61,13 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
       if (
         this?.handlerOptions?.notFromCache !== true /* && !isInExclusionList */
       ) {
-        // $ READ FROM CACHE ―――――――――――――――――――――――――――――――――――――――――――――――――$>
+        // $ READ FROM CACHE ―――――――――――――――――――――――――――――――――――――――――――――――――――$>
         const responseFromCache = await jsonCache.get(URL_HSH);
 
         if (responseFromCache?.responseFromCache === true) {
-          // +RETURN VALUE FROM CACHE ――――――――――――――――――――――――――――――――――――――――$>
           myRedis.disconnect();
+
+          // +RETURN VALUE FROM CACHE ――――――――――――――――――――――――――――――――――――――――――$>
           return id0(responseFromCache);
         }
       }
@@ -157,19 +158,20 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
       };
 
       if (this?.handlerOptions?.noCaching !== true) {
-        // $ WRITE TO CACHE ――――――――――――――――――――――――――――――――――――――――――――――――――$>
+        // $ WRITE TO CACHE ――――――――――――――――――――――――――――――――――――――――――――――――――――$>
         // id0('if (this?.handlerOptions?.noCaching !== true)');
         // const options: ISetOptions = { expire: 1000 };
 
         await jsonCache.set(URL_HSH, responseToCache /* , options */);
       }
 
-      // !! RETURN VALUE FROM API ――――――――――――――――――――――――――――――――――――――――――――$>
+      myRedis.disconnect();
+
+      // !! RETURN VALUE FROM API ――――――――――――――――――――――――――――――――――――――――――――――$>
       responseFromApi.responseFromApi = true;
       responseFromApi.headers.fromApi = true;
       responseFromApi.responseFromCache = false;
       responseFromApi.headers.fromCache = false;
-      myRedis.disconnect();
       return id0(responseFromApi);
     } catch (error) {
       myRedis.disconnect();
@@ -222,7 +224,7 @@ export function redisProxyHandler(
 //   argArray?: any,
 // ) {
 //
-//   // $ Reflect.apply  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
+//   // $ Reflect.apply  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
 //   const returnValue = Reflect.apply(target, thisArg, argArray);
 //   const data = `${JSON.stringify((await returnValue).data ?? null)}`;
 //   const proxyData = this._proxyData(urlPath, data, argArray);
@@ -238,7 +240,7 @@ export function redisProxyHandler(
 // // getUrlAndDataHashes,
 // // getUrlHashe,
 // try {
-//   // +SIDE EFFECTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
+//   // +SIDE EFFECTS ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
 //   const isInCache: boolean = echo1(
 //     "this.tedis.command('hgetall', URL_HSH): ",
 //     await this.tedis.command('hgetall', URL_HSH),
@@ -255,7 +257,7 @@ export function redisProxyHandler(
 //     }
 //   }
 //   ech0(initialValue);
-//   // $ APPLY REFLEXCTION ON TARGET ―――――――――――――――――――――――――――――――――――――――――$>
+//   // $ APPLY REFLEXCTION ON TARGET ――――――――――――――――――――――――――――――――――――――――――$>
 //   const {
 //     proxyData,
 //     response,
@@ -356,7 +358,7 @@ export function redisProxyHandler(
 //     request: {},
 //   });
 //   // return returnValue;
-//   // + CATCH ERROR ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
+//   // + CATCH ERROR ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
 // } catch (error) {
 //   void echo(error);
 //   return { data: null };
