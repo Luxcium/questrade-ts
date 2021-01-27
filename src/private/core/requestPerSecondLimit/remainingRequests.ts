@@ -1,25 +1,20 @@
 import { ClientResponse } from '../../../resources/side-effects/types';
 import { ITimeRateLimiter } from '../../../typescript/ITimeRateLimiter';
-
+const { ceil, floor, max, min } = Math;
 export const remainingRequests = <T>(
   response: ClientResponse<T>,
   maximumperseconds: number = 20,
 ): ITimeRateLimiter => {
-  const remainingStr: string = response.headers['x-ratelimit-remaining'];
-  const timeUntilResetStr: string = response.headers['x-ratelimit-reset'];
-  const remaining = Number.parseInt(remainingStr, 10);
-  const timeUntilReset = Number.parseInt(timeUntilResetStr, 10);
+  const remaining = Number(response.headers['x-ratelimit-remaining']);
+  const timeUntilReset = Number(response.headers['x-ratelimit-reset']);
 
-  const timeNow = Math.floor(new Date().getTime() / 1000) + 1;
-  const timeThen = Math.floor(timeUntilReset);
-  const secondsRemaning = timeUntilReset - timeNow;
-  const minutesRemaning = Math.ceil((timeUntilReset - timeNow) / 60);
-  // const timeNow_ = new Date(timeNow).toTimeString();
+  const timeNow = ceil(new Date().getTime() / 1000);
+  const timeThen = floor(timeUntilReset);
+  const secondsRemaning = timeThen - timeNow;
+  const minutesRemaning = ceil((timeThen - timeNow) / 60);
 
-  // const timeThen_ = new Date(timeThen).toLocaleTimeString();
-
-  const possiblePerSeconds = Math.floor(
-    Math.max(Math.min(remaining / secondsRemaning, maximumperseconds), -1),
+  const possiblePerSeconds = floor(
+    max(min(remaining / secondsRemaning, maximumperseconds), -1),
   );
   const maximums: [number, number, number] = [
     remaining,

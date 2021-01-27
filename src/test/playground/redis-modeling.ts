@@ -1,6 +1,8 @@
-import { redeemToken } from '../..';
+import { ISymbol, redeemToken } from '../..';
 import { echo, errorlog, getMyToken } from '../../resources/side-effects';
 import { redisProxyHandler } from '../../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
+import { id0 } from '../../utils';
+import { willGetSNP500StringList } from './getSNP500List';
 /*
     tedis: Tedis,
     redisinstance: IoRedis | null,
@@ -24,32 +26,32 @@ async function mainFunction(/* tedis?: Tedis */) {
       marketDatacallsPerSecond: 20,
     },
   });
-  echo('run');
-  // const snp500list = id0(await willGetSNP500StringList()); //.map(ech0);
-  // snp500list
-  //   .map(stock => qtApi.search.stock(stock))
-  //   .map(stock =>
-  //     stock.then(s => {
-  //       try {
-  //         return s[0].symbolId;
-  //       } catch (error) {
-  //         return 0;
-  //       }
-  //     }),
-  //   )
-  //   .map(t =>
-  //     t.then(sid => {
-  //       try {
-  //         return qtApi.getSymbols.byStockIds([sid]);
-  //       } catch (error) {
-  //         return {} as ISymbol[];
-  //       }
-  //     }),
-  //   );
+  echo(qtApi.serverTime);
+  const snp500list = id0(await willGetSNP500StringList()); //.map(ech0);
+  snp500list
+    .map(stock => qtApi.search.stock(stock))
+    .map(stock =>
+      stock.then(s => {
+        try {
+          return s[0].symbolId;
+        } catch (error) {
+          return 0;
+        }
+      }),
+    )
+    .map(t =>
+      t.then(sid => {
+        try {
+          return qtApi.getSymbols.byStockIds([sid]);
+        } catch (error) {
+          return {} as ISymbol[];
+        }
+      }),
+    );
 
   // await qtApi.search.stock('couche tard');
   void qtApi;
-  // void snp500list;
+  void snp500list;
   // void tedis;
   // return () => tedis.close();
 }
