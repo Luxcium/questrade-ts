@@ -1,5 +1,5 @@
 import { redeemToken } from '../..';
-import { ech0, echo, errorlog, getMyToken } from '../../resources/side-effects';
+import { ech0, errorlog, getMyToken } from '../../resources/side-effects';
 import { redisProxyHandler } from '../../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 /*
     tedis: Tedis,
@@ -48,22 +48,17 @@ async function mainFunction(/* tedis?: Tedis */) {
   //     }),
   //   );
 
-  // await qtApi.search.stock('couche tard');
-  // void qtApi;
+  await qtApi.search.stock('couche tard');
+  void qtApi;
   // void snp500list;
-  // void tedis;
-  // return () => tedis.close();
 }
 
 async function main() {
   const returnValue = await mainFunction().catch(error =>
     errorlog('in main from redis-modeling', error),
   );
-  echo('redis-modelling');
   return returnValue;
 }
-
-main();
 
 export { main };
 /*
