@@ -23,10 +23,10 @@
         "clear": true,
         "echo": false,
         "focus": false,
-        "revealProblems": "onProblem",
         "group": "task watch",
         "panel": "dedicated",
         "reveal": "silent",
+        "revealProblems": "onProblem",
       },
       "problemMatcher": {
         "base": "$tsc-watch",
@@ -49,14 +49,14 @@
         "runOn": "default"
       },
       "presentation": {
+        "clear": true,
         "echo": true,
+        "focus": false,
+        "group": "task watch",
+        "panel": "dedicated",
+        "reveal": "always",
         "revealProblems": "never",
         "showReuseMessage": false,
-        "reveal": "always",
-        "focus": false,
-        "panel": "dedicated",
-        "clear": false,
-        "group": "task watch"
       },
       "problemMatcher": {
         "base": "$tsc",
