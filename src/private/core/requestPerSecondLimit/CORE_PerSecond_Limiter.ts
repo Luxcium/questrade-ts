@@ -24,10 +24,10 @@ function requestLimiterFactory() {
   const callsQueue: [Function, CallBack<any>][] = [];
 
   return function requestLimiter(fn: Function, hertz: number = 1) {
-    const callToPop = async function (): Promise<void> {
+    const callToPop = async (): Promise<void> => {
       if (callsQueue.length > 0 && !isCalled) {
         isCalled = true;
-        setTimeout(async function (): Promise<void> {
+        setTimeout(async (): Promise<void> => {
           isCalled = false;
           await callToPop();
           return void 0;
@@ -45,7 +45,7 @@ function requestLimiterFactory() {
       return void 0;
     };
 
-    return async function addToQueue(cb: CallBack<any>): Promise<void> {
+    return async (cb: CallBack<any>): Promise<void> => {
       callsQueue.unshift([fn, cb]);
       callToPop();
       return void 0;
@@ -53,7 +53,7 @@ function requestLimiterFactory() {
   };
 }
 
-export const myPromisify = <T>(addToQueue: (cb: any) => Promise<void>) => {
+export function myPromisify<T>(addToQueue: (cb: any) => Promise<void>) {
   return new Promise<T>((resolve, reject) => {
     addToQueue((error: Error, result: any) => {
       if (!!error) {
@@ -66,7 +66,7 @@ export const myPromisify = <T>(addToQueue: (cb: any) => Promise<void>) => {
       return void 0;
     });
   });
-};
+}
 
 function limitingRequest(limiterFactory: ReqLimiterFactory) {
   const requestLimiter = limiterFactory();
@@ -78,20 +78,21 @@ function limitingRequest(limiterFactory: ReqLimiterFactory) {
   };
 }
 
-const neverWillCb = (): never => {
+function neverWillCb(): never {
   throw new Error(
     'NEVER: lenght is validated prior to pop this should never occur',
   );
-};
+}
 
-const neverCb = (error: Error | null, returnValue: any): never => {
+function neverCb(error: Error | null, returnValue: any): never {
   void0({ error, returnValue });
   throw new Error(
     'NEVER: lenght is validated prior to pop this should never occur',
   );
-};
+}
 
 export const requestPerSecondLimiter = limitingRequest(requestLimiterFactory);
+
 export type ReqLimiterFactory = () => (
   fn: Function,
   hertz?: number,

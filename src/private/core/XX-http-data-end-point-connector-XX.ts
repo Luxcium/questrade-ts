@@ -33,12 +33,17 @@ function _httpDataEndPointConnector<R>(
     }
 
     // INFO: RESPONSE FROM RATE LIMITER **************************************
+    const possiblePerSeconds =
+      credentials?.remainingRequests?.possiblePerSeconds ?? 21;
     const response: ClientResponse = await _rateLimiter(
       httpClient,
       _config,
-      credentials,
+      possiblePerSeconds,
     );
+    /*
 
+  let response: ClientResponse;
+ */
     _echoStatus(response, credentials); // INFO: ECHO STATUS ON ERROR *********
 
     const { data } = response;
