@@ -24,22 +24,22 @@ function _httpDataEndPointConnector<R>(
     handlerOptions: ProxyHandlerOptions,
   ): Promise<R> => {
     // encodeURIComponent() _config
-    // INFO: PROXY Block Start ***********************************************
-
+    // INFO: PROXY BLOCK START ***********************************************
     let httpClient: ClientStatic = getHttpClient();
 
     if (proxy?.httpDataEndPointConnector && proxy?.activate) {
       httpClient = proxy.activate(handlerOptions);
     }
 
-    // INFO: RESPONSE FROM RATE LIMITER **************************************
     const possiblePerSeconds =
       credentials?.remainingRequests?.possiblePerSeconds ?? 21;
-    const response: ClientResponse = await _rateLimiter(
-      httpClient,
+    // INFO: CALLING FROM RATE LIMITER **************************************
+    const response: ClientResponse = await _rateLimiter({
       _config,
+      httpClient,
+      maxPerSeconds: 20,
       possiblePerSeconds,
-    );
+    });
     /*
 
   let response: ClientResponse;

@@ -1,6 +1,11 @@
-import { CallBack, WillCallBack } from '.';
+import { CallBack } from '.';
 
-export type ReqLimiterFactory = () => <T>(
-  fn: WillCallBack<T>,
+// export type ReqLimiterFactory = () => <T>(
+//   fn: WillCallBack<T>,
+//   hertz?: number,
+// ) => (willCallBack: CallBack<T>) => Promise<T>;
+
+export type ReqLimiterFactory = () => (
+  fn: Function,
   hertz?: number,
-) => (willCallBack: CallBack<T>) => Promise<T>;
+) => (cb: CallBack<any>) => Promise<void>;

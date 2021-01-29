@@ -1,6 +1,6 @@
 /* eslint-disable promise/avoid-new */
 import { errorlog } from '../../../resources/side-effects';
-import { CallBack } from '../../../typescript';
+import { CallBack, ReqLimiterFactory } from '../../../typescript';
 import { perSeconds, void0 } from '../../../utils';
 
 let lastCall = Date.now();
@@ -82,8 +82,3 @@ function neverCb(error: Error | null, returnValue: any): never {
 }
 
 export const requestPerSecondLimiter = limitingRequest(requestLimiterFactory);
-
-export type ReqLimiterFactory = () => (
-  fn: Function,
-  hertz?: number,
-) => (cb: CallBack<any>) => Promise<void>;

@@ -153,6 +153,9 @@
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― BETTER COMMENTS
+      "problemsErrorIcon.foreground": "#ff3366",
+      "problemsInfoIcon.foreground": "#ffcc55ee",
+      "problemsWarningIcon.foreground": "#ccff33",
   */
   // "#F36F"
   // "#F80B"
@@ -184,6 +187,13 @@
       "color": "#222",
       "strikethrough": false,
       "backgroundColor": "#F15E"
+    },
+    {
+      // SECTION
+      "tag": "////",
+      "color": "#0FF",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
     },
     {
       // constructor
@@ -1617,6 +1627,7 @@
     "#FB3", //TODO
     "#BF2", //WARNING
     "#E22", //XXX
+    "#FFF", // ////  !-:
   ],
   "todo-tree.general.tags": [
     "BUG:",
@@ -1630,6 +1641,7 @@
     "TODO:",
     "WARNING:",
     "XXX:",
+    "////  !-:",
   ],
   "todo-tree.highlights.useColourScheme": true,
   "todo-tree.highlights.foregroundColourScheme": [

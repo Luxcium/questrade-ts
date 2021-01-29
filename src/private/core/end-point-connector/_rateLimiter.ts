@@ -1,4 +1,3 @@
-import { Credentials } from '../../..';
 import {
   ClientRequestConfig,
   ClientResponse,
@@ -6,30 +5,24 @@ import {
 } from '../../../resources/side-effects/types';
 import { requestPerSecondLimiter } from '../requestPerSecondLimit';
 
-async function _rateLimiter<R>(
-  httpClient: ClientStatic,
-  _config: ClientRequestConfig,
-  credentials?: Credentials,
-) {
-  // INFO: RATE LIMITER Block Start ********************************************
-
-  const possiblePerSeconds =
-    credentials?.remainingRequests?.possiblePerSeconds ?? 21;
-  let response: ClientResponse;
-
-  if (possiblePerSeconds <= 20 && possiblePerSeconds > 0) {
-    //
+function _rateLimiter<R>(configs: {
+  httpClient: ClientStatic;
+  _config: ClientRequestConfig;
+  possiblePerSeconds: number;
+  maxPerSeconds?: number | null;
+}) {
+  const { _config, httpClient, maxPerSeconds, possiblePerSeconds } = configs;
+  if (possiblePerSeconds <= (maxPerSeconds || 20) && possiblePerSeconds > 0) {
     const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
 
-    response = await requestLimiter(
+    // ////  !-: WITH RATE LIMITER
+    return requestLimiter(
       async (): Promise<ClientResponse<R>> => httpClient(_config),
     );
   } else {
-    // INFO: NO RATE LIMITER Block Start ***************************************
-
-    response = await httpClient(_config);
+    // ////  !-: NO RATE LIMITER
+    return httpClient(_config);
   }
-  return response;
 }
 
 export { _rateLimiter };
