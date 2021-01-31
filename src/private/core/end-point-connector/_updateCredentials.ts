@@ -33,12 +33,12 @@ function _updateCredentials(
       );
     }
   } catch (error_) {
-    void errorlog('error_:', error_);
+    void errorlog('error_:', error_.message);
     void infolog(
       "To pass tests remove 'throw' error in _httpDataEndPointConnector",
     );
 
-    throw error_;
+    throw new Error(error_);
   }
 }
 export { _updateCredentials };

@@ -83,7 +83,7 @@ export const _myBalances = async (
 
     return { CAD, USD, combined, current, perCurrency, startOfDay };
   } catch (error) {
-    void errorlog(error);
+    void errorlog(error.message);
 
     return {
       CAD: {

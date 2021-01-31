@@ -5,7 +5,7 @@ import { Credentials, ProxyFactory_, QuestradeApi } from '../typescript';
 
 export const questradeApi = async (
   credentials: Credentials,
-  proxy?: (cred: Credentials) => ProxyFactory_,
+  proxy?: ((cred: Credentials) => ProxyFactory_) | null,
   errorloger: (error: any) => any = (error: any) => error,
 ) => {
   const qtApi: QuestradeApi = await (async (): Promise<QuestradeApi> => {

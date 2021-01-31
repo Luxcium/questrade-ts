@@ -31,7 +31,7 @@ export const _getSymbolSearch = (
     //
   } catch (error) {
     //
-    void errorlog(error);
+    void errorlog(error.message);
     return [];
 
     //

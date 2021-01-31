@@ -18,7 +18,7 @@ export const _getOrders = (
 
     return orders.orders;
   } catch (error) {
-    void errorlog(error);
+    void errorlog(error.message);
 
     return [];
   }

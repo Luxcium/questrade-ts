@@ -15,7 +15,7 @@ export const _getOrdersByIds = (
       )()
     ).orders;
   } catch (error) {
-    void errorlog(error);
+    void errorlog(error.message);
 
     return [];
   }

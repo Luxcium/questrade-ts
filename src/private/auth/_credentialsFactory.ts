@@ -9,7 +9,7 @@ import { _oAuthHttp } from './xx-http-auth-xx';
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 const _credentialsFactory = async (
   options: ApiOptions,
-  proxyFactory?: () => ProxyFactory_,
+  proxyFactory?: (() => ProxyFactory_) | null,
 ) => {
   let proxy: ProxyFactory_ | undefined;
 

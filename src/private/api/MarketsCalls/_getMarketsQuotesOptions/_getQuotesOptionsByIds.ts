@@ -21,7 +21,7 @@ export const _getQuotesOptionsByIds = (
       0,
     );
   } catch (error) {
-    void errorlog(error);
+    void errorlog(error.message);
 
     return [];
   }

@@ -21,7 +21,7 @@ export const _getQuotesByIds = (
       )()
     ).quotes;
   } catch (error) {
-    void errorlog(error);
+    void errorlog(error.message);
 
     return [];
   }

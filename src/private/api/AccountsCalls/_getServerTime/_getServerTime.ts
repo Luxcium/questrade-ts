@@ -10,5 +10,5 @@ export const _getServerTime = (
   ) => () => Promise<R>,
 ) => async (): Promise<Date> =>
   new Date(
-    (await clientGetApi<ITime>('/time', { noCaching: true })()).time,
+    (await clientGetApi<ITime>('/time/?', { noCaching: true })()).time,
   );

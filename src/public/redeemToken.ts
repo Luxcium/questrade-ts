@@ -8,10 +8,11 @@ type RedeemOptions = {
   errorloger?: Logger;
   proxyFactory?: (credentials?: Credentials) => ProxyFactory_;
 };
+
 async function _redeemToken(reddemOptions: RedeemOptions) {
   const errorloger: Logger = reddemOptions.errorloger ?? errorlog;
   const refreshToken: ApiOptions = reddemOptions.refreshToken;
-  const proxyFactory = reddemOptions.proxyFactory;
+  const proxyFactory = reddemOptions.proxyFactory ?? null;
 
   const credentials = await _credentialsFactory(refreshToken, proxyFactory);
 

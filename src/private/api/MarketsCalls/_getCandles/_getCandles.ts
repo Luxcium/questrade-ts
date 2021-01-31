@@ -33,7 +33,7 @@ export const _getCandles = (
       })
     );
   } catch (error) {
-    void errorlog(error);
+    void errorlog(error.message);
     return [];
   }
 };

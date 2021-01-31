@@ -1,5 +1,5 @@
 import { redeemToken } from '../..';
-import { ech0, errorlog, getMyToken } from '../../resources/side-effects';
+import { ech0, getMyToken } from '../../resources/side-effects';
 import { redisProxyHandler } from '../../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 /*
     tedis: Tedis,
@@ -9,13 +9,13 @@ import { redisProxyHandler } from '../../resources/side-effects/proxies/client/r
     credentials?: Credentials,
  */
 
-async function mainFunction(/* tedis?: Tedis */) {
+async function main(/* tedis?: Tedis */) {
   const proxyFactory = redisProxyHandler({
     httpConnectProxy: true,
   });
-
+  void proxyFactory;
   const { qtApi } = await redeemToken({
-    proxyFactory,
+    // proxyFactory,
     refreshToken: {
       token: getMyToken(),
       accountcallsPerHour: 30000,
@@ -48,17 +48,14 @@ async function mainFunction(/* tedis?: Tedis */) {
   //     }),
   //   );
 
-  await qtApi.search.stock('couche tard');
+  // await qtApi.search.stock('couche tard');
   void qtApi;
   // void snp500list;
 }
 
-async function main() {
-  const returnValue = await mainFunction().catch(error =>
-    errorlog('in main from redis-modeling', error),
-  );
-  return returnValue;
-}
+// async function main() {
+//   return mainFunction();
+// }
 
 export { main };
 /*

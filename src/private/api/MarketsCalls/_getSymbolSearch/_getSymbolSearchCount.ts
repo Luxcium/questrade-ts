@@ -19,7 +19,7 @@ export const _getSymbolSearchCount = (
 
     return symbols.symbols.length;
   } catch (error) {
-    void errorlog(error);
+    void errorlog(error.message);
 
     return Number.NaN;
   }

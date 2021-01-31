@@ -19,7 +19,7 @@ export const _getActivities = (
 
         return activities.activities;
       } catch (error) {
-        void errorlog(error);
+        void errorlog(error.message);
         return [];
       }
     };

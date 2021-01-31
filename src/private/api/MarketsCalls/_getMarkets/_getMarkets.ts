@@ -15,7 +15,7 @@ export const _getMarkets = (
     return (await clientGetApi<IMarkets>('/markets', { noCaching: true })())
       .markets;
   } catch (error) {
-    void errorlog(error);
+    void errorlog(error.message);
     return [];
   }
 };

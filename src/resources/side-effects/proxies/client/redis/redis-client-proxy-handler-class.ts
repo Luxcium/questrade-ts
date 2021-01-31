@@ -2,7 +2,7 @@
 // #region IMPORTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― $>
 import Redis from 'ioredis';
 import JSONCache from 'redis-json';
-import { getHttpClient } from '../../..';
+import { ech0, getHttpClient } from '../../..';
 import { Credentials, ProxyFactory_ } from '../../../../..';
 import {
   getQtUrlPathFromArgs,
@@ -58,9 +58,8 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
       //   URL => URL === 'URL:8081F947BB07DB0A4A',
       // );
 
-      if (
-        this?.handlerOptions?.notFromCache !== true /* && !isInExclusionList */
-      ) {
+      if (this.handlerOptions.notFromCache !== true) {
+        ech0({ it: this.handlerOptions });
         // $ READ FROM CACHE ―――――――――――――――――――――――――――――――――――――――――――――――――――$>
         const responseFromCache = await jsonCache.get(URL_HSH);
 
@@ -68,8 +67,19 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
           myRedis.disconnect();
 
           // +RETURN VALUE FROM CACHE ――――――――――――――――――――――――――――――――――――――――――$>
-          return id0(responseFromCache);
+          return ech0(responseFromCache);
         }
+      } else {
+        ech0({ MESSGAE: 'NOT FROM CACHE' });
+        ech0({ MESSGAE: 'NOT FROM CACHE' });
+        ech0({ MESSGAE: 'NOT FROM CACHE' });
+        ech0({ MESSGAE: 'NOT FROM CACHE' });
+        ech0({ MESSGAE: 'NOT FROM CACHE' });
+        ech0({ MESSGAE: 'NOT FROM CACHE' });
+        ech0({ MESSGAE: 'NOT FROM CACHE' });
+        ech0({ MESSGAE: 'NOT FROM CACHE' });
+        ech0({ MESSGAE: 'NOT FROM CACHE' });
+        ech0({ MESSGAE: 'NOT FROM CACHE' });
       }
 
       // $ CREATE VALUE TO CACHE ―――――――――――――――――――――――――――――――――――――――――――――――$>

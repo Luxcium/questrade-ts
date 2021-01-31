@@ -18,15 +18,14 @@
         "instanceLimit": 1,
         "runOn": "default"
       },
-      // "isBackground": true,
       "presentation": {
+        "revealProblems": "onProblem",
+        "reveal": "silent",
         "clear": true,
         "echo": false,
         "focus": false,
         "group": "task watch",
         "panel": "dedicated",
-        "reveal": "silent",
-        "revealProblems": "onProblem",
       },
       "problemMatcher": {
         "base": "$tsc-watch",

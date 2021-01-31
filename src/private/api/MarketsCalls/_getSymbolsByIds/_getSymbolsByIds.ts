@@ -22,7 +22,7 @@ export const _getSymbolsByIds = (
       )()
     ).symbols;
   } catch (error) {
-    void errorlog(error);
+    void errorlog(error.message);
 
     return [];
   }
