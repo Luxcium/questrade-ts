@@ -1,5 +1,5 @@
 /* 'require' call may be converted to an import. */
-import { redeemToken } from '../../..';
+import { redeemToken } from '../../../other';
 import { QuestradeApi } from '../../../typescript';
 
 /* You will need to create your own API key: */

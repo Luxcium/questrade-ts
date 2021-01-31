@@ -1,4 +1,4 @@
-import { ApiOptions, ProxyFactory_ } from '../..';
+import { ApiOptions, ProxyFactory_ } from '../../other';
 import { errorlog, infolog } from '../../resources/side-effects';
 import { AcountNumberString, IAccount } from '../../typescript';
 import { _getAccounts } from '../api/AccountsCalls/_getAccounts/_getAccounts';

@@ -1,4 +1,4 @@
-import { Credentials } from '../../..';
+import { Credentials } from '../../../other';
 import { ClientRequestConfig } from '../../../resources/side-effects/types';
 
 /**

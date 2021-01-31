@@ -1,4 +1,4 @@
-import { Credentials, IQuestradeAPIOptions, ProxyFactory_ } from '..';
+import { Credentials, IQuestradeAPIOptions, ProxyFactory_ } from '../other';
 import { Logger } from '../typescript';
 
 export type RedeemOptions = {

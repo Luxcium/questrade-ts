@@ -1,4 +1,4 @@
-import { redeemToken } from '../..';
+import { redeemToken } from '../../other';
 import { sideEffects } from '../../resources/side-effects';
 import { StrategyVariantRequest } from '../../typescript';
 

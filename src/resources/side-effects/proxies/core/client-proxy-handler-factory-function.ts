@@ -1,5 +1,5 @@
 import { sideEffects } from '../..';
-import { Credentials, ProxyFactory_ } from '../../../..';
+import { Credentials, ProxyFactory_ } from '../../../../other';
 import { ClientStatic, ProxyHandlerOptions } from '../../types';
 
 const { getHttpClient } = sideEffects;

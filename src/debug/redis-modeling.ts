@@ -1,6 +1,6 @@
-import { redeemToken } from '../..';
-import { ech0, getMyToken } from '../../resources/side-effects';
-import { redisProxyHandler } from '../../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
+import { redeemToken } from '../other';
+import { ech0, getMyToken } from '../resources/side-effects';
+import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 /*
     tedis: Tedis,
     redisinstance: IoRedis | null,

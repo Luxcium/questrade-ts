@@ -1,4 +1,4 @@
-import { Credentials } from '../../..';
+import { Credentials } from '../../../other';
 import { echo, tablelog } from '../../../resources/side-effects';
 import { ClientResponse } from '../../../resources/side-effects/types';
 import { remaningTimeString } from '../requestPerSecondLimit';

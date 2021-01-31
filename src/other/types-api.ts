@@ -3,7 +3,6 @@ import {
   AccountType,
   ClientAccountType,
 } from 'questrade-api-enumerations';
-
 import {
   AcountNumberString,
   IAccount,
@@ -23,7 +22,7 @@ import {
   ISymbolSearchResult,
   OptionsFilters,
   StrategyVariantRequest,
-} from './typescript';
+} from '../typescript';
 
 export interface QuestradeApi {
   currentAccount: string;
