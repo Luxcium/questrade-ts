@@ -8,7 +8,7 @@
       "type": "pwa-node",
       "request": "launch",
       "name": "Node Debug main.ts",
-      "smartStep": false,
+      "smartStep": true,
       "skipFiles": [
         "<node_internals>/**",
         "**/cjs/**/*.*",
@@ -16,7 +16,7 @@
         "**/acorn.*"
       ],
       "resolveSourceMapLocations": [
-        "${workspaceFolder}/**",
+        // "${workspaceFolder}/**",
         "!**/node_modules/**"
       ],
       // "preLaunchTask": {
@@ -25,13 +25,13 @@
       // },
       "runtimeExecutable": "node",
       "runtimeArgs": [
-        "-r",
-        "ts-node/register",
+        "./out/src/main.js"
+        // "-r",
+        // "ts-node/register",
       ],
-      "args": [
-        "--inspect",
-        "./src/main.ts"
-      ],
+      // "args": [
+      // "--inspect",
+      // ],
       "cwd": "${workspaceFolder}",
       "env": {
         "NODE_ENV": "development"
@@ -44,12 +44,6 @@
   ]
 }
 /*
-"debug.javascript.terminalOptions": {
-  "skipFiles": [
-    "<node_internals>/**",
-    "** /cjs/**"
-  ]
-},
 # LAUNCH AND ATTACH
 
 outFiles

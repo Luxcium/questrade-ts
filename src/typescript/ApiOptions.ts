@@ -4,22 +4,21 @@ type GetToken = () => string;
 type KeyFile = string;
 type SeedToken = string;
 interface ApiOptions {
-  account?: string | number;
+  accountNumber?: string | number;
   accountCallsPerHour?: number;
   accountCallsPerSecond?: number;
   apiVersion?: string;
   caching?: boolean;
+  fromCache?: boolean;
   keyDir?: string;
   keyFile?: string;
   marketCallsPerHour?: number;
   marketCallsPerSecond?: number;
   practiceAccount?: boolean;
-  test?: boolean;
+  testing?: boolean;
   token: SeedToken | KeyFile | GetToken;
   errorloger?: Logger;
   proxyFactory?: (credentials?: Credentials) => ProxyFactory_;
 }
-
-// type ApiOptions = IQuestradeAPIOptions | SeedToken | KeyFile | GetToken;
 
 export type { ApiOptions, GetToken, KeyFile, SeedToken };

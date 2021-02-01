@@ -1,5 +1,4 @@
-/* 'require' call may be converted to an import. */
-import { questradeAPI } from '../../../other';
+import { questradeAPI } from '../../..';
 import { QuestradeApi } from '../../../typescript';
 
 /* You will need to create your own API key: */

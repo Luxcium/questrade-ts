@@ -3,7 +3,7 @@
 import Redis from 'ioredis';
 import JSONCache from 'redis-json';
 import { ech0, getHttpClient } from '../../..';
-import { Credentials, ProxyFactory_ } from '../../../../../other';
+import { Credentials, ProxyFactory_ } from '../../../../../typescript';
 import {
   getQtUrlPathFromArgs,
   getUrlAndDataHashes,

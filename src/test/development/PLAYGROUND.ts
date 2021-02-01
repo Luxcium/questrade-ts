@@ -1,4 +1,4 @@
-import { questradeAPI } from '../../other';
+import { questradeAPI } from '../..';
 import { sideEffects } from '../../resources/side-effects';
 import { StrategyVariantRequest } from '../../typescript';
 

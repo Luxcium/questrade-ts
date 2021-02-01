@@ -1,16 +1,20 @@
-import { ApiOptions, ProxyFactory_ } from '../../other';
 import { errorlog, infolog } from '../../resources/side-effects';
-import { AcountNumberString, IAccount } from '../../typescript';
+import {
+  AcountNumberString,
+  ApiOptions,
+  IAccount,
+  ProxyFactory_,
+} from '../../typescript';
 import { _getAccounts } from '../api/AccountsCalls/_getAccounts/_getAccounts';
 import { _getServerTime } from '../api/AccountsCalls/_getServerTime/_getServerTime';
 import { _clientGetApi } from '../routes';
 import { _oAuthHttp } from './xx-http-auth-xx';
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
-const _credentialsFactory = async (
+async function _credentialsFactory(
   apiOptions: ApiOptions,
   proxyFactory?: (() => ProxyFactory_) | null,
-) => {
+) {
   let proxy: ProxyFactory_ | undefined;
 
   if (proxyFactory) {
@@ -61,7 +65,7 @@ const _credentialsFactory = async (
     throw new Error('_oAuth Error getting credentials');
   }
   return credentials;
-};
+}
 
 /** PROVIDE: IAccount[] THEN GET:  a 'primaryAccountNumber string'  */
 function _getPrimaryAccountNumber(accounts: IAccount[]): AcountNumberString {

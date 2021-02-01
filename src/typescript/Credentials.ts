@@ -1,4 +1,4 @@
-import { ITimeRateLimiter, UrlDataAndHashes } from '.';
+import { ITimeRateLimiter, Logger, ProxyFactory_, UrlDataAndHashes } from '.';
 import {
   ClientRequestConfig,
   ClientResponse,
@@ -6,13 +6,17 @@ import {
 
 export interface Credentials {
   accessToken: string;
+  accountCallsPerHour?: number;
+  accountCallsPerSecond?: number;
   accountNumber: string;
   apiServer: string;
   apiUrl: string;
   apiVersion: string;
   authUrl: string;
+  caching?: boolean;
   config_?: ClientRequestConfig;
   configUrl_?: string;
+  errorloger?: Logger;
   expiresAt_?: string | number | Date;
   expiresAt?: string;
   expiresAtRaw?: number;
@@ -22,8 +26,11 @@ export interface Credentials {
   hashes?: UrlDataAndHashes;
   keyDir: string;
   keyFile: string;
-  practice: boolean;
+  marketCallsPerHour?: number;
+  marketCallsPerSecond?: number;
+  practiceAccount: boolean;
   proxy?: any;
+  proxyFactory?: (credentials?: Credentials) => ProxyFactory_;
   refreshToken: string;
   remainingRequests?: ITimeRateLimiter;
   response_?: ClientResponse<any>;
@@ -31,6 +38,7 @@ export interface Credentials {
   serverTime_?: string | number | Date;
   serverTime?: Date;
   serverTimeRaw?: number;
+  testing?: boolean;
   tokenExpiration?: Date;
   tokenType: string;
   toString(): string;

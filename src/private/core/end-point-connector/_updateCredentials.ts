@@ -1,9 +1,9 @@
-import { Credentials } from '../../../other';
 import { errorlog, infolog } from '../../../resources/side-effects';
 import {
   ClientRequestConfig,
   ClientResponse,
 } from '../../../resources/side-effects/types';
+import { Credentials } from '../../../typescript';
 import { remainingRequests } from '../requestPerSecondLimit';
 
 function _updateCredentials(

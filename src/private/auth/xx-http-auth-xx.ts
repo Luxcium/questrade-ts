@@ -1,22 +1,12 @@
+import { echo, getHttpClient, writeToken } from '../../resources/side-effects';
 import {
-  echo,
-  getHttpClient,
-  validateToken,
-  writeToken,
-} from '../../resources/side-effects';
-import {
-  ClientRequestConfig,
   ClientResponse,
   ClientStatic,
 } from '../../resources/side-effects/typescript';
-import {
-  ApiOptions,
-  Credentials,
-  IRefreshCreds,
-  ProxyFactory_,
-} from '../../typescript';
+import { ApiOptions, IRefreshCreds, ProxyFactory_ } from '../../typescript';
+import { config } from './config';
 
-const _oAuthHttp = async (apiOptions: ApiOptions, proxy?: ProxyFactory_) => {
+async function _oAuthHttp(apiOptions: ApiOptions, proxy?: ProxyFactory_) {
   const [_config, credentials] = config(apiOptions);
 
   let httpClient: ClientStatic = getHttpClient();
@@ -45,25 +35,6 @@ const _oAuthHttp = async (apiOptions: ApiOptions, proxy?: ProxyFactory_) => {
   }
 
   return writeToken(credentials, response);
-};
-
-export { _oAuthHttp };
-
-function config(apiOptions: ApiOptions): [ClientRequestConfig, Credentials] {
-  const { refreshToken, credentials } = validateToken(apiOptions);
-  return [
-    {
-      method: 'GET',
-      params: {
-        grant_type: 'refresh_token',
-        refresh_token: refreshToken,
-      },
-      url: `${credentials.authUrl}/oauth2/token`,
-    },
-    credentials,
-  ];
 }
 
-/*
-
- */
+export { _oAuthHttp };

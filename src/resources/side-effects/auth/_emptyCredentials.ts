@@ -15,7 +15,7 @@ const _defaultCredentials: Credentials = {
   fromApi: true,
   keyDir: './keys',
   keyFile: '',
-  practice: false,
+  practiceAccount: false,
   refreshToken: '',
   seedToken: '',
   serverTime: undefined,
@@ -134,7 +134,7 @@ const _emptyCredentials = () => {
   credentials.apiVersion = 'v1';
   credentials.keyDir = './keys';
   credentials.keyFile = '';
-  credentials.practice = false;
+  credentials.practiceAccount = false;
   credentials.seedToken = '';
   credentials.expiresIn = 0;
   credentials.tokenType = '';
