@@ -1,40 +1,16 @@
-import { echo, getHttpClient, writeToken } from '../../resources/side-effects';
-import {
-  ClientResponse,
-  ClientStatic,
-} from '../../resources/side-effects/typescript';
-import { ApiOptions, IRefreshCreds, ProxyFactory_ } from '../../typescript';
-import { config } from './config';
+import { validateToken, writeToken } from '../../resources/side-effects';
+import type { ApiOptions, ProxyFactory_ } from '../../typescript';
+import { configs } from './config';
+import { httpClientGet } from './httpClientGet';
+import { validateResponse } from './validateResponse';
 
 async function _oAuthHttp(apiOptions: ApiOptions, proxy?: ProxyFactory_) {
-  const [_config, credentials] = config(apiOptions);
-
-  let httpClient: ClientStatic = getHttpClient();
-  if (proxy?.oAuthHttpCredentials && proxy?.activate) {
-    echo('using proxy in oAuth connector');
-    httpClient = proxy.activate({});
-  }
-
-  const response: ClientResponse<IRefreshCreds> = (await httpClient(
-    _config,
-  )) as any;
-
-  if (!response.data) {
-    if (response) {
-      void echo<any>('________________________________________________');
-      void echo<any>(response.status, response.statusText);
-      void echo<any>(response.headers);
-      void echo<any>(response.request);
-      void echo<any>(response.status, response.statusText);
-      void echo<any>('________________________________________________');
-      void echo<any>('++++++++++++++++++++++++++++++++++++++++++++++++');
-    }
-    throw new Error(
-      '!!! validate credntials Invalid data back from http client !!!',
-    );
-  }
-
-  return writeToken(credentials, response);
+  const creds = validateToken(apiOptions);
+  const conf = configs(creds);
+  const httpClient = httpClientGet(proxy);
+  const response = httpClient(conf.config);
+  const validatedResponse = await validateResponse(response);
+  return writeToken(conf.credentials, validatedResponse);
 }
 
 export { _oAuthHttp };

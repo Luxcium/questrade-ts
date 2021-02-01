@@ -14,6 +14,7 @@ export {
 } from './create-url-and-data-hashes';
 export { formatDate } from './dates';
 export { getQtUrlPathFromArgs } from './get-qt-url-path-from-args';
+export { preValidateToken } from './get-token';
 export { getHash } from './getHash';
 export {
   getSymboIdBy,

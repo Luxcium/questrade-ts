@@ -1,6 +1,6 @@
 import { ApiOptions, Credentials } from '../../../typescript';
+import { preValidateToken } from '../../../utils';
 import { errorlog } from '../default-behaviour';
-import { getToken } from './getToken';
 import { _emptyCredentials } from './_emptyCredentials';
 
 export const apiOptionsCredentialsFactory = (apiOptions: ApiOptions) => {
@@ -19,7 +19,7 @@ export const apiOptionsCredentialsFactory = (apiOptions: ApiOptions) => {
   credentials.marketCallsPerSecond = apiOptions.marketCallsPerSecond ?? 0;
   credentials.practiceAccount = !!apiOptions.practiceAccount ?? false;
   credentials.proxyFactory = apiOptions.proxyFactory;
-  credentials.seedToken = getToken(apiOptions) ?? 'ERROR';
+  credentials.seedToken = preValidateToken(apiOptions) ?? 'ERROR';
   credentials.testing = apiOptions.testing ?? false;
   credentials.authUrl = credentials.practiceAccount
     ? 'https://practicelogin.q.com'

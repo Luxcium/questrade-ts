@@ -1,8 +1,8 @@
 import { questradeAPI } from '..';
-import { NEVER } from '../utils/never';
+import { getMyToken } from '../resources/side-effects';
 
 export async function main() {
-  questradeAPI({ token: '' });
+  questradeAPI({ token: getMyToken });
 }
 
-NEVER;
+main();

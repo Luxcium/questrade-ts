@@ -1,14 +1,10 @@
 import { errorlog, infolog } from '../../resources/side-effects';
-import {
-  AcountNumberString,
-  ApiOptions,
-  IAccount,
-  ProxyFactory_,
-} from '../../typescript';
+import { ApiOptions, ProxyFactory_ } from '../../typescript';
 import { _getAccounts } from '../api/AccountsCalls/_getAccounts/_getAccounts';
 import { _getServerTime } from '../api/AccountsCalls/_getServerTime/_getServerTime';
 import { _clientGetApi } from '../routes';
 import { _oAuthHttp } from './xx-http-auth-xx';
+import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 async function _credentialsFactory(
@@ -45,18 +41,18 @@ async function _credentialsFactory(
       credentials.serverTimeRaw ?? 0,
     ).toLocaleTimeString();
 
-    if (credentials.accountNumber === '00000000') {
+    if (credentials.accountNumber !== '00000000') {
+      void infolog<unknown>(
+        ` Questrade Server ${time}\n`,
+        { Status: 'ready', time },
+        '\n\n',
+      );
+    } else {
       void infolog<unknown>(
         '\n🧐\n🤡 MOCK Server Time:   ',
         new Date().toISOString(),
 
         '\n🍦 Status: MOCKING!!!\n🤨',
-      );
-    } else {
-      void infolog<unknown>(
-        'Questrade Server Time:',
-        time,
-        '\nStatus: ready\n',
       );
     }
   } catch (error) {
@@ -67,24 +63,4 @@ async function _credentialsFactory(
   return credentials;
 }
 
-/** PROVIDE: IAccount[] THEN GET:  a 'primaryAccountNumber string'  */
-function _getPrimaryAccountNumber(accounts: IAccount[]): AcountNumberString {
-  if (!accounts || accounts.length === 0) {
-    void errorlog(
-      "WARNING('No account number found') will default to '11111111' ",
-    );
-
-    return '11111111';
-  }
-  if (accounts.length === 1) {
-    return accounts[0].number;
-  }
-  const primary = accounts.filter(account => account.isPrimary);
-
-  if (primary.length > 0) {
-    return primary[0].number;
-  }
-  return accounts[0].number;
-}
-
-export { _credentialsFactory, _getPrimaryAccountNumber };
+export { _credentialsFactory };

@@ -1,20 +1,20 @@
-import { validateToken } from '../../resources/side-effects';
 import { ClientRequestConfig } from '../../resources/side-effects/typescript';
-import { ApiOptions, Credentials } from '../../typescript';
+import { Credentials } from '../../typescript';
 
-export function config(
-  apiOptions: ApiOptions,
-): [ClientRequestConfig, Credentials] {
-  const { refreshToken, credentials } = validateToken(apiOptions);
-  return [
-    {
+export function configs(arg: {
+  refreshToken: string;
+  credentials: Credentials;
+}): { config: ClientRequestConfig; credentials: Credentials } {
+  // const { refreshToken, credentials } = validateToken(apiOptions);
+  return {
+    config: {
       method: 'GET',
       params: {
         grant_type: 'refresh_token',
-        refresh_token: refreshToken,
+        refresh_token: arg.refreshToken,
       },
-      url: `${credentials.authUrl}/oauth2/token`,
+      url: `${arg.credentials.authUrl}/oauth2/token`,
     },
-    credentials,
-  ];
+    credentials: arg.credentials,
+  };
 }

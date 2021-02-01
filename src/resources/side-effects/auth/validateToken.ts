@@ -2,7 +2,7 @@ import { access, constants, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
 import { sync } from '..';
 import { ApiOptions } from '../../../typescript';
-import { apiOptionsCredentialsFactory } from './_buildCredentialsFromToken';
+import { apiOptionsCredentialsFactory } from './api-options-credentials-factory';
 
 const { dirname } = path;
 
