@@ -1,8 +1,8 @@
-import { ech0, errorlog } from '../resources/side-effects';
-import { main } from './redis-modeling';
+import { questradeAPI } from '..';
+import { NEVER } from '../utils/never';
 
-try {
-  main().catch(error => errorlog('PLAYGROUND MAIN:', error));
-} catch (error) {
-  ech0(error);
+export async function main() {
+  questradeAPI({ token: '' });
 }
+
+NEVER;

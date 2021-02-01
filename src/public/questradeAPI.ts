@@ -3,7 +3,7 @@ import { Credentials, ProxyFactory_, QuestradeApi } from '../typescript';
 
 // export const getQuestradeApi = ;
 
-export const questradeApi = async (
+export const questradeApiFactory = async (
   credentials: Credentials,
   proxy?: ((cred: Credentials) => ProxyFactory_) | null,
   errorloger: (error: any) => any = (error: any) => error,

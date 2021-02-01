@@ -1,1 +1,1 @@
-export { redeemToken } from './redeemToken';
+export { questradeAPI } from './redeemToken';

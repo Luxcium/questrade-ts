@@ -11,13 +11,10 @@ FLAGS=''
             (
                 [[ -d ./out/node_modules/ ]] || exit 7
                 [[ -d ./out/src/resources/node_modules/ ]] || exit 9
-            ) && (
-                node ./out/src/main.js
-                echo -e "\n\n― NODEjs ―"
             ) || exit 11
         ) ||
         ( 
-            (ts-node './src/main.ts' && echo -e "\n\n― tsNODE ―" ||  exit 13)
+
             (
                 tsc --build || exit 15
                 cp ./package.json ./out/

@@ -1,1 +1,1 @@
-export { redeemToken } from './public';
+export { questradeAPI } from './public';

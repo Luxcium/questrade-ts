@@ -1,13 +1,13 @@
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import path from 'path';
+import { sync } from '..';
 import { ApiOptions } from '../../../typescript';
-import { sync } from '../../../utils';
-import { _buildCredentialsFromToken } from './_buildCredentialsFromToken';
+import { apiOptionsCredentialsFactory } from './_buildCredentialsFromToken';
 
 const { dirname } = path;
 
 export const validateToken = (options: ApiOptions) => {
-  const credentials = _buildCredentialsFromToken(options);
+  const credentials = apiOptionsCredentialsFactory(options);
   let refreshToken: string = credentials.seedToken;
 
   try {

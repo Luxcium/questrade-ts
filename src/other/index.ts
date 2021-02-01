@@ -1,4 +1,4 @@
-export { redeemToken } from '../public';
+export { questradeAPI } from '../public';
 export type {
   AcountNumberString,
   ApiOptions,
@@ -38,7 +38,6 @@ export type {
   IOrders,
   IPosition,
   IPositions,
-  IQuestradeAPIOptions,
   IQuote,
   IQuotes,
   IQuotesOptionsByIds,

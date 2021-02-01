@@ -2,6 +2,7 @@
   "compilerOptions": {
     /* Basic Options */
     "noEmit": false,
+    "noEmitOnError": false,
     "target": "es5",
     "module": "commonjs",
     "rootDir": "./src",
@@ -13,7 +14,6 @@
     "importHelpers": true,
     "newLine": "lf",
     "noEmitHelpers": false,
-    "noEmitOnError": false,
     "noErrorTruncation": true,
     "removeComments": false,
     "resolveJsonModule": true,
@@ -22,7 +22,7 @@
     "importsNotUsedAsValues": "remove",
     "forceConsistentCasingInFileNames": true,
     "assumeChangesOnlyAffectDirectDependencies": false,
-    "generateCpuProfile": "./out/cpu-info/.cpuprofile",
+    "generateCpuProfile": "./performance/.cpuprofile",
     /* Incremental compilation. */
     "incremental": true,
     "tsBuildInfoFile": "./out/ts-build-info.lib",
@@ -30,8 +30,8 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    // "composite": true,
-    // "isolatedModules": true,
+    "composite": true,
+    "isolatedModules": true,
     /* Source Map and declaration options */
     "declaration": true,
     "declarationMap": true,

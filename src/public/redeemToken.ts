@@ -1,25 +1,25 @@
 import { _credentialsFactory } from '../private/auth/_credentialsFactory';
 import { errorlog } from '../resources/side-effects';
-import { ApiOptions, Credentials, Logger, ProxyFactory_ } from '../typescript';
-import { questradeApi } from './questradeAPI';
+import { ApiOptions, Logger } from '../typescript';
+import { questradeApiFactory } from './questradeAPI';
 
-type RedeemOptions = {
-  refreshToken: ApiOptions;
-  errorloger?: Logger;
-  proxyFactory?: (credentials?: Credentials) => ProxyFactory_;
-};
+export async function questradeAPI(apiOptions: ApiOptions) {
+  const errorloger: Logger = apiOptions.errorloger ?? errorlog;
+  const proxyFactory = apiOptions.proxyFactory ?? null;
 
-async function _redeemToken(reddemOptions: RedeemOptions) {
-  const errorloger: Logger = reddemOptions.errorloger ?? errorlog;
-  const refreshToken: ApiOptions = reddemOptions.refreshToken;
-  const proxyFactory = reddemOptions.proxyFactory ?? null;
+  const token: string =
+    typeof apiOptions.token === 'function'
+      ? apiOptions.token()
+      : typeof apiOptions.token === 'string'
+      ? apiOptions.token
+      : 'ERROR';
 
-  const credentials = await _credentialsFactory(refreshToken, proxyFactory);
+  apiOptions.token = token;
+
+  const credentials = await _credentialsFactory(apiOptions, proxyFactory);
 
   return {
     credentials,
-    qtApi: await questradeApi(credentials, proxyFactory, errorloger),
+    qtApi: await questradeApiFactory(credentials, proxyFactory, errorloger),
   };
 }
-
-export { _redeemToken as redeemToken };

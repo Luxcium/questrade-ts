@@ -1,3 +1,4 @@
+export type { Tedis } from 'tedis';
 export type {
   CachedApiResponse,
   Cancel,

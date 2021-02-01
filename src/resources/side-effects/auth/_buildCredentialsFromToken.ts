@@ -1,26 +1,27 @@
 import { ApiOptions } from '../../../typescript';
 import { _emptyCredentials } from './_emptyCredentials';
 
-export const _buildCredentialsFromToken = (token: ApiOptions) => {
+export const apiOptionsCredentialsFactory = (apiOptions: ApiOptions) => {
   const credentials = _emptyCredentials();
 
-  if (typeof token === 'undefined' || !token) {
+  if (typeof apiOptions === 'undefined' || typeof apiOptions !== 'object') {
     throw new Error('questrade_missing_api_key or options');
   }
-  if (typeof token === 'string' && token.includes('/')) {
-    credentials.keyFile = token;
-  }
-  if (typeof token === 'string' && !token.includes('/')) {
-    credentials.seedToken = token;
-  }
-  if (typeof token === 'object') {
-    credentials.practice = !!token.practiceAccount;
-    credentials.keyDir = token.keyDir || './keys';
-    credentials.apiVersion = token.apiVersion || 'v1';
-    credentials.keyFile = token.keyFile || '';
-    credentials.seedToken = token.token || '';
-    credentials.accountNumber = `${token.account}` || '';
-  }
+
+  const token: string =
+    typeof apiOptions.token === 'string'
+      ? apiOptions.token
+      : apiOptions.token();
+
+  credentials.practice = !!apiOptions.practiceAccount ?? false;
+  credentials.keyDir = apiOptions.keyDir ?? './keys';
+  credentials.apiVersion = apiOptions.apiVersion ?? 'v1';
+  credentials.keyFile = apiOptions.keyFile ?? '';
+  credentials.seedToken = token ?? '';
+  credentials.accountNumber = `${apiOptions.account}` ?? '';
+  credentials.fromCache;
+  // credentials.;
+
   credentials.authUrl = credentials.practice
     ? 'https://practicelogin.q.com'
     : 'https://login.questrade.com';

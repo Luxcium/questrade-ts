@@ -8,7 +8,7 @@ import { _oAuthHttp } from './xx-http-auth-xx';
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 const _credentialsFactory = async (
-  options: ApiOptions,
+  apiOptions: ApiOptions,
   proxyFactory?: (() => ProxyFactory_) | null,
 ) => {
   let proxy: ProxyFactory_ | undefined;
@@ -17,7 +17,7 @@ const _credentialsFactory = async (
     proxy = proxyFactory();
   }
 
-  const credentials = await _oAuthHttp(options, proxy);
+  const credentials = await _oAuthHttp(apiOptions, proxy);
 
   try {
     const accounts = await _getAccounts(_clientGetApi(credentials, proxy))();

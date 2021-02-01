@@ -5,13 +5,6 @@
 // } from '../resources/proxies';
 import { helperFunctions } from './void0';
 
-export {
-  FsImplementationSync,
-  Made,
-  Mode,
-  OptionsSync,
-  sync,
-} from '../resources/side-effects/auth/mkdirp';
 export { HTTP_PROXI_CONNECTOR } from './constants';
 export {
   getDataHash,

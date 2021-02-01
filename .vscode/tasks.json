@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "tsc watch",
+      "label": "TSC Build Task",
       "type": "shell",
       "detail": "Output watcher for this Type-Script project",
       "command": "tsc",
@@ -12,23 +12,23 @@
         "--build",
         // "--watch"
       ],
-      "isBackground": true,
+      "isBackground": false,
       "runOptions": {
         "reevaluateOnRerun": true,
         "instanceLimit": 1,
         "runOn": "default"
       },
       "presentation": {
-        "revealProblems": "onProblem",
-        "reveal": "silent",
-        "clear": true,
-        "echo": false,
-        "focus": false,
-        "group": "task watch",
         "panel": "dedicated",
+        "group": "TSC Builder",
+        "focus": false,
+        "echo": false,
+        "clear": true,
+        "revealProblems": "onProblem",
+        "reveal": "always",
       },
       "problemMatcher": {
-        "base": "$tsc-watch",
+        "base": "$tsc",
         "applyTo": "allDocuments"
       },
       "group": {
@@ -37,11 +37,11 @@
       },
     },
     {
-      "label": "start run",
+      "label": "MAIN Runer",
       "type": "shell",
-      "detail": "Run project selected entry point to test the curent functionalities",
+      "detail": "Run project main development entry point to test the curent functionalities",
       "command": "${workspaceFolder}/scripts/F5:start:run.sh",
-      "dependsOn": "tsc watch",
+      "dependsOn": "TSC Build Task",
       "runOptions": {
         "instanceLimit": 1,
         "reevaluateOnRerun": true,
@@ -51,7 +51,7 @@
         "clear": true,
         "echo": true,
         "focus": false,
-        "group": "task watch",
+        "group": "TSC Builder",
         "panel": "dedicated",
         "reveal": "always",
         "revealProblems": "never",
@@ -65,6 +65,6 @@
         "kind": "test",
         "isDefault": true
       }
-    }
+    },
   ]
 }

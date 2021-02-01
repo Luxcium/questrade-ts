@@ -14,8 +14,7 @@ import {
   warnlog,
   writeToken,
 } from './default-behaviour';
-
-export type { Tedis } from 'tedis';
+export { sync } from './auth/mkdirp';
 export {
   client,
   ech0,
@@ -38,23 +37,13 @@ const sideEffects = {
   client,
   ech0,
   echo,
-
   errorlog,
-
   getHash,
-
   getHttpClient,
-
   getMyToken,
-
   infolog,
-
   makeTedis,
-
   setMyToken,
-
   tablelog,
-  // writeToken,
-  // validateToken,
   warnlog,
 };

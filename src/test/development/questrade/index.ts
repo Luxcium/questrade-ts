@@ -1,5 +1,5 @@
 /* 'require' call may be converted to an import. */
-import { redeemToken } from '../../../other';
+import { questradeAPI } from '../../../other';
 import { QuestradeApi } from '../../../typescript';
 
 /* You will need to create your own API key: */
@@ -8,8 +8,8 @@ import { QuestradeApi } from '../../../typescript';
 const yourRefreshToken = '9biJACDg2bZiMZYNfDhewfb1gybCNYAc0';
 
 export const qt = async () => {
-  const { qtApi, credentials } = await redeemToken({
-    refreshToken: yourRefreshToken,
+  const { qtApi, credentials } = await questradeAPI({
+    token: yourRefreshToken,
   });
 
   return { credentials, qtApi };

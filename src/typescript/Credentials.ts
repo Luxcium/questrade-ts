@@ -17,11 +17,13 @@ export interface Credentials {
   expiresAt?: string;
   expiresAtRaw?: number;
   expiresIn: number;
+  fromApi: boolean;
   fromCache: boolean;
   hashes?: UrlDataAndHashes;
   keyDir: string;
   keyFile: string;
   practice: boolean;
+  proxy?: any;
   refreshToken: string;
   remainingRequests?: ITimeRateLimiter;
   response_?: ClientResponse<any>;
@@ -31,11 +33,9 @@ export interface Credentials {
   serverTimeRaw?: number;
   tokenExpiration?: Date;
   tokenType: string;
+  toString(): string;
+  toValue(): string;
   urlTimeUTC?: Date;
   xRatelimitRemaining?: number;
   xRatelimitReset?: number;
-  fromApi: boolean;
-  proxy?: any;
-  toString(): string;
-  toValue(): string;
 }

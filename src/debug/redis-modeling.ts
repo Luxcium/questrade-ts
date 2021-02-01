@@ -1,4 +1,4 @@
-import { redeemToken } from '../other';
+import { questradeAPI } from '../other';
 import { ech0, getMyToken } from '../resources/side-effects';
 import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 /*
@@ -14,15 +14,12 @@ async function main(/* tedis?: Tedis */) {
     httpConnectProxy: true,
   });
   void proxyFactory;
-  const { qtApi } = await redeemToken({
-    // proxyFactory,
-    refreshToken: {
-      token: getMyToken(),
-      accountcallsPerHour: 30000,
-      accountcallsPerSecond: 30,
-      marketDatacallsPerHour: 1500,
-      marketDatacallsPerSecond: 20,
-    },
+  const { qtApi } = await questradeAPI({
+    token: getMyToken(),
+    accountCallsPerHour: 30000,
+    accountCallsPerSecond: 30,
+    marketCallsPerHour: 1500,
+    marketCallsPerSecond: 20,
   });
   ech0(await qtApi.account.getServerTime());
 
