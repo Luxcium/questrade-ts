@@ -1,4 +1,4 @@
-import { main } from './debug/redis-modeling';
+import { main } from './debug/main';
 import { ech0, errorlog } from './resources/side-effects';
 
 try {

@@ -4,7 +4,10 @@ import { configs } from './config';
 import { httpClientGet } from './httpClientGet';
 import { validateResponse } from './validateResponse';
 
-async function _oAuthHttp(apiOptions: ApiOptions, proxy?: ProxyFactory_) {
+async function _oAuthHttp(
+  apiOptions: ApiOptions,
+  proxy?: ProxyFactory_ | null,
+) {
   const creds = validateToken(apiOptions);
   const conf = configs(creds);
   const httpClient = httpClientGet(proxy);

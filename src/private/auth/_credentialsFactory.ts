@@ -1,5 +1,5 @@
 import { errorlog, infolog } from '../../resources/side-effects';
-import { ApiOptions, ProxyFactory_ } from '../../typescript';
+import { ApiOptions, Credentials, ProxyFactory_ } from '../../typescript';
 import { _getAccounts } from '../api/AccountsCalls/_getAccounts/_getAccounts';
 import { _getServerTime } from '../api/AccountsCalls/_getServerTime/_getServerTime';
 import { _clientGetApi } from '../routes';
@@ -9,17 +9,27 @@ import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 async function _credentialsFactory(
   apiOptions: ApiOptions,
-  proxyFactory?: (() => ProxyFactory_) | null,
+  proxyFactory?: (() => ProxyFactory_) | undefined,
 ) {
   let proxy: ProxyFactory_ | undefined;
+  let credentials: Credentials;
 
-  if (proxyFactory) {
+  if (proxyFactory != null) {
     proxy = proxyFactory();
+    if (proxy.oAuthHttpCredentials === true) {
+      // proxy exist (is defined) and is autorised to operate will use proxy
+      credentials = await _oAuthHttp(apiOptions, proxy);
+    } else {
+      // proxy exist (is defined) but is not autorised to operate will use null
+      credentials = await _oAuthHttp(apiOptions, null);
+    }
+  } else {
+    // proxy does not exist (is undefined or null) will use undefined
+    credentials = await _oAuthHttp(apiOptions, undefined);
   }
 
-  const credentials = await _oAuthHttp(apiOptions, proxy);
-
   try {
+    // const
     const accounts = await _getAccounts(_clientGetApi(credentials, proxy))();
     const time = await _getServerTime(_clientGetApi(credentials, proxy))();
 

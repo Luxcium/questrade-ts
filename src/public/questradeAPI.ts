@@ -9,14 +9,16 @@ export const questradeApiFactory = async (
   errorloger: (error: any) => any = (error: any) => error,
 ) => {
   const qtApi: QuestradeApi = await (async (): Promise<QuestradeApi> => {
-    if (!proxy) {
-      return _getQuestradeApi(credentials, undefined, errorloger);
+    if (proxy) {
+      return _getQuestradeApi(credentials, proxy(credentials), errorloger);
     }
-    return _getQuestradeApi(credentials, proxy(credentials), errorloger);
+    return _getQuestradeApi(credentials, undefined, errorloger);
   })();
 
   return {
+    serverTime: qtApi.serverTime,
     account: {
+      currentAccount: qtApi.currentAccount,
       getActivities: qtApi.account.getActivities,
       getAllAccounts: qtApi.account.getAllAccounts,
       getBalances: qtApi.account.getBalances,
@@ -26,7 +28,7 @@ export const questradeApiFactory = async (
       getPositions: qtApi.account.getPositions,
       getServerTime: qtApi.account.getServerTime,
     },
-    currentAccount: qtApi.currentAccount,
+
     getOptionChains: {
       byStockId: qtApi.getOptionChains.byStockId,
     },
@@ -35,24 +37,27 @@ export const questradeApiFactory = async (
       byOptionsIds: qtApi.getOptionsQuotes.byOptionsIds,
       fromFilter: qtApi.getOptionsQuotes.fromFilter,
     },
+
     getQuotes: {
       byStockIds: qtApi.getQuotes.byStockIds,
       byStrategies: qtApi.getQuotes.byStrategies,
     },
+
     getSymbols: {
       byStockIds: qtApi.getSymbols.byStockIds,
     },
+
     market: {
       getAllMarkets: qtApi.market.getAllMarkets,
       getCandlesByStockId: qtApi.market.getCandlesByStockId,
     },
+
     myBalances: qtApi.myBalances,
     search: {
       allStocks: qtApi.search.allStocks,
       countResults: qtApi.search.countResults,
       stock: qtApi.search.stock,
     },
-    serverTime: qtApi.serverTime,
   };
 };
 
