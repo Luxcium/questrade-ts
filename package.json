@@ -34,7 +34,6 @@
     "canada",
     "Canadian"
   ],
-  "dependencies": {},
   "scripts": {
     "rebuild": "rimraf ./out; ./scripts/rebuild.sh",
     "run": "ts-node './src/main.ts'",

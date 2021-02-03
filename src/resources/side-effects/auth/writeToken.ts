@@ -8,16 +8,22 @@ export const writeToken = (
   response: ClientResponse<IRefreshCreds>,
 ): Credentials => {
   const { data: refreshCreds } = response;
+  const { api_server } = refreshCreds;
+  const { apiVersion } = credentials;
+  const apiUrl = `${api_server}${apiVersion}`;
+  const cred = {
+    ...credentials,
+    accessToken: refreshCreds.access_token,
+    apiServer: refreshCreds.api_server,
+    apiUrl: apiUrl,
+    expiresIn: refreshCreds.expires_in,
+    refreshToken: refreshCreds.refresh_token,
+    tokenType: refreshCreds.token_type,
+  };
 
-  credentials.accessToken = refreshCreds.access_token;
-  credentials.apiServer = refreshCreds.api_server;
-  credentials.expiresIn = refreshCreds.expires_in;
-  credentials.refreshToken = refreshCreds.refresh_token;
-  credentials.tokenType = refreshCreds.token_type;
-  credentials.apiUrl = `${credentials.apiServer}${credentials.apiVersion}`;
-  writeFileSync(credentials.keyFile, credentials.refreshToken, 'utf8');
+  writeFileSync(cred.keyFile, cred.refreshToken, 'utf8');
 
-  return credentials;
+  return cred;
 };
 
 // export function writeToken(

@@ -12,10 +12,10 @@ export const _getServerTime = (
 ) => async (): Promise<Date> => {
   try {
     return new Date(
-      (await clientGetApi<ITime>('/time/?', { noCaching: true })()).time,
+      (await clientGetApi<ITime>('/time', { noCaching: true })()).time,
     );
   } catch (error) {
-    void errorlog(error.message);
+    void errorlog(`calling '/time' endpoint ${error.message}`);
     return new Date();
   }
 };

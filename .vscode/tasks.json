@@ -25,7 +25,7 @@
         "echo": false,
         "clear": true,
         "revealProblems": "onProblem",
-        "reveal": "always",
+        "reveal": "silent",
       },
       "problemMatcher": {
         "base": "$tsc",
