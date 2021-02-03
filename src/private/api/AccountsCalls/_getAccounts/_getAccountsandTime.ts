@@ -15,6 +15,7 @@ export async function callTimeOut(
   callback: (acct: () => Promise<IAccounts>) => void,
 ) {
   const getEndpoint = _clientGetApi(credentials, proxy);
+
   setTimeout(() => {
     callback(
       getEndpoint<IAccounts>(`/accounts`, {
@@ -46,11 +47,7 @@ export async function nameIT(
   proxy: ProxyFactory_ | undefined,
   credentials: Credentials,
 ) {
-  const getEndpoint = _clientGetApi(credentials, proxy);
-
-  // new Promise(resolve)
-
-  return getEndpoint;
+  return _clientGetApi(credentials, proxy);
 }
 // const accounts = async () =>
 //   getEndpoint<IAccounts>(`/accounts`, {

@@ -7,6 +7,7 @@ import { questradeApiFactory } from './questradeAPI';
 export async function questradeAPI(apiOptions: ApiOptions) {
   //
   const errorloger: Logger = apiOptions.errorloger ?? errorlog;
+
   apiOptions.token = preValidateToken(apiOptions);
 
   const proxyFactory = apiOptions.proxyFactory ?? undefined;

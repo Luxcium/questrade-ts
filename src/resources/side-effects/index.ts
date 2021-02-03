@@ -14,6 +14,7 @@ import {
   warnlog,
   writeToken,
 } from './default-behaviour';
+
 export { sync } from './auth/mkdirp';
 export {
   client,

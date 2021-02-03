@@ -1,6 +1,6 @@
-import { _endpointFormatAccount } from '..';
 import { Credentials, ProxyFactory_ } from '../../../typescript';
 import { _coreApiFunction } from '../../core/end-point-connector/_coreApiFunction';
+import { _endpointFormatAccount } from '..';
 
 // # _clientAccountGetApi
 /**

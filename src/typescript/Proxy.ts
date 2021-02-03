@@ -1,8 +1,8 @@
-import { Credentials } from '.';
 import {
   ClientStatic,
   ProxyHandlerOptions,
 } from '../resources/side-effects/typescript';
+import { Credentials } from '.';
 
 /** IProxy placeholder will be an interface at term  */
 export type ClientProxyHandlerFactory = ClientStatic & ProxyFactory_;

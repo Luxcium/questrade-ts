@@ -12,6 +12,7 @@ function _rateLimiter<R>(configs: {
   maxPerSeconds?: number | null;
 }) {
   const { _config, httpClient, maxPerSeconds, possiblePerSeconds } = configs;
+
   if (possiblePerSeconds <= (maxPerSeconds || 20) && possiblePerSeconds > 0) {
     const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
 

@@ -13,6 +13,7 @@ async function _oAuthHttp(
   const httpClient = httpClientGet(proxy);
   const response = httpClient(conf.config);
   const validatedResponse = await validateResponse(response);
+
   return writeToken(conf.credentials, validatedResponse);
 }
 

@@ -26,7 +26,10 @@ function _updateCredentials(
         credentials?.response_?.headers?.date ?? null,
       );
       let maximumperseconds = 20;
-      if (credentials.fromCache === true) maximumperseconds = 21;
+
+      if (credentials.fromCache === true) {
+        maximumperseconds = 21;
+      }
       credentials.remainingRequests = remainingRequests(
         response,
         maximumperseconds,

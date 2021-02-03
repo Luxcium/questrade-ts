@@ -3,6 +3,7 @@ import {
   AccountType,
   ClientAccountType,
 } from 'questrade-api-enumerations';
+
 import {
   AcountNumberString,
   IAccount,

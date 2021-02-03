@@ -1,4 +1,3 @@
-export type { Tedis } from 'tedis';
 export type {
   CachedApiResponse,
   Cancel,
@@ -19,3 +18,4 @@ export type {
   ProxyHandlerOptions,
   StaticJSONCache,
 } from './typescript';
+export type { Tedis } from 'tedis';

@@ -12,8 +12,8 @@ const _defaultCredentials: Credentials = {
   debugVebosity: 0,
   expiresAt: undefined,
   expiresIn: 0,
-  fromCache: false,
   fromApi: true,
+  fromCache: false,
   keyDir: './keys',
   keyFile: '',
   practiceAccount: false,
@@ -132,22 +132,23 @@ const _emptyCredentials = () => {
   return {
     ..._defaultCredentials,
     accountNumber: '',
+    accessToken: '',
     apiVersion: 'v1',
+    apiServer: '',
     debugVebosity: 0,
+    apiUrl: '',
+    expiresIn: 0,
+    fromCache: false,
     keyDir: './keys',
     keyFile: '',
     practiceAccount: false,
-    seedToken: '',
-    expiresIn: 0,
-    tokenType: '',
     refreshToken: '',
-    accessToken: '',
-    apiUrl: '',
-    apiServer: '',
-    fromCache: false,
+    seedToken: '',
+    tokenType: '',
     // return credentials;
   };
 };
+
 export { _defaultCredentials, _emptyCredentials };
 // config_:null = _config;
 // response_:null = response;

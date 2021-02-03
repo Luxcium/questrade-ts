@@ -2,7 +2,7 @@
 // #region IMPORTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― $>
 import Redis from 'ioredis';
 import JSONCache from 'redis-json';
-import { ech0, getHttpClient } from '../../..';
+
 import { Credentials, ProxyFactory_ } from '../../../../../typescript';
 import {
   getQtUrlPathFromArgs,
@@ -10,6 +10,7 @@ import {
   getUrlHash,
   id0,
 } from '../../../../../utils';
+import { ech0, getHttpClient } from '../../..';
 import {
   ClientStatic,
   // IoRedis,
@@ -31,13 +32,14 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
     this.handlerOptions.noCaching = false;
   }
   protected proxy = {
-    proxy: 'Redis QtApi Caching Proxy',
     class: 'RedisQtApiProxyHandlerClass',
     extends: 'ReflexionLoggerProxyHandlerAbstractClass<T>',
     implements: 'ProxyHandler<T>',
+    proxy: 'Redis QtApi Caching Proxy',
   };
   async apply(target: T, thisArg: any, argArray?: any): Promise<any> {
     const myRedis = new Redis();
+
     try {
       const urlPath = getQtUrlPathFromArgs(argArray);
       const { URL_HSH } = getUrlHash(urlPath);
@@ -97,6 +99,7 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
       void [configFromApi, headersFromApi, requestFromApi, dataFromApi];
 
       const { DATA_HSH, path, URL_HSH: URL_HSH_, UDATAGRAM } = urlAndDataRest;
+
       myRedis.incr(`cache:total:${URL_HSH_}`);
       // const cacheTotal = ((await myRedis.get(`cache:total:${URL_HSH_}`)) ??
       // 0) as number;
@@ -126,8 +129,8 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
           availableFromCache: 'partial',
 
           headers: {
-            fromCache: true,
             fromApi: false,
+            fromCache: true,
             proxy: { ...this.proxy },
             ...responseFromApi?.config?.headers,
             Authorization: '[Redacted] ...',
@@ -143,6 +146,7 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
             '[Function: validateStatus, /*NOT AVAILABLE FROM CACHE*/]',
           // */
         },
+        data: { ...dataFromApi },
         headers: {
           'fromCache': true,
           ...responseFromApi.headers,
@@ -152,8 +156,8 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
           'x-ratelimit-reset': '0',
         },
         request: {
-          fromCache: true,
           availableFromCache: 'partial',
+          fromCache: true,
           ...responseFromApi?.request,
           _events: '[NOT AVAILABLE FROM CACHE]',
           _redirectable: '[NOT AVAILABLE FROM CACHE]',
@@ -161,7 +165,6 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
           res: '[NOT AVAILABLE FROM CACHE]',
           socket: '[NOT AVAILABLE FROM CACHE]',
         },
-        data: { ...dataFromApi },
         ...urlAndDataRest, // { ...urlAndDataHashes, dataToCache: '[Duplicate]' },
         responseFromApi: false,
         responseFromCache: true,

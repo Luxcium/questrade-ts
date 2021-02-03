@@ -328,7 +328,10 @@
     "sonarjs/no-identical-expressions": "error",
     "sonarjs/no-one-iteration-loop": "error",
     "sonarjs/no-use-of-empty-return-value": "error",
-    "sonarjs/cognitive-complexity": "error",
+    "sonarjs/cognitive-complexity": [
+      "error",
+      20
+    ],
     "sonarjs/max-switch-cases": "error",
     "sonarjs/no-collapsible-if": "error",
     "sonarjs/no-collection-size-mischeck": "error",

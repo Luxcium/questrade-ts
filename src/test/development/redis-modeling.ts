@@ -13,15 +13,20 @@ async function main(/* tedis?: Tedis */) {
   const proxyFactory = redisProxyHandler({
     httpConnectProxy: true,
   });
+
   void proxyFactory;
   const { qtApi } = await questradeAPI({
+    accountCallsPerHour: 30_000,
+
+    accountCallsPerSecond: 30,
+
+    marketCallsPerHour: 1500,
+
+    marketCallsPerSecond: 20,
     // proxyFactory,
     token: getMyToken,
-    accountCallsPerHour: 30000,
-    accountCallsPerSecond: 30,
-    marketCallsPerHour: 1500,
-    marketCallsPerSecond: 20,
   });
+
   ech0(await qtApi.account.getServerTime());
 
   // const snp500list = id0(await willGetSNP500StringList()); //.map(ech0);

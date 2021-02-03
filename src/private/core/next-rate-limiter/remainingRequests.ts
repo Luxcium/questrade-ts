@@ -1,5 +1,6 @@
 import { ClientResponse } from '../../../resources/side-effects/types';
 import { ITimeRateLimiter } from '../../../typescript/ITimeRateLimiter';
+
 export function remainingRequests<T>(
   response: ClientResponse<T>,
   maximumperseconds: number = 20,

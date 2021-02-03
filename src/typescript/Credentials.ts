@@ -1,8 +1,8 @@
-import { ITimeRateLimiter, Logger, ProxyFactory_, UrlDataAndHashes } from '.';
 import {
   ClientRequestConfig,
   ClientResponse,
 } from '../resources/side-effects/types';
+import { ITimeRateLimiter, Logger, ProxyFactory_, UrlDataAndHashes } from '.';
 
 export interface Credentials {
   accessToken: string;

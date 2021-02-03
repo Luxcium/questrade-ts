@@ -13,7 +13,7 @@
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   */
   "[typescript]": {
-    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features",
@@ -26,7 +26,8 @@
   ―― FORMAT BEHAVIOUR
   */
   "editor.formatOnPaste": true,
-  "editor.formatOnSaveMode": "modifications",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
   "editor.tabSize": 2,
   "editor.formatOnType": true,
   "editor.suggest.showFiles": true,
@@ -37,23 +38,38 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  //                                                                          ―― ~
-  // ―― JAVASCRIPT BEHAVIOUR
-  "javascript.format.enable": true,
   "javascript.format.semicolons": "insert",
-  "javascript.suggest.paths": false,
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.quoteStyle": "single",
+  "javascript.preferences.useAliasesForRenames": false,
+  "javascript.referencesCodeLens.enabled": true,
+  "javascript.referencesCodeLens.showOnAllFunctions": true,
+  "javascript.suggest.completeFunctionCalls": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  //                                                                          ―― ~
-  // ―― TYPESCRIPT BEHAVIOUR
-  "typescript.format.enable": true,
+  "typescript.check.npmIsInstalled": false,
   "typescript.format.semicolons": "insert",
-  "typescript.suggest.paths": false,
+  "typescript.implementationsCodeLens.enabled": true,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.includePackageJsonAutoImports": "on",
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.preferences.useAliasesForRenames": false,
+  "typescript.referencesCodeLens.enabled": true,
+  "typescript.referencesCodeLens.showOnAllFunctions": true,
+  "typescript.suggest.autoImports": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "typescript.suggest.enabled": true,
+  "typescript.suggest.paths": true,
+  "typescript.suggestionActions.enabled": true,
+  "typescript.surveys.enabled": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
+  // "typescript.tsdk": "node_modules/typescript/lib",
+  // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   //                                                                          ―― ~
   // ―― CODEACTIONSONSAVE BEHAVIOUR
   "editor.codeActionsOnSave": [
     "source.addMissingImports",
     "source.organizeImports",
+    "source.eslint",
     "source.fixAll",
   ],
   /*
@@ -74,7 +90,7 @@
   "prettier.proseWrap": "preserve",
   "prettier.trailingComma": "all",
   "prettier.packageManager": "yarn",
-  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― ESLINT
@@ -1610,7 +1626,6 @@
       "color": "#90BCFFDD"
     }
   ],
-  "typescript.tsdk": "node_modules/typescript/lib",
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
@@ -1741,7 +1756,6 @@
   "todo-tree.tree.labelFormat": "${tag} ${after}",
   "todo-tree.tree.scanMode": "workspace",
   "todo-tree.tree.tooltipFormat": "${filepath}, line ${line}",
-  "editor.formatOnSave": true,
   // "Toggle activity bar": true,
   // "Toggle line comment": true,
   // "Toggle render whitespace": true,

@@ -6,6 +6,7 @@ export async function validateResponse(
   _response: Promise<ClientResponse>,
 ): Promise<ClientResponse<IRefreshCreds>> {
   const response = await _response;
+
   if (!response.data) {
     if (response) {
       void echo<any>('________________________________________________');

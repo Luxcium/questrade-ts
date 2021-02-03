@@ -38,6 +38,7 @@ type EpochMs = () => number;
  * @returns {number} milliseconds
  */
 const epochMs: EpochMs = epochMsFunct;
+
 /**
  * Returns the number of milliseconds elapsed since
  * January 1, 1970 00:00:00 UTC, with leap seconds ignored.
@@ -56,6 +57,7 @@ function epochMsFunct(): number {
 type EpochSec = () => number;
 
 const epochSec: EpochSec = epochSecFunct;
+
 /**
  * Returns the number of seconds elapsed since
  * January 1, 1970 00:00:00 UTC, with leap seconds ignored.
@@ -182,8 +184,11 @@ type TimeRemaning = (laterMs: number) => number;
 const timeRemaning: TimeRemaning = timeRemaningFunct;
 
 function timeRemaningFunct(laterMs: number): number {
-  let nowMs = epochMs();
-  if (nowMs > laterMs) return -1;
+  const nowMs = epochMs();
+
+  if (nowMs > laterMs) {
+    return -1;
+  }
   return laterMs - nowMs || -1;
 }
 
@@ -202,9 +207,13 @@ type MinutesRemaning = (laterMs: number) => number;
  * @returns {number} miliseconds from now until laterMs
  */
 const minutesRemaning: MinutesRemaning = minutesRemaningFunct;
+
 function minutesRemaningFunct(laterMs: number): number {
   const value = ceil(timeRemaning(laterMs) / (60 * 1000));
-  if (value > 0) return value;
+
+  if (value > 0) {
+    return value;
+  }
   return -1;
 }
 
@@ -228,7 +237,10 @@ const secondsRemaning: SecondsRemaning = secondsRemaningFunct;
 
 function secondsRemaningFunct(laterMs: number): number {
   const value = ceil(timeRemaning(laterMs) / 1000);
-  if (value > 0) return value;
+
+  if (value > 0) {
+    return value;
+  }
   return -1;
 }
 
@@ -285,12 +297,14 @@ type LimitRequestsPerSecond = (
  * @returns {number} number of request per seconde in hertz
  */
 const limitRequestsPerSecond: LimitRequestsPerSecond = limitRequestsPerSecondFunct;
+
 function limitRequestsPerSecondFunct(
   reqstRemaining: number,
   rateLimitReset: number,
   maximumperseconds: number,
 ): number {
   const msRemaning = timeRemaning(rateLimitReset * 1000);
+
   return floor(
     max(min(reqstRemaining / sec(msRemaning), maximumperseconds), -1),
   );
@@ -299,28 +313,28 @@ function limitRequestsPerSecondFunct(
 export {
   epochMs,
   epochSec,
-  minuteStr,
-  secondeStr,
-  miliSecStr,
-  milisec,
-  sec,
-  timeRemaning,
-  minutesRemaning,
-  secondsRemaning,
-  possibleReqstPerSecond,
   limitRequestsPerSecond,
+  milisec,
+  miliSecStr,
+  minutesRemaning,
+  minuteStr,
+  possibleReqstPerSecond,
+  sec,
+  secondeStr,
+  secondsRemaning,
+  timeRemaning,
 };
 export type {
   EpochMs,
   EpochSec,
-  MinuteStr,
-  SecondeStr,
-  MiliSecStr,
-  Milisec,
-  Sec,
-  TimeRemaning,
-  MinutesRemaning,
-  SecondsRemaning,
-  PossibleReqstPerSecond,
   LimitRequestsPerSecond,
+  Milisec,
+  MiliSecStr,
+  MinutesRemaning,
+  MinuteStr,
+  PossibleReqstPerSecond,
+  Sec,
+  SecondeStr,
+  SecondsRemaning,
+  TimeRemaning,
 };

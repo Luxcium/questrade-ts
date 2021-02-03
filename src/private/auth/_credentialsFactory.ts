@@ -3,8 +3,8 @@ import { ApiOptions, Credentials, ProxyFactory_ } from '../../typescript';
 import { _getAccounts } from '../api/AccountsCalls/_getAccounts/_getAccounts';
 import { _getServerTime } from '../api/AccountsCalls/_getServerTime/_getServerTime';
 import { _clientGetApi } from '../routes';
-import { _oAuthHttp } from './xx-http-auth-xx';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
+import { _oAuthHttp } from './xx-http-auth-xx';
 
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 async function _credentialsFactory(
@@ -16,16 +16,12 @@ async function _credentialsFactory(
 
   if (proxyFactory != null) {
     proxy = proxyFactory();
-    if (proxy.oAuthHttpCredentials === true) {
-      // proxy exist (is defined) and is autorised to operate will use proxy
-      credentials = await _oAuthHttp(apiOptions, proxy);
-    } else {
-      // proxy exist (is defined) but is not autorised to operate will use null
-      credentials = await _oAuthHttp(apiOptions, null);
-    }
+    credentials = await (proxy.oAuthHttpCredentials === true
+      ? _oAuthHttp(apiOptions, proxy)
+      : _oAuthHttp(apiOptions, null));
   } else {
     // proxy does not exist (is undefined or null) will use undefined
-    credentials = await _oAuthHttp(apiOptions, undefined);
+    credentials = await _oAuthHttp(apiOptions);
   }
 
   try {

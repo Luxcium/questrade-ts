@@ -76,7 +76,7 @@ export type {
 } from './ISymbolSearchResult';
 export type { ITime } from './ITime';
 export type { ITimeRateLimiter } from './ITimeRateLimiter';
-export type { Void0, Void_0 } from './IVoid_0';
+export type { Void_0, Void0 } from './IVoid_0';
 export type { LogErrors } from './LogErrors';
 export type { ProxyFactory_ } from './Proxy';
 export type {

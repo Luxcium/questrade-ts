@@ -16,7 +16,6 @@ export const questradeApiFactory = async (
   })();
 
   return {
-    serverTime: qtApi.serverTime,
     account: {
       currentAccount: qtApi.currentAccount,
       getActivities: qtApi.account.getActivities,
@@ -28,7 +27,6 @@ export const questradeApiFactory = async (
       getPositions: qtApi.account.getPositions,
       getServerTime: qtApi.account.getServerTime,
     },
-
     getOptionChains: {
       byStockId: qtApi.getOptionChains.byStockId,
     },
@@ -53,11 +51,13 @@ export const questradeApiFactory = async (
     },
 
     myBalances: qtApi.myBalances,
+
     search: {
       allStocks: qtApi.search.allStocks,
       countResults: qtApi.search.countResults,
       stock: qtApi.search.stock,
     },
+    serverTime: qtApi.serverTime,
   };
 };
 
