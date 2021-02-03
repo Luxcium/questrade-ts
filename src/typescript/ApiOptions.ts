@@ -9,6 +9,7 @@ interface ApiOptions {
   accountCallsPerSecond?: number;
   apiVersion?: string;
   caching?: boolean;
+  debug?: number;
   fromCache?: boolean;
   keyDir?: string;
   keyFile?: string;

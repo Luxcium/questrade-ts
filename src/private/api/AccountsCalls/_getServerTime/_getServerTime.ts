@@ -1,5 +1,5 @@
 import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
-import { ITime } from '../../../../typescript';
+import { ITime, Logger } from '../../../../typescript';
 
 // +!! _getServerTime
 /** _getTime */
@@ -8,7 +8,14 @@ export const _getServerTime = (
     endpoint: string,
     handlerOptions: ProxyHandlerOptions,
   ) => () => Promise<R>,
-) => async (): Promise<Date> =>
-  new Date(
-    (await clientGetApi<ITime>('/time/?', { noCaching: true })()).time,
-  );
+  errorlog: Logger = (error: any) => error /*Logger */,
+) => async (): Promise<Date> => {
+  try {
+    return new Date(
+      (await clientGetApi<ITime>('/time/?', { noCaching: true })()).time,
+    );
+  } catch (error) {
+    void errorlog(error.message);
+    return new Date();
+  }
+};

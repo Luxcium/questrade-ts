@@ -13,43 +13,56 @@ export async function callTimeOut(
   proxy: ProxyFactory_ | undefined,
   credentials: Credentials,
   callback: (acct: () => Promise<IAccounts>) => void,
-  ms: number,
-  args: any[],
 ) {
   const getEndpoint = _clientGetApi(credentials, proxy);
-
-  setTimeout(
-    (args_: any[]) => {
-      callback(
-        getEndpoint<IAccounts>(`/accounts`, {
-          noCaching: true,
-        }),
-      );
-      return void args_;
-    },
-    ms,
-    args,
-  );
+  setTimeout(() => {
+    callback(
+      getEndpoint<IAccounts>(`/accounts`, {
+        noCaching: true,
+      }),
+    );
+  }, 500);
 }
+// export async function callTimeOut(
+//   proxy: ProxyFactory_ | undefined,
+//   credentials: Credentials,
+//   callback: (acct: () => Promise<IAccounts>) => void,
+//   ms: number,
+//   args: any[],
+// ) {
+//
 
-export function nameIT(
+//   setTimeout(
+//     (args_: any[]) => {
+//
+//       return void args_;
+//     },
+//     ms,
+//     args,
+//   );
+// }
+
+export async function nameIT(
   proxy: ProxyFactory_ | undefined,
   credentials: Credentials,
 ) {
   const getEndpoint = _clientGetApi(credentials, proxy);
 
-  const accounts = async () =>
-    getEndpoint<IAccounts>(`/accounts`, {
-      noCaching: true,
-    })();
+  // new Promise(resolve)
 
-  const time = async () =>
-    new Date(
-      (await getEndpoint<ITime>('/time/?', { noCaching: true })()).time,
-    );
-
-  return async () => ({ accounts: await accounts(), time: await time() });
+  return getEndpoint;
 }
+// const accounts = async () =>
+//   getEndpoint<IAccounts>(`/accounts`, {
+//     noCaching: true,
+//   })();
+
+// const time = async () =>
+//   new Date(
+//     (await getEndpoint<ITime>('/time/?', { noCaching: true })()).time,
+//   );
+
+// return async () => ({ accounts: await accounts(), time: await time() });
 // +!! _getAccounts
 /*
  _getAccounts

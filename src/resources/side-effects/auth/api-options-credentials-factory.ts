@@ -6,6 +6,7 @@ import { _emptyCredentials } from './_emptyCredentials';
 export const apiOptionsCredentialsFactory = (apiOptions: ApiOptions) => {
   const credentials: Credentials = _emptyCredentials();
 
+  credentials.debugVebosity = apiOptions.debug ?? 0;
   credentials.accountCallsPerHour = apiOptions.accountCallsPerHour ?? 0;
   credentials.accountCallsPerSecond = apiOptions.accountCallsPerSecond ?? 0;
   credentials.accountNumber = `${apiOptions.accountNumber}` ?? '';

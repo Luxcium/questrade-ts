@@ -14,13 +14,12 @@ export function _getAccounts(
     try {
       const accounts = getAccounts<IAccounts>(`/accounts`, { noCaching: true });
       const data = await accounts();
-
       // -
       return data.accounts;
       // -
     } catch (error) {
       // -
-      void errorlog(error.message);
+      void errorlog(`calling '/accounts' endpoint ${error.message}`);
       return [];
     }
   };

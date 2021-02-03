@@ -16,6 +16,7 @@ export interface Credentials {
   caching?: boolean;
   config_?: ClientRequestConfig;
   configUrl_?: string;
+  debugVebosity: number;
   errorloger?: Logger;
   expiresAt_?: string | number | Date;
   expiresAt?: string;

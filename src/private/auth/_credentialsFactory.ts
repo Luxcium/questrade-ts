@@ -29,7 +29,7 @@ async function _credentialsFactory(
   }
 
   try {
-    // const
+    //
     const accounts = await _getAccounts(_clientGetApi(credentials, proxy))();
     const time = await _getServerTime(_clientGetApi(credentials, proxy))();
 
