@@ -131,12 +131,12 @@ const _defaultCredentials: Credentials = {
 const _emptyCredentials = () => {
   return {
     ..._defaultCredentials,
-    accountNumber: '',
     accessToken: '',
-    apiVersion: 'v1',
+    accountNumber: '',
     apiServer: '',
-    debugVebosity: 0,
     apiUrl: '',
+    apiVersion: 'v1',
+    debugVebosity: 0,
     expiresIn: 0,
     fromCache: false,
     keyDir: './keys',
