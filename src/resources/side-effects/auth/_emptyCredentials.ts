@@ -9,6 +9,7 @@ const _defaultCredentials: Credentials = {
   apiUrl: '',
   apiVersion: 'v1',
   authUrl: '',
+  debugVebosity: 0,
   expiresAt: undefined,
   expiresIn: 0,
   fromCache: false,
@@ -128,24 +129,25 @@ const _defaultCredentials: Credentials = {
 };
 
 const _emptyCredentials = () => {
-  const credentials: Credentials = _defaultCredentials;
-
-  credentials.accountNumber = '';
-  credentials.apiVersion = 'v1';
-  credentials.keyDir = './keys';
-  credentials.keyFile = '';
-  credentials.practiceAccount = false;
-  credentials.seedToken = '';
-  credentials.expiresIn = 0;
-  credentials.tokenType = '';
-  credentials.refreshToken = '';
-  credentials.accessToken = '';
-  credentials.apiUrl = '';
-  credentials.apiServer = '';
-  credentials.fromCache = false;
-  return credentials;
+  return {
+    ..._defaultCredentials,
+    accountNumber: '',
+    apiVersion: 'v1',
+    debugVebosity: 0,
+    keyDir: './keys',
+    keyFile: '',
+    practiceAccount: false,
+    seedToken: '',
+    expiresIn: 0,
+    tokenType: '',
+    refreshToken: '',
+    accessToken: '',
+    apiUrl: '',
+    apiServer: '',
+    fromCache: false,
+    // return credentials;
+  };
 };
-
 export { _defaultCredentials, _emptyCredentials };
 // config_:null = _config;
 // response_:null = response;
