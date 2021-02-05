@@ -1,4 +1,4 @@
-import { errorlog, infolog } from '../../resources/side-effects';
+import { echo, errorlog, infolog } from '../../resources/side-effects';
 import { ApiOptions, Credentials, ProxyFactory_ } from '../../typescript';
 import { _getAccounts } from '../api/AccountsCalls/_getAccounts/_getAccounts';
 import { _getServerTime } from '../api/AccountsCalls/_getServerTime/_getServerTime';
@@ -64,9 +64,11 @@ async function _credentialsFactory(
   } catch (error) {
     void errorlog(error.message);
     void infolog<unknown>(credentials.toValue());
-    throw new Error('_oAuth Error getting credentials');
+    throw new Error('_oAuth Error getting credentials in _credentialsFactory');
   }
   return credentials;
 }
 
 export { _credentialsFactory };
+
+echo(`${__dirname}:${__filename}`);
