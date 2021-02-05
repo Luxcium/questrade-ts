@@ -14,7 +14,7 @@ function requestLimiterFactory() {
   const callsQueue: [Function, CallBack<any>][] = [];
 
   return (fn: Function, hertz: number = 1) => {
-    const callToPop = async (): Promise<void> => {
+    async function callToPop(): Promise<void> {
       if (callsQueue.length > 0 && !isCalled) {
         isCalled = true;
         setTimeout(async (): Promise<void> => {
@@ -34,7 +34,7 @@ function requestLimiterFactory() {
         return void 151;
       }
       return void 151;
-    };
+    }
 
     return async (cb: CallBack<any>): Promise<void> => {
       callsQueue.unshift([fn, cb]);
