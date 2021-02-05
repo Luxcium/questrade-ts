@@ -28,6 +28,7 @@ function requestLimiterFactory() {
         while (lastDelay() < perSeconds(hertz)) {
           // do nothing just wait while (lastDelay() < perSeconds(hertz));
         }
+
         mycb(null, myfn());
         resetLastCall();
         return void 151;
@@ -82,3 +83,41 @@ function neverCb(error: Error | null, returnValue: any): never {
 }
 
 export const requestPerSecondLimiter = limitingRequest(requestLimiterFactory);
+
+/** new functions  */
+
+let isGreenLight = true;
+
+function doNext() {
+  return 'next request';
+}
+export function limiter(hertz: number = 20) {
+  let lastCall2 = Date.now();
+  const lastDelay2 = (lastCall3: number) => Date.now() - lastCall3;
+  const since = (pastStamp: number) => Date.now() - pastStamp;
+  const until = (futureStamp: number) => futureStamp - Date.now();
+
+  const resetLastCall2 = () => {
+    lastCall2 = Date.now();
+  };
+
+  const rightNow = Date.now();
+  const minimumDelay = rightNow + 50;
+
+  void rightNow, minimumDelay, since, until;
+  while (lastDelay2(lastCall2) < perSeconds(hertz)) {
+    isGreenLight = false;
+  }
+  isGreenLight = true;
+  doNext();
+  resetLastCall2();
+  return isGreenLight;
+}
+
+export const nowMiliSeconds = Date.now();
+export const lastRequestMiliSeconds = Date.now();
+
+// maintenant (larger time stamp) - antérieurement (smaller time stamp)  = positive integer
+// postérieurement (larger time stamp) - maintenant (smaller time stamp)  = positive integer
+
+// example ... 1 request each 50 ms
