@@ -1,6 +1,6 @@
 // =====2021=====Luxcium=====Author==Benjamin=Vincent=(Luxcium)=License==MIT====
 {
-  // #region FORMAT & FILES BEHAVIOUR                                           !
+  // #region: FORMAT & FILES BEHAVIOUR                                          !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   */
@@ -53,8 +53,8 @@
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  // #endregion FILES & FORMAT BEHAVIOUR                                        !
-  // #region JAVASCRIPT & TYPESCRIPT                                            !
+  // #endregion: FILES & FORMAT BEHAVIOUR                                       !
+  // #region: JAVASCRIPT & TYPESCRIPT                                           !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― JAVASCRIPT
@@ -89,8 +89,8 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   // "typescript.tsdk": "node_modules/typescript/lib",
   // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
-  // #endregion JAVASCRIPT & TYPESCRIPT                                         !
-  // #region PATH INTELLISENSE                                                  !
+  // #endregion: JAVASCRIPT & TYPESCRIPT                                        !
+  // #region: PATH INTELLISENSE                                                 !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― PATH-INTELLISENSE
@@ -99,8 +99,8 @@
   "path-intellisense.absolutePathToWorkspace": false,
   "path-intellisense.autoSlashAfterDirectory": false,
   "path-intellisense.showHiddenFiles": true,
-  // #endregion PATH INTELLISENSE                                               !
-  // #region PRETTIER                                                           !
+  // #endregion: PATH INTELLISENSE                                              !
+  // #region: PRETTIER                                                          !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― PRETTIER
@@ -113,8 +113,8 @@
   "prettier.packageManager": "yarn",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // =====2021=====Luxcium=====Author==Benjamin=Vincent=(Luxcium)=License==MIT====
-  // #endregion PRETTIER                                                        !
-  // #region ESLINT                                                             !
+  // #endregion: PRETTIER                                                       !
+  // #region: ESLINT                                                            !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― ESLINT
@@ -125,8 +125,8 @@
   "eslint.alwaysShowStatus": true,
   "eslint.codeActionsOnSave.mode": "all",
   "eslint.packageManager": "yarn",
-  // #endregion ESLINT                                                          !
-  // #region ERRORLENS                                                          !
+  // #endregion: ESLINT                                                         !
+  // #region: ERRORLENS                                                         !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― ERRORLENS
@@ -191,22 +191,162 @@
     "errorLens.hintMessageBackground": "#39C4",
     "errorLens.statusBarHintForeground": "#39CF",
   },
-  // #endregion ERRORLENS                                                       !
-  // #region TODO TREE                                                          !
+  // #endregion: ERRORLENS                                                      !
+  // #region: TODO TREE                                                         !
   "todo-tree.highlights.backgroundColourScheme": [
-    "#F15", //BUG
-    "#4B9", //CONSOLE
-    "#F36", //ERROR
-    "#F80", //FIXME
-    "#93F", //HACK
-    "#FB0", //HINT
-    "#39C", //INFO
-    "#9BE", //LOG
-    "#FB3", //TODO
-    "#BF2", //WARNING
-    "#E22", //XXX
-    "#FFF",
-    "#FB0",
+    "#F15", // BUG
+    "#4B9", // CONSOLE
+    "#F36", // ERROR
+    "#F80", // FIXME
+    "#93F", // HACK
+    "#FB0", // HINT
+    "#39C", // INFO
+    "#9BE", // LOG
+    "#FB3", // TODO
+    "#BF2", // WARNING
+    "#E22", // XXX
+    "#DF3", // #region
+    "#F15", // #endregion
+    "#F20", // ////  !-: Neque porro quisquam est qui dolorem ipsum quia dolor
+    "#F36", // ////  @-: Neque porro quisquam est qui dolorem ipsum quia dolor
+    "#4AE", // ////  #-: Neque porro quisquam est qui dolorem ipsum quia dolor
+    "#F84", // ////  $-: Neque porro quisquam est qui dolorem ipsum quia dolor
+    "#4EF", // ////  %-: Neque porro quisquam est qui dolorem ipsum quia dolor
+    "#39F", // ////  ?-: Neque porro quisquam est qui dolorem ipsum quia dolor
+    "#93F", // ////  &-: Neque porro quisquam est qui dolorem ipsum quia dolor
+    "#9C7", // ////  *-: Neque porro quisquam est qui dolorem ipsum quia dolor
+    "#CF2", // ////  +-: Neque porro quisquam est qui dolorem ipsum quia dolor
+    "#9BE", // ////  :-: Neque porro quisquam est qui dolorem ipsum quia dolor
+    "#F20", // ////  !-1:",
+    "#F20", // ////  @-1:",
+    "#F20", // ////  #-1:",
+    "#F20", // ////  $-1:",
+    "#F20", // ////  %-1:",
+    "#F20", // ////  ?-1:",
+    "#F20", // ////  &-1:",
+    "#F20", // ////  *-1:",
+    "#F20", // ////  +-1:",
+    "#F20", // ////  :-1:",
+    "#F36", // ////  !-2:",
+    "#F36", // ////  @-2:",
+    "#F36", // ////  #-2:",
+    "#F36", // ////  $-2:",
+    "#F36", // ////  %-2:",
+    "#F36", // ////  ?-2:",
+    "#F36", // ////  &-2:",
+    "#F36", // ////  *-2:",
+    "#F36", // ////  +-2:",
+    "#F36", // ////  :-2:",
+    "#4AE", // ////  !-3:",
+    "#4AE", // ////  @-3:",
+    "#4AE", // ////  #-3:",
+    "#4AE", // ////  $-3:",
+    "#4AE", // ////  %-3:",
+    "#4AE", // ////  ?-3:",
+    "#4AE", // ////  &-3:",
+    "#4AE", // ////  *-3:",
+    "#4AE", // ////  +-3:",
+    "#4AE", // ////  :-3:",
+    "#F84", // ////  !-4:",
+    "#F84", // ////  @-4:",
+    "#F84", // ////  #-4:",
+    "#F84", // ////  $-4:",
+    "#F84", // ////  %-4:",
+    "#F84", // ////  ?-4:",
+    "#F84", // ////  &-4:",
+    "#F84", // ////  *-4:",
+    "#F84", // ////  +-4:",
+    "#F84", // ////  :-4:",
+    "#4EF", // ////  !-5:",
+    "#4EF", // ////  @-5:",
+    "#4EF", // ////  #-5:",
+    "#4EF", // ////  $-5:",
+    "#4EF", // ////  %-5:",
+    "#4EF", // ////  ?-5:",
+    "#4EF", // ////  &-5:",
+    "#4EF", // ////  *-5:",
+    "#4EF", // ////  +-5:",
+    "#4EF", // ////  :-5:",
+    "#39F", // ////  !-6:",
+    "#39F", // ////  @-6:",
+    "#39F", // ////  #-6:",
+    "#39F", // ////  $-6:",
+    "#39F", // ////  %-6:",
+    "#39F", // ////  ?-6:",
+    "#39F", // ////  &-6:",
+    "#39F", // ////  *-6:",
+    "#39F", // ////  +-6:",
+    "#39F", // ////  :-6:",
+    "#93F", // ////  !-7:",
+    "#93F", // ////  @-7:",
+    "#93F", // ////  #-7:",
+    "#93F", // ////  $-7:",
+    "#93F", // ////  %-7:",
+    "#93F", // ////  ?-7:",
+    "#93F", // ////  &-7:",
+    "#93F", // ////  *-7:",
+    "#93F", // ////  +-7:",
+    "#93F", // ////  :-7:",
+    "#9C7", // ////  !-8:",
+    "#9C7", // ////  @-8:",
+    "#9C7", // ////  #-8:",
+    "#9C7", // ////  $-8:",
+    "#9C7", // ////  %-8:",
+    "#9C7", // ////  ?-8:",
+    "#9C7", // ////  &-8:",
+    "#9C7", // ////  *-8:",
+    "#9C7", // ////  +-8:",
+    "#9C7", // ////  :-8:",
+    "#CF2", // ////  !-9:",
+    "#CF2", // ////  @-9:",
+    "#CF2", // ////  #-9:",
+    "#CF2", // ////  $-9:",
+    "#CF2", // ////  %-9:",
+    "#CF2", // ////  ?-9:",
+    "#CF2", // ////  &-9:",
+    "#CF2", // ////  *-9:",
+    "#CF2", // ////  +-9:",
+    "#CF2", // ////  :-9:",
+    "#9BE", // ////  !-0:",
+    "#9BE", // ////  @-0:",
+    "#9BE", // ////  #-0:",
+    "#9BE", // ////  $-0:",
+    "#9BE", // ////  %-0:",
+    "#9BE", // ////  ?-0:",
+    "#9BE", // ////  &-0:",
+    "#9BE", // ////  *-0:",
+    "#9BE", // ////  +-0:",
+    "#9BE", // ////  :-0:",
+    "#FB0", // ////  !-!:",
+    "#FB0", // ////  @-!:",
+    "#FB0", // ////  #-!:",
+    "#FB0", // ////  $-!:",
+    "#FB0", // ////  %-!:",
+    "#FB0", // ////  ?-!:",
+    "#FB0", // ////  &-!:",
+    "#FB0", // ////  *-!:",
+    "#FB0", // ////  +-!:",
+    "#FB0", // ////  :-!:",
+    "#4B9", // ////  ! !:",
+    "#4B9", // ////  -@!:",
+    "#4B9", // ////  # !:",
+    "#4B9", // ////  $ !:",
+    "#4B9", // ////  % !:",
+    "#4B9", // ////  ? !:",
+    "#4B9", // ////  & !:",
+    "#4B9", // ////  * !:",
+    "#4B9", // ////  + !:",
+    "#4B9", // ////  : !:",
+    "#FFF", // ////  ! -:",
+    "#FFF", // ////  -@ :",
+    "#FFF", // ////  # -:",
+    "#FFF", // ////  $ -:",
+    "#FFF", // ////  % -:",
+    "#FFF", // ////  ? -:",
+    "#FFF", // ////  & -:",
+    "#FFF", // ////  * -:",
+    "#FFF", // ////  + -:",
+    "#FFF", // ////  : -:",
   ],
   "todo-tree.general.tags": [
     "BUG:",
@@ -220,8 +360,148 @@
     "TODO:",
     "WARNING:",
     "XXX:",
+    "#region:",
+    "#endregion:",
     "////  !-:",
+    "////  @-:",
+    "////  #-:",
+    "////  $-:",
+    "////  %-:",
+    "////  ?-:",
+    "////  &-:",
+    "////  *-:",
+    "////  +-:",
     "////  :-:",
+    "////  !-1:",
+    "////  @-1:",
+    "////  #-1:",
+    "////  $-1:",
+    "////  %-1:",
+    "////  ?-1:",
+    "////  &-1:",
+    "////  *-1:",
+    "////  +-1:",
+    "////  :-1:",
+    "////  !-2:",
+    "////  @-2:",
+    "////  #-2:",
+    "////  $-2:",
+    "////  %-2:",
+    "////  ?-2:",
+    "////  &-2:",
+    "////  *-2:",
+    "////  +-2:",
+    "////  :-2:",
+    "////  !-3:",
+    "////  @-3:",
+    "////  #-3:",
+    "////  $-3:",
+    "////  %-3:",
+    "////  ?-3:",
+    "////  &-3:",
+    "////  *-3:",
+    "////  +-3:",
+    "////  :-3:",
+    "////  !-4:",
+    "////  @-4:",
+    "////  #-4:",
+    "////  $-4:",
+    "////  %-4:",
+    "////  ?-4:",
+    "////  &-4:",
+    "////  *-4:",
+    "////  +-4:",
+    "////  :-4:",
+    "////  !-5:",
+    "////  @-5:",
+    "////  #-5:",
+    "////  $-5:",
+    "////  %-5:",
+    "////  ?-5:",
+    "////  &-5:",
+    "////  *-5:",
+    "////  +-5:",
+    "////  :-5:",
+    "////  !-6:",
+    "////  @-6:",
+    "////  #-6:",
+    "////  $-6:",
+    "////  %-6:",
+    "////  ?-6:",
+    "////  &-6:",
+    "////  *-6:",
+    "////  +-6:",
+    "////  :-6:",
+    "////  !-7:",
+    "////  @-7:",
+    "////  #-7:",
+    "////  $-7:",
+    "////  %-7:",
+    "////  ?-7:",
+    "////  &-7:",
+    "////  *-7:",
+    "////  +-7:",
+    "////  :-7:",
+    "////  !-8:",
+    "////  @-8:",
+    "////  #-8:",
+    "////  $-8:",
+    "////  %-8:",
+    "////  ?-8:",
+    "////  &-8:",
+    "////  *-8:",
+    "////  +-8:",
+    "////  :-8:",
+    "////  !-9:",
+    "////  @-9:",
+    "////  #-9:",
+    "////  $-9:",
+    "////  %-9:",
+    "////  ?-9:",
+    "////  &-9:",
+    "////  *-9:",
+    "////  +-9:",
+    "////  :-9:",
+    "////  !-0:",
+    "////  @-0:",
+    "////  #-0:",
+    "////  $-0:",
+    "////  %-0:",
+    "////  ?-0:",
+    "////  &-0:",
+    "////  *-0:",
+    "////  +-0:",
+    "////  :-0:",
+    "////  !-!:",
+    "////  @-!:",
+    "////  #-!:",
+    "////  $-!:",
+    "////  %-!:",
+    "////  ?-!:",
+    "////  &-!:",
+    "////  *-!:",
+    "////  +-!:",
+    "////  :-!:",
+    "////  ! !:",
+    "////  -@!:",
+    "////  # !:",
+    "////  $ !:",
+    "////  % !:",
+    "////  ? !:",
+    "////  & !:",
+    "////  * !:",
+    "////  + !:",
+    "////  : !:",
+    "////  ! -:",
+    "////  -@ :",
+    "////  # -:",
+    "////  $ -:",
+    "////  % -:",
+    "////  ? -:",
+    "////  & -:",
+    "////  * -:",
+    "////  + -:",
+    "////  : -:",
   ],
   "todo-tree.highlights.useColourScheme": true,
   "todo-tree.highlights.foregroundColourScheme": [
@@ -322,8 +602,8 @@
   "todo-tree.tree.labelFormat": "${tag} ${after}",
   "todo-tree.tree.scanMode": "workspace",
   "todo-tree.tree.tooltipFormat": "${filepath}, line ${line}",
-  // #endregion TODO TREE                                                       !
-  // #region BETTER COMMENTS                                                    !
+  // #endregion: TODO TREE                                                      !
+  // #region: BETTER COMMENTS                                                   !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― BETTER COMMENTS
@@ -348,26 +628,102 @@
   "better-comments.highlightPlainText": false,
   "better-comments.multilineComments": true,
   "better-comments.tags": [
+    // #region
+    // #endregion:
     {
-      // #region
       "tag": "#region",
-      "color": "#555",
+      "color": "#FF3",
       "strikethrough": false,
-      "backgroundColor": "#FF3D"
+      "backgroundColor": "#FF34"
     },
     {
-      // #endregion
       "tag": "#endregion",
-      "color": "#222",
+      "color": "#F15",
       "strikethrough": false,
-      "backgroundColor": "#F15E"
+      "backgroundColor": "#F154"
     },
     {
-      // SECTION
-      "tag": "////  :-:",
-      "color": "#FB0",
+      "tag": "region",
+      "color": "#FF3",
       "strikethrough": false,
-      "backgroundColor": "#650"
+      "backgroundColor": "#FF34"
+    },
+    {
+      "tag": "endregion",
+      "color": "#F15",
+      "strikethrough": false,
+      "backgroundColor": "#F154"
+    },
+    // SECTIONS
+    // ////  !-",
+    {
+      "tag": "////  !-",
+      "color": "#F20",
+      "strikethrough": false,
+      "backgroundColor": "#F203"
+    },
+    // ////  @-",
+    {
+      "tag": "////  @-",
+      "color": "#F36",
+      "strikethrough": false,
+      "backgroundColor": "#F363"
+    },
+    // ////  #-",
+    {
+      "tag": "////  #-",
+      "color": "#4AE",
+      "strikethrough": false,
+      "backgroundColor": "#4AE3"
+    },
+    // ////  $-",
+    {
+      "tag": "////  $-",
+      "color": "#F84",
+      "strikethrough": false,
+      "backgroundColor": "#F843"
+    },
+    // ////  %-",
+    {
+      "tag": "////  %-",
+      "color": "#4EF",
+      "strikethrough": false,
+      "backgroundColor": "#4EF3"
+    },
+    // ////  ?-",
+    {
+      "tag": "////  ?-",
+      "color": "#39F",
+      "strikethrough": false,
+      "backgroundColor": "#39F3"
+    },
+    // ////  &-",
+    {
+      "tag": "////  &-",
+      "color": "#93F",
+      "strikethrough": false,
+      "backgroundColor": "#93F3"
+    },
+    // ////  *-",
+    {
+      "tag": "////  *-",
+      "color": "#9C7",
+      "strikethrough": false,
+      "backgroundColor": "#9C73"
+    },
+    // ////  +-",
+    {
+      "tag": "////  +-",
+      "color": "#CF2",
+      "strikethrough": false,
+      "backgroundColor": "#CF23"
+    },
+    // ////  :-",
+    {
+      "tag": "////  :-",
+      "color": "#9BE",
+      "strikethrough": false,
+      "backgroundColor": "#9BE3"
     },
     {
       // constructor
@@ -1519,8 +1875,8 @@
       "backgroundColor": "transparent"
     },
   ],
-  // #endregion BETTER COMMENTS                                                 !
-  // #region EDITOR RULERS                                                      !
+  // #endregion: BETTER COMMENTS                                                !
+  // #region: EDITOR RULERS                                                     !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― EDITOR RULERS
@@ -1787,6 +2143,6 @@
       "color": "#90BCFFDD"
     }
   ],
-  // #endregion EDITOR RULERS                                                   !
+  // #endregion: EDITOR RULERS                                                  !
 }
 // =====2021=====Luxcium=====Author==Benjamin=Vincent=(Luxcium)=License==MIT====
