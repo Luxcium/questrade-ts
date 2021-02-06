@@ -1,4 +1,9 @@
+// =====2021=====Luxcium=====Author==Benjamin=Vincent=(Luxcium)=License==MIT====
 {
+  // #region FORMAT & FILES BEHAVIOUR                                           !
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  */
   "files.exclude": {
     ".directory": true,
     "dist": false,
@@ -11,6 +16,30 @@
   },
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  ―― FORMAT BEHAVIOUR
+  */
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.tabSize": 2,
+  "editor.formatOnType": true,
+  "editor.suggest.showFiles": true,
+  "editor.suggest.showFolders": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  */
+  "editor.codeActionsOnSave": [
+    "source.addMissingImports",
+    "source.organizeImports",
+    "source.eslint",
+    "source.fixAll",
+  ],
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   */
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
@@ -21,23 +50,15 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features",
   },
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  // #endregion FILES & FORMAT BEHAVIOUR                                        !
+  // #region JAVASCRIPT & TYPESCRIPT                                            !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
-  ―― FORMAT BEHAVIOUR
+  ―― JAVASCRIPT
   */
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
-  "editor.formatOnSaveMode": "file",
-  "editor.tabSize": 2,
-  "editor.formatOnType": true,
-  "editor.suggest.showFiles": true,
-  "editor.suggest.showFolders": true,
-  //                                                                          ―― ~
-  // ―― FILES BEHAVIOUR
-  "files.eol": "\n",
-  "files.insertFinalNewline": true,
-  "files.trimFinalNewlines": true,
-  "files.trimTrailingWhitespace": true,
   "javascript.format.semicolons": "insert",
   "javascript.preferences.importModuleSpecifier": "relative",
   "javascript.preferences.quoteStyle": "single",
@@ -46,6 +67,10 @@
   "javascript.referencesCodeLens.showOnAllFunctions": true,
   "javascript.suggest.completeFunctionCalls": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  /*
+  |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
+  ―― TYPESCRIPT
+  */
   "typescript.check.npmIsInstalled": false,
   "typescript.format.semicolons": "insert",
   "typescript.implementationsCodeLens.enabled": true,
@@ -64,14 +89,8 @@
   "typescript.updateImportsOnFileMove.enabled": "always",
   // "typescript.tsdk": "node_modules/typescript/lib",
   // "typescript.tsserver.experimental.enableProjectDiagnostics": true,
-  //                                                                          ―― ~
-  // ―― CODEACTIONSONSAVE BEHAVIOUR
-  "editor.codeActionsOnSave": [
-    "source.addMissingImports",
-    "source.organizeImports",
-    "source.eslint",
-    "source.fixAll",
-  ],
+  // #endregion JAVASCRIPT & TYPESCRIPT                                         !
+  // #region PATH INTELLISENSE                                                  !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― PATH-INTELLISENSE
@@ -80,6 +99,8 @@
   "path-intellisense.absolutePathToWorkspace": false,
   "path-intellisense.autoSlashAfterDirectory": false,
   "path-intellisense.showHiddenFiles": true,
+  // #endregion PATH INTELLISENSE                                               !
+  // #region PRETTIER                                                           !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― PRETTIER
@@ -91,6 +112,9 @@
   "prettier.trailingComma": "all",
   "prettier.packageManager": "yarn",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // =====2021=====Luxcium=====Author==Benjamin=Vincent=(Luxcium)=License==MIT====
+  // #endregion PRETTIER                                                        !
+  // #region ESLINT                                                             !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― ESLINT
@@ -101,6 +125,8 @@
   "eslint.alwaysShowStatus": true,
   "eslint.codeActionsOnSave.mode": "all",
   "eslint.packageManager": "yarn",
+  // #endregion ESLINT                                                          !
+  // #region ERRORLENS                                                          !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― ERRORLENS
@@ -165,6 +191,139 @@
     "errorLens.hintMessageBackground": "#39C4",
     "errorLens.statusBarHintForeground": "#39CF",
   },
+  // #endregion ERRORLENS                                                       !
+  // #region TODO TREE                                                          !
+  "todo-tree.highlights.backgroundColourScheme": [
+    "#F15", //BUG
+    "#4B9", //CONSOLE
+    "#F36", //ERROR
+    "#F80", //FIXME
+    "#93F", //HACK
+    "#FB0", //HINT
+    "#39C", //INFO
+    "#9BE", //LOG
+    "#FB3", //TODO
+    "#BF2", //WARNING
+    "#E22", //XXX
+    "#FFF",
+    "#FB0",
+  ],
+  "todo-tree.general.tags": [
+    "BUG:",
+    "CONSOLE:",
+    "ERROR:",
+    "FIXME:",
+    "HACK:",
+    "HINT:",
+    "INFO:",
+    "LOG:",
+    "TODO:",
+    "WARNING:",
+    "XXX:",
+    "////  !-:",
+    "////  :-:",
+  ],
+  "todo-tree.highlights.useColourScheme": true,
+  "todo-tree.highlights.foregroundColourScheme": [
+    "#224",
+  ],
+  // "todo-tree.highlights.defaultHighlight": {},
+  "todo-tree.highlights.customHighlight": {
+    "BUG:": {
+      "icon": "bug",
+    },
+    "CONSOLE:": {
+      "icon": "terminal",
+    },
+    "ERROR:": {
+      "icon": "x-circle",
+    },
+    "FIXME:": {
+      "icon": "tools",
+    },
+    "HACK:": {
+      "icon": "squirrel",
+    },
+    "HINT:": {
+      "icon": "report",
+    },
+    "INFO:": {
+      "icon": "info",
+    },
+    "LOG:": {
+      "icon": "checklist",
+    },
+    "TODO:": {
+      "icon": "bookmark",
+    },
+    "WARNING:": {
+      "icon": "alert",
+    },
+    "XXX:": {
+      "icon": "law",
+    },
+  },
+  "todo-tree.highlights.schemes": [
+    "file",
+    "untitled",
+    "vscode-userdata",
+    "output",
+  ],
+  "todo-tree.filtering.ignoreGitSubmodules": false,
+  "todo-tree.filtering.includeHiddenFiles": false,
+  "todo-tree.filtering.passGlobsToRipgrep": true,
+  "todo-tree.general.debug": false,
+  "todo-tree.general.enableFileWatcher": true,
+  "todo-tree.highlights.enabled": true,
+  "todo-tree.regex.regexCaseSensitive": true,
+  "todo-tree.ripgrep.usePatternFile": true,
+  "todo-tree.tree.autoRefresh": true,
+  "todo-tree.tree.buttons.expand": true,
+  "todo-tree.tree.buttons.export": false,
+  "todo-tree.tree.buttons.filter": true,
+  "todo-tree.tree.buttons.groupByTag": true,
+  "todo-tree.tree.buttons.refresh": true,
+  "todo-tree.tree.buttons.reveal": true,
+  "todo-tree.tree.buttons.scanMode": false,
+  "todo-tree.tree.buttons.viewStyle": true,
+  "todo-tree.tree.disableCompactFolders": false,
+  "todo-tree.tree.expanded": true,
+  "todo-tree.tree.filterCaseSensitive": false,
+  "todo-tree.tree.flat": false,
+  "todo-tree.tree.grouped": true,
+  "todo-tree.tree.hideIconsWhenGroupedByTag": false,
+  "todo-tree.tree.hideTreeWhenEmpty": false,
+  "todo-tree.tree.scanAtStartup": true,
+  "todo-tree.tree.showBadges": true,
+  "todo-tree.tree.showCountsInTree": true,
+  "todo-tree.tree.showCurrentScanMode": true,
+  "todo-tree.tree.showScanModeButton": false,
+  "todo-tree.tree.sort": true,
+  "todo-tree.tree.sortTagsOnlyViewAlphabetically": false,
+  "todo-tree.tree.tagsOnly": true,
+  "todo-tree.tree.trackFile": true,
+  // "todo-tree.filtering.excludeGlobs": [],
+  // "todo-tree.filtering.includedWorkspaces": [],
+  // "todo-tree.filtering.excludedWorkspaces": [],
+  // "todo-tree.filtering.includeGlobs": [],
+  // "todo-tree.general.tagGroups": {},
+  "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
+  "todo-tree.general.exportPath": "~/todo-tree-%Y%m%d-%H%M.txt",
+  "todo-tree.general.fileWatcherGlob": "**/*",
+  "todo-tree.general.revealBehaviour": "end of todo",
+  "todo-tree.general.rootFolder": "",
+  "todo-tree.general.statusBar": "current file",
+  "todo-tree.general.statusBarClickBehaviour": "cycle",
+  "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^)\\s*($TAGS)|^\\s*- \\[ \\])",
+  "todo-tree.ripgrep.ripgrep": "",
+  "todo-tree.ripgrep.ripgrepArgs": "--max-columns=1000 --no-config ",
+  "todo-tree.ripgrep.ripgrepMaxBuffer": 200,
+  "todo-tree.highlights.highlightDelay": 100,
+  "todo-tree.tree.labelFormat": "${tag} ${after}",
+  "todo-tree.tree.scanMode": "workspace",
+  "todo-tree.tree.tooltipFormat": "${filepath}, line ${line}",
+  // #endregion TODO TREE                                                       !
+  // #region BETTER COMMENTS                                                    !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― BETTER COMMENTS
@@ -205,10 +364,10 @@
     },
     {
       // SECTION
-      "tag": "////",
-      "color": "#0FF",
+      "tag": "////  :-:",
+      "color": "#FB0",
       "strikethrough": false,
-      "backgroundColor": "transparent"
+      "backgroundColor": "#650"
     },
     {
       // constructor
@@ -1294,49 +1453,49 @@
       "backgroundColor": "transparent"
     },
     {
-      "tag": "BUG:",
+      "tag": "BUG",
       "color": "#F15",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      "tag": "CONSOLE:",
+      "tag": "CONSOLE",
       "color": "#FB3",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      "tag": "CONSERROROLE:",
+      "tag": "ERROR",
       "color": "#F36",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      "tag": "FIXME:",
+      "tag": "FIXME",
       "color": "#F80",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      "tag": "HACK:",
+      "tag": "HACK",
       "color": "#93F",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      "tag": "HINT:",
+      "tag": "HINT",
       "color": "#39C",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      "tag": "INFO:",
+      "tag": "INFO",
       "color": "#FB0",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      "tag": "LOG:",
+      "tag": "LOG",
       "color": "#9BE",
       "strikethrough": false,
       "backgroundColor": "transparent"
@@ -1348,18 +1507,20 @@
     //   "backgroundColor": "transparent"
     // },
     {
-      "tag": "WARNING:",
+      "tag": "WARNING",
       "color": "#BF2",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
     {
-      "tag": "XXX:",
+      "tag": "XXX",
       "color": "#E22",
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
   ],
+  // #endregion BETTER COMMENTS                                                 !
+  // #region EDITOR RULERS                                                      !
   /*
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― EDITOR RULERS
@@ -1626,160 +1787,6 @@
       "color": "#90BCFFDD"
     }
   ],
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  "todo-tree.highlights.backgroundColourScheme": [
-    "#F15", //BUG
-    "#4B9", //CONSOLE
-    "#F36", //ERROR
-    "#F80", //FIXME
-    "#93F", //HACK
-    "#FB0", //HINT
-    "#39C", //INFO
-    "#9BE", //LOG
-    "#FB3", //TODO
-    "#BF2", //WARNING
-    "#E22", //XXX
-    "#FFF", // ////  !-:
-  ],
-  "todo-tree.general.tags": [
-    "BUG:",
-    "CONSOLE:",
-    "ERROR:",
-    "FIXME:",
-    "HACK:",
-    "HINT:",
-    "INFO:",
-    "LOG:",
-    "TODO:",
-    "WARNING:",
-    "XXX:",
-    "////  !-:",
-  ],
-  "todo-tree.highlights.useColourScheme": true,
-  "todo-tree.highlights.foregroundColourScheme": [
-    "#224",
-  ],
-  // "todo-tree.highlights.defaultHighlight": {},
-  "todo-tree.highlights.customHighlight": {
-    "BUG:": {
-      "icon": "bug",
-    },
-    "CONSOLE:": {
-      "icon": "terminal",
-    },
-    "ERROR:": {
-      "icon": "x-circle",
-    },
-    "FIXME:": {
-      "icon": "tools",
-    },
-    "HACK:": {
-      "icon": "squirrel",
-    },
-    "HINT:": {
-      "icon": "report",
-    },
-    "INFO:": {
-      "icon": "info",
-    },
-    "LOG:": {
-      "icon": "checklist",
-    },
-    "TODO:": {
-      "icon": "bookmark",
-    },
-    "WARNING:": {
-      "icon": "alert",
-    },
-    "XXX:": {
-      "icon": "law",
-    },
-  },
-  "todo-tree.highlights.schemes": [
-    "file",
-    "untitled",
-    "vscode-userdata",
-    "output",
-  ],
-  "todo-tree.filtering.ignoreGitSubmodules": false,
-  "todo-tree.filtering.includeHiddenFiles": false,
-  "todo-tree.filtering.passGlobsToRipgrep": true,
-  "todo-tree.general.debug": false,
-  "todo-tree.general.enableFileWatcher": true,
-  "todo-tree.highlights.enabled": true,
-  "todo-tree.regex.regexCaseSensitive": true,
-  "todo-tree.ripgrep.usePatternFile": true,
-  "todo-tree.tree.autoRefresh": true,
-  "todo-tree.tree.buttons.expand": true,
-  "todo-tree.tree.buttons.export": false,
-  "todo-tree.tree.buttons.filter": true,
-  "todo-tree.tree.buttons.groupByTag": true,
-  "todo-tree.tree.buttons.refresh": true,
-  "todo-tree.tree.buttons.reveal": true,
-  "todo-tree.tree.buttons.scanMode": false,
-  "todo-tree.tree.buttons.viewStyle": true,
-  "todo-tree.tree.disableCompactFolders": false,
-  "todo-tree.tree.expanded": true,
-  "todo-tree.tree.filterCaseSensitive": false,
-  "todo-tree.tree.flat": false,
-  "todo-tree.tree.grouped": true,
-  "todo-tree.tree.hideIconsWhenGroupedByTag": false,
-  "todo-tree.tree.hideTreeWhenEmpty": false,
-  "todo-tree.tree.scanAtStartup": true,
-  "todo-tree.tree.showBadges": true,
-  "todo-tree.tree.showCountsInTree": true,
-  "todo-tree.tree.showCurrentScanMode": true,
-  "todo-tree.tree.showScanModeButton": false,
-  "todo-tree.tree.sort": true,
-  "todo-tree.tree.sortTagsOnlyViewAlphabetically": false,
-  "todo-tree.tree.tagsOnly": true,
-  "todo-tree.tree.trackFile": true,
-  // "todo-tree.filtering.excludeGlobs": [],
-  // "todo-tree.filtering.includedWorkspaces": [],
-  // "todo-tree.filtering.excludedWorkspaces": [],
-  // "todo-tree.filtering.includeGlobs": [],
-  // "todo-tree.general.tagGroups": {},
-  "todo-tree.filtering.useBuiltInExcludes": "file and search excludes",
-  "todo-tree.general.exportPath": "~/todo-tree-%Y%m%d-%H%M.txt",
-  "todo-tree.general.fileWatcherGlob": "**/*",
-  "todo-tree.general.revealBehaviour": "end of todo",
-  "todo-tree.general.rootFolder": "",
-  "todo-tree.general.statusBar": "current file",
-  "todo-tree.general.statusBarClickBehaviour": "cycle",
-  "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^)\\s*($TAGS)|^\\s*- \\[ \\])",
-  "todo-tree.ripgrep.ripgrep": "",
-  "todo-tree.ripgrep.ripgrepArgs": "--max-columns=1000 --no-config ",
-  "todo-tree.ripgrep.ripgrepMaxBuffer": 200,
-  "todo-tree.highlights.highlightDelay": 100,
-  "todo-tree.tree.labelFormat": "${tag} ${after}",
-  "todo-tree.tree.scanMode": "workspace",
-  "todo-tree.tree.tooltipFormat": "${filepath}, line ${line}",
-  // "Toggle activity bar": true,
-  // "Toggle line comment": true,
-  // "Toggle render whitespace": true,
-  // "Toggle terminal": true,
+  // #endregion EDITOR RULERS                                                   !
 }
-// Scientia es lux principium ✨
-// "#41E2F4",
-// "#98C379",
-// "#C54442",
-// "#C5F442",
-// "#F48E41",
-// "#FF2D00",
-// "#FF8C00",
-// "#90BCFF08"
-// "#90BCFF11"
-// "#90BCFF22"
-// "#90BCFF33"
-// "#90BCFF44"
-// "#90BCFF55"
-// "#90BCFF66"
-// "#90BCFF77"
-// "#90BCFF88"
-// "#90BCFF99"
-// "#90BCFFAA"
-// "#90BCFFAA"
-// "#90BCFFCC"
-// "#90BCFFDD"
+// =====2021=====Luxcium=====Author==Benjamin=Vincent=(Luxcium)=License==MIT====
