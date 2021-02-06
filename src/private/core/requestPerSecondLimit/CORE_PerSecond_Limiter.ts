@@ -19,10 +19,12 @@ const resetLastCall = () => {
   // CONSOLE:  using console error is a sideEffect and will be flagged
 })().catch(error => console.error('error message:', error.message));
 
+// ////  :-: !! 07
 function requestLimiterFactory() {
   let isCalled = false;
   const callsQueue: [Function, CallBack<any>][] = [];
 
+  // ////  :-: !! 08
   return function requestLimiter(fn: Function, hertz: number = 1) {
     const callToPop = async (): Promise<void> => {
       if (callsQueue.length > 0 && !isCalled) {
@@ -45,6 +47,7 @@ function requestLimiterFactory() {
       return void 0;
     };
 
+    // ////  :-: !! 09
     return async (cb: CallBack<any>): Promise<void> => {
       callsQueue.unshift([fn, cb]);
       callToPop();
@@ -67,11 +70,14 @@ export function myPromisify<T>(addToQueue: (cb: any) => Promise<void>) {
     });
   });
 }
-
+// ////  :-: ??? 04 define limitingRequest
 function limitingRequest(limiterFactory: ReqLimiterFactory) {
+  // ////  :-: ??? 05 define requestLimiter
+  // ////  :-: !!! 06 *call* limiterFactory
   const requestLimiter = limiterFactory();
 
   return (hz: number) => async <T>(fn: () => T) => {
+    // ////  :-: !!! 05 *call* requestLimiter
     const addToQueue = requestLimiter(fn, hz);
 
     return myPromisify<T>(addToQueue);
@@ -91,6 +97,8 @@ function neverCb(error: Error | null, returnValue: any): never {
   );
 }
 
+// ////  :-: ??? 03 define requestPerSecondLimiter
+// ////  :-: !!! 04 *call* limitingRequest
 export const requestPerSecondLimiter = limitingRequest(requestLimiterFactory);
 
 export type ReqLimiterFactory = () => (

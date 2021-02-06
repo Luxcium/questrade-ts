@@ -56,26 +56,23 @@ export class ApiCallQ<Ŋ> {
 
   private requestsRemaining: number;
 
-  public get xRequestsRemaining() {
-    if (this.requestsRemaining !== 0) {
-      return this.requestsRemaining;
-    }
-    return 1;
+  public get xRemaining() {
+    return this.requestsRemaining === 0 ? 1 : this.requestsRemaining;
   }
 
-  /** set in seconds get in miliseconds */
-  public set xRequestsRemaining(number: number) {
-    this.requestsRemaining = number;
+  public set xRemaining(value: number) {
+    this.requestsRemaining = value;
   }
-  /** get in miliseconds set in seconds */
-  public get xRateLimitReset() {
-    return this.rateLimitReset;
+  /** Setter accept value in seconds */
+  public set xReset(seconds: number) {
+    this.rateLimitReset = seconds;
   }
 
-  /** set in seconds get in miliseconds */
-  public set xRateLimitReset(seconds: number) {
-    this.rateLimitReset = seconds * 1000;
+  /** Getter return miliseconds  */
+  public get xReset() {
+    return this.rateLimitReset * 1000;
   }
+
   static get rightNow(): number {
     return Date.now();
   }
@@ -104,10 +101,12 @@ export class ApiCallQ<Ŋ> {
         poped as Ŋ;
         // [myfn, mycb] = !!poped ? poped : [neverWillCb, neverCb];
       }
+      this.xReset = 10;
+      const anyX = this.xReset;
 
-      const msRemaining = this.xRateLimitReset * 1000 - ApiCallQ.rightNow;
-      const xRequestsRemaining = 1;
-      const waitPeriodMs = msRemaining / this.xRequestsRemaining;
+      void anyX;
+      const msRemaining = this.xReset * 1000 - ApiCallQ.rightNow;
+      const waitPeriodMs = msRemaining / this.xRemaining;
       const msThen = ApiCallQ.rightNow + waitPeriodMs;
 
       while (ApiCallQ.rightNow <= msThen) {
