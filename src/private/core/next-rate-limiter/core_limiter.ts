@@ -13,8 +13,8 @@ function requestLimiterFactory() {
   let isCalled = false;
   const callsQueue: [Function, CallBack<any>][] = [];
 
-  return (fn: Function, hertz: number = 1) => {
-    async function callToPop(): Promise<void> {
+  return function requestLimiter(fn: Function, hertz: number = 1) {
+    const callToPop = async (): Promise<void> => {
       if (callsQueue.length > 0 && !isCalled) {
         isCalled = true;
         setTimeout(async (): Promise<void> => {
@@ -34,7 +34,7 @@ function requestLimiterFactory() {
         return void 151;
       }
       return void 151;
-    }
+    };
 
     return async (cb: CallBack<any>): Promise<void> => {
       callsQueue.unshift([fn, cb]);
@@ -44,7 +44,7 @@ function requestLimiterFactory() {
   };
 }
 
-function myPromisify<T>(addToQueue: (cb: any) => Promise<void>) {
+export function myPromisify<T>(addToQueue: (cb: any) => Promise<void>) {
   return new Promise<T>((resolve, reject) => {
     addToQueue((error: Error, result: any) => {
       if (!!error) {
@@ -60,10 +60,12 @@ function myPromisify<T>(addToQueue: (cb: any) => Promise<void>) {
 }
 
 function limitingRequest(limiterFactory: ReqLimiterFactory) {
+  // DEFINE: requestLimiter // CALL: limiterFactory
   const requestLimiter = limiterFactory();
 
-  return (frequency: number) => async <T>(fn: () => T) => {
-    const addToQueue = requestLimiter(fn, frequency);
+  return (hz: number) => async <T>(fn: () => T) => {
+    // CALL: !!! 05 *call* requestLimiter
+    const addToQueue = requestLimiter(fn, hz);
 
     return myPromisify<T>(addToQueue);
   };
@@ -82,6 +84,7 @@ function neverCb(error: Error | null, returnValue: any): never {
   );
 }
 
+// DEFINE: requestPerSecondLimiter // CALL: limitingRequest
 export const requestPerSecondLimiter = limitingRequest(requestLimiterFactory);
 
 /** new functions  */

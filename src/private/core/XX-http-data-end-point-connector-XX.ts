@@ -33,8 +33,7 @@ function _httpDataEndPointConnector<R>(
 
     const possiblePerSeconds =
       credentials?.remainingRequests?.possiblePerSeconds ?? 21;
-    // INFO: CALLING FROM RATE LIMITER **************************************
-    // ////  :-: !!! 01 *call* _rateLimiter                                     !
+    // CALL: !!! 01 *call* _rateLimiter
     const response: ClientResponse = await _rateLimiter({
       _config,
       httpClient,

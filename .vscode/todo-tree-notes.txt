@@ -1,0 +1,50 @@
+
+icon -
+iconColour -
+gutterIcon -
+rulerColour -
+rulerLane -
+"left", "center", "right", "full", "none"
+
+type -
+    tag -
+    text -
+    tag-and-comment -
+    text-and-comment -
+    line -
+    whole-line -
+hideFromTree -
+hideFromStatusBar -
+
+
+icon - used to set a different icon in the tree view. Must be a valid octicon (see https://octicons.github.com) or codicon (see https://microsoft.github.io/vscode-codicons/dist/codicon.html). If using codicons, specify them in the format "$(icon)". The icon defaults to a tick if it's not valid. You can also use "todo-tree", or "todo-tree-filled" if you want to use the icon from the activity view.
+
+iconColour - used to set the colour of the icon in the tree. If not specified, it will try to use the foreground colour or the background colour. Colour can be specified as per foreground and background colours, except that theme colours are only available when using codicons. Theme colours are not supported for octicons.
+
+gutterIcon - set to true to show the icon in the editor gutter. Note: Unfortunately, only octicons and the todo-tree icon can be displayed in the gutter.
+
+rulerColour - used to set the colour of the marker in the overview ruler. If not specified, it will default to use the foreground colour. Colour can be specified as per foreground and background colours.
+
+rulerLane - used to set the lane for the marker in the overview ruler. If not specified, it will default to the right hand lane. Use one of "left", "center", "right", or "full". You can also use "none" to disable the ruler markers.
+
+type - used to control how much is highlighted in the editor. Valid values are:
+
+"type":
+"type":"tag",
+"type":"text",
+"type":"tag-and-comment",
+"type":"text-and-comment",
+"type":"line",
+"type":"whole-line",
+
+tag - highlights just the tag
+text - highlights the tag and any text after the tag
+tag-and-comment - highlights the comment characters (or the start of the match) and the tag
+text-and-comment - highlights the comment characters (or the start of the match), the tag and the text after the tag
+line - highlights the entire line containing the tag
+whole-line - highlights the entire line containing the tag to the full width of the editor
+
+
+hideFromTree - used to hide tags from the tree, but still highlight in files
+
+hideFromStatusBar - prevents the tag from being included in the status bar counts

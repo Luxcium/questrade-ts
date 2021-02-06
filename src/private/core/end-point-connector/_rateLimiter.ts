@@ -5,7 +5,7 @@ import {
 } from '../../../resources/side-effects/types';
 import { requestPerSecondLimiter } from '../requestPerSecondLimit';
 
-// ////  :-: ??? 01 define _rateLimiter
+// DEFINE: ??? 01 define _rateLimiter
 function _rateLimiter<R>(configs: {
   httpClient: ClientStatic;
   _config: ClientRequestConfig;
@@ -15,17 +15,17 @@ function _rateLimiter<R>(configs: {
   const { _config, httpClient, maxPerSeconds, possiblePerSeconds } = configs;
 
   if (possiblePerSeconds <= (maxPerSeconds || 20) && possiblePerSeconds > 0) {
-    // ////  :-: ??? 02 define requestLimiter
-    // ////  :-: !!! 03 *call* requestPerSecondLimiter
+    // DEFINE: ??? 02 define requestLimiter
+    // CALL: !!! 03 *call* requestPerSecondLimiter
     const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
 
-    // ////  :-: !!! 02 *call* requestLimiter
-    // ////  !-: WITH RATE LIMITER
+    // CALL: !!! 02 *call* requestLimiter
+    // WITH RATE LIMITER                                              // SECTION:
     return requestLimiter(
       async (): Promise<ClientResponse<R>> => httpClient(_config),
     );
   } else {
-    // ////  !-: NO RATE LIMITER
+    // NO RATE LIMITER                                                // SECTION:
     return httpClient(_config);
   }
 }
