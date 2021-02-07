@@ -1,4 +1,4 @@
-import { perSeconds } from '../../../utils/index.ts';
+import { perSeconds } from '../../../utils';
 
 export class ApiCallQ {
   private constructor() {
