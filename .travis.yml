@@ -1,8 +1,8 @@
 # testing config: travis ci
 os: linux
-dist: xenial
-arch: arm64
 language: node_js
+# dist: xenial
+# arch: arm64
 
 cache:
   directories:
@@ -20,40 +20,39 @@ branches:
     - next/from-v1.2.0-next-20201226
   except: # — Branches to exclude (type: sequence of string, or string, alias: exclude, e.g.: develop)
     - next/feature
+# jobs:
+#   fast_finish: true
+#   include:
+#     - name: Linux bionic arm64-graviton2 (node) npm run CI
+#       stage: test
+#       node_js:
+#         - node # latest stable Node.js release
+#       script:
+#         - npm run CI
+#         - ls -alg
+#         - echo "Running tests against $(node -v)..."
 
-jobs:
-  fast_finish: true
-  include:
-    - name: Linux bionic arm64-graviton2 (node) npm run CI
-      stage: test
-      node_js:
-        - node # latest stable Node.js release
-      script:
-        - npm run CI
-        - ls -alg
-        - echo "Running tests against $(node -v)..."
-
-    - name: Linux bionic arm64-graviton2 (lts/*) npm run CI
-      stage: test
-      node_js:
-        - lts/* # latest LTS Node.js release
-      script:
-        - npm run CI
-        - ls -alg
-        - echo "Running tests against $(node -v)..."
-    # - name: Linux bionic arm64-graviton2 (node 12.x) npm run CI
-    #   stage: test
-    #   node_js:
-    #     - 12 # latest 12.x release
-    #   script:
-    #     - npm run CI
-    #     - ls -alg
-    #     - echo "Running tests against $(node -v)..."
-    # - name: Linux bionic arm64-graviton2 (node 10.x) npm run CI
-    #   stage: test
-    #   node_js:
-    #     - 10 # latest 10.x release
-    #   script:
-    #     - npm run CI
-    #     - ls -alg
-    #     - echo "Running tests against $(node -v)..."
+#     - name: Linux bionic arm64-graviton2 (lts/*) npm run CI
+#       stage: test
+#       node_js:
+#         - lts/* # latest LTS Node.js release
+#       script:
+#         - npm run CI
+#         - ls -alg
+#         - echo "Running tests against $(node -v)..."
+# - name: Linux bionic arm64-graviton2 (node 12.x) npm run CI
+#   stage: test
+#   node_js:
+#     - 12 # latest 12.x release
+#   script:
+#     - npm run CI
+#     - ls -alg
+#     - echo "Running tests against $(node -v)..."
+# - name: Linux bionic arm64-graviton2 (node 10.x) npm run CI
+#   stage: test
+#   node_js:
+#     - 10 # latest 10.x release
+#   script:
+#     - npm run CI
+#     - ls -alg
+#     - echo "Running tests against $(node -v)..."
