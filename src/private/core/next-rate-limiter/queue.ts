@@ -1,6 +1,20 @@
 import { perSeconds } from '../../../utils';
 
 export class ApiCallQ {
+  private lastCall: number;
+  protected isGreenLight: boolean;
+  protected isCalled: boolean;
+  private first: any;
+  private last: any;
+  private size: number;
+  public value: Ŋ | null;
+
+  private args: any;
+  private cb: any;
+  private fn: any;
+  private rateLimitReset: number;
+
+  private requestsRemaining: number;
   private constructor() {
     this.first = null;
     this.last = null;
@@ -12,17 +26,76 @@ export class ApiCallQ {
     this.rateLimitReset = 0;
     this.requestsRemaining = 1;
   }
-  private lastCall: number;
-  protected isGreenLight: boolean;
-  protected isCalled: boolean;
-  private first: any;
-  private last: any;
-  private size: number;
-  public value: Ŋ | null;
+  public async callToPop(hertz: number): Promise<void> {
+    if (this.size > 0 && !this.isCalled) {
+      this.isCalled = true;
+      setTimeout(async (): Promise<void> => {
+        this.isCalled = false;
+        await this.callToPop(1);
+        return void 151;
+      }, perSeconds(hertz));
+      const poped = this.dequeue()?.value ?? null;
+      let myfn: any;
+      let mycb: any;
 
-  private rateLimitReset: number;
+      if (poped) {
+        const {
+          xRemaining,
+          xReset,
+          fn,
+          cb,
+          args,
+          timeThen,
+          maxPerSec,
+          maxPerHour,
+        } = poped;
 
-  private requestsRemaining: number;
+        cb(fn(args));
+        void xRemaining, xReset, fn, cb, args, timeThen, maxPerSec, maxPerHour;
+        poped;
+        // [myfn, mycb] = !!poped ? poped : [neverWillCb, neverCb];
+      }
+      this.xReset = 10;
+      const anyX = this.xReset;
+
+      void anyX;
+      const msRemaining = this.xReset * 1000 - ApiCallQ.now;
+      const waitPeriodMs = msRemaining / this.xRemaining;
+      const msThen = ApiCallQ.now + waitPeriodMs;
+
+      while (ApiCallQ.now <= msThen) {
+        // do nothing just wait while rightNow <= msThen;
+      }
+
+      mycb(null, myfn());
+      this.resetLastCall();
+      return void 151;
+    }
+    return void 151;
+  }
+  public async next() {
+    const msRemaining = this.xReset * 1000 - this.now;
+    const waitPeriodMs = msRemaining / this.xRemaining;
+
+    void waitPeriodMs;
+    /*
+      30
+      30000 (8 requests per seconds)
+      xMarketDatacalls
+
+      20
+      15000 (4 requests per seconds)
+      xRateLimitRemaining: 100
+      xRateLimitReset: 1300286940 (in the future a larger number than now)
+
+
+      account = 120ms ~ 33ms
+      market = 240ms ~ 50ms
+    */
+  }
+  protected execute() {
+    return this.cb(this.fn, this.args);
+  }
   public enqueue(val: Ŋ) {
     const {
       xRemaining,
@@ -70,7 +143,7 @@ export class ApiCallQ {
     // maxPerHour: number;
   }
 
-  protected dequeue() {
+  public dequeue() {
     if (!this.first) {
       this.value = null;
       return this;
@@ -83,83 +156,67 @@ export class ApiCallQ {
     }
     this.first = this.first.next;
     this.size -= 1;
+    this.args = this.value?.args ?? null;
+    this.cb = this.value?.cb ?? ((fn: any, arg: any) => fn(arg));
+    this.fn = this.value?.fn ?? ((arg: any) => arg);
+    this.maxPerHour = this.value?.maxPerHour ?? 15_000;
+    this.maxPerSec = this.value?.maxPerSec ?? 20;
+    this.timeThen = this.value?.timeThen ?? 0;
+    this.xRemaining = this.value?.xRemaining ?? 0;
+    this.xReset = this.value?.xReset ?? 0;
     return this;
+  }
+  public set xRemaining(value: number) {
+    this.requestsRemaining = value === 0 ? 1 : value;
   }
   public get xRemaining() {
     return this.requestsRemaining === 0 ? 1 : this.requestsRemaining;
-  }
-
-  public set xRemaining(value: number) {
-    this.requestsRemaining = value;
   }
   /** Setter accept value in seconds */
   public set xReset(seconds: number) {
     this.rateLimitReset = seconds;
   }
-
   /** Getter return miliseconds  */
   public get xReset() {
     return this.rateLimitReset * 1000;
   }
+  static get now(): number {
+    return Date.now();
+  }
 
-  static get rightNow(): number {
+  public get now(): number {
     return Date.now();
   }
   public get count() {
     return this.size;
   }
   protected get lastDelay() {
-    return ApiCallQ.rightNow - this.lastCall;
+    return ApiCallQ.now - this.lastCall;
   }
   protected resetLastCall() {
     this.lastCall = Date.now();
   }
-  public async callToPop(hertz: number): Promise<void> {
-    if (this.size > 0 && !this.isCalled) {
-      this.isCalled = true;
-      setTimeout(async (): Promise<void> => {
-        this.isCalled = false;
-        await this.callToPop(1);
-        return void 151;
-      }, perSeconds(hertz));
-      const poped = this.dequeue()?.value ?? null;
-      let myfn: any;
-      let mycb: any;
 
-      if (poped) {
-        const {
-          xRemaining,
-          xReset,
-          fn,
-          cb,
-          args,
-          timeThen,
-          maxPerSec,
-          maxPerHour,
-        } = poped;
-
-        cb(fn(args));
-        void xRemaining, xReset, fn, cb, args, timeThen, maxPerSec, maxPerHour;
-        poped;
-        // [myfn, mycb] = !!poped ? poped : [neverWillCb, neverCb];
-      }
-      this.xReset = 10;
-      const anyX = this.xReset;
-
-      void anyX;
-      const msRemaining = this.xReset * 1000 - ApiCallQ.rightNow;
-      const waitPeriodMs = msRemaining / this.xRemaining;
-      const msThen = ApiCallQ.rightNow + waitPeriodMs;
-
-      while (ApiCallQ.rightNow <= msThen) {
-        // do nothing just wait while rightNow <= msThen;
-      }
-
-      mycb(null, myfn());
-      this.resetLastCall();
-      return void 151;
-    }
-    return void 151;
+  private _maxPerHour: any;
+  public set maxPerHour(value: number) {
+    this._maxPerHour = value;
+  }
+  public get maxPerHour() {
+    return this._maxPerHour;
+  }
+  private _maxPerSec: any;
+  public set maxPerSec(value: number) {
+    this._maxPerSec = value;
+  }
+  public get maxPerSec() {
+    return this._maxPerSec;
+  }
+  private _timeThen: any;
+  public set timeThen(value: number) {
+    this._timeThen = value;
+  }
+  public get timeThen() {
+    return this._timeThen;
   }
 }
 
@@ -244,20 +301,24 @@ Category	API Calls	Maximum allowed
 requests per second	Maximum allowed
 requests per hour
 xAccountcalls
+
 GET time
 GET accounts
 GET accounts/:id/positions
 GET accounts/:id/balances
 GET accounts/:id/executions
 GET accounts/:id/orders
-30
-30000 (8 requests per seconds)
-xMarketDatacalls
+
 GET markets
 GET markets/quotes/:id
 GET markets/candles/:id
 GET symbols/:id
 GET symbols/:id/options
+
+30
+30000 (8 requests per seconds)
+xMarketDatacalls
+
 20
 15000 (4 requests per seconds)
 xRateLimitRemaining: 100

@@ -18,13 +18,14 @@ function _httpDataEndPointConnector<R>(
   _config: ClientRequestConfig,
   credentials?: Credentials,
   proxy?: ProxyFactory_,
+  isNewRateLimiterInFunction: boolean = false,
 ) {
   return async (
     errorlog: Logger,
     handlerOptions: ProxyHandlerOptions,
   ): Promise<R> => {
     // encodeURIComponent() _config
-    // INFO: PROXY BLOCK START ***********************************************
+    // INFO: PROXY BLOCK START                                                //-!
     let httpClient: ClientStatic = getHttpClient();
 
     if (proxy?.httpDataEndPointConnector && proxy?.activate) {
@@ -33,13 +34,22 @@ function _httpDataEndPointConnector<R>(
 
     const possiblePerSeconds =
       credentials?.remainingRequests?.possiblePerSeconds ?? 21;
-    // CALL: !!! 01 *call* _rateLimiter
-    const response: ClientResponse = await _rateLimiter({
-      _config,
-      httpClient,
-      maxPerSeconds: 20,
-      possiblePerSeconds,
-    });
+    let response: ClientResponse;
+
+    // FUNC CALL:         !!! 01 *call* _rateLimiter                            //-&
+    response = await (isNewRateLimiterInFunction
+      ? _rateLimiter({
+          _config,
+          httpClient,
+          maxPerSeconds: 22,
+          possiblePerSeconds,
+        })
+      : _rateLimiter({
+          _config,
+          httpClient,
+          maxPerSeconds: 20,
+          possiblePerSeconds,
+        }));
 
     /*
 

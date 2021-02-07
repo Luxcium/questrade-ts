@@ -68,11 +68,11 @@ export function myPromisify<T>(addToQueue: (cb: any) => Promise<void>) {
   });
 }
 function limitingRequest(limiterFactory: ReqLimiterFactory) {
-  // DEFINE: requestLimiter // CALL: limiterFactory
+  // FUNC DEF: requestLimiter // FUNC CALL: limiterFactory
   const requestLimiter = limiterFactory();
 
   return (hz: number) => async <T>(fn: () => T) => {
-    // CALL: !!! 05 *call* requestLimiter
+    // FUNC CALL: !!! 05 *call* requestLimiter
     const addToQueue = requestLimiter(fn, hz);
 
     return myPromisify<T>(addToQueue);
@@ -92,7 +92,7 @@ function neverCb(error: Error | null, returnValue: any): never {
   );
 }
 
-// DEFINE: requestPerSecondLimiter // CALL: limitingRequest
+// FUNC DEF: requestPerSecondLimiter // FUNC CALL: limitingRequest
 export const requestPerSecondLimiter = limitingRequest(requestLimiterFactory);
 
 export type ReqLimiterFactory = () => (
