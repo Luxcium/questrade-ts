@@ -265,7 +265,6 @@
   // "todo-tree.highlights.foregroundColourScheme": [
   //   "#224",
   // ],
-  // SECTION:
   "todo-tree.highlights.defaultHighlight": {
     "icon": "alert",
     "type": "tag",
