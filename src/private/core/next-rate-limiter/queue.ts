@@ -1,38 +1,6 @@
 import { perSeconds } from '../../../utils';
 
-/*
-Category	API Calls	Maximum allowed
-requests per second	Maximum allowed
-requests per hour
-xAccountcalls
-GET time
-GET accounts
-GET accounts/:id/positions
-GET accounts/:id/balances
-GET accounts/:id/executions
-GET accounts/:id/orders
-30
-30000 (8 requests per seconds)
-xMarketDatacalls
-GET markets
-GET markets/quotes/:id
-GET markets/candles/:id
-GET symbols/:id
-GET symbols/:id/options
-20
-15000 (4 requests per seconds)
-xRateLimitRemaining: 100
-xRateLimitReset: 1300286940 (in the future a larger number than now)
-
-const msRemaining = (this.xRateLimitReset * 1000) - this.rightNow()
-const waitPeriodMs = (msRemaining / xRequestsRemaining)
-
-account = 120ms ~ 33ms
-market = 240ms ~ 50ms
-
-
- */
-export class ApiCallQ<Ŋ> {
+export class ApiCallQ {
   private constructor() {
     this.first = null;
     this.last = null;
@@ -55,7 +23,68 @@ export class ApiCallQ<Ŋ> {
   private rateLimitReset: number;
 
   private requestsRemaining: number;
+  public enqueue(val: Ŋ) {
+    const {
+      xRemaining,
+      xReset,
+      fn,
+      cb,
+      args,
+      timeThen,
+      maxPerSec,
+      maxPerHour,
+    } = val;
 
+    const newNode = new Node({
+      args,
+      cb,
+      fn,
+      maxPerHour,
+      maxPerSec,
+      timeThen,
+      xRemaining,
+      xReset,
+    });
+
+    if (!this.first) {
+      this.first = newNode;
+      this.last = newNode;
+    } else {
+      this.last.next = newNode;
+      this.last = newNode;
+    }
+    this.size += 1;
+    return this;
+
+    /*
+
+    xRemaining ,xReset ,fn ,cb ,args ,timeThen ,maxPerSec ,maxPerHour
+     */
+    // xRemaining: number;
+    // xReset: number;
+    // fn: any;
+    // cb: any;
+    // args: any;
+    // timeThen: number;
+    // maxPerSec: number;
+    // maxPerHour: number;
+  }
+
+  protected dequeue() {
+    if (!this.first) {
+      this.value = null;
+      return this;
+    }
+
+    this.value = this.first;
+
+    if (this.first === this.last) {
+      this.last = null;
+    }
+    this.first = this.first.next;
+    this.size -= 1;
+    return this;
+  }
   public get xRemaining() {
     return this.requestsRemaining === 0 ? 1 : this.requestsRemaining;
   }
@@ -98,7 +127,20 @@ export class ApiCallQ<Ŋ> {
       let mycb: any;
 
       if (poped) {
-        poped as Ŋ;
+        const {
+          xRemaining,
+          xReset,
+          fn,
+          cb,
+          args,
+          timeThen,
+          maxPerSec,
+          maxPerHour,
+        } = poped;
+
+        cb(fn(args));
+        void xRemaining, xReset, fn, cb, args, timeThen, maxPerSec, maxPerHour;
+        poped;
         // [myfn, mycb] = !!poped ? poped : [neverWillCb, neverCb];
       }
       this.xReset = 10;
@@ -119,34 +161,6 @@ export class ApiCallQ<Ŋ> {
     }
     return void 151;
   }
-  public enqueue(val: any) {
-    const newNode = new Node<Ŋ>(val);
-
-    if (!this.first) {
-      this.first = newNode;
-      this.last = newNode;
-    } else {
-      this.last.next = newNode;
-      this.last = newNode;
-    }
-    this.size += 1;
-    return this;
-  }
-
-  public dequeue() {
-    if (!this.first) {
-      return null;
-    }
-
-    this.value = this.first;
-
-    if (this.first === this.last) {
-      this.last = null;
-    }
-    this.first = this.first.next;
-    this.size -= 1;
-    return this;
-  }
 }
 
 // first request
@@ -161,14 +175,24 @@ export class ApiCallQ<Ŋ> {
     this.value = this._queue.dequeue();
 
   }
+
  */
 // second request
 // its restponse
 
 // next request
 // its restponse
-
-class Node<Ŋ> {
+interface Ŋ {
+  xRemaining: number;
+  xReset: number;
+  fn: any;
+  cb: any;
+  args: any;
+  timeThen: number;
+  maxPerSec: number;
+  maxPerHour: number;
+}
+class Node {
   public value: Ŋ;
   public next: any;
   constructor(value: Ŋ) {
@@ -214,3 +238,36 @@ export class Queue {
     return temp.value;
   }
 }
+
+/*
+Category	API Calls	Maximum allowed
+requests per second	Maximum allowed
+requests per hour
+xAccountcalls
+GET time
+GET accounts
+GET accounts/:id/positions
+GET accounts/:id/balances
+GET accounts/:id/executions
+GET accounts/:id/orders
+30
+30000 (8 requests per seconds)
+xMarketDatacalls
+GET markets
+GET markets/quotes/:id
+GET markets/candles/:id
+GET symbols/:id
+GET symbols/:id/options
+20
+15000 (4 requests per seconds)
+xRateLimitRemaining: 100
+xRateLimitReset: 1300286940 (in the future a larger number than now)
+
+const msRemaining = (this.xRateLimitReset * 1000) - this.rightNow()
+const waitPeriodMs = (msRemaining / xRequestsRemaining)
+
+account = 120ms ~ 33ms
+market = 240ms ~ 50ms
+
+
+ */
