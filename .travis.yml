@@ -7,8 +7,8 @@ language: node_js
 cache:
   directories:
     - "$HOME/.node_packages"
-  npm: true
-  yarn: true
+  # npm: true
+  # yarn: true
 
 install:
   - npm install
