@@ -206,6 +206,16 @@
     "output",
   ],
   "todo-tree.highlights.customHighlight": {
+    "←:": { // return statment
+      "foreground": "#CF2",
+      "background": "#CF2",
+      "iconColour": "#CF2",
+      "opacity": 50,
+      "type": "text-and-comment",
+      "icon": "cross-reference",
+      "gutterIcon": true,
+      "rulerLane": "center",
+    },
     "BUG:": {
       "foreground": "#224",
       "background": "#F15",
@@ -237,6 +247,27 @@
       "icon": "x-circle",
       "gutterIcon": true,
       "rulerLane": "center",
+      // "ERROR HANDLER:",
+    },
+    "ERROR HANDLER:": {
+      "foreground": "#FC9",
+      "background": "#F359",
+      "iconColour": "#F149",
+      "icon": "note",
+      "gutterIcon": true,
+      "type": "tag-and-comment",
+      "rulerLane": "center",
+      // "ERROR HANDLER:",
+    },
+    "-?": {
+      "foreground": "#FDB",
+      "background": "#F14",
+      "opacity": 30,
+      "type": "whole-line",
+      "gutterIcon": false,
+      "hideFromTree": true,
+      "hideFromStatusBar": true,
+      "rulerLane": "none",
     },
     "FIXME:": {
       "foreground": "#224",
@@ -364,16 +395,6 @@
       "gutterIcon": true,
       "rulerLane": "center",
     },
-    "-?": {
-      "foreground": "#224",
-      "background": "#E22",
-      "opacity": 25,
-      "type": "whole-line",
-      "gutterIcon": false,
-      "hideFromTree": true,
-      "hideFromStatusBar": true,
-      "rulerLane": "none",
-    },
     "FUNC DEF:": {
       "foreground": "#07F",
       "background": "#FB0",
@@ -450,7 +471,7 @@
       "hideFromStatusBar": true,
     },
     "-:": {
-      "foreground": "#224",
+      "foreground": "#F15",
       "background": "#F15",
       "opacity": 25,
       "type": "whole-line",
@@ -524,14 +545,6 @@
       "gutterIcon": true,
       "rulerLane": "center",
     },
-    "+:": {
-      "foreground": "#224",
-      "background": "#CF2",
-      "iconColour": "#CF2",
-      "icon": "plus",
-      "gutterIcon": true,
-      "rulerLane": "center",
-    },
     "::": {
       "foreground": "#224",
       "background": "#9BE",
@@ -545,10 +558,12 @@
     "BUG:",
     "CONSOLE:",
     "ERROR:",
+    "ERROR HANDLER:",
     "FIXME:",
     "HACK:",
     "HINT:",
     "INFO:",
+    "←:",
     "-!",
     "SECTION:",
     "-@",
@@ -764,20 +779,20 @@
       "strikethrough": false,
       "backgroundColor": "#9C73"
     },
-    // +",
+    // +   ,
     {
       "tag": "+",
       "color": "#CF2",
       "strikethrough": false,
-      "backgroundColor": "#CF23"
+      // "backgroundColor": "#CF23"
     },
-    // :",
-    {
-      "tag": ":",
-      "color": "#9BE",
-      "strikethrough": false,
-      "backgroundColor": "#9BE3"
-    },
+    // // :  ,
+    // {
+    //   "tag": ":",
+    //   "color": "#9BE",
+    //   "strikethrough": false,
+    //   "backgroundColor": "#9BE3"
+    // },
     {
       // constructor
       "tag": "constructor",
