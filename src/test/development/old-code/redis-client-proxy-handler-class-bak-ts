@@ -63,7 +63,7 @@ class redisClientProxyHandlerClass<T extends Function = ClientStatic>
     return { proxyData, response, returnValue, urlPath };
   }
 
-  async apply(target: T, thisArg: any, argArray?: any): Promise<any> {
+  async apply(target: T, thisArg: any, argArray?: any)  {
     const urlPath = getQtUrlPathFromArgs(argArray);
     const { URL_HSH } = getUrlHash(urlPath);
 
@@ -222,7 +222,7 @@ class redisClientProxyHandlerClass<T extends Function = ClientStatic>
       proxy: {
         ...this.proxy,
         handlerMethod:
-          'async apply(target: ClientStatic, thisArg: any, argArray?: any): Promise<any>',
+          'async apply(target: ClientStatic, thisArg: any, argArray?: any) ',
         sideEffects: 'void echo(proxyData); void0(this.tedis);',
       },
       ...getUrlAndDataHashes(urlPath, data),

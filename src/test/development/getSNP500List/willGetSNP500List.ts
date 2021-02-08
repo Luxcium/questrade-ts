@@ -13,8 +13,8 @@ const client = getHttpClient();
 export const willGetSNP500StringList = async () =>
   (await willGetSNP500List())[0];
 
-export async function willGetSNP500List(): Promise<ConstituentsSymbolsAndList> {
-  return (async (url): Promise<ConstituentsSymbolsAndList> => {
+export async function willGetSNP500List() {
+  return (async url => {
     const data: Constituent[] = (await client.get(url)).data;
     const constituentsSymbols: ConstituentsSymbols = data.map(
       (obj: Constituent) => obj.Symbol,

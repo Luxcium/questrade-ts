@@ -5,7 +5,7 @@ import { void0 } from '../utils';
 
 const once = { onlyOnce: true };
 
-async function main(): Promise<boolean> {
+async function main() {
   echo(`Will execute main: ${once.onlyOnce}`);
   if (!once.onlyOnce) {
     return false;
@@ -23,8 +23,8 @@ async function main(): Promise<boolean> {
 
   return true;
 }
-// main();
-export { main };
+main();
+export { main, main2 };
 
 class Node {
   public next: any;
@@ -169,4 +169,4 @@ function main2() {
 
   ech0(`Ratio ${ratio2} or ${1 / ratio2}`);
 }
-main2();
+// main2();

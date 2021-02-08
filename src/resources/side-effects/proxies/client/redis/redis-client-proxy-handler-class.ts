@@ -37,7 +37,7 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
     implements: 'ProxyHandler<T>',
     proxy: 'Redis QtApi Caching Proxy',
   };
-  async apply(target: T, thisArg: any, argArray?: any): Promise<any> {
+  async apply(target: T, thisArg: any, argArray?: any) {
     const myRedis = new Redis();
 
     try {
@@ -380,7 +380,7 @@ export function redisProxyHandler(
 //     proxy: {
 //       ...this.proxy,
 //       handlerMethod:
-//         'async apply(target: ClientStatic, thisArg: any, argArray?: any): Promise<any>',
+//         'async apply(target: ClientStatic, thisArg: any, argArray?: any) ',
 //       sideEffects: 'void echo(proxyData); voech0(this.tedis);',
 //     },
 //     ...getUrlAndDataHashes(urlPath, data),

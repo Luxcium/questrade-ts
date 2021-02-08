@@ -32,7 +32,7 @@ void0();
 //     };
 
 //     // when isRequested = true or if queue is empty
-//     return async function pushInToQueue(cb: CallBack<any>): Promise<void> {
+//     return async function pushInToQueue(cb: CallBack<any>) {
 //       queueList.push([fn, cb]);
 //       return shiftOutFromQueue();
 //     };

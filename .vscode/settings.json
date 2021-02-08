@@ -215,6 +215,8 @@
       "icon": "cross-reference",
       "gutterIcon": true,
       "rulerLane": "center",
+      "hideFromTree": true,
+      "hideFromStatusBar": true,
     },
     "BUG:": {
       "foreground": "#224",
@@ -247,8 +249,8 @@
       "icon": "x-circle",
       "gutterIcon": true,
       "rulerLane": "center",
-      // "ERROR HANDLER:",
     },
+    // ERROR HANDLER: //-?
     "ERROR HANDLER:": {
       "foreground": "#FC9",
       "background": "#F359",
@@ -268,6 +270,28 @@
       "hideFromTree": true,
       "hideFromStatusBar": true,
       "rulerLane": "none",
+    },
+    // RETURN:           //→
+    "RETURN:": {
+      "foreground": "#224",
+      "background": "#CF2",
+      "iconColour": "#CF2",
+      "icon": "cross-reference",
+      // "opacity": 50,
+      "gutterIcon": true,
+      // "type": "tag-and-comment",
+      "rulerLane": "center",
+      // "ERROR HANDLER:",
+    },
+    "→": {
+      "foreground": "#5CF",
+      "background": "#5CF",
+      "opacity": 30,
+      "gutterIcon": false,
+      "type": "whole-line",
+      "rulerLane": "center",
+      "hideFromTree": true,
+      "hideFromStatusBar": true,
     },
     "FIXME:": {
       "foreground": "#224",
@@ -570,6 +594,8 @@
     "CONSOLE:",
     "ERROR:",
     "ERROR HANDLER:",
+    "RETURN:",
+    "→",
     "FIXME:",
     "HACK:",
     "HINT:",

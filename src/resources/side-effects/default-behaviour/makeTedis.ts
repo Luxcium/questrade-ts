@@ -12,7 +12,7 @@ export function makeTedis(
         tls?: { key: Buffer; cert: Buffer } | undefined;
       }
     | undefined,
-): Tedis {
+) {
   return new Tedis(options);
 }
 // // new Redis
@@ -30,7 +30,7 @@ export function makeTedis(
 //   return async (
 //     options?: RedisOptions,
 //     prefix: string = 'JSON',
-//   ): Promise<Redis> => {
+//   )  => {
 //     const redis = redisFactory(options);
 
 //     const jsonCache = new JSONCache<Example>(makeTedis(), { prefix });

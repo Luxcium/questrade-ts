@@ -25,7 +25,7 @@ class ClientConsoleLogHashesHandlerClass
     target: ClientStatic,
     thisArg: any,
     argArray?: any,
-  ): Promise<any> {
+  )  {
     const returnValue = Reflect.apply(target, thisArg, argArray);
     const urlPath = getQtUrlPathFromArgs(argArray);
     const data = `${JSON.stringify((await returnValue).data ?? null)}`;
@@ -34,7 +34,7 @@ class ClientConsoleLogHashesHandlerClass
       proxy: {
         ...this.proxy,
         handlerMethod:
-          'async apply(target: ClientStatic, thisArg: any, argArray?: any): Promise<any>',
+          'async apply(target: ClientStatic, thisArg: any, argArray?: any) ',
         sideEffects: 'console.log',
       },
       ...getUrlAndDataHashes(urlPath, data),

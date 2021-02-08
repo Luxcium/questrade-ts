@@ -8,7 +8,7 @@ export const questradeApiFactory = async (
   proxy?: ((cred: Credentials) => ProxyFactory_) | null,
   errorloger: (error: any) => any = (error: any) => error,
 ) => {
-  const qtApi: QuestradeApi = await (async (): Promise<QuestradeApi> => {
+  const qtApi: QuestradeApi = await (async () => {
     if (proxy) {
       return _getQuestradeApi(credentials, proxy(credentials), errorloger);
     }

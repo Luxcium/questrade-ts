@@ -1,4 +1,4 @@
-export const remaningTimeString = (secsRemaning: number): string => {
+export const remaningTimeString = (secsRemaning: number) => {
   if (secsRemaning >= 60) {
     return (() => {
       const minutes = (secsRemaning / 60).toFixed(0);

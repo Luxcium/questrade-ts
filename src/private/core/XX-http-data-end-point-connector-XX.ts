@@ -1,8 +1,8 @@
 import { sideEffects } from '../../resources/side-effects';
 import {
+  ClientPromise,
   ClientRequestConfig,
   ClientResponse,
-  ClientStatic,
   ProxyHandlerOptions,
 } from '../../resources/side-effects/types';
 import { Credentials, Logger, ProxyFactory_ } from '../../typescript';
@@ -14,41 +14,42 @@ import {
 
 const { getHttpClient } = sideEffects;
 
-function _httpDataEndPointConnector<R>(
-  _config: ClientRequestConfig,
+function _httpDataEndPointConnector<DATA>(
+  config: ClientRequestConfig,
   credentials?: Credentials,
   proxy?: ProxyFactory_,
-  isNewRateLimiterInFunction: boolean = false,
+  useNewRateLimiter: boolean = false,
 ) {
   return async (
     errorlog: Logger,
     handlerOptions: ProxyHandlerOptions,
-  ): Promise<R> => {
-    let httpClient: ClientStatic = getHttpClient();
+  ): Promise<DATA> => {
+    let httpClient: (conf: ClientRequestConfig) => ClientPromise<any> = (
+      conf: ClientRequestConfig,
+    ) => getHttpClient()(conf);
 
     if (proxy?.httpDataEndPointConnector && proxy?.activate) {
-      // INFO: PROXY BLOCK START //-!
-      httpClient = proxy.activate(handlerOptions);
+      httpClient = (conf: ClientRequestConfig) =>
+        proxy.activate!(handlerOptions)(conf);
     }
 
     const possiblePerSeconds =
       credentials?.remainingRequests?.possiblePerSeconds ?? 21;
-    const response: ClientResponse = await _rateLimiter({
-      _config,
+    const response: ClientResponse<DATA> = await _rateLimiter({
+      config,
+      credentials,
       httpClient,
-      isNewRateLimiterInFunction,
-      maxPerSeconds: 22,
+      maxPerSeconds: 20,
       possiblePerSeconds,
+      useNewRateLimiter,
     });
 
-    const { data } = response;
-
-    if (data) {
-      _updateCredentials(_config, response, credentials);
-      return data; // ←: RETURN                                                 !
+    if (response.data) {
+      _updateCredentials(config, response, credentials);
+      return response.data;
     }
 
-    // ERROR HANDLER: ECHO STATUS ON ERROR //-?
+    // ERROR HANDLER: ECHO STATUS ON ERROR //-!
     _echoStatus(response, credentials);
     throw new Error(...errorlog("Can't retrive data from call to API"));
   };

@@ -8,7 +8,7 @@ import { void0 } from '../../../utils';
 // const { ech0, errorlog, getMyToken, makeTedis } = sideEffects;
 
 // export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
-// async function main(): Promise<Tedis> {
+// async function main()  {
 //   const { qtApi, credentials } = await redeemToken(
 //     getMyToken(),
 //     clientConsoleLogHashesHandler({
@@ -20,7 +20,7 @@ import { void0 } from '../../../utils';
 
 //   void0(credentials);
 //   void0(qtApi);
-//   return (async (): Promise<Tedis> => {
+//   return (async ()  => {
 //     const getSymbolId = getSymboIdByStockSymbol(qtApi);
 
 //     void ech0(await getSymbolId('AAPL'));

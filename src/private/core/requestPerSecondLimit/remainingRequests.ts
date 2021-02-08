@@ -1,12 +1,11 @@
 import { ClientResponse } from '../../../resources/side-effects/types';
-import { ITimeRateLimiter } from '../../../typescript/ITimeRateLimiter';
 
 const { ceil, floor, max, min } = Math;
 
 export const remainingRequests = <T>(
   response: ClientResponse<T>,
   maximumperseconds: number = 20,
-): ITimeRateLimiter => {
+) => {
   const remaining = Number(response.headers['x-ratelimit-remaining']);
   const timeUntilReset = Number(response.headers['x-ratelimit-reset']);
 

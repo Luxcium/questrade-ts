@@ -1,4 +1,4 @@
-function remaningTimeStringFunc(secsRemaning: number): string {
+function remaningTimeStringFunc(secsRemaning: number) {
   const minutes = (secsRemaning / 60).toFixed(0);
   const seconds = (secsRemaning % 60).toFixed(0);
 

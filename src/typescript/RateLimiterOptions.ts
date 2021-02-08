@@ -1,17 +1,22 @@
 import {
+  ClientPromise,
   ClientRequestConfig,
-  ClientResponse,
 } from '../resources/side-effects/types';
+import { Credentials } from '.';
 
 export interface RateLimiterOptions {
+  cb?: any;
+  config: ClientRequestConfig;
+  credentials?: Credentials;
+  fn?: (conf: ClientRequestConfig) => ClientPromise<any>;
+  httpClient: (conf: ClientRequestConfig) => ClientPromise<any>;
+  maxPerHour?: number;
+  maxPerSec?: number;
+  maxPerSeconds?: number | null;
+  possiblePerSeconds?: number;
+  timeThen?: number;
   xRemaining?: number;
   xReset?: number;
-  fn: <R>(arg: ClientRequestConfig) => ClientResponse<R> | any;
-  cb?: any;
-  args?: any;
-  timeThen?: number;
-  maxPerSec?: number;
-  maxPerHour?: number;
 }
 
 export type Ŋ = RateLimiterOptions;

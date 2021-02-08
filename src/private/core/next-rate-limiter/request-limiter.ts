@@ -4,20 +4,30 @@ import {
   requestLimiterFactory,
 } from '../requestPerSecondLimit';
 
-export const newRequestLimiter = <R>(options: RateLimiterOptions) => {
+export const newRequestLimiter = (options: RateLimiterOptions) => {
   const {
     xRemaining,
     xReset,
-    fn,
+    httpClient,
+    config,
     cb,
-    args,
+    credentials,
     timeThen,
     maxPerSec,
     maxPerHour,
   } = options;
 
   // cb(fn(args));
-  void xRemaining, xReset, fn, cb, args, timeThen, maxPerSec, maxPerHour;
-  return limitingRequest(requestLimiterFactory)(20)(async () => fn<R>(args));
+  void xRemaining,
+    xReset,
+    httpClient,
+    cb,
+    credentials,
+    timeThen,
+    maxPerSec,
+    maxPerHour;
+  return limitingRequest(requestLimiterFactory)(20)(async () =>
+    httpClient(config),
+  );
 };
 // newRequestLimiter

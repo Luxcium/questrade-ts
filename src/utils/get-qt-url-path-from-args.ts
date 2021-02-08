@@ -1,4 +1,4 @@
-export function getQtUrlPathFromArgs(argArray?: any): string {
+export function getQtUrlPathFromArgs(argArray?: any) {
   let urlPath = '';
 
   try {

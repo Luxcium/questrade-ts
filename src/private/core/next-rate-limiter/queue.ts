@@ -2,7 +2,7 @@ import { Ŋ } from '../../../typescript';
 import { perSeconds } from '../../../utils';
 
 export class ApiCallQ {
-  protected args: any;
+  protected config: any;
   protected cb: any;
   protected first: any;
   protected fn: any;
@@ -27,10 +27,10 @@ export class ApiCallQ {
     this.lastCalled = Date.now();
   }
 
-  public async callToPop(hertz: number): Promise<void> {
+  public async callToPop(hertz: number) {
     if (this.size > 0 && !this.isCalled) {
       this.isCalled = true;
-      setTimeout(async (): Promise<void> => {
+      setTimeout(async () => {
         this.isCalled = false;
         await this.callToPop(1);
         return void 151;
@@ -43,16 +43,23 @@ export class ApiCallQ {
         const {
           xRemaining,
           xReset,
-          fn,
+          httpClient,
           cb,
-          args,
+          config,
           timeThen,
           maxPerSec,
           maxPerHour,
         } = poped;
 
-        cb(fn(args));
-        void xRemaining, xReset, fn, cb, args, timeThen, maxPerSec, maxPerHour;
+        cb(httpClient(config));
+        void xRemaining,
+          xReset,
+          httpClient,
+          cb,
+          config,
+          timeThen,
+          maxPerSec,
+          maxPerHour;
         poped;
         // [myfn, mycb] = !!poped ? poped : [neverWillCb, neverCb];
       }
@@ -95,30 +102,21 @@ export class ApiCallQ {
     */
   }
   protected execute() {
-    return this.cb(this.fn, this.args);
+    return this.cb(this.fn, this.config);
   }
   public enqueue(val: Ŋ) {
-    const {
-      xRemaining,
-      xReset,
-      fn,
-      cb,
-      args,
-      timeThen,
-      maxPerSec,
-      maxPerHour,
-    } = val;
+    // const {
+    //   xRemaining,
+    //   xReset,
+    //   fn,
+    //   cb,
+    //   config,
+    //   timeThen,
+    //   maxPerSec,
+    //   maxPerHour,
+    // } = val;
 
-    const newNode = new Node({
-      args,
-      cb,
-      fn,
-      maxPerHour,
-      maxPerSec,
-      timeThen,
-      xRemaining,
-      xReset,
-    });
+    const newNode = new Node(val);
 
     if (!this.first) {
       this.first = newNode;
@@ -157,7 +155,7 @@ export class ApiCallQ {
     }
     this.first = this.first.next;
     this.size -= 1;
-    this.args = this.value?.args ?? null;
+    this.config = this.value?.config ?? null;
     this.cb = this.value?.cb ?? ((fn: any, arg: any) => fn(arg));
     this.fn = this.value?.fn ?? ((arg: any) => arg);
     this.maxPerHour = this.value?.maxPerHour ?? 15_000;

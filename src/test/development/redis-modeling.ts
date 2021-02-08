@@ -93,7 +93,7 @@ import { getSymboIdByStockSymbol, void0 } from '../../utils';
 const { ech0, errorlog, getMyToken, makeTedis } = sideEffects;
 
 export const parser = (obj: any) => JSON.parse(JSON.stringify(obj));
-async function main(): Promise<Tedis> {
+async function main()  {
   const { qtApi, credentials } = await redeemToken(
     getMyToken(),
     httpHashLoggerClientProxyHandler,
@@ -101,7 +101,7 @@ async function main(): Promise<Tedis> {
 
   void0(credentials);
   void0(qtApi);
-  return (async (): Promise<Tedis> => {
+  return (async ()  => {
     const getSymbolId = getSymboIdByStockSymbol(qtApi);
     void ech0(await getSymbolId('AAPL'));
     const tedis = makeTedis({ port: 6379 });
