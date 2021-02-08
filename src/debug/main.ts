@@ -1,4 +1,4 @@
-/* eslint-disable sonarjs/no-unused-collection */
+/* eslint-disable radar/no-unused-collection */
 import { questradeAPI } from '..';
 import { ech0, echo, getMyToken } from '../resources/side-effects';
 import { void0 } from '../utils';

@@ -293,6 +293,17 @@
       "gutterIcon": true,
       "rulerLane": "center",
     },
+    // eslint-disable
+    "eslint-disable": {
+      "foreground": "#5CF",
+      "background": "#93F",
+      "type": "whole-line",
+      "opacity": 30,
+      "iconColour": "#FB0",
+      "icon": "report",
+      "gutterIcon": true,
+      "rulerLane": "center",
+    },
     "INFO:": {
       "foreground": "#224",
       "background": "#BBB",
@@ -562,6 +573,7 @@
     "FIXME:",
     "HACK:",
     "HINT:",
+    "eslint-disable",
     "INFO:",
     "←:",
     "-!",

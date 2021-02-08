@@ -1,4 +1,4 @@
-/* eslint-disable sonarjs/no-duplicate-string */
+/* eslint-disable radar/no-duplicate-string */
 
 import { echo } from '../..';
 import { ProxyHandlerOptions } from '../../types';

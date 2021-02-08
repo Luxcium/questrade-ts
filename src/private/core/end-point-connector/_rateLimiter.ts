@@ -3,8 +3,8 @@ import {
   ClientResponse,
   ClientStatic,
 } from '../../../resources/side-effects/types';
+import { newRequestLimiter } from '../next-rate-limiter';
 import { requestPerSecondLimiter } from '../requestPerSecondLimit';
-import { newRequestLimiter } from '../requestPerSecondLimit/CORE_PerSecond_Limiter';
 
 function _rateLimiter<R>(configs: {
   httpClient: ClientStatic;

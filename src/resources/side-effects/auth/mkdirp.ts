@@ -13,9 +13,6 @@ export interface OptionsSync {
   fs?: FsImplementationSync;
 }
 
-const _0777 = Number.parseInt('0777', 8);
-
-// eslint-disable-next-line sonarjs/cognitive-complexity
 export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
   if (!opts || typeof opts !== 'object') {
     opts = { mode: opts };
@@ -24,8 +21,12 @@ export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
   let mode = opts.mode;
   const xfs = opts.fs || fs;
 
+  const _0777 = Number.parseInt('0777', 8);
+
   if (!mode) {
-    mode = _0777 & ~process.umask();
+    // HACK:  mode = _0777 & ~process.umask();
+    // HACK:  mode = /* _0777 & ~ */ process.umask(_0777);
+    mode = /* _0777 & ~ */ process.umask(_0777);
   }
   if (!made) {
     made = null;
@@ -34,6 +35,7 @@ export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
   p = path.resolve(p);
 
   try {
+    // eslint-disable-next-line security/detect-non-literal-fs-filename
     xfs.mkdirSync(p, mode);
     made = made || p;
   } catch (error) {
@@ -44,6 +46,7 @@ export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
       let stat;
 
       try {
+        // eslint-disable-next-line security/detect-non-literal-fs-filename
         stat = xfs.statSync(p);
       } catch {
         throw error;

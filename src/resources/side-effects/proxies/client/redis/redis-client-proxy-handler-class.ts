@@ -1,5 +1,5 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-// #region IMPORTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― $>
+/* eslint-disable radar/no-duplicate-string */
+// #region IMPORTS ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― $>
 import Redis from 'ioredis';
 import JSONCache from 'redis-json';
 
@@ -18,7 +18,7 @@ import {
 } from '../../../types';
 import { ReflexionLoggerProxyHandlerAbstractClass } from '../../core/reflexion-logger-proxy-handler-abstarct-class';
 
-// #endregion IMPORTS ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― $>
+// #endregion IMPORTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――― $>
 export type IoRedis = Redis.Redis;
 export type CachedResponse = any;
 
@@ -72,15 +72,6 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
           return ech0(responseFromCache);
         }
       } else {
-        ech0({ MESSGAE: 'NOT FROM CACHE' });
-        ech0({ MESSGAE: 'NOT FROM CACHE' });
-        ech0({ MESSGAE: 'NOT FROM CACHE' });
-        ech0({ MESSGAE: 'NOT FROM CACHE' });
-        ech0({ MESSGAE: 'NOT FROM CACHE' });
-        ech0({ MESSGAE: 'NOT FROM CACHE' });
-        ech0({ MESSGAE: 'NOT FROM CACHE' });
-        ech0({ MESSGAE: 'NOT FROM CACHE' });
-        ech0({ MESSGAE: 'NOT FROM CACHE' });
         ech0({ MESSGAE: 'NOT FROM CACHE' });
       }
 
