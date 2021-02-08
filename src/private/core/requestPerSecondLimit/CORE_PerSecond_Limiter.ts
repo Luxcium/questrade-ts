@@ -53,20 +53,6 @@ function requestLimiterFactory() {
   };
 }
 
-// export function myPromisify<T>(addToQueue: (cb: any) => Promise<void>) {
-//   return new Promise<T>((resolve, reject) => {
-//     addToQueue((error: Error, result: any) => {
-//       if (!!error) {
-//         void errorlog(error);
-
-//         reject(error);
-//         return void 0;
-//       }
-//       resolve(result);
-//       return void 0;
-//     });
-//   });
-// }
 function limitingRequest(limiterFactory: ReqLimiterFactory) {
   const requestLimiter = limiterFactory();
 
