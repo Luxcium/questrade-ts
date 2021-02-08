@@ -1,31 +1,32 @@
+import { Ŋ } from '../../../typescript';
 import { perSeconds } from '../../../utils';
 
 export class ApiCallQ {
-  private lastCall: number;
-  protected isGreenLight: boolean;
+  protected args: any;
+  protected cb: any;
+  protected first: any;
+  protected fn: any;
   protected isCalled: boolean;
-  private first: any;
-  private last: any;
-  private size: number;
+  protected isGreenLight: boolean;
+  protected last: any;
+  protected lastCalled: number;
+  protected size: number;
   public value: Ŋ | null;
-
-  private args: any;
-  private cb: any;
-  private fn: any;
-  private rateLimitReset: number;
-
-  private requestsRemaining: number;
   private constructor() {
     this.first = null;
     this.last = null;
     this.size = 0;
     this.value = null;
     this.isCalled = false;
-    this.lastCall = Date.now();
+    this.lastCalled = Date.now();
     this.isGreenLight = true;
     this.rateLimitReset = 0;
     this.requestsRemaining = 1;
   }
+  protected resetLastCall() {
+    this.lastCalled = Date.now();
+  }
+
   public async callToPop(hertz: number): Promise<void> {
     if (this.size > 0 && !this.isCalled) {
       this.isCalled = true;
@@ -166,12 +167,14 @@ export class ApiCallQ {
     this.xReset = this.value?.xReset ?? 0;
     return this;
   }
+  private requestsRemaining: number;
   public set xRemaining(value: number) {
     this.requestsRemaining = value === 0 ? 1 : value;
   }
   public get xRemaining() {
     return this.requestsRemaining === 0 ? 1 : this.requestsRemaining;
   }
+  private rateLimitReset: number;
   /** Setter accept value in seconds */
   public set xReset(seconds: number) {
     this.rateLimitReset = seconds;
@@ -191,10 +194,7 @@ export class ApiCallQ {
     return this.size;
   }
   protected get lastDelay() {
-    return ApiCallQ.now - this.lastCall;
-  }
-  protected resetLastCall() {
-    this.lastCall = Date.now();
+    return ApiCallQ.now - this.lastCalled;
   }
 
   private _maxPerHour: any;
@@ -239,16 +239,7 @@ export class ApiCallQ {
 
 // next request
 // its restponse
-interface Ŋ {
-  xRemaining: number;
-  xReset: number;
-  fn: any;
-  cb: any;
-  args: any;
-  timeThen: number;
-  maxPerSec: number;
-  maxPerHour: number;
-}
+
 class Node {
   public value: Ŋ;
   public next: any;

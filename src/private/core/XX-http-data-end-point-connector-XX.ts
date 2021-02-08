@@ -24,11 +24,10 @@ function _httpDataEndPointConnector<R>(
     errorlog: Logger,
     handlerOptions: ProxyHandlerOptions,
   ): Promise<R> => {
-    // encodeURIComponent() _config
-    // INFO: PROXY BLOCK START                                                //-!
     let httpClient: ClientStatic = getHttpClient();
 
     if (proxy?.httpDataEndPointConnector && proxy?.activate) {
+      // INFO: PROXY BLOCK START //-!
       httpClient = proxy.activate(handlerOptions);
     }
 
@@ -36,34 +35,23 @@ function _httpDataEndPointConnector<R>(
       credentials?.remainingRequests?.possiblePerSeconds ?? 21;
     let response: ClientResponse;
 
-    // FUNC CALL:         !!! 01 *call* _rateLimiter                            //-&
-    response = await (isNewRateLimiterInFunction
-      ? _rateLimiter({
-          _config,
-          httpClient,
-          maxPerSeconds: 22,
-          possiblePerSeconds,
-        })
-      : _rateLimiter({
-          _config,
-          httpClient,
-          maxPerSeconds: 20,
-          possiblePerSeconds,
-        }));
-
-    /*
-
-  let response: ClientResponse;
- */
-    _echoStatus(response, credentials); // INFO: ECHO STATUS ON ERROR *********
+    response = await _rateLimiter({
+      _config,
+      httpClient,
+      isNewRateLimiterInFunction,
+      maxPerSeconds: 22,
+      possiblePerSeconds,
+    });
 
     const { data } = response;
 
     if (data) {
       _updateCredentials(_config, response, credentials);
-      return data;
+      return data; // ←: RETURN                                                 !
     }
 
+    // ERROR HANDLER: ECHO STATUS ON ERROR //-?
+    _echoStatus(response, credentials);
     throw new Error(...errorlog("Can't retrive data from call to API"));
   };
 }

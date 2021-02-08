@@ -91,6 +91,7 @@ export type {
   QtApiSymbols,
   QuestradeApi,
 } from './QuestradeApi';
+export type { Ŋ, RateLimiterOptions } from './RateLimiterOptions';
 export type { ReqLimiterFactory } from './ReqLimiterFactory';
 export type { UrlDataAndHashes } from './UrlAndDataHashes';
 export type { WillCallBack } from './WillCallBack';

@@ -21,7 +21,7 @@ function _echoStatus(response: ClientResponse<any>, credentials?: Credentials) {
     void echo<unknown>('________________________________________________');
     void echo<unknown>('++++++++++++++++++++++++++++++++++++++++++++++++');
   } else {
-    // INFO: ECHO STATUS ON 200 OK Block Start *****************************
+    // INFO: ECHO STATUS ON 200 OK Block Start //-!
     // void echo(
     //   remaningTimeString(
     //     credentials?.remainingRequests?.secondsRemaning
