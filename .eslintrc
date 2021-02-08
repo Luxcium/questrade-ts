@@ -33,8 +33,9 @@
     "jsdoc",
     "prettier",
     "promise",
+    "radar",
+    "security",
     "simple-import-sort",
-    "sonarjs",
     "sort-keys-fix",
     "unicorn"
   ],
@@ -145,8 +146,6 @@
     "unicorn/prefer-text-content": "warn",
     "unicorn/prefer-trim-start-end": "warn",
     "unicorn/prefer-type-error": "warn",
-    // duplicate "unicorn/prevent-abbreviations": "off",
-    // duplicate "unicorn/throw-new-error": "warn",
     "unicorn/prevent-abbreviations": [
       "off",
       {
@@ -158,8 +157,6 @@
     // "unicorn/regex-shorthand": "warn",
     "unicorn/string-content": "warn",
     "unicorn/throw-new-error": "warn",
-    // "unicorn/no-nested-ternary": "off",
-    // "unicorn/number-literal-case": "off",
     "promise/always-return": "error",
     "promise/no-return-wrap": "error",
     "promise/param-names": "warn",
@@ -319,36 +316,51 @@
     "jsdoc/require-returns-type": 0, // "error", // Recommended
     "jsdoc/valid-types": 0, // "error" // Recommended
     /*
-  ―――――――― eslint-plugin-sonarjs ―――――――――――――――――――――――――――――――――――――――――――――――――
+  ―――――――― eslint-plugin-security ―――――――――――――――――――――――――――――――――――――――――――――――――
     */
-    "sonarjs/no-all-duplicated-branches": "error",
-    "sonarjs/no-element-overwrite": "error",
-    "sonarjs/no-extra-arguments": "error",
-    "sonarjs/no-identical-conditions": "error",
-    "sonarjs/no-identical-expressions": "error",
-    "sonarjs/no-one-iteration-loop": "error",
-    "sonarjs/no-use-of-empty-return-value": "error",
-    "sonarjs/cognitive-complexity": [
+    "security/detect-unsafe-regex": "error",
+    "security/detect-buffer-noassert": "error",
+    "security/detect-child-process": "error",
+    "security/detect-disable-mustache-escape": "error",
+    "security/detect-eval-with-expression": "error",
+    "security/detect-no-csrf-before-method-override": "error",
+    "security/detect-non-literal-fs-filename": "error",
+    "security/detect-non-literal-regexp": "error",
+    "security/detect-non-literal-require": "error",
+    "security/detect-object-injection": "error",
+    "security/detect-possible-timing-attacks": "error",
+    "security/detect-pseudoRandomBytes": "error",
+    /*
+  ―――――――― eslint-plugin-radar ―――――――――――――――――――――――――――――――――――――――――――――――――
+    */
+    "radar/no-all-duplicated-branches": "error",
+    "radar/no-element-overwrite": "error",
+    "radar/no-extra-arguments": "error",
+    "radar/no-identical-conditions": "error",
+    "radar/no-identical-expressions": "error",
+    "radar/no-one-iteration-loop": "error",
+    "radar/no-use-of-empty-return-value": "error",
+    "radar/cognitive-complexity": [
       "error",
       20
     ],
-    "sonarjs/max-switch-cases": "error",
-    "sonarjs/no-collapsible-if": "error",
-    "sonarjs/no-collection-size-mischeck": "error",
-    "sonarjs/no-duplicate-string": "error",
-    "sonarjs/no-duplicated-branches": "error",
-    "sonarjs/no-identical-functions": "error",
-    "sonarjs/no-inverted-boolean-check": "error",
-    "sonarjs/no-redundant-boolean": "error",
-    "sonarjs/no-redundant-jump": "error",
-    "sonarjs/no-same-line-conditional": "error",
-    "sonarjs/no-small-switch": "error",
-    "sonarjs/no-unused-collection": "error",
-    "sonarjs/no-useless-catch": "error",
-    "sonarjs/prefer-immediate-return": "warn",
-    "sonarjs/prefer-object-literal": "error",
-    "sonarjs/prefer-single-boolean-return": "error",
-    "sonarjs/prefer-while": "error",
+    "radar/max-switch-cases": "error",
+    "radar/no-collapsible-if": "error",
+    "radar/no-collection-size-mischeck": "error",
+    "radar/no-duplicate-string": "error",
+    "radar/no-duplicated-branches": "error",
+    "radar/no-identical-functions": "error",
+    "radar/no-inverted-boolean-check": "warn",
+    "radar/no-redundant-boolean": "error",
+    "radar/no-redundant-jump": "error",
+    "radar/no-same-line-conditional": "error",
+    "radar/no-small-switch": "error",
+    "radar/no-unused-collection": "error",
+    "radar/no-useless-catch": "error",
+    "radar/prefer-immediate-return": "warn",
+    "radar/prefer-object-literal": "error",
+    "radar/prefer-single-boolean-return": "error",
+    "radar/prefer-while": "warn",
     // # Deprecated
     // These rules have been deprecated in accordance with the deprecation policy, and replaced by newer rules:
     // Deprecated rule
