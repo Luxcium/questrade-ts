@@ -8,8 +8,7 @@ export interface RateLimiterOptions {
   cb?: any;
   config: ClientRequestConfig;
   credentials?: Credentials;
-  fn?: (conf: ClientRequestConfig) => ClientPromise<any>;
-  httpClient: (conf: ClientRequestConfig) => ClientPromise<any>;
+  httpClient: <R>(conf: ClientRequestConfig) => ClientPromise<R>;
   maxPerHour?: number;
   maxPerSec?: number;
   maxPerSeconds?: number | null;

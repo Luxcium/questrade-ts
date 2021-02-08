@@ -1,3 +1,4 @@
+import { MAX_PER_HOUR, MAX_PER_SECONDES } from '../../../magic-values';
 import { Ŋ } from '../../../typescript';
 import { perSeconds } from '../../../utils';
 
@@ -5,7 +6,7 @@ export class ApiCallQ {
   protected config: any;
   protected cb: any;
   protected first: any;
-  protected fn: any;
+  protected httpClient: any;
   protected isCalled: boolean;
   protected isGreenLight: boolean;
   protected last: any;
@@ -27,7 +28,7 @@ export class ApiCallQ {
     this.lastCalled = Date.now();
   }
 
-  public async callToPop(hertz: number) {
+  protected async callToPop(hertz: number) {
     if (this.size > 0 && !this.isCalled) {
       this.isCalled = true;
       setTimeout(async () => {
@@ -102,7 +103,7 @@ export class ApiCallQ {
     */
   }
   protected execute() {
-    return this.cb(this.fn, this.config);
+    return this.cb(this.httpClient, this.config);
   }
   public enqueue(val: Ŋ) {
     // const {
@@ -157,11 +158,11 @@ export class ApiCallQ {
     this.size -= 1;
     this.config = this.value?.config ?? null;
     this.cb = this.value?.cb ?? ((fn: any, arg: any) => fn(arg));
-    this.fn = this.value?.fn ?? ((arg: any) => arg);
-    this.maxPerHour = this.value?.maxPerHour ?? 15_000;
-    this.maxPerSec = this.value?.maxPerSec ?? 20;
+    this.httpClient = this.value?.httpClient;
+    this.maxPerHour = this.value?.maxPerHour ?? MAX_PER_HOUR;
+    this.maxPerSec = this.value?.maxPerSec ?? MAX_PER_SECONDES;
     this.timeThen = this.value?.timeThen ?? 0;
-    this.xRemaining = this.value?.xRemaining ?? 0;
+    this.xRemaining = this.value?.xRemaining ?? 1;
     this.xReset = this.value?.xReset ?? 0;
     return this;
   }

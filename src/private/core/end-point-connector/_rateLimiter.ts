@@ -1,11 +1,10 @@
 import {
   ClientPromise,
   ClientRequestConfig,
-  ClientResponse,
 } from '../../../resources/side-effects/types';
 import { Credentials } from '../../../typescript';
 import { newRequestLimiter } from '../next-rate-limiter';
-import { requestPerSecondLimiter } from '../requestPerSecondLimit';
+import { limitingRequest } from '../requestPerSecondLimit';
 
 function _rateLimiter<R>(configs: {
   httpClient: (conf: ClientRequestConfig) => ClientPromise<any>;
@@ -14,7 +13,8 @@ function _rateLimiter<R>(configs: {
   maxPerSeconds?: number | null;
   useNewRateLimiter: boolean;
   credentials?: Credentials;
-}) {
+}): ClientPromise<R> {
+  // function limitingRequest<T>(fn: Function, hertz?: number): Promise<T>
   const {
     config,
     httpClient,
@@ -26,17 +26,18 @@ function _rateLimiter<R>(configs: {
 
   if (possiblePerSeconds <= (maxPerSeconds || 20) && possiblePerSeconds > 0) {
     if (useNewRateLimiter) {
-      return newRequestLimiter({
+      return newRequestLimiter<R>({
         config,
         credentials,
         httpClient,
       });
     }
-    const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
-    const httpCall = async (): Promise<ClientResponse<R>> => httpClient(config);
+    // const requestLimiter = limitingRequest; //(possiblePerSeconds); ClientPromise<R>
+    const httpCall: () => ClientPromise<R> = async () => httpClient(config);
 
-    return requestLimiter(httpCall);
+    return limitingRequest(httpCall, possiblePerSeconds);
   }
+  //INFO: httpClient: <R>(conf: ClientRequestConfig) => ClientPromise<R>     //-!
   return httpClient(config);
 }
 

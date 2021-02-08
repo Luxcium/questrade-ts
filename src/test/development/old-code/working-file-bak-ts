@@ -1,4 +1,3 @@
-export const NULL = null;
 // const user = {
 //   name: 'redis-json',
 //   age: 25,

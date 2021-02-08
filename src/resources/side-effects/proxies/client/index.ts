@@ -1,3 +1,3 @@
-const NULL = null;
+import { NULL } from '../../../../magic-values';
 
-export default NULL;
+NULL;

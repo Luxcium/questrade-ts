@@ -4,7 +4,7 @@ import {
   ClientStatic,
 } from '../../../resources/side-effects/types';
 import { Credentials } from '../../../typescript';
-import { requestPerSecondLimiter } from '../requestPerSecondLimit';
+import { limitingRequest } from '../requestPerSecondLimit';
 
 async function _rateLimiter<R>(
   httpClient: ClientStatic,
@@ -17,18 +17,12 @@ async function _rateLimiter<R>(
     credentials?.remainingRequests?.possiblePerSeconds ?? 21;
   let response: ClientResponse;
 
-  if (possiblePerSeconds <= 20 && possiblePerSeconds > 0) {
-    //
-    const requestLimiter = requestPerSecondLimiter(possiblePerSeconds);
-
-    response = await requestLimiter(
-      async (): Promise<ClientResponse<R>> => httpClient(_config),
-    );
-  } else {
-    // INFO: NO RATE LIMITER Block Start ***************************************
-
-    response = await httpClient(_config);
-  }
+  response = await (possiblePerSeconds <= 20 && possiblePerSeconds > 0
+    ? limitingRequest(
+        async (): Promise<ClientResponse<R>> => httpClient(_config),
+        possiblePerSeconds,
+      )
+    : httpClient(_config));
   return response;
 }
 
