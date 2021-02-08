@@ -45,7 +45,7 @@ function requestLimiterFactory() {
       return void 0;
     };
 
-    return async (cb: CallBack<any>) => {
+    return async (cb: any /* CallBack<any> */) => {
       callsQueue.unshift([fn, cb]);
       callToPop();
       return void 0;
@@ -53,29 +53,41 @@ function requestLimiterFactory() {
   };
 }
 
-export function myPromisify<T>(addToQueue: (cb: any) => Promise<void>) {
-  return new Promise<T>((resolve, reject) => {
-    addToQueue((error: Error, result: any) => {
-      if (!!error) {
-        void errorlog(error);
+// export function myPromisify<T>(addToQueue: (cb: any) => Promise<void>) {
+//   return new Promise<T>((resolve, reject) => {
+//     addToQueue((error: Error, result: any) => {
+//       if (!!error) {
+//         void errorlog(error);
 
-        reject(error);
-        return void 0;
-      }
-      resolve(result);
-      return void 0;
-    });
-  });
-}
+//         reject(error);
+//         return void 0;
+//       }
+//       resolve(result);
+//       return void 0;
+//     });
+//   });
+// }
 function limitingRequest(limiterFactory: ReqLimiterFactory) {
-  // FUNC DEF: requestLimiter                                                 //-*
   const requestLimiter = limiterFactory();
 
   return (hz: number) => async <T>(fn: () => T) => {
-    // FUNC CALL: !!! 05 *call* requestLimiter                                //-&
+    // addToQueue: (cb: CallBack<any>) => Promise<void>
     const addToQueue = requestLimiter(fn, hz);
 
-    return myPromisify<T>(addToQueue);
+    // addToQueue: (cb: any) => Promise<void>
+    // return myPromisify<T>(addToQueue);
+    return new Promise<T>((resolve, reject) => {
+      addToQueue((error: Error, result: any) => {
+        if (!!error) {
+          void errorlog(error);
+
+          reject(error);
+          return void 0;
+        }
+        resolve(result);
+        return void 0;
+      });
+    });
   };
 }
 
@@ -98,6 +110,6 @@ const requestPerSecondLimiter = limitingRequest(requestLimiterFactory);
 export type ReqLimiterFactory = () => (
   fn: Function,
   hertz?: number,
-) => (cb: CallBack<any>) => Promise<void>;
+) => (cb: any /* CallBack<any> */) => Promise<void>;
 
 export { limitingRequest, requestLimiterFactory, requestPerSecondLimiter };
