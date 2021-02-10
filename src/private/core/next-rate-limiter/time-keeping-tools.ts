@@ -311,9 +311,6 @@ function limitRequestsPerSecondFunct(
 }
 
 interface TimeKeepingTools {
-  /**
-   *
-   */
   epochMs: EpochMs;
   epochSec: EpochSec;
   limitRequestsPerSecond: LimitRequestsPerSecond;
