@@ -1,0 +1,842 @@
+//------10--------20--------30--------40--------50--------60--------70--------80
+{
+  // == (©) == 2020-2021 == BENJAMIN == VINCENT == (LUXCIUM) == MIT-LICENSE == ~ ~-
+  "workbench.colorTheme": "Pop N' Lock Theme by Luxcium ✨",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "'VictorMono Nerd Font'",
+  "editor.fontSize": 26,
+  "terminal.integrated.fontSize": 12,
+  "editor.fontWeight": "500",
+  "editor.fontLigatures": true,
+  "editor.wordWrapColumn": 121,
+  "editor.wordWrap": "bounded",
+  "editor.suggestFontSize": 16,
+  "debug.console.fontSize": 16,
+  "editor.codeLensFontFamily": "",
+  "editor.codeLensFontSize": 0,
+  "css.lint.fontFaceProperties": "warning",
+  "markdown.preview.fontSize": 16,
+  "less.lint.fontFaceProperties": "error",
+  "scm.inputFontFamily": "default",
+  "scss.lint.fontFaceProperties": "error",
+  "material-icon-theme.showUpdateMessage": true,
+  "material-icon-theme.showReloadMessage": true,
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.enableBell": true,
+  "terminal.integrated.experimentalLinkProvider": true,
+  "terminal.integrated.environmentChangesIndicator": "on",
+  "terminal.integrated.scrollback": 100000,
+  "terminal.integrated.showExitAlert": true,
+  "terminal.integrated.cursorWidth": 3,
+  "terminal.integrated.lineHeight": 0,
+  "terminal.integrated.letterSpacing": 0,
+  "terminal.integrated.rendererType": "dom",
+  "terminal.integrated.fontWeight": "400",
+  "terminal.integrated.fontWeightBold": "900",
+  // "terminal.integrated.fontFamily": "'CaskaydiaCove Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'3270Medium Nerd Font Mono'", // .
+  // "terminal.integrated.fontFamily": "'Agave Nerd Font Mono'", // .
+  // "terminal.integrated.fontFamily": "'Anonymice Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Arimo Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'AurulentSansMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'BigBlueTerminal Mono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Bitstream Vera Sans Mono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'BlexMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'CodeNewRoman Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Cousine Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'DaddyTimeMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'FantasqueSansMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'GoMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Hack Nerd Font Mono'", // .
+  // "terminal.integrated.fontFamily": "'Hasklug Nerd Font Mono'", //.
+  // "terminal.integrated.fontFamily": "'Hurmit Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'iMWritingMonoS Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Inconsolata Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Iosevka Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Lekton Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'LiterationMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Monofur Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Monoid Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Mononoki Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'NotoMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'OpenDyslexic Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Overpass Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'RobotoMono Nerd Font Mono'",
+  "terminal.integrated.fontFamily": "'ShureTechMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'TerminessTTF Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Tinos Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'UbuntuMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'VictorMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'DejaVuSansMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Droid Sans Mono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Fira Code Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Fira Mono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Gohu Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'HeavyData Mono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Inconsolata Go Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Inconsolata LGC Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Lilex Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'M+ (MPlus) Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Meslo Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'ProFont (Windows tweaked) Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'ProFont (x11) Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'ProggyClean Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'SauceCodePro Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'SpaceMono Nerd Font Mono'",
+  // "terminal.integrated.fontFamily": "'Ubuntu Nerd Font Mono'",
+  //
+  //
+  // "terminal.integrated.fontFamily": "'3270 Nerd Font','Anonymice Nerd Font','Aurulent Sans Mono Nerd Font','Bitstream Vera Sans Mono Nerd Font','Code New Roman Nerd Font','Cousine Nerd Font','DejaVu Sans Mono Nerd Font','Droid Sans Mono Nerd Font','Fantasque Sans Nerd Font','Fira Code Nerd Font','Fira Mono Nerd Font','Go Mono Nerd Font','Gohu Nerd Font','Hack Nerd Font','Heavy Data Mono Nerd Font','Hurmit Nerd Font','Inconsolata Nerd Font','Inconsolata Go Nerd Font','Inconsolata LGC Nerd Font','Iosevka Nerd Font','Lekton Nerd Font','Lilex Nerd Font','Meslo Nerd Font','Monofur Nerd Font','Monoid Nerd Font','Mononoki Nerd Font','M+ (MPlus) Nerd Font','ProFont (Windows tweaked) Nerd Font','ProFont (x11) Nerd Font','ProggyClean Nerd Font','Sauce Code Nerd Font','Space Mono Nerd Font','Ubuntu Nerd Font','Ubuntu Mono Nerd Font'",
+  // "terminal.integrated.fontFamily": "'TerminessTTF Nerd Font','FuraCode Nerd Font mono','Lekton Nerd Font','TerminessTTF Nerd Font','FuraCode Nerd Font mono'",
+  "workbench.preferredDarkColorTheme": "Pop N' Lock Theme by Luxcium ✨",
+  "debug.console.fontFamily": "'VictorMono Nerd Font',Fira Code,LigaFantasqueSansMono",
+  "errorLens.fontFamily": "'VictorMono Nerd Font',Victor Mono, Fira Code iScript",
+  "errorLens.fontSize": "1.1rem",
+  "errorLens.fontStyleItalic": true,
+  "markdown.preview.fontFamily": "'Ubuntu', 'Droid Sans', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui",
+  "errorLens.fontWeight": "bold",
+  // "coverage-gutters.showLineCoverage": true,
+  // "coverage-gutters.showRulerCoverage": true,
+  // "coverage-gutters.showGutterCoverage": true,
+  // "coverage-gutters.highlightdark": "#39F1", // rgba (45, 121, 10, 0.70)
+  // "coverage-gutters.noHighlightDark": "#F363", // rgba (121, 31, 10, 0.70)
+  // "coverage-gutters.partialHighlightDark": "#F802", // rgba (121, 86, 10, 0.70)
+  "eslint.lintTask.enable": true,
+  "bracket-pair-colorizer-2.colorMode": "Consecutive",
+  "bracket-pair-colorizer-2.forceIterationColorCycle": false,
+  "bracket-pair-colorizer-2.rulerPosition": "Right",
+  "bracket-pair-colorizer-2.scopeLineRelativePosition": true,
+  "bracket-pair-colorizer-2.showBracketsInGutter": true,
+  "bracket-pair-colorizer-2.showBracketsInRuler": true,
+  "bracket-pair-colorizer-2.showHorizontalScopeLine": true,
+  "bracket-pair-colorizer-2.showVerticalScopeLine": true,
+  "breadcrumbs.enabled": true,
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.customCommand": "echo Hello",
+  "code-runner.cwd": "",
+  "code-runner.defaultLanguage": "typescript",
+  "code-runner.enableAppInsights": true,
+  "code-runner.fileDirectoryAsCwd": false,
+  "code-runner.ignoreSelection": true,
+  "code-runner.preserveFocus": false,
+  "code-runner.respectShebang": false,
+  "code-runner.runInTerminal": true,
+  "code-runner.saveAllFilesBeforeRun": true,
+  "code-runner.saveFileBeforeRun": true,
+  "code-runner.showExecutionMessage": true,
+  "code-runner.showRunCommandInEditorContextMenu": true,
+  "code-runner.showRunCommandInExplorerContextMenu": true,
+  "code-runner.showRunIconInEditorTitleMenu": true,
+  "code-runner.temporaryFileName": "tempCodeRunnerFile",
+  "code-runner.terminalRoot": "",
+  "color-highlight.markRuler": false,
+  "dateTime.flashTimeSeparators": true,
+  "dateTime.showDayOfMonth": true,
+  "dateTime.showDayOfWeek": true,
+  "dateTime.showMonth": true,
+  "dateTime.use24HourClock": true,
+  "debug.console.historySuggestions": true,
+  "debug.console.wordWrap": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.acceptSuggestionOnCommitCharacter": true,
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.autoClosingBrackets": "beforeWhitespace",
+  "editor.autoClosingOvertype": "auto",
+  "html.autoClosingTags": true,
+  "editor.autoIndent": "advanced",
+  "editor.autoSurround": "languageDefined",
+  "editor.autoClosingQuotes": "beforeWhitespace",
+  "editor.codeLens": true,
+  "editor.columnSelection": false,
+  "editor.comments.insertSpace": true,
+  "editor.copyWithSyntaxHighlighting": true,
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorStyle": "line",
+  "editor.cursorSurroundingLines": 2,
+  "editor.cursorSurroundingLinesStyle": "all",
+  "editor.cursorWidth": 3,
+  "editor.find.autoFindInSelection": "multiline",
+  "editor.folding": true,
+  "material-icon-theme.activeIconPack": "nest",
+  "editor.foldingStrategy": "auto",
+  "editor.hideCursorInOverviewRuler": false,
+  "editor.hover.delay": 900,
+  "editor.hover.enabled": true,
+  "editor.hover.sticky": true,
+  "editor.insertSpaces": true,
+  "editor.largeFileOptimizations": false,
+  "editor.lineNumbers": "on",
+  "editor.maxTokenizationLineLength": 3000,
+  "editor.minimap.enabled": true,
+  "editor.minimap.maxColumn": 80,
+  "editor.minimap.renderCharacters": false,
+  "editor.minimap.scale": 3,
+  "editor.minimap.showSlider": "always",
+  "editor.minimap.side": "right",
+  "editor.minimap.size": "proportional",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.parameterHints.cycle": true,
+  "editor.quickSuggestionsDelay": 100,
+  "editor.renderControlCharacters": true,
+  "editor.renderLineHighlight": "all",
+  "editor.renderWhitespace": "none",
+  "editor.scrollBeyondLastColumn": 2,
+  "editor.scrollBeyondLastLine": true,
+  "editor.scrollPredominantAxis": true,
+  "editor.semanticHighlighting.enabled": false,
+  "editor.showFoldingControls": "always",
+  "editor.showUnused": true,
+  "editor.smoothScrolling": true,
+  "editor.snippetSuggestions": "bottom",
+  "editor.suggest.filterGraceful": true,
+  "editor.suggest.insertMode": "insert",
+  "editor.suggest.localityBonus": true,
+  // "editor.suggest.maxVisibleSuggestions": 15,
+  "editor.suggest.shareSuggestSelections": true,
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  // "editor.suggest.statusBar.visible": true,
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "editor.unfoldOnClickAfterEndOfLine": true,
+  "editor.wordBasedSuggestions": true,
+  "editor.wordSeparators": "`~!@$%^&*()=+[{]}\\|;:'\",.<>/?",
+  "editor.wrappingIndent": "deepIndent",
+  "editor.wrappingStrategy": "advanced",
+  "codeValet.tool.comment.wrap.column": 80,
+  "codeValet.tool.comment.wrap.prefixes": "*  # /// ",
+  "emmet.showAbbreviationSuggestions": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "errorLens.addAnnotationTextPrefixes": true,
+  "errorLens.addNumberOfDiagnostics": true,
+  "errorLens.borderRadius": "10px",
+  "errorLens.errorGutterIconColor": "#F36F",
+  "errorLens.exclude": [],
+  "errorLens.followCursor": "allLines",
+  "errorLens.followCursorMore": 0,
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.gutterIconSet": "defaultOutline",
+  "errorLens.gutterIconsFollowCursorOverride": true,
+  "errorLens.gutterIconSize": "75%",
+  "errorLens.infoGutterIconColor": "#4AEF",
+  "errorLens.margin": "0.75rem",
+  "errorLens.padding": "0rem 0.5rem",
+  "errorLens.statusBarColorsEnabled": true,
+  "errorLens.statusBarMessageEnabled": true,
+  "errorLens.statusBarMessageType": "closestProblem",
+  "errorLens.warningGutterIconColor": "#BF2",
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "eslint.onIgnoredFiles": "warn",
+  "eslint.packageManager": "yarn",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.incrementalNaming": "smart",
+  "explorer.openEditors.visible": 5,
+  "explorer.sortOrder": "type",
+  "extensions.ignoreRecommendations": true,
+  "files.autoGuessEncoding": false,
+  "files.defaultLanguage": "txt",
+  "files.encoding": "utf8",
+  "files.hotExit": "onExitAndWindowClose",
+  "files.insertFinalNewline": true,
+  "files.maxMemoryForLargeFilesMB": 1024,
+  "files.participants.timeout": 500,
+  "files.restoreUndoStack": true,
+  "files.simpleDialog.enable": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "git.alwaysShowStagedChangesResourceGroup": true,
+  "git.alwaysSignOff": true,
+  "git.autofetch": true,
+  "git.autofetchPeriod": 120,
+  "git.autorefresh": true,
+  "git.autoStash": true,
+  "git.confirmSync": false,
+  "git.detectSubmodules": true,
+  "git.enableSmartCommit": true,
+  "git.enableStatusBarSync": true,
+  "git.fetchOnPull": true,
+  "git.followTagsWhenSync": true,
+  "git.ignoreLimitWarning": true,
+  "git.inputValidation": "warn",
+  "git.postCommitCommand": "sync",
+  "git.pruneOnFetch": true,
+  "git.showProgress": true,
+  "git.suggestSmartCommit": true,
+  "git.untrackedChanges": "separate",
+  "git.useCommitInputAsStashMessage": true,
+  "gitblame.ignoreWhitespace": true,
+  "gitlens.hovers.annotations.changes": true,
+  "gitlens.hovers.annotations.details": true,
+  "gitlens.hovers.annotations.enabled": true,
+  "gitlens.hovers.annotations.over": "annotation",
+  "gitlens.hovers.avatars": true,
+  "gitlens.hovers.changesDiff": "hunk",
+  "gitlens.hovers.currentLine.changes": true,
+  "gitlens.hovers.currentLine.details": true,
+  "gitlens.hovers.currentLine.enabled": true,
+  "gitlens.hovers.currentLine.over": "annotation",
+  "gitlens.hovers.enabled": true,
+  "gitlens.statusBar.reduceFlicker": true,
+  "gitlens.views.repositories.files.layout": "list",
+  "html.format.wrapAttributes": "preserve",
+  "html.format.wrapLineLength": 120,
+  "html.suggest.html5": true,
+  "npm-intellisense.packageSubfoldersIntellisense": true,
+  "npm-intellisense.showBuildInLibs": true,
+  "npm.packageManager": "yarn",
+  "prettier.endOfLine": "lf",
+  "prettier.jsxSingleQuote": true,
+  "prettier.packageManager": "yarn",
+  "prettier.proseWrap": "preserve",
+  "prettier.requireConfig": true,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "problems.showCurrentInStatus": true,
+  "remote.restoreForwardedPorts": true,
+  "screencastMode.onlyKeyboardShortcuts": true,
+  "search.collapseResults": "alwaysCollapse",
+  "search.maintainFileSearchCache": true,
+  "search.quickOpen.includeSymbols": true,
+  "search.searchOnType": true,
+  "search.searchOnTypeDebouncePeriod": 300,
+  "search.showLineNumbers": true,
+  "search.smartCase": true,
+  "search.sortOrder": "countDescending",
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "vsintellicode.features.python.deepLearning": "enabled",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "vsintellicode.python.completionsEnabled": true,
+  "vsintellicode.typescript.completionsEnabled": true,
+  "window.autoDetectColorScheme": true,
+  "window.closeWhenEmpty": true,
+  "window.newWindowDimensions": "offset",
+  "window.openFilesInNewWindow": "default",
+  "window.openFoldersInNewWindow": "on",
+  "window.restoreWindows": "folders",
+  "window.title": "${dirty}${activeEditorMedium}${separator}${rootName}",
+  "workbench.activityBar.visible": true,
+  "workbench.commandPalette.preserveInput": true,
+  "workbench.editor.closeEmptyGroups": false,
+  "workbench.editor.enablePreview": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.labelFormat": "short",
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.showTabs": true,
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.editor.titleScrollbarSizing": "large",
+  "workbench.list.keyboardNavigation": "filter",
+  "workbench.quickOpen.preserveInput": true,
+  "workbench.sideBar.location": "left",
+  "workbench.statusBar.visible": true,
+  "workbench.tips.enabled": true,
+  "workbench.tree.indent": 12,
+  "workbench.view.alwaysShowHeaderActions": true,
+  "code-runner.languageIdToFileExtensionMap": {
+    "bat": ".bat",
+    "powershell": ".ps1",
+    "typescript": ".ts"
+  },
+  "errorLens.annotationPrefix": [
+    "🍒 ~> ",
+    "⚠️ => ",
+    "🧩 ",
+    "🎯 -> "
+  ],
+  "errorLens.enabledDiagnosticLevels": [
+    "error",
+    "warning",
+    "info",
+    "hint"
+  ],
+  "editor.codeActionsOnSave": [
+    "source.organizeImports",
+    "source.fixAll"
+    // "source.fixAll.eslint",
+  ],
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "material-icon-theme.files.associations": {
+    "index.ts": "Raml"
+  },
+  "files.exclude": {
+    "**/*.zwc": true
+  },
+  "workbench.colorCustomizations": {
+    "errorLens.errorForeground": "#F36F",
+    "errorLens.errorMessageBackground": "#F366",
+    "errorLens.errorBackground": "#F363",
+    "errorLens.warningForeground": "#CF3F",
+    "errorLens.warningMessageBackground": "#CF36",
+    "errorLens.warningBackground": "#CF33",
+    "errorLens.hintForeground": "#39CF",
+    "errorLens.hintMessageBackground": "#39C6",
+    "errorLens.hintBackground": "#39C3",
+    "errorLens.infoForeground": "#FB0F",
+    "errorLens.infoMessageBackground": "#FB06",
+    "errorLens.infoBackground": "#FB03"
+  },
+  // #region better-comments.tags
+  "better-comments.tags": [
+    {
+      // #region
+      "tag": "#region",
+      "color": "#555",
+      "strikethrough": false,
+      "backgroundColor": "#FF3D"
+    },
+    {
+      // #endregion
+      "tag": "#endregion",
+      "color": "#222",
+      "strikethrough": false,
+      "backgroundColor": "#F15E"
+    },
+    {
+      // WARNING
+      "tag": "WARNING:",
+      "color": "#FD3E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // !!
+      "tag": "!!",
+      "color": "#FF2D00",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ?
+      "tag": "?",
+      "color": "#3498DB",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // $
+      "tag": "$",
+      "color": "#f48e41",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // #
+      "tag": "#",
+      "color": "#4AE",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // IIFE
+      "tag": "IIFE",
+      "color": "#FF3D",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // private
+      "tag": "private",
+      "color": "#F15E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // protected
+      "tag": "protected",
+      "color": "#FD3E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // TEST_MODULE
+      "tag": "TEST_MODULE",
+      "color": "#6CBC",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // public
+      "tag": "public",
+      "color": "#FC5D", // "#FA0E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // static
+      "tag": "static",
+      "color": "#F70E",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // get
+      "tag": "get",
+      "color": "#6BFC",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // set
+      "tag": "set",
+      "color": "#85FE",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // %
+      "tag": "%",
+      "color": "#41e2f4",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // # -c-54442
+      // †
+      "tag": "†",
+      "color": "#c54442",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // +
+      "tag": "+",
+      "color": "#c5f442",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // async
+      "tag": "async",
+      "color": "#FB3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // +@
+      "tag": "+@",
+      "color": "#FB3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // http
+      "tag": "http",
+      "color": "#FB3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // &
+      "tag": "&",
+      "color": "#a041f4",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    // {
+    //   //
+    //   "tag": "",
+    //   "color": "#6d6060",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    {
+      // todo
+      "tag": "todo",
+      "color": "#FF8C00",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // *
+      "tag": "*",
+      "color": "#98C379",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ¬
+      "tag": "¬",
+      "color": "#ffa0a0",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    // {
+    //       // async function
+    //       "tag": "| async function |",
+    //       "color": "#FB3F",
+    //       "strikethrough": false,
+    //       "backgroundColor": "transparent"
+    // },
+    {
+      // -
+      "tag": "-",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // ====
+      "tag": "====",
+      "color": "#9BEA",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    }
+  ],
+  // #endregion
+  // $ EDITOR.RULERS
+  // $ EDITOR.RULERS
+  // $ EDITOR.RULERS
+  "editor.rulers": [
+    {
+      "column": 2,
+      "color": "#9BEA"
+    },
+    {
+      "column": 80,
+      "color": "#9BEA"
+    },
+    {
+      "column": 81,
+      "color": "#9BEA"
+    },
+    {
+      "column": 84,
+      "color": "#FFFFFF11"
+    },
+    {
+      "column": 89,
+      "color": "#DAF3FF33"
+    },
+    {
+      "column": 96,
+      "color": "#DAF3FF55"
+    },
+    {
+      "column": 104,
+      "color": "#90BCFF77"
+    },
+    {
+      "column": 114,
+      "color": "#90BCFF99"
+    },
+    {
+      "column": 120,
+      "color": "#F368"
+    },
+    {
+      "column": 121,
+      "color": "#F36A"
+    },
+    {
+      "column": 122,
+      "color": "#F80C"
+    },
+    {
+      "column": 123,
+      "color": "#F80F"
+    },
+    {
+      "column": 124,
+      "color": "#FF0D"
+    },
+    {
+      "column": 125,
+      "color": "#FF0F"
+    },
+    {
+      "column": 126,
+      "color": "#0F0F"
+    },
+    {
+      "column": 127,
+      "color": "#0F0D"
+    },
+    {
+      "column": 128,
+      "color": "#39FF"
+    },
+    {
+      "column": 129,
+      "color": "#39FC"
+    },
+    {
+      "column": 130,
+      "color": "#93FA"
+    },
+    {
+      "column": 131,
+      "color": "#93F8"
+    }
+  ],
+  "code-runner.executorMapByGlob": {
+    "pom.xml": "cd $dir && mvn clean package"
+  },
+  "code-runner.executorMap": {
+    "ahk": "autohotkey",
+    "applescript": "osascript",
+    "autoit": "autoit3",
+    "bat": "cmd /c",
+    "c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "clojure": "lein exec",
+    "coffeescript": "coffee",
+    "cpp": "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "crystal": "crystal",
+    "csharp": "scriptcs",
+    "d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+    "dart": "dart",
+    "fsharp": "fsi",
+    "go": "go run",
+    "groovy": "groovy",
+    "haskell": "runhaskell",
+    "haxe": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    "java": "cd $dir && javac $fileName && java $fileNameWithoutExt",
+    "javascript": "node",
+    "julia": "julia",
+    "kit": "kitc --run",
+    "lisp": "sbcl --script",
+    "lua": "lua",
+    "nim": "nim compile --verbosity:0 --hints:off --run",
+    "objective-c": "cd $dir && gcc -framework Cocoa $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    "ocaml": "ocaml",
+    "pascal": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    "perl": "perl",
+    "perl6": "perl6",
+    "php": "php",
+    "powershell": "powershell -ExecutionPolicy ByPass -File",
+    "python": "python -u",
+    "r": "Rscript",
+    "racket": "racket",
+    "ruby": "ruby",
+    "rust": "cd $dir && rustc $fileName && $dir$fileNameWithoutExt",
+    "sass": "sass --style expanded",
+    "scala": "scala",
+    "scheme": "csi -script",
+    "scss": "scss --style expanded",
+    "shellscript": "zsh",
+    "swift": "swift",
+    "typescript": "ts-node",
+    "v": "v run",
+    "vbscript": "cscript Nologo"
+  },
+  "code-runner.executorMapByFileExtension": {
+    ".ahk": "autohotkey",
+    ".au3": "autoit3",
+    ".cr": "crystal",
+    ".csproj": "dotnet run --project",
+    ".cu": "cd $dir && nvcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    ".d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+    ".dart": "dart",
+    ".exs": "elixir",
+    ".fsproj": "dotnet run --project",
+    ".hs": "runhaskell",
+    ".hx": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    ".jl": "julia",
+    ".kit": "kitc --run",
+    ".kt": "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
+    ".kts": "kotlinc -script",
+    ".lisp": "sbcl --script",
+    ".ml": "ocaml",
+    ".nim": "nim compile --verbosity:0 --hints:off --run",
+    ".pas": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    ".pp": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    ".rkt": "racket",
+    ".sass": "sass --style expanded",
+    ".scala": "scala",
+    ".scm": "csi -script",
+    ".v": "v run",
+    ".vb": "cd $dir && vbc /nologo $fileName && $dir$fileNameWithoutExt",
+    ".vbs": "cscript Nologo",
+    ".vsh": "v run",
+    ".zsh": "zsh"
+  },
+  "eslint.codeAction.showDocumentation": {
+    "enable": true
+  },
+  "eslint.codeAction.disableRuleComment": {
+    "location": "separateLine",
+    "enable": true
+  },
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html",
+    "vue",
+    "markdown",
+    "json"
+  ],
+  "eslint.codeActionsOnSave.mode": "all",
+  "eslint.quiet": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "scm.diffDecorationsGutterWidth": 5,
+  "window.menuBarVisibility": "visible",
+  // "Toggle activity bar": true,
+  // "Format document with": true,
+  // "Toggle terminal": false,
+  // "Beautify active file": false,
+  "screencastMode.mouseIndicatorSize": 40,
+  "screencastMode.keyboardOverlayTimeout": 1500,
+  "screencastMode.fontSize": 48,
+  "screencastMode.mouseIndicatorColor": "#FF3366",
+  "screencastMode.verticalOffset": 15,
+  "editor.formatOnSaveMode": "modifications",
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": true,
+  "zenMode.fullScreen": false,
+  "workbench.editor.limit.perEditorGroup": true,
+  "markdown.links.openLocation": "beside",
+  "workbench.editor.limit.value": 8,
+  "workbench.editor.revealIfOpen": true,
+  "workbench.editor.pinnedTabSizing": "compact",
+  "files.enableTrash": false,
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "liveServer.settings.donotShowInfoMsg": true,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "scm.alwaysShowRepositories": true,
+  "scm.providerCountBadge": "auto",
+  "editor.overviewRulerBorder": false
+}
+// =====2020=====Luxcium=====Author==Benjamin=Vincent=(Luxcium)=License==MIT====
+// "Toggle activity bar": true,
+// "Toggle line comment": true,
+// "Toggle render whitespace": true,
+// "Toggle terminal": true,
+// Scientia es lux principium ✨
+// "#41E2F4",
+// "#98C379",
+// "#C54442",
+// "#C5F442",
+// "#F48E41",
+// "#FF2D00",
+// "#FF8C00",
+// "#90BCFF08"
+// "#90BCFF11"
+// "#90BCFF22"
+// "#90BCFF33"
+// "#90BCFF44"
+// "#90BCFF55"
+// "#90BCFF66"
+// "#90BCFF77"
+// "#90BCFF88"
+// "#90BCFF99"
+// "#90BCFFAA"
+// "#90BCFFAA"
+// "#90BCFFCC"
+// "#90BCFFDD"
