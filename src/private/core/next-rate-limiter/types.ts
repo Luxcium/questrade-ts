@@ -11,4 +11,4 @@ export type {
   SecondeStr,
   SecondsRemaning,
   TimeRemaning,
-} from './time-keeping';
+} from './time-keeping-tools';

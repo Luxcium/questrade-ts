@@ -1,0 +1,59 @@
+
+// const apiQ = new ApiCallQ_<{
+//   arg: number;
+//   fn:(arg: number) => number;
+// }>();
+
+// [
+//   { arg: 6, fn: (arg: number) => arg + 3 },
+//   { arg: 7, fn: (arg: number) => arg * 3 },
+//   { arg: 8, fn: (arg: number) => arg + 3 },
+//   { arg: 9, fn: (arg: number) => arg * 3 },
+//   { arg: 11, fn: (arg: number) => arg * 3 },
+//   { arg: 2, fn: (arg: number) => arg + 3 },
+//   { arg: 3, fn: (arg: number) => arg * 3 },
+//   { arg: 4, fn: (arg: number) => arg + 3 },
+//   { arg: 5, fn: (arg: number) => arg * 3 },
+//   { arg: 1, fn: (arg: number) => arg * 3 },
+//   { arg: 100, fn: (arg: number) => arg * 3 },
+//   {
+//     arg: 5,
+//     fn: (arg: number) => {
+//       throw new Error(`Throw an error: ${arg}`);
+//     },
+//   },
+//   { arg: 200, fn: (arg: number) => arg * 3 },
+//   { arg: 12, fn: (arg: number) => arg + 3 },
+// ]
+//   .map(i => apiQ.addToQueue(i))
+//   .map(p => p.then(v => console.log(v)).catch(console.error));
+
+// async function noName() {
+//   console.log(
+//     '555555',
+//     await apiQ.addToQueue({ arg: 10, fn: (arg: number) => arg + 555_545 }),
+//   );
+//   console.log(
+//     '555555',
+//     await apiQ.addToQueue({ arg: 10, fn: (arg: number) => arg + 555_545 }),
+//   );
+
+//   try {
+//     console.log(
+//       await apiQ.addToQueue({
+//         arg: 5,
+//         fn: (arg: number) => {
+//           throw new Error(`Throw an error: ${arg}`);
+//         },
+//       }),
+//     );
+//   } catch {
+//     console.log('anerrorerror');
+//   }
+
+//   console.log(
+//     '555555',
+//     await apiQ.addToQueue({ arg: 10, fn: (arg: number) => arg + 555_545 }),
+//   );
+// }
+// noName();

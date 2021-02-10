@@ -1,4 +1,7 @@
-import { ClientPromise } from '../../../resources/side-effects/types';
+import {
+  ClientPromise,
+  ClientRequestConfig,
+} from '../../../resources/side-effects/types';
 import { RateLimiterOptions } from '../../../typescript';
 import { limitingRequest } from '../requestPerSecondLimit';
 
@@ -26,6 +29,9 @@ export const newRequestLimiter = <R>(
     timeThen,
     maxPerSec,
     maxPerHour;
-  return limitingRequest(async () => httpClient<R>(config), 20);
+  return limitingRequest(
+    async (conf: ClientRequestConfig = config) => httpClient<R>(conf),
+    20,
+  );
 };
 // newRequestLimiter

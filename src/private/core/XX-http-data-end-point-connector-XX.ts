@@ -50,7 +50,7 @@ function _httpDataEndPointConnector<DATA>(
       return response.data;
     }
 
-    //- ERROR HANDLER: ECHO STATUS ON ERROR //-!
+    // ERROR HANDLER: ECHO STATUS ON ERROR //-!
     _echoStatus(response, credentials);
     throw new Error(...errorlog("Can't retrive data from call to API"));
   };

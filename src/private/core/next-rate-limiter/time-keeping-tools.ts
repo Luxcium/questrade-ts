@@ -310,6 +310,36 @@ function limitRequestsPerSecondFunct(
   );
 }
 
+interface TimeKeepingTools {
+  epochMs: EpochMs;
+  epochSec: EpochSec;
+  limitRequestsPerSecond: LimitRequestsPerSecond;
+  milisec: Milisec;
+  miliSecStr: MiliSecStr;
+  minutesRemaning: MinutesRemaning;
+  minuteStr: MinuteStr;
+  possibleReqstPerSecond: PossibleReqstPerSecond;
+  sec: Sec;
+  secondeStr: SecondeStr;
+  secondsRemaning: SecondsRemaning;
+  timeRemaning: TimeRemaning;
+}
+// https://github.com/Luxcium/questrade-ts/blob/next/from-v1.2.0-next-20201226/src/private/core/next-rate-limiter/time-keeping-tools.ts#L327
+const timeKeepingTools: TimeKeepingTools = {
+  epochMs,
+  epochSec,
+  limitRequestsPerSecond,
+  miliSecStr,
+  milisec,
+  minuteStr,
+  minutesRemaning,
+  possibleReqstPerSecond,
+  sec,
+  secondeStr,
+  secondsRemaning,
+  timeRemaning,
+};
+
 export {
   epochMs,
   epochSec,
@@ -322,6 +352,7 @@ export {
   sec,
   secondeStr,
   secondsRemaning,
+  timeKeepingTools,
   timeRemaning,
 };
 export type {

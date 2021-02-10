@@ -16,5 +16,6 @@ export {
   sec,
   secondeStr,
   secondsRemaning,
+  timeKeepingTools,
   timeRemaning,
-} from './time-keeping';
+} from './time-keeping-tools';
