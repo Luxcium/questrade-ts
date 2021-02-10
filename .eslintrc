@@ -5,11 +5,11 @@
     "sourceType": "module"
   },
   "extends": [
+    "plugin:jsonc/auto-config",
     "plugin:jsonc/base",
     "plugin:jsonc/recommended-with-json",
-    "plugin:jsonc/recommended-with-jsonc",
     "plugin:jsonc/recommended-with-json5",
-    "plugin:jsonc/auto-config",
+    "plugin:jsonc/recommended-with-jsonc",
     "plugin:prettier/recommended",
     "prettier/@typescript-eslint",
     "prettier/babel",
@@ -27,6 +27,7 @@
   },
   "plugins": [
     "@typescript-eslint",
+    "eslint-plugin-tsdoc",
     "fp",
     "functional",
     "import",
@@ -40,6 +41,7 @@
     "unicorn"
   ],
   "rules": {
+    "tsdoc/syntax": "error",
     "prefer-const": "warn",
     /*
   ―― START ――――――― eslint-config-prettier ――――――――――――――――――――――――――――――――――――――

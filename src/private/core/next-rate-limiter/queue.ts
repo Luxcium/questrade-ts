@@ -5,6 +5,7 @@ import {
   ClientResponse,
 } from '../../../resources/side-effects/types';
 import { void0 } from '../../../utils';
+import { timeKeepingTools } from '.';
 import { QNode } from './q-node';
 
 interface IQNode<T> {
@@ -99,7 +100,7 @@ export class ApiCallQ_<
 
           this.remaining = Number(response.headers['x-ratelimit-remaining']);
           this.timeUntilReset = Number(response.headers['x-ratelimit-reset']);
-          // timeKeepingTools. ;
+          timeKeepingTools.epochMs();
 
           cb(null, response);
         } catch (error) {

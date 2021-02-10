@@ -133,7 +133,7 @@
   */
   "errorLens.annotationPrefix": [
     "🍒 ~> ", // ―1 error
-    "🧩 => ", // ―2 warning
+    "⚠️ => ", // ―2 warning
     "✨ -> ", // ―3 info
     "🎯 +> ", // ―4 hint
   ],
@@ -145,7 +145,7 @@
   ],
   "errorLens.exclude": [
     "may be converted to an ES6 module",
-    "is declared but its value is never read"
+    "!is declared but its value is never read!"
   ],
   "errorLens.addAnnotationTextPrefixes": true,
   "errorLens.addNumberOfDiagnostics": true,
@@ -771,9 +771,9 @@
     // @",
     {
       "tag": "@",
-      "color": "#F36",
+      // "color": "#F36",
       "strikethrough": false,
-      "backgroundColor": "#F363"
+      "backgroundColor": "#39C3"
     },
     // #",
     {
