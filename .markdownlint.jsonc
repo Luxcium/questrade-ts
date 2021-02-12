@@ -1,0 +1,169 @@
+{
+  "MD002": true //  first-heading-h1/first-header-h1 - First heading should be a top level heading
+  ,
+  "MD006": true //  ul-start-left - Consider starting bulleted lists at the beginning of the line
+  ,
+  "MD001": true //  heading-increment/header-increment - Heading levels should only increment by one level at a time
+  ,
+  "MD003": true //  heading-style/header-style - Heading style
+  ,
+  "MD004": true //  ul-style - Unordered list style
+  ,
+  "MD005": true //  list-indent - Inconsistent indentation for list items at the same level
+  ,
+  "MD007": true //  ul-indent - Unordered list indentation
+  ,
+  "MD009": true //  no-trailing-spaces - Trailing spaces
+  ,
+  "MD010": true //  no-hard-tabs - Hard tabs
+  ,
+  "MD011": true //  no-reversed-links - Reversed link syntax
+  ,
+  "MD012": true //  no-multiple-blanks - Multiple consecutive blank lines
+  ,
+  "MD013": false //  line-length - Line length
+  ,
+  "MD014": true //  commands-show-output - Dollar signs used before commands without showing output
+  ,
+  "MD018": true //  no-missing-space-atx - No space after hash on atx style heading
+  ,
+  "MD019": true //  no-multiple-space-atx - Multiple spaces after hash on atx style heading
+  ,
+  "MD020": true //  no-missing-space-closed-atx - No space inside hashes on closed atx style heading
+  ,
+  "MD021": true //  no-multiple-space-closed-atx - Multiple spaces inside hashes on closed atx style heading
+  ,
+  "MD022": true //  blanks-around-headings/blanks-around-headers - Headings should be surrounded by blank lines
+  ,
+  "MD023": true //  heading-start-left/header-start-left - Headings must start at the beginning of the line
+  ,
+  "MD024": true //  no-duplicate-heading/no-duplicate-header - Multiple headings with the same content
+  ,
+  "MD025": true //  single-title/single-h1 - Multiple top level headings in the same document
+  ,
+  "MD026": true //  no-trailing-punctuation - Trailing punctuation in heading
+  ,
+  "MD027": true //  no-multiple-space-blockquote - Multiple spaces after blockquote symbol
+  ,
+  "MD028": true //  no-blanks-blockquote - Blank line inside blockquote
+  ,
+  "MD029": true //  ol-prefix - Ordered list item prefix
+  ,
+  "MD030": true //  list-marker-space - Spaces after list markers
+  ,
+  "MD031": true //  blanks-around-fences - Fenced code blocks should be surrounded by blank lines
+  ,
+  "MD032": true //  blanks-around-lists - Lists should be surrounded by blank lines
+  ,
+  "MD033": false //  no-inline-html - Inline HTML
+  ,
+  "MD034": true //  no-bare-urls - Bare URL used
+  ,
+  "MD035": true //  hr-style - Horizontal rule style
+  ,
+  "MD036": true //  no-emphasis-as-heading/no-emphasis-as-header - Emphasis used instead of a heading
+  ,
+  "MD037": true //  no-space-in-emphasis - Spaces inside emphasis markers
+  ,
+  "MD038": true //  no-space-in-code - Spaces inside code span elements
+  ,
+  "MD039": true //  no-space-in-links - Spaces inside link text
+  ,
+  "MD040": true //  fenced-code-language - Fenced code blocks should have a language specified
+  ,
+  "MD041": true //  first-line-heading/first-line-h1 - First line in file should be a top level heading
+  ,
+  "MD042": true //  no-empty-links - No empty links
+  ,
+  "MD043": true //  required-headings/required-headers - Required heading structure
+  ,
+  "MD044": true //  proper-names - Proper names should have the correct capitalization
+  ,
+  "MD045": true //  no-alt-text - Images should have alternate text (alt text)
+  ,
+  "MD046": true //  code-block-style - Code block style
+  ,
+  "MD047": true //  single-trailing-newline - Files should end with a single newline character
+  ,
+  "MD048": true //  code-fence-style - Code fence style
+}
+/*
+FIXABLE :
+
+MD005 list-indent
+MD006 ul-start-left
+MD007 ul-indent
+MD009 no-trailing-spaces
+MD010 no-hard-tabs
+MD011 no-reversed-links
+MD012 no-multiple-blanks
+MD014 commands-show-output
+MD018 no-missing-space-atx
+MD019 no-multiple-space-atx
+MD020 no-missing-space-closed-atx
+MD021 no-multiple-space-closed-atx
+MD022 blanks-around-headings
+MD023 heading-start-left
+MD026 no-trailing-punctuation
+MD027 no-multiple-space-blockquote
+MD030 list-marker-space
+MD031 blanks-around-fences
+MD032 blanks-around-lists
+MD034 no-bare-urls
+MD037 no-space-in-emphasis
+MD038 no-space-in-code
+MD039 no-space-in-links
+MD044 proper-names
+MD047 single-trailing-newline
+
+
+  "MD005": true //  list-indent
+  ,
+  "MD006": true //  ul-start-left
+  ,
+  "MD007": true //  ul-indent
+  ,
+  "MD009": true //  no-trailing-spaces
+  ,
+  "MD010": true //  no-hard-tabs
+  ,
+  "MD011": true //  no-reversed-links
+  ,
+  "MD012": true //  no-multiple-blanks
+  ,
+  "MD014": true //  commands-show-output
+  ,
+  "MD018": true //  no-missing-space-atx
+  ,
+  "MD019": true //  no-multiple-space-atx
+  ,
+  "MD020": true //  no-missing-space-closed-atx
+  ,
+  "MD021": true //  no-multiple-space-closed-atx
+  ,
+  "MD022": true //  blanks-around-headings
+  ,
+  "MD023": true //  heading-start-left
+  ,
+  "MD026": true //  no-trailing-punctuation
+  ,
+  "MD027": true //  no-multiple-space-blockquote
+  ,
+  "MD030": true //  list-marker-space
+  ,
+  "MD031": true //  blanks-around-fences
+  ,
+  "MD032": true //  blanks-around-lists
+  ,
+  "MD034": true //  no-bare-urls
+  ,
+  "MD037": true //  no-space-in-emphasis
+  ,
+  "MD038": true //  no-space-in-code
+  ,
+  "MD039": true //  no-space-in-links
+  ,
+  "MD044": true //  proper-names
+  ,
+  "MD047": true //  single-trailing-newline
+  ,*/
