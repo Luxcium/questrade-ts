@@ -1,5 +1,6 @@
 /* eslint-disable radar/no-identical-functions */
 /* eslint-disable promise/avoid-new */
+import { MAX_PER_HOUR, MAX_PER_SECONDES } from '../../../magic-values';
 import {
   ClientRequestConfig,
   ClientResponse,
@@ -17,6 +18,7 @@ interface IQNode<T> {
 type QNodes<T = unknown> = IQNode<T> | null;
 
 /** FCFS Queue (first-come, first-served) */
+
 export class ApiCallQ_<
   T extends {
     config: ClientRequestConfig;
@@ -32,6 +34,12 @@ export class ApiCallQ_<
   protected timeUntilReset: number;
   protected isCalled: boolean;
 
+  public get requestLimit() {
+    return timeKeepingTools.limitRequestsPerSecond(
+      this.remaining,
+      this.timeUntilReset,
+    );
+  }
   public get isNotCalled(): boolean {
     return !this.isCalled;
   }
@@ -46,8 +54,14 @@ export class ApiCallQ_<
   public get isCallable() {
     return this.isNotEmpty && this.isNotCalled;
   }
-
-  public constructor() {
+  static get new() {
+    return new ApiCallQ_();
+  }
+  // constructor |-···――――――――――――――――――――――――――――――――···-| ApiCallQ_() |-···――― ~
+  public constructor(
+    public maxPerSecondes: number = MAX_PER_SECONDES,
+    public maxPerHour: number = MAX_PER_HOUR,
+  ) {
     this.isCalled = false;
     this.first = null;
     this.last = null;
@@ -56,39 +70,43 @@ export class ApiCallQ_<
     this.remaining = 1;
     this.timeUntilReset = 1;
   }
+  // public |-···――――――――――――――――――――――――――――――――――――···-| addToQueue() |-···――― ~
 
   public addToQueue = <R = any>(value: T): Promise<R> => {
-    const enqueue = (callBack: any) => {
+    //
+    //
+    // INFO: //-? Passing the callback value through the `cb` parameter
+    const callBack = (cb: any) => {
       //
-      // INFO: Will use the calback to return the values from callToPopQueue() //-!
-      this.enQueue({ ...value, callBack });
+      this.enQueue({ ...value, cb });
       //
-      // INFO: callToPopQueue() is called to recursively empty the Queue //-!
+      // INFO: //-! callToPopQueue() start recursive call to empty the Queue
       this.callToPopQueue();
-      return void 0;
+      return void 100;
     };
 
-    // INFO: Will use a promisified call back to return the values as a promise //-!
+    // HACK: //-? Will use a promisified call back to return value as a promise
     return new Promise<R>((resolve, reject) => {
-      enqueue((error: Error, result: any) => {
+      callBack((error: Error, result: any) => {
         if (!error) {
           resolve(result);
-          return void 0;
+          return void 200;
         } else {
           reject(error);
-          return void 0;
+          return void 400;
         }
       });
     });
   };
+  // protected |-···―――――――――――――――――――――――――――――···-| callToPopQueue() |-···――― ~
 
   protected callToPopQueue() {
     const timeThen = Date.now();
 
     if (this.isCallable) {
       this.isCalled = true;
-      const delay = 240;
 
+      // HACK: //-? |-···――――――――――――――――――――――――――――···-| setTimeout() |-···――― ~
       setTimeout(async () => {
         this.deQueue();
         const cb = this.current?.value?.cb ?? void0;
@@ -98,10 +116,14 @@ export class ApiCallQ_<
           const config = this.current!.value.config;
           const response = await fn(config);
 
-          this.remaining = Number(response.headers['x-ratelimit-remaining']);
-          this.timeUntilReset = Number(response.headers['x-ratelimit-reset']);
-          timeKeepingTools.epochMs();
+          const xRemaining = response.headers['x-ratelimit-remaining'];
+          const xReset = response.headers['x-ratelimit-reset'];
 
+          // set to 1 if zero or not a number or NaN
+          this.remaining = typeof xRemaining === 'number' ? xRemaining || 1 : 1;
+          this.timeUntilReset = typeof xReset === 'number' ? xReset || 1 : 1;
+
+          // HACK: //-? |-···――――――――――――――――――――――――――···-| callback() |-···――― ~
           cb(null, response);
         } catch (error) {
           // console.log('catch an error:', error.message);
@@ -117,12 +139,13 @@ export class ApiCallQ_<
           'ms' /* '\n' */,
         );
         this.callToPopQueue();
-      }, delay);
+      }, 1000 / this.requestLimit);
 
       return true;
     }
     return false;
   }
+  // protected |-···――――――――――――――――――――――――――――――――――――···-| enQueue() |-···――― ~
 
   protected enQueue(val: T) {
     const newNode = new QNode(val);
@@ -136,6 +159,7 @@ export class ApiCallQ_<
     }
     return (this.size += 1);
   }
+  // protected |-···――――――――――――――――――――――――――――――――――――···-| deQueue() |-···――― ~
 
   protected deQueue() {
     if (!this.first) {
@@ -152,3 +176,5 @@ export class ApiCallQ_<
     return this;
   }
 }
+
+export const myQueueu = new ApiCallQ_();

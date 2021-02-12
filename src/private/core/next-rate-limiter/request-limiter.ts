@@ -8,30 +8,14 @@ import { limitingRequest } from '../requestPerSecondLimit';
 export const newRequestLimiter = <R>(
   options: RateLimiterOptions,
 ): ClientPromise<R> => {
-  const {
-    xRemaining,
-    xReset,
-    httpClient,
-    config,
-    cb,
-    credentials,
-    timeThen,
-    maxPerSec,
-    maxPerHour,
-  } = options;
+  const { httpClient, config, maxPerSec, maxPerHour } = options;
 
   // cb(fn(args));
-  void xRemaining,
-    xReset,
-    httpClient,
-    cb,
-    credentials,
-    timeThen,
-    maxPerSec,
-    maxPerHour;
+  void httpClient, maxPerSec, maxPerHour;
   return limitingRequest(
     async (conf: ClientRequestConfig = config) => httpClient<R>(conf),
     20,
   );
 };
 // newRequestLimiter
+ 

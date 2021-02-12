@@ -30,7 +30,11 @@
 const { ceil, floor, max, min } = Math;
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
-
+/**
+ * Returns the number of milliseconds elapsed since
+ * January 1, 1970 00:00:00 UTC, with leap seconds ignored.
+ * @returns  milliseconds
+ */
 type EpochMs = () => number;
 /**
  * Returns the number of milliseconds elapsed since
@@ -246,7 +250,8 @@ function secondsRemaningFunct(laterMs: number): number {
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 /**
- * Calculate the maximum amout of request per seconde (the frequecy)
+ * Calculate from msRemaning, the maximum amout of request per seconde
+ * (the frequecy)
  * @param  reqstRemaining - ['x-ratelimit-remaining']
  * @param  msRemaning - timeRemaning(['x-ratelimit-reset'] × 1000)
  * @param  maximumperseconds - upper maximal limit of request permited by the rate limiter each seconds
@@ -255,10 +260,11 @@ function secondsRemaningFunct(laterMs: number): number {
 type PossibleReqstPerSecond = (
   reqstRemaining: number,
   msRemaning: number,
-  maximumperseconds: number,
+  maximumperseconds?: number,
 ) => number;
 /**
- * Calculate the maximum amout of request per seconde (the frequecy)
+ * Calculate from msRemaning, the maximum amout of request per seconde
+ * (the frequecy)
  * @param  reqstRemaining - ['x-ratelimit-remaining']
  * @param  msRemaning - timeRemaning(['x-ratelimit-reset'] × 1000)
  * @param  maximumperseconds - upper maximal limit of request permited by the rate limiter each seconds
@@ -266,31 +272,42 @@ type PossibleReqstPerSecond = (
  */
 const possibleReqstPerSecond: PossibleReqstPerSecond = possibleReqstPerSecondFunct;
 
+/**
+ * Calculate from msRemaning, the maximum amout of request per seconde
+ * (the frequecy)
+ * @param  reqstRemaining - ['x-ratelimit-remaining']
+ * @param  msRemaning - timeRemaning(['x-ratelimit-reset'] × 1000)
+ * @param  maximumperseconds - upper maximal limit of request permited by the rate limiter each seconds
+ * @returns  number of request per seconde in hertz
+ */
 function possibleReqstPerSecondFunct(
   reqstRemaining: number,
   msRemaning: number,
-  maximumperseconds: number,
+  maximumperseconds: number = 20,
 ): number {
-  return floor(
-    max(min(reqstRemaining / sec(msRemaning), maximumperseconds), -1),
+  return (
+    floor(max(min(reqstRemaining / sec(msRemaning), maximumperseconds), -1)) ||
+    -1
   );
 }
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 /**
- * Calculate the maximum amout of request per seconde (the frequecy)
+ * Calculate from rateLimitReset, the maximum amout of request per seconde
+ * (the frequecy)
  * @param   reqstRemaining - ['x-ratelimit-remaining']
- * @param   rateLimitReset -  ['x-ratelimit-reset']
+ * @param   msRemaning -
  * @param   maximumperseconds - upper maximal limit of request permited by the rate limiter each seconds
  * @returns   number of request per seconde in hertz
  */
 type LimitRequestsPerSecond = (
   reqstRemaining: number,
   msRemaning: number,
-  maximumperseconds: number,
+  maximumperseconds?: number,
 ) => number;
 /**
- * Calculate the maximum amout of request per seconde (the frequecy)
+ * Calculate from rateLimitReset, the maximum amout of request per seconde
+ * (the frequecy)
  * @param  reqstRemaining - ['x-ratelimit-remaining']
  * @param  rateLimitReset -  ['x-ratelimit-reset']
  * @param  maximumperseconds - upper maximal limit of request permited by the rate limiter each seconds
@@ -301,24 +318,61 @@ const limitRequestsPerSecond: LimitRequestsPerSecond = limitRequestsPerSecondFun
 function limitRequestsPerSecondFunct(
   reqstRemaining: number,
   rateLimitReset: number,
-  maximumperseconds: number,
+  maximumperseconds: number = 20,
 ): number {
   const msRemaning = timeRemaning(rateLimitReset * 1000);
 
-  return floor(
-    max(min(reqstRemaining / sec(msRemaning), maximumperseconds), -1),
+  return (
+    floor(max(min(reqstRemaining / sec(msRemaning), maximumperseconds), -1)) ||
+    -1
   );
 }
 
 interface TimeKeepingTools {
+  /**
+   * Returns the number of milliseconds elapsed since
+   * January 1, 1970 00:00:00 UTC, with leap seconds ignored.
+   * @returns  milliseconds
+   */
   epochMs: EpochMs;
+  /**
+   * Returns the number of seconds elapsed since
+   * January 1, 1970 00:00:00 UTC, with leap seconds ignored.
+   * @returns  seconds
+   */
   epochSec: EpochSec;
+  /**
+   * Calculate from rateLimitReset, the maximum amout of request per seconde
+   * (the frequecy)
+   * @param  reqstRemaining - ['x-ratelimit-remaining']
+   * @param  rateLimitReset -  ['x-ratelimit-reset']
+   * @param  maximumperseconds - upper maximal limit of request permited by the rate limiter each seconds
+   * @returns  number of request per seconde in hertz
+   */
   limitRequestsPerSecond: LimitRequestsPerSecond;
+  /**
+   * Convert seconds to miliseconds (seconds × 1000)
+   * @param  seconds - number of seconds to convert in miliseconds
+   * @returns  miliseconds
+   */
   milisec: Milisec;
   miliSecStr: MiliSecStr;
   minutesRemaning: MinutesRemaning;
   minuteStr: MinuteStr;
+  /**
+   * Calculate from msRemaning, the maximum amout of request per seconde
+   * (the frequecy)
+   * @param  reqstRemaining - ['x-ratelimit-remaining']
+   * @param  msRemaning - timeRemaning(['x-ratelimit-reset'] × 1000)
+   * @param  maximumperseconds - upper maximal limit of request permited by the rate limiter each seconds
+   * @returns  number of request per seconde in hertz
+   */
   possibleReqstPerSecond: PossibleReqstPerSecond;
+  /**
+   * Convert miliseconds to seconds celi(miliseconds ÷ 1000)
+   * @param  miliseconds - number of miliseconds to convert in seconds
+   * @returns  seconds
+   */
   sec: Sec;
   secondeStr: SecondeStr;
   secondsRemaning: SecondsRemaning;
