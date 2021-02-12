@@ -1,7 +1,8 @@
 /* eslint-disable radar/no-unused-collection */
 import { questradeAPI } from '..';
 import { ech0, echo, getMyToken } from '../resources/side-effects';
-import { void0 } from '../utils';
+import { willGetSNP500StringList } from '../test/development/getSNP500List';
+import { id0, void0 } from '../utils';
 
 const once = { onlyOnce: true };
 
@@ -20,6 +21,34 @@ async function main() {
 
   void0(credentials);
   ech0(qtApi);
+
+  const snp500list = id0(await willGetSNP500StringList())
+    .slice()
+    .map(ech0);
+  // snp500list export const cs
+  //   .map(stock => qtApi.search.stock(stock))
+  //   .map(stock =>
+  //     stock.then(s => {
+  //       try {
+  //         return s[0].symbolId;
+  //       } catch (error) {
+  //         return 0;
+  //       }
+  //     }),
+  //   )
+  //   .map(t =>
+  //     t.then(sid => {
+  //       try {
+  //         return qtApi.getSymbols.byStockIds([sid]);
+  //       } catch (error) {
+  //         return {} as ISymbol[];
+  //       }
+  //     }),
+  //   );
+
+  // await qtApi.search.stock('couche tard');
+  void qtApi;
+  void snp500list;
 
   return true;
 }
