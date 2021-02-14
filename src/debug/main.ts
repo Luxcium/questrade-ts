@@ -21,10 +21,11 @@ async function main() {
   void0(credentials);
   ech0(qtApi);
 
-  const snp500list = id0(await willGetSNP500StringList())
-    .slice(0, 5)
-    .map(ech0);
+  const snp500list = id0(await willGetSNP500StringList()).map(
+    async item => await qtApi.search.stock(item),
+  );
 
+  snp500list.map(async item => ech0((await item)[0].symbolId));
   // // export const cs
   // snp500list
   //   .map(stock => qtApi.search.stock(stock))

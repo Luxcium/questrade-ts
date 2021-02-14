@@ -39,6 +39,8 @@ function _httpDataEndPointConnector<DATA>(
     const possiblePerSeconds =
       credentials?.remainingRequests?.possiblePerSeconds ?? 21;
 
+    // testing it with useNewRateLimiter = true
+    useNewRateLimiter = true;
     const response: ClientResponse<DATA> = await (useNewRateLimiter
       ? apiCallQ.addToQueue({
           config,
