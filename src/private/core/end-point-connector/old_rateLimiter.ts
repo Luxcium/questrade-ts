@@ -15,15 +15,13 @@ async function _rateLimiter<R>(
 
   const possiblePerSeconds =
     credentials?.remainingRequests?.possiblePerSeconds ?? 21;
-  let response: ClientResponse;
 
-  response = await (possiblePerSeconds <= 20 && possiblePerSeconds > 0
+  return await (possiblePerSeconds <= 20 && possiblePerSeconds > 0
     ? limitingRequest(
         async (): Promise<ClientResponse<R>> => httpClient(_config),
         possiblePerSeconds,
       )
     : httpClient(_config));
-  return response;
 }
 
 export { _rateLimiter };

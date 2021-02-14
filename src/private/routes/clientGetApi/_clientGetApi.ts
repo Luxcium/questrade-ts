@@ -4,7 +4,7 @@ import { _coreApiFunction } from '../../core/end-point-connector/_coreApiFunctio
 // # _clientGetApi !!!
 /**
  * YOU PROVIDE: credentials and endpoint string with <R> return type,
- * THEN YOU GET: ( )=> Promise<R>
+ * THEN YOU GET: ( )=\> Promise<R>
  */
 export const _clientGetApi = (
   credentials: Credentials,

@@ -1,13 +1,13 @@
 /* eslint-disable radar/no-identical-functions */
 /* eslint-disable promise/avoid-new */
-import { timeKeepingTools } from '.';
 import { MAX_PER_HOUR, MAX_PER_SECONDES } from '../../../magic-values';
 import {
   ClientPromise,
   ClientRequestConfig,
-  ClientResponse
+  ClientResponse,
 } from '../../../resources/side-effects/types';
 import { void0 } from '../../../utils';
+import { timeKeepingTools } from '.';
 import { QNode } from './q-node';
 
 interface IQNode<T extends QNodesValue> {

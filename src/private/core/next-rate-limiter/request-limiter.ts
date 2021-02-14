@@ -16,8 +16,9 @@ export const newRequestLimiter = <R>(
 
   const callQueue = new ApiCallQ_();
 
-  const call =  callQueue.addToQueue<R>({ config, fn: httpClient });
-  void call
+  const call = callQueue.addToQueue<R>({ config, fn: httpClient });
+
+  void call;
   return limitingRequest(
     async (conf: ClientRequestConfig = config) => httpClient<R>(conf),
     20,

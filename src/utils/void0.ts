@@ -43,8 +43,8 @@ const konst = <T = any>(a: T) => (_b: unknown) => a;
 
 /**
  *
- * @param f
- * ### psi :: (b -> b -> c) -> (a -> b) -> a -> a -> c
+ * @param f -
+ * ### psi :: (b -\> b -\> c) -\> (a -\> b) -\> a -\> a -\> c
  *
  * PSI combinator or on
  *
