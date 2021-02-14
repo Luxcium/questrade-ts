@@ -1,31 +1,36 @@
 /* eslint-disable radar/no-identical-functions */
 /* eslint-disable promise/avoid-new */
+import { timeKeepingTools } from '.';
 import { MAX_PER_HOUR, MAX_PER_SECONDES } from '../../../magic-values';
 import {
+  ClientPromise,
   ClientRequestConfig,
-  ClientResponse,
+  ClientResponse
 } from '../../../resources/side-effects/types';
 import { void0 } from '../../../utils';
-import { timeKeepingTools } from '.';
 import { QNode } from './q-node';
 
-interface IQNode<T> {
+interface IQNode<T extends QNodesValue> {
   value: T;
   next: IQNode<T> | null;
 }
 
 // type ApiCallQ_Value = any;
-type QNodes<T = unknown> = IQNode<T> | null;
+type QNodes<T extends QNodesValue> = IQNode<T> | null;
+type QNodesValue = {
+  config: ClientRequestConfig;
+  fn: <R>(config: ClientRequestConfig) => Promise<ClientResponse<R>>;
+  cb?: any;
+};
+const instanceApiCallQ_: { instance: ApiCallQ_<any> | null } = {
+  instance: null,
+};
+
+void instanceApiCallQ_;
 
 /** FCFS Queue (first-come, first-served) */
 
-export class ApiCallQ_<
-  T extends {
-    config: ClientRequestConfig;
-    fn: <R>(config: ClientRequestConfig) => Promise<ClientResponse<R>>;
-    cb?: any;
-  }
-> {
+export class ApiCallQ_<T extends QNodesValue> {
   protected first: QNodes<T>;
   protected last: QNodes<T>;
   protected current: QNodes<T>;
@@ -34,33 +39,33 @@ export class ApiCallQ_<
   protected timeUntilReset: number;
   protected isCalled: boolean;
 
-  public get requestLimit() {
+  protected get requestLimit() {
     return timeKeepingTools.limitRequestsPerSecond(
       this.remaining,
       this.timeUntilReset,
     );
   }
-  public get isNotCalled(): boolean {
+  protected get isNotCalled(): boolean {
     return !this.isCalled;
   }
 
-  public get isEmpty(): boolean {
+  protected get isEmpty(): boolean {
     return this.size <= 0;
   }
-  public get isNotEmpty(): boolean {
+  protected get isNotEmpty(): boolean {
     return this.size > 0;
   }
   // : this is {current: NonNullable<ApiCallQ_<T>['current']>;
-  public get isCallable() {
+  protected get isCallable() {
     return this.isNotEmpty && this.isNotCalled;
   }
   static get new() {
     return new ApiCallQ_();
   }
-  // constructor |-···――――――――――――――――――――――――――――――――···-| ApiCallQ_() |-···――― ~
+  //-| constructor |-···―――――――――――――――――――――――――――···-| ApiCallQ_() |-//-://#-| ~
   public constructor(
-    public maxPerSecondes: number = MAX_PER_SECONDES,
-    public maxPerHour: number = MAX_PER_HOUR,
+    protected maxPerSecondes: number = MAX_PER_SECONDES,
+    protected maxPerHour: number = MAX_PER_HOUR,
   ) {
     this.isCalled = false;
     this.first = null;
@@ -70,23 +75,22 @@ export class ApiCallQ_<
     this.remaining = 1;
     this.timeUntilReset = 1;
   }
-  // public |-···――――――――――――――――――――――――――――――――――――···-| addToQueue() |-···――― ~
 
-  public addToQueue = <R = any>(value: T): Promise<R> => {
+  //-| public |-···―――――――――――――――――――――――――――――――――···-| addToQueue() |-//::――― ~
+  public addToQueue<R = any>(value: T): ClientPromise<R> {
     //
-    //
-    // INFO: //-? Passing the callback value through the `cb` parameter
+    // INFO: //-: Passing the callback value through the `cb` parameter
     const callBack = (cb: any) => {
       //
       this.enQueue({ ...value, cb });
       //
-      // INFO: //-! callToPopQueue() start recursive call to empty the Queue
+      // HINT: //-:-···―――――――――――――――――――――――――···-| callToPopQueue() |-//-/――― ~
       this.callToPopQueue();
       return void 100;
     };
 
-    // HACK: //-? Will use a promisified call back to return value as a promise
-    return new Promise<R>((resolve, reject) => {
+    // INFO: //-: Will use a promisified call back to return value as a promise
+    return new Promise<ClientResponse<R>>((resolve, reject) => {
       callBack((error: Error, result: any) => {
         if (!error) {
           resolve(result);
@@ -97,8 +101,8 @@ export class ApiCallQ_<
         }
       });
     });
-  };
-  // protected |-···―――――――――――――――――――――――――――――···-| callToPopQueue() |-···――― ~
+  }
+  //-| protected |-···――――――――――――――――――――――――――···-| callToPopQueue() |-//::――― ~
 
   protected callToPopQueue() {
     const timeThen = Date.now();
@@ -106,7 +110,7 @@ export class ApiCallQ_<
     if (this.isCallable) {
       this.isCalled = true;
 
-      // HACK: //-? |-···――――――――――――――――――――――――――――···-| setTimeout() |-···――― ~
+      // HINT: //-:|-···―――――――――――――――――――――――――――――···-| setTimeout() |-···――― ~
       setTimeout(async () => {
         this.deQueue();
         const cb = this.current?.value?.cb ?? void0;
@@ -123,7 +127,7 @@ export class ApiCallQ_<
           this.remaining = typeof xRemaining === 'number' ? xRemaining || 1 : 1;
           this.timeUntilReset = typeof xReset === 'number' ? xReset || 1 : 1;
 
-          // HACK: //-? |-···――――――――――――――――――――――――――···-| callback() |-···――― ~
+          // HINT: //-:|-···―――――――――――――――――――――――――――···-| callback() |-···――― ~
           cb(null, response);
         } catch (error) {
           // console.log('catch an error:', error.message);
@@ -145,8 +149,8 @@ export class ApiCallQ_<
     }
     return false;
   }
-  // protected |-···――――――――――――――――――――――――――――――――――――···-| enQueue() |-···――― ~
 
+  //-| protected |-···――――――――――――――――――――――――――――――――――···-| enQueue() |-//::―― ~
   protected enQueue(val: T) {
     const newNode = new QNode(val);
 
@@ -159,8 +163,8 @@ export class ApiCallQ_<
     }
     return (this.size += 1);
   }
-  // protected |-···――――――――――――――――――――――――――――――――――――···-| deQueue() |-···――― ~
 
+  //-| protected |-···――――――――――――――――――――――――――――――――――···-| deQueue() |-//::―― ~
   protected deQueue() {
     if (!this.first) {
       return null;
@@ -176,5 +180,4 @@ export class ApiCallQ_<
     return this;
   }
 }
-
 export const myQueueu = new ApiCallQ_();

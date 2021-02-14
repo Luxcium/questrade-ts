@@ -193,6 +193,20 @@
   },
   // #endregion: ERRORLENS                                                      !
   // #region: TODO TREE                                                         !
+  "todo-tree.highlights.defaultHighlight": {
+    "background": "#FFF",
+    "borderRadius": "10px",
+    "foreground": "#224",
+    "gutterIcon": true,
+    "hideFromStatusBar": true,
+    "hideFromTree": true,
+    "icon": "alert",
+    "iconColour": "blue",
+    "rulerLane": "center",
+    "type": "tag",
+    // "opacity": 25,
+    // "rulerColour":   ,
+  },
   "todo-tree.highlights.schemes": [
     "file",
     "untitled",
@@ -231,6 +245,8 @@
     "FUNC DEF:",
     "-&",
     "FUNC CALL:",
+    "|-::",
+    "#-|",
     "-*",
     "!:",
     "@:",
@@ -252,6 +268,7 @@
       "icon": "mirror",
       "gutterIcon": true,
       "type": "tag-and-comment",
+      "borderRadius": "7px",
       "rulerLane": "right",
     },
     // -+
@@ -261,6 +278,7 @@
       "opacity": 25,
       "type": "whole-line",
       "gutterIcon": false,
+      "borderRadius": "0px",
       "hideFromTree": true,
       "hideFromStatusBar": true,
       "rulerLane": "full",
@@ -274,6 +292,7 @@
       "gutterIcon": true,
       "type": "tag-and-comment",
       "rulerLane": "left",
+      "borderRadius": "7px",
       "hideFromTree": true,
       "hideFromStatusBar": true,
     },
@@ -284,6 +303,7 @@
       "gutterIcon": false,
       "hideFromStatusBar": true,
       "hideFromTree": true,
+      "borderRadius": "0px",
       "opacity": 15,
       "rulerLane": "full",
       "type": "whole-line",
@@ -295,6 +315,7 @@
       "type": "whole-line",
       "opacity": 30,
       "iconColour": "#FB0",
+      "borderRadius": "0px",
       "icon": "report",
       "gutterIcon": true,
       "rulerLane": "full",
@@ -307,8 +328,12 @@
       "hideFromStatusBar": false,
       "hideFromTree": false,
       "icon": "info",
+      "borderRadius": "7px",
       "iconColour": "#BBB",
-      "rulerLane": "center",
+      "rulerLane": "right",
+      "type": "tag",
+      "opacity": 90,
+      "rulerColour": "#FFF",
     },
     //-!
     "-!": {
@@ -319,6 +344,8 @@
       "hideFromTree": true,
       "opacity": 20,
       "rulerLane": "full",
+      "borderRadius": "0px",
+      "rulerColour": "#FFF5",
       "type": "whole-line",
     },
     // HINT: //->
@@ -327,6 +354,7 @@
       "foreground": "#224",
       "gutterIcon": true,
       "icon": "report",
+      "borderRadius": "7px",
       "iconColour": "#FB0",
       "rulerLane": "center",
     },
@@ -339,13 +367,16 @@
       "iconColour": "#FB0",
       "opacity": 30,
       "rulerLane": "full",
+      "borderRadius": "0px",
+      "rulerColour": "#5CF5",
       "type": "whole-line",
     },
     // HACK: //-*
     "HACK:": {
-      "background": "#93F",
-      "foreground": "#FFF",
+      "background": "#74F",
+      "foreground": "#DDD",
       "gutterIcon": true,
+      "borderRadius": "7px",
       "icon": "squirrel",
       "iconColour": "#93F",
       "rulerLane": "center",
@@ -360,6 +391,8 @@
       "opacity": 20,
       "iconColour": "#FB0",
       "rulerLane": "full",
+      "borderRadius": "0px",
+      "rulerColour": "#FB05",
       "type": "whole-line",
     },
     // RETURNS: //→
@@ -368,6 +401,7 @@
       "background": "#CF2",
       "iconColour": "#CF2",
       "icon": "cross-reference",
+      "borderRadius": "7px",
       "gutterIcon": true,
       "rulerLane": "center",
     },
@@ -382,6 +416,7 @@
       "gutterIcon": true,
       "rulerLane": "full",
       "hideFromTree": true,
+      "borderRadius": "0px",
       "hideFromStatusBar": true,
     },
     "←": {
@@ -422,6 +457,7 @@
     "ERROR HANDLER:": {
       "foreground": "#FC9",
       "background": "#F359",
+      "borderRadius": "7px",
       "iconColour": "#F149",
       "icon": "note",
       "gutterIcon": true,
@@ -438,6 +474,7 @@
       "hideFromTree": true,
       "hideFromStatusBar": true,
       "rulerLane": "none",
+      "borderRadius": "0px",
     },
     "FIXME:": {
       "foreground": "#224",
@@ -564,6 +601,7 @@
       "gutterIcon": true,
       "opacity": 20,
       "rulerLane": "center",
+      "borderRadius": "0px",
       "type": "whole-line",
     },
     // @:
@@ -575,28 +613,31 @@
       "gutterIcon": true,
       "opacity": 20,
       "rulerLane": "center",
+      "borderRadius": "0px",
       "type": "whole-line",
     },
-    // #:
-    "#:": {
-      "foreground": "#4AE",
-      "background": "#4AE",
-      "iconColour": "#4AE",
+    // #-|
+    "#-|": {
+      "foreground": "#F36",
+      "background": "#F36",
+      "iconColour": "#F36",
       "icon": "cpu",
       "gutterIcon": true,
       "opacity": 20,
       "rulerLane": "center",
+      "borderRadius": "0px",
       "type": "whole-line",
     },
-    // $:
-    "$:": {
+    // ::
+    "::": {
       "foreground": "#F84",
       "background": "#F84",
       "iconColour": "#F84",
-      "icon": "logo-github",
+      "icon": "gear",
       "gutterIcon": true,
       "opacity": 20,
       "rulerLane": "center",
+      "borderRadius": "0px",
       "type": "whole-line",
     },
     // %:
@@ -608,6 +649,7 @@
       "gutterIcon": true,
       "opacity": 20,
       "rulerLane": "center",
+      "borderRadius": "0px",
       "type": "whole-line",
     },
     // ?:
@@ -619,6 +661,7 @@
       "gutterIcon": true,
       "opacity": 20,
       "rulerLane": "center",
+      "borderRadius": "0px",
       "type": "whole-line",
     },
     // &:
@@ -630,6 +673,7 @@
       "gutterIcon": true,
       "opacity": 20,
       "rulerLane": "center",
+      "borderRadius": "0px",
       "type": "whole-line",
     },
     // *:
@@ -641,10 +685,11 @@
       "gutterIcon": true,
       "opacity": 20,
       "rulerLane": "center",
+      "borderRadius": "0px",
       "type": "whole-line",
     },
-    // ::
-    "::": {
+    // $:
+    "$:": {
       "foreground": "#9BE",
       "background": "#9BE",
       "iconColour": "#9BE",
@@ -652,14 +697,9 @@
       "gutterIcon": true,
       "opacity": 20,
       "rulerLane": "center",
+      "borderRadius": "0px",
       "type": "whole-line",
     },
-  },
-  "todo-tree.highlights.defaultHighlight": {
-    "icon": "alert",
-    "type": "tag",
-    "foreground": "#224",
-    "iconColour": "blue"
   },
   "todo-tree.filtering.ignoreGitSubmodules": false,
   "todo-tree.filtering.includeHiddenFiles": false,
