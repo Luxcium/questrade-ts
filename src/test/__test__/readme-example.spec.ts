@@ -10,7 +10,6 @@ test('Validating all README examples', async done => {
   // inside of an async function or async IIFE
   (async doneTesting => {
     const { qtApi, credentials } = await redeemToken(yourRefreshToken);
-
     // Validate the server time as your hello world for this package
     const serverTime = qtApi.serverTime;
 

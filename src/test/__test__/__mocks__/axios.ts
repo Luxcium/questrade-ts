@@ -8,7 +8,6 @@ import {
 } from '../../../resources/side-effects/types';
 
 const { errorlog } = sideEffects;
-
 const _Client = jest.fn();
 const introspect = { onOff: false };
 const path = (s: string) => resolve(`${__dirname}/sample/${s}.json`);

@@ -15,7 +15,6 @@ export const newRequestLimiter = <R>(
   void httpClient, maxPerSec, maxPerHour;
 
   const callQueue = new ApiCallQ_();
-
   const call = callQueue.addToQueue<R>({ config, fn: httpClient });
 
   void call;

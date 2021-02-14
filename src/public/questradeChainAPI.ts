@@ -51,7 +51,6 @@ export const asyncQuestradeApi = (
   const asyncAllStocks = asyncQtApi.then(then => then.search.allStocks);
   const asyncCountResults = asyncQtApi.then(then => then.search.countResults);
   // const asyncCountResults = asyncQtApi.then(then => then.search.countResults);
-
   const market = {
     asyncAllMarkets,
     asyncCandlesByStockId,
@@ -60,7 +59,6 @@ export const asyncQuestradeApi = (
     asyncByOptionsIds,
     asyncFromFilter,
   };
-
   const getQuotes = {
     asyncByStrategies,
     asyncGetQuoteByStockIds,
@@ -71,13 +69,11 @@ export const asyncQuestradeApi = (
   const getSymbols = {
     asyncGetSymbolByStockIds,
   };
-
   const search = {
     asyncAllStocks,
     asyncCountResults,
     asyncStock,
   };
-
   const api = {
     asyncAccount,
     asyncCurrentAccount,

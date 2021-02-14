@@ -81,7 +81,6 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
       const dataToHash = responseFromApi.data;
       const urlAndDataHashes = getUrlAndDataHashes(urlPath, dataToHash);
       const { dataToCache, ...urlAndDataRest } = urlAndDataHashes;
-
       const configFromApi = responseFromApi.config;
       const headersFromApi = responseFromApi.headers;
       const requestFromApi = responseFromApi.request;

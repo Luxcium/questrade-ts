@@ -8,12 +8,10 @@ export const remainingRequests = <T>(
 ) => {
   const remaining = Number(response.headers['x-ratelimit-remaining']);
   const timeUntilReset = Number(response.headers['x-ratelimit-reset']);
-
   const timeNow = ceil(new Date().getTime() / 1000);
   const timeThen = floor(timeUntilReset);
   const secondsRemaning = timeThen - timeNow;
   const minutesRemaning = ceil((timeThen - timeNow) / 60);
-
   const possiblePerSeconds = floor(
     max(min(remaining / secondsRemaning, maximumperseconds), -1),
   );

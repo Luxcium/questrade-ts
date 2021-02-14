@@ -12,6 +12,7 @@ async function _credentialsFactory(
   proxyFactory?: (() => ProxyFactory_) | undefined,
 ) {
   let proxy: ProxyFactory_ | undefined;
+
   let credentials: Credentials;
 
   if (proxyFactory != null) {
@@ -28,7 +29,6 @@ async function _credentialsFactory(
     //
     const accounts = await _getAccounts(_clientGetApi(credentials, proxy))();
     const time = await _getServerTime(_clientGetApi(credentials, proxy))();
-
     const timZoneOffset = new Date(time).getTimezoneOffset();
     const timZone = -1 * 60 * 1000 * timZoneOffset;
     const serverTime = new Date(time).getTime();

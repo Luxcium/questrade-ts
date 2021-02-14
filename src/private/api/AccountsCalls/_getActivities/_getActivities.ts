@@ -13,7 +13,6 @@ export const _getActivities = (
       try {
         const dateTime = urlEncodeDateTool(startTime, endTime);
         const endpoint = `/activities?${dateTime}`;
-
         const accountGet = accountGetApi<IActivities>(endpoint);
         const activities = await accountGet();
 

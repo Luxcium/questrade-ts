@@ -86,7 +86,6 @@ function main2() {
 
   const array1 = [];
   const len1 = size / ratio;
-
   const startPushShift = Date.now();
 
   ech0(`\nDuration for push/shift (1×) ${len1}:`);

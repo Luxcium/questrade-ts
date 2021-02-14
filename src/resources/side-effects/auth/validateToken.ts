@@ -9,6 +9,7 @@ const { dirname } = path;
 
 export const validateToken = (options: ApiOptions) => {
   const credentials = apiOptionsCredentialsFactory(options);
+
   let refreshToken: string = credentials.seedToken;
 
   try {

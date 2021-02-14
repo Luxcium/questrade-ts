@@ -19,6 +19,7 @@ export const _getSymbolSearch = (
     //
     const symbols = await _getSymbolSearchAll(clientGetApi)(prefix, offset);
     const count = symbols.length;
+
     let result: ISymbolSearchResult | null = null;
 
     if (!!symbols[0]) {

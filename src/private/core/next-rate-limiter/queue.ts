@@ -122,7 +122,6 @@ export class ApiCallQ_<T extends QNodesValue> {
           const fn = this.current!.value.fn;
           const config = this.current!.value.config;
           const response = await fn(config);
-
           const xRemaining = response.headers['x-ratelimit-remaining'];
           const xReset = response.headers['x-ratelimit-reset'];
 
