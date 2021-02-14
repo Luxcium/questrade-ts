@@ -14,23 +14,14 @@ import {
 import { setDateRange, void0 } from '../../utils';
 
 const dateRange30Days = setDateRange(30);
-
 let qtApi: QuestradeApi;
-
 let credentials: Credentials;
-
 let account: () => Promise<QtApiAccount>;
-
 let market: () => Promise<QtApiMarket>;
-
 let getQuotes: () => Promise<QtApiQuotes>;
-
 let getOptionsQuotes: () => Promise<QtApiOptionsQuotes>;
-
 let getSymbols: () => Promise<QtApiSymbols>;
-
 let getOptionChains: () => Promise<QtApiOptionChains>;
-
 let search: () => Promise<QtApiSearch>;
 
 beforeAll(async done => {

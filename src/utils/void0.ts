@@ -18,6 +18,7 @@ const thrush = <T>(x: T) => <R>(f: (a: T) => R) => f(x);
 const apply = <T = any, R = any>(f: FnAtoB<T, R>) => (x: T) => f(x);
 const compose = <R>(f: (gx: any) => R) => (g: (x: any) => R) => (x: any) =>
   f(g(x));
+
 //# cardinal :: (a -> b -> c) -> b -> a -> c
 //.
 //. C combinator or flip
@@ -54,6 +55,7 @@ const konst = <T = any>(a: T) => (_b: unknown) => a;
 const psi = <R>(f: (gx: any) => (gy: any) => R) => <T>(g: (xy: T) => any) => (
   x: T,
 ) => (y: T) => f(g(x))(g(y));
+
 const urlEncode = encodeURIComponent;
 
 export const helperFunctions = {

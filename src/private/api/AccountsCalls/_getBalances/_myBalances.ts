@@ -10,14 +10,17 @@ export const _myBalances = async (
       combinedCADcurrent,
       combinedUSDcurrent,
     ] = myBalances.combinedBalances;
+
     const [
       perCADstartOfDay,
       perUSDstartOfDay,
     ] = myBalances.sodPerCurrencyBalances;
+
     const [
       combinedCADstartOfDay,
       combinedUSDstartOfDay,
     ] = myBalances.sodCombinedBalances;
+
     const perCurrency = {
       CAD: {
         current: perCADcurrent,
@@ -28,6 +31,7 @@ export const _myBalances = async (
         startOfDay: perUSDstartOfDay,
       },
     };
+
     const combined = {
       CAD: {
         current: combinedCADcurrent,
@@ -38,6 +42,7 @@ export const _myBalances = async (
         startOfDay: combinedUSDstartOfDay,
       },
     };
+
     const CAD = {
       combined: {
         current: combinedCADcurrent,
@@ -48,6 +53,7 @@ export const _myBalances = async (
         startOfDay: perCADstartOfDay,
       },
     };
+
     const USD = {
       combined: {
         current: combinedUSDcurrent,
@@ -58,6 +64,7 @@ export const _myBalances = async (
         startOfDay: perUSDstartOfDay,
       },
     };
+
     const current = {
       combined: {
         CAD: combinedCADcurrent,
@@ -68,6 +75,7 @@ export const _myBalances = async (
         USD: perUSDcurrent,
       },
     };
+
     const startOfDay = {
       combined: {
         CAD: combinedCADstartOfDay,

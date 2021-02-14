@@ -19,7 +19,6 @@ export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
   }
 
   let mode = opts.mode;
-
   const xfs = opts.fs || fs;
   const _0777 = Number.parseInt('0777', 8);
 

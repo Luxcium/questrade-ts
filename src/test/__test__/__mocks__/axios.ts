@@ -45,6 +45,7 @@ _Client.mockImplementation((config?: ClientRequestConfig) => {
 
     return previous;
   }, '');
+
   const resp = !!data ? data : null;
 
   return { data: resp, introspect };

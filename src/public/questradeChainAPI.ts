@@ -18,6 +18,7 @@ export const asyncQuestradeApi = (
   const asyncGetServerTime = asyncQtApi.then(
     then => then.account.getServerTime,
   );
+
   const asyncActivities = asyncQtApi.then(then => then.account.getActivities);
   const asyncAllAccounts = asyncQtApi.then(then => then.account.getAllAccounts);
   const asyncBalances = asyncQtApi.then(then => then.account.getBalances);
@@ -29,24 +30,31 @@ export const asyncQuestradeApi = (
   const asyncCandlesByStockId = asyncQtApi.then(
     then => then.market.getCandlesByStockId,
   );
+
   const asyncByOptionsIds = asyncQtApi.then(
     then => then.getOptionsQuotes.byOptionsIds,
   );
+
   const asyncFromFilter = asyncQtApi.then(
     then => then.getOptionsQuotes.fromFilter,
   );
+
   const asyncGetQuoteByStockIds = asyncQtApi.then(
     then => then.getQuotes.byStockIds,
   );
+
   const asyncByStrategies = asyncQtApi.then(
     then => then.getQuotes.byStrategies,
   );
+
   const asyncByStockId = asyncQtApi.then(
     then => then.getOptionChains.byStockId,
   );
+
   const asyncGetSymbolByStockIds = asyncQtApi.then(
     then => then.getSymbols.byStockIds,
   );
+
   const asyncStock = asyncQtApi.then(then => then.search.stock);
   const asyncAllStocks = asyncQtApi.then(then => then.search.allStocks);
   const asyncCountResults = asyncQtApi.then(then => then.search.countResults);
@@ -55,25 +63,31 @@ export const asyncQuestradeApi = (
     asyncAllMarkets,
     asyncCandlesByStockId,
   };
+
   const getOptionsQuotes = {
     asyncByOptionsIds,
     asyncFromFilter,
   };
+
   const getQuotes = {
     asyncByStrategies,
     asyncGetQuoteByStockIds,
   };
+
   const getOptionChains = {
     asyncByStockId,
   };
+
   const getSymbols = {
     asyncGetSymbolByStockIds,
   };
+
   const search = {
     asyncAllStocks,
     asyncCountResults,
     asyncStock,
   };
+
   const api = {
     asyncAccount,
     asyncCurrentAccount,
@@ -86,6 +100,7 @@ export const asyncQuestradeApi = (
     market,
     search,
   };
+
   const all = {
     asyncAccount,
     asyncActivities,

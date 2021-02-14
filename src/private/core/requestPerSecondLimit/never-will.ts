@@ -5,6 +5,7 @@ const neverWillCb = (): never => {
     'NEVER: lenght is validated prior to pop this should never occur',
   );
 };
+
 const neverCb = (error: Error | null, returnValue: any): never => {
   void0({ error, returnValue });
   throw new Error(

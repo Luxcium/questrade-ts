@@ -31,7 +31,6 @@ describe('auth Credential from QuestradeApi via HTTP CLIENT', () => {
   });
   it('should not be able to recive an empty string', async done => {
     let canReciveEmptyString: boolean;
-
     let credentials = _emptyCredentials();
 
     try {

@@ -70,6 +70,7 @@ export const dateRange = (
   const startDate: StartDate = rmvMiliSec(
     dateToNumeric(now) - day(backNumberOfDays),
   );
+
   const endDate: EndDate = rmvMiliSec(now);
   const startTime = startDate;
   const endTime = endDate;

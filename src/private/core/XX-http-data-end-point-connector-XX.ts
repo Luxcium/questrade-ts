@@ -36,6 +36,7 @@ function _httpDataEndPointConnector<DATA>(
 
     const possiblePerSeconds =
       credentials?.remainingRequests?.possiblePerSeconds ?? 21;
+
     const response: ClientResponse<DATA> = await _rateLimiter<DATA>({
       config,
       credentials,

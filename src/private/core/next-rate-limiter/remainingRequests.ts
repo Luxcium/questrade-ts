@@ -15,6 +15,7 @@ export function remainingRequests<T>(
   const possiblePerSeconds = floor(
     max(min(remaining / secondsRemaning, maximumperseconds), -1),
   );
+
   const maximums: [number, number, number] = [
     remaining,
     possiblePerSeconds,

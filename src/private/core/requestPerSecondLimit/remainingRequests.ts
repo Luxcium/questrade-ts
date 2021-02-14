@@ -1,7 +1,6 @@
 import { ClientResponse } from '../../../resources/side-effects/types';
 
 const { ceil, floor, max, min } = Math;
-
 export const remainingRequests = <T>(
   response: ClientResponse<T>,
   maximumperseconds: number = 20,
@@ -15,6 +14,7 @@ export const remainingRequests = <T>(
   const possiblePerSeconds = floor(
     max(min(remaining / secondsRemaning, maximumperseconds), -1),
   );
+
   const maximums: [number, number, number] = [
     remaining,
     possiblePerSeconds,

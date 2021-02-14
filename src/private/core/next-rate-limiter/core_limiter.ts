@@ -4,7 +4,6 @@ import { CallBack } from '../../../typescript';
 import { perSeconds, void0 } from '../../../utils';
 
 let lastCall = Date.now();
-
 const lastDelay = () => Date.now() - lastCall;
 const resetLastCall = () => {
   lastCall = Date.now();
@@ -12,7 +11,6 @@ const resetLastCall = () => {
 
 function requestLimiterFactory(fn: Function, hertz: number = 1) {
   let isCalled = false;
-
   const callsQueue: [Function, CallBack<any>][] = [];
   const callToPop = async () => {
     if (callsQueue.length > 0 && !isCalled) {
@@ -108,13 +106,13 @@ function doNext() {
 }
 export function limiter(hertz: number = 20) {
   let lastCall2 = Date.now();
-
   const lastDelay2 = (lastCall3: number) => Date.now() - lastCall3;
   const since = (pastStamp: number) => Date.now() - pastStamp;
   const until = (futureStamp: number) => futureStamp - Date.now();
   const resetLastCall2 = () => {
     lastCall2 = Date.now();
   };
+
   const rightNow = Date.now();
   const minimumDelay = rightNow + 50;
 

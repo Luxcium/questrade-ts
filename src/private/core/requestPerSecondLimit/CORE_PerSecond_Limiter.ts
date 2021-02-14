@@ -6,7 +6,6 @@ import { neverWill } from './never-will';
 
 function limitingRequest<T>(fn: Function, hertz: number = 1) {
   const callsQueue: [Function, CallBack<any>][] = [];
-
   let isCalled = false;
 
   ech0('limitingRequest(fn: Function, hertz: number = 1)');
@@ -32,6 +31,7 @@ function limitingRequest<T>(fn: Function, hertz: number = 1) {
 
     return void 0;
   };
+
   const addToQueue = (cb: any /* CallBack<any> */) => {
     callsQueue.unshift([fn, cb]);
     callToPop();

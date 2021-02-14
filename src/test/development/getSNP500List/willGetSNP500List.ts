@@ -19,6 +19,7 @@ export async function willGetSNP500List() {
     const constituentsSymbols: ConstituentsSymbols = data.map(
       (obj: Constituent) => obj.Symbol,
     );
+
     const constituentsList: ConstituentsList = data.map(
       (obj: Constituent) => obj,
     );

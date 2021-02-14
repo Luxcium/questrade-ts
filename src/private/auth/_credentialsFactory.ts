@@ -12,7 +12,6 @@ async function _credentialsFactory(
   proxyFactory?: (() => ProxyFactory_) | undefined,
 ) {
   let proxy: ProxyFactory_ | undefined;
-
   let credentials: Credentials;
 
   if (proxyFactory != null) {

@@ -4,6 +4,7 @@ const _urlSeprator = (): string => '/';
 const _baseAcctUrlStr = (): string => 'accounts';
 const _credAcctNmbrProp = (credentials: Credentials): string =>
   credentials.accountNumber;
+
 const _endPtAccountBaseURL: EndPtAccountBaseURL = getCredAcctProp => urlSep => accountStr => (
   credentials,
   proxy?,

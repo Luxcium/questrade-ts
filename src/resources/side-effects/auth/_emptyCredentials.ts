@@ -126,6 +126,7 @@ const _defaultCredentials: Credentials = {
   tokenExpiration: undefined,
   tokenType: '',
 };
+
 const _emptyCredentials = () => {
   return {
     ..._defaultCredentials,

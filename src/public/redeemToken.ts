@@ -9,9 +9,7 @@ export async function questradeAPI(apiOptions: ApiOptions) {
   //
 
   const errorloger: Logger = apiOptions.errorloger ?? errorlog;
-
   const apiCallQ_ = new ApiCallQ_();
-
   void apiCallQ_;
 
   apiOptions.token = preValidateToken(apiOptions);
