@@ -2,6 +2,7 @@ import { echo, errorlog, infolog } from '../../resources/side-effects';
 import { ApiOptions, Credentials, ProxyFactory_ } from '../../typescript';
 import { _getAccounts } from '../api/AccountsCalls/_getAccounts/_getAccounts';
 import { _getServerTime } from '../api/AccountsCalls/_getServerTime/_getServerTime';
+import { ApiCallQ_ } from '../core/next-rate-limiter/queue';
 import { _clientGetApi } from '../routes';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 import { _oAuthHttp } from './xx-http-auth-xx';
@@ -9,6 +10,8 @@ import { _oAuthHttp } from './xx-http-auth-xx';
 /** Provide: a token string THEN GET: a 'Promise<Credentials>' */
 async function _credentialsFactory(
   apiOptions: ApiOptions,
+  apiCallQ: ApiCallQ_,
+
   proxyFactory?: (() => ProxyFactory_) | undefined,
 ) {
   let proxy: ProxyFactory_ | undefined;
@@ -26,8 +29,14 @@ async function _credentialsFactory(
 
   try {
     //
-    const accounts = await _getAccounts(_clientGetApi(credentials, proxy))();
-    const time = await _getServerTime(_clientGetApi(credentials, proxy))();
+    const accounts = await _getAccounts(
+      _clientGetApi(credentials, apiCallQ, proxy),
+    )();
+
+    const time = await _getServerTime(
+      _clientGetApi(credentials, apiCallQ, proxy),
+    )();
+
     const timZoneOffset = new Date(time).getTimezoneOffset();
     const timZone = -1 * 60 * 1000 * timZoneOffset;
     const serverTime = new Date(time).getTime();

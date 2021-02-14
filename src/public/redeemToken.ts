@@ -9,16 +9,24 @@ export async function questradeAPI(apiOptions: ApiOptions) {
   //
 
   const errorloger: Logger = apiOptions.errorloger ?? errorlog;
-  const apiCallQ_ = new ApiCallQ_();
-  void apiCallQ_;
+  const apiCallQ = new ApiCallQ_();
+  void apiCallQ;
 
   apiOptions.token = preValidateToken(apiOptions);
   const proxyFactory = apiOptions.proxyFactory ?? undefined;
-  const credentials = await _credentialsFactory(apiOptions, proxyFactory);
+  const credentials = await _credentialsFactory(
+    apiOptions,
+    apiCallQ,
+    proxyFactory,
+  );
 
-  // const proxyFactory_: ProxyFactory_ = proxyFactory(credentials);
   return {
     credentials,
-    qtApi: await questradeApiFactory(credentials, proxyFactory, errorloger),
+    qtApi: await questradeApiFactory(
+      credentials,
+      apiCallQ,
+      proxyFactory,
+      errorloger,
+    ),
   };
 }

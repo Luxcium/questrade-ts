@@ -16,21 +16,21 @@ interface IQNode<T extends QNodesValue> {
 }
 
 // type ApiCallQ_Value = any;
-type QNodes<T extends QNodesValue> = IQNode<T> | null;
+type QNodes<T extends QNodesValue = QNodesValue> = IQNode<T> | null;
 type QNodesValue = {
   config: ClientRequestConfig;
   fn: <R>(config: ClientRequestConfig) => Promise<ClientResponse<R>>;
   cb?: any;
 };
-const instanceApiCallQ_: { instance: ApiCallQ_<any> | null } = {
-  instance: null,
-};
+// const instanceApiCallQ_: { instance: ApiCallQ_<any> | null } = {
+//   instance: null,
+// };
 
-void instanceApiCallQ_;
+// void instanceApiCallQ_;
 
 /** FCFS Queue (first-come, first-served) */
 
-export class ApiCallQ_<T extends QNodesValue> {
+export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
   protected first: QNodes<T>;
   protected last: QNodes<T>;
   protected current: QNodes<T>;

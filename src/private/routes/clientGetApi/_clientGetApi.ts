@@ -1,5 +1,6 @@
 import { Credentials, ProxyFactory_ } from '../../../typescript';
 import { _coreApiFunction } from '../../core/end-point-connector/_coreApiFunction';
+import { ApiCallQ_ } from '../../core/next-rate-limiter/queue';
 
 // # _clientGetApi !!!
 /**
@@ -8,5 +9,6 @@ import { _coreApiFunction } from '../../core/end-point-connector/_coreApiFunctio
  */
 export const _clientGetApi = (
   credentials: Credentials,
+  apiCallQ: ApiCallQ_,
   proxy?: ProxyFactory_,
-) => _coreApiFunction(credentials, proxy)('GET')(null);
+) => _coreApiFunction(credentials, apiCallQ, proxy)('GET')(null);

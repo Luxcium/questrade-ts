@@ -7,14 +7,16 @@ import {
   Logger,
   ProxyFactory_,
 } from '../../../../typescript';
+import { ApiCallQ_ } from '../../../core/next-rate-limiter/queue';
 import { _clientGetApi } from '../../../routes';
 
 export async function callTimeOut(
   proxy: ProxyFactory_ | undefined,
+  apiCallQ: ApiCallQ_,
   credentials: Credentials,
   callback: (acct: () => Promise<IAccounts>) => void,
 ) {
-  const getEndpoint = _clientGetApi(credentials, proxy);
+  const getEndpoint = _clientGetApi(credentials, apiCallQ, proxy);
 
   setTimeout(() => {
     callback(
@@ -43,12 +45,12 @@ export async function callTimeOut(
 //   );
 // }
 
-export async function nameIT(
-  proxy: ProxyFactory_ | undefined,
-  credentials: Credentials,
-) {
-  return _clientGetApi(credentials, proxy);
-}
+// export async function nameIT(
+//   proxy: ProxyFactory_ | undefined,
+//   credentials: Credentials,
+// ) {
+//   return _clientGetApi(credentials, proxy);
+// }
 // const accounts = async () =>
 //   getEndpoint<IAccounts>(`/accounts`, {
 //     noCaching: true,

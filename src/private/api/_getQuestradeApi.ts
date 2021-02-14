@@ -1,3 +1,4 @@
+// import { errorlog } from '../../resources/side-effects';
 import {
   Credentials,
   Logger,
@@ -7,6 +8,7 @@ import {
   StrategyVariantRequest,
 } from '../../typescript';
 import { void0 } from '../../utils';
+import { ApiCallQ_ } from '../core/next-rate-limiter/queue';
 import { _clientGetApi, _clientPostApi } from '../routes';
 import { _clientAccountGetApi } from '../routes/clientAccountGetApi/_clientAccountGetApi';
 import { _getAccounts } from './AccountsCalls/_getAccounts/_getAccounts';
@@ -36,145 +38,111 @@ import {
 
 export const _getQuestradeApi = async (
   credentials: Credentials,
+  apiCallQ: ApiCallQ_,
   proxy?: ProxyFactory_,
   errorlog: Logger = (...error: any[]) => error,
 ): Promise<QuestradeApi> => {
-  const [
-    accounts,
-    activities,
-    balances,
-    candles,
-    executions,
-    markets,
-    marketsQuotesStrategies,
-    optionsById,
-    orders,
-    ordersByIds,
-    positions,
-    quotesByIds,
-    // quotesOptionsbyFilterAndIds,
-    quotesOptionsByIds,
-    quotesOptionsFilter,
-    serverTime,
-    symbolsByIds,
-    symbolSearchAll,
-    // symbolSearchAndCount,
-    symbolSearch,
-    symbolSearchCount,
-  ] = [
-    /*
-    Argument of type '<R>(endpoint: string, handlerOptions: ProxyHandlerOptions) => () => Promise<R>'
-    is not assignable to
-    parameter of type '<R>(endpoint: string) => () => Promise<R>'.ts(2345)
-    ,
-    handlerOptions: ProxyHandlerOptions,
-    , { noCaching: true }
-     */
-    _getAccounts(_clientGetApi(credentials, proxy), errorlog),
-    _getActivities(_clientAccountGetApi(credentials, proxy), errorlog),
-    _getBalances(_clientAccountGetApi(credentials, proxy), errorlog),
-    _getCandles(_clientGetApi(credentials, proxy), errorlog),
-    _getExecutions(_clientAccountGetApi(credentials, proxy), errorlog),
-    _getMarkets(_clientGetApi(credentials, proxy), errorlog),
-    _getMarketsQuotesStrategies(_clientPostApi(credentials, proxy), errorlog),
-    _getOptionsById(_clientGetApi(credentials, proxy), errorlog),
-    _getOrders(_clientAccountGetApi(credentials, proxy), errorlog),
-    _getOrdersByIds(_clientAccountGetApi(credentials, proxy), errorlog),
-    _getPositions(_clientAccountGetApi(credentials, proxy), errorlog),
-    _getQuotesByIds(_clientGetApi(credentials, proxy), errorlog),
-    // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),
-    _getQuotesOptionsByIds(_clientPostApi(credentials, proxy), errorlog),
-    _getQuotesOptionsFilter(
-      _clientPostApi(credentials, proxy) /* , errorlog */,
-    ),
-    _getServerTime(_clientGetApi(credentials, proxy) /* , errorlog */),
-    _getSymbolsByIds(_clientGetApi(credentials, proxy), errorlog),
-    _getSymbolSearchAll(_clientGetApi(credentials, proxy), errorlog),
-    // _getSymbolSearchAndCount(credentials,proxy, errorlog),
-    _getSymbolSearch(_clientGetApi(credentials, proxy), errorlog),
-    _getSymbolSearchCount(_clientGetApi(credentials, proxy), errorlog),
-  ];
+  const getApi = () => _clientGetApi(credentials, apiCallQ, proxy);
+  const postApi = () => _clientPostApi(credentials, apiCallQ, proxy);
+  const accGetApi = () => _clientAccountGetApi(credentials, apiCallQ, proxy);
+  const api = {
+    accounts: _getAccounts(getApi(), errorlog),
+    activities: _getActivities(accGetApi(), errorlog),
+    balances: _getBalances(accGetApi(), errorlog),
+    candles: _getCandles(getApi(), errorlog),
+    executions: _getExecutions(accGetApi(), errorlog),
+    markets: _getMarkets(getApi(), errorlog),
+    marketsQuotesStrategies: _getMarketsQuotesStrategies(postApi(), errorlog),
+    optionsById: _getOptionsById(getApi(), errorlog),
+    orders: _getOrders(accGetApi(), errorlog),
+    ordersByIds: _getOrdersByIds(accGetApi(), errorlog),
+    positions: _getPositions(accGetApi(), errorlog),
+    quotesByIds: _getQuotesByIds(getApi(), errorlog),
+    quotesOptionsByIds: _getQuotesOptionsByIds(postApi(), errorlog),
+    quotesOptionsFilter: _getQuotesOptionsFilter(postApi() /* , errorlog */),
+    serverTime: _getServerTime(getApi() /* , errorlog */),
+    symbolSearch: _getSymbolSearch(getApi(), errorlog),
+    symbolSearchAll: _getSymbolSearchAll(getApi(), errorlog),
+    symbolSearchCount: _getSymbolSearchCount(getApi(), errorlog),
+    symbolsByIds: _getSymbolsByIds(getApi(), errorlog),
+  };
 
-  // unused for the moment
+  void apiCallQ;
 
   return {
     account: {
       getActivities(startTime: string) {
-        return activities(startTime);
+        return api.activities(startTime);
       },
       async getAllAccounts() {
-        return accounts();
+        return api.accounts();
       },
-
       async getBalances() {
-        return balances();
+        return api.balances();
       },
       getExecutions(startTime: string) {
-        return executions(startTime);
+        return api.executions(startTime);
       },
       getOrders(stateFilter?: string) {
-        return orders(stateFilter);
+        return api.orders(stateFilter);
       },
       async getOrdersByIds(orderId: number[]) {
-        return ordersByIds(orderId);
+        return api.ordersByIds(orderId);
       },
       async getPositions() {
-        return positions();
+        return api.positions();
       },
       async getServerTime() {
-        return serverTime();
+        return api.serverTime();
       },
     },
     currentAccount: credentials.accountNumber,
     getOptionChains: {
       async byStockId(stockId: number) {
-        return optionsById(stockId);
+        return api.optionsById(stockId);
       },
     },
-
     getOptionsQuotes: {
       async byOptionsIds(optionIds: number[]) {
-        return quotesOptionsByIds(optionIds);
+        return api.quotesOptionsByIds(optionIds);
       },
       async fromFilter(filters: OptionsFilters) {
-        return quotesOptionsFilter(filters);
+        return api.quotesOptionsFilter(filters);
       },
     },
     getQuotes: {
       async byStockIds(ids: number[]) {
-        return quotesByIds(ids);
+        return api.quotesByIds(ids);
       },
-
       async byStrategies(strategyVariantRequestData: StrategyVariantRequest) {
-        return marketsQuotesStrategies(strategyVariantRequestData);
+        return api.marketsQuotesStrategies(strategyVariantRequestData);
       },
     },
     getSymbols: {
       async byStockIds(stockIds: number[]) {
-        return symbolsByIds(stockIds);
+        return api.symbolsByIds(stockIds);
       },
     },
     market: {
       async getAllMarkets() {
-        return markets();
+        return api.markets();
       },
       getCandlesByStockId(symbolID: number) {
-        return candles(symbolID);
+        return api.candles(symbolID);
       },
     },
-
     async myBalances() {
-      return _myBalances(await balances());
+      return _myBalances(await api.balances());
     },
     search: {
       async allStocks(prefix: string, offset?: number) {
-        return symbolSearchAll(prefix, offset);
+        return api.symbolSearchAll(prefix, offset);
       },
       async countResults(prefix: string) {
-        return symbolSearchCount(prefix);
+        return api.symbolSearchCount(prefix);
       },
       async stock(prefix: string, offset?: number) {
-        return symbolSearch(prefix, offset);
+        return api.symbolSearch(prefix, offset);
         // return symbolSearchAndCount(prefix, offset);
       },
     },
@@ -182,3 +150,39 @@ export const _getQuestradeApi = async (
   };
 };
 void0(void0);
+// = [
+/*
+    Argument of type '<R>(endpoint: string, handlerOptions: ProxyHandlerOptions) => () => Promise<R>'
+    is not assignable to
+    parameter of type '<R>(endpoint: string) => () => Promise<R>'.ts(2345)
+    ,
+    handlerOptions: ProxyHandlerOptions,
+    , { noCaching: true }
+     */
+// _getAccounts(getApi(), errorlog),
+// _getActivities(accGetApi(), errorlog),
+// _getBalances(accGetApi(), errorlog),
+// _getCandles(getApi(), errorlog),
+// _getExecutions(accGetApi(), errorlog),
+// _getMarkets(getApi(), errorlog),
+// _getMarketsQuotesStrategies(postApi(), errorlog),
+// _getOptionsById(getApi(), errorlog),
+// _getOrders(accGetApi(), errorlog),
+// _getOrdersByIds(accGetApi(), errorlog),
+// _getPositions(accGetApi(), errorlog),
+// _getQuotesByIds(getApi(), errorlog),
+// // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),
+// _getQuotesOptionsByIds(postApi(), errorlog),
+// _getQuotesOptionsFilter(
+//   postApi() /* , errorlog */,
+// ),
+// _getServerTime(getApi() /* , errorlog */),
+// _getSymbolsByIds(getApi(), errorlog),
+// _getSymbolSearchAll(getApi(), errorlog),
+// // _getSymbolSearchAndCount(credentials,proxy, errorlog),
+// _getSymbolSearch(getApi(), errorlog),
+// _getSymbolSearchCount(getApi(), errorlog),
+// ];
+// unused for the moment
+// symbolSearchAndCount:    // _getSymbolSearchAndCount(credentials,proxy, errorlog),
+// quotesOptionsbyFilterAndIds:    // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),

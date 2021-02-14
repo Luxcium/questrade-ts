@@ -1,4 +1,5 @@
 import { _getQuestradeApi } from '../private/api/_getQuestradeApi';
+import { ApiCallQ_ } from '../private/core/next-rate-limiter/queue';
 import {
   Credentials,
   OptionsFilters,
@@ -8,9 +9,11 @@ import {
 
 export const asyncQuestradeApi = (
   credentials: Credentials,
+  apiCallQ: ApiCallQ_,
+
   proxy?: ProxyFactory_,
 ) => {
-  const asyncQtApi = _getQuestradeApi(credentials, proxy);
+  const asyncQtApi = _getQuestradeApi(credentials, apiCallQ, proxy);
   const asyncAccount = asyncQtApi.then(then => then.account);
   const asyncCurrentAccount = asyncQtApi.then(then => then.currentAccount);
   const asyncMyBalances = asyncQtApi.then(then => then.myBalances);
@@ -249,8 +252,16 @@ export class ChainApiClass {
     return this;
   }
 
-  constructor(private credentials: Credentials, private proxy?: ProxyFactory_) {
-    this.asyncApi = asyncQuestradeApi(this.credentials, this.proxy);
+  constructor(
+    private credentials: Credentials,
+    private apiCallQ: ApiCallQ_,
+    private proxy?: ProxyFactory_,
+  ) {
+    this.asyncApi = asyncQuestradeApi(
+      this.credentials,
+      this.apiCallQ,
+      this.proxy,
+    );
     // this.asyncAccount = this.asyncApi.asyncAccount;
     // this.asyncActivities = this.asyncApi.asyncActivities;
     // this.asyncAllAccounts = this.asyncApi.asyncAllAccounts;
@@ -285,6 +296,6 @@ export class ChainApiClass {
     // this.startTime = null;
   }
 }
-void function myFunct(credentials: Credentials) {
-  return new ChainApiClass(credentials);
+void function myFunct(credentials: Credentials, apiCallQ: ApiCallQ_) {
+  return new ChainApiClass(credentials, apiCallQ);
 };

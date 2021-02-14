@@ -11,10 +11,12 @@ import {
   _rateLimiter,
   _updateCredentials,
 } from './end-point-connector';
+import { ApiCallQ_ } from './next-rate-limiter/queue';
 
 const { getHttpClient } = sideEffects;
 
 function _httpDataEndPointConnector<DATA>(
+  apiCallQ: ApiCallQ_,
   config: ClientRequestConfig,
   credentials?: Credentials,
   proxy?: ProxyFactory_,
@@ -37,14 +39,19 @@ function _httpDataEndPointConnector<DATA>(
     const possiblePerSeconds =
       credentials?.remainingRequests?.possiblePerSeconds ?? 21;
 
-    const response: ClientResponse<DATA> = await _rateLimiter<DATA>({
-      config,
-      credentials,
-      httpClient,
-      maxPerSeconds: 20,
-      possiblePerSeconds,
-      useNewRateLimiter,
-    });
+    const response: ClientResponse<DATA> = await (useNewRateLimiter
+      ? apiCallQ.addToQueue({
+          config,
+          fn: httpClient,
+        })
+      : _rateLimiter<DATA>({
+          config,
+          credentials,
+          httpClient,
+          maxPerSeconds: 20,
+          possiblePerSeconds,
+          useNewRateLimiter,
+        }));
 
     if (response.data) {
       _updateCredentials(config, response, credentials);
