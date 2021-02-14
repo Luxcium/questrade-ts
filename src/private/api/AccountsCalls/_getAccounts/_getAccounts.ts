@@ -21,6 +21,7 @@ export function _getAccounts(
     } catch (error) {
       // -
       void errorlog(`calling '/accounts' endpoint ${error.message}`);
+
       return [];
     }
   };

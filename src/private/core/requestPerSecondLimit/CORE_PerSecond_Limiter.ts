@@ -18,6 +18,7 @@ function limitingRequest<T>(fn: Function, hertz: number = 1) {
         ech0('in  setTimeout await callToPop() ');
 
         await callToPop();
+
         return void 0;
       }, perSeconds(hertz));
       const poped = callsQueue.pop();
@@ -27,6 +28,7 @@ function limitingRequest<T>(fn: Function, hertz: number = 1) {
 
       return void 0;
     }
+
     return void 0;
   };
 
@@ -41,9 +43,11 @@ function limitingRequest<T>(fn: Function, hertz: number = 1) {
         void errorlog(error);
 
         reject(error);
+
         return void 0;
       }
       resolve(result);
+
       return void 0;
     });
   });

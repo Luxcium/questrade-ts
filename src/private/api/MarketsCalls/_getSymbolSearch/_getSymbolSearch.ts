@@ -25,13 +25,16 @@ export const _getSymbolSearch = (
       result = symbols[0];
       result.count = count || 0;
       result.all = symbols;
+
       return [result];
     }
+
     return [];
     //
   } catch (error) {
     //
     void errorlog(error.message);
+
     return [];
 
     //

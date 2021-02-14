@@ -86,6 +86,7 @@ export class ApiCallQ_<T extends QNodesValue> {
       //
       // HINT: //-:-···―――――――――――――――――――――――――···-| callToPopQueue() |-//-/――― ~
       this.callToPopQueue();
+
       return void 100;
     };
 
@@ -94,9 +95,11 @@ export class ApiCallQ_<T extends QNodesValue> {
       callBack((error: Error, result: any) => {
         if (!error) {
           resolve(result);
+
           return void 200;
         } else {
           reject(error);
+
           return void 400;
         }
       });
@@ -147,6 +150,7 @@ export class ApiCallQ_<T extends QNodesValue> {
 
       return true;
     }
+
     return false;
   }
 
@@ -161,6 +165,7 @@ export class ApiCallQ_<T extends QNodesValue> {
       this.last!.next = newNode;
       this.last = newNode;
     }
+
     return (this.size += 1);
   }
 
@@ -177,6 +182,7 @@ export class ApiCallQ_<T extends QNodesValue> {
     }
     this.first = this.first.next;
     this.size -= 1;
+
     return this;
   }
 }

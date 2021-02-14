@@ -9,5 +9,6 @@ export function getQtUrlPathFromArgs(argArray?: any) {
   } catch {
     urlPath = '';
   }
+
   return urlPath;
 }

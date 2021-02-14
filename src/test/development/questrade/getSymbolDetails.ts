@@ -12,6 +12,7 @@ export function getSymbolDetails(qtApi: QuestradeApi) {
       if (symbolID) {
         //
       }
+
       return {
         ...(await getSymbolsByStockIds([symbolID]))[0],
         ...(await getquotes([symbolID]))[0],
@@ -23,6 +24,7 @@ export function getSymbolDetails(qtApi: QuestradeApi) {
         ...(await getquotes([stockSymbol]))[0],
       };
     }
+
     return {
       ...(await getSymbolsByStockIds(stockSymbol))[0],
       ...(await getquotes(stockSymbol))[0],

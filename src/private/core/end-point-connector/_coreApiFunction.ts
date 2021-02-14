@@ -36,6 +36,7 @@ function _coreApiFunction(
 
           // ->
           void handlerOptions;
+
           return clientDataGetter(errorlog, handlerOptions); // from _tryToGetData...
         };
       };

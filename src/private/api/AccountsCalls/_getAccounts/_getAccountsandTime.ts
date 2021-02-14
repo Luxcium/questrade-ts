@@ -82,6 +82,7 @@ export function _getAccounts(
     } catch (error) {
       // -
       void errorlog(error.message);
+
       return [];
     }
   };

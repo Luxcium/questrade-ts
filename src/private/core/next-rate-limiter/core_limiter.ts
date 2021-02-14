@@ -18,6 +18,7 @@ function requestLimiterFactory(fn: Function, hertz: number = 1) {
       setTimeout(async () => {
         isCalled = false;
         await callToPop();
+
         return void 151;
       }, perSeconds(hertz));
       const poped = callsQueue.pop();
@@ -29,14 +30,17 @@ function requestLimiterFactory(fn: Function, hertz: number = 1) {
 
       mycb(null, myfn());
       resetLastCall();
+
       return void 151;
     }
+
     return void 151;
   };
 
   return async (cb: CallBack<any>) => {
     callsQueue.unshift([fn, cb]);
     callToPop();
+
     return void 151;
   };
 }
@@ -69,9 +73,11 @@ export function requestPerSecondLimiter(hz: number) {
           void errorlog(error);
 
           reject(error);
+
           return void 0;
         }
         resolve(result);
+
         return void 0;
       });
     });
@@ -118,6 +124,7 @@ export function limiter(hertz: number = 20) {
   isGreenLight = true;
   doNext();
   resetLastCall2();
+
   return isGreenLight;
 }
 

@@ -22,6 +22,7 @@ test('Validating all README examples', async done => {
     void0(balances);
 
     void0(credentials);
+
     return doneTesting;
     // you can use a try/catch block to manage error instead:
   })(done)

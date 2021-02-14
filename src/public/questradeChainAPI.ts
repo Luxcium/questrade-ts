@@ -174,56 +174,67 @@ export class ChainApiClass {
   public symbolName(symbolName: string, offset?: number) {
     this._symbolName = symbolName;
     this._offset = offset;
+
     return this;
   }
 
   public stockId(stockId: number) {
     this._stockId = stockId;
+
     return this;
   }
 
   public stockIdList(...idList: number[]) {
     this._stockIdList = idList;
+
     return this;
   }
 
   public optionIdList(...values: number[]) {
     this._optionIdList = values;
+
     return this;
   }
 
   public orderIdList(...values: number[]) {
     this._orderIdList = values;
+
     return this;
   }
 
   public startTime(startTime: string) {
     this._startTime = startTime;
+
     return this;
   }
 
   public endTime(endTime: string) {
     this._endTime = endTime;
+
     return this;
   }
 
   public interval(interval: string | undefined) {
     this._interval = interval;
+
     return this;
   }
 
   public stateFilter(state: string) {
     this._stateFilter = state;
+
     return this;
   }
 
   public optionsFilters(filters: OptionsFilters) {
     this._OptionsFilters = filters;
+
     return this;
   }
 
   public strategyVariantRequestData(value: StrategyVariantRequest) {
     this._strategyVariantRequestData = value;
+
     return this;
   }
 

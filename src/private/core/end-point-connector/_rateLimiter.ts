@@ -37,6 +37,7 @@ function _rateLimiter<R>(configs: {
 
     return limitingRequest(httpCall, possiblePerSeconds);
   }
+
   //INFO: httpClient: <R>(conf: ClientRequestConfig) => ClientPromise<R>     //-!
   return httpClient(config);
 }

@@ -14,6 +14,7 @@ export const perSeconds = (hertz: number): number => {
   delay = !!delay ? delay : 1000;
   // non negative
   delay = delay < 0 ? delay * -1 : delay;
+
   // When delay is larger than 2147483647 or less than 1,
   // the delay will be set to 1.
   // Non-integer delays are truncated to an integer.

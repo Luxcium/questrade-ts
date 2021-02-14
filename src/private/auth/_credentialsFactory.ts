@@ -66,6 +66,7 @@ async function _credentialsFactory(
     void infolog<unknown>(credentials.toValue());
     throw new Error('_oAuth Error getting credentials in _credentialsFactory');
   }
+
   return credentials;
 }
 

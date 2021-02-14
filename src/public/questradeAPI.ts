@@ -12,6 +12,7 @@ export const questradeApiFactory = async (
     if (proxy) {
       return _getQuestradeApi(credentials, proxy(credentials), errorloger);
     }
+
     return _getQuestradeApi(credentials, undefined, errorloger);
   })();
 

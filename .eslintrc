@@ -405,17 +405,40 @@
         "next": "*"
       },
       {
-        "blankLine": "any",
+        "blankLine": "never",
         "prev": [
-          "const",
-          "let",
-          "var"
+          "singleline-const",
+          "multiline-const",
+          "const"
+          // "singleline-let",
+          // "singleline-var"
         ],
         "next": [
-          "const",
-          "let",
-          "var"
+          "singleline-const",
+          "multiline-const",
+          "const"
+          // "singleline-let",
+          // "singleline-var"
         ]
+      },
+      // {
+      //   "blankLine": "any",
+      //   "prev": [
+      //     "const",
+      //     "let",
+      //     "var"
+      //   ],
+      //   "next": [
+      //     "const",
+      //     "let",
+      //     "var",
+      //     "expression"
+      //   ]
+      // },
+      {
+        "blankLine": "always",
+        "prev": "*",
+        "next": "return"
       }
       // {
       //   "blankLine": "always",

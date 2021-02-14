@@ -13,6 +13,7 @@ export const _getPositions = (
     return positions.positions;
   } catch (error) {
     void errorlog(error.message);
+
     return [];
   }
 };

@@ -31,6 +31,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
 
       echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
     }
+
     return Reflect.setPrototypeOf(target, v);
   }
 
@@ -50,6 +51,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
 
       echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
     }
+
     return Reflect.preventExtensions(target);
   }
 
@@ -69,6 +71,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
 
       echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
     }
+
     return Reflect.getOwnPropertyDescriptor(target, p);
   }
 
@@ -78,6 +81,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
 
       echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
     }
+
     return Reflect.has(target, p);
   }
 
@@ -134,6 +138,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
 
       echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
     }
+
     return Reflect.deleteProperty(target, p);
   }
 
@@ -166,6 +171,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
 
       echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
     }
+
     return Reflect.ownKeys(target);
   }
 
@@ -203,6 +209,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
 
       echo('abstract class ReflexionLoggerProxyHandlerAbstractClass');
     }
+
     return Reflect.construct(target, argArray, newTarget);
   }
 }

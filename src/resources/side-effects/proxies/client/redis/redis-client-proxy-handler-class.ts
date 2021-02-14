@@ -176,6 +176,7 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
       responseFromApi.headers.fromApi = true;
       responseFromApi.responseFromCache = false;
       responseFromApi.headers.fromCache = false;
+
       return id0(responseFromApi);
     } catch (error) {
       myRedis.disconnect();

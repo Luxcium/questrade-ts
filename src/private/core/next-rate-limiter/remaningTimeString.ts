@@ -5,6 +5,7 @@ function remaningTimeStringFunc(secsRemaning: number) {
   if (secsRemaning >= 60) {
     return `${minutes}min ${seconds}sec`;
   }
+
   return `${seconds}sec`;
 }
 

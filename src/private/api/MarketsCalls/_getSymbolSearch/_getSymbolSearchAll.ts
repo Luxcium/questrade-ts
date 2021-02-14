@@ -30,9 +30,11 @@ export const _getSymbolSearchAll = (
     if (_results && _results.symbols) {
       return _results.symbols.map(result => {
         result.count = _results.symbols.length || 0;
+
         return result;
       });
     }
+
     return _results.symbols;
   } catch (error) {
     void errorlog(error.message);

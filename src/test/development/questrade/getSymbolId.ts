@@ -14,6 +14,7 @@ export function getSymbolId(qtApi: QuestradeApi) {
     if (stock.length > 0) {
       return stock[0].symbolId;
     }
+
     return 0;
   };
 }

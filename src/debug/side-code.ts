@@ -30,6 +30,7 @@ export class Queue {
       this.last.next = newNode;
       this.last = newNode;
     }
+
     return (this.size += 1);
   }
 
@@ -45,6 +46,7 @@ export class Queue {
     }
     this.first = this.first.next;
     this.size -= 1;
+
     return temp.value;
   }
 }

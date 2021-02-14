@@ -40,8 +40,10 @@ _Client.mockImplementation((config?: ClientRequestConfig) => {
         void errorlog(errMessage);
         throw new Error(errMessage);
       }
+
       return JSON.parse(readFileSync(path(dir), 'utf8'));
     }
+
     return previous;
   }, '');
   const resp = !!data ? data : null;

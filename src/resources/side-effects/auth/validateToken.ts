@@ -31,6 +31,7 @@ export const validateToken = (options: ApiOptions) => {
       }
     });
   }
+
   return { credentials, refreshToken };
 };
 

@@ -7,5 +7,6 @@ export function client<R>(
   if (typeof config !== 'string') {
     return axioLikeClient(config);
   }
+
   return axioLikeClient(config);
 }

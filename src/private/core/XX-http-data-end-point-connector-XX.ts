@@ -47,6 +47,7 @@ function _httpDataEndPointConnector<DATA>(
 
     if (response.data) {
       _updateCredentials(config, response, credentials);
+
       return response.data;
     }
 

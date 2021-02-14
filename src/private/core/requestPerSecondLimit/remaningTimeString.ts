@@ -9,6 +9,7 @@ export const remaningTimeString = (secsRemaning: number) => {
       return `${minutesString} ${secondString}`;
     })();
   }
+
   // to avoid shadowing
   return (() => {
     const seconds = (((secsRemaning / 60) % 1) * 60).toFixed(0);

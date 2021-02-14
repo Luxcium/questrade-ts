@@ -21,5 +21,6 @@ export async function validateResponse(
       '!!! validate credntials Invalid data back from http client !!!',
     );
   }
+
   return response;
 }

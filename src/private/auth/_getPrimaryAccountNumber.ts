@@ -20,5 +20,6 @@ export function _getPrimaryAccountNumber(
   if (primary.length > 0) {
     return primary[0].number;
   }
+
   return accounts[0].number;
 }

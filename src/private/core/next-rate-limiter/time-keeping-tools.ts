@@ -193,6 +193,7 @@ function timeRemaningFunct(laterMs: number): number {
   if (nowMs > laterMs) {
     return -1;
   }
+
   return laterMs - nowMs || -1;
 }
 
@@ -218,6 +219,7 @@ function minutesRemaningFunct(laterMs: number): number {
   if (value > 0) {
     return value;
   }
+
   return -1;
 }
 
@@ -245,6 +247,7 @@ function secondsRemaningFunct(laterMs: number): number {
   if (value > 0) {
     return value;
   }
+
   return -1;
 }
 

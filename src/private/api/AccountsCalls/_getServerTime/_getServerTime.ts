@@ -16,6 +16,7 @@ export const _getServerTime = (
     );
   } catch (error) {
     void errorlog(`calling '/time' endpoint ${error.message}`);
+
     return new Date();
   }
 };

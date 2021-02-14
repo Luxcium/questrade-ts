@@ -21,5 +21,6 @@ export const clientProxyHandlerFactory = (
   newProxy.httpDataEndPointConnector = httpDataEndPointConnector;
   newProxy.oAuthHttpCredentials = oAuthHttpCredentials;
   newProxy.credendials = credentials;
+
   return newProxy;
 };

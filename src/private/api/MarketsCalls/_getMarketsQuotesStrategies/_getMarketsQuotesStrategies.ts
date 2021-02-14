@@ -22,6 +22,7 @@ export const _getMarketsQuotesStrategies = (
     )<IStrategiesQuotes>('/markets/quotes/strategies', { noCaching: true })();
   } catch (error) {
     void errorlog(error.message);
+
     return {
       /** Ask price */
       askPrice: Number.NaN,

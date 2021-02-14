@@ -29,11 +29,13 @@ export const _getCandles = (
       ).candles.map(result => {
         result.symbolID = symbolID;
         result.granularity = interval;
+
         return result;
       })
     );
   } catch (error) {
     void errorlog(error.message);
+
     return [];
   }
 };

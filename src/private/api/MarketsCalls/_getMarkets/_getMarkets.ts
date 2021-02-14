@@ -16,6 +16,7 @@ export const _getMarkets = (
       .markets;
   } catch (error) {
     void errorlog(error.message);
+
     return [];
   }
 };
