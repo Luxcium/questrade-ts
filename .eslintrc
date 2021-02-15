@@ -491,7 +491,7 @@
     "no-empty-character-class": 2,
     "no-ex-assign": 2,
     "no-extra-boolean-cast": 1,
-    "no-extra-parens": 1,
+    "no-extra-parens": 0,
     "no-extra-semi": 1,
     "no-func-assign": 2,
     "no-import-assign": 2,
