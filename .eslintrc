@@ -401,6 +401,15 @@
         "next": "return"
       },
       {
+        "blankLine": "always",
+        "prev": [
+          "block-like"
+        ],
+        "next": [
+          "*"
+        ]
+      },
+      {
         "blankLine": "never",
         "prev": [
           "singleline-const",
