@@ -4,7 +4,7 @@ import { ApiCallQ_ } from '../../core/next-rate-limiter/queue';
 
 // # _clientApiPost !!!
 /**
- * YOU PROVIDE: credentials, postData with D data type
+ * yOU PROVIDE: credentials, postData with D data type
  * and endpoint string with R return type,
  * THEN YOU GET: ( ) =\> Promise<R>
  */

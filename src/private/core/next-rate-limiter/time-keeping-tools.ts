@@ -1,5 +1,5 @@
 /**
- * The ECMAScript epoch and timestamps
+ * the ECMAScript epoch and timestamps
  *
  * A JavaScript date is fundamentally specified as the number of milliseconds
  * that have elapsed since midnight on January 1, 1970, UTC. This date and time
@@ -31,20 +31,20 @@ const { ceil, floor, max, min } = Math;
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 /**
- * Returns the number of milliseconds elapsed since
+ * returns the number of milliseconds elapsed since
  * January 1, 1970 00:00:00 UTC, with leap seconds ignored.
  * @returns  milliseconds
  */
 type EpochMs = () => number;
 /**
- * Returns the number of milliseconds elapsed since
+ * returns the number of milliseconds elapsed since
  * January 1, 1970 00:00:00 UTC, with leap seconds ignored.
  * @returns  milliseconds
  */
 const epochMs: EpochMs = epochMsFunct;
 
 /**
- * Returns the number of milliseconds elapsed since
+ * returns the number of milliseconds elapsed since
  * January 1, 1970 00:00:00 UTC, with leap seconds ignored.
  * @returns  milliseconds
  */
@@ -54,7 +54,7 @@ function epochMsFunct(): number {
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 /**
- * Returns the number of seconds elapsed since
+ * returns the number of seconds elapsed since
  * January 1, 1970 00:00:00 UTC, with leap seconds ignored.
  * @returns  seconds
  */
@@ -63,7 +63,7 @@ type EpochSec = () => number;
 const epochSec: EpochSec = epochSecFunct;
 
 /**
- * Returns the number of seconds elapsed since
+ * returns the number of seconds elapsed since
  * January 1, 1970 00:00:00 UTC, with leap seconds ignored.
  * @returns  seconds
  */
@@ -74,7 +74,7 @@ function epochSecFunct(): number {
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 
 /**
- * Extract the minutes part of and amout of miliseconds.
+ * extract the minutes part of and amout of miliseconds.
  * @param  miliseconds - The number of miliseconds from which to
  * extract the minute(s) rounded floor part.
  * @returns  Formated string `X`min
@@ -82,7 +82,7 @@ function epochSecFunct(): number {
 type MinuteStr = (miliseconds: number) => string;
 
 /**
- * Extract the minutes part of and amout of miliseconds.
+ * extract the minutes part of and amout of miliseconds.
  * @param  miliseconds - The number of miliseconds from which to
  * extract the minute(s) rounded floor part.
  * @returns  Formated string `X`min
@@ -96,7 +96,7 @@ function minuteStrFunct(miliseconds: number): string {
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 
 /**
- * Extract the rest part in seconds from miliseconds deducted from the minutes.
+ * extract the rest part in seconds from miliseconds deducted from the minutes.
  * @param  miliseconds - The number of miliseconds from which to
  * extract the second(s) rounded floor part.
  * @returns  Formated string `X`sec
@@ -104,7 +104,7 @@ function minuteStrFunct(miliseconds: number): string {
 type SecondeStr = (miliseconds: number) => string;
 
 /**
- * Extract the rest part in seconds from miliseconds deducted from the minutes.
+ * extract the rest part in seconds from miliseconds deducted from the minutes.
  * @param  miliseconds - The number of miliseconds from which to
  * extract the second(s) rounded floor part.
  * @returns  Formated string `X`sec
@@ -117,14 +117,14 @@ function secondeStrFunct(miliseconds: number): string {
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 /**
- * Extract the rest part in miliseconds after deducting from the seconds.
+ * extract the rest part in miliseconds after deducting from the seconds.
  * @param  miliseconds - The number of miliseconds from which to
  * extract rest rounded floor part.
  * @returns  Formated string `X`ms
  */
 type MiliSecStr = (miliseconds: number) => string;
 /**
- * Extract the rest part in miliseconds after deducting from the seconds.
+ * extract the rest part in miliseconds after deducting from the seconds.
  * @param  miliseconds - The number of miliseconds from which to
  * extract rest rounded floor part.
  * @returns  Formated string `X`ms
@@ -137,13 +137,13 @@ function miliSecStrFunct(miliseconds: number): string {
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 /**
- * Convert seconds to miliseconds (seconds × 1000)
+ * convert seconds to miliseconds (seconds × 1000)
  * @param  seconds - number of seconds to convert in miliseconds
  * @returns  miliseconds
  */
 type Milisec = (seconds: number) => number;
 /**
- * Convert seconds to miliseconds (seconds × 1000)
+ * convert seconds to miliseconds (seconds × 1000)
  * @param  seconds - number of seconds to convert in miliseconds
  * @returns  miliseconds
  */
@@ -155,13 +155,13 @@ function milisecFunct(seconds: number): number {
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 /**
- * Convert miliseconds to seconds celi(miliseconds ÷ 1000)
+ * convert miliseconds to seconds celi(miliseconds ÷ 1000)
  * @param  miliseconds - number of miliseconds to convert in seconds
  * @returns  seconds
  */
 type Sec = (miliseconds: number) => number;
 /**
- * Convert miliseconds to seconds celi(miliseconds ÷ 1000)
+ * convert miliseconds to seconds celi(miliseconds ÷ 1000)
  * @param  miliseconds - number of miliseconds to convert in seconds
  * @returns  seconds
  */
@@ -173,14 +173,14 @@ function secFunct(miliseconds: number): number {
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 /**
- * Calculate the amout of miliseconds remaining from now until a future milisecond
+ * calculate the amout of miliseconds remaining from now until a future milisecond
  * epoch return -1 if epoch is in the past or if result is 0
  * @param  laterMs - future unix epoch in miliseconds
  * @returns  miliseconds remaining from now until laterMs
  */
 type TimeRemaning = (laterMs: number) => number;
 /**
- * Calculate the amout of miliseconds remaining from now until a future milisecond
+ * calculate the amout of miliseconds remaining from now until a future milisecond
  * epoch return -1 if epoch is in the past or if result is 0
  * @param  laterMs - future unix epoch in miliseconds
  * @returns  miliseconds remaining from now until laterMs
@@ -199,14 +199,14 @@ function timeRemaningFunct(laterMs: number): number {
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 /**
- * Calculate the amout of minutes remaining from now until a future milisecond
+ * calculate the amout of minutes remaining from now until a future milisecond
  * epoch return -1 if epoch is in the past or if result is 0
  * @param  laterMs - future unix epoch in miliseconds
  * @returns  miliseconds from now until laterMs
  */
 type MinutesRemaning = (laterMs: number) => number;
 /**
- * Calculate the amout of minutes remaining from now until a future milisecond
+ * calculate the amout of minutes remaining from now until a future milisecond
  * epoch return -1 if epoch is in the past or if result is 0
  * @param  laterMs - future unix epoch in miliseconds
  * @returns  miliseconds from now until laterMs
@@ -225,7 +225,7 @@ function minutesRemaningFunct(laterMs: number): number {
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 /**
- * Calculate the amout of seconds remaining from now until a future milisecond
+ * calculate the amout of seconds remaining from now until a future milisecond
  * epoch return -1 if epoch is in the past or if result is 0
  * @param  laterMs - future unix epoch in miliseconds
  * @returns  seconds from now until laterMs.
@@ -233,7 +233,7 @@ function minutesRemaningFunct(laterMs: number): number {
  */
 type SecondsRemaning = (laterMs: number) => number;
 /**
- * Calculate the amout of seconds remaining from now until a future milisecond
+ * calculate the amout of seconds remaining from now until a future milisecond
  * epoch return -1 if epoch is in the past or if result is 0
  * @param  laterMs - future unix epoch in miliseconds
  * @returns  seconds from now until laterMs.
@@ -253,7 +253,7 @@ function secondsRemaningFunct(laterMs: number): number {
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 /**
- * Calculate from msRemaning, the maximum amout of request per seconde
+ * calculate from msRemaning, the maximum amout of request per seconde
  * (the frequecy)
  * @param  reqstRemaining - ['x-ratelimit-remaining']
  * @param  msRemaning - timeRemaning(['x-ratelimit-reset'] × 1000)
@@ -266,7 +266,7 @@ type PossibleReqstPerSecond = (
   maximumperseconds?: number,
 ) => number;
 /**
- * Calculate from msRemaning, the maximum amout of request per seconde
+ * calculate from msRemaning, the maximum amout of request per seconde
  * (the frequecy)
  * @param  reqstRemaining - ['x-ratelimit-remaining']
  * @param  msRemaning - timeRemaning(['x-ratelimit-reset'] × 1000)
@@ -276,7 +276,7 @@ type PossibleReqstPerSecond = (
 const possibleReqstPerSecond: PossibleReqstPerSecond = possibleReqstPerSecondFunct;
 
 /**
- * Calculate from msRemaning, the maximum amout of request per seconde
+ * calculate from msRemaning, the maximum amout of request per seconde
  * (the frequecy)
  * @param  reqstRemaining - ['x-ratelimit-remaining']
  * @param  msRemaning - timeRemaning(['x-ratelimit-reset'] × 1000)
@@ -296,7 +296,7 @@ function possibleReqstPerSecondFunct(
 
 // ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――->
 /**
- * Calculate from rateLimitReset, the maximum amout of request per seconde
+ * calculate from rateLimitReset, the maximum amout of request per seconde
  * (the frequecy)
  * @param   reqstRemaining - ['x-ratelimit-remaining']
  * @param   msRemaning -
@@ -309,7 +309,7 @@ type LimitRequestsPerSecond = (
   maximumperseconds?: number,
 ) => number;
 /**
- * Calculate from rateLimitReset, the maximum amout of request per seconde
+ * calculate from rateLimitReset, the maximum amout of request per seconde
  * (the frequecy)
  * @param  reqstRemaining - ['x-ratelimit-remaining']
  * @param  rateLimitReset -  ['x-ratelimit-reset']
@@ -333,19 +333,19 @@ function limitRequestsPerSecondFunct(
 
 interface TimeKeepingTools {
   /**
-   * Returns the number of milliseconds elapsed since
+   * returns the number of milliseconds elapsed since
    * January 1, 1970 00:00:00 UTC, with leap seconds ignored.
    * @returns  milliseconds
    */
   epochMs: EpochMs;
   /**
-   * Returns the number of seconds elapsed since
+   * returns the number of seconds elapsed since
    * January 1, 1970 00:00:00 UTC, with leap seconds ignored.
    * @returns  seconds
    */
   epochSec: EpochSec;
   /**
-   * Calculate from rateLimitReset, the maximum amout of request per seconde
+   * calculate from rateLimitReset, the maximum amout of request per seconde
    * (the frequecy)
    * @param  reqstRemaining - ['x-ratelimit-remaining']
    * @param  rateLimitReset -  ['x-ratelimit-reset']
@@ -354,7 +354,7 @@ interface TimeKeepingTools {
    */
   limitRequestsPerSecond: LimitRequestsPerSecond;
   /**
-   * Convert seconds to miliseconds (seconds × 1000)
+   * convert seconds to miliseconds (seconds × 1000)
    * @param  seconds - number of seconds to convert in miliseconds
    * @returns  miliseconds
    */
@@ -363,7 +363,7 @@ interface TimeKeepingTools {
   minutesRemaning: MinutesRemaning;
   minuteStr: MinuteStr;
   /**
-   * Calculate from msRemaning, the maximum amout of request per seconde
+   * calculate from msRemaning, the maximum amout of request per seconde
    * (the frequecy)
    * @param  reqstRemaining - ['x-ratelimit-remaining']
    * @param  msRemaning - timeRemaning(['x-ratelimit-reset'] × 1000)
@@ -372,7 +372,7 @@ interface TimeKeepingTools {
    */
   possibleReqstPerSecond: PossibleReqstPerSecond;
   /**
-   * Convert miliseconds to seconds celi(miliseconds ÷ 1000)
+   * convert miliseconds to seconds celi(miliseconds ÷ 1000)
    * @param  miliseconds - number of miliseconds to convert in seconds
    * @returns  seconds
    */

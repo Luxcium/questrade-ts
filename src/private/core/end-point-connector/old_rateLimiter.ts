@@ -11,7 +11,7 @@ async function _rateLimiter<R>(
   _config: ClientRequestConfig,
   credentials?: Credentials,
 ) {
-  // INFO: RATE LIMITER Block Start ********************************************
+  // iNFO: RATE LIMITER Block Start ********************************************
 
   const possiblePerSeconds =
     credentials?.remainingRequests?.possiblePerSeconds ?? 21;

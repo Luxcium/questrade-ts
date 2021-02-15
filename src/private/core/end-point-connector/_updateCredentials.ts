@@ -13,9 +13,9 @@ function _updateCredentials(
 ) {
   try {
     if (credentials) {
-      // INFO: CREDENTIALS UPTADE  Block Start *********************************
+      // iNFO: CREDENTIALS UPTADE  Block Start *********************************
 
-      // Response;
+      // response;
       credentials.config_ = _config;
       credentials.response_ = response;
       [, credentials.configUrl_] = `${_config.url}`.split('questrade.com/');

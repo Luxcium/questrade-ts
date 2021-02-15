@@ -1,91 +1,91 @@
 import { void0 } from '../../../utils';
 
 void0();
-// Import { CallBack } from '../../../typescript';
-// Import { perSeconds } from '../../../utils';
+// import { CallBack } from '../../../typescript';
+// import { perSeconds } from '../../../utils';
 
 // // create the function required to have a request limiter
 // // set the initial state
-// Export function myRequestLimiterFactory() {
-//   Let isRequested = false;
-//   Const hertz: number = 1;
+// export function myRequestLimiterFactory() {
+//   let isRequested = false;
+//   const hertz: number = 1;
 
 //   // the request limiter function  itself
-//   Return <Tfn>(fn: () => Promise<Tfn>) => {
-//     Const queueList: [() => Promise<Tfn>, CallBack<any>][] = [];
-//     Const shiftOutFromQueue = async () => {
-//       If (queueList.length > 0 && !isRequested) {
-//         IsRequested = true;
-//         Const nextToExecute = shiftQueue(queueList);
+//   return <Tfn>(fn: () => Promise<Tfn>) => {
+//     const queueList: [() => Promise<Tfn>, CallBack<any>][] = [];
+//     const shiftOutFromQueue = async () => {
+//       if (queueList.length > 0 && !isRequested) {
+//         isRequested = true;
+//         const nextToExecute = shiftQueue(queueList);
 
-//         If (nextToExecute !== undefined) {
-//           Const [myfn, mycb] = nextToExecute;
+//         if (nextToExecute !== undefined) {
+//           const [myfn, mycb] = nextToExecute;
 
-//           Mycb(null, myfn());
+//           mycb(null, myfn());
 //         }
-//         SetTimeout(async () => {
-//           IsRequested = false;
-//           Await shiftOutFromQueue();
+//         setTimeout(async () => {
+//           isRequested = false;
+//           await shiftOutFromQueue();
 //         }, perSeconds(hertz));
 //       }
-//       Return void 0;
+//       return void 0;
 //     };
 
 //     // when isRequested = true or if queue is empty
-//     Return async function pushInToQueue(cb: CallBack<any>) {
-//       QueueList.push([fn, cb]);
-//       Return shiftOutFromQueue();
+//     return async function pushInToQueue(cb: CallBack<any>) {
+//       queueList.push([fn, cb]);
+//       return shiftOutFromQueue();
 //     };
 //   };
 // }
 
-// Const shiftQueue = <TFnct>(queueList: [TFnct, CallBack<any>][]) =>
-//   QueueList.shift();
+// const shiftQueue = <TFnct>(queueList: [TFnct, CallBack<any>][]) =>
+//   queueList.shift();
 // !!
 //
 //
-// Const hertz: number = 1;
-// Let isCalled = false;
-// Const callsQueue: Array<[Function, CallBack]> = [];
-// Export function requestLimiterFactory() {
-//   Let isCalled = false;
-//   Const callsQueue: Array<[Function, CallBack]> = [];
-//   Return function requestLimiter(fn: Function, hertz: number = 1) {
-//     Return addToQueue(callsQueue)(callToPop)(fn);
+// const hertz: number = 1;
+// let isCalled = false;
+// const callsQueue: Array<[Function, CallBack]> = [];
+// export function requestLimiterFactory() {
+//   let isCalled = false;
+//   const callsQueue: Array<[Function, CallBack]> = [];
+//   return function requestLimiter(fn: Function, hertz: number = 1) {
+//     return addToQueue(callsQueue)(callToPop)(fn);
 //   };
 // }
 
-// Const callToPop = () => ({ isCalled }: { isCalled: boolean }) => async () => {
-//   If (callsQueue.length >= 1 && !isCalled) {
-//     IsCalled = true;
-//     SetTimeout(async function() {
-//       IsCalled = false;
-//       Await callToPop();
+// const callToPop = () => ({ isCalled }: { isCalled: boolean }) => async () => {
+//   if (callsQueue.length >= 1 && !isCalled) {
+//     isCalled = true;
+//     setTimeout(async function() {
+//       isCalled = false;
+//       await callToPop();
 //     }, perSeconds(hertz));
-//     Const poped = callsQueue.pop();
-//     Const [myfn, mycb] = !!poped ? poped : neverWillBe;
-//     Mycb(null, myfn());
+//     const poped = callsQueue.pop();
+//     const [myfn, mycb] = !!poped ? poped : neverWillBe;
+//     mycb(null, myfn());
 //   }
 // };
 
-// Const addToQueue = (callsQueue: Array<[Function, CallBack]>) => (
-//   CallToPop: () => Promise<void>
+// const addToQueue = (callsQueue: Array<[Function, CallBack]>) => (
+//   callToPop: () => Promise<void>
 // ) => (fn: Function) => async (cb: CallBack) => {
-//   CallsQueue.unshift([fn, cb]);
-//   Await callToPop();
+//   callsQueue.unshift([fn, cb]);
+//   await callToPop();
 // };
 
-// Const neverWillCb = async () => {
-//   Void0();
-//   Throw new Error(
+// const neverWillCb = async () => {
+//   void0();
+//   throw new Error(
 //     'NEVER: lenght is validated prior to pop this should never occur'
 //   );
 // };
-// Const neverCb = (error: Error | null, returnValue: any) => {
-//   Void0({ returnValue, error });
-//   Throw new Error(
+// const neverCb = (error: Error | null, returnValue: any) => {
+//   void0({ returnValue, error });
+//   throw new Error(
 //     'NEVER: lenght is validated prior to pop this should never occur'
 //   );
 // };
-// Const neverWillBe = [neverWillCb, neverCb];
-// Void0(void0);
+// const neverWillBe = [neverWillCb, neverCb];
+// void0(void0);

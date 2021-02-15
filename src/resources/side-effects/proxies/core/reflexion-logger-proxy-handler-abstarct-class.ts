@@ -301,5 +301,4 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   Certaines trappes non standards sont désormais obsolètes et ont été supprimées.
 
 
-
 */

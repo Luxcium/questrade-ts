@@ -39,7 +39,7 @@ function _httpDataEndPointConnector<DATA>(
     const possiblePerSeconds =
       credentials?.remainingRequests?.possiblePerSeconds ?? 21;
 
-    // Testing it with useNewRateLimiter = true
+    // testing it with useNewRateLimiter = true
     useNewRateLimiter = true;
     const response: ClientResponse<DATA> = await (useNewRateLimiter
       ? apiCallQ.addToQueue({
@@ -61,7 +61,7 @@ function _httpDataEndPointConnector<DATA>(
       return response.data;
     }
 
-    // ERROR HANDLER: ECHO STATUS ON ERROR //-!
+    // eRROR HANDLER: ECHO STATUS ON ERROR //-!
     _echoStatus(response, credentials);
     throw new Error(...errorlog("Can't retrive data from call to API"));
   };

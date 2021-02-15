@@ -1,7 +1,7 @@
 import { ITimeRateLimiter } from '../../../typescript/ITimeRateLimiter';
 import { remaningTimeString } from './remaningTimeString';
 
-// CONSOLE: using console info is a sideEffect and will be flagged
+// cONSOLE: using console info is a sideEffect and will be flagged
 
 export const logRemanings = ({
   timeNow,

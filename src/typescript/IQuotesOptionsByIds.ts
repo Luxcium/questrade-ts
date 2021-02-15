@@ -2,91 +2,91 @@ export interface IOptionsQuotes {
   quotes: IOptionsQuote[];
 }
 export interface IOptionsQuote {
-  /** List of Level1 OptionData records. */
+  /** list of Level1 OptionData records. */
   quotes?: [];
-  /** List of Level1 OptionData records. */
+  /** list of Level1 OptionData records. */
 
   Level1OptionData?: [];
 
-  /** Underlying name */
+  /** underlying name */
   underlying?: string;
 
-  /** Underlying ID */
+  /** underlying ID */
   underlyingId?: number;
 
-  /** Symbol name */
+  /** symbol name */
   symbol?: string;
 
-  /** Symbol ID */
+  /** symbol ID */
   stockId?: number;
 
-  /** Bid price */
+  /** bid price */
   bidPrice?: number;
 
-  /** Bid size */
+  /** bid size */
   bidSize?: number;
 
-  /** Ask price */
+  /** ask price */
   askPrice?: number;
 
-  /** Ask size */
+  /** ask size */
   askSize?: number;
 
-  /** Last trade price trade hours */
+  /** last trade price trade hours */
   lastTradePriceTrHrs?: number;
 
-  /** Last trade price */
+  /** last trade price */
   lastTradePrice?: number;
 
-  /** Last trade size */
+  /** last trade size */
   lastTradeSize?: number;
 
-  /** Last trade tick */
+  /** last trade tick */
   lastTradeTick?: string;
 
-  /** Last trade time */
+  /** last trade time */
   lastTradeTime?: Date;
 
-  /** Volume */
+  /** volume */
   volume?: number;
 
-  /** Open price */
+  /** open price */
   openPrice?: number;
 
-  /** High price */
+  /** high price */
   highPrice?: number;
 
-  /** Low price */
+  /** low price */
   lowPrice?: number;
 
-  /** Volatility */
+  /** volatility */
   volatility?: number;
 
-  /** Delta */
+  /** delta */
   delta?: number;
 
-  /** Gamma */
+  /** gamma */
   gamma?: number;
 
-  /** Theta */
+  /** theta */
   theta?: number;
 
-  /** Vega */
+  /** vega */
   vega?: number;
 
-  /** Rho */
+  /** rho */
   rho?: number;
 
-  /** Open interest */
+  /** open interest */
   openInterest?: number;
 
-  /** How much is data delayed */
+  /** how much is data delayed */
   delay?: number;
 
-  /** Whether or not the symbol was halted */
+  /** whether or not the symbol was halted */
   isHalted?: boolean;
 
-  /** Volume Weighted Average Price */
+  /** volume Weighted Average Price */
   VWAP?: number;
 }
 

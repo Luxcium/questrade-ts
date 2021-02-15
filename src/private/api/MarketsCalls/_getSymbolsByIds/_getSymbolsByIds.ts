@@ -1,4 +1,4 @@
-// Import { errorlog } from '../../../../resources/side-effects';
+// import { errorlog } from '../../../../resources/side-effects';
 import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import { ISymbol, ISymbols, Logger } from '../../../../typescript';
 import { urlEncode } from '../../../../utils';

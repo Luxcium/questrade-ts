@@ -1,7 +1,7 @@
-// Import { errorlog } from '../../../../resources/side-effects';
+// import { errorlog } from '../../../../resources/side-effects';
 import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import { ICandle, ICandles, Logger } from '../../../../typescript';
-// TODO: remove dependencies to nodeJS crypt-module making it optional ...
+// tODO: remove dependencies to nodeJS crypt-module making it optional ...
 import { urlEncode, urlEncodeDateTool } from '../../../../utils';
 
 // + _getCandles endpointFormatDateTool

@@ -1,40 +1,40 @@
 export interface IStrategiesQuotes {
-  /** Variant ID corresponding to variant in request */
+  /** variant ID corresponding to variant in request */
   variantId: number;
 
-  /** Bid price */
+  /** bid price */
   bidPrice: number;
 
-  /** Ask price */
+  /** ask price */
   askPrice: number;
 
-  /** Underlying name */
+  /** underlying name */
   underlying: string;
 
-  /** Underlying ID */
+  /** underlying ID */
   underlyingId: number;
 
-  /** Open price */
+  /** open price */
   openPrice: number;
 
-  /** Volatility */
+  /** volatility */
   volatility: number;
 
-  /** Delta */
+  /** delta */
   delta: number;
 
-  /** Gamma */
+  /** gamma */
   gamma: number;
 
-  /** Theta */
+  /** theta */
   theta: number;
 
-  /** Vega */
+  /** vega */
   vega: number;
 
-  /** Rho */
+  /** rho */
   rho: number;
 
-  /** Whether or not the data is real-time */
+  /** whether or not the data is real-time */
   isRealTime: boolean;
 }

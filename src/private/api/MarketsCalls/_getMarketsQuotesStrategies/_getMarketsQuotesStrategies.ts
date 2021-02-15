@@ -24,31 +24,31 @@ export const _getMarketsQuotesStrategies = (
     void errorlog(error.message);
 
     return {
-      /** Ask price */
+      /** ask price */
       askPrice: Number.NaN,
-      /** Bid price */
+      /** bid price */
       bidPrice: Number.NaN,
-      /** Delta */
+      /** delta */
       delta: Number.NaN,
-      /** Gamma */
+      /** gamma */
       gamma: Number.NaN,
-      /** Whether or not the data is real-time */
+      /** whether or not the data is real-time */
       isRealTime: false,
-      /** Open price */
+      /** open price */
       openPrice: Number.NaN,
-      /** Rho */
+      /** rho */
       rho: Number.NaN,
-      /** Theta */
+      /** theta */
       theta: Number.NaN,
-      /** Underlying name */
+      /** underlying name */
       underlying: 'ERROR',
-      /** Underlying ID */
+      /** underlying ID */
       underlyingId: Number.NaN,
-      /** Variant ID corresponding to variant in request */
+      /** variant ID corresponding to variant in request */
       variantId: Number.NaN,
-      /** Vega */
+      /** vega */
       vega: Number.NaN,
-      /** Volatility */
+      /** volatility */
       volatility: Number.NaN,
     };
   }

@@ -14,7 +14,7 @@ const _endPtAccountBaseURL: EndPtAccountBaseURL = getCredAcctProp => urlSep => a
     proxy,
   )}${accountEndpoint}`;
 
-/** PROVIDE: credentials and accountEndpoint string, THEN GET: a endpoint string */
+/** pROVIDE: credentials and accountEndpoint string, THEN GET: a endpoint string */
 export const _endpointFormatAccount = _endPtAccountBaseURL(_credAcctNmbrProp)(
   _urlSeprator,
 )(_baseAcctUrlStr);

@@ -26,42 +26,42 @@ export async function callTimeOut(
     );
   }, 500);
 }
-// Export async function callTimeOut(
-//   Proxy: ProxyFactory_ | undefined,
-//   Credentials: Credentials,
-//   Callback: (acct: () => Promise<IAccounts>) => void,
-//   Ms: number,
-//   Args: any[],
+// export async function callTimeOut(
+//   proxy: ProxyFactory_ | undefined,
+//   credentials: Credentials,
+//   callback: (acct: () => Promise<IAccounts>) => void,
+//   ms: number,
+//   args: any[],
 // ) {
 //
 
-//   SetTimeout(
+//   setTimeout(
 //     (args_: any[]) => {
 //
-//       Return void args_;
+//       return void args_;
 //     },
-//     Ms,
-//     Args,
+//     ms,
+//     args,
 //   );
 // }
 
-// Export async function nameIT(
-//   Proxy: ProxyFactory_ | undefined,
-//   Credentials: Credentials,
+// export async function nameIT(
+//   proxy: ProxyFactory_ | undefined,
+//   credentials: Credentials,
 // ) {
-//   Return _clientGetApi(credentials, proxy);
+//   return _clientGetApi(credentials, proxy);
 // }
-// Const accounts = async () =>
-//   GetEndpoint<IAccounts>(`/accounts`, {
-//     NoCaching: true,
+// const accounts = async () =>
+//   getEndpoint<IAccounts>(`/accounts`, {
+//     noCaching: true,
 //   })();
 
-// Const time = async () =>
-//   New Date(
+// const time = async () =>
+//   new Date(
 //     (await getEndpoint<ITime>('/time/?', { noCaching: true })()).time,
 //   );
 
-// Return async () => ({ accounts: await accounts(), time: await time() });
+// return async () => ({ accounts: await accounts(), time: await time() });
 // +!! _getAccounts
 /*
  _getAccounts
@@ -71,7 +71,7 @@ export function _getAccounts(
     endpoint: string,
     handlerOptions: ProxyHandlerOptions,
   ) => () => Promise<R>,
-  errorlog: Logger = (error: any) => error /* Logger */,
+  errorlog: Logger = (error: any) => error /* logger */,
 ) {
   return async (): Promise<IAccount[]> => {
     try {
@@ -109,7 +109,7 @@ export const _getServerTime = (
 
 /*
 
-Import { Credentials, ProxyFactory_ } from '../../../typescript';
+import { Credentials, ProxyFactory_ } from '../../../typescript';
 import { _coreApiFunction } from '../../core/end-point-connector/_coreApiFunction';
 
 // # _clientGetApi !!!

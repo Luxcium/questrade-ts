@@ -1,4 +1,4 @@
-// Import { errorlog } from '../../resources/side-effects';
+// import { errorlog } from '../../resources/side-effects';
 import {
   Credentials,
   Logger,
@@ -144,7 +144,7 @@ export const _getQuestradeApi = async (
       },
       stock(prefix: string, offset?: number) {
         return api.symbolSearch(prefix, offset);
-        // Return symbolSearchAndCount(prefix, offset);
+        // return symbolSearchAndCount(prefix, offset);
       },
     },
     serverTime: credentials.serverTime || 'ERROR',
@@ -154,7 +154,7 @@ export const _getQuestradeApi = async (
 void0(void0);
 // = [
 /*
-    Argument of type '<R>(endpoint: string, handlerOptions: ProxyHandlerOptions) => () => Promise<R>'
+    argument of type '<R>(endpoint: string, handlerOptions: ProxyHandlerOptions) => () => Promise<R>'
     is not assignable to
     parameter of type '<R>(endpoint: string) => () => Promise<R>'.ts(2345)
     ,
@@ -176,7 +176,7 @@ void0(void0);
 // // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),
 // _getQuotesOptionsByIds(postApi(), errorlog),
 // _getQuotesOptionsFilter(
-//   PostApi() /* , errorlog */,
+//   postApi() /* , errorlog */,
 // ),
 // _getServerTime(getApi() /* , errorlog */),
 // _getSymbolsByIds(getApi(), errorlog),
@@ -185,6 +185,6 @@ void0(void0);
 // _getSymbolSearch(getApi(), errorlog),
 // _getSymbolSearchCount(getApi(), errorlog),
 // ];
-// Unused for the moment
-// SymbolSearchAndCount:    // _getSymbolSearchAndCount(credentials,proxy, errorlog),
-// QuotesOptionsbyFilterAndIds:    // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),
+// unused for the moment
+// symbolSearchAndCount:    // _getSymbolSearchAndCount(credentials,proxy, errorlog),
+// quotesOptionsbyFilterAndIds:    // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),

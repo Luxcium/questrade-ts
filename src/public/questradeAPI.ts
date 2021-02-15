@@ -2,7 +2,7 @@ import { _getQuestradeApi } from '../private/api/_getQuestradeApi';
 import { ApiCallQ_ } from '../private/core/next-rate-limiter/queue';
 import { Credentials, ProxyFactory_, QuestradeApi } from '../typescript';
 
-// Export const getQuestradeApi = ;
+// export const getQuestradeApi = ;
 
 export const questradeApiFactory = async (
   credentials: Credentials,

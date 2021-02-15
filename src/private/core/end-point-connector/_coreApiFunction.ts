@@ -33,7 +33,7 @@ function _coreApiFunction(
             proxy,
           );
 
-          return clientDataGetter(errorlog, handlerOptions); // From _tryToGetData...
+          return clientDataGetter(errorlog, handlerOptions); // from _tryToGetData...
         };
       };
     };

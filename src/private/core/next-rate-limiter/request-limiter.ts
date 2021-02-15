@@ -11,7 +11,7 @@ export const newRequestLimiter = <R>(
 ): ClientPromise<R> => {
   const { httpClient, config, maxPerSec, maxPerHour } = options;
 
-  // Cb(fn(args));
+  // cb(fn(args));
   void httpClient, maxPerSec, maxPerHour;
 
   const callQueue = new ApiCallQ_();
@@ -24,4 +24,4 @@ export const newRequestLimiter = <R>(
     20,
   );
 };
-// NewRequestLimiter
+// newRequestLimiter

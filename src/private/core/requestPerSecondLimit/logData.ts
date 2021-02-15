@@ -3,7 +3,7 @@ import { ClientResponse } from '../../../resources/side-effects/types';
 export const logData = <T>(response: ClientResponse<T>) => {
   const { config, data, headers, status, statusText } = response;
 
-  // CONSOLE: using console info is a sideEffect and will be flagged
+  // cONSOLE: using console info is a sideEffect and will be flagged
 
   console.info('status ==============================');
   console.info(status, statusText);

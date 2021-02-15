@@ -2,7 +2,7 @@ import { IAccountActivity, IActivities, Logger } from '../../../../typescript';
 import { urlEncodeDateTool } from '../../../../utils';
 
 // + _getActivities
-/** PROVIDE: credentials, startTime string and endTime string THEN GET: a 'Promise\<IAccountActivity[]\>' */
+/** pROVIDE: credentials, startTime string and endTime string THEN GET: a 'Promise\<IAccountActivity[]\>' */
 export const _getActivities = (
   accountGetApi: <R>(accountEndpoint: string) => () => Promise<R>,
   errorlog: Logger = (...error: any[]) => error,

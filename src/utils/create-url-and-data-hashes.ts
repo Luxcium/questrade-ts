@@ -65,7 +65,7 @@ function getUrlAndDataHashes(
   urlPath: string = '',
   dataToCache?: any,
 ): UrlDataAndHashes {
-  // Const BASE64: BinaryToTextEncoding = 'base64';
+  // const BASE64: BinaryToTextEncoding = 'base64';
   const HEX: BinaryToTextEncoding = 'hex';
 
   return {
@@ -111,7 +111,7 @@ function getUrlAndDataHashes(
 
 export { getDataHash, getUDatagram, getUrlAndDataHashes, getUrlHash };
 
-// DATA_HASH_B62: !dataToHash
+// dATA_HASH_B62: !dataToHash
 //   ? 'null'
 //   : `DATA:B62${createHash('sha256')
 //       .update(JSON.stringify(dataToHash))
@@ -121,7 +121,7 @@ export { getDataHash, getUDatagram, getUrlAndDataHashes, getUrlHash };
 //       .replaceAll('=', '')
 //       .slice(0, 8)}`,
 
-// URL_HASH_B62: !urlPath
+// uRL_HASH_B62: !urlPath
 //   ? 'null'
 //   : `URL:B62:${createHash('sha256')
 //       .update(urlPath)

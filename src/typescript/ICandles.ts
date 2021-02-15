@@ -3,23 +3,23 @@ export interface ICandles {
 }
 
 export interface ICandle {
-  /** Candlestick start timestamp (in ISO format). */
+  /** candlestick start timestamp (in ISO format). */
   start?: Date | string;
-  /** Candlestick end timestamp (in ISO format). */
+  /** candlestick end timestamp (in ISO format). */
   end?: Date | string;
-  /** Opening price. */
+  /** opening price. */
   open?: number;
-  /** High price. */
+  /** high price. */
   high?: number;
-  /** Low price. */
+  /** low price. */
   low?: number;
-  /** Closing price. */
+  /** closing price. */
   close?: number;
-  /** Trading volume. */
+  /** trading volume. */
   volume?: number;
-  /** The volume weighted average price (VWAP) */
+  /** the volume weighted average price (VWAP) */
   VWAP?: number;
   symbolID?: number;
   granularity?: string;
-  // Hash: { short: string; long: string };
+  // hash: { short: string; long: string };
 }

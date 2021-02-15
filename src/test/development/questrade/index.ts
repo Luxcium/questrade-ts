@@ -1,7 +1,7 @@
 import { questradeAPI } from '../../..';
 import { QuestradeApi } from '../../../typescript';
 
-/* You will need to create your own API key: */
+/* you will need to create your own API key: */
 /* https://login.questrade.com/APIAccess/UserApps.aspx */
 
 const yourRefreshToken = '9biJACDg2bZiMZYNfDhewfb1gybCNYAc0';

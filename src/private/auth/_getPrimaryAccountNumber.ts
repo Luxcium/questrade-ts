@@ -1,7 +1,7 @@
 import { errorlog } from '../../resources/side-effects';
 import { AcountNumberString, IAccount } from '../../typescript';
 
-/** PROVIDE: IAccount[] THEN GET:  a 'primaryAccountNumber string'  */
+/** pROVIDE: IAccount[] THEN GET:  a 'primaryAccountNumber string'  */
 export function _getPrimaryAccountNumber(
   accounts: IAccount[],
 ): AcountNumberString {

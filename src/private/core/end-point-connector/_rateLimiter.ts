@@ -14,7 +14,7 @@ function _rateLimiter<R>(configs: {
   useNewRateLimiter: boolean;
   credentials?: Credentials;
 }): ClientPromise<R> {
-  // Function limitingRequest<T>(fn: Function, hertz?: number): Promise<T>
+  // function limitingRequest<T>(fn: Function, hertz?: number): Promise<T>
   const {
     config,
     httpClient,
@@ -33,13 +33,13 @@ function _rateLimiter<R>(configs: {
       });
     }
 
-    // Const requestLimiter = limitingRequest; //(possiblePerSeconds); ClientPromise<R>
+    // const requestLimiter = limitingRequest; //(possiblePerSeconds); ClientPromise<R>
     const httpCall: () => ClientPromise<R> = async () => httpClient(config);
 
     return limitingRequest(httpCall, possiblePerSeconds);
   }
 
-  // INFO: httpClient: <R>(conf: ClientRequestConfig) => ClientPromise<R>     //-!
+  // iNFO: httpClient: <R>(conf: ClientRequestConfig) => ClientPromise<R>     //-!
   return httpClient(config);
 }
 

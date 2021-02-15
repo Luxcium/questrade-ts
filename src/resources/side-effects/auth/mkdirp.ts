@@ -24,8 +24,8 @@ export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
   const _0777 = 0o0777;
 
   if (!mode) {
-    // HACK:  mode = _0777 & ~process.umask();
-    // HACK:  mode = /* _0777 & ~ */ process.umask(_0777);
+    // hACK:  mode = _0777 & ~process.umask();
+    // hACK:  mode = /* _0777 & ~ */ process.umask(_0777);
     mode = /* _0777 & ~ */ process.umask(_0777);
   }
 
@@ -63,7 +63,7 @@ export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
 }
 
 /*
-Copyright 2010 James Halliday (mail@substack.net)
+copyright 2010 James Halliday (mail@substack.net)
 
 This project is free software released under the MIT/X11 license:
 

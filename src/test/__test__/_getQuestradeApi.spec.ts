@@ -14,15 +14,15 @@ import {
 import { setDateRange, void0 } from '../../utils';
 
 const dateRange30Days = setDateRange(30);
-let qtApi: any;
-let credentials: Credentials;
-let account: () => Promise<QtApiAccount>;
-let market: () => Promise<QtApiMarket>;
-let getQuotes: () => Promise<QtApiQuotes>;
-let getOptionsQuotes: () => Promise<QtApiOptionsQuotes>;
-let getSymbols: () => Promise<QtApiSymbols>;
-let getOptionChains: () => Promise<QtApiOptionChains>;
-let search: () => Promise<QtApiSearch>;
+let account: () => Promise<QtApiAccount>,
+  credentials: Credentials,
+  getOptionChains: () => Promise<QtApiOptionChains>,
+  getOptionsQuotes: () => Promise<QtApiOptionsQuotes>,
+  getQuotes: () => Promise<QtApiQuotes>,
+  getSymbols: () => Promise<QtApiSymbols>,
+  market: () => Promise<QtApiMarket>,
+  qtApi: any,
+  search: () => Promise<QtApiSearch>;
 
 beforeAll(async done => {
   const qtApiAndCredentials = await questradeAPI({ token: 'MOCK' });
@@ -157,8 +157,8 @@ describe('MARKET METHODS will test all methods on get.market', () => {
     done();
   });
   it('should validate candlesByStockId with default interval', async done => {
-    // Const candel30Day = async () =>
-    //   DateRange30Days((await market()).getCandlesByStockId(8049)());
+    // const candel30Day = async () =>
+    //   dateRange30Days((await market()).getCandlesByStockId(8049)());
     void0((await market()).getCandlesByStockId(8049)());
     done();
   });

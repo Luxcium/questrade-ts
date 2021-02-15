@@ -7,15 +7,14 @@ import { _clientGetApi } from '../routes';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 import { _oAuthHttp } from './xx-http-auth-xx';
 
-/** Provide: a token string THEN GET: a 'Promise<Credentials>' */
+/** provide: a token string THEN GET: a 'Promise<Credentials>' */
 async function _credentialsFactory(
   apiOptions: ApiOptions,
   apiCallQ: ApiCallQ_,
 
   proxyFactory?: (() => ProxyFactory_) | null,
 ) {
-  let proxy: ProxyFactory_ | null;
-  let credentials: Credentials;
+  let credentials: Credentials, proxy: ProxyFactory_ | null;
 
   if (proxyFactory != null) {
     proxy = proxyFactory();
@@ -23,7 +22,7 @@ async function _credentialsFactory(
       ? _oAuthHttp(apiOptions, proxy)
       : _oAuthHttp(apiOptions, null));
   } else {
-    // Proxy does not exist (is undefined or null) will use undefined
+    // proxy does not exist (is undefined or null) will use undefined
     proxy = null;
     credentials = await _oAuthHttp(apiOptions);
   }

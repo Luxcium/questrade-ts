@@ -26,9 +26,9 @@ export const writeToken = (
   return cred;
 };
 
-// Export function writeToken(
-//   Credentials: Credentials,
-//   Response: ClientResponse<IRefreshCreds>,
+// export function writeToken(
+//   credentials: Credentials,
+//   response: ClientResponse<IRefreshCreds>,
 // ): Credentials {
-//   Return _writeToken(credentials, response);
+//   return _writeToken(credentials, response);
 // }

@@ -1,11 +1,11 @@
-// Import { ApiOptions, Credentials, Logger, ProxyFactory_ } from '.';
+// import { ApiOptions, Credentials, Logger, ProxyFactory_ } from '.';
 
 import { NEVER } from '../utils/never';
 
-// Export type RedeemOptions = {
-//   RefreshToken: ApiOptions;
-//   Errorloger?: Logger;
-//   ProxyFactory?: (credentials?: Credentials) => ProxyFactory_;
+// export type RedeemOptions = {
+//   refreshToken: ApiOptions;
+//   errorloger?: Logger;
+//   proxyFactory?: (credentials?: Credentials) => ProxyFactory_;
 // };
 
 void NEVER;

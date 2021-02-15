@@ -5,7 +5,7 @@ import { _endpointFormatAccount } from '..';
 
 // # _clientAccountGetApi
 /**
- * YOU PROVIDE: credentials and accountEndpoint string with R return type,
+ * yOU PROVIDE: credentials and accountEndpoint string with R return type,
  * THEN YOU GET: ( ) =\> Promise<R>
  */
 export const _clientAccountGetApi = (

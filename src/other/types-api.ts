@@ -402,33 +402,33 @@ export interface QuestradeApi2 {
       endTime: string,
     ) => Promise<
       {
-        /** Trade date */
+        /** trade date */
         tradeDate: Date | string;
-        /** Transaction date */
+        /** transaction date */
         transactionDate: Date | string;
-        /** Settlement date */
+        /** settlement date */
         settlementDate: Date | string;
-        /** Activity action */
+        /** activity action */
         action: string;
-        /** Symbol name */
+        /** symbol name */
         symbol: string;
-        /** Symbol ID */
+        /** symbol ID */
         stockId: string | number;
-        /** Description */
+        /** description */
         description: string;
-        /** Enumeration Currency */
+        /** enumeration Currency */
         currency: 'USD' | 'CAD';
-        /** The quantity */
+        /** the quantity */
         quantity: number;
-        /** The price */
+        /** the price */
         price: number;
-        /** Gross amount */
+        /** gross amount */
         grossAmount: number;
-        /** The commission */
+        /** the commission */
         commission: number;
-        /** Net Amount */
+        /** net Amount */
         netAmount: number;
-        /** Activity Type */
+        /** activity Type */
         type: string;
       }[]
     >;

@@ -27,15 +27,15 @@ export const testingThat = (async () => {
   error => void errorlog<unknown>('PlayGround error message:', error.message),
 );
 
-// TestingThat();
+// testingThat();
 
 export const xyz = () => {
   //
   return void 0;
 };
-// Order id 584497639
+// order id 584497639
 
-// POST https://api01.iq.questrade.com/v1/markets/quotes/strategies
+// pOST https://api01.iq.questrade.com/v1/markets/quotes/strategies
 export const demoRequestVariants: StrategyVariantRequest = {
   variants: [
     {

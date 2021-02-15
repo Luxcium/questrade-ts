@@ -32,7 +32,7 @@ function limitingRequest<T>(fn: Function, hertz: number = 1) {
     return void 0;
   };
 
-  const addToQueue = (cb: any /* CallBack<any> */) => {
+  const addToQueue = (cb: any /* callBack<any> */) => {
     callsQueue.unshift([fn, cb]);
     callToPop();
   };

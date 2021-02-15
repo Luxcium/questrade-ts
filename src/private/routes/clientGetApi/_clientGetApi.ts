@@ -4,7 +4,7 @@ import { ApiCallQ_ } from '../../core/next-rate-limiter/queue';
 
 // # _clientGetApi !!!
 /**
- * YOU PROVIDE: credentials and endpoint string with <R> return type,
+ * yOU PROVIDE: credentials and endpoint string with <R> return type,
  * THEN YOU GET: ( )=\> Promise<R>
  */
 export const _clientGetApi = (

@@ -4,7 +4,7 @@ import { Credentials } from '../../../typescript';
 import { remaningTimeString } from '../requestPerSecondLimit';
 
 function _echoStatus(response: ClientResponse<any>, credentials?: Credentials) {
-  // INFO: ECHO STATUS ON ERROR Block Start ******************************
+  // iNFO: ECHO STATUS ON ERROR Block Start ******************************
   if (response.status !== 200) {
     void echo<unknown>('________________________________________________');
     void echo<unknown>(response.status, response.statusText);
@@ -21,10 +21,10 @@ function _echoStatus(response: ClientResponse<any>, credentials?: Credentials) {
     void echo<unknown>('________________________________________________');
     void echo<unknown>('++++++++++++++++++++++++++++++++++++++++++++++++');
   } else {
-    // INFO: ECHO STATUS ON 200 OK Block Start //-!
-    // Void echo(
-    //   RemaningTimeString(
-    //     Credentials?.remainingRequests?.secondsRemaning
+    // iNFO: ECHO STATUS ON 200 OK Block Start //-!
+    // void echo(
+    //   remaningTimeString(
+    //     credentials?.remainingRequests?.secondsRemaning
     //       /? credentials.remainingRequests.secondsRemaning
     //       : 0
     //   )

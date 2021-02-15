@@ -2,10 +2,11 @@
 /* eslint-disable radar/no-unused-collection */
 import { ech0 } from '../resources/side-effects';
 
-// Export { main2 };
+// export { main2 };
 
 class Node {
   public next: any;
+
   constructor(public value: any) {
     this.value = value;
     this.next = null;
@@ -14,13 +15,17 @@ class Node {
 
 export class Queue {
   first: any;
+
   last: any;
+
   size: number;
+
   constructor() {
     this.first = null;
     this.last = null;
     this.size = 0;
   }
+
   enqueue(val: any) {
     const newNode = new Node(val);
 
@@ -72,7 +77,7 @@ export function main2() {
 
   const startDequeue = Date.now();
 
-  // Let y = 0;
+  // let y = 0;
 
   for (let i = myQueue.size; i > 0; i--) {
     myQueue.dequeue();
@@ -86,7 +91,7 @@ export function main2() {
   ech0(`Total for enqueue/dequeue: ${enqueueDecueueDuration}`);
   ech0(`Ratio ${1}`);
   // ----------------------------------------------------------
-  // MyQueue.enqueue(1);
+  // myQueue.enqueue(1);
 
   const array1 = [];
   const len1 = size / ratio;
@@ -107,7 +112,7 @@ export function main2() {
 
   for (let i = array1.length; i > 0; i--) {
     array1.shift();
-    // Y++;
+    // y++;
   }
 
   const shiftDuration = Date.now() - startShift;
@@ -136,13 +141,13 @@ export function main2() {
 
   ech0(`Unshift: ${unshiftDuration / 1000}`);
 
-  // Const startShift = Date.now();
+  // const startShift = Date.now();
   const startPop = Date.now();
 
-  // Let y = 0;
+  // let y = 0;
   for (let i = array1.length; i > 0; i--) {
     array1.pop();
-    // Y++;
+    // y++;
   }
 
   const popDuration = Date.now() - startPop;
@@ -155,4 +160,4 @@ export function main2() {
 
   ech0(`Ratio ${ratio2} or ${1 / ratio2}`);
 }
-// Main2();
+// main2();
