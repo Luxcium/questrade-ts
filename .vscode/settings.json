@@ -119,7 +119,7 @@
   |-···――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――···-|
   ―― ESLINT
   */
-  "eslint.quiet": true,
+  "eslint.quiet": false,
   "eslint.format.enable": true,
   "eslint.lintTask.enable": true,
   "eslint.alwaysShowStatus": true,

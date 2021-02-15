@@ -31,13 +31,13 @@ beforeAll(async done => {
 
   credentials = qtApiAndCredentials.credentials;
 
-  account = async () => qtApi.account;
-  market = async () => qtApi.market;
-  getQuotes = async () => qtApi.getQuotes;
-  getOptionsQuotes = async () => qtApi.getOptionsQuotes;
-  search = async () => qtApi.search;
-  getSymbols = async () => qtApi.getSymbols;
-  getOptionChains = async () => qtApi.getOptionChains;
+  account = () => qtApi.account;
+  market = () => qtApi.market;
+  getQuotes = () => qtApi.getQuotes;
+  getOptionsQuotes = () => qtApi.getOptionsQuotes;
+  search = () => qtApi.search;
+  getSymbols = () => qtApi.getSymbols;
+  getOptionChains = () => qtApi.getOptionChains;
 
   void0({
     dateRange30Days,
@@ -51,11 +51,11 @@ beforeAll(async done => {
 
 // # QtAPI PROPERTIES
 describe('QtAPI PROPERTIES will test all properties and methods on qtApi', () => {
-  it('should validate credentials toValue', async done => {
+  it('should validate credentials toValue', done => {
     void0(credentials.toValue());
     done();
   });
-  it('should credentials toString', async done => {
+  it('should credentials toString', done => {
     void0(credentials.toString());
     done();
   });
@@ -67,7 +67,7 @@ describe('QtAPI PROPERTIES will test all properties and methods on qtApi', () =>
     done();
   });
 
-  it('should validate qtApi myBalances 2/3', async done => {
+  it('should validate qtApi myBalances 2/3', done => {
     void0(qtApi.serverTime);
     done();
   }, 10_000);

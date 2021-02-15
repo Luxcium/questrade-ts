@@ -29,7 +29,7 @@ export const testingThat = (async () => {
 
 // TestingThat();
 
-export const xyz = async () => {
+export const xyz = () => {
   //
   return void 0;
 };

@@ -6,7 +6,7 @@ import { _emptyCredentials } from './_emptyCredentials';
 export const apiOptionsCredentialsFactory = (
   apiOptions: ApiOptions,
 ): Credentials => {
-  const practiceAccount = !!apiOptions.practiceAccount ?? false;
+  const practiceAccount = Boolean(apiOptions.practiceAccount) ?? false;
 
   return {
     ..._emptyCredentials(),

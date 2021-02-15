@@ -1,6 +1,4 @@
-/* eslint-disable prefer-rest-params */
-/* eslint-disable prefer-spread */
-/* eslint-disable fp/no-arguments */
+/* eslint-disable */
 //
 //  ## functionLength(f)
 //

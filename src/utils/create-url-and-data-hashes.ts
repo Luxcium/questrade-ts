@@ -2,7 +2,7 @@ import { BinaryToTextEncoding, createHash } from 'crypto';
 
 import { UrlDataAndHashes } from '../typescript';
 
-'73B439CEB0EBEF90782E9978FEEBF88AA1540C763CAEDABA5B16223D306437E0'.length;
+// '73B439CEB0EBEF90782E9978FEEBF88AA1540C763CAEDABA5B16223D306437E0'.length;
 function getUrlHash(urlPath: string) {
   const HEX: BinaryToTextEncoding = 'hex';
 

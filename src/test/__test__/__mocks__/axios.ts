@@ -14,7 +14,7 @@ const path = (s: string) => resolve(`${__dirname}/sample/${s}.json`);
 
 _Client.mockName('Client');
 _Client.mockImplementation((config?: ClientRequestConfig) => {
-  const url = !!config && !!config.url ? config.url : '';
+  const url = Boolean(config) && Boolean(config.url) ? config.url : '';
   const data = [
     'balances',
     'token',

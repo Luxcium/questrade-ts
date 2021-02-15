@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 /* eslint-disable radar/no-unused-collection */
 import { ech0 } from '../resources/side-effects';
 

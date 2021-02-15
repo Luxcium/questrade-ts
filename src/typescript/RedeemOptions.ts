@@ -8,4 +8,4 @@ import { NEVER } from '../utils/never';
 //   ProxyFactory?: (credentials?: Credentials) => ProxyFactory_;
 // };
 
-NEVER;
+void NEVER;

@@ -23,8 +23,8 @@ async function main() {
   void0(credentials);
   ech0(qtApi);
 
-  const snp500list = id0(await willGetSNP500StringList()).map(
-    async item => await qtApi.search.stock(item),
+  const snp500list = id0(await willGetSNP500StringList()).map(item =>
+    qtApi.search.stock(item),
   );
 
   snp500list.map(async item =>

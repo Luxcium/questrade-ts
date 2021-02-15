@@ -9,8 +9,7 @@
       "detail": "Output watcher for this Type-Script project",
       "command": "tsc",
       "args": [
-        "--build",
-        // "--watch"
+        "--build"
       ],
       "isBackground": false,
       "runOptions": {
@@ -25,7 +24,7 @@
         "echo": false,
         "clear": true,
         "revealProblems": "onProblem",
-        "reveal": "silent",
+        "reveal": "silent"
       },
       "problemMatcher": {
         "base": "$tsc",
@@ -34,7 +33,7 @@
       "group": {
         "kind": "build",
         "isDefault": true
-      },
+      }
     },
     {
       "label": "MAIN Runer",
@@ -55,7 +54,7 @@
         "panel": "dedicated",
         "reveal": "always",
         "revealProblems": "never",
-        "showReuseMessage": false,
+        "showReuseMessage": false
       },
       "problemMatcher": {
         "base": "$tsc",
@@ -66,5 +65,46 @@
         "isDefault": true
       }
     },
-  ]
+    {
+      "label": "Lint",
+      "type": "shell",
+      "command": "yarn lint",
+      "presentation": {
+        "panel": "dedicated",
+        "group": "TSC Builder",
+        "focus": false,
+        "echo": false,
+        "clear": true,
+        "revealProblems": "onProblem",
+        "reveal": "silent",
+        "showReuseMessage": true,
+      },
+      "problemMatcher": {
+        "base": "$eslint-compact",
+        "owner": "eslint",
+        "applyTo": "allDocuments",
+        "fileLocation": [
+          "absolute",
+        ],
+        // /home/luxcium/dev/questrade-ts/src/private/core/next-rate-limiter/core_limiter.ts: line 121, col 3, Error - Expected an assignment or function call and instead saw an expression. (no-unused-expressions)
+        "pattern": {
+          "regexp": "^(.+):\\s(.+)\\((.+)\\)\\sat\\s(.+):(\\d+):(\\d+):$",
+          "file": 1,
+          "line": 2,
+          "column": 3,
+          "severity": 4,
+          "message": 5,
+        }
+      }
+    }
+  ],
+  "presentation": {
+    "echo": true,
+    "reveal": "always",
+    "focus": false,
+    "panel": "shared",
+    "showReuseMessage": true,
+    "clear": true,
+    "group": "watchers"
+  },
 }
