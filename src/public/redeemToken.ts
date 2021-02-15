@@ -13,7 +13,7 @@ export async function questradeAPI(apiOptions: ApiOptions) {
   void apiCallQ;
 
   apiOptions.token = preValidateToken(apiOptions);
-  const proxyFactory = apiOptions.proxyFactory ?? undefined;
+  const proxyFactory = apiOptions.proxyFactory ?? null;
   const credentials = await _credentialsFactory(
     apiOptions,
     apiCallQ,

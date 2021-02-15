@@ -11,7 +11,7 @@ export type {
   ICurencyBalance,
 } from './IBalances';
 export type { ICandle, ICandles } from './ICandles';
-// export type { AuthApiConfig, CoreApiConfig } from './ICoreApiConfigD';
+// Export type { AuthApiConfig, CoreApiConfig } from './ICoreApiConfigD';
 export type { ICreds } from './ICreds';
 export type { IDateObject, Time } from './IDateObject';
 export type {

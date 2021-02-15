@@ -2,7 +2,7 @@ import { _getQuestradeApi } from '../private/api/_getQuestradeApi';
 import { ApiCallQ_ } from '../private/core/next-rate-limiter/queue';
 import { Credentials, ProxyFactory_, QuestradeApi } from '../typescript';
 
-// export const getQuestradeApi = ;
+// Export const getQuestradeApi = ;
 
 export const questradeApiFactory = async (
   credentials: Credentials,
@@ -20,7 +20,7 @@ export const questradeApiFactory = async (
       );
     }
 
-    return _getQuestradeApi(credentials, apiCallQ, undefined, errorloger);
+    return _getQuestradeApi(credentials, apiCallQ, null, errorloger);
   })();
 
   void apiCallQ;

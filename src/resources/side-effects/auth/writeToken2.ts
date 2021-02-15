@@ -9,7 +9,7 @@ export const writeToken = (
 ): Credentials => {
   const { data: refreshCreds } = response;
 
-  // const apiUrl = `${credentials.apiServer}${credentials.apiVersion}`;
+  // Const apiUrl = `${credentials.apiServer}${credentials.apiVersion}`;
   credentials.accessToken = refreshCreds.access_token;
   credentials.apiServer = refreshCreds.api_server;
   credentials.expiresIn = refreshCreds.expires_in;
@@ -22,9 +22,9 @@ export const writeToken = (
   return credentials;
 };
 
-// export function writeToken(
-//   credentials: Credentials,
-//   response: ClientResponse<IRefreshCreds>,
+// Export function writeToken(
+//   Credentials: Credentials,
+//   Response: ClientResponse<IRefreshCreds>,
 // ): Credentials {
-//   return _writeToken(credentials, response);
+//   Return _writeToken(credentials, response);
 // }

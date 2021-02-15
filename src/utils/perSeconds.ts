@@ -6,17 +6,17 @@
 
 export const perSeconds = (hertz: number): number => {
   let delay: number = hertz;
-  // non zero
-  // as per this definition
+  // Non zero
+  // As per this definition
   // 0 hz is equivalent to 1000 hz
 
   delay = 1000 / delay;
   delay = delay ? delay : 1000;
-  // non negative
+  // Non negative
   delay = delay < 0 ? delay * -1 : delay;
 
   // When delay is larger than 2147483647 or less than 1,
-  // the delay will be set to 1.
+  // The delay will be set to 1.
   // Non-integer delays are truncated to an integer.
   return delay;
 };

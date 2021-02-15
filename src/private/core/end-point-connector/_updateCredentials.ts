@@ -15,10 +15,10 @@ function _updateCredentials(
     if (credentials) {
       // INFO: CREDENTIALS UPTADE  Block Start *********************************
 
-      // response;
+      // Response;
       credentials.config_ = _config;
       credentials.response_ = response;
-      credentials.configUrl_ = `${_config.url}`.split('questrade.com/')[1];
+      [, credentials.configUrl_] = `${_config.url}`.split('questrade.com/');
       credentials.fromCache = response?.headers?.fromCache ?? false;
       credentials.fromApi = response?.headers?.fromApi ?? true;
       credentials.proxy = response?.headers?.proxy ?? null;

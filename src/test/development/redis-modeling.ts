@@ -2,14 +2,14 @@ import { questradeAPI } from '../..';
 import { ech0, getMyToken } from '../../resources/side-effects';
 import { redisProxyHandler } from '../../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 /*
-    tedis: Tedis,
+    Tedis: Tedis,
     redisinstance: IoRedis | null,
     jsonRedis: StaticJSONCache,
     handlerOptions: ProxyHandlerOptions,
     credentials?: Credentials,
  */
 
-async function main(/* tedis?: Tedis */) {
+async function main(/* Tedis?: Tedis */) {
   const proxyFactory = redisProxyHandler({
     httpConnectProxy: true,
   });
@@ -23,41 +23,41 @@ async function main(/* tedis?: Tedis */) {
     marketCallsPerHour: 1500,
 
     marketCallsPerSecond: 20,
-    // proxyFactory,
+    // ProxyFactory,
     token: getMyToken,
   });
 
   ech0(await qtApi.account.getServerTime());
 
-  // const snp500list = id0(await willGetSNP500StringList()); //.map(ech0);
-  // snp500list
+  // Const snp500list = id0(await willGetSNP500StringList()); //.map(ech0);
+  // Snp500list
   //   .map(stock => qtApi.search.stock(stock))
   //   .map(stock =>
-  //     stock.then(s => {
-  //       try {
-  //         return s[0].symbolId;
+  //     Stock.then(s => {
+  //       Try {
+  //         Return s[0].symbolId;
   //       } catch (error) {
-  //         return 0;
+  //         Return 0;
   //       }
   //     }),
   //   )
   //   .map(t =>
-  //     t.then(sid => {
-  //       try {
-  //         return qtApi.getSymbols.byStockIds([sid]);
+  //     T.then(sid => {
+  //       Try {
+  //         Return qtApi.getSymbols.byStockIds([sid]);
   //       } catch (error) {
-  //         return {} as ISymbol[];
+  //         Return {} as ISymbol[];
   //       }
   //     }),
   //   );
 
-  // await qtApi.search.stock('couche tard');
+  // Await qtApi.search.stock('couche tard');
   void qtApi;
-  // void snp500list;
+  // Void snp500list;
 }
 
-// async function main() {
-//   return mainFunction();
+// Async function main() {
+//   Return mainFunction();
 // }
 
 export { main };
@@ -119,7 +119,7 @@ main()
  */
 
 /*
-  export interface ISymbol {
+  Export interface ISymbol {
   symbol?: string;
   symbolId?: number;
   tradeUnit: number;

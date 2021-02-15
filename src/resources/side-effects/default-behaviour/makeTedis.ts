@@ -1,5 +1,5 @@
-// import RedisStatic, { Redis, RedisOptions } from 'ioredis';
-// import JSONCache from 'redis-json';
+// Import RedisStatic, { Redis, RedisOptions } from 'ioredis';
+// Import JSONCache from 'redis-json';
 import { Tedis } from 'tedis';
 
 export function makeTedis(
@@ -16,58 +16,58 @@ export function makeTedis(
   return new Tedis(options);
 }
 // // new Redis
-// export function makeRedis(options?: RedisOptions): Redis {
-//   return new RedisStatic(options);
+// Export function makeRedis(options?: RedisOptions): Redis {
+//   Return new RedisStatic(options);
 // }
 
 // // options?: RedisOptions,
 // // redis. //call('MEMORY', 'USAGE', 'mykey');
 // // new Redis(options); //as any;
 
-// export function makeJsonRedis(
-//   redisFactory: (opt?: RedisOptions) => Redis = makeRedis,
+// Export function makeJsonRedis(
+//   RedisFactory: (opt?: RedisOptions) => Redis = makeRedis,
 // ) /*  Promise<Redis> */ {
-//   return async (
-//     options?: RedisOptions,
-//     prefix: string = 'JSON',
+//   Return async (
+//     Options?: RedisOptions,
+//     Prefix: string = 'JSON',
 //   )  => {
-//     const redis = redisFactory(options);
+//     Const redis = redisFactory(options);
 
-//     const jsonCache = new JSONCache<Example>(makeTedis(), { prefix });
+//     Const jsonCache = new JSONCache<Example>(makeTedis(), { prefix });
 
-//     const user = {
-//       address: {
-//         doorNo: '12B',
-//         locality: 'pentagon',
-//         pincode: 123_456,
+//     Const user = {
+//       Address: {
+//         DoorNo: '12B',
+//         Locality: 'pentagon',
+//         Pincode: 123_456,
 //       },
-//       age: 80,
-//       cars: ['BMW 520i', 'Audo A8'],
-//       name: 'redis-json',
+//       Age: 80,
+//       Cars: ['BMW 520i', 'Audo A8'],
+//       Name: 'redis-json',
 //     };
 
-//     void user;
+//     Void user;
 //     // await jsonCache.set('123', user);
 
-//     echo(await jsonCache.get('123'));
-//     return redis;
+//     Echo(await jsonCache.get('123'));
+//     Return redis;
 //   };
 // }
-// makeJsonRedis(makeRedis)({ port: 6379 }, 'cache:')
+// MakeJsonRedis(makeRedis)({ port: 6379 }, 'cache:')
 //   .then((redis: Redis) => redis.disconnect())
 //   .catch(error => errorlog(error));
 
-// type Example = {
-//   name: string;
-//   age: number;
-//   address: {
-//     doorNo: string;
-//     locality: string;
-//     pincode: number;
+// Type Example = {
+//   Name: string;
+//   Age: number;
+//   Address: {
+//     DoorNo: string;
+//     Locality: string;
+//     Pincode: number;
 //   };
 // };
 /*
-makeJsonRedis({ port: 6379 })
+MakeJsonRedis({ port: 6379 })
 ❯ ts-node "/home/luxcium/dev/questrade-ts/src/resources/side-effects/default-behaviour/makeTedis.ts"
 {
   address: { doorNo: '12B', locality: 'pentagon', pincode: 123456 },

@@ -15,7 +15,7 @@ export const willGetSNP500StringList = async () =>
 
 export async function willGetSNP500List() {
   return (async url => {
-    const data: Constituent[] = (await client.get(url)).data;
+    const { data } = await client.get(url);
     const constituentsSymbols: ConstituentsSymbols = data.map(
       (obj: Constituent) => obj.Symbol,
     );

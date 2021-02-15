@@ -165,7 +165,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
     return Reflect.defineProperty(target, p, attributes);
   }
 
-  ownKeys(target: T) /* : (string | number | symbol)[] */ {
+  ownKeys(target: T) {
     if (this.handlerOptions?.debuging === true) {
       void echo<unknown>('PROXY:', 'ownKeys', 'target', target);
 

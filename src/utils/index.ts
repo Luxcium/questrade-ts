@@ -1,6 +1,6 @@
-// export {
-//   clientProxyFactory,
-//   httpHashLoggerClientProxyHandler,
+// Export {
+//   ClientProxyFactory,
+//   HttpHashLoggerClientProxyHandler,
 //   ProxyReflexionLoggerFunctionHandler,
 // } from '../resources/proxies';
 import { helperFunctions } from './void0';

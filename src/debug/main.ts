@@ -39,29 +39,29 @@ async function main() {
   );
 
   // // export const cs
-  // snp500list
+  // Snp500list
   //   .map(stock => qtApi.search.stock(stock))
   //   .map(stock =>
-  //     stock.then(s => {
-  //       try {
-  //         return s[0].symbolId;
+  //     Stock.then(s => {
+  //       Try {
+  //         Return s[0].symbolId;
   //       } catch {
-  //         return 0;
+  //         Return 0;
   //       }
   //     }),
   //   )
   //   .map(t =>
-  //     t.then(sid => {
-  //       try {
-  //         return qtApi.getSymbols.byStockIds([sid]);
+  //     T.then(sid => {
+  //       Try {
+  //         Return qtApi.getSymbols.byStockIds([sid]);
   //       } catch {
-  //         return {} as ISymbol[];
+  //         Return {} as ISymbol[];
   //       }
   //     }),
   //   );
 
-  // await qtApi.search.stock('couche tard');
-  // void qtApi;
+  // Await qtApi.search.stock('couche tard');
+  // Void qtApi;
   void snp500list;
 
   return true;

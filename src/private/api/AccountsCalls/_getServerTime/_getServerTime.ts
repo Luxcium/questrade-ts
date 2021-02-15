@@ -8,7 +8,7 @@ export const _getServerTime = (
     endpoint: string,
     handlerOptions: ProxyHandlerOptions,
   ) => () => Promise<R>,
-  errorlog: Logger = (error: any) => error /*Logger */,
+  errorlog: Logger = (error: any) => error /* Logger */,
 ) => async (): Promise<Date> => {
   try {
     return new Date(

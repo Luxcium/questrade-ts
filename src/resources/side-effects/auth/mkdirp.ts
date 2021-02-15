@@ -18,9 +18,9 @@ export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
     opts = { mode: opts };
   }
 
-  let mode = opts.mode;
+  let { mode } = opts;
   const xfs = opts.fs || fs;
-  const _0777 = Number.parseInt('0777', 8);
+  const _0777 = 0o0777;
 
   if (!mode) {
     // HACK:  mode = _0777 & ~process.umask();

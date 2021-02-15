@@ -25,7 +25,7 @@ function requestLimiterFactory(fn: Function, hertz: number = 1) {
       const [myfn, mycb] = poped ? poped : [neverWillCb, neverCb];
 
       while (lastDelay() < perSeconds(hertz)) {
-        // do nothing just wait while (lastDelay() < perSeconds(hertz));
+        // Do nothing just wait while (lastDelay() < perSeconds(hertz));
       }
 
       mycb(null, myfn());
@@ -45,17 +45,17 @@ function requestLimiterFactory(fn: Function, hertz: number = 1) {
   };
 }
 
-// export function myPromisify<T>(addToQueue: (cb: any) => Promise<void>) {
-//   return new Promise<T>((resolve, reject) => {
-//     addToQueue((error: Error, result: any) => {
-//       if (!!error) {
-//         void errorlog(error);
+// Export function myPromisify<T>(addToQueue: (cb: any) => Promise<void>) {
+//   Return new Promise<T>((resolve, reject) => {
+//     AddToQueue((error: Error, result: any) => {
+//       If (!!error) {
+//         Void errorlog(error);
 
-//         reject(error);
-//         return void 0;
+//         Reject(error);
+//         Return void 0;
 //       }
-//       resolve(result);
-//       return void 0;
+//       Resolve(result);
+//       Return void 0;
 //     });
 //   });
 // }
@@ -98,7 +98,7 @@ function neverCb(error: Error | null, returnValue: any): never {
   );
 }
 
-/** new functions  */
+/** New functions  */
 
 let isGreenLight = true;
 
@@ -133,7 +133,7 @@ export function limiter(hertz: number = 20) {
 export const nowMiliSeconds = Date.now();
 export const lastRequestMiliSeconds = Date.now();
 
-// maintenant (larger time stamp) - antérieurement (smaller time stamp)  = positive integer
-// postérieurement (larger time stamp) - maintenant (smaller time stamp)  = positive integer
+// Maintenant (larger time stamp) - antérieurement (smaller time stamp)  = positive integer
+// Postérieurement (larger time stamp) - maintenant (smaller time stamp)  = positive integer
 
-// example ... 1 request each 50 ms
+// Example ... 1 request each 50 ms

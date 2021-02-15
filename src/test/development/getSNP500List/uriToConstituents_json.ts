@@ -1,4 +1,4 @@
-// import { Dataset } from 'data.js';
+// Import { Dataset } from 'data.js';
 export const uriToConstituents_json =
   'https://pkgstore.datahub.io/' +
   'core/s-and-p-500-companies/' +
@@ -6,24 +6,24 @@ export const uriToConstituents_json =
   '64dd3e9582b936b0352fdd826ecd3c95/' +
   'constituents_json.json';
 
-// const path = 'https://datahub.io/core/s-and-p-500-companies/datapackage.json';
+// Const path = 'https://datahub.io/core/s-and-p-500-companies/datapackage.json';
 
 //   // We're using self-invoking function here as we want to use async-await syntax:
 // (async () => {
-//   const dataset = await Dataset.load(path);
+//   Const dataset = await Dataset.load(path);
 //   // get list of all resources:
-//   for (const id in dataset.resources) {
+//   For (const id in dataset.resources) {
 //   }
 //   // get all tabular data(if exists any)
-//   for (const id in dataset.resources) {
-//     if (dataset.resources[id]._descriptor.format === 'csv') {
-//       const file = dataset.resources[id];
+//   For (const id in dataset.resources) {
+//     If (dataset.resources[id]._descriptor.format === 'csv') {
+//       Const file = dataset.resources[id];
 //       // Get a raw stream
-//       const stream = await file.stream();
+//       Const stream = await file.stream();
 //       // entire file as a buffer (be careful with large files!)
-//       const buffer = await file.buffer;
+//       Const buffer = await file.buffer;
 //       // print data
-//       stream.pipe(process.stdout);
+//       Stream.pipe(process.stdout);
 //     }
 //   }
 // })();

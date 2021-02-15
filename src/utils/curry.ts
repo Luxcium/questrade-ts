@@ -1,4 +1,4 @@
-/* eslint-disable fp/no-arguments */
+/* eslint-disable  */
 // https://github.com/fantasyland/fantasy-helpers
 //
 //  ## functionLength(f)
@@ -23,11 +23,11 @@ export function functionName(f: any) {
 //
 //  Makes `this` inside of `f` equal to `o`:
 //
-//       bind(function() { return this; })(a)() == a
+//       Bind(function() { return this; })(a)() == a
 //
 //  Also partially applies arguments:
 //
-//       bind(add)(null, 10)(32) == 42
+//       Bind(add)(null, 10)(32) == 42
 //
 export function bind(this: any, f: any) {
   function curriedBind(o: any) {
@@ -55,19 +55,19 @@ export function bind(this: any, f: any) {
 //  ## curry(f)
 //
 //  Takes a normal function `f` and allows partial application of its
-//  named arguments:
+//  Named arguments:
 //
-//       var add = fantasy.curry(function(a, b) {
-//              return a + b;
+//       Var add = fantasy.curry(function(a, b) {
+//              Return a + b;
 //          }),
-//          add15 = add(15);
+//          Add15 = add(15);
 //
-//       add15(27) == 42;
+//       Add15(27) == 42;
 //
 //  Retains ability of complete application by calling the function
-//  when enough arguments are filled:
+//  When enough arguments are filled:
 //
-//       add(15, 27) == 42;
+//       Add(15, 27) == 42;
 //
 export function curry(f: any) {
   const a = function (this: any) {

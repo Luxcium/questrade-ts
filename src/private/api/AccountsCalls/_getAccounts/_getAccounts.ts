@@ -8,11 +8,11 @@ export function _getAccounts(
     endpoint: string,
     handlerOptions: ProxyHandlerOptions,
   ) => () => Promise<R>,
-  errorlog: Logger = (error: any) => error /*Logger */,
+  errorlog: Logger = (error: any) => error /* Logger */,
 ) {
   return async (): Promise<IAccount[]> => {
     try {
-      const accounts = getAccounts<IAccounts>(`/accounts`, { noCaching: true });
+      const accounts = getAccounts<IAccounts>('/accounts', { noCaching: true });
       const data = await accounts();
 
       // -

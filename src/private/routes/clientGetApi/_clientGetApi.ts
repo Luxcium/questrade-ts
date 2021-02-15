@@ -10,5 +10,5 @@ import { ApiCallQ_ } from '../../core/next-rate-limiter/queue';
 export const _clientGetApi = (
   credentials: Credentials,
   apiCallQ: ApiCallQ_,
-  proxy?: ProxyFactory_,
+  proxy: ProxyFactory_ | null,
 ) => _coreApiFunction(credentials, apiCallQ, proxy)('GET')(null);

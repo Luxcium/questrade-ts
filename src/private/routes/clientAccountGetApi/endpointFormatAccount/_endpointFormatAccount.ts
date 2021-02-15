@@ -7,7 +7,7 @@ const _credAcctNmbrProp = (credentials: Credentials): string =>
 
 const _endPtAccountBaseURL: EndPtAccountBaseURL = getCredAcctProp => urlSep => accountStr => (
   credentials,
-  proxy?,
+  proxy,
 ) => accountEndpoint =>
   `${urlSep()}${accountStr()}${urlSep()}${getCredAcctProp(
     credentials,

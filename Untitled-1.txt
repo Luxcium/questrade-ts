@@ -1,0 +1,367 @@
+
+# Deprecated
+These rules have been deprecated in accordance with the deprecation policy, and replaced by newer rules:
+
+
+"Deprecated rule":0 // Replaced by
+callback-return
+(no replacement)
+
+global-require
+(no replacement)
+
+handle-callback-err
+(no replacement)
+
+id-blacklist	id-denylist
+indent-legacy	indent
+lines-around-directive	padding-line-between-statements
+newline-after-var	padding-line-between-statements
+newline-before-return	padding-line-between-statements
+no-buffer-constructor
+(no replacement)
+
+no-catch-shadow	no-shadow
+no-mixed-requires
+(no replacement)
+
+no-native-reassign	no-global-assign
+no-negated-in-lhs	no-unsafe-negation
+no-new-require
+(no replacement)
+
+no-path-concat
+(no replacement)
+
+no-process-env
+(no replacement)
+
+no-process-exit
+(no replacement)
+
+no-restricted-modules
+(no replacement)
+
+no-spaced-func	func-call-spacing
+no-sync
+(no replacement)
+
+prefer-reflect
+(no replacement)
+
+require-jsdoc
+(no replacement)
+
+valid-jsdoc
+(no replacement)
+
+
+
+// "error",
+// "warn",
+// "error",
+// "warn",
+// "error",
+// "error",
+// "error",
+// "warn",
+// "error",
+// "error",
+// "error",
+// "error",
+// "error",
+// "error",
+// "error",
+// "error",
+// "warn",
+// "error", // Recommended
+// "warn", // Recommended
+// "warn",
+// "warn", // Recommended
+// "warn", // Recommended
+// "warn", // Recommended
+// "warn", // Recommended
+// "error", // Recommended
+// "warn", // Recommended
+// "error", // Recommended
+// "warn", // Recommended
+// "warn",
+// "warn",
+// "warn",
+// "error", // Recommended
+// "warn",
+// "warn",
+// "warn",
+// "warn", // Recommended
+// "warn", // Recommended
+// "error", // Recommended
+// "error", // Recommended
+// "error", // Recommended
+// "warn", // Recommended
+// "error", // Recommended
+// "error", // Recommended
+// "error", // Recommended
+// "error", // Recommended
+// "error", // Recommended
+// "error", // Recommended
+// "error", // Recommended
+// "error" // Recommended
+// enforce `return` statements in getters
+// disallow using an async function as a Promise executor
+// disallow `await` inside of loops
+// disallow comparing against -0
+// disallow assignment operators in conditional expressions
+// disallow the use of `console`
+// disallow constant expressions in conditions
+// disallow control characters in regular expressions
+// disallow the use of `debugger`
+// disallow duplicate arguments in `function` definitions
+// disallow duplicate conditions in if-else-if chains
+// disallow duplicate keys in object literals
+// disallow duplicate case labels
+// disallow empty block statements
+// disallow empty character classes in regular expressions
+// disallow reassigning exceptions in `catch` clauses
+// disallow unnecessary boolean casts
+// disallow unnecessary parentheses
+// disallow unnecessary semicolons
+// disallow reassigning `function` declarations
+// disallow assigning to imported bindings
+// disallow variable or `function` declarations in nested blocks
+// disallow invalid regular expression strings in `RegExp` constructors
+// disallow irregular whitespace
+// disallow literal numbers that lose precision
+// disallow characters which are made with multiple code points in character class syntax
+// disallow calling global object properties as functions
+// disallow returning values from Promise executor functions
+// disallow calling some `Object.prototype` methods directly on objects
+// disallow multiple spaces in regular expressions
+// disallow returning values from setters
+// disallow sparse arrays
+// disallow template literal placeholder syntax in regular strings
+// disallow confusing multiline expressions
+// disallow unreachable code after `return`, `throw`, `continue`, and `break` statements
+// disallow loops with a body that allows only one iteration
+// disallow control flow statements in `finally` blocks
+// disallow negating the left operand of relational operators
+// disallow use of optional chaining in contexts where the `undefined` value is not allowed
+// disallow useless backreferences in regular expressions
+// disallow assignments that can lead to race conditions due to usage of `await` or `yield`
+// require calls to `isNaN()` when checking for `NaN`
+// enforce comparing `typeof` expressions against valid strings
+// enforce getter and setter pairs in objects and classes
+// enforce `return` statements in callbacks of array methods
+// enforce the use of variables within the scope they are defined
+// enforce that class methods utilize `this`
+// enforce a maximum cyclomatic complexity allowed in a program
+// require `return` statements to either always or never specify values
+// enforce consistent brace style for all control statements
+// require `default` cases in `switch` statements
+// enforce default clauses in switch statements to be last
+// enforce default parameters to be last
+// enforce consistent newlines before and after dots
+// enforce dot notation whenever possible
+// require the use of `===` and `!==`
+// require grouped accessor pairs in object literals and classes
+// require `for-in` loops to include an `if` statement
+// enforce a maximum number of classes per file
+// disallow the use of `alert`, `confirm`, and `prompt`
+// disallow the use of `arguments.caller` or `arguments.callee`
+// disallow lexical declarations in case clauses
+// disallow returning value from constructor
+// disallow division operators explicitly at the beginning of regular expressions
+// disallow `else` blocks after `return` statements in `if` statements
+// disallow empty functions
+// disallow empty destructuring patterns
+// disallow `null` comparisons without type-checking operators
+// disallow the use of `eval()`
+// disallow extending native types
+// disallow unnecessary calls to `.bind()`
+// disallow unnecessary labels
+// disallow fallthrough of `case` statements
+// disallow leading or trailing decimal points in numeric literals
+// disallow assignments to native objects or read-only global variables
+// disallow shorthand type conversions
+// disallow declarations in the global scope
+// disallow the use of `eval()`-like methods
+// disallow `this` keywords outside of classes or class-like objects
+// disallow the use of the `__iterator__` property
+// disallow labeled statements
+// disallow unnecessary nested blocks
+// disallow function declarations that contain unsafe references inside loop statements
+// disallow magic numbers
+// disallow multiple spaces
+// disallow multiline strings
+// disallow `new` operators outside of assignments or comparisons
+// disallow `new` operators with the `Function` object
+// disallow `new` operators with the `String`, `Number`, and `Boolean` objects
+// disallow `\8` and `\9` escape sequences in string literals
+// disallow octal literals
+// disallow octal escape sequences in string literals
+// disallow reassigning `function` parameters
+// disallow the use of the `__proto__` property
+// disallow variable redeclaration
+// disallow certain properties on certain objects
+// disallow assignment operators in `return` statements
+// disallow unnecessary `return await`
+// disallow `javascript:` urls
+// disallow assignments where both sides are exactly the same
+// disallow comparisons where both sides are exactly the same
+// disallow comma operators
+// disallow throwing literals as exceptions
+// disallow unmodified loop conditions
+// disallow unused expressions
+// disallow unused labels
+// disallow unnecessary calls to `.call()` and `.apply()`
+// disallow unnecessary `catch` clauses
+// disallow unnecessary concatenation of literals or template literals
+// disallow unnecessary escape characters
+// disallow redundant return statements
+// disallow `void` operators
+// disallow specified warning terms in comments
+// disallow `with` statements
+// enforce using named capture group in regular expression
+// require using Error objects as Promise rejection reasons
+// disallow use of the `RegExp` constructor in favor of regular expression literals
+// enforce the consistent use of the radix argument when using `parseInt()`
+// disallow async functions which have no `await` expression
+// enforce the use of `u` flag on RegExp
+// require `var` declarations be placed at the top of their containing scope
+// require parentheses around immediate `function` invocations
+// require or disallow "Yoda" conditions
+// require or disallow strict mode directives
+// require or disallow initialization in variable declarations
+// disallow deleting variables
+// disallow labels that share a name with a variable
+// disallow specified global variables
+// disallow variable declarations from shadowing variables declared in the outer scope
+// disallow identifiers from shadowing restricted names
+// disallow the use of undeclared variables unless mentioned in `/*global */` comments
+// disallow initializing variables to `undefined`
+// disallow the use of `undefined` as an identifier
+// disallow unused variables
+// disallow the use of variables before they are defined
+// enforce linebreaks after opening and before closing array brackets
+// enforce consistent spacing inside array brackets
+// enforce line breaks after each array element
+// disallow or enforce spaces inside of blocks after opening block and before closing block
+// enforce consistent brace style for blocks
+// enforce camelcase naming convention
+// enforce or disallow capitalization of the first letter of a comment
+// require or disallow trailing commas
+// enforce consistent spacing before and after commas
+// enforce consistent comma style
+// enforce consistent spacing inside computed property brackets
+// enforce consistent naming when capturing the current execution context
+// require or disallow newline at the end of files
+// require or disallow spacing between function identifiers and their invocations
+// require function names to match the name of the variable or property to which they are assigned
+// require or disallow named `function` expressions
+// enforce the consistent use of either `function` declarations or expressions
+// enforce line breaks between arguments of a function call
+// enforce consistent line breaks inside function parentheses
+// disallow specified identifiers
+// enforce minimum and maximum identifier lengths
+// require identifiers to match a specified regular expression
+// enforce the location of arrow function bodies
+// enforce consistent indentation
+// enforce the consistent use of either double or single quotes in JSX attributes
+// enforce consistent spacing between keys and values in object literal properties
+// enforce consistent spacing before and after keywords
+// enforce position of line comments
+// enforce consistent linebreak style
+// require empty lines around comments
+// require or disallow an empty line between class members
+// enforce a maximum depth that blocks can be nested
+// enforce a maximum line length
+// enforce a maximum number of lines per file
+// enforce a maximum number of line of code in a function
+// enforce a maximum depth that callbacks can be nested
+// enforce a maximum number of parameters in function definitions
+// enforce a maximum number of statements allowed in function blocks
+// enforce a maximum number of statements allowed per line
+// enforce a particular style for multiline comments
+// enforce newlines between operands of ternary expressions
+// require constructor names to begin with a capital letter
+// enforce or disallow parentheses when invoking a constructor with no arguments
+// require a newline after each call in a method chain
+// disallow `Array` constructors
+// disallow bitwise operators
+// disallow `continue` statements
+// disallow inline comments after code
+// disallow `if` statements as the only statement in `else` blocks
+// disallow mixed binary operators
+// disallow mixed spaces and tabs for indentation
+// disallow use of chained assignment expressions
+// disallow multiple empty lines
+// disallow negated conditions
+// disallow nested ternary expressions
+// disallow `Object` constructors
+// disallow the unary operators `++` and `--`
+// disallow specified syntax
+// disallow all tabs
+// disallow ternary operators
+// disallow trailing whitespace at the end of lines
+// disallow dangling underscores in identifiers
+// disallow ternary operators when simpler alternatives exist
+// disallow whitespace before properties
+// enforce the location of single-line statements
+// enforce consistent line breaks inside braces
+// enforce consistent spacing inside braces
+// enforce placing object properties on separate lines
+// enforce variables to be declared either together or separately in functions
+// require or disallow newlines around variable declarations
+// require or disallow assignment operator shorthand where possible
+// enforce consistent linebreak style for operators
+// require or disallow padding within blocks
+// require or disallow padding lines between statements
+// disallow the use of `Math.pow` in favor of the `**` operator
+// disallow using Object.assign with an object literal as the first argument and prefer the use of object spread instead.
+// require quotes around object literal property names
+// enforce the consistent use of either backticks, double, or single quotes
+// require or disallow semicolons instead of ASI
+// enforce consistent spacing before and after semicolons
+// enforce location of semicolons
+// require object keys to be sorted
+// require variables within the same declaration block to be sorted
+// enforce consistent spacing before blocks
+// enforce consistent spacing before `function` definition opening parenthesis
+// enforce consistent spacing inside parentheses
+// require spacing around infix operators
+// enforce consistent spacing before or after unary operators
+// enforce consistent spacing after the `//` or `/*` in a comment
+// enforce spacing around colons of switch statements
+// require or disallow spacing between template tags and their literals
+// require or disallow Unicode byte order mark (BOM)
+// require parenthesis around regex literals
+// require braces around arrow function bodies
+// require parentheses around arrow function arguments
+// enforce consistent spacing before and after the arrow in arrow functions
+// require `super()` calls in constructors
+// enforce consistent spacing around `*` operators in generator functions
+// disallow reassigning class members
+// disallow arrow functions where they could be confused with comparisons
+// disallow reassigning `const` variables
+// disallow duplicate class members
+// disallow duplicate module imports
+// disallow `new` operators with the `Symbol` object
+// disallow specified names in exports
+// disallow specified modules when loaded by `import`
+// disallow `this`/`super` before calling `super()` in constructors
+// disallow unnecessary computed property keys in objects and classes
+// disallow unnecessary constructors
+// disallow renaming import, export, and destructured assignments to the same name
+// require `let` or `const` instead of `var`
+// require or disallow method and property shorthand syntax for object literals
+// require using arrow functions for callbacks
+// require `const` declarations for variables that are never reassigned after declared
+// require destructuring from arrays and/or objects
+// disallow `parseInt()` and `Number.parseInt()` in favor of binary, octal, and hexadecimal literals
+// require rest parameters instead of `arguments`
+// require spread operators instead of `.apply()`
+// require template literals instead of string concatenation
+// require generator functions to contain `yield`
+// enforce spacing between rest and spread operators and their expressions
+// enforce sorted import declarations within modules
+// require symbol descriptions
+// require or disallow spacing around the `*` in `yield*` expressions

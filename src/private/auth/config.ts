@@ -5,7 +5,7 @@ export function configs(arg: {
   refreshToken: string;
   credentials: Credentials;
 }): { config: ClientRequestConfig; credentials: Credentials } {
-  // const { refreshToken, credentials } = validateToken(apiOptions);
+  // Const { refreshToken, credentials } = validateToken(apiOptions);
   return {
     config: {
       method: 'GET',

@@ -1,4 +1,4 @@
-// import { errorlog } from '../../../../resources/side-effects';
+// Import { errorlog } from '../../../../resources/side-effects';
 import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import { ISymbolSearchResult, Logger } from '../../../../typescript';
 import { _getSymbolSearchAll } from './_getSymbolSearchAll';
@@ -22,7 +22,7 @@ export const _getSymbolSearch = (
     let result: ISymbolSearchResult | null = null;
 
     if (symbols[0]) {
-      result = symbols[0];
+      [result] = symbols;
       result.count = count || 0;
       result.all = symbols;
 

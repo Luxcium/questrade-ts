@@ -11,7 +11,7 @@ export const asyncQuestradeApi = (
   credentials: Credentials,
   apiCallQ: ApiCallQ_,
 
-  proxy?: ProxyFactory_,
+  proxy: ProxyFactory_ | null,
 ) => {
   const asyncQtApi = _getQuestradeApi(credentials, apiCallQ, proxy);
   const asyncAccount = asyncQtApi.then(then => then.account);
@@ -61,7 +61,7 @@ export const asyncQuestradeApi = (
   const asyncStock = asyncQtApi.then(then => then.search.stock);
   const asyncAllStocks = asyncQtApi.then(then => then.search.allStocks);
   const asyncCountResults = asyncQtApi.then(then => then.search.countResults);
-  // const asyncCountResults = asyncQtApi.then(then => then.search.countResults);
+  // Const asyncCountResults = asyncQtApi.then(then => then.search.countResults);
   const market = {
     asyncAllMarkets,
     asyncCandlesByStockId,
@@ -142,37 +142,37 @@ export const asyncQuestradeApi = (
 };
 
 export class ChainApiClass {
-  // public asyncActivities: Promise<(startTime: string) => (endTime: string) => Promise<IAccountActivity[]>>;
-  // public asyncAllAccounts: Promise<() => Promise<IAccount[]>>;
-  // public asyncBalances: Promise<() => Promise<IBalances>>;
-  // public asyncExecutions: Promise<(startTime: string) => (endTime: string) => Promise<IExecution[]>>;
-  // public asyncOrders: Promise<(stateFilter?: string | undefined) => (startTime: string) => (endTime: string) => Promise<IOrder[]>>;
-  // public asyncOrdersByIds: Promise<(orderId: number[]) => Promise<IOrder[]>>;
-  // public asyncPositions: Promise<() => Promise<IPosition[]>>;
-  // public asyncAllStocks: Promise<(prefix: string, offset?: number | undefined) => Promise<ISymbolSearchResult[]>>;
-  // public asyncAllMarkets: Promise<() => Promise<IMarket[]>>;
-  // public asyncByOptionsIds: Promise<(optionIds: number[]) => Promise<IOptionsQuote[]>>;
-  // public asyncByStockId: Promise<(stockId: number) => Promise<IOptionChain[]>>;
-  // public asyncByStrategies: Promise<(strategyVariantRequestData: StrategyVariantRequest) => Promise<IStrategiesQuotes>>;
-  // public asyncAccount: Promise<QtApiAccount>;
-  // public asyncCandlesByStockId: Promise<(symbolID: number) => (interval?: string | undefined) => (startTime: string) => (endTime: string) => Promise<ICandle[]>>;
-  // public asyncCountResults: Promise<(prefix: string) => Promise<number>>;
-  // public asyncCurrentAccount: Promise<string>;
-  // public asyncFromFilter: Promise<(filters: OptionsFilters) => Promise<IOptionsQuote[]>>;
-  // public asyncQuoteByStockIds: Promise<(ids: number[]) => Promise<IQuote[]>>;
-  // public asyncGetServerTime: Promise<() => Promise<Date>>;
-  // public asyncGetSymbolByStockIds: Promise<(stockIds: number[]) => Promise<ISymbol[]>>;
-  // public asyncMyBalances: Promise<QtApiMyBalances>;
-  // public asyncServerTime: Promise<Date | 'ERROR'>;
-  // public asyncStock: Promise<(prefix: string, offset?: number | undefined) => Promise<ISymbolSearchResult[]>>;
-  // public asyncQtApi: Promise<QuestradeApi>;
+  // Public asyncActivities: Promise<(startTime: string) => (endTime: string) => Promise<IAccountActivity[]>>;
+  // Public asyncAllAccounts: Promise<() => Promise<IAccount[]>>;
+  // Public asyncBalances: Promise<() => Promise<IBalances>>;
+  // Public asyncExecutions: Promise<(startTime: string) => (endTime: string) => Promise<IExecution[]>>;
+  // Public asyncOrders: Promise<(stateFilter?: string | undefined) => (startTime: string) => (endTime: string) => Promise<IOrder[]>>;
+  // Public asyncOrdersByIds: Promise<(orderId: number[]) => Promise<IOrder[]>>;
+  // Public asyncPositions: Promise<() => Promise<IPosition[]>>;
+  // Public asyncAllStocks: Promise<(prefix: string, offset?: number | undefined) => Promise<ISymbolSearchResult[]>>;
+  // Public asyncAllMarkets: Promise<() => Promise<IMarket[]>>;
+  // Public asyncByOptionsIds: Promise<(optionIds: number[]) => Promise<IOptionsQuote[]>>;
+  // Public asyncByStockId: Promise<(stockId: number) => Promise<IOptionChain[]>>;
+  // Public asyncByStrategies: Promise<(strategyVariantRequestData: StrategyVariantRequest) => Promise<IStrategiesQuotes>>;
+  // Public asyncAccount: Promise<QtApiAccount>;
+  // Public asyncCandlesByStockId: Promise<(symbolID: number) => (interval?: string | undefined) => (startTime: string) => (endTime: string) => Promise<ICandle[]>>;
+  // Public asyncCountResults: Promise<(prefix: string) => Promise<number>>;
+  // Public asyncCurrentAccount: Promise<string>;
+  // Public asyncFromFilter: Promise<(filters: OptionsFilters) => Promise<IOptionsQuote[]>>;
+  // Public asyncQuoteByStockIds: Promise<(ids: number[]) => Promise<IQuote[]>>;
+  // Public asyncGetServerTime: Promise<() => Promise<Date>>;
+  // Public asyncGetSymbolByStockIds: Promise<(stockIds: number[]) => Promise<ISymbol[]>>;
+  // Public asyncMyBalances: Promise<QtApiMyBalances>;
+  // Public asyncServerTime: Promise<Date | 'ERROR'>;
+  // Public asyncStock: Promise<(prefix: string, offset?: number | undefined) => Promise<ISymbolSearchResult[]>>;
+  // Public asyncQtApi: Promise<QuestradeApi>;
   public asyncApi;
-  // public market;
-  // public getOptionsQuotes;
-  // public getOptionChains;
-  // public getQuotes;
-  // public getSymbols;
-  // public search;
+  // Public market;
+  // Public getOptionsQuotes;
+  // Public getOptionChains;
+  // Public getQuotes;
+  // Public getSymbols;
+  // Public search;
   public _stockIdList?: number[];
   public _stockId?: number;
   public _symbolName?: string;
@@ -261,40 +261,40 @@ export class ChainApiClass {
     this.asyncApi = asyncQuestradeApi(
       this.credentials,
       this.apiCallQ,
-      this.proxy,
+      this.proxy || null,
     );
-    // this.asyncAccount = this.asyncApi.asyncAccount;
-    // this.asyncActivities = this.asyncApi.asyncActivities;
-    // this.asyncAllAccounts = this.asyncApi.asyncAllAccounts;
-    // this.asyncAllMarkets = this.asyncApi.asyncAllMarkets;
-    // this.asyncAllStocks = this.asyncApi.asyncAllStocks;
-    // this.asyncBalances = this.asyncApi.asyncBalances;
-    // this.asyncByOptionsIds = this.asyncApi.asyncByOptionsIds;
-    // this.asyncByStockId = this.asyncApi.asyncByStockId;
-    // this.asyncByStrategies = this.asyncApi.asyncByStrategies;
-    // this.asyncCandlesByStockId = this.asyncApi.asyncCandlesByStockId;
-    // this.asyncCountResults = this.asyncApi.asyncCountResults;
-    // this.asyncCurrentAccount = this.asyncApi.asyncCurrentAccount;
-    // this.asyncExecutions = this.asyncApi.asyncExecutions;
-    // this.asyncFromFilter = this.asyncApi.asyncFromFilter;
-    // this.getOptionChains = this.asyncApi.asyncGetOptionChains;
-    // this.getOptionsQuotes = this.asyncApi.asyncGetOptionsQuotes;
-    // this.asyncQuoteByStockIds = this.asyncApi.asyncGetQuoteByStockIds;
-    // this.getQuotes = this.asyncApi.asyncGetQuotes;
-    // this.asyncGetServerTime = this.asyncApi.asyncGetServerTime;
-    // this.asyncGetSymbolByStockIds = this.asyncApi.asyncGetSymbolByStockIds;
-    // this.getSymbols = this.asyncApi.asyncGetSymbols;
-    // this.market = this.asyncApi.asyncMarket;
-    // this.asyncMyBalances = this.asyncApi.asyncMyBalances;
-    // this.asyncOrders = this.asyncApi.asyncOrders;
-    // this.asyncOrdersByIds = this.asyncApi.asyncOrdersByIds;
-    // this.asyncPositions = this.asyncApi.asyncPositions;
-    // this.search = this.asyncApi.asyncSearch;
-    // this.asyncServerTime = this.asyncApi.asyncServerTime;
-    // this.asyncStock = this.asyncApi.asyncStock;
-    // this.asyncQtApi = this.asyncApi.asyncQtApi;
-    // this.endTime = null;
-    // this.startTime = null;
+    // This.asyncAccount = this.asyncApi.asyncAccount;
+    // This.asyncActivities = this.asyncApi.asyncActivities;
+    // This.asyncAllAccounts = this.asyncApi.asyncAllAccounts;
+    // This.asyncAllMarkets = this.asyncApi.asyncAllMarkets;
+    // This.asyncAllStocks = this.asyncApi.asyncAllStocks;
+    // This.asyncBalances = this.asyncApi.asyncBalances;
+    // This.asyncByOptionsIds = this.asyncApi.asyncByOptionsIds;
+    // This.asyncByStockId = this.asyncApi.asyncByStockId;
+    // This.asyncByStrategies = this.asyncApi.asyncByStrategies;
+    // This.asyncCandlesByStockId = this.asyncApi.asyncCandlesByStockId;
+    // This.asyncCountResults = this.asyncApi.asyncCountResults;
+    // This.asyncCurrentAccount = this.asyncApi.asyncCurrentAccount;
+    // This.asyncExecutions = this.asyncApi.asyncExecutions;
+    // This.asyncFromFilter = this.asyncApi.asyncFromFilter;
+    // This.getOptionChains = this.asyncApi.asyncGetOptionChains;
+    // This.getOptionsQuotes = this.asyncApi.asyncGetOptionsQuotes;
+    // This.asyncQuoteByStockIds = this.asyncApi.asyncGetQuoteByStockIds;
+    // This.getQuotes = this.asyncApi.asyncGetQuotes;
+    // This.asyncGetServerTime = this.asyncApi.asyncGetServerTime;
+    // This.asyncGetSymbolByStockIds = this.asyncApi.asyncGetSymbolByStockIds;
+    // This.getSymbols = this.asyncApi.asyncGetSymbols;
+    // This.market = this.asyncApi.asyncMarket;
+    // This.asyncMyBalances = this.asyncApi.asyncMyBalances;
+    // This.asyncOrders = this.asyncApi.asyncOrders;
+    // This.asyncOrdersByIds = this.asyncApi.asyncOrdersByIds;
+    // This.asyncPositions = this.asyncApi.asyncPositions;
+    // This.search = this.asyncApi.asyncSearch;
+    // This.asyncServerTime = this.asyncApi.asyncServerTime;
+    // This.asyncStock = this.asyncApi.asyncStock;
+    // This.asyncQtApi = this.asyncApi.asyncQtApi;
+    // This.endTime = null;
+    // This.startTime = null;
   }
 }
 void function myFunct(credentials: Credentials, apiCallQ: ApiCallQ_) {

@@ -65,7 +65,7 @@ function getUrlAndDataHashes(
   urlPath: string = '',
   dataToCache?: any,
 ): UrlDataAndHashes {
-  // const BASE64: BinaryToTextEncoding = 'base64';
+  // Const BASE64: BinaryToTextEncoding = 'base64';
   const HEX: BinaryToTextEncoding = 'hex';
 
   return {

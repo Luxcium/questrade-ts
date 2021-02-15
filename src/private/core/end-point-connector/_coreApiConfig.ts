@@ -17,7 +17,7 @@ function _coreApiConfig<D>(credentials: Credentials) {
          * Build endpoint url with apiUrl as base.
          */
 
-        // const url = `${credentials.apiUrl}${encodeURIComponent(endpoint)}`;
+        // Const url = `${credentials.apiUrl}${encodeURIComponent(endpoint)}`;
         const url = credentials.apiUrl + endpoint;
         // ->
         /**
@@ -26,7 +26,7 @@ function _coreApiConfig<D>(credentials: Credentials) {
          */
         const method = VERB.toLowerCase() as 'GET' | 'POST';
         // ->
-        /** oAuth2 token informations added to request header. */
+        /** OAuth2 token informations added to request header. */
         const Authorization = `Bearer ${credentials.accessToken}`;
         // ->
         /**

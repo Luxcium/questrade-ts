@@ -15,7 +15,7 @@ export const writeToken = (
     ...credentials,
     accessToken: refreshCreds.access_token,
     apiServer: refreshCreds.api_server,
-    apiUrl: apiUrl,
+    apiUrl,
     expiresIn: refreshCreds.expires_in,
     refreshToken: refreshCreds.refresh_token,
     tokenType: refreshCreds.token_type,
@@ -26,9 +26,9 @@ export const writeToken = (
   return cred;
 };
 
-// export function writeToken(
-//   credentials: Credentials,
-//   response: ClientResponse<IRefreshCreds>,
+// Export function writeToken(
+//   Credentials: Credentials,
+//   Response: ClientResponse<IRefreshCreds>,
 // ): Credentials {
-//   return _writeToken(credentials, response);
+//   Return _writeToken(credentials, response);
 // }

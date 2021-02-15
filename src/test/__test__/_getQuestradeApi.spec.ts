@@ -1,4 +1,5 @@
-import { redeemToken } from '../..';
+/* eslint-disable prefer-destructuring */
+import { questradeAPI } from '../..';
 import {
   Credentials,
   QtApiAccount,
@@ -8,13 +9,12 @@ import {
   QtApiQuotes,
   QtApiSearch,
   QtApiSymbols,
-  QuestradeApi,
   StrategyVariantRequest,
 } from '../../typescript';
 import { setDateRange, void0 } from '../../utils';
 
 const dateRange30Days = setDateRange(30);
-let qtApi: QuestradeApi;
+let qtApi: any;
 let credentials: Credentials;
 let account: () => Promise<QtApiAccount>;
 let market: () => Promise<QtApiMarket>;
@@ -25,7 +25,7 @@ let getOptionChains: () => Promise<QtApiOptionChains>;
 let search: () => Promise<QtApiSearch>;
 
 beforeAll(async done => {
-  const qtApiAndCredentials = await redeemToken('MOCK');
+  const qtApiAndCredentials = await questradeAPI({ token: 'MOCK' });
 
   qtApi = qtApiAndCredentials.qtApi;
 
@@ -157,8 +157,8 @@ describe('MARKET METHODS will test all methods on get.market', () => {
     done();
   });
   it('should validate candlesByStockId with default interval', async done => {
-    // const candel30Day = async () =>
-    //   dateRange30Days((await market()).getCandlesByStockId(8049)());
+    // Const candel30Day = async () =>
+    //   DateRange30Days((await market()).getCandlesByStockId(8049)());
     void0((await market()).getCandlesByStockId(8049)());
     done();
   });

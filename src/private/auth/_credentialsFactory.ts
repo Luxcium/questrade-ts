@@ -12,9 +12,9 @@ async function _credentialsFactory(
   apiOptions: ApiOptions,
   apiCallQ: ApiCallQ_,
 
-  proxyFactory?: (() => ProxyFactory_) | undefined,
+  proxyFactory?: (() => ProxyFactory_) | null,
 ) {
-  let proxy: ProxyFactory_ | undefined;
+  let proxy: ProxyFactory_ | null;
   let credentials: Credentials;
 
   if (proxyFactory != null) {
@@ -23,7 +23,8 @@ async function _credentialsFactory(
       ? _oAuthHttp(apiOptions, proxy)
       : _oAuthHttp(apiOptions, null));
   } else {
-    // proxy does not exist (is undefined or null) will use undefined
+    // Proxy does not exist (is undefined or null) will use undefined
+    proxy = null;
     credentials = await _oAuthHttp(apiOptions);
   }
 

@@ -11,7 +11,7 @@ import { _endpointFormatAccount } from '..';
 export const _clientAccountGetApi = (
   credentials: Credentials,
   apiCallQ: ApiCallQ_,
-  proxy?: ProxyFactory_,
+  proxy: ProxyFactory_ | null,
 ) => <R>(accountEndpoint: string) =>
   _coreApiFunction(credentials, apiCallQ, proxy)('GET')(null)<R>(
     _endpointFormatAccount(credentials, proxy)(accountEndpoint),

@@ -25,7 +25,7 @@ export type CachedResponse = any;
 class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
   extends ReflexionLoggerProxyHandlerAbstractClass<T>
   implements ProxyHandler<T> {
-  // private jsonCache: JSONCache<CachedApiResponse>;
+  // Private jsonCache: JSONCache<CachedApiResponse>;
   constructor(protected handlerOptions: ProxyHandlerOptions) {
     super(handlerOptions);
     this.handlerOptions.notFromCache = false;
@@ -45,7 +45,7 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
       const { URL_HSH } = getUrlHash(urlPath);
       /*
 
- data: { time: '2021-01-27T00:58:33.579000-05:00' },
+ Data: { time: '2021-01-27T00:58:33.579000-05:00' },
   UDATAGRAM: 'UDATAGRAM:20D0F6BB5559ACF',
   URL_HSH: 'URL:8081F947BB07DB0A4A',
   path: '/v1/time',
@@ -56,7 +56,7 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
       const jsonCache = new JSONCache<CachedResponse>(myRedis, {
         prefix: 'cache:response:',
       });
-      // const isInExclusionList = ['URL:8081F947BB07DB0A4A'].some(
+      // Const isInExclusionList = ['URL:8081F947BB07DB0A4A'].some(
       //   URL => URL === 'URL:8081F947BB07DB0A4A',
       // );
 
@@ -91,21 +91,21 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
       const { DATA_HSH, path, URL_HSH: URL_HSH_, UDATAGRAM } = urlAndDataRest;
 
       myRedis.incr(`cache:total:${URL_HSH_}`);
-      // const cacheTotal = ((await myRedis.get(`cache:total:${URL_HSH_}`)) ??
+      // Const cacheTotal = ((await myRedis.get(`cache:total:${URL_HSH_}`)) ??
       // 0) as number;
       myRedis.incr(`cache:${configFromApi.url}`);
-      // const cacheTotalx = ((await myRedis.get(
+      // Const cacheTotalx = ((await myRedis.get(
       //   `cache:total:${configFromApi.url}`,
       // )) ?? 0) as number;
       myRedis.sadd(`cache:unique:${URL_HSH_}`, DATA_HSH);
-      // const cacheUnique = await myRedis.scard(`cache:unique:${URL_HSH_}`);
-      // try {
-      //   console.log(
+      // Const cacheUnique = await myRedis.scard(`cache:unique:${URL_HSH_}`);
+      // Try {
+      //   Console.log(
       //     `total(${Number(cacheTotal)}) / unique(${Number(cacheUnique)}): `,
       //     Number(cacheTotal) / Number(cacheUnique),
       //   );
       // } catch (error) {
-      //   console.error('cacheTotal / cacheUnique: ', error.message);
+      //   Console.error('cacheTotal / cacheUnique: ', error.message);
       // }
 
       void [dataToCache, DATA_HSH, path, URL_HSH_, UDATAGRAM];
@@ -162,8 +162,8 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
 
       if (this?.handlerOptions?.noCaching !== true) {
         // $ WRITE TO CACHE ――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-        // id0('if (this?.handlerOptions?.noCaching !== true)');
-        // const options: ISetOptions = { expire: 1000 };
+        // Id0('if (this?.handlerOptions?.noCaching !== true)');
+        // Const options: ISetOptions = { expire: 1000 };
 
         await jsonCache.set(URL_HSH, responseToCache /* , options */);
       }
@@ -212,176 +212,176 @@ export function redisProxyHandler(
 }
 
 //    // private jsonCache: JSONCache<CachedApiResponse>;
-//   constructor(
-//     protected handlerOptions: ProxyHandlerOptions, // protected tedis: Tedis, // protected credentials?: Credentials,
+//   Constructor(
+//     Protected handlerOptions: ProxyHandlerOptions, // protected tedis: Tedis, // protected credentials?: Credentials,
 //   ) {
-//     super(handlerOptions);
+//     Super(handlerOptions);
 //     // this.jsonCache = new jsonRedis<CachedApiResponse>(redisinstance, {
 //     // prefix: 'response:cache:',
 //     // });
 //     // void this.jsonCache;
 // }
 
-// protected async applyTargetReflexion(
-//   target: T,
-//   thisArg: any,
-//   argArray?: any,
+// Protected async applyTargetReflexion(
+//   Target: T,
+//   ThisArg: any,
+//   ArgArray?: any,
 // ) {
 //
 //   // $ Reflect.apply  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-//   const returnValue = Reflect.apply(target, thisArg, argArray);
-//   const data = `${JSON.stringify((await returnValue).data ?? null)}`;
-//   const proxyData = this._proxyData(urlPath, data, argArray);
-//   const response: ClientResponse = await returnValue;
+//   Const returnValue = Reflect.apply(target, thisArg, argArray);
+//   Const data = `${JSON.stringify((await returnValue).data ?? null)}`;
+//   Const proxyData = this._proxyData(urlPath, data, argArray);
+//   Const response: ClientResponse = await returnValue;
 
-//   return { proxyData, response, returnValue, urlPath };
+//   Return { proxyData, response, returnValue, urlPath };
 // }
 
-// const urlPath = getQtUrlPathFromArgs(argArray);
-// const { URL_HSH } = getUrlHash(urlPath);
+// Const urlPath = getQtUrlPathFromArgs(argArray);
+// Const { URL_HSH } = getUrlHash(urlPath);
 // // getDataHash,
 // // getUDatagram,
 // // getUrlAndDataHashes,
 // // getUrlHashe,
-// try {
+// Try {
 //   // +SIDE EFFECTS ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-//   const isInCache: boolean = echo1(
+//   Const isInCache: boolean = echo1(
 //     "this.tedis.command('hgetall', URL_HSH): ",
-//     await this.tedis.command('hgetall', URL_HSH),
+//     Await this.tedis.command('hgetall', URL_HSH),
 //   );
-//   const initialValue: any = {};
-//   if (isInCache) {
+//   Const initialValue: any = {};
+//   If (isInCache) {
 //     // if (process.exit()) { };
-//     const parsed = ech0(
-//       parser<any[]>(await this.tedis.command('HGETALL', URL_HSH)),
+//     Const parsed = ech0(
+//       Parser<any[]>(await this.tedis.command('HGETALL', URL_HSH)),
 //     );
-//     for (let i = 0; i < parsed.length; i += 2) {
-//       initialValue[parser((parsed[i] as string).split(':')[0])] =
-//         parsed[i + 1];
+//     For (let i = 0; i < parsed.length; i += 2) {
+//       InitialValue[parser((parsed[i] as string).split(':')[0])] =
+//         Parsed[i + 1];
 //     }
 //   }
-//   ech0(initialValue);
+//   Ech0(initialValue);
 //   // $ APPLY REFLEXCTION ON TARGET ――――――――――――――――――――――――――――――――――――――――――$>
-//   const {
-//     proxyData,
-//     response,
-//     returnValue,
+//   Const {
+//     ProxyData,
+//     Response,
+//     ReturnValue,
 //   } = await this.applyTargetReflexion(target, thisArg, argArray);
 //   // echo(response.status);
 //   // echo(response.statusText);
 //   // echo(response.headers['content-type']);
 //   // echo(response.headers['content-length']);
 //   // echo(response.headers['strict-transport-security']);
-//   if (this.credentials) {
-//     this.credentials.xRatelimitRemaining = Number(
-//       response.headers['x-ratelimit-remaining'],
+//   If (this.credentials) {
+//     This.credentials.xRatelimitRemaining = Number(
+//       Response.headers['x-ratelimit-remaining'],
 //     );
-//     this.credentials.xRatelimitReset = Number(
-//       response.headers['x-ratelimit-reset'],
+//     This.credentials.xRatelimitReset = Number(
+//       Response.headers['x-ratelimit-reset'],
 //     );
-//     this.credentials.fromCache = true;
+//     This.credentials.fromCache = true;
 //   }
-//   void proxyData;
-//   void this.tedis;
-//   const myKey = proxyData.URL_HSH;
-//   const hash = [
+//   Void proxyData;
+//   Void this.tedis;
+//   Const myKey = proxyData.URL_HSH;
+//   Const hash = [
 //     'URL_HSH:',
-//     proxyData.URL_HSH,
+//     ProxyData.URL_HSH,
 //     'path:',
-//     proxyData.path,
+//     ProxyData.path,
 //     'DATA_HSH:',
-//     proxyData.DATA_HSH,
+//     ProxyData.DATA_HSH,
 //     'data:',
-//     proxyData.data,
+//     ProxyData.data,
 //     'UDATAGRAM:',
-//     proxyData.UDATAGRAM,
+//     ProxyData.UDATAGRAM,
 //     'status:',
-//     response.status,
+//     Response.status,
 //     'statusText:',
-//     response.statusText,
+//     Response.statusText,
 //     'headers_type',
-//     response.headers['content-type'],
+//     Response.headers['content-type'],
 //     'headers_length',
-//     response.headers['content-length'],
+//     Response.headers['content-length'],
 //     'url:',
 //     (response.config as ClientRequestConfig).url,
 //     'urlPath:',
-//     urlPath,
+//     UrlPath,
 //   ];
 //   //*
-//   const tempResponse = {
-//     response: {
-//       clientRequest: {
+//   Const tempResponse = {
+//     Response: {
+//       ClientRequest: {
 //         /* any */
 //       },
-//       config: {
-//         url: 'https://api06.iq.questrade.com/v1/accounts',
+//       Config: {
+//         Url: 'https://api06.iq.questrade.com/v1/accounts',
 //       },
-//       data: {
+//       Data: {
 //         /* any */
 //       },
-//       headers: {
+//       Headers: {
 //         'content-length': '152',
 //         'content-type': 'application/json; charset=utf-8',
 //         'date': 'Tue, 19 Jan 2021 06:09:06 GMT',
 //         'x-ratelimit-remaining': '29970',
 //         'x-ratelimit-reset': '1611038234',
 //       },
-//       status: 418,
-//       statusText: 'I’M A TEAPOT',
+//       Status: 418,
+//       StatusText: 'I’M A TEAPOT',
 //     },
 //   };
 //   //*/
-//   void tempResponse;
-//   voech0(await this.tedis.command('HSET', myKey, ...hash));
-//   voech0(await this.tedis.command('EXPIRE', myKey, 30));
+//   Void tempResponse;
+//   Voech0(await this.tedis.command('HSET', myKey, ...hash));
+//   Voech0(await this.tedis.command('EXPIRE', myKey, 30));
 //   // echo<any>(myKey, await this.tedis.command('TTL', myKey));
 //   // ech0(await this.tedis.command('TTL', myKey));
-//   if ((await returnValue)?.data?.accounts) {
-//     ech0((await returnValue)?.data?.accounts);
+//   If ((await returnValue)?.data?.accounts) {
+//     Ech0((await returnValue)?.data?.accounts);
 //   }
-//   return ech0({
+//   Return ech0({
 //     ...(await returnValue),
-//     config: {},
-//     data: {
+//     Config: {},
+//     Data: {
 //       ...(await returnValue)?.data,
-//       accounts: [
+//       Accounts: [
 //         {
-//           clientAccountType: 'Individual',
-//           isBilling: true,
-//           isPrimary: false,
-//           number: '51648972',
-//           status: 'Active',
-//           type: 'TFSA',
+//           ClientAccountType: 'Individual',
+//           IsBilling: true,
+//           IsPrimary: false,
+//           Number: '51648972',
+//           Status: 'Active',
+//           Type: 'TFSA',
 //         },
 //       ],
 //       // time: '2011-11-11T11:11:11.282000-05:00',
-//       userId: 126_691,
+//       UserId: 126_691,
 //     },
-//     headers: {},
-//     request: {},
+//     Headers: {},
+//     Request: {},
 //   });
 //   // return returnValue;
 //   // + CATCH ERROR ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
 // } catch (error) {
-//   void echo(error);
-//   return { data: null };
+//   Void echo(error);
+//   Return { data: null };
 // }
 
-// protected proxy = {
-//   class: 'redisClientProxyHandlerClass',
-//   extends: 'ReflexionLoggerProxyHandlerAbstractClass<ClientStatic>',
-//   implements: 'ProxyHandler<ClientStatic>',
+// Protected proxy = {
+//   Class: 'redisClientProxyHandlerClass',
+//   Extends: 'ReflexionLoggerProxyHandlerAbstractClass<ClientStatic>',
+//   Implements: 'ProxyHandler<ClientStatic>',
 // };
 
-// private _proxyData(urlPath: string, data: string, argArray?: any) {
-//   return {
-//     clientConfig: argArray[0],
-//     proxy: {
+// Private _proxyData(urlPath: string, data: string, argArray?: any) {
+//   Return {
+//     ClientConfig: argArray[0],
+//     Proxy: {
 //       ...this.proxy,
-//       handlerMethod:
+//       HandlerMethod:
 //         'async apply(target: ClientStatic, thisArg: any, argArray?: any) ',
-//       sideEffects: 'void echo(proxyData); voech0(this.tedis);',
+//       SideEffects: 'void echo(proxyData); voech0(this.tedis);',
 //     },
 //     ...getUrlAndDataHashes(urlPath, data),
 //   };

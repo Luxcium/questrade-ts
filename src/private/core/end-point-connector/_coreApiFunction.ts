@@ -7,7 +7,7 @@ import { _coreApiConfig } from './_coreApiConfig';
 function _coreApiFunction(
   credentials: Credentials,
   apiCallQ: ApiCallQ_,
-  proxy?: ProxyFactory_,
+  proxy: ProxyFactory_ | null,
   errorlog: Logger = (...error: any[]) => error,
 ) {
   void apiCallQ; // ~~>
@@ -33,7 +33,7 @@ function _coreApiFunction(
             proxy,
           );
 
-          return clientDataGetter(errorlog, handlerOptions); // from _tryToGetData...
+          return clientDataGetter(errorlog, handlerOptions); // From _tryToGetData...
         };
       };
     };

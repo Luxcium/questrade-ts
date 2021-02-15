@@ -18,8 +18,8 @@ const { getHttpClient } = sideEffects;
 function _httpDataEndPointConnector<DATA>(
   apiCallQ: ApiCallQ_,
   config: ClientRequestConfig,
-  credentials?: Credentials,
-  proxy?: ProxyFactory_,
+  credentials: Credentials,
+  proxy: ProxyFactory_ | null,
   useNewRateLimiter: boolean = false,
 ) {
   return async (
@@ -39,7 +39,7 @@ function _httpDataEndPointConnector<DATA>(
     const possiblePerSeconds =
       credentials?.remainingRequests?.possiblePerSeconds ?? 21;
 
-    // testing it with useNewRateLimiter = true
+    // Testing it with useNewRateLimiter = true
     useNewRateLimiter = true;
     const response: ClientResponse<DATA> = await (useNewRateLimiter
       ? apiCallQ.addToQueue({

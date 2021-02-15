@@ -22,26 +22,26 @@ const apply = <T = any, R = any>(f: FnAtoB<T, R>) => (x: T) => f(x);
 const compose = <R>(f: (gx: any) => R) => (g: (x: any) => R) => (x: any) =>
   f(g(x));
 
-//# cardinal :: (a -> b -> c) -> b -> a -> c
-//.
-//. C combinator or flip
-//.
-//. ```js
-//. > cardinal(str => prefix => prefix + str)('-')('birds')
-//. '-birds'
-//. ```
+// # cardinal :: (a -> b -> c) -> b -> a -> c
+// .
+// . C combinator or flip
+// .
+// . ```js
+// . > cardinal(str => prefix => prefix + str)('-')('birds')
+// . '-birds'
+// . ```
 const flip = <U = any, T = any, R = any>(f: (b: U) => (a: T) => R) => (
   a: T,
 ) => (b: U) => f(b)(a);
 
-//# kestrel :: a -> b -> a
-//.
-//. K combinator or `const`
-//.
-//. ```js
-//. > kestrel('bird')('cat')
-//. 'bird'
-//. ```
+// # kestrel :: a -> b -> a
+// .
+// . K combinator or `const`
+// .
+// . ```js
+// . > kestrel('bird')('cat')
+// . 'bird'
+// . ```
 
 const konst = <T = any>(a: T) => (_b: unknown) => a;
 /**

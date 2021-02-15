@@ -1,8 +1,8 @@
 import { CallBack } from '.';
 
-// export type ReqLimiterFactory = () => <T>(
-//   fn: WillCallBack<T>,
-//   hertz?: number,
+// Export type ReqLimiterFactory = () => <T>(
+//   Fn: WillCallBack<T>,
+//   Hertz?: number,
 // ) => (willCallBack: CallBack<T>) => Promise<T>;
 
 export type ReqLimiterFactory = () => (

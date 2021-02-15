@@ -1,4 +1,4 @@
-// import { errorlog } from '../../resources/side-effects';
+// Import { errorlog } from '../../resources/side-effects';
 import {
   Credentials,
   Logger,
@@ -39,7 +39,7 @@ import {
 export const _getQuestradeApi = async (
   credentials: Credentials,
   apiCallQ: ApiCallQ_,
-  proxy?: ProxyFactory_,
+  proxy: ProxyFactory_ | null,
   errorlog: Logger = (...error: any[]) => error,
 ): Promise<QuestradeApi> => {
   const getApi = () => _clientGetApi(credentials, apiCallQ, proxy);
@@ -143,7 +143,7 @@ export const _getQuestradeApi = async (
       },
       async stock(prefix: string, offset?: number) {
         return api.symbolSearch(prefix, offset);
-        // return symbolSearchAndCount(prefix, offset);
+        // Return symbolSearchAndCount(prefix, offset);
       },
     },
     serverTime: credentials.serverTime || 'ERROR',
@@ -175,7 +175,7 @@ void0(void0);
 // // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),
 // _getQuotesOptionsByIds(postApi(), errorlog),
 // _getQuotesOptionsFilter(
-//   postApi() /* , errorlog */,
+//   PostApi() /* , errorlog */,
 // ),
 // _getServerTime(getApi() /* , errorlog */),
 // _getSymbolsByIds(getApi(), errorlog),
@@ -184,6 +184,6 @@ void0(void0);
 // _getSymbolSearch(getApi(), errorlog),
 // _getSymbolSearchCount(getApi(), errorlog),
 // ];
-// unused for the moment
-// symbolSearchAndCount:    // _getSymbolSearchAndCount(credentials,proxy, errorlog),
-// quotesOptionsbyFilterAndIds:    // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),
+// Unused for the moment
+// SymbolSearchAndCount:    // _getSymbolSearchAndCount(credentials,proxy, errorlog),
+// QuotesOptionsbyFilterAndIds:    // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),

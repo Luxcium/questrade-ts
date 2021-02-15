@@ -36,11 +36,11 @@ export const validateToken = (options: ApiOptions) => {
   return { credentials, refreshToken };
 };
 
-// export function (
-//   options: QuestradeAPIOptions,
+// Export function (
+//   Options: QuestradeAPIOptions,
 // ): {
-//   refreshToken: string;
-//   credentials: Credentials;
+//   RefreshToken: string;
+//   Credentials: Credentials;
 // } {
-//   return _validateToken(options);
+//   Return _validateToken(options);
 // }

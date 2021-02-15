@@ -11,5 +11,5 @@ import { ApiCallQ_ } from '../../core/next-rate-limiter/queue';
 export const _clientPostApi = (
   credentials: Credentials,
   apiCallQ: ApiCallQ_,
-  proxy?: ProxyFactory_,
+  proxy: ProxyFactory_ | null,
 ) => _coreApiFunction(credentials, apiCallQ, proxy)('POST');

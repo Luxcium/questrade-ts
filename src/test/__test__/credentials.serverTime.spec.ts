@@ -6,7 +6,7 @@ const { echo } = sideEffects;
 
 test("should set getServerTime to 'ERROR'", async done => {
   const qtApi = await _getQuestradeApi(_emptyCredentials());
-  const serverTime = qtApi.serverTime;
+  const { serverTime } = qtApi;
 
   void echo(serverTime);
 

@@ -7,7 +7,7 @@ import { Credentials } from '.';
 /** IProxy placeholder will be an interface at term  */
 export type ClientProxyHandlerFactory = ClientStatic & ProxyFactory_;
 
-// export type ClientStaticHandlerFactory = ClientStatic;
+// Export type ClientStaticHandlerFactory = ClientStatic;
 
 export type ProxyFactory_ = {
   activate?: (options: ProxyHandlerOptions) => ClientStatic;

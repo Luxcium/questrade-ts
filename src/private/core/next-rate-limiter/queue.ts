@@ -5,7 +5,7 @@ import { echo, echo1 } from '../../../resources/side-effects/default-behaviour';
 import {
   ClientPromise,
   ClientRequestConfig,
-  ClientResponse
+  ClientResponse,
 } from '../../../resources/side-effects/types';
 import { void0 } from '../../../utils';
 import { QNode } from './q-node';
@@ -51,7 +51,6 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
   protected get requestLimit() {
     const { floor, min, ceil } = Math;
     const reqstRemaining = echo1('reqstRemaining:', this.remaining);
-
     const resetTime = echo1('resetTime :', this.resetTime);
 
     if (resetTime <= 0) {
@@ -59,7 +58,6 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     }
 
     const timeNow = echo1('timeNow   :', floor(Date.now() / 1000));
-
     const timeRemaining = resetTime - timeNow;
     // Clamp up at maximum 20 rps returns the minimum betwen 20 and reqPerSec
     const reqPerSecRaw = echo1(
@@ -68,11 +66,8 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     );
 
     const reqPerSecfloor = echo1('reqPerSecfloor  :', floor(reqPerSecRaw));
-
     const reqPerSecClamp = echo1('reqPerSecClamp  :', min(reqPerSecfloor, 20));
-
     const reqPerSec = echo1('reqPerSecfloor  :', reqPerSecClamp);
-
     const delay = echo1('calculated Delay:', ceil(1000 / reqPerSec));
 
     echo1('timeRemaining:', timeRemaining);
