@@ -5,7 +5,7 @@ import { echo, echo1 } from '../../../resources/side-effects/default-behaviour';
 import {
   ClientPromise,
   ClientRequestConfig,
-  ClientResponse,
+  ClientResponse
 } from '../../../resources/side-effects/types';
 import { void0 } from '../../../utils';
 import { QNode } from './q-node';
@@ -15,18 +15,18 @@ interface IQNode<T extends QNodesValue> {
   next: IQNode<T> | null;
 }
 
-// type ApiCallQ_Value = any;
+// Type ApiCallQ_Value = any;
 type QNodes<T extends QNodesValue = QNodesValue> = IQNode<T> | null;
 type QNodesValue = {
   config: ClientRequestConfig;
   fn: <R>(config: ClientRequestConfig) => Promise<ClientResponse<R>>;
   cb?: any;
 };
-// const instanceApiCallQ_: { instance: ApiCallQ_<any> | null } = {
-//   instance: null,
+// Const instanceApiCallQ_: { instance: ApiCallQ_<any> | null } = {
+//   Instance: null,
 // };
 
-// void instanceApiCallQ_;
+// Void instanceApiCallQ_;
 
 /** FCFS Queue (first-come, first-served) */
 
@@ -47,27 +47,34 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     return !this.broke;
   }
 
-  //-| protected |-get――――――――――――――――――――――――――――――···-| requestLimit |-//::――― ~
+  // -| protected |-get――――――――――――――――――――――――――――――···-| requestLimit |-//::――― ~
   protected get requestLimit() {
     const { floor, min, ceil } = Math;
     const reqstRemaining = echo1('reqstRemaining:', this.remaining);
+
     const resetTime = echo1('resetTime :', this.resetTime);
+
     if (resetTime <= 0) {
       return echo1('returnTime :', 500);
     }
 
     const timeNow = echo1('timeNow   :', floor(Date.now() / 1000));
+
     const timeRemaining = resetTime - timeNow;
-    // clamp up at maximum 20 rps returns the minimum betwen 20 and reqPerSec
+    // Clamp up at maximum 20 rps returns the minimum betwen 20 and reqPerSec
     const reqPerSecRaw = echo1(
       'reqPerSecRaw    :',
       reqstRemaining / timeRemaining,
     );
 
     const reqPerSecfloor = echo1('reqPerSecfloor  :', floor(reqPerSecRaw));
+
     const reqPerSecClamp = echo1('reqPerSecClamp  :', min(reqPerSecfloor, 20));
+
     const reqPerSec = echo1('reqPerSecfloor  :', reqPerSecClamp);
+
     const delay = echo1('calculated Delay:', ceil(1000 / reqPerSec));
+
     echo1('timeRemaining:', timeRemaining);
 
     return echo1('ceil Delay plus 50 ms :', ceil(delay + 25));
@@ -92,7 +99,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
   protected get positiveTimeOfSet() {
     return this.timeOfSet >= 0 ? this.timeOfSet : 0;
   }
-  //-| constructor |-···―――――――――――――――――――――――――――···-| ApiCallQ_() |-//-://#-| ~
+  // -| constructor |-···―――――――――――――――――――――――――――···-| ApiCallQ_() |-//-://#-| ~
   public constructor(
     protected maxPerSecondes: number = MAX_PER_SECONDES,
     protected maxPerHour: number = MAX_PER_HOUR,
@@ -108,7 +115,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     this.broke = false;
   }
 
-  //-| public |-···―――――――――――――――――――――――――――――――――···-| addToQueue() |-//::――― ~
+  // -| public |-···―――――――――――――――――――――――――――――――――···-| addToQueue() |-//::――― ~
   public addToQueue<R = any>(value: T): ClientPromise<R> {
     //
 
@@ -146,7 +153,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
       });
     });
   }
-  //-| protected |-···――――――――――――――――――――――――――···-| callToPopQueue() |-//::――― ~
+  // -| protected |-···――――――――――――――――――――――――――···-| callToPopQueue() |-//::――― ~
 
   protected callToPopQueue() {
     // -------------------------------------------------------------------------
@@ -166,8 +173,8 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
         const cb = this.current?.value?.cb ?? void0;
 
         try {
-          const fn = this.current!.value.fn;
-          const config = this.current!.value.config;
+          const { fn } = this.current!.value;
+          const { config } = this.current!.value;
           const timeBefore1 = Date.now();
           const response = await fn(config);
           if (response.status !== 200) {
@@ -186,7 +193,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
             Number(response.headers['x-ratelimit-reset']),
           );
 
-          // set to 1 if zero or not a number or NaN
+          // Set to 1 if zero or not a number or NaN
           this.remaining = typeof xRemaining === 'number' ? xRemaining || 1 : 1;
           this.resetTime = typeof xReset === 'number' ? xReset || 1 : 1;
 
@@ -204,7 +211,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
         console.log('Complete previous cycle in', timeNow, 'ms' /* '\n' */);
         this.callToPopQueue();
         echo(`setTimeout(${Date.now()})----------------------------------`);
-        // console.clear();
+        // Console.clear();
         // INFO: requestLimit //-?
       }, this.requestLimit);
 
@@ -214,7 +221,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     return echo1('return from callToPopQueue:', false);
   }
 
-  //-| protected |-···――――――――――――――――――――――――――――――――――···-| enQueue() |-//::―― ~
+  // -| protected |-···――――――――――――――――――――――――――――――――――···-| enQueue() |-//::―― ~
   protected enQueue(val: T) {
     const newNode = new QNode(val);
 
@@ -229,7 +236,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     return (this.size += 1);
   }
 
-  //-| protected |-···――――――――――――――――――――――――――――――――――···-| deQueue() |-//::―― ~
+  // -| protected |-···――――――――――――――――――――――――――――――――――···-| deQueue() |-//::―― ~
   protected deQueue() {
     if (!this.first) {
       return null;
