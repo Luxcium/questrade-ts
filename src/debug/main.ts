@@ -1,6 +1,7 @@
 /* eslint-disable radar/no-unused-collection */
 import { questradeAPI } from '..';
 import { ech0, echo, getMyToken } from '../resources/side-effects';
+import { echo1 } from '../resources/side-effects/default-behaviour';
 import { willGetSNP500StringList } from '../test/development/getSNP500List';
 import { id0, void0 } from '../utils';
 
@@ -25,7 +26,17 @@ async function main() {
     async item => await qtApi.search.stock(item),
   );
 
-  snp500list.map(async item => ech0((await item)[0].symbolId));
+  snp500list.map(async item =>
+    echo1(
+      'getSymbols.byStockIds:',
+      (
+        await qtApi.getSymbols.byStockIds([
+          echo1('symbolId:', (await item)[0]?.symbolId) || 1,
+        ])
+      )[0]?.description,
+    ),
+  );
+
   // // export const cs
   // snp500list
   //   .map(stock => qtApi.search.stock(stock))
