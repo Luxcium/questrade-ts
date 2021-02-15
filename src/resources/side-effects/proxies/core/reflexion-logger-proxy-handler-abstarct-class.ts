@@ -251,7 +251,7 @@ export abstract class ReflexionLoggerProxyHandlerAbstractClass<
 
   +Méthodes pour le gestionnaire
   L'objet utilisé comme gestionnaire regroupe les différentes fonctions
-  « trappes » pour le Proxy.
+  « trappes » pour le Proxy.
 
   Toutes ces trappes sont optionnelles. Si une trappe n'a pas été définie,
   le comportement par défaut sera de transmettre l'opération à la cible.

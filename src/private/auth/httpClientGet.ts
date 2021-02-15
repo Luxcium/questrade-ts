@@ -7,7 +7,7 @@ export function httpClientGet(proxy?: ProxyFactory_ | null): ClientStatic {
     echo('Warning: A Proxy is used in oAuth Connector!');
 
     return proxy.activate({});
-  } else {
-    return getHttpClient();
   }
+
+  return getHttpClient();
 }

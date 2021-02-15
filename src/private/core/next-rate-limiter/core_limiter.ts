@@ -22,7 +22,7 @@ function requestLimiterFactory(fn: Function, hertz: number = 1) {
         return void 151;
       }, perSeconds(hertz));
       const poped = callsQueue.pop();
-      const [myfn, mycb] = !!poped ? poped : [neverWillCb, neverCb];
+      const [myfn, mycb] = poped ? poped : [neverWillCb, neverCb];
 
       while (lastDelay() < perSeconds(hertz)) {
         // do nothing just wait while (lastDelay() < perSeconds(hertz));
@@ -69,7 +69,7 @@ export function requestPerSecondLimiter(hz: number) {
 
     return new Promise<T>((resolve, reject) => {
       addToQueue((error: Error, result: any) => {
-        if (!!error) {
+        if (error) {
           void errorlog(error);
 
           reject(error);

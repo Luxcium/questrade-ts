@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Credentials } from '../../../typescript';
 
 const STRING_PRIVATE = '[string:Private]';

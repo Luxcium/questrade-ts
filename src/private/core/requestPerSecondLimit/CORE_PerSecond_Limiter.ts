@@ -22,7 +22,7 @@ function limitingRequest<T>(fn: Function, hertz: number = 1) {
         return void 0;
       }, perSeconds(hertz));
       const poped = callsQueue.pop();
-      const [myfn, mycb] = !!poped ? poped : neverWill;
+      const [myfn, mycb] = poped ? poped : neverWill;
 
       mycb(null, myfn());
 
@@ -39,7 +39,7 @@ function limitingRequest<T>(fn: Function, hertz: number = 1) {
 
   return new Promise<T>((resolve, reject) => {
     addToQueue((error: Error, result: any) => {
-      if (!!error) {
+      if (error) {
         void errorlog(error);
 
         reject(error);

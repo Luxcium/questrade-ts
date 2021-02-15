@@ -11,7 +11,7 @@ export const perSeconds = (hertz: number): number => {
   // 0 hz is equivalent to 1000 hz
 
   delay = 1000 / delay;
-  delay = !!delay ? delay : 1000;
+  delay = delay ? delay : 1000;
   // non negative
   delay = delay < 0 ? delay * -1 : delay;
 

@@ -21,7 +21,7 @@ export const _getSymbolSearch = (
     const count = symbols.length;
     let result: ISymbolSearchResult | null = null;
 
-    if (!!symbols[0]) {
+    if (symbols[0]) {
       result = symbols[0];
       result.count = count || 0;
       result.all = symbols;

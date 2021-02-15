@@ -138,11 +138,11 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
           resolve(result);
 
           return void 200;
-        } else {
-          reject(error);
-
-          return void 400;
         }
+
+        reject(error);
+
+        return void 400;
       });
     });
   }

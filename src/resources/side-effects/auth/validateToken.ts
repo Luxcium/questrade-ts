@@ -12,7 +12,7 @@ export const validateToken = (options: ApiOptions) => {
   let refreshToken: string = credentials.seedToken;
 
   try {
-    if (!!credentials.keyFile) {
+    if (credentials.keyFile) {
       sync(dirname(credentials.keyFile));
     } else {
       sync(credentials.keyDir);
