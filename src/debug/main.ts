@@ -12,6 +12,7 @@ async function main() {
   if (!once.onlyOnce) {
     return false;
   }
+
   once.onlyOnce = false;
 
   const { credentials, qtApi } = await questradeAPI({
@@ -65,5 +66,6 @@ async function main() {
 
   return true;
 }
+
 main();
 export { main };

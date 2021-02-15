@@ -30,6 +30,7 @@ function _updateCredentials(
       if (credentials.fromCache === true) {
         maximumperseconds = 21;
       }
+
       credentials.remainingRequests = remainingRequests(
         response,
         maximumperseconds,
@@ -44,4 +45,5 @@ function _updateCredentials(
     throw new Error(error_);
   }
 }
+
 export { _updateCredentials };

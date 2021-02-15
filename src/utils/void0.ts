@@ -8,12 +8,15 @@ export const stringny = (obj: any) => JSON.stringify(obj).toString();
 function id0<T>(...arg0: T[]) {
   return arg0[0];
 }
+
 function idx<T>(...args: T[]) {
   return args;
 }
+
 function void0<T>(...arg0: T[]) {
   return void arg0;
 }
+
 const thrush = <T>(x: T) => <R>(f: (a: T) => R) => f(x);
 const apply = <T = any, R = any>(f: FnAtoB<T, R>) => (x: T) => f(x);
 const compose = <R>(f: (gx: any) => R) => (g: (x: any) => R) => (x: any) =>

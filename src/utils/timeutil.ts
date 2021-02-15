@@ -35,6 +35,7 @@ export const urlEncodeDateTool = (
     dateToISOString(startTime),
   )}&endTime=${urlEncode(dateToISOString(endTime))}`;
 };
+
 export const dateNowISO = () => new Date(Date.now()).toISOString();
 export const dateNowNumeric = () => new Date(Date.now()).getTime();
 
@@ -49,6 +50,7 @@ export const dateRangeFromNow = (backNumberOfDays: number) => {
 
   return dateRange(numberOfDays, dateNowISO());
 };
+
 type StartDate = string;
 type EndDate = string;
 interface StartDateEndDateObject {

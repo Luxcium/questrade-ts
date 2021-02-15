@@ -76,6 +76,7 @@ export function requestPerSecondLimiter(hz: number) {
 
           return void 0;
         }
+
         resolve(result);
 
         return void 0;
@@ -104,6 +105,7 @@ let isGreenLight = true;
 function doNext() {
   return 'next request';
 }
+
 export function limiter(hertz: number = 20) {
   let lastCall2 = Date.now();
   const lastDelay2 = (lastCall3: number) => Date.now() - lastCall3;
@@ -120,6 +122,7 @@ export function limiter(hertz: number = 20) {
   while (lastDelay2(lastCall2) < perSeconds(hertz)) {
     isGreenLight = false;
   }
+
   isGreenLight = true;
   doNext();
   resetLastCall2();

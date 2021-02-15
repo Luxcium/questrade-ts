@@ -17,6 +17,7 @@ describe('Redeem Token ', () => {
       void errorlog(error.message);
       canReciveEmptyString = false;
     }
+
     expect(canReciveEmptyString).toBe(false);
     done();
   });

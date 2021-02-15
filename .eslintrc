@@ -403,7 +403,9 @@
       {
         "blankLine": "always",
         "prev": [
-          "block-like"
+          "block-like",
+          "multiline-block-like",
+          "function"
         ],
         "next": [
           "*"

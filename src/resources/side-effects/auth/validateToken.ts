@@ -17,6 +17,7 @@ export const validateToken = (options: ApiOptions) => {
     } else {
       sync(credentials.keyDir);
     }
+
     credentials.keyFile =
       credentials.keyFile || `${credentials.keyDir}/${credentials.seedToken}`;
     refreshToken = readFileSync(credentials.keyFile, 'utf8');

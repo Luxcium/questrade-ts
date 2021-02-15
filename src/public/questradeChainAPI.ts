@@ -140,6 +140,7 @@ export const asyncQuestradeApi = (
 
   return { ...all };
 };
+
 export class ChainApiClass {
   // public asyncActivities: Promise<(startTime: string) => (endTime: string) => Promise<IAccountActivity[]>>;
   // public asyncAllAccounts: Promise<() => Promise<IAccount[]>>;

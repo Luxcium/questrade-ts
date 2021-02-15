@@ -55,6 +55,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     if (resetTime <= 0) {
       return echo1('returnTime :', 500);
     }
+
     const timeNow = echo1('timeNow   :', floor(Date.now() / 1000));
     const timeRemaining = resetTime - timeNow;
     // clamp up at maximum 20 rps returns the minimum betwen 20 and reqPerSec
@@ -172,6 +173,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
           if (response.status !== 200) {
             throw new Error((response as any) as string);
           }
+
           const timeAfter1 = Date.now() - timeBefore1;
           console.log('request response cycle in', timeAfter1, 'ms' /* '\n' */);
           const xRemaining = echo1(
@@ -238,6 +240,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     if (this.first === this.last) {
       this.last = null;
     }
+
     this.first = this.first.next;
     this.size -= 1;
 

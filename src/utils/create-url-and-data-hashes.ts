@@ -17,6 +17,7 @@ function getUrlHash(urlPath: string) {
     path: !urlPath ? 'null' : urlPath,
   };
 }
+
 function getDataHash(dataToHash: string) {
   const HEX: BinaryToTextEncoding = 'hex';
 
@@ -31,6 +32,7 @@ function getDataHash(dataToHash: string) {
     data: !dataToHash ? 'null' : dataToHash,
   };
 }
+
 function getUDatagram(urlPath: string, dataToHash: string) {
   const HEX: BinaryToTextEncoding = 'hex';
 

@@ -46,6 +46,7 @@ function limitingRequest<T>(fn: Function, hertz: number = 1) {
 
         return void 0;
       }
+
       resolve(result);
 
       return void 0;

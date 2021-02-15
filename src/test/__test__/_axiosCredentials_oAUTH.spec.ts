@@ -39,6 +39,7 @@ describe('auth Credential from QuestradeApi via HTTP CLIENT', () => {
     } catch {
       canReciveEmptyString = false;
     }
+
     expect(canReciveEmptyString).toBe(false);
     void0(credentials);
     done();

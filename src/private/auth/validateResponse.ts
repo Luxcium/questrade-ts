@@ -17,6 +17,7 @@ export async function validateResponse(
       void echo<any>('________________________________________________');
       void echo<any>('++++++++++++++++++++++++++++++++++++++++++++++++');
     }
+
     throw new Error(
       '!!! validate credntials Invalid data back from http client !!!',
     );

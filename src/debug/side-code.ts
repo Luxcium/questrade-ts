@@ -44,6 +44,7 @@ export class Queue {
     if (this.first === this.last) {
       this.last = null;
     }
+
     this.first = this.first.next;
     this.size -= 1;
 
@@ -63,6 +64,7 @@ function main2() {
   for (let i = 0; i < size; i++) {
     myQueue.enqueue(i);
   }
+
   const durationEnqueue = Date.now() - startEnqueue;
 
   ech0(`Enqueue: ${durationEnqueue / 1000}`);
@@ -74,6 +76,7 @@ function main2() {
   for (let i = myQueue.size; i > 0; i--) {
     myQueue.dequeue();
   }
+
   const durationDequeue = Date.now() - startDequeue;
 
   ech0(`Dequeue: ${durationDequeue / 1000}`);
@@ -94,6 +97,7 @@ function main2() {
   for (let i = 0; i < len1; i++) {
     array1.push(i);
   }
+
   const pushDuration = Date.now() - startPush;
 
   ech0(`Push: ${pushDuration / 1000}`);
@@ -104,6 +108,7 @@ function main2() {
     array1.shift();
     // y++;
   }
+
   const shiftDuration = Date.now() - startShift;
 
   ech0(`Shift: ${shiftDuration / 1000}`);
@@ -138,6 +143,7 @@ function main2() {
     array1.pop();
     // y++;
   }
+
   const popDuration = Date.now() - startPop;
 
   ech0(`Pop: ${popDuration / 1000}`);

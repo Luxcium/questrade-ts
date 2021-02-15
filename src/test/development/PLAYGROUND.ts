@@ -14,6 +14,7 @@ export const testingThat = (async () => {
   if (!qtApi) {
     throw new Error('Redeem token fault');
   }
+
   const theResult = await qtApi.account.getPositions();
   const theResult2 = await qtApi.search.stock('tu');
 

@@ -27,6 +27,7 @@ export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
     // HACK:  mode = /* _0777 & ~ */ process.umask(_0777);
     mode = /* _0777 & ~ */ process.umask(_0777);
   }
+
   if (!made) {
     made = null;
   }
@@ -50,6 +51,7 @@ export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
       } catch {
         throw error;
       }
+
       if (!stat.isDirectory()) {
         throw error;
       }
