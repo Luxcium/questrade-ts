@@ -794,7 +794,7 @@
     "no-restricted-imports": "error",
     "no-this-before-super": "error",
     "no-useless-computed-key": "warn",
-    "no-useless-constructor": "error",
+    "no-useless-constructor": "off",
     "no-useless-rename": "warn",
     // "no-var": 0,
     "object-shorthand": "warn",
