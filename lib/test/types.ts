@@ -1,4 +1,4 @@
-import { ApiOptions, Credentials, Logger, ProxyFactory_ } from '../typescript';
+import { ApiOptions, Credentials, Logger, ProxyFactory_ } from '../../src/typescript';
 
 export type RedeemOptions = {
   refreshToken: string | ApiOptions;
