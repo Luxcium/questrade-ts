@@ -46,7 +46,8 @@
     "tsc:noemit": "tsc --noEmit --pretty || exit 1",
     "prelinting": "yarn run pretty:fix || exit 3",
     "linting": "yarn run lint:fix || exit 3",
-    "postlinting": "yarn run tsc:noemit || exit 3"
+    "postlinting": "yarn run tsc:noemit || exit 3",
+    "sum": "./scripts/sums.sh"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
