@@ -48,35 +48,37 @@
     */
     // +++ eslint-config-prettier +++
     "prettier/prettier": "warn",
-    "arrow-body-style": "off",
-    "no-confusing-arrow": "off",
-    "prefer-arrow-callback": "off",
     "curly": [
       "warn",
       "all"
     ],
-    // "comma-dangle": [
-    //   "warn",
-    //   "only-multiline"
-    // ],
+    "comma-dangle": [
+      "warn",
+      "always-multiline",
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "always-multiline"
+      }
+    ],
+    "quotes": [
+      "warn",
+      "single",
+      "avoid-escape"
+    ],
+    // +++ eslint-config-prettier +++
+    "arrow-body-style": "off",
     "lines-around-comment": "off",
     "max-len": "off",
+    "no-confusing-arrow": "off",
     "no-mixed-operators": "off",
     "no-tabs": "off",
     "no-unexpected-multiline": "off",
-    // "quotes": [
-    //   "warn",
-    //   "single",
-    //   {
-    //     "avoidEscape": true,
-    //     "allowTemplateLiterals": false
-    //   }
-    // ],
-    // +++ eslint-config-prettier +++
+    "prefer-arrow-callback": "off",
     "unicorn/no-nested-ternary": "off",
     "unicorn/number-literal-case": "off",
-    "@typescript-eslint/quotes": 0,
-    // +++ eslint-config-prettier +++
     "@typescript-eslint/brace-style": "off",
     "@typescript-eslint/comma-dangle": "off",
     "@typescript-eslint/comma-spacing": "off",
@@ -86,6 +88,7 @@
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/no-extra-parens": "off",
     "@typescript-eslint/no-extra-semi": "off",
+    "@typescript-eslint/quotes": "off",
     "@typescript-eslint/semi": "off",
     "@typescript-eslint/space-before-function-paren": "off",
     "@typescript-eslint/space-infix-ops": "off",
@@ -219,7 +222,7 @@
     /*  Stylitic Rules */
     "functional/prefer-tacit": 0,
     /*
-  ―――――――― simple-import-sort-keys-fix ――――――――――――――――――――――――――――――――――――――――――――――――――
+  ―――――――― simple-import-sort-keys-fix ―――――――――――――――――――――――――――――――――――――――――
     */
     "sort-keys-fix/sort-keys-fix": "warn",
     /*
@@ -318,7 +321,7 @@
     "jsdoc/require-returns-type": 0,
     "jsdoc/valid-types": 0,
     /*
-  ―――――――― eslint-plugin-security ―――――――――――――――――――――――――――――――――――――――――――――――――
+  ―――――――― eslint-plugin-security ――――――――――――――――――――――――――――――――――――――――――――――
     */
     "security/detect-unsafe-regex": "error",
     "security/detect-buffer-noassert": "error",
@@ -363,9 +366,13 @@
     "radar/prefer-object-literal": "error",
     "radar/prefer-single-boolean-return": "error",
     "radar/prefer-while": "warn",
-    // # Deprecated
-    // These rules have been deprecated in accordance with the deprecation policy, and replaced by newer rules:
-    // Deprecated rule
+    /*
+  ―――――――― eslint °Deprecated° ―――――――――――――――――――――――――――――――――――――――――――――――――
+  These rules have been deprecated in accordance with the deprecation policy,
+  and replaced by newer rules: Deprecated rule
+
+  # °Deprecated°
+    */
     "callback-return": "off", // (no replacement)
     "global-require": "off", // (no replacement)
     "handle-callback-err": "off", // (no replacement)
@@ -392,7 +399,7 @@
     // Replaced by
     "id-denylist": "off",
     // "indent": [
-    //   "warn",2,{"MemberExpression":1}, { "offsetTernaryExpressions": true }], // , {"ignoredNodes": ["ConditionalExpression"] }
+    //   "warn","error",{"MemberExpression":1}, { "offsetTernaryExpressions": true }], // , {"ignoredNodes": ["ConditionalExpression"] }
     "no-else-return": "warn",
     "padding-line-between-statements": [
       "warn",
@@ -436,127 +443,105 @@
           "*"
         ]
       }
-      // {
-      //   "blankLine": "always",
-      //   "prev": [
-      //     "const",
-      //     "let",
-      //     "var"
-      //   ],
-      //   "next": "*"
-      // }
-      // {
-      //   "blankLine": "any",
-      //   "prev": [
-      //     "const",
-      //     "let",
-      //     "var"
-      //   ],
-      //   "next": [
-      //     "const",
-      //     "let",
-      //     "var",
-      //     "expression"
-      //   ]
-      // },
-      // {
-      //   "blankLine": "always",
-      //   // "prev": STATEMENT_TYPE,
-      //   "next": [
-      //     "function"
-      //   ]
-      // }
     ],
     "no-shadow": "error",
     "no-unsafe-negation": "error",
     "func-call-spacing": "warn",
     "no-global-assign": "error",
-    // # Possible Errors
-    // These rules relate to possible syntax or logic errors in JavaScript code:
-    // for-direction	enforce "for" loop update clause moving the counter in the right direction.
-    "getter-return": 2,
+    /*
+  ―――――――― eslint °Possible Errors° ――――――――――――――――――――――――――――――――――――――――――――
+  These rules relate to possible syntax or logic errors in JavaScript code:
+  for-direction	enforce "for" loop update clause moving the counter in
+  the right direction.
+
+  # °Possible Errors°
+    */
+    "getter-return": "error",
     "no-async-promise-executor": 0,
-    "no-await-in-loop": 2,
-    "no-compare-neg-zero": 2,
-    "no-cond-assign": 2,
+    "no-await-in-loop": "error",
+    "no-compare-neg-zero": "error",
+    "no-cond-assign": "error",
     "no-console": 0,
-    "no-constant-condition": 2,
-    "no-control-regex": 2,
-    "no-debugger": 2,
-    "no-dupe-args": 2,
-    "no-dupe-else-if": 2,
-    "no-dupe-keys": 2,
-    "no-duplicate-case": 2,
-    "no-empty": 2,
-    "no-empty-character-class": 2,
-    "no-ex-assign": 2,
+    "no-constant-condition": "error",
+    "no-control-regex": "error",
+    "no-debugger": "error",
+    "no-dupe-args": "error",
+    "no-dupe-else-if": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-empty": "error",
+    "no-empty-character-class": "error",
+    "no-ex-assign": "error",
     "no-extra-boolean-cast": 0,
     "no-extra-parens": 0,
-    "no-extra-semi": 1,
-    "no-func-assign": 2,
-    "no-import-assign": 2,
-    "no-inner-declarations": 2,
-    "no-invalid-regexp": 2,
-    "no-irregular-whitespace": 2,
-    "no-loss-of-precision": 2,
-    "no-misleading-character-class": 2,
-    "no-obj-calls": 2,
-    "no-promise-executor-return": 2,
-    "no-prototype-builtins": 2,
-    "no-regex-spaces": 1,
-    "no-setter-return": 2,
-    "no-sparse-arrays": 2,
-    "no-template-curly-in-string": 2,
-    // "no-unexpected-multiline": 2,
-    "no-unreachable": 2,
-    "no-unreachable-loop": 2,
-    "no-unsafe-finally": 2,
-    // "no-unsafe-negation": 2,
-    "no-unsafe-optional-chaining": 2,
-    "no-useless-backreference": 2,
-    "require-atomic-updates": 2,
-    "use-isnan": 2,
-    "valid-typeof": 2,
-    //
-    // # Best Practices
-    //
-    // These rules relate to better ways of doing things to help you avoid problems: "accessor-pairs": 0,
-    "array-callback-return": 2,
-    "block-scoped-var": 2,
-    "class-methods-use-this": 2,
+    "no-extra-semi": "warn",
+    "no-func-assign": "error",
+    "no-import-assign": "error",
+    "no-inner-declarations": "error",
+    "no-invalid-regexp": "error",
+    "no-irregular-whitespace": "error",
+    "no-loss-of-precision": "error",
+    "no-misleading-character-class": "error",
+    "no-obj-calls": "error",
+    "no-promise-executor-return": "error",
+    "no-prototype-builtins": "error",
+    "no-regex-spaces": "warn",
+    "no-setter-return": "error",
+    "no-sparse-arrays": "error",
+    "no-template-curly-in-string": "error",
+    // "no-unexpected-multiline": "error",
+    "no-unreachable": "error",
+    "no-unreachable-loop": "error",
+    "no-unsafe-finally": "error",
+    // "no-unsafe-negation": "error",
+    "no-unsafe-optional-chaining": "error",
+    "no-useless-backreference": "error",
+    "require-atomic-updates": "error",
+    "use-isnan": "error",
+    "valid-typeof": "error",
+    /*
+  ―――――――― eslint °Best Practices° ――――――――――――――――――――――――――――――――――――――――――――
+  These rules relate to better ways of doing things to help you avoid problems:
+
+  # °Best Practices°
+    */
+    "accessor-pairs": 0,
+    "array-callback-return": "error",
+    "block-scoped-var": "error",
+    "class-methods-use-this": "error",
     "complexity": 0,
-    "consistent-return": 2,
-    // "curly": 2,
-    "default-case": 2,
-    "default-case-last": 2,
+    "consistent-return": "error",
+    // "curly": "error",
+    "default-case": "error",
+    "default-case-last": "error",
     "default-param-last": 0,
     "dot-location": 0,
-    "dot-notation": 1,
+    "dot-notation": "warn",
     "eqeqeq": [
-      2,
+      "error",
       "smart"
     ],
-    "grouped-accessor-pairs": 2,
-    "guard-for-in": 2,
-    "max-classes-per-file": 2,
-    "no-alert": 2,
-    "no-caller": 2,
-    "no-case-declarations": 2,
-    "no-constructor-return": 2,
-    "no-div-regex": 1,
-    // "no-else-return": 2,
-    "no-empty-function": 2,
-    "no-empty-pattern": 2,
+    "grouped-accessor-pairs": "error",
+    "guard-for-in": "error",
+    "max-classes-per-file": "error",
+    "no-alert": "error",
+    "no-caller": "error",
+    "no-case-declarations": "error",
+    "no-constructor-return": "error",
+    "no-div-regex": "warn",
+    // "no-else-return": "error",
+    "no-empty-function": "error",
+    "no-empty-pattern": "error",
     "no-eq-null": 0,
-    "no-eval": 2,
-    "no-extend-native": 2,
-    "no-extra-bind": 1,
-    "no-extra-label": 1,
-    "no-fallthrough": 2,
-    "no-floating-decimal": 1,
-    // "no-global-assign": 2,
+    "no-eval": "error",
+    "no-extend-native": "error",
+    "no-extra-bind": "warn",
+    "no-extra-label": "warn",
+    "no-fallthrough": "error",
+    "no-floating-decimal": "warn",
+    // "no-global-assign": "error",
     "no-implicit-coercion": [
-      1,
+      "warn",
       {
         // "boolean": false,
         "allow": [
@@ -564,198 +549,205 @@
         ]
       }
     ],
-    "no-implicit-globals": 2,
-    "no-implied-eval": 2,
-    "no-invalid-this": 2,
-    "no-iterator": 2,
-    "no-labels": 2,
-    "no-lone-blocks": 2,
-    "no-loop-func": 2,
+    "no-implicit-globals": "off",
+    "no-implied-eval": "error",
+    "no-invalid-this": "error",
+    "no-iterator": "error",
+    "no-labels": "error",
+    "no-lone-blocks": "error",
+    "no-loop-func": "error",
     "no-magic-numbers": 0,
-    "no-multi-spaces": 1,
-    "no-multi-str": 2,
-    "no-new": 2,
-    "no-new-func": 2,
-    "no-new-wrappers": 2,
-    "no-nonoctal-decimal-escape": 2,
-    "no-octal": 2,
-    "no-octal-escape": 2,
+    "no-multi-spaces": "warn",
+    "no-multi-str": "error",
+    "no-new": "error",
+    "no-new-func": "error",
+    "no-new-wrappers": "error",
+    "no-nonoctal-decimal-escape": "error",
+    "no-octal": "error",
+    "no-octal-escape": "error",
     "no-param-reassign": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-proto": 2,
-    "no-redeclare": 2,
-    "no-restricted-properties": 2,
-    "no-return-assign": 2,
-    "no-return-await": 2,
-    "no-script-url": 2,
-    "no-self-assign": 2,
-    "no-self-compare": 2,
+    "no-proto": "error",
+    "no-redeclare": "error",
+    "no-restricted-properties": "error",
+    "no-return-assign": "error",
+    "no-return-await": "error",
+    "no-script-url": "error",
+    "no-self-assign": "error",
+    "no-self-compare": "error",
     "no-sequences": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-throw-literal": 2,
-    "no-unmodified-loop-condition": 2,
+    "no-throw-literal": "error",
+    "no-unmodified-loop-condition": "error",
     "no-unused-expressions": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-unused-labels": 1,
-    "no-useless-call": 2,
-    "no-useless-catch": 2,
-    "no-useless-concat": 2,
-    "no-useless-escape": 2,
-    "no-useless-return": 1,
+    "no-unused-labels": "warn",
+    "no-useless-call": "error",
+    "no-useless-catch": "error",
+    "no-useless-concat": "error",
+    "no-useless-escape": "error",
+    "no-useless-return": "warn",
     "no-void": 0,
     "no-warning-comments": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-with": 2,
-    "prefer-named-capture-group": 2,
-    "prefer-promise-reject-errors": 2,
-    "prefer-regex-literals": 2,
-    "radix": 2,
+    "no-with": "error",
+    "prefer-named-capture-group": "error",
+    "prefer-promise-reject-errors": "error",
+    "prefer-regex-literals": "error",
+    "radix": "error",
     "require-await": 0, // 1- WILL BE IMPLEMENTED LATER
-    "require-unicode-regexp": 2,
-    "vars-on-top": 2,
-    "wrap-iife": 1,
-    "yoda": 1,
-    // Strict Mode
-    // These rules relate to strict mode directives:
-    "strict": 0,
-    // Variables
-    // These rules relate to variable declarations:
-    "init-declarations": 0,
-    "no-delete-var": 2,
-    "no-label-var": 0,
-    "no-restricted-globals": 0,
+    "require-unicode-regexp": "error",
+    "vars-on-top": "error",
+    "wrap-iife": "warn",
+    "yoda": "warn",
+    /*
+  ―――――――― eslint °Strict Mode° ――――――――――――――――――――――――――――――――――――――――――――
+  These rules relate to strict mode directives:
+
+  # °Strict Mode°
+    */
+    "strict": 0, // 1- WILL BE IMPLEMENTED LATER
+    /*
+  ―――――――― eslint °Variables° ――――――――――――――――――――――――――――――――――――――――――――
+  These rules relate to variable declarations:
+
+  # °Variables°
+    */
+    "init-declarations": "off", // 3- WILL NOT BE IMPLEMENTED
+    "no-delete-var": "error",
+    "no-label-var": "error",
+    "no-restricted-globals": 0, // 3- WILL NOT BE IMPLEMENTED
     // "no-shadow": 0,
-    "no-shadow-restricted-names": 2,
-    "no-undef": 2,
-    "no-undef-init": 1,
-    "no-undefined": 2,
-    "no-unused-vars": 0,
-    "no-use-before-define": 0,
-    // Stylistic Issues
-    // These rules relate to style guidelines, and are therefore quite subjective: "array-bracket-newline": 0,
-    "array-bracket-spacing": 1,
+    "no-shadow-restricted-names": "error",
+    "no-undef": "error",
+    "no-undef-init": "warn",
+    "no-undefined": "error",
+    "no-unused-vars": 0, // 3- WILL NOT BE IMPLEMENTED
+    "no-use-before-define": 0, // 1- WILL BE IMPLEMENTED LATER
+    /*
+  ―――――――― eslint °Stylistic Issues° ――――――――――――――――――――――――――――――――――――――――――――
+  These rules relate to style guidelines, and are therefore quite subjective:
+
+  # °Stylistic Issues°
+    */
+    "array-bracket-newline": 0, // 1- WILL BE IMPLEMENTED LATER
+    "array-bracket-spacing": "warn",
     "array-element-newline": [
-      1,
+      "warn",
       "consistent"
     ],
-    "block-spacing": 1,
-    "brace-style": 1,
-    "camelcase": 0,
-    "capitalized-comments": [
-      1,
-      "never"
+    "block-spacing": "warn",
+    "brace-style": "warn",
+    "camelcase": 0, // 1- WILL BE IMPLEMENTED LATER
+    "capitalized-comments": 0, // 1- WILL BE IMPLEMENTED LATER
+    "comma-spacing": "warn",
+    "comma-style": "warn",
+    "computed-property-spacing": "warn",
+    "consistent-this": [
+      "error",
+      "that"
     ],
-    "comma-dangle": [
-      1,
-      "always-multiline"
-    ],
-    "comma-spacing": 1,
-    "comma-style": 1,
-    "computed-property-spacing": 1,
-    "consistent-this": 0,
-    "eol-last": 1,
-    // "func-call-spacing": 0,
-    "func-name-matching": 0,
-    "func-names": 0,
-    "func-style": 0,
+    "eol-last": "warn",
+    // "func-call-spacing": 0,  // 1- WILL BE IMPLEMENTED LATER
+    "func-name-matching": 0, // 1- WILL BE IMPLEMENTED LATER
+    "func-names": 0, // 1- WILL BE IMPLEMENTED LATER
+    "func-style": 0, // 1- WILL BE IMPLEMENTED LATER
     "function-call-argument-newline": [
-      1,
+      "warn",
       "consistent"
     ],
-    "function-paren-newline": 0,
-    // "id-denylist": 0,
-    "id-length": 0,
-    "id-match": 0,
-    "implicit-arrow-linebreak": 0,
+    "function-paren-newline": 0, // 1- WILL BE IMPLEMENTED LATER
+    // "id-denylist": 0,  // 1- WILL BE IMPLEMENTED LATER
+    "id-length": 0, // 1- WILL BE IMPLEMENTED LATER
+    "id-match": 0, // 1- WILL BE IMPLEMENTED LATER
+    "implicit-arrow-linebreak": 0, // 1- WILL BE IMPLEMENTED LATER
     "indent": [
-      0,
+      0, // 1- WILL BE IMPLEMENTED LATER
       2,
       {
         "flatTernaryExpressions": true,
         "offsetTernaryExpressions": true
       }
     ],
-    "jsx-quotes": 0,
-    "key-spacing": 0,
-    "keyword-spacing": 0,
-    "line-comment-position": 0,
-    "linebreak-style": 0,
-    // "lines-around-comment": 0,
-    "lines-between-class-members": [
+    "jsx-quotes": 0, // 1- WILL BE IMPLEMENTED LATER
+    "key-spacing": 0, // 1- WILL BE IMPLEMENTED LATER
+    "keyword-spacing": 0, // 1- WILL BE IMPLEMENTED LATER
+    "line-comment-position": 0, // 1- WILL BE IMPLEMENTED LATER
+    "linebreak-style": [
       1,
+      "unix"
+    ],
+    // "lines-around-comment": 0,  // 1- WILL BE IMPLEMENTED LATER
+    "lines-between-class-members": [
+      "warn",
       "always",
       {
         "exceptAfterSingleLine": true
       }
     ],
-    "max-depth": 0,
-    // "max-len": 0,
-    "max-lines": 0,
-    "max-lines-per-function": 0,
-    "max-nested-callbacks": 0,
-    "max-params": 0,
-    "max-statements": 0,
-    "max-statements-per-line": 0,
-    "multiline-comment-style": 0,
-    "multiline-ternary": 0,
-    "new-cap": 2,
-    "new-parens": 0,
-    "newline-per-chained-call": 0,
-    "no-array-constructor": 2,
-    "no-bitwise": 0,
-    "no-continue": 0,
-    "no-inline-comments": 0,
-    "no-lonely-if": 1,
-    // "no-mixed-operators": 0,
-    "no-mixed-spaces-and-tabs": 2,
-    "no-multi-assign": 2,
-    "no-multiple-empty-lines": 1,
-    "no-negated-condition": 0,
-    "no-nested-ternary": 0,
-    "no-new-object": 0,
+    "max-depth": 0, // 1- WILL BE IMPLEMENTED LATER
+    // "max-len": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-lines": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-lines-per-function": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-nested-callbacks": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-params": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-statements": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-statements-per-line": 0, // 1- WILL BE IMPLEMENTED LATER
+    "multiline-comment-style": 0, // 1- WILL BE IMPLEMENTED LATER
+    "multiline-ternary": 0, // 1- WILL BE IMPLEMENTED LATER
+    "new-cap": "error",
+    "new-parens": 0, // 1- WILL BE IMPLEMENTED LATER
+    "newline-per-chained-call": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-array-constructor": "error",
+    "no-bitwise": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-continue": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-inline-comments": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-lonely-if": "warn",
+    // "no-mixed-operators": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-mixed-spaces-and-tabs": "error",
+    "no-multi-assign": "error",
+    "no-multiple-empty-lines": "warn",
+    "no-negated-condition": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-nested-ternary": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-new-object": 0, // 1- WILL BE IMPLEMENTED LATER
     "no-plusplus": [
-      2,
+      "error",
       {
         "allowForLoopAfterthoughts": true
       }
     ],
-    "no-restricted-syntax": 0,
-    // "no-tabs": 0,
-    "no-ternary": 0,
-    "no-trailing-spaces": 1,
-    "no-underscore-dangle": 0,
-    "no-unneeded-ternary": 1,
-    "no-whitespace-before-property": 1,
-    "nonblock-statement-body-position": 1,
-    "object-curly-newline": 0,
-    "object-curly-spacing": 0,
-    "object-property-newline": 0,
+    "no-restricted-syntax": 0, // 1- WILL BE IMPLEMENTED LATER
+    // "no-tabs": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-ternary": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-trailing-spaces": "warn",
+    "no-underscore-dangle": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-unneeded-ternary": "warn",
+    "no-whitespace-before-property": "warn",
+    "nonblock-statement-body-position": "warn",
+    "object-curly-newline": 0, // 1- WILL BE IMPLEMENTED LATER
+    "object-curly-spacing": 0, // 1- WILL BE IMPLEMENTED LATER
+    "object-property-newline": 0, // 1- WILL BE IMPLEMENTED LATER
     "one-var": [
-      1,
+      "warn",
       {
         "initialized": "never",
         "uninitialized": "always"
       }
     ],
-    "one-var-declaration-per-line": 0,
-    "operator-assignment": 1,
-    "operator-linebreak": 0,
-    "padded-blocks": 0,
-    // "padding-line-between-statements": 0,
-    "prefer-exponentiation-operator": 1,
-    "prefer-object-spread": 1,
+    "one-var-declaration-per-line": 0, // 1- WILL BE IMPLEMENTED LATER
+    "operator-assignment": "warn",
+    "operator-linebreak": 0, // 1- WILL BE IMPLEMENTED LATER
+    "padded-blocks": 0, // 1- WILL BE IMPLEMENTED LATER
+    // "padding-line-between-statements": 0, // 1- WILL BE IMPLEMENTED LATER
+    "prefer-exponentiation-operator": "warn",
+    "prefer-object-spread": "warn",
     "quote-props": [
-      1,
+      "warn",
       "consistent-as-needed"
     ],
-    "quotes": [
-      1,
-      "single",
-      "avoid-escape"
-    ],
-    // "semi":1,
-    "semi-spacing": 1,
-    "semi-style": 1,
-    "sort-keys": 2,
-    "sort-vars": 1,
+    // "semi":"warn",
+    "semi-spacing": "warn",
+    "semi-style": "warn",
+    "sort-keys": "error",
+    "sort-vars": "warn",
     "space-before-blocks": [
-      0,
+      0, // 1- WILL BE IMPLEMENTED LATER
       {
         "functions": "never",
         "keywords": "always",
@@ -763,53 +755,61 @@
       }
     ],
     "space-before-function-paren": [
-      0,
+      0, // 1- WILL BE IMPLEMENTED LATER
       {
         "anonymous": "never",
         "named": "never",
         "asyncArrow": "never"
       }
     ],
-    "space-in-parens": 1,
-    "space-infix-ops": 1,
-    "space-unary-ops": 1,
-    "spaced-comment": 1,
-    "switch-colon-spacing": 1,
-    "template-tag-spacing": 1,
-    "unicode-bom": 1,
-    "wrap-regex": 1,
-    // ECMAScript 6
-    // These rules relate to ES6, also known as ES2015: "arrow-body-style": 0,
-    "arrow-parens": 0,
-    "arrow-spacing": 0,
-    "constructor-super": 2,
-    "generator-star-spacing": 0,
-    "no-class-assign": 0,
+    "space-in-parens": "warn",
+    "space-infix-ops": "warn",
+    "space-unary-ops": "warn",
+    "spaced-comment": "warn",
+    "switch-colon-spacing": "warn",
+    "template-tag-spacing": "warn",
+    "unicode-bom": "warn",
+    "wrap-regex": "warn",
+    /*
+  ―――――――― eslint °ECMAScript 6° ――――――――――――――――――――――――――――――――――――――――――――
+  These rules relate to ES6, also known as ES2015:
+
+  # °ECMAScript 6°
+    */
+    // "arrow-body-style": 0,
+    "arrow-parens": [
+      "warn",
+      "as-needed"
+    ],
+    "arrow-spacing": "warn",
+    "constructor-super": "error",
+    "generator-star-spacing": "warn",
+    "no-class-assign": "error",
     // "no-confusing-arrow": 0,
-    "no-const-assign": 0,
-    "no-dupe-class-members": 0,
-    "no-duplicate-imports": 0,
-    "no-new-symbol": 0,
-    "no-restricted-exports": 0,
-    "no-restricted-imports": 0,
-    "no-this-before-super": 0,
-    "no-useless-computed-key": 0,
-    "no-useless-constructor": 0,
-    "no-useless-rename": 0,
+    "no-const-assign": "error",
+    "no-dupe-class-members": "error",
+    "no-duplicate-imports": "error",
+    "no-new-symbol": "error",
+    "no-restricted-exports": "error",
+    "no-restricted-imports": "error",
+    "no-this-before-super": "error",
+    "no-useless-computed-key": "warn",
+    "no-useless-constructor": "error", // 3- WILL NOT BE IMPLEMENTED
+    "no-useless-rename": "warn",
     // "no-var": 0,
-    "object-shorthand": 2,
+    "object-shorthand": "warn",
     // "prefer-arrow-callback": 0,
     // "prefer-const": 0,
-    "prefer-destructuring": 2,
-    "prefer-numeric-literals": 2,
-    "prefer-rest-params": 2,
-    "prefer-spread": 2,
-    "prefer-template": 1,
-    "require-yield": 2,
-    "rest-spread-spacing": 1,
+    "prefer-destructuring": "warn",
+    "prefer-numeric-literals": "warn",
+    "prefer-rest-params": "error",
+    "prefer-spread": "error",
+    "prefer-template": "warn",
+    "require-yield": "error",
+    "rest-spread-spacing": "warn",
     // "sort-imports": 0,
-    "symbol-description": 2,
-    "template-curly-spacing": 1
+    "symbol-description": "error",
+    "template-curly-spacing": "warn"
     // "yield-star-spacing": 0,
     // # Removed
     // These rules from older versions of ESLint (before the deprecation policy existed) have been replaced by newer rules:
