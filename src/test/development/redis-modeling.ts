@@ -1,4 +1,4 @@
-import { questradeAPI } from '../..';
+import { qtAPIv2_0 } from '../..';
 import { ech0, getMyToken } from '../../resources/side-effects';
 import { redisProxyHandler } from '../../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 /*
@@ -15,7 +15,7 @@ async function main(/* tedis?: Tedis */) {
   });
 
   void proxyFactory;
-  const { qtApi } = await questradeAPI({
+  const { qtApi } = await qtAPIv2_0({
     accountCallsPerHour: 30_000,
 
     accountCallsPerSecond: 30,

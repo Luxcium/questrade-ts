@@ -1,4 +1,4 @@
-import { questradeAPI } from '../../..';
+import { qtAPIv2_0 } from '../../..';
 import { QuestradeApi } from '../../../typescript';
 
 /* you will need to create your own API key: */
@@ -7,7 +7,7 @@ import { QuestradeApi } from '../../../typescript';
 const yourRefreshToken = '9biJACDg2bZiMZYNfDhewfb1gybCNYAc0';
 
 export const qt = async () => {
-  const { qtApi, credentials } = await questradeAPI({
+  const { qtApi, credentials } = await qtAPIv2_0({
     token: yourRefreshToken,
   });
 

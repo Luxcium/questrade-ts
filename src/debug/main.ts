@@ -1,5 +1,5 @@
 /* eslint-disable radar/no-unused-collection */
-import { questradeAPI } from '..';
+import { qtAPIv2_0 } from '..';
 import { ech0, echo, getMyToken } from '../resources/side-effects';
 import { echo1 } from '../resources/side-effects/default-behaviour';
 import { willGetSNP500StringList } from '../test/development/getSNP500List';
@@ -15,7 +15,7 @@ async function main() {
 
   once.onlyOnce = false;
 
-  const { credentials, qtApi } = await questradeAPI({
+  const { credentials, qtApi } = await qtAPIv2_0({
     debug: 100,
     token: getMyToken,
   });

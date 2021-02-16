@@ -1,11 +1,11 @@
-import { questradeAPI } from '../..';
+import { qtAPIv2_0 } from '../..';
 import { sideEffects } from '../../resources/side-effects';
 import { StrategyVariantRequest } from '../../typescript';
 
 const { echo, errorlog, getMyToken } = sideEffects;
 
 export const testingThat = (async () => {
-  const qtApi = await questradeAPI({ token: getMyToken })
+  const qtApi = await qtAPIv2_0({ token: getMyToken })
     .then(result => {
       return result.qtApi;
     })
