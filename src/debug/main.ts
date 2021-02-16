@@ -23,9 +23,9 @@ async function main() {
   void0(credentials);
   ech0(qtApi);
 
-  const snp500list = id0(await willGetSNP500StringList()).map(item =>
-    qtApi.search.stock(item),
-  );
+  const snp500list = id0(await willGetSNP500StringList())
+    // .slice(0, 1)
+    .map(item => qtApi.search.stock(item));
 
   snp500list.map(async item =>
     echo1(

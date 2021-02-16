@@ -29,6 +29,7 @@ export {
   dateToISOString,
   dateToNumeric,
   day,
+  now,
   setDateRange,
   urlEncodeDateTool,
 } from './timeutil';

@@ -63,17 +63,17 @@ export const dateRange = (
   backNumberOfDays: number,
   dateNow?: string,
 ): StartDateEndDateObject => {
-  let now = dateNow;
+  let now_ = dateNow;
 
-  if (!now) {
-    now = dateNowISO();
+  if (!now_) {
+    now_ = dateNowISO();
   }
 
   const startDate: StartDate = rmvMiliSec(
-    dateToNumeric(now) - day(backNumberOfDays),
+    dateToNumeric(now_) - day(backNumberOfDays),
   );
 
-  const endDate: EndDate = rmvMiliSec(now);
+  const endDate: EndDate = rmvMiliSec(now_);
   const startTime = startDate;
   const endTime = endDate;
 
@@ -99,6 +99,10 @@ export const setDateRange = (backNumberOfDays: number) => <T>(
 
   return funct(startTime)(endTime);
 };
+
+export function now() {
+  return Date.now();
+}
 
 // export const rangeTool = (startTime?: string | null) => (
 //   endTime?: string | null

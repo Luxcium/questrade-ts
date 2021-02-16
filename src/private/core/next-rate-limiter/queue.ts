@@ -7,7 +7,7 @@ import {
   ClientRequestConfig,
   ClientResponse,
 } from '../../../resources/side-effects/types';
-import { void0 } from '../../../utils';
+import { now, void0 } from '../../../utils';
 import { QNode } from './q-node';
 
 interface IQNode<T extends QNodesValue> {
@@ -31,21 +31,14 @@ type QNodesValue = {
 /** fCFS Queue (first-come, first-served) */
 
 export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
-  protected first: QNodes<T>;
-
-  protected last: QNodes<T>;
-
-  protected current: QNodes<T>;
-
   protected broke: boolean;
-
-  protected size: number;
-
-  protected remaining: number;
-
-  protected resetTime: number;
-
+  protected current: QNodes<T>;
+  protected first: QNodes<T>;
   protected isCalled: boolean;
+  protected last: QNodes<T>;
+  protected remaining: number;
+  protected resetTime: number;
+  protected size: number;
 
   protected get isBroken() {
     return this.broke;
@@ -53,34 +46,6 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
 
   protected get isNotBroken() {
     return !this.broke;
-  }
-
-  // -| protected |-get――――――――――――――――――――――――――――――···-| requestLimit |-//::――― ~
-  protected get requestLimit() {
-    const { floor, min, ceil } = Math;
-    const reqstRemaining = echo1('reqstRemaining:', this.remaining);
-    const resetTime = echo1('resetTime :', this.resetTime);
-
-    if (resetTime <= 0) {
-      return echo1('returnTime :', 500);
-    }
-
-    const timeNow = echo1('timeNow   :', floor(Date.now() / 1000));
-    const timeRemaining = resetTime - timeNow;
-    // clamp up at maximum 20 rps returns the minimum betwen 20 and reqPerSec
-    const reqPerSecRaw = echo1(
-      'reqPerSecRaw    :',
-      reqstRemaining / timeRemaining,
-    );
-
-    const reqPerSecfloor = echo1('reqPerSecfloor  :', floor(reqPerSecRaw));
-    const reqPerSecClamp = echo1('reqPerSecClamp  :', min(reqPerSecfloor, 20));
-    const reqPerSec = echo1('reqPerSecfloor  :', reqPerSecClamp);
-    const delay = echo1('calculated Delay:', ceil(1000 / reqPerSec));
-
-    echo1('timeRemaining:', timeRemaining);
-
-    return echo1('ceil Delay plus 50 ms :', ceil(delay + 25));
   }
 
   protected get isNotCalled(): boolean {
@@ -104,7 +69,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     return new ApiCallQ_();
   }
 
-  protected get positiveTimeOfSet() {
+  protected get positiveTimeOffset() {
     return this.timeOfSet >= 0 ? this.timeOfSet : 0;
   }
 
@@ -112,7 +77,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
   public constructor(
     protected maxPerSecondes: number = MAX_PER_SECONDES,
     protected maxPerHour: number = MAX_PER_HOUR,
-    protected timeOfSet: number = 1000 / MAX_PER_SECONDES,
+    protected timeOfSet: number = 1000 / MAX_PER_SECONDES && 0,
   ) {
     this.isCalled = false;
     this.first = null;
@@ -124,12 +89,101 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     this.broke = false;
   }
 
+  // -| protected |-get――――――――――――――――――――――――――――――···-| requestLimit |-//::――― ~
+  // info: requestLimit //-!
+  protected get requestLimit() {
+    const { floor, min, ceil } = Math;
+    const reqstRemaining = echo1('\nreqstRemaining:', this.remaining - 1);
+    if (reqstRemaining < 1) {
+      return echo1('returnTime :', 999);
+    }
+
+    const resetTime = echo1('resetTime :', this.resetTime);
+    if (resetTime <= 0) {
+      return echo1('returnTime :', 666);
+    }
+
+    const timeNow = echo1('timeNow   :', floor(now() / 1000));
+    const timeRemaining = resetTime - timeNow;
+    echo1('timeRemaining:', timeRemaining);
+
+    const reqPerSecRaw = echo1(
+      '\nreqPerSecRaw:',
+      reqstRemaining / timeRemaining,
+    );
+
+    const reqPerSec = echo1('reqPerSec:', min(floor(reqPerSecRaw), 20));
+    const delay = echo1('calculated Delay:', ceil(1000 / reqPerSec));
+    const offset = this.positiveTimeOffset;
+
+    return echo1(`delay plus ${offset}ms offset :`, ceil(delay + offset));
+  }
+
+  // -| protected |-···――――――――――――――――――――――――――···-| callToPopQueue() |-//::――― ~
+  // info: callToPopQueue //-!
+  protected callToPopQueue() {
+    const timeThen = now();
+
+    if (this.isCallable) {
+      this.isCalled = true;
+
+      // hint: //-*|-···―――――――――――――――――――――――――――――···-| setTimeout() |-···――― ~
+      setTimeout(async () => {
+        this.deQueue();
+        const cb = this.current?.value?.cb ?? void0;
+
+        try {
+          const { fn } = this.current!.value;
+          const { config } = this.current!.value;
+          const before = now();
+          const response = await fn(config);
+
+          if (response.status !== 200) {
+            console.error(response);
+            throw new Error((response as any) as string);
+          }
+
+          console.log(
+            '\nrequest response cycle in',
+            now() - before,
+            'ms' /* '\n' */,
+          );
+          const xRemaining = Number(response.headers['x-ratelimit-remaining']);
+          const xReset = Number(response.headers['x-ratelimit-reset']);
+
+          // set to 1 if zero or not a number or NaN
+          this.remaining = typeof xRemaining === 'number' ? xRemaining || 1 : 1;
+          this.resetTime = typeof xReset === 'number' ? xReset || 1 : 1;
+
+          // hint: //-*|-···―――――――――――――――――――――――――――···-| callback() |-···――― ~
+          cb(null, response);
+        } catch (error) {
+          this.broke = true;
+          console.log('catch an error in Queue Ratelimiter:', error.message);
+          cb(error, null);
+        }
+
+        console.log('Complete previous cycle in', now() - timeThen, 'ms');
+
+        this.isCalled = false;
+        this.callToPopQueue();
+        echo(`\nsetTimeout(${now()})---------------------------------->>>>>>>`);
+        // console.clear();
+      }, this.requestLimit);
+
+      return true;
+    }
+
+    return false;
+  }
+
   // -| public |-···―――――――――――――――――――――――――――――――――···-| addToQueue() |-//::――― ~
+  // info: addToQueue //-!
   public addToQueue<R = any>(value: T): ClientPromise<R> {
     //
 
     echo(
-      `addToQueue(${Date.now()}) ----------------------------------config = ${
+      `\n\naddToQueue(${now()}) ----------------------------------config = ${
         value.config.url?.split('v1')[1]
       } `,
     );
@@ -139,95 +193,28 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
       //
       this.enQueue({ ...value, cb });
       //
-      // hINT: //-!-···―――――――――――――――――――――――――···-| callToPopQueue() |-//-/――― ~
+      // hint: //-*-···―――――――――――――――――――――――――···-| callToPopQueue() |-//-/――― ~
       if (this.isNotCalled) {
         this.callToPopQueue();
       }
 
-      return void 100;
+      return null;
     };
 
-    // iNFO: //-! Will use a promisified call back to return value as a promise
+    // info: //-! Will use a promisified call back to return value as a promise
     return new Promise<ClientResponse<R>>((resolve, reject) => {
       callBack((error: Error, result: any) => {
         if (!error) {
           resolve(result);
 
-          return void 200;
+          return true;
         }
 
         reject(error);
 
-        return void 400;
+        return false;
       });
     });
-  }
-  // -| protected |-···――――――――――――――――――――――――――···-| callToPopQueue() |-//::――― ~
-
-  protected callToPopQueue() {
-    // -------------------------------------------------------------------------
-    echo(
-      `this.isCallable = ${
-        this.isCallable
-      }----------------------------------callToPopQueue(${Date.now()})`,
-    );
-    const timeThen = Date.now();
-
-    if (this.isCallable) {
-      this.isCalled = true;
-
-      // hINT: //-:|-···―――――――――――――――――――――――――――――···-| setTimeout() |-···――― ~
-      setTimeout(async () => {
-        this.deQueue();
-        const cb = this.current?.value?.cb ?? void0;
-
-        try {
-          const { fn } = this.current!.value;
-          const { config } = this.current!.value;
-          const timeBefore1 = Date.now();
-          const response = await fn(config);
-          if (response.status !== 200) {
-            throw new Error((response as any) as string);
-          }
-
-          const timeAfter1 = Date.now() - timeBefore1;
-          console.log('request response cycle in', timeAfter1, 'ms' /* '\n' */);
-          const xRemaining = echo1(
-            'xRemaining:',
-            Number(response.headers['x-ratelimit-remaining']),
-          );
-
-          const xReset = echo1(
-            'xReset:',
-            Number(response.headers['x-ratelimit-reset']),
-          );
-
-          // set to 1 if zero or not a number or NaN
-          this.remaining = typeof xRemaining === 'number' ? xRemaining || 1 : 1;
-          this.resetTime = typeof xReset === 'number' ? xReset || 1 : 1;
-
-          // hINT: //-:|-···―――――――――――――――――――――――――――···-| callback() |-···――― ~
-          cb(null, response);
-        } catch (error) {
-          this.broke = true;
-          console.log('catch an error in Queue Ratelimiter:', error.message);
-          cb(error, null);
-        }
-
-        this.isCalled = false;
-        const timeNow = Date.now() - timeThen;
-
-        console.log('Complete previous cycle in', timeNow, 'ms' /* '\n' */);
-        this.callToPopQueue();
-        echo(`setTimeout(${Date.now()})----------------------------------`);
-        // console.clear();
-        // iNFO: requestLimit //-?
-      }, this.requestLimit);
-
-      return echo1('return from callToPopQueue:', true);
-    }
-
-    return echo1('return from callToPopQueue:', false);
   }
 
   // -| protected |-···――――――――――――――――――――――――――――――――――···-| enQueue() |-//::―― ~
@@ -243,6 +230,8 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     }
 
     return (this.size += 1);
+    // by Colt Steele ― Developer and Bootcamp Instructor
+    // from Udemy ― Js Algorithms And Data Structures Masterclass
   }
 
   // -| protected |-···――――――――――――――――――――――――――――――――――···-| deQueue() |-//::―― ~
@@ -261,6 +250,8 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     this.size -= 1;
 
     return this;
+    // by Colt Steele ― Developer and Bootcamp Instructor
+    // from Udemy ― Js Algorithms And Data Structures Masterclass
   }
 }
 export const myQueueu = new ApiCallQ_();
