@@ -32,5 +32,9 @@
     "../src/debug",
     "../src/other",
     "../src/test",
+    "../src/main.ts",
+    "../src/utils/fantasy-birds",
+    "../src/utils/*.js*",
+    // src/utils/fantasy-birds
   ],
 }

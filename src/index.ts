@@ -1,5 +1,5 @@
 import { questradeAPI } from './public';
-import { IQuestradeAPIv2_0 } from './public/IQuestradeAPI';
+import { IQuestradeAPIv2_0 } from './public/IQuestradeAPIv2_0';
 import { ApiOptions, Credentials } from './typescript';
 
 export const qtAPIv2_0: (
