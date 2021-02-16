@@ -1,15 +1,14 @@
 import { _getQuestradeApi } from '../private/api/_getQuestradeApi';
 import { ApiCallQ_ } from '../private/core/next-rate-limiter/queue';
 import { Credentials, ProxyFactory_, QuestradeApi } from '../typescript';
-
-// export const getQuestradeApi = ;
+import { IQuestradeAPIv2_0 } from './IQuestradeAPI';
 
 export const questradeApiFactory = async (
   credentials: Credentials,
   apiCallQ: ApiCallQ_,
   proxy?: ((cred: Credentials) => ProxyFactory_) | null,
   errorloger: (error: any) => any = (error: any) => error,
-) => {
+): Promise<IQuestradeAPIv2_0> => {
   const qtApi: QuestradeApi = await (async () => {
     if (proxy) {
       return _getQuestradeApi(
