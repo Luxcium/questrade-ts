@@ -6,7 +6,9 @@ import { ProxyHandlerOptions } from '../../types';
 export abstract class ReflexionLoggerProxyHandlerAbstractClass<
   T extends Function = any
 > implements ProxyHandler<T> {
-  constructor(protected handlerOptions: ProxyHandlerOptions) {}
+  constructor(protected handlerOptions: ProxyHandlerOptions) {
+    // empty comment is to avoid → Unexpected empty constructor.eslint (no-empty-function)
+  }
 
   getPrototypeOf(target: T): object | null {
     if (this.handlerOptions?.debuging === true) {
