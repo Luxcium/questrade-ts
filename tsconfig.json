@@ -132,28 +132,23 @@
     "./src/**/*.ts",
   ],
   "exclude": [
+    ".git",
+    ".github",
+    ".vscode",
     "**/__test__/**/*.*",
+    "**/node_modules",
     "backup",
     "build",
+    "configs",
     "debug.js",
     "enums",
     "functional.js",
+    "keys",
     "manualTestingAndDebug.js",
-    "**/node_modules",
+    "misc",
+    "out",
+    "scripts",
   ],
-  "plugins": [
-    {
-      "name": "typescript-tslint-plugin",
-      "alwaysShowRuleFailuresAsWarnings": true,
-      "configFile": "./tslint.json",
-      "suppressWhileTypeErrorsPresent": false,
-      "mockTypeScriptVersion": false,
-      "exclude": [
-        "build",
-        "node_modules"
-      ]
-    }
-  ]
 }
 // "compilerOptions": {
 //   "target": "es5",

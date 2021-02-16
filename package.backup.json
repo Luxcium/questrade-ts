@@ -103,7 +103,6 @@
   },
   "scripts": {
     "rebuild": "rimraf ./out; ./scripts/rebuild.sh",
-    "run": "ts-node './src/main.ts'",
     "start": "ts-node './src/main.ts'",
     "start:bak": "#ts-node '/home/luxcium/dev/questrade-ts/src/test/playground/redis-modeling.ts'",
     "preinstall": "rm -fr node_modules; echo ''; pwd; ls -1A; echo ''",

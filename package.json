@@ -35,6 +35,8 @@
     "Canadian"
   ],
   "scripts": {
+    "start": "ts-node './src/main.ts'",
+    "build": "tsc --build configs/tsconfig.build.json --pretty || exit 1",
     "preinstall": "rm -fr node_modules; echo ''; pwd; ls -1A; echo ''",
     "postinstall": "(cd 'src/resources/' && rm -fr ./node_modules && echo '' && pwd && ls -1A && echo '' && (npm ci || npm install) && echo -e '\n― OK ―\n'  )",
     "pretty": "prettier --config \"./.prettierrc\" --loglevel log -c \"./src/**/*.ts\"|| exit 0",
