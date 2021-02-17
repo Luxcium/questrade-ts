@@ -10,16 +10,20 @@ import { id0, void0 } from '../utils';
 import { willGetSNP500StringList } from './development/getSNP500List';
 
 const once = { onlyOnce: true };
-let c0 = 0;
+let c000 = 0;
+let c00 = 0;
+// let c0 = 0;
 let c1 = 0;
-let c2 = 0;
+let c2a = 0;
+let c2b = 0;
 let c3 = 0;
 let c4 = 0;
 let c5 = 0;
 let c6 = 0;
-let c7 = 0;
-// let c8 = 1;
-// , c1, c2, c3, c4, c5, c6, c7, c8 = 1,1, 1, 1, 1, 1, 1, 1, 1
+let c7a = 0;
+let c7b = 0;
+let c8a = 0;
+let c8b = 0;
 async function main() {
   echo(`Will execute main: ${once.onlyOnce}`);
   if (!once.onlyOnce) {
@@ -38,16 +42,20 @@ async function main() {
   // ech0(qtApi);
 
   // const snp500list =
+  console.log(c00++, '----STEP 0------');
+
   id0(await willGetSNP500StringList())
-    .slice(0, 50)
+    .slice(0, 5)
     .map((item, i1) => {
-      console.log(c0++, '--0--MAP1', i1);
+      console.log(c1++, '----STEP 1----MAP-1-1-1', i1);
 
       return async () => {
-        console.log(c1++, '--1--');
+        console.log(c2a++, '----STEP 2a----');
         const [ref] /* : ISymbolSearchResult */ = await qtApi.search.stock(
           item,
         );
+
+        console.log(c2b++, '----STEP 2b----');
 
         const {
           // all /*  ISymbolSearchResult[]; */,
@@ -79,31 +87,35 @@ async function main() {
       };
     })
     .map((item, i2) => {
-      console.log(c2++, '--2--MAP2', i2);
+      console.log(c3++, '----STEP 3----MAP-2-2-2', i2);
 
       return async () => {
-        console.log(c3++, '--3--');
+        console.log(c4++, '----STEP 4----');
 
         return item().then(xItem => {
-          console.log(c4++, '--4--');
+          console.log(c5++, '----STEP 5----');
 
           return qtApi.getSymbols.byStockIds([xItem]);
         });
       };
     })
     .map((item, i3) => {
-      console.log(c5++, '--5--MAP3', i3);
+      console.log(c6++, '----STEP 6----MAP-3-3-3', i3);
 
       return async () => {
-        console.log(c6++, '--6--');
+        console.log(c7a++, '----STEP 7a----');
+        const returnValue = echo1('getSymbols.byStockIds:', await item());
+        console.log(c7b++, '----STEP 7b----');
 
-        return echo1('getSymbols.byStockIds:', await item());
+        return returnValue;
       };
     })
     .map((item, i4) => {
-      console.log(c7++, '--7--MAP4', i4);
+      console.log(c8a++, '----STEP 8a----MAP-4-4-4', i4);
+      const returnValue = item();
+      console.log(c8b++, '----STEP 8b----MAP-4-4-4', i4);
 
-      return item();
+      return returnValue;
     });
 
   return true;
@@ -111,5 +123,6 @@ async function main() {
 
 main();
 export { main };
+console.log(c000++, '----STEP NaN------');
 
 /* promisify(setImmediate)( */
