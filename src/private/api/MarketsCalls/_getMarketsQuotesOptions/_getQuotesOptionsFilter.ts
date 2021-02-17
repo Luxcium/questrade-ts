@@ -1,5 +1,5 @@
-import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
-import { OptionsFilters } from '../../../../typescript';
+import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
+import type { OptionsFilters } from '../../../../typescript';
 import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
 export const _getQuotesOptionsFilter = (

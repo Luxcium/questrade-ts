@@ -1,6 +1,6 @@
 import { echo, tablelog } from '../../../resources/side-effects';
-import { ClientResponse } from '../../../resources/side-effects/types';
-import { Credentials } from '../../../typescript';
+import type { ClientResponse } from '../../../resources/side-effects/types';
+import type { Credentials } from '../../../typescript';
 import { remaningTimeString } from '../requestPerSecondLimit';
 
 function _echoStatus(response: ClientResponse<any>, credentials?: Credentials) {

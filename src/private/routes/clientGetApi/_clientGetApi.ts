@@ -1,6 +1,6 @@
-import { Credentials, ProxyFactory_ } from '../../../typescript';
+import type { Credentials, ProxyFactory_ } from '../../../typescript';
 import { _coreApiFunction } from '../../core/end-point-connector/_coreApiFunction';
-import { ApiCallQ_ } from '../../core/next-rate-limiter/queue';
+import type { ApiCallQ_ } from '../../core/next-rate-limiter/queue';
 
 // # _clientGetApi !!!
 /**

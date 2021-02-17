@@ -1,6 +1,7 @@
-import { BinaryToTextEncoding, createHash } from 'crypto';
+import type { BinaryToTextEncoding } from 'crypto';
+import { createHash } from 'crypto';
 
-import { UrlDataAndHashes } from '../typescript';
+import type { UrlDataAndHashes } from '../typescript';
 
 // '73B439CEB0EBEF90782E9978FEEBF88AA1540C763CAEDABA5B16223D306437E0'.length;
 function getUrlHash(urlPath: string) {
@@ -62,7 +63,7 @@ function getUDatagram(urlPath: string, dataToHash: string) {
 }
 
 function getUrlAndDataHashes(
-  urlPath: string = '',
+  urlPath = '',
   dataToCache?: any,
 ): UrlDataAndHashes {
   // const BASE64: BinaryToTextEncoding = 'base64';

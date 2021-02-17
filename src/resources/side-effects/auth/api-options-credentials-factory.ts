@@ -1,4 +1,4 @@
-import { ApiOptions, Credentials } from '../../../typescript';
+import type { ApiOptions, Credentials } from '../../../typescript';
 import { preValidateToken } from '../../../utils';
 import { errorlog } from '../default-behaviour';
 import { _emptyCredentials } from './_emptyCredentials';

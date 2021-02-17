@@ -1,9 +1,9 @@
 import { errorlog, infolog } from '../../../resources/side-effects';
-import {
+import type {
   ClientRequestConfig,
   ClientResponse,
 } from '../../../resources/side-effects/types';
-import { Credentials } from '../../../typescript';
+import type { Credentials } from '../../../typescript';
 import { remainingRequests } from '../requestPerSecondLimit';
 
 function _updateCredentials(
@@ -19,15 +19,15 @@ function _updateCredentials(
       credentials.config_ = _config;
       credentials.response_ = response;
       [, credentials.configUrl_] = `${_config.url}`.split('questrade.com/');
-      credentials.fromCache = response?.headers?.fromCache ?? false;
-      credentials.fromApi = response?.headers?.fromApi ?? true;
-      credentials.proxy = response?.headers?.proxy ?? null;
+      credentials.fromCache = response.headers?.fromCache ?? false;
+      credentials.fromApi = response.headers?.fromApi ?? true;
+      credentials.proxy = response.headers?.proxy ?? null;
       credentials.urlTimeUTC = new Date(
-        credentials?.response_?.headers?.date ?? null,
+        credentials.response_.headers?.date ?? null,
       );
       let maximumperseconds = 20;
 
-      if (credentials.fromCache === true) {
+      if (credentials.fromCache) {
         maximumperseconds = 21;
       }
 

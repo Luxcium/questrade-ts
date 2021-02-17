@@ -1,4 +1,4 @@
-import { IBalances, Logger } from '../../../../typescript';
+import type { IBalances, Logger } from '../../../../typescript';
 
 // + _getBalances
 /** _getBalances */
@@ -7,7 +7,7 @@ export const _getBalances = (
   errorlog: Logger = (...error: any[]) => error,
 ) => async (): Promise<IBalances> => {
   try {
-    return clientAccountGetApi<IBalances>('/balances')();
+    return await clientAccountGetApi<IBalances>('/balances')();
   } catch (error) {
     void errorlog(error.message);
 

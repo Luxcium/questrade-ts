@@ -1,5 +1,5 @@
-import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
-import {
+import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
+import type {
   FiltersArray,
   IOptionsQuote,
   IOptionsQuotes,
@@ -22,7 +22,7 @@ export const _getMarketsQuotesOptions = (
   minstrikePrice: number | null = 0,
   maxstrikePrice: number | null = 0,
 ): Promise<IOptionsQuote[]> => {
-  const postData: OptionsIdArray | FiltersArray =
+  const postData: FiltersArray | OptionsIdArray =
     !!optionIds && optionIds.length > 0
       ? {
           optionIds,

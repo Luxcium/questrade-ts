@@ -286,7 +286,7 @@ const possibleReqstPerSecond: PossibleReqstPerSecond = possibleReqstPerSecondFun
 function possibleReqstPerSecondFunct(
   reqstRemaining: number,
   msRemaning: number,
-  maximumperseconds: number = 20,
+  maximumperseconds = 20,
 ): number {
   return (
     floor(max(min(reqstRemaining / sec(msRemaning), maximumperseconds), -1)) ||
@@ -321,7 +321,7 @@ const limitRequestsPerSecond: LimitRequestsPerSecond = limitRequestsPerSecondFun
 function limitRequestsPerSecondFunct(
   reqstRemaining: number,
   rateLimitReset: number,
-  maximumperseconds: number = 20,
+  maximumperseconds = 20,
 ): number {
   const msRemaning = timeRemaning(rateLimitReset * 1000);
 

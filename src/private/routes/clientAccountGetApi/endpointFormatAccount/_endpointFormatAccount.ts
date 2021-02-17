@@ -1,4 +1,4 @@
-import { Credentials, EndPtAccountBaseURL } from '../../../../typescript';
+import type { Credentials, EndPtAccountBaseURL } from '../../../../typescript';
 
 const _urlSeprator = (): string => '/';
 const _baseAcctUrlStr = (): string => 'accounts';

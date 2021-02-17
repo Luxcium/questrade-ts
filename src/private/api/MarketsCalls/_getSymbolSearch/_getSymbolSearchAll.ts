@@ -1,6 +1,6 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
-import {
+import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
+import type {
   ISymbolSearchResult,
   ISymbolSearchResults,
   Logger,
@@ -15,10 +15,7 @@ export const _getSymbolSearchAll = (
     handlerOptions: ProxyHandlerOptions,
   ) => () => Promise<R>,
   errorlog: Logger = (...error: any[]) => error,
-) => async (
-  prefix: string,
-  offset: number = 0,
-): Promise<ISymbolSearchResult[]> => {
+) => async (prefix: string, offset = 0): Promise<ISymbolSearchResult[]> => {
   try {
     const _prefix = urlEncode(`${prefix.toUpperCase()}`);
     const _offset = urlEncode(`${offset}`);
@@ -29,7 +26,9 @@ export const _getSymbolSearchAll = (
 
     if (_results && _results.symbols) {
       return _results.symbols.map(result => {
-        result.count = _results.symbols.length || 0;
+        const len = _results.symbols.length;
+
+        result.count = len > 0 ? len : 0;
 
         return result;
       });

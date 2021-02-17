@@ -1,9 +1,9 @@
-import { ClientResponse } from '../../../resources/side-effects/types';
+import type { ClientResponse } from '../../../resources/side-effects/types';
 
 const { ceil, floor, max, min } = Math;
 export const remainingRequests = <T>(
   response: ClientResponse<T>,
-  maximumperseconds: number = 20,
+  maximumperseconds = 20,
 ) => {
   const remaining = Number(response.headers['x-ratelimit-remaining']);
   const timeUntilReset = Number(response.headers['x-ratelimit-reset']);

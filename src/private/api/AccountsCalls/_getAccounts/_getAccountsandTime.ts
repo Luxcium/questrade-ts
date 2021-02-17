@@ -1,5 +1,5 @@
-import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
-import {
+import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
+import type {
   Credentials,
   IAccount,
   IAccounts,
@@ -7,7 +7,7 @@ import {
   Logger,
   ProxyFactory_,
 } from '../../../../typescript';
-import { ApiCallQ_ } from '../../../core/next-rate-limiter/queue';
+import type { ApiCallQ_ } from '../../../core/next-rate-limiter/queue';
 import { _clientGetApi } from '../../../routes';
 
 export async function callTimeOut(

@@ -1,4 +1,8 @@
-import { ClientPromise, ClientRequestConfig, ClientStatic } from '../types';
+import type {
+  ClientPromise,
+  ClientRequestConfig,
+  ClientStatic,
+} from '../types';
 
 export function client<R>(
   config: ClientRequestConfig | string,

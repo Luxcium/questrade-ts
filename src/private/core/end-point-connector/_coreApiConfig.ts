@@ -1,5 +1,5 @@
-import { ClientRequestConfig } from '../../../resources/side-effects/types';
-import { Credentials } from '../../../typescript';
+import type { ClientRequestConfig } from '../../../resources/side-effects/types';
+import type { Credentials } from '../../../typescript';
 
 /**
  * partial application of Core api config builder generating an

@@ -1,6 +1,6 @@
-import { ProxyHandlerOptions } from '../../../resources/side-effects/types';
-import { Credentials, Logger, ProxyFactory_ } from '../../../typescript';
-import { ApiCallQ_ } from '../next-rate-limiter/queue';
+import type { ProxyHandlerOptions } from '../../../resources/side-effects/types';
+import type { Credentials, Logger, ProxyFactory_ } from '../../../typescript';
+import type { ApiCallQ_ } from '../next-rate-limiter/queue';
 import { _httpDataEndPointConnector } from '../XX-http-data-end-point-connector-XX';
 import { _coreApiConfig } from './_coreApiConfig';
 

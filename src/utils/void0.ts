@@ -1,5 +1,5 @@
 import { curry } from './curry';
-import { FnAtoB } from './types';
+import type { FnAtoB } from './types';
 
 export const parser = <R = any>(obj: any) =>
   JSON.parse(JSON.stringify(obj)) as R;

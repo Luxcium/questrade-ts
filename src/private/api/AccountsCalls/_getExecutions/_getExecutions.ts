@@ -1,5 +1,5 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import { IExecution, IExecutions, Logger } from '../../../../typescript';
+import type { IExecution, IExecutions, Logger } from '../../../../typescript';
 import { urlEncodeDateTool } from '../../../../utils';
 
 // + _getExecutions

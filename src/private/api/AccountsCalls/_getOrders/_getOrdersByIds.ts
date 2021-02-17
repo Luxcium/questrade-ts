@@ -1,4 +1,4 @@
-import { IOrder, IOrders, Logger } from '../../../../typescript';
+import type { IOrder, IOrders, Logger } from '../../../../typescript';
 import { urlEncode } from '../../../../utils';
 
 // + _getOrderByIds

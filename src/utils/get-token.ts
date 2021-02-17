@@ -1,4 +1,4 @@
-import { ApiOptions } from '../typescript';
+import type { ApiOptions } from '../typescript';
 
 export function preValidateToken(apiOptions: ApiOptions): string {
   return typeof apiOptions.token === 'function'

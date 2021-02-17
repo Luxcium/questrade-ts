@@ -1,6 +1,6 @@
 /* eslint-disable promise/avoid-new */
 import { errorlog } from '../../../resources/side-effects';
-import { CallBack } from '../../../typescript';
+import type { CallBack } from '../../../typescript';
 import { perSeconds, void0 } from '../../../utils';
 
 let lastCall = Date.now();
@@ -9,7 +9,7 @@ const resetLastCall = () => {
   lastCall = Date.now();
 };
 
-function requestLimiterFactory(fn: Function, hertz: number = 1) {
+function requestLimiterFactory(fn: Function, hertz = 1) {
   let isCalled = false;
   const callsQueue: [Function, CallBack<any>][] = [];
   const callToPop = async () => {
@@ -106,7 +106,7 @@ function doNext() {
   return 'next request';
 }
 
-export function limiter(hertz: number = 20) {
+export function limiter(hertz = 20) {
   let lastCall2 = Date.now();
   const lastDelay2 = (lastCall3: number) => Date.now() - lastCall3;
   const since = (pastStamp: number) => Date.now() - pastStamp;

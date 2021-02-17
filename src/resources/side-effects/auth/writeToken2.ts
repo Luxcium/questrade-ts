@@ -1,7 +1,7 @@
 import { writeFileSync } from 'fs';
 
-import { Credentials, IRefreshCreds } from '../../../typescript';
-import { ClientResponse } from '../types';
+import type { Credentials, IRefreshCreds } from '../../../typescript';
+import type { ClientResponse } from '../types';
 
 export const writeToken = (
   credentials: Credentials,

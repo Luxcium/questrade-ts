@@ -1,10 +1,10 @@
-import {
+import type {
   AccountStatus,
   AccountType,
   ClientAccountType,
 } from 'questrade-api-enumerations';
 
-import {
+import type {
   AcountNumberString,
   IAccount,
   IAccountActivity,
@@ -41,57 +41,59 @@ export interface QuestradeApi {
 export type QtApiMyBalances = () => Promise<IMyBalances>;
 
 export interface QtApiAccount {
-  getActivities(
+  getActivities: (
     startTime: string,
-  ): (endTime: string) => Promise<IAccountActivity[]>;
-  getAllAccounts(): Promise<IAccount[]>;
-  getBalances(): Promise<IBalances>;
-  getExecutions(startTime: string): (endTime: string) => Promise<IExecution[]>;
-  getOrders(
+  ) => (endTime: string) => Promise<IAccountActivity[]>;
+  getAllAccounts: () => Promise<IAccount[]>;
+  getBalances: () => Promise<IBalances>;
+  getExecutions: (
+    startTime: string,
+  ) => (endTime: string) => Promise<IExecution[]>;
+  getOrders: (
     stateFilter?: string | undefined,
-  ): (startTime: string) => (endTime: string) => Promise<IOrder[]>;
-  getOrdersByIds(orderId: number[]): Promise<IOrder[]>;
-  getPositions(): Promise<IPosition[]>;
-  getServerTime(): Promise<Date>;
+  ) => (startTime: string) => (endTime: string) => Promise<IOrder[]>;
+  getOrdersByIds: (orderId: number[]) => Promise<IOrder[]>;
+  getPositions: () => Promise<IPosition[]>;
+  getServerTime: () => Promise<Date>;
 }
 
 export interface QtApiMarket {
-  getAllMarkets(): Promise<IMarket[]>;
-  getCandlesByStockId(
+  getAllMarkets: () => Promise<IMarket[]>;
+  getCandlesByStockId: (
     symbolID: number,
-  ): (
+  ) => (
     interval?: string | undefined,
   ) => (startTime: string) => (endTime: string) => Promise<ICandle[]>;
 }
 export interface QtApiQuotes {
-  byStockIds(ids: number[]): Promise<IQuote[]>;
-  byStrategies(
+  byStockIds: (ids: number[]) => Promise<IQuote[]>;
+  byStrategies: (
     strategyVariantRequestData: StrategyVariantRequest,
-  ): Promise<IStrategiesQuotes>;
+  ) => Promise<IStrategiesQuotes>;
 }
 
 export interface QtApiOptionsQuotes {
-  fromFilter(filters: OptionsFilters): Promise<IOptionsQuote[]>;
-  byOptionsIds(optionIds: number[]): Promise<IOptionsQuote[]>;
+  fromFilter: (filters: OptionsFilters) => Promise<IOptionsQuote[]>;
+  byOptionsIds: (optionIds: number[]) => Promise<IOptionsQuote[]>;
 }
 
 export interface QtApiSymbols {
-  byStockIds(stockIds: number[]): Promise<ISymbol[]>;
+  byStockIds: (stockIds: number[]) => Promise<ISymbol[]>;
 }
 
 export interface QtApiOptionChains {
-  byStockId(stockId: number): Promise<IOptionChain[]>;
+  byStockId: (stockId: number) => Promise<IOptionChain[]>;
 }
 export interface QtApiSearch {
-  stock(
+  stock: (
     prefix: string,
     offset?: number | undefined,
-  ): Promise<ISymbolSearchResult[]>;
-  allStocks(
+  ) => Promise<ISymbolSearchResult[]>;
+  allStocks: (
     prefix: string,
     offset?: number | undefined,
-  ): Promise<ISymbolSearchResult[]>;
-  countResults(prefix: string): Promise<number>;
+  ) => Promise<ISymbolSearchResult[]>;
+  countResults: (prefix: string) => Promise<number>;
 }
 
 export interface QuestradeApi2 {
@@ -100,7 +102,7 @@ export interface QuestradeApi2 {
     perCurrency: {
       CAD: {
         startOfDay: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -109,7 +111,7 @@ export interface QuestradeApi2 {
           isRealTime: boolean;
         };
         current: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -120,7 +122,7 @@ export interface QuestradeApi2 {
       };
       USD: {
         startOfDay: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -129,7 +131,7 @@ export interface QuestradeApi2 {
           isRealTime: boolean;
         };
         current: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -142,7 +144,7 @@ export interface QuestradeApi2 {
     combined: {
       CAD: {
         startOfDay: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -151,7 +153,7 @@ export interface QuestradeApi2 {
           isRealTime: boolean;
         };
         current: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -162,7 +164,7 @@ export interface QuestradeApi2 {
       };
       USD: {
         startOfDay: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -171,7 +173,7 @@ export interface QuestradeApi2 {
           isRealTime: boolean;
         };
         current: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -184,7 +186,7 @@ export interface QuestradeApi2 {
     current: {
       perCurrency: {
         CAD: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -193,7 +195,7 @@ export interface QuestradeApi2 {
           isRealTime: boolean;
         };
         USD: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -204,7 +206,7 @@ export interface QuestradeApi2 {
       };
       combined: {
         CAD: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -213,7 +215,7 @@ export interface QuestradeApi2 {
           isRealTime: boolean;
         };
         USD: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -226,7 +228,7 @@ export interface QuestradeApi2 {
     startOfDay: {
       combined: {
         CAD: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -235,7 +237,7 @@ export interface QuestradeApi2 {
           isRealTime: boolean;
         };
         USD: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -246,7 +248,7 @@ export interface QuestradeApi2 {
       };
       perCurrency: {
         CAD: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -255,7 +257,7 @@ export interface QuestradeApi2 {
           isRealTime: boolean;
         };
         USD: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -268,7 +270,7 @@ export interface QuestradeApi2 {
     CAD: {
       perCurrency: {
         startOfDay: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -277,7 +279,7 @@ export interface QuestradeApi2 {
           isRealTime: boolean;
         };
         current: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -288,7 +290,7 @@ export interface QuestradeApi2 {
       };
       combined: {
         startOfDay: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -297,7 +299,7 @@ export interface QuestradeApi2 {
           isRealTime: boolean;
         };
         current: {
-          currency: 'USD' | 'CAD';
+          currency: 'CAD' | 'USD';
           cash: number;
           marketValue: number;
           totalEquity: number;
@@ -311,7 +313,7 @@ export interface QuestradeApi2 {
       combined: {
         startOfDay: {
           startOfDay: {
-            currency: 'USD' | 'CAD';
+            currency: 'CAD' | 'USD';
             cash: number;
             marketValue: number;
             totalEquity: number;
@@ -320,7 +322,7 @@ export interface QuestradeApi2 {
             isRealTime: boolean;
           };
           current: {
-            currency: 'USD' | 'CAD';
+            currency: 'CAD' | 'USD';
             cash: number;
             marketValue: number;
             totalEquity: number;
@@ -331,7 +333,7 @@ export interface QuestradeApi2 {
         };
         current: {
           startOfDay: {
-            currency: 'USD' | 'CAD';
+            currency: 'CAD' | 'USD';
             cash: number;
             marketValue: number;
             totalEquity: number;
@@ -340,7 +342,7 @@ export interface QuestradeApi2 {
             isRealTime: boolean;
           };
           current: {
-            currency: 'USD' | 'CAD';
+            currency: 'CAD' | 'USD';
             cash: number;
             marketValue: number;
             totalEquity: number;
@@ -353,7 +355,7 @@ export interface QuestradeApi2 {
       perCurrency: {
         startOfDay: {
           startOfDay: {
-            currency: 'USD' | 'CAD';
+            currency: 'CAD' | 'USD';
             cash: number;
             marketValue: number;
             totalEquity: number;
@@ -362,7 +364,7 @@ export interface QuestradeApi2 {
             isRealTime: boolean;
           };
           current: {
-            currency: 'USD' | 'CAD';
+            currency: 'CAD' | 'USD';
             cash: number;
             marketValue: number;
             totalEquity: number;
@@ -373,7 +375,7 @@ export interface QuestradeApi2 {
         };
         current: {
           startOfDay: {
-            currency: 'USD' | 'CAD';
+            currency: 'CAD' | 'USD';
             cash: number;
             marketValue: number;
             totalEquity: number;
@@ -382,7 +384,7 @@ export interface QuestradeApi2 {
             isRealTime: boolean;
           };
           current: {
-            currency: 'USD' | 'CAD';
+            currency: 'CAD' | 'USD';
             cash: number;
             marketValue: number;
             totalEquity: number;
@@ -396,9 +398,9 @@ export interface QuestradeApi2 {
   }>;
   serverTime: Date | 'ERROR';
   account: {
-    getActivities(
+    getActivities: (
       startTime: string,
-    ): (
+    ) => (
       endTime: string,
     ) => Promise<
       {
@@ -413,11 +415,11 @@ export interface QuestradeApi2 {
         /** symbol name */
         symbol: string;
         /** symbol ID */
-        stockId: string | number;
+        stockId: number | string;
         /** description */
         description: string;
         /** enumeration Currency */
-        currency: 'USD' | 'CAD';
+        currency: 'CAD' | 'USD';
         /** the quantity */
         quantity: number;
         /** the price */
@@ -433,7 +435,7 @@ export interface QuestradeApi2 {
       }[]
     >;
 
-    getAllAccounts(): Promise<
+    getAllAccounts: () => Promise<
       {
         type: AccountType;
         number: AcountNumberString;
@@ -443,50 +445,50 @@ export interface QuestradeApi2 {
         clientAccountType: ClientAccountType;
       }[]
     >;
-    getBalances(): Promise<IBalances>;
-    getExecutions(
+    getBalances: () => Promise<IBalances>;
+    getExecutions: (
       startTime: string,
-    ): (endTime: string) => Promise<IExecution[]>;
-    getOrders(
+    ) => (endTime: string) => Promise<IExecution[]>;
+    getOrders: (
       stateFilter?: string | undefined,
-    ): (startTime: string) => (endTime: string) => Promise<IOrder[]>;
-    getOrdersByIds(orderId: number[]): Promise<IOrder[]>;
-    getPositions(): Promise<IPosition[]>;
-    getServerTime(): Promise<Date>;
+    ) => (startTime: string) => (endTime: string) => Promise<IOrder[]>;
+    getOrdersByIds: (orderId: number[]) => Promise<IOrder[]>;
+    getPositions: () => Promise<IPosition[]>;
+    getServerTime: () => Promise<Date>;
   };
   market: {
-    getAllMarkets(): Promise<IMarket[]>;
-    getCandlesByStockId(
+    getAllMarkets: () => Promise<IMarket[]>;
+    getCandlesByStockId: (
       symbolID: number,
-    ): (
+    ) => (
       interval?: string | undefined,
     ) => (startTime: string) => (endTime: string) => Promise<ICandle[]>;
   };
   getQuotes: {
-    byStockIds(ids: number[]): Promise<IQuote[]>;
-    byStrategies(
+    byStockIds: (ids: number[]) => Promise<IQuote[]>;
+    byStrategies: (
       strategyVariantRequestData: StrategyVariantRequest,
-    ): Promise<IStrategiesQuotes>;
+    ) => Promise<IStrategiesQuotes>;
   };
   getOptionsQuotes: {
-    fromFilter(filters: OptionsFilters): Promise<IOptionsQuote[]>;
-    byOptionsIds(optionIds: number[]): Promise<IOptionsQuote[]>;
+    fromFilter: (filters: OptionsFilters) => Promise<IOptionsQuote[]>;
+    byOptionsIds: (optionIds: number[]) => Promise<IOptionsQuote[]>;
   };
   getSymbols: {
-    byStockIds(stockIds: number[]): Promise<ISymbol[]>;
+    byStockIds: (stockIds: number[]) => Promise<ISymbol[]>;
   };
   getOptionChains: {
-    byStockId(stockId: number): Promise<IOptionChain[]>;
+    byStockId: (stockId: number) => Promise<IOptionChain[]>;
   };
   search: {
-    stock(
+    stock: (
       prefix: string,
       offset?: number | undefined,
-    ): Promise<ISymbolSearchResult[]>;
-    allStocks(
+    ) => Promise<ISymbolSearchResult[]>;
+    allStocks: (
       prefix: string,
       offset?: number | undefined,
-    ): Promise<ISymbolSearchResult[]>;
-    countResults(prefix: string): Promise<number>;
+    ) => Promise<ISymbolSearchResult[]>;
+    countResults: (prefix: string) => Promise<number>;
   };
 }

@@ -1,4 +1,4 @@
-import { ClientResponse } from '../../../resources/side-effects/types';
+import type { ClientResponse } from '../../../resources/side-effects/types';
 
 export const logData = <T>(response: ClientResponse<T>) => {
   const { config, data, headers, status, statusText } = response;

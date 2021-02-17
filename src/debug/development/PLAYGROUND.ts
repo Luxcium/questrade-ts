@@ -1,6 +1,6 @@
 import { qtAPIv2_0 } from '../..';
 import { sideEffects } from '../../resources/side-effects';
-import { StrategyVariantRequest } from '../../typescript';
+import type { StrategyVariantRequest } from '../../typescript';
 
 const { echo, errorlog, getMyToken } = sideEffects;
 
@@ -23,9 +23,7 @@ export const testingThat = (async () => {
   void echo<unknown>('theResult2', theResult2[0]);
 
   return { theResult, theResult2 };
-})().catch(
-  error => void errorlog<unknown>('PlayGround error message:', error.message),
-);
+})().catch(error => void errorlog('PlayGround error message:', error.message));
 
 // testingThat();
 

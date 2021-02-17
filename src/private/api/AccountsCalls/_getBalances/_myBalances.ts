@@ -1,4 +1,4 @@
-import { IBalances, IMyBalances, Logger } from '../../../../typescript';
+import type { IBalances, IMyBalances, Logger } from '../../../../typescript';
 
 export const _myBalances = async (
   myBalances: IBalances,

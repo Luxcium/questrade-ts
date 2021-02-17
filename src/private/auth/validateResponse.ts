@@ -1,6 +1,6 @@
 import { echo } from '../../resources/side-effects';
-import { ClientResponse } from '../../resources/side-effects/typescript';
-import { IRefreshCreds } from '../../typescript';
+import type { ClientResponse } from '../../resources/side-effects/typescript';
+import type { IRefreshCreds } from '../../typescript';
 
 export async function validateResponse(
   _response: Promise<ClientResponse>,

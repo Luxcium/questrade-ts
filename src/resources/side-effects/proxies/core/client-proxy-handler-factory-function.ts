@@ -1,6 +1,6 @@
-import { Credentials, ProxyFactory_ } from '../../../../typescript';
+import type { Credentials, ProxyFactory_ } from '../../../../typescript';
 import { sideEffects } from '../..';
-import { ClientStatic, ProxyHandlerOptions } from '../../types';
+import type { ClientStatic, ProxyHandlerOptions } from '../../types';
 
 const { getHttpClient } = sideEffects;
 
@@ -11,8 +11,8 @@ export const clientProxyHandlerFactory = (
   proxyHandler: (
     proxyHandlerOptions: ProxyHandlerOptions,
   ) => ProxyHandler<ClientStatic>,
-  httpDataEndPointConnector: boolean = true,
-  oAuthHttpCredentials: boolean = false,
+  httpDataEndPointConnector = true,
+  oAuthHttpCredentials = false,
 ): ProxyFactory_ => {
   const newProxy: ProxyFactory_ = {};
 

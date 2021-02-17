@@ -1,5 +1,5 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import { IPosition, IPositions, Logger } from '../../../../typescript';
+import type { IPosition, IPositions, Logger } from '../../../../typescript';
 
 // + _getPositions
 /** _getPositions */

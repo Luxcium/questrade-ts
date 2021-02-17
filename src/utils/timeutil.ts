@@ -39,10 +39,10 @@ export const urlEncodeDateTool = (
 export const dateNowISO = () => new Date(Date.now()).toISOString();
 export const dateNowNumeric = () => new Date(Date.now()).getTime();
 
-export const dateToISOString = (dateTime: string | number): string =>
+export const dateToISOString = (dateTime: number | string): string =>
   new Date(dateTime).toISOString();
 
-export const dateToNumeric = (dateTime: string | number | Date): number =>
+export const dateToNumeric = (dateTime: Date | number | string): number =>
   new Date(dateTime).getTime();
 export const dateRangeFromNow = (backNumberOfDays: number) => {
   const back = Math.floor(backNumberOfDays);
@@ -85,7 +85,7 @@ export const dateRange = (
   };
 };
 
-const rmvMiliSec = (date: Date | string | number): string => {
+const rmvMiliSec = (date: Date | number | string): string => {
   const { floor } = Math;
 
   return dateToISOString(floor(dateToNumeric(date) / 1000) * 1000);

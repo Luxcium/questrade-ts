@@ -1,5 +1,5 @@
-import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
-import { ITime, Logger } from '../../../../typescript';
+import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
+import type { ITime, Logger } from '../../../../typescript';
 
 // +!! _getServerTime
 /** _getTime */

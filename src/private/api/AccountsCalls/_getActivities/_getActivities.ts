@@ -1,4 +1,8 @@
-import { IAccountActivity, IActivities, Logger } from '../../../../typescript';
+import type {
+  IAccountActivity,
+  IActivities,
+  Logger,
+} from '../../../../typescript';
 import { urlEncodeDateTool } from '../../../../utils';
 
 // + _getActivities

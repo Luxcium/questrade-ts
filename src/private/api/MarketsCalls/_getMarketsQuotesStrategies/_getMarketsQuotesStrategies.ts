@@ -1,5 +1,5 @@
-import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
-import {
+import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
+import type {
   IStrategiesQuotes,
   Logger,
   StrategyVariantRequest,
@@ -17,7 +17,7 @@ export const _getMarketsQuotesStrategies = (
   strategyVariantRequestData: StrategyVariantRequest,
 ): Promise<IStrategiesQuotes> => {
   try {
-    return clientPostApi<StrategyVariantRequest>(
+    return await clientPostApi<StrategyVariantRequest>(
       strategyVariantRequestData,
     )<IStrategiesQuotes>('/markets/quotes/strategies', { noCaching: true })();
   } catch (error) {

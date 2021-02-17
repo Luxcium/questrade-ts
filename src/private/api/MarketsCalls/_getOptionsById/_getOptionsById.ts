@@ -1,5 +1,9 @@
-import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
-import { IOptionChain, IOptionChains, Logger } from '../../../../typescript';
+import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
+import type {
+  IOptionChain,
+  IOptionChains,
+  Logger,
+} from '../../../../typescript';
 import { urlEncode } from '../../../../utils';
 
 // + _getOptionsById

@@ -1,9 +1,9 @@
-import {
+import type {
   ClientRequestConfig,
   ClientResponse,
   ClientStatic,
 } from '../../../resources/side-effects/types';
-import { Credentials } from '../../../typescript';
+import type { Credentials } from '../../../typescript';
 import { limitingRequest } from '../requestPerSecondLimit';
 
 async function _rateLimiter<R>(

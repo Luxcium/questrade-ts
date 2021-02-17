@@ -3,7 +3,7 @@
     /* Basic Options */
     "noEmit": false,
     "noEmitOnError": false,
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "rootDir": "./src",
     "outDir": "./out/src",

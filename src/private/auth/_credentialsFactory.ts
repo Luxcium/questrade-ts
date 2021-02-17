@@ -1,8 +1,8 @@
 import { echo, errorlog, infolog } from '../../resources/side-effects';
-import { ApiOptions, Credentials, ProxyFactory_ } from '../../typescript';
+import type { ApiOptions, Credentials, ProxyFactory_ } from '../../typescript';
 import { _getAccounts } from '../api/AccountsCalls/_getAccounts/_getAccounts';
 import { _getServerTime } from '../api/AccountsCalls/_getServerTime/_getServerTime';
-import { ApiCallQ_ } from '../core/next-rate-limiter/queue';
+import type { ApiCallQ_ } from '../core/next-rate-limiter/queue';
 import { _clientGetApi } from '../routes';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 import { _oAuthHttp } from './xx-http-auth-xx';

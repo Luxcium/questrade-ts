@@ -2,8 +2,7 @@
 /* eslint-disable promise/avoid-new */
 import { MAX_PER_HOUR, MAX_PER_SECONDES } from '../../../magic-values';
 import { echo, echo1 } from '../../../resources/side-effects/default-behaviour';
-import {
-  ClientPromise,
+import type {
   ClientRequestConfig,
   ClientResponse,
 } from '../../../resources/side-effects/types';
@@ -17,11 +16,11 @@ interface IQNode<T extends QNodesValue> {
 
 // type ApiCallQ_Value = any;
 type QNodes<T extends QNodesValue = QNodesValue> = IQNode<T> | null;
-type QNodesValue = {
+interface QNodesValue {
   config: ClientRequestConfig;
   fn: <R>(config: ClientRequestConfig) => Promise<ClientResponse<R>>;
   cb?: any;
-};
+}
 // const instanceApiCallQ_: { instance: ApiCallQ_<any> | null } = {
 //   instance: null,
 // };
@@ -65,7 +64,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     return this.isNotEmpty && this.isNotCalled && this.isNotBroken;
   }
 
-  static get new() {
+  public static get new() {
     return new ApiCallQ_();
   }
 
@@ -130,7 +129,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
       // hint: //-*|-···―――――――――――――――――――――――――――――···-| setTimeout() |-···――― ~
       setTimeout(async () => {
         this.deQueue();
-        const cb = this.current?.value?.cb ?? void0;
+        const cb = this.current?.value.cb ?? void0;
 
         try {
           const { fn } = this.current!.value;
@@ -179,7 +178,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
 
   // -| public |-···―――――――――――――――――――――――――――――――――···-| addToQueue() |-//::――― ~
   // info: addToQueue //-!
-  public addToQueue<R = any>(value: T): ClientPromise<R> {
+  public async addToQueue<R = any>(value: T) /* : ClientPromise<R> */ {
     //
 
     echo(

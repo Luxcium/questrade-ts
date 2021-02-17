@@ -1,5 +1,5 @@
-import { ClientRequestConfig } from '../../resources/side-effects/typescript';
-import { Credentials } from '../../typescript';
+import type { ClientRequestConfig } from '../../resources/side-effects/typescript';
+import type { Credentials } from '../../typescript';
 
 export function configs(arg: {
   refreshToken: string;

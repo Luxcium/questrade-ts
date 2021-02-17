@@ -1,6 +1,6 @@
 // import { errorlog } from '../../../../resources/side-effects';
-import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
-import { IMarket, IMarkets, Logger } from '../../../../typescript';
+import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
+import type { IMarket, IMarkets, Logger } from '../../../../typescript';
 
 // + _getMarkets
 /** _getMarkets */

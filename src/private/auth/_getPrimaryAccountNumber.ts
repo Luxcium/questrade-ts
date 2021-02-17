@@ -1,5 +1,5 @@
 import { errorlog } from '../../resources/side-effects';
-import { AcountNumberString, IAccount } from '../../typescript';
+import type { AcountNumberString, IAccount } from '../../typescript';
 
 /** pROVIDE: IAccount[] THEN GET:  a 'primaryAccountNumber string'  */
 export function _getPrimaryAccountNumber(

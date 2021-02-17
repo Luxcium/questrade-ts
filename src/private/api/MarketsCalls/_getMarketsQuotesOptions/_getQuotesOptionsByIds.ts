@@ -1,5 +1,5 @@
-import { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
-import { IOptionsQuote, Logger } from '../../../../typescript';
+import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
+import type { IOptionsQuote, Logger } from '../../../../typescript';
 import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
 
 export const _getQuotesOptionsByIds = (
@@ -12,7 +12,7 @@ export const _getQuotesOptionsByIds = (
   errorlog: Logger = (...error: any[]) => error,
 ) => async (optionIds: number[]): Promise<IOptionsQuote[]> => {
   try {
-    return _getMarketsQuotesOptions(clientPostApi)(
+    return await _getMarketsQuotesOptions(clientPostApi)(
       optionIds,
       0,
       '',

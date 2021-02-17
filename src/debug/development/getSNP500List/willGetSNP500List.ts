@@ -1,5 +1,5 @@
 import { sideEffects } from '../../../resources/side-effects';
-import {
+import type {
   Constituent,
   ConstituentsList,
   ConstituentsSymbols,
@@ -13,7 +13,7 @@ const client = getHttpClient();
 export const willGetSNP500StringList = async () =>
   (await willGetSNP500List())[0];
 
-export function willGetSNP500List() {
+export async function willGetSNP500List() {
   return (async url => {
     const { data } = await client.get(url);
     const constituentsSymbols: ConstituentsSymbols = data.map(

@@ -3,7 +3,7 @@
 import Redis from 'ioredis';
 import JSONCache from 'redis-json';
 
-import { Credentials, ProxyFactory_ } from '../../../../../typescript';
+import type { Credentials, ProxyFactory_ } from '../../../../../typescript';
 import {
   getQtUrlPathFromArgs,
   getUrlAndDataHashes,
@@ -11,19 +11,19 @@ import {
   id0,
 } from '../../../../../utils';
 import { ech0, getHttpClient } from '../../..';
-import {
+import type {
   ClientStatic,
   // ioRedis,
   ProxyHandlerOptions,
 } from '../../../types';
-import { ReflexionLoggerProxyHandlerAbstractClass } from '../../core/reflexion-logger-proxy-handler-abstarct-class';
+import { ProxyHandlerAbstractClass } from '../../core/reflexion-logger-proxy-handler-abstarct-class';
 
 // #endregion IMPORTS ―――――――――――――――――――――――――――――――――――――――――――――――――――――――― $>
 export type IoRedis = Redis.Redis;
 export type CachedResponse = any;
 
 class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
-  extends ReflexionLoggerProxyHandlerAbstractClass<T>
+  extends ProxyHandlerAbstractClass<T>
   implements ProxyHandler<T> {
   // private jsonCache: JSONCache<CachedApiResponse>;
   constructor(protected handlerOptions: ProxyHandlerOptions) {
@@ -162,7 +162,7 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
         responseFromCache: true,
       };
 
-      if (this?.handlerOptions?.noCaching !== true) {
+      if (this.handlerOptions.noCaching !== true) {
         // $ WRITE TO CACHE ――――――――――――――――――――――――――――――――――――――――――――――――――――$>
         // id0('if (this?.handlerOptions?.noCaching !== true)');
         // const options: ISetOptions = { expire: 1000 };

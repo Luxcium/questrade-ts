@@ -1,19 +1,19 @@
-import {
+import type {
   ClientPromise,
   ClientRequestConfig,
 } from '../../../resources/side-effects/types';
-import { Credentials } from '../../../typescript';
+import type { Credentials } from '../../../typescript';
 import { newRequestLimiter } from '../next-rate-limiter';
 import { limitingRequest } from '../requestPerSecondLimit';
 
-function _rateLimiter<R>(configs: {
+async function _rateLimiter<R>(configs: {
   httpClient: (conf: ClientRequestConfig) => ClientPromise<any>;
   config: ClientRequestConfig;
   possiblePerSeconds: number;
   maxPerSeconds?: number | null;
   useNewRateLimiter: boolean;
   credentials?: Credentials;
-}): ClientPromise<R> {
+}) /* : ClientPromise<R> */ {
   // function limitingRequest<T>(fn: Function, hertz?: number): Promise<T>
   const {
     config,

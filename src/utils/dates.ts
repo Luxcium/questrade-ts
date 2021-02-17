@@ -1,5 +1,5 @@
-export const formatDate: (date: string | Date) => string = (
-  date: string | Date,
+export const formatDate: (date: Date | string) => string = (
+  date: Date | string,
 ) => {
   return new Date(date).toISOString();
 };

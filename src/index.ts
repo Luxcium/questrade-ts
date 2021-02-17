@@ -1,6 +1,6 @@
 import { questradeAPI } from './public';
-import { IQuestradeAPIv2_0 } from './public/IQuestradeAPIv2_0';
-import { ApiOptions, Credentials } from './typescript';
+import type { IQuestradeAPIv2_0 } from './public/IQuestradeAPIv2_0';
+import type { ApiOptions, Credentials } from './typescript';
 
 export const qtAPIv2_0: (
   apiOptions: ApiOptions,

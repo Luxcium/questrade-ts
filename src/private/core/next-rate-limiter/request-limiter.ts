@@ -1,14 +1,11 @@
-import {
-  ClientPromise,
-  ClientRequestConfig,
-} from '../../../resources/side-effects/types';
-import { RateLimiterOptions } from '../../../typescript';
+import type { ClientRequestConfig } from '../../../resources/side-effects/types';
+import type { RateLimiterOptions } from '../../../typescript';
 import { limitingRequest } from '../requestPerSecondLimit';
 import { ApiCallQ_ } from './queue';
 
-export const newRequestLimiter = <R>(
+export const newRequestLimiter = async <R>(
   options: RateLimiterOptions,
-): ClientPromise<R> => {
+) /* : ClientPromise<R> */ => {
   const { httpClient, config, maxPerSec, maxPerHour } = options;
 
   // cb(fn(args));

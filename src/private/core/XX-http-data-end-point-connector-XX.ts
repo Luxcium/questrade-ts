@@ -1,17 +1,17 @@
 import { sideEffects } from '../../resources/side-effects';
-import {
+import type {
   ClientPromise,
   ClientRequestConfig,
   ClientResponse,
   ProxyHandlerOptions,
 } from '../../resources/side-effects/types';
-import { Credentials, Logger, ProxyFactory_ } from '../../typescript';
+import type { Credentials, Logger, ProxyFactory_ } from '../../typescript';
 import {
   _echoStatus,
   _rateLimiter,
   _updateCredentials,
 } from './end-point-connector';
-import { ApiCallQ_ } from './next-rate-limiter/queue';
+import type { ApiCallQ_ } from './next-rate-limiter/queue';
 
 const { getHttpClient } = sideEffects;
 
@@ -20,28 +20,28 @@ function _httpDataEndPointConnector<DATA>(
   config: ClientRequestConfig,
   credentials: Credentials,
   proxy: ProxyFactory_ | null,
-  useNewRateLimiter: boolean = false,
+  useNewRateLimiter = false,
 ) {
   return async (
     errorlog: Logger,
     handlerOptions: ProxyHandlerOptions,
   ): Promise<DATA> => {
-    let httpClient: <S>(conf: ClientRequestConfig) => ClientPromise<S> = (
+    let httpClient: <S>(conf: ClientRequestConfig) => ClientPromise<S> = async (
       conf: ClientRequestConfig,
     ) => getHttpClient()(conf);
 
-    if (proxy?.httpDataEndPointConnector && proxy?.activate) {
-      const someName = proxy.activate!(handlerOptions);
+    if (proxy?.httpDataEndPointConnector && proxy.activate) {
+      const someName = proxy.activate(handlerOptions);
 
-      httpClient = (conf: ClientRequestConfig) => someName(conf);
+      httpClient = async (conf: ClientRequestConfig) => someName(conf);
     }
 
     const possiblePerSeconds =
-      credentials?.remainingRequests?.possiblePerSeconds ?? 21;
+      credentials.remainingRequests?.possiblePerSeconds ?? 21;
 
     // testing it with useNewRateLimiter = true
     useNewRateLimiter = true;
-    const response: ClientResponse<DATA> = await (useNewRateLimiter
+    const response: ClientResponse<DATA> = (await (useNewRateLimiter
       ? apiCallQ.addToQueue({
           config,
           fn: httpClient,
@@ -53,7 +53,7 @@ function _httpDataEndPointConnector<DATA>(
           maxPerSeconds: 20,
           possiblePerSeconds,
           useNewRateLimiter,
-        }));
+        }))) as ClientResponse<DATA>;
 
     if (response.data) {
       _updateCredentials(config, response, credentials);

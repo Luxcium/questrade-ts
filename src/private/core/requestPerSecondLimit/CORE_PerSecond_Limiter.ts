@@ -1,10 +1,10 @@
 /* eslint-disable promise/avoid-new */
 import { ech0, errorlog } from '../../../resources/side-effects';
-import { CallBack } from '../../../typescript';
+import type { CallBack } from '../../../typescript';
 import { perSeconds } from '../../../utils';
 import { neverWill } from './never-will';
 
-function limitingRequest<T>(fn: Function, hertz: number = 1) {
+async function limitingRequest<T>(fn: Function, hertz = 1) {
   const callsQueue: [Function, CallBack<any>][] = [];
   let isCalled = false;
 
