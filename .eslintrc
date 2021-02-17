@@ -2,7 +2,8 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 12,
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": "./tsconfig.json"
   },
   "extends": [
     "plugin:jsonc/auto-config",
@@ -41,8 +42,8 @@
     "unicorn"
   ],
   "rules": {
-    "tsdoc/syntax": "error",
     "prefer-const": "warn",
+    "tsdoc/syntax": "error",
     /*
   ―― START ――――――― eslint-config-prettier ――――――――――――――――――――――――――――――――――――――
     */
@@ -52,7 +53,7 @@
       "warn",
       "all"
     ],
-    "comma-dangle": [
+    "@typescript-eslint/comma-dangle": [
       "warn",
       "always-multiline",
       {
@@ -63,12 +64,24 @@
         "functions": "always-multiline"
       }
     ],
-    "quotes": [
+    "@typescript-eslint/quotes": [
       "warn",
       "single",
       "avoid-escape"
     ],
     // +++ eslint-config-prettier +++
+    "@typescript-eslint/brace-style": "off",
+    "@typescript-eslint/comma-spacing": "off",
+    "@typescript-eslint/func-call-spacing": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/keyword-spacing": "off",
+    "@typescript-eslint/member-delimiter-style": "off",
+    "@typescript-eslint/no-extra-parens": "off",
+    "@typescript-eslint/no-extra-semi": "off",
+    "@typescript-eslint/semi": "off",
+    "@typescript-eslint/space-before-function-paren": "off",
+    "@typescript-eslint/space-infix-ops": "off",
+    "@typescript-eslint/type-annotation-spacing": "off",
     "arrow-body-style": "off",
     "lines-around-comment": "off",
     "max-len": "off",
@@ -79,24 +92,24 @@
     "prefer-arrow-callback": "off",
     "unicorn/no-nested-ternary": "off",
     "unicorn/number-literal-case": "off",
-    "@typescript-eslint/brace-style": "off",
-    "@typescript-eslint/comma-dangle": "off",
-    "@typescript-eslint/comma-spacing": "off",
-    "@typescript-eslint/func-call-spacing": "off",
-    "@typescript-eslint/indent": "off",
-    "@typescript-eslint/keyword-spacing": "off",
-    "@typescript-eslint/member-delimiter-style": "off",
-    "@typescript-eslint/no-extra-parens": "off",
-    "@typescript-eslint/no-extra-semi": "off",
-    "@typescript-eslint/quotes": "off",
-    "@typescript-eslint/semi": "off",
-    "@typescript-eslint/space-before-function-paren": "off",
-    "@typescript-eslint/space-infix-ops": "off",
-    "@typescript-eslint/type-annotation-spacing": "off",
+    // "@typescript-eslint/comma-dangle": "off",
+    // "@typescript-eslint/quotes": "off",
     // +++ eslint-config-prettier +++
     /*
   ―― END ―――――― eslint-config-prettier ―――――――――――――――――――――――――――――――――――――――――
     */
+    "promise/always-return": "error",
+    "promise/avoid-new": "error",
+    "promise/catch-or-return": "error",
+    "promise/no-callback-in-promise": "error",
+    "promise/no-native": "off",
+    "promise/no-nesting": "error",
+    "promise/no-new-statics": "warn",
+    "promise/no-promise-in-callback": "error",
+    "promise/no-return-in-finally": "error",
+    "promise/no-return-wrap": "error",
+    "promise/param-names": "warn",
+    "promise/valid-params": "error",
     "unicorn/better-regex": "warn",
     "unicorn/catch-error-name": "warn",
     "unicorn/consistent-function-scoping": "off",
@@ -110,9 +123,7 @@
     "unicorn/import-style": "off",
     "unicorn/new-for-builtins": "warn",
     "unicorn/no-abusive-eslint-disable": "off",
-    "unicorn/no-array-instanceof": "warn",
     "unicorn/no-console-spaces": "warn",
-    "unicorn/no-fn-reference-in-iterator": "off",
     "unicorn/no-for-loop": "warn",
     "unicorn/no-hex-escape": "warn",
     "unicorn/no-keyword-prefix": "off",
@@ -120,7 +131,6 @@
     "unicorn/no-null": "off",
     "unicorn/no-object-as-default-parameter": "off",
     "unicorn/no-process-exit": "error",
-    "unicorn/no-reduce": "off",
     "unicorn/no-unreadable-array-destructuring": "error",
     "unicorn/no-unsafe-regex": "error",
     "unicorn/no-unused-properties": "error",
@@ -129,28 +139,21 @@
     "unicorn/numeric-separators-style": "warn",
     "unicorn/prefer-add-event-listener": "warn",
     "unicorn/prefer-array-find": "warn",
-    "unicorn/prefer-dataset": "warn",
-    "unicorn/prefer-event-key": "warn",
-    "unicorn/prefer-flat-map": "warn",
     "unicorn/prefer-includes": "warn",
     "unicorn/prefer-math-trunc": "warn",
     "unicorn/prefer-modern-dom-apis": "warn",
     "unicorn/prefer-negative-index": "warn",
-    "unicorn/prefer-node-append": "warn",
-    "unicorn/prefer-node-remove": "warn",
     "unicorn/prefer-number-properties": "warn",
     "unicorn/prefer-optional-catch-binding": "warn",
     "unicorn/prefer-query-selector": "warn",
     "unicorn/prefer-reflect-apply": "warn",
-    "unicorn/prefer-replace-all": "warn",
     "unicorn/prefer-set-has": "warn",
     "unicorn/prefer-spread": "warn",
-    "unicorn/prefer-starts-ends-with": "warn",
     "unicorn/prefer-string-slice": "warn",
     "unicorn/prefer-ternary": "warn",
-    "unicorn/prefer-text-content": "warn",
-    "unicorn/prefer-trim-start-end": "warn",
     "unicorn/prefer-type-error": "warn",
+    "unicorn/string-content": "warn",
+    "unicorn/throw-new-error": "warn",
     "unicorn/prevent-abbreviations": [
       "off",
       {
@@ -160,20 +163,6 @@
       }
     ],
     // "unicorn/regex-shorthand": "warn",
-    "unicorn/string-content": "warn",
-    "unicorn/throw-new-error": "warn",
-    "promise/always-return": "error",
-    "promise/no-return-wrap": "error",
-    "promise/param-names": "warn",
-    "promise/catch-or-return": "error",
-    "promise/no-native": "off",
-    "promise/no-nesting": "error",
-    "promise/no-promise-in-callback": "error",
-    "promise/no-callback-in-promise": "error",
-    "promise/avoid-new": "error",
-    "promise/no-new-statics": "warn",
-    "promise/no-return-in-finally": "error",
-    "promise/valid-params": "error",
     /*
       ―――――――― simple-import-fp ――――――――――――――――――――――――――――――――――――――――――――――――――
     */
@@ -236,44 +225,44 @@
   ―――――――― eslint-plugin-import ――――――――――――――――――――――――――――――――――――――――――――――――
     */
     /*Static analysis*/
-    "import/no-self-import": "error",
-    "import/no-useless-path-segments": "warn",
-    "import/no-unresolved": "off", // "error",
-    "import/named": "error",
     "import/default": "error",
+    "import/named": "error",
     "import/namespace": "error",
-    "import/no-restricted-paths": "error",
     "import/no-absolute-path": "error",
+    "import/no-cycle": "error",
     "import/no-dynamic-require": "error",
     "import/no-internal-modules": "error",
-    "import/no-webpack-loader-syntax": "error",
-    "import/no-cycle": "error",
     "import/no-relative-parent-imports": "error",
+    "import/no-restricted-paths": "error",
+    "import/no-self-import": "error",
+    "import/no-unresolved": "off", // "error",
+    "import/no-useless-path-segments": "warn",
+    "import/no-webpack-loader-syntax": "error",
     /* Helpful warnings */
     "import/export": "error",
-    "import/no-named-as-default": "error",
-    "import/no-named-as-default-member": "error",
     "import/no-deprecated": "error",
     "import/no-extraneous-dependencies": "error",
     "import/no-mutable-exports": "error",
+    "import/no-named-as-default-member": "error",
+    "import/no-named-as-default": "error",
     "import/no-unused-modules": "error",
     /*Style guide*/
-    "import/first": "warn",
-    "import/newline-after-import": "warn",
-    "import/no-duplicates": "warn",
-    "import/no-namespace": "warn",
-    // "import/order":  "error", // ―3 managed with simple-import-sort
+    "import/dynamic-import-chunkname": "error",
     "import/exports-last": "off",
     "import/extensions": "error",
-    "import/prefer-default-export": "off",
-    "import/max-dependencies": "off",
-    "import/no-unassigned-import": "error",
-    "import/no-named-default": "error",
-    "import/no-default-export": "off",
-    "import/no-named-export": "off",
-    "import/no-anonymous-default-export": "error",
+    "import/first": "warn",
     "import/group-exports": "off",
-    "import/dynamic-import-chunkname": "error",
+    "import/max-dependencies": "off",
+    "import/newline-after-import": "warn",
+    "import/no-anonymous-default-export": "error",
+    "import/no-default-export": "off",
+    "import/no-duplicates": "warn",
+    "import/no-named-default": "error",
+    "import/no-named-export": "off",
+    "import/no-namespace": "warn",
+    "import/no-unassigned-import": "error",
+    "import/prefer-default-export": "off",
+    // "import/order":  "error", // ―3 managed with simple-import-sort
     /*Module systems*/
     "import/no-amd": "error",
     "import/no-commonjs": "error",
@@ -301,29 +290,28 @@
     "jsdoc/no-defaults": 0,
     "jsdoc/no-types": 0,
     "jsdoc/no-undefined-types": 0,
-    "jsdoc/require-description": "off",
     "jsdoc/require-description-complete-sentence": 0,
+    "jsdoc/require-description": "off",
     "jsdoc/require-example": 0,
     "jsdoc/require-file-overview": "off",
     "jsdoc/require-hyphen-before-param-description": 0,
     "jsdoc/require-jsdoc": 0,
-    "jsdoc/require-param": 0,
     "jsdoc/require-param-description": 0,
     "jsdoc/require-param-name": 0,
     "jsdoc/require-param-type": 0,
-    "jsdoc/require-property": 0,
+    "jsdoc/require-param": 0,
     "jsdoc/require-property-description": 0,
     "jsdoc/require-property-name": 0,
     "jsdoc/require-property-type": 0,
-    "jsdoc/require-returns": 0,
+    "jsdoc/require-property": 0,
     "jsdoc/require-returns-check": 0,
     "jsdoc/require-returns-description": 0,
     "jsdoc/require-returns-type": 0,
+    "jsdoc/require-returns": 0,
     "jsdoc/valid-types": 0,
     /*
   ―――――――― eslint-plugin-security ――――――――――――――――――――――――――――――――――――――――――――――
     */
-    "security/detect-unsafe-regex": "error",
     "security/detect-buffer-noassert": "error",
     "security/detect-child-process": "error",
     "security/detect-disable-mustache-escape": "error",
@@ -335,72 +323,369 @@
     "security/detect-object-injection": "error",
     "security/detect-possible-timing-attacks": "error",
     "security/detect-pseudoRandomBytes": "error",
+    "security/detect-unsafe-regex": "error",
     /*
   ―――――――― eslint-plugin-radar ―――――――――――――――――――――――――――――――――――――――――――――――――
     */
-    "radar/no-all-duplicated-branches": "error",
-    "radar/no-element-overwrite": "error",
-    "radar/no-extra-arguments": "error",
-    "radar/no-identical-conditions": "error",
-    "radar/no-identical-expressions": "error",
-    "radar/no-one-iteration-loop": "error",
-    "radar/no-use-of-empty-return-value": "error",
-    "radar/cognitive-complexity": [
-      "error",
-      20
-    ],
     "radar/max-switch-cases": "error",
+    "radar/no-all-duplicated-branches": "error",
     "radar/no-collapsible-if": "error",
     "radar/no-collection-size-mischeck": "error",
     "radar/no-duplicate-string": "error",
     "radar/no-duplicated-branches": "error",
+    "radar/no-element-overwrite": "error",
+    "radar/no-extra-arguments": "error",
+    "radar/no-identical-conditions": "error",
+    "radar/no-identical-expressions": "error",
     "radar/no-identical-functions": "error",
     "radar/no-inverted-boolean-check": "warn",
+    "radar/no-one-iteration-loop": "error",
     "radar/no-redundant-boolean": "error",
     "radar/no-redundant-jump": "error",
     "radar/no-same-line-conditional": "error",
     "radar/no-small-switch": "error",
     "radar/no-unused-collection": "error",
+    "radar/no-use-of-empty-return-value": "error",
     "radar/no-useless-catch": "error",
     "radar/prefer-immediate-return": "warn",
     "radar/prefer-object-literal": "error",
     "radar/prefer-single-boolean-return": "error",
     "radar/prefer-while": "warn",
+    "radar/cognitive-complexity": [
+      "error",
+      20
+    ],
     /*
-  ―――――――― eslint °Deprecated° ―――――――――――――――――――――――――――――――――――――――――――――――――
-  These rules have been deprecated in accordance with the deprecation policy,
-  and replaced by newer rules: Deprecated rule
+  ―――――――― eslint °Possible Errors° ――――――――――――――――――――――――――――――――――――――――――――
+  These rules relate to possible syntax or logic errors in JavaScript code:
+  for-direction	enforce "for" loop update clause moving the counter in
+  the right direction.
 
-  # °Deprecated°
+  # °Possible Errors°
     */
-    "callback-return": "off", // (no replacement)
-    "global-require": "off", // (no replacement)
-    "handle-callback-err": "off", // (no replacement)
-    "id-blacklist": "off", //
-    "indent-legacy": "off", //
-    "lines-around-directive": "off", //
-    "newline-after-var": "off", //
-    "newline-before-return": "off", //
-    "no-buffer-constructor": "off", // (no replacement)
-    "no-catch-shadow": "off", //
-    "no-mixed-requires": "off", // (no replacement)
-    "no-native-reassign": "off", //
-    "no-negated-in-lhs": "off", //
-    "no-new-require": "off", // (no replacement)
-    "no-path-concat": "off", // (no replacement)
-    "no-process-env": "off", // (no replacement)
-    "no-process-exit": "off", // (no replacement)
-    "no-restricted-modules": "off", // (no replacement)
-    "no-spaced-func": "off", //
-    "no-sync": "off", // (no replacement)
-    "prefer-reflect": "off", // (no replacement)
-    "require-jsdoc": "off", // (no replacement)
-    "valid-jsdoc": "off", // (no replacement),
+    "no-global-assign": "error",
+    // "@typescript-eslint/func-call-spacing": "warn",
     // Replaced by
-    "id-denylist": "off",
     // "indent": [
     //   "warn","error",{"MemberExpression":1}, { "offsetTernaryExpressions": true }], // , {"ignoredNodes": ["ConditionalExpression"] }
+    "id-denylist": "off",
+    "@typescript-eslint/no-shadow": "error",
     "no-else-return": "warn",
+    "no-unsafe-negation": "error",
+    "@typescript-eslint/no-loss-of-precision": "error",
+    "getter-return": "error",
+    "no-async-promise-executor": 0,
+    "no-await-in-loop": "error",
+    "no-compare-neg-zero": "error",
+    "no-cond-assign": "error",
+    "no-console": 0,
+    "no-constant-condition": "error",
+    "no-control-regex": "error",
+    "no-debugger": "error",
+    "no-dupe-args": "error",
+    "no-dupe-else-if": "error",
+    "no-dupe-keys": "error",
+    "no-duplicate-case": "error",
+    "no-empty-character-class": "error",
+    "no-empty": "error",
+    "no-ex-assign": "error",
+    "no-extra-boolean-cast": 0,
+    "no-func-assign": "error",
+    "no-import-assign": "error",
+    "no-inner-declarations": "error",
+    "no-invalid-regexp": "error",
+    "no-irregular-whitespace": "error",
+    "no-misleading-character-class": "error",
+    "no-obj-calls": "error",
+    "no-promise-executor-return": "error",
+    "no-prototype-builtins": "error",
+    "no-regex-spaces": "warn",
+    "no-setter-return": "error",
+    "no-sparse-arrays": "error",
+    "no-template-curly-in-string": "error",
+    "no-unreachable-loop": "error",
+    "no-unreachable": "error",
+    "no-unsafe-finally": "error",
+    "no-unsafe-optional-chaining": "error",
+    "no-useless-backreference": "error",
+    "require-atomic-updates": "error",
+    "use-isnan": "error",
+    "valid-typeof": "error",
+    // "@typescript-eslint/no-extra-parens": 0,
+    // "@typescript-eslint/no-extra-semi": "warn",
+    // "no-unexpected-multiline": "error",
+    // "no-unsafe-negation": "error",
+    /*
+  ―――――――― eslint °Best Practices° ――――――――――――――――――――――――――――――――――――――――――――
+  These rules relate to better ways of doing things to help you avoid problems:
+
+  # °Best Practices°
+    */
+    "@typescript-eslint/default-param-last": 0,
+    "@typescript-eslint/no-empty-function": "error",
+    "@typescript-eslint/no-implied-eval": "error",
+    "@typescript-eslint/no-invalid-this": "error",
+    "@typescript-eslint/no-loop-func": "error",
+    "@typescript-eslint/no-magic-numbers": 0,
+    "@typescript-eslint/no-redeclare": "error",
+    "@typescript-eslint/no-throw-literal": "error",
+    "@typescript-eslint/no-unused-expressions": 0, // 1- WILL BE IMPLEMENTED LATER
+    "accessor-pairs": 0,
+    "array-callback-return": "error",
+    "block-scoped-var": "error",
+    "class-methods-use-this": "error",
+    "complexity": 0,
+    "consistent-return": "error",
+    "default-case-last": "error",
+    "default-case": "error",
+    "dot-location": 0,
+    "grouped-accessor-pairs": "error",
+    "guard-for-in": "error",
+    "max-classes-per-file": "error",
+    "no-alert": "error",
+    "no-caller": "error",
+    "no-case-declarations": "error",
+    "no-constructor-return": "error",
+    "no-div-regex": "warn",
+    "no-empty-pattern": "error",
+    "no-eq-null": 0,
+    "no-eval": "error",
+    "no-extend-native": "error",
+    "no-extra-bind": "warn",
+    "no-extra-label": "warn",
+    "no-fallthrough": "error",
+    "no-floating-decimal": "warn",
+    "no-implicit-globals": "off",
+    "no-iterator": "error",
+    "no-labels": "error",
+    "no-lone-blocks": "error",
+    "no-multi-spaces": "warn",
+    "no-multi-str": "error",
+    "no-new-func": "error",
+    "no-new-wrappers": "error",
+    "no-new": "error",
+    "no-nonoctal-decimal-escape": "error",
+    "no-octal-escape": "error",
+    "no-octal": "error",
+    "no-param-reassign": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-proto": "error",
+    "no-restricted-properties": "error",
+    "no-return-assign": "error",
+    "no-return-await": "error",
+    "no-script-url": "error",
+    "no-self-assign": "error",
+    "no-self-compare": "error",
+    "no-sequences": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-unmodified-loop-condition": "error",
+    "no-unused-labels": "warn",
+    "no-useless-call": "error",
+    "no-useless-catch": "error",
+    "no-useless-concat": "error",
+    "no-useless-escape": "error",
+    "no-useless-return": "warn",
+    "no-void": 0,
+    "no-warning-comments": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-with": "error",
+    "prefer-named-capture-group": "error",
+    "prefer-promise-reject-errors": "error",
+    "prefer-regex-literals": "error",
+    "radix": "error",
+    "require-await": 0, // 1- WILL BE IMPLEMENTED LATER
+    "require-unicode-regexp": "error",
+    "vars-on-top": "error",
+    "wrap-iife": "warn",
+    "yoda": "warn",
+    // "@typescript-eslint/dot-notation": "warn",
+    // "curly": "error",
+    // "no-else-return": "error",
+    // "no-global-assign": "error",
+    "no-implicit-coercion": [
+      "warn",
+      {
+        // "boolean": false,
+        "allow": [
+          "!!"
+        ]
+      }
+    ],
+    "eqeqeq": [
+      "error",
+      "smart"
+    ],
+    /*
+  ―――――――― eslint °Strict Mode° ――――――――――――――――――――――――――――――――――――――――――――
+  These rules relate to strict mode directives:
+
+  # °Strict Mode°
+    */
+    "strict": 0, // 1- WILL BE IMPLEMENTED LATER
+    /*
+  ―――――――― eslint °Variables° ――――――――――――――――――――――――――――――――――――――――――――
+  These rules relate to variable declarations:
+
+  # °Variables°
+    */
+    "@typescript-eslint/init-declarations": "off", // 3- WILL NOT BE IMPLEMENTED
+    "@typescript-eslint/no-unused-vars": 0, // 3- WILL NOT BE IMPLEMENTED
+    "@typescript-eslint/no-use-before-define": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-delete-var": "error",
+    "no-label-var": "error",
+    "no-restricted-globals": 0, // 3- WILL NOT BE IMPLEMENTED
+    "no-shadow-restricted-names": "error",
+    "no-undef-init": "warn",
+    "no-undef": "error",
+    "no-undefined": "error",
+    // "no-shadow": 0,
+    /*
+  ―――――――― eslint °Stylistic Issues° ――――――――――――――――――――――――――――――――――――――――――――
+  These rules relate to style guidelines, and are therefore quite subjective:
+
+  # °Stylistic Issues°
+    */
+    "@typescript-eslint/no-array-constructor": "error",
+    "@typescript-eslint/object-curly-spacing": 0, // 1- WILL BE IMPLEMENTED LATER
+    "array-bracket-newline": 0, // 1- WILL BE IMPLEMENTED LATER
+    "array-bracket-spacing": "warn",
+    "block-spacing": "warn",
+    "camelcase": 0, // 1- WILL BE IMPLEMENTED LATER
+    "capitalized-comments": 0, // 1- WILL BE IMPLEMENTED LATER
+    "comma-style": "warn",
+    "computed-property-spacing": "warn",
+    "eol-last": "warn",
+    "func-name-matching": 0, // 1- WILL BE IMPLEMENTED LATER
+    "func-names": 0, // 1- WILL BE IMPLEMENTED LATER
+    "func-style": 0, // 1- WILL BE IMPLEMENTED LATER
+    "function-paren-newline": 0, // 1- WILL BE IMPLEMENTED LATER
+    "id-length": 0, // 1- WILL BE IMPLEMENTED LATER
+    "id-match": 0, // 1- WILL BE IMPLEMENTED LATER
+    "implicit-arrow-linebreak": 0, // 1- WILL BE IMPLEMENTED LATER
+    "jsx-quotes": 0, // 1- WILL BE IMPLEMENTED LATER
+    "key-spacing": 0, // 1- WILL BE IMPLEMENTED LATER
+    "line-comment-position": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-depth": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-lines-per-function": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-lines": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-nested-callbacks": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-params": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-statements-per-line": 0, // 1- WILL BE IMPLEMENTED LATER
+    "max-statements": 0, // 1- WILL BE IMPLEMENTED LATER
+    "multiline-comment-style": 0, // 1- WILL BE IMPLEMENTED LATER
+    "multiline-ternary": 0, // 1- WILL BE IMPLEMENTED LATER
+    "new-cap": "error",
+    "new-parens": 0, // 1- WILL BE IMPLEMENTED LATER
+    "newline-per-chained-call": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-bitwise": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-continue": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-inline-comments": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-lonely-if": "warn",
+    "no-mixed-spaces-and-tabs": "error",
+    "no-multi-assign": "error",
+    "no-multiple-empty-lines": "warn",
+    "no-negated-condition": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-nested-ternary": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-new-object": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-restricted-syntax": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-ternary": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-trailing-spaces": "warn",
+    "no-underscore-dangle": 0, // 1- WILL BE IMPLEMENTED LATER
+    "no-unneeded-ternary": "warn",
+    "no-whitespace-before-property": "warn",
+    "nonblock-statement-body-position": "warn",
+    "object-curly-newline": 0, // 1- WILL BE IMPLEMENTED LATER
+    "object-property-newline": 0, // 1- WILL BE IMPLEMENTED LATER
+    "one-var-declaration-per-line": 0, // 1- WILL BE IMPLEMENTED LATER
+    "operator-assignment": "warn",
+    "operator-linebreak": 0, // 1- WILL BE IMPLEMENTED LATER
+    "padded-blocks": 0, // 1- WILL BE IMPLEMENTED LATER
+    "prefer-exponentiation-operator": "warn",
+    "prefer-object-spread": "warn",
+    "semi-spacing": "warn",
+    "semi-style": "warn",
+    "sort-keys": "error",
+    "sort-vars": "warn",
+    "space-in-parens": "warn",
+    "space-unary-ops": "warn",
+    "spaced-comment": "warn",
+    "switch-colon-spacing": "warn",
+    "template-tag-spacing": "warn",
+    "unicode-bom": "warn",
+    "wrap-regex": "warn",
+    // "@typescript-eslint/brace-style": "warn",
+    // "@typescript-eslint/comma-spacing": "warn",
+    // "@typescript-eslint/keyword-spacing": 0, // 1- WILL BE IMPLEMENTED LATER
+    // "@typescript-eslint/space-infix-ops": "warn",
+    // "func-call-spacing": 0,  // 1- WILL BE IMPLEMENTED LATER
+    // "id-denylist": 0,  // 1- WILL BE IMPLEMENTED LATER
+    // "lines-around-comment": 0,  // 1- WILL BE IMPLEMENTED LATER
+    // "max-len": 0, // 1- WILL BE IMPLEMENTED LATER
+    // "no-mixed-operators": 0, // 1- WILL BE IMPLEMENTED LATER
+    // "no-tabs": 0, // 1- WILL BE IMPLEMENTED LATER
+    // "padding-line-between-statements": 0, // 1- WILL BE IMPLEMENTED LATER
+    // "semi":"warn",
+    // "@typescript-eslint/indent": [
+    //   0, // 1- WILL BE IMPLEMENTED LATER
+    //   2,
+    //   {
+    //     "flatTernaryExpressions": true,
+    //     "offsetTernaryExpressions": true
+    //   }
+    // ],
+    "@typescript-eslint/lines-between-class-members": [
+      "warn",
+      "always",
+      {
+        "exceptAfterSingleLine": true
+      }
+    ],
+    "space-before-blocks": [
+      0, // 1- WILL BE IMPLEMENTED LATER
+      {
+        "functions": "never",
+        "keywords": "always",
+        "classes": "never"
+      }
+    ],
+    "one-var": [
+      "warn",
+      {
+        "initialized": "never",
+        "uninitialized": "always"
+      }
+    ],
+    "quote-props": [
+      "warn",
+      "consistent-as-needed"
+    ],
+    "no-plusplus": [
+      "error",
+      {
+        "allowForLoopAfterthoughts": true
+      }
+    ],
+    "linebreak-style": [
+      1,
+      "unix"
+    ],
+    "function-call-argument-newline": [
+      "warn",
+      "consistent"
+    ],
+    "array-element-newline": [
+      "warn",
+      "consistent"
+    ],
+    "consistent-this": [
+      "error",
+      "that"
+    ],
+    // "@typescript-eslint/space-before-function-paren": [
+    // 0,
+    // {
+    //     "anonymous": "never",
+    //     "named": "never",
+    //     "asyncArrow": "never"
+    //   }
+    // ],
     "padding-line-between-statements": [
       "warn",
       {
@@ -444,362 +729,31 @@
         ]
       }
     ],
-    "no-shadow": "error",
-    "no-unsafe-negation": "error",
-    "func-call-spacing": "warn",
-    "no-global-assign": "error",
-    /*
-  ―――――――― eslint °Possible Errors° ――――――――――――――――――――――――――――――――――――――――――――
-  These rules relate to possible syntax or logic errors in JavaScript code:
-  for-direction	enforce "for" loop update clause moving the counter in
-  the right direction.
-
-  # °Possible Errors°
-    */
-    "getter-return": "error",
-    "no-async-promise-executor": 0,
-    "no-await-in-loop": "error",
-    "no-compare-neg-zero": "error",
-    "no-cond-assign": "error",
-    "no-console": 0,
-    "no-constant-condition": "error",
-    "no-control-regex": "error",
-    "no-debugger": "error",
-    "no-dupe-args": "error",
-    "no-dupe-else-if": "error",
-    "no-dupe-keys": "error",
-    "no-duplicate-case": "error",
-    "no-empty": "error",
-    "no-empty-character-class": "error",
-    "no-ex-assign": "error",
-    "no-extra-boolean-cast": 0,
-    "no-extra-parens": 0,
-    "no-extra-semi": "warn",
-    "no-func-assign": "error",
-    "no-import-assign": "error",
-    "no-inner-declarations": "error",
-    "no-invalid-regexp": "error",
-    "no-irregular-whitespace": "error",
-    "no-loss-of-precision": "error",
-    "no-misleading-character-class": "error",
-    "no-obj-calls": "error",
-    "no-promise-executor-return": "error",
-    "no-prototype-builtins": "error",
-    "no-regex-spaces": "warn",
-    "no-setter-return": "error",
-    "no-sparse-arrays": "error",
-    "no-template-curly-in-string": "error",
-    // "no-unexpected-multiline": "error",
-    "no-unreachable": "error",
-    "no-unreachable-loop": "error",
-    "no-unsafe-finally": "error",
-    // "no-unsafe-negation": "error",
-    "no-unsafe-optional-chaining": "error",
-    "no-useless-backreference": "error",
-    "require-atomic-updates": "error",
-    "use-isnan": "error",
-    "valid-typeof": "error",
-    /*
-  ―――――――― eslint °Best Practices° ――――――――――――――――――――――――――――――――――――――――――――
-  These rules relate to better ways of doing things to help you avoid problems:
-
-  # °Best Practices°
-    */
-    "accessor-pairs": 0,
-    "array-callback-return": "error",
-    "block-scoped-var": "error",
-    "class-methods-use-this": "error",
-    "complexity": 0,
-    "consistent-return": "error",
-    // "curly": "error",
-    "default-case": "error",
-    "default-case-last": "error",
-    "default-param-last": 0,
-    "dot-location": 0,
-    "dot-notation": "warn",
-    "eqeqeq": [
-      "error",
-      "smart"
-    ],
-    "grouped-accessor-pairs": "error",
-    "guard-for-in": "error",
-    "max-classes-per-file": "error",
-    "no-alert": "error",
-    "no-caller": "error",
-    "no-case-declarations": "error",
-    "no-constructor-return": "error",
-    "no-div-regex": "warn",
-    // "no-else-return": "error",
-    "no-empty-function": "error",
-    "no-empty-pattern": "error",
-    "no-eq-null": 0,
-    "no-eval": "error",
-    "no-extend-native": "error",
-    "no-extra-bind": "warn",
-    "no-extra-label": "warn",
-    "no-fallthrough": "error",
-    "no-floating-decimal": "warn",
-    // "no-global-assign": "error",
-    "no-implicit-coercion": [
-      "warn",
-      {
-        // "boolean": false,
-        "allow": [
-          "!!"
-        ]
-      }
-    ],
-    "no-implicit-globals": "off",
-    "no-implied-eval": "error",
-    "no-invalid-this": "error",
-    "no-iterator": "error",
-    "no-labels": "error",
-    "no-lone-blocks": "error",
-    "no-loop-func": "error",
-    "no-magic-numbers": 0,
-    "no-multi-spaces": "warn",
-    "no-multi-str": "error",
-    "no-new": "error",
-    "no-new-func": "error",
-    "no-new-wrappers": "error",
-    "no-nonoctal-decimal-escape": "error",
-    "no-octal": "error",
-    "no-octal-escape": "error",
-    "no-param-reassign": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-proto": "error",
-    "no-redeclare": "error",
-    "no-restricted-properties": "error",
-    "no-return-assign": "error",
-    "no-return-await": "error",
-    "no-script-url": "error",
-    "no-self-assign": "error",
-    "no-self-compare": "error",
-    "no-sequences": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-throw-literal": "error",
-    "no-unmodified-loop-condition": "error",
-    "no-unused-expressions": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-unused-labels": "warn",
-    "no-useless-call": "error",
-    "no-useless-catch": "error",
-    "no-useless-concat": "error",
-    "no-useless-escape": "error",
-    "no-useless-return": "warn",
-    "no-void": 0,
-    "no-warning-comments": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-with": "error",
-    "prefer-named-capture-group": "error",
-    "prefer-promise-reject-errors": "error",
-    "prefer-regex-literals": "error",
-    "radix": "error",
-    "require-await": 0, // 1- WILL BE IMPLEMENTED LATER
-    "require-unicode-regexp": "error",
-    "vars-on-top": "error",
-    "wrap-iife": "warn",
-    "yoda": "warn",
-    /*
-  ―――――――― eslint °Strict Mode° ――――――――――――――――――――――――――――――――――――――――――――
-  These rules relate to strict mode directives:
-
-  # °Strict Mode°
-    */
-    "strict": 0, // 1- WILL BE IMPLEMENTED LATER
-    /*
-  ―――――――― eslint °Variables° ――――――――――――――――――――――――――――――――――――――――――――
-  These rules relate to variable declarations:
-
-  # °Variables°
-    */
-    "init-declarations": "off", // 3- WILL NOT BE IMPLEMENTED
-    "no-delete-var": "error",
-    "no-label-var": "error",
-    "no-restricted-globals": 0, // 3- WILL NOT BE IMPLEMENTED
-    // "no-shadow": 0,
-    "no-shadow-restricted-names": "error",
-    "no-undef": "error",
-    "no-undef-init": "warn",
-    "no-undefined": "error",
-    "no-unused-vars": 0, // 3- WILL NOT BE IMPLEMENTED
-    "no-use-before-define": 0, // 1- WILL BE IMPLEMENTED LATER
-    /*
-  ―――――――― eslint °Stylistic Issues° ――――――――――――――――――――――――――――――――――――――――――――
-  These rules relate to style guidelines, and are therefore quite subjective:
-
-  # °Stylistic Issues°
-    */
-    "array-bracket-newline": 0, // 1- WILL BE IMPLEMENTED LATER
-    "array-bracket-spacing": "warn",
-    "array-element-newline": [
-      "warn",
-      "consistent"
-    ],
-    "block-spacing": "warn",
-    "brace-style": "warn",
-    "camelcase": 0, // 1- WILL BE IMPLEMENTED LATER
-    "capitalized-comments": 0, // 1- WILL BE IMPLEMENTED LATER
-    "comma-spacing": "warn",
-    "comma-style": "warn",
-    "computed-property-spacing": "warn",
-    "consistent-this": [
-      "error",
-      "that"
-    ],
-    "eol-last": "warn",
-    // "func-call-spacing": 0,  // 1- WILL BE IMPLEMENTED LATER
-    "func-name-matching": 0, // 1- WILL BE IMPLEMENTED LATER
-    "func-names": 0, // 1- WILL BE IMPLEMENTED LATER
-    "func-style": 0, // 1- WILL BE IMPLEMENTED LATER
-    "function-call-argument-newline": [
-      "warn",
-      "consistent"
-    ],
-    "function-paren-newline": 0, // 1- WILL BE IMPLEMENTED LATER
-    // "id-denylist": 0,  // 1- WILL BE IMPLEMENTED LATER
-    "id-length": 0, // 1- WILL BE IMPLEMENTED LATER
-    "id-match": 0, // 1- WILL BE IMPLEMENTED LATER
-    "implicit-arrow-linebreak": 0, // 1- WILL BE IMPLEMENTED LATER
-    "indent": [
-      0, // 1- WILL BE IMPLEMENTED LATER
-      2,
-      {
-        "flatTernaryExpressions": true,
-        "offsetTernaryExpressions": true
-      }
-    ],
-    "jsx-quotes": 0, // 1- WILL BE IMPLEMENTED LATER
-    "key-spacing": 0, // 1- WILL BE IMPLEMENTED LATER
-    "keyword-spacing": 0, // 1- WILL BE IMPLEMENTED LATER
-    "line-comment-position": 0, // 1- WILL BE IMPLEMENTED LATER
-    "linebreak-style": [
-      1,
-      "unix"
-    ],
-    // "lines-around-comment": 0,  // 1- WILL BE IMPLEMENTED LATER
-    "lines-between-class-members": [
-      "warn",
-      "always",
-      {
-        "exceptAfterSingleLine": true
-      }
-    ],
-    "max-depth": 0, // 1- WILL BE IMPLEMENTED LATER
-    // "max-len": 0, // 1- WILL BE IMPLEMENTED LATER
-    "max-lines": 0, // 1- WILL BE IMPLEMENTED LATER
-    "max-lines-per-function": 0, // 1- WILL BE IMPLEMENTED LATER
-    "max-nested-callbacks": 0, // 1- WILL BE IMPLEMENTED LATER
-    "max-params": 0, // 1- WILL BE IMPLEMENTED LATER
-    "max-statements": 0, // 1- WILL BE IMPLEMENTED LATER
-    "max-statements-per-line": 0, // 1- WILL BE IMPLEMENTED LATER
-    "multiline-comment-style": 0, // 1- WILL BE IMPLEMENTED LATER
-    "multiline-ternary": 0, // 1- WILL BE IMPLEMENTED LATER
-    "new-cap": "error",
-    "new-parens": 0, // 1- WILL BE IMPLEMENTED LATER
-    "newline-per-chained-call": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-array-constructor": "error",
-    "no-bitwise": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-continue": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-inline-comments": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-lonely-if": "warn",
-    // "no-mixed-operators": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-mixed-spaces-and-tabs": "error",
-    "no-multi-assign": "error",
-    "no-multiple-empty-lines": "warn",
-    "no-negated-condition": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-nested-ternary": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-new-object": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-plusplus": [
-      "error",
-      {
-        "allowForLoopAfterthoughts": true
-      }
-    ],
-    "no-restricted-syntax": 0, // 1- WILL BE IMPLEMENTED LATER
-    // "no-tabs": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-ternary": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-trailing-spaces": "warn",
-    "no-underscore-dangle": 0, // 1- WILL BE IMPLEMENTED LATER
-    "no-unneeded-ternary": "warn",
-    "no-whitespace-before-property": "warn",
-    "nonblock-statement-body-position": "warn",
-    "object-curly-newline": 0, // 1- WILL BE IMPLEMENTED LATER
-    "object-curly-spacing": 0, // 1- WILL BE IMPLEMENTED LATER
-    "object-property-newline": 0, // 1- WILL BE IMPLEMENTED LATER
-    "one-var": [
-      "warn",
-      {
-        "initialized": "never",
-        "uninitialized": "always"
-      }
-    ],
-    "one-var-declaration-per-line": 0, // 1- WILL BE IMPLEMENTED LATER
-    "operator-assignment": "warn",
-    "operator-linebreak": 0, // 1- WILL BE IMPLEMENTED LATER
-    "padded-blocks": 0, // 1- WILL BE IMPLEMENTED LATER
-    // "padding-line-between-statements": 0, // 1- WILL BE IMPLEMENTED LATER
-    "prefer-exponentiation-operator": "warn",
-    "prefer-object-spread": "warn",
-    "quote-props": [
-      "warn",
-      "consistent-as-needed"
-    ],
-    // "semi":"warn",
-    "semi-spacing": "warn",
-    "semi-style": "warn",
-    "sort-keys": "error",
-    "sort-vars": "warn",
-    "space-before-blocks": [
-      0, // 1- WILL BE IMPLEMENTED LATER
-      {
-        "functions": "never",
-        "keywords": "always",
-        "classes": "never"
-      }
-    ],
-    "space-before-function-paren": [
-      0, // 1- WILL BE IMPLEMENTED LATER
-      {
-        "anonymous": "never",
-        "named": "never",
-        "asyncArrow": "never"
-      }
-    ],
-    "space-in-parens": "warn",
-    "space-infix-ops": "warn",
-    "space-unary-ops": "warn",
-    "spaced-comment": "warn",
-    "switch-colon-spacing": "warn",
-    "template-tag-spacing": "warn",
-    "unicode-bom": "warn",
-    "wrap-regex": "warn",
     /*
   ―――――――― eslint °ECMAScript 6° ――――――――――――――――――――――――――――――――――――――――――――
   These rules relate to ES6, also known as ES2015:
 
   # °ECMAScript 6°
     */
-    // "arrow-body-style": 0,
     "arrow-parens": [
       "warn",
       "as-needed"
     ],
+    "@typescript-eslint/no-dupe-class-members": "error",
+    "@typescript-eslint/no-duplicate-imports": "error",
+    "@typescript-eslint/no-useless-constructor": "off",
     "arrow-spacing": "warn",
     "constructor-super": "error",
     "generator-star-spacing": "warn",
     "no-class-assign": "error",
-    // "no-confusing-arrow": 0,
     "no-const-assign": "error",
-    "no-dupe-class-members": "error",
-    "no-duplicate-imports": "error",
     "no-new-symbol": "error",
     "no-restricted-exports": "error",
     "no-restricted-imports": "error",
     "no-this-before-super": "error",
     "no-useless-computed-key": "warn",
-    "no-useless-constructor": "off",
     "no-useless-rename": "warn",
-    // "no-var": 0,
     "object-shorthand": "warn",
-    // "prefer-arrow-callback": 0,
-    // "prefer-const": 0,
     "prefer-destructuring": "warn",
     "prefer-numeric-literals": "warn",
     "prefer-rest-params": "error",
@@ -807,12 +761,64 @@
     "prefer-template": "warn",
     "require-yield": "error",
     "rest-spread-spacing": "warn",
-    // "sort-imports": 0,
     "symbol-description": "error",
-    "template-curly-spacing": "warn"
+    "template-curly-spacing": "warn",
+    // "arrow-body-style": 0,
+    // "no-confusing-arrow": 0,
+    // "no-var": 0,
+    // "prefer-arrow-callback": 0,
+    // "prefer-const": 0,
+    // "sort-imports": 0,
     // "yield-star-spacing": 0,
-    // # Removed
-    // These rules from older versions of ESLint (before the deprecation policy existed) have been replaced by newer rules:
+    /*
+  ―――――――― eslint °Deprecated° ―――――――――――――――――――――――――――――――――――――――――――――――――
+  These rules have been deprecated in accordance with the deprecation policy,
+  and replaced by newer rules: Deprecated rule
+
+  # °Deprecated°
+    */
+    "callback-return": "off", // (no replacement)
+    "global-require": "off", // (no replacement)
+    "handle-callback-err": "off", // (no replacement)
+    "no-buffer-constructor": "off", // (no replacement)
+    "no-mixed-requires": "off", // (no replacement)
+    "no-new-require": "off", // (no replacement)
+    "no-path-concat": "off", // (no replacement)
+    "no-process-env": "off", // (no replacement)
+    "no-process-exit": "off", // (no replacement)
+    "no-restricted-modules": "off", // (no replacement)
+    "no-sync": "off", // (no replacement)
+    "prefer-reflect": "off", // (no replacement)
+    "require-jsdoc": "off", // (no replacement)
+    "valid-jsdoc": "off", // (no replacement),
+    "id-blacklist": "off", //
+    "indent-legacy": "off", //
+    "lines-around-directive": "off", //
+    "newline-after-var": "off", //
+    "newline-before-return": "off", //
+    "no-catch-shadow": "off", //
+    "no-native-reassign": "off", //
+    "no-negated-in-lhs": "off", //
+    "no-spaced-func": "off", //
+    "unicorn/no-array-instanceof": "off",
+    "unicorn/no-fn-reference-in-iterator": "off",
+    "unicorn/no-reduce": "off",
+    "unicorn/prefer-dataset": "off",
+    "unicorn/prefer-event-key": "off",
+    "unicorn/prefer-flat-map": "off",
+    "unicorn/prefer-node-append": "off",
+    "unicorn/prefer-node-remove": "off",
+    "unicorn/prefer-replace-all": "off",
+    "unicorn/prefer-starts-ends-with": "off",
+    "unicorn/prefer-text-content": "off",
+    "unicorn/prefer-trim-start-end": "off",
+    /*
+  ―――――――― eslint °Removed° ――――――――――――――――――――――――――――――――――――――――――――
+  These rules from older versions of ESLint (before the deprecation policy existed) have been replaced by newer rules:
+
+  # °Removed°
+    */
+    //
     // generator-star // generator-star-spacing
     // global-strict // strict
     // no-arrow-condition // no-confusing-arrow no-constant-condition
@@ -831,6 +837,163 @@
     // space-return-throw-case // keyword-spacing
     // space-unary-word-ops // space-unary-ops
     // spaced-line-comment // spaced-comment
+    /*
+  ―――――――― eslint °@typescript-eslint° ――――――――――――――――――――――――――――――――――――――――――――
+
+
+  # °@typescript-eslint°
+    */
+    "@typescript-eslint/adjacent-overload-signatures": "off",
+    "@typescript-eslint/array-type": "off",
+    "@typescript-eslint/await-thenable": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/ban-tslint-comment": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/class-literal-property-style": "off",
+    "@typescript-eslint/consistent-indexed-object-style": "off",
+    "@typescript-eslint/consistent-type-assertions": "off",
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/consistent-type-imports": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/member-ordering": "off",
+    "@typescript-eslint/method-signature-style": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-base-to-string": "off",
+    "@typescript-eslint/no-confusing-non-null-assertion": "off",
+    "@typescript-eslint/no-confusing-void-expression": "off",
+    "@typescript-eslint/no-dynamic-delete": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-extra-non-null-assertion": "off",
+    "@typescript-eslint/no-extraneous-class": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/no-for-in-array": "off",
+    "@typescript-eslint/no-implicit-any-catch": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-invalid-void-type": "off",
+    "@typescript-eslint/no-misused-new": "off",
+    "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-parameter-properties": "off",
+    "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/no-this-alias": "off",
+    "@typescript-eslint/no-type-alias": "off",
+    "@typescript-eslint/no-unnecessary-boolean-literal-compare": "off",
+    "@typescript-eslint/no-unnecessary-condition": "off",
+    "@typescript-eslint/no-unnecessary-qualifier": "off",
+    "@typescript-eslint/no-unnecessary-type-arguments": "off",
+    "@typescript-eslint/no-unnecessary-type-assertion": "off",
+    "@typescript-eslint/no-unnecessary-type-constraint": "off",
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/no-unsafe-call": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
+    "@typescript-eslint/no-unsafe-return": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/non-nullable-type-assertion-style": "off",
+    "@typescript-eslint/prefer-as-const": "off",
+    "@typescript-eslint/prefer-enum-initializers": "off",
+    "@typescript-eslint/prefer-for-of": "off",
+    "@typescript-eslint/prefer-function-type": "off",
+    "@typescript-eslint/prefer-includes": "off",
+    "@typescript-eslint/prefer-literal-enum-member": "off",
+    "@typescript-eslint/prefer-namespace-keyword": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/prefer-optional-chain": "off",
+    "@typescript-eslint/prefer-readonly-parameter-types": "off",
+    "@typescript-eslint/prefer-readonly": "off",
+    "@typescript-eslint/prefer-reduce-type-parameter": "off",
+    "@typescript-eslint/prefer-regexp-exec": "off",
+    "@typescript-eslint/prefer-string-starts-ends-with": "off",
+    "@typescript-eslint/prefer-ts-expect-error": "off",
+    "@typescript-eslint/promise-function-async": "off",
+    "@typescript-eslint/require-array-sort-compare": "off",
+    "@typescript-eslint/require-await": "off",
+    "@typescript-eslint/restrict-plus-operands": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/return-await": "off",
+    "@typescript-eslint/sort-type-union-intersection-members": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/switch-exhaustiveness-check": "off",
+    "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/typedef": "off",
+    "@typescript-eslint/unbound-method": "off",
+    "@typescript-eslint/unified-signatures": "off",
+    // "@ts-expect-error  " :"off",
+    // "@ts-ignore" :"off",
+    // "@typescript-eslint/brace-style": "off",
+    // "@typescript-eslint/comma-dangle": "off",
+    // "@typescript-eslint/comma-spacing": "off",
+    // "@typescript-eslint/default-param-last": "off",
+    // "@typescript-eslint/dot-notation": "off",
+    // "@typescript-eslint/func-call-spacing": "off",
+    // "@typescript-eslint/indent": "off",
+    // "@typescript-eslint/init-declarations": "off",
+    // "@typescript-eslint/keyword-spacing": "off",
+    // "@typescript-eslint/lines-between-class-members": "off",
+    // "@typescript-eslint/member-delimiter-style": "off",
+    // "@typescript-eslint/no-array-constructor": "off",
+    // "@typescript-eslint/no-dupe-class-members": "off",
+    // "@typescript-eslint/no-duplicate-imports": "off",
+    // "@typescript-eslint/no-empty-function": "off",
+    // "@typescript-eslint/no-extra-parens": "off",
+    // "@typescript-eslint/no-extra-semi": "off",
+    // "@typescript-eslint/no-implied-eval": "off",
+    // "@typescript-eslint/no-invalid-this": "off",
+    // "@typescript-eslint/no-loop-func": "off",
+    // "@typescript-eslint/no-loss-of-precision": "off",
+    // "@typescript-eslint/no-magic-numbers": "off",
+    // "@typescript-eslint/no-redeclare": "off",
+    // "@typescript-eslint/no-shadow": "off",
+    // "@typescript-eslint/no-throw-literal": "off",
+    // "@typescript-eslint/no-throw-literal": "off",
+    // "@typescript-eslint/no-unused-expressions": "off",
+    // "@typescript-eslint/no-unused-vars": "off",
+    // "@typescript-eslint/no-use-before-define": "off",
+    // "@typescript-eslint/no-useless-constructor": "off",
+    // "@typescript-eslint/object-curly-spacing": "off",
+    // "@typescript-eslint/quotes": "off",
+    // "@typescript-eslint/require-await": "off",
+    // "@typescript-eslint/semi": "off"
+    // "@typescript-eslint/space-before-function-paren": "off"
+    // "@typescript-eslint/space-infix-ops": "off"
+    // "@typescript-eslint/type-annotation-spacing": "off",
+    "brace-style": "off", // 1- typescript-eslint DUPLICATE
+    "comma-dangle": "off", // 1- typescript-eslint DUPLICATE
+    "comma-spacing": "off", // 1- typescript-eslint DUPLICATE
+    "default-param-last": "off", // 1- typescript-eslint DUPLICATE
+    "dot-notation": "off", // 1- typescript-eslint DUPLICATE
+    "func-call-spacing": "off", // 1- typescript-eslint DUPLICATE
+    "indent": "off", // 1- typescript-eslint DUPLICATE
+    "init-declarations": "off", // 1- typescript-eslint DUPLICATE
+    "keyword-spacing": "off", // 1- typescript-eslint DUPLICATE
+    "lines-between-class-members": "off", // 1- typescript-eslint DUPLICATE
+    "no-array-constructor": "off", // 1- typescript-eslint DUPLICATE
+    "no-dupe-class-members": "off", // 1- typescript-eslint DUPLICATE
+    "no-duplicate-imports": "off", // 1- typescript-eslint DUPLICATE
+    "no-empty-function": "off", // 1- typescript-eslint DUPLICATE
+    "no-extra-parens": "off", // 1- typescript-eslint DUPLICATE
+    "no-extra-semi": "off", // 1- typescript-eslint DUPLICATE
+    "no-implied-eval": "off", // 1- typescript-eslint DUPLICATE
+    "no-invalid-this": "off", // 1- typescript-eslint DUPLICATE
+    "no-loop-func": "off", // 1- typescript-eslint DUPLICATE
+    "no-loss-of-precision": "off", // 1- typescript-eslint DUPLICATE
+    "no-magic-numbers": "off", // 1- typescript-eslint DUPLICATE
+    "no-redeclare": "off", // 1- typescript-eslint DUPLICATE
+    "no-shadow": "off", // 1- typescript-eslint DUPLICATE
+    "no-unused-expressions": "off", // 1- typescript-eslint DUPLICATE
+    "no-unused-vars": "off", // 1- typescript-eslint DUPLICATE
+    "no-use-before-define": "off", // 1- typescript-eslint DUPLICATE
+    "no-useless-constructor": "off", // 1- typescript-eslint DUPLICATE
+    "object-curly-spacing": "off", // 1- typescript-eslint DUPLICATE
+    "quotes": "off", // 1- typescript-eslint DUPLICATE
+    "return-await": "off", // 1- typescript-eslint DUPLICATE
+    "semi": "off", // 1- typescript-eslint DUPLICATE
+    "space-before-function-paren": "off", // 1- typescript-eslint DUPLICATE
+    "space-infix-ops": "off" // 1- typescript-eslint DUPLICATE
   },
   "overrides": [
     {
