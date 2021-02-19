@@ -10,8 +10,7 @@ function _coreApiFunction(
   proxy: ProxyFactory_ | null,
   errorlog: Logger = (...error: any[]) => error,
 ) {
-  void apiCallQ; // ~~>
-
+  // ~~>
   return (VERB: 'GET' | 'POST') => {
     // ~~>
     return <D>(postData: D | null) => {
@@ -25,15 +24,16 @@ function _coreApiFunction(
           const configBuilder = _coreApiConfig(credentials);
           const getEndPoint = configBuilder(VERB);
           const endPoint = getEndPoint(endpoint);
-          const getDataConfig = endPoint(postData);
-          const clientDataGetter = _httpDataEndPointConnector<R>(
-            apiCallQ,
-            getDataConfig,
-            credentials,
-            proxy,
-          );
+          const config = endPoint(postData);
 
-          return clientDataGetter(errorlog, handlerOptions); // from _tryToGetData...
+          return _httpDataEndPointConnector<R>({
+            apiCallQ,
+            config,
+            credentials,
+            errorlog,
+            handlerOptions,
+            proxy,
+          });
         };
       };
     };

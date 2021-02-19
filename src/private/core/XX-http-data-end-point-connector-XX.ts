@@ -6,65 +6,61 @@ import type {
   ProxyHandlerOptions,
 } from '../../resources/side-effects/types';
 import type { Credentials, Logger, ProxyFactory_ } from '../../typescript';
-import {
-  _echoStatus,
-  _rateLimiter,
-  _updateCredentials,
-} from './end-point-connector';
+import { _echoStatus, _updateCredentials } from './end-point-connector';
 import type { ApiCallQ_ } from './next-rate-limiter/queue';
 
 const { getHttpClient } = sideEffects;
+type HttpDataEndPointConnector = {
+  apiCallQ: ApiCallQ_;
+  config: ClientRequestConfig;
+  credentials: Credentials;
+  proxy: ProxyFactory_ | null;
+  errorlog: Logger;
+  handlerOptions: ProxyHandlerOptions;
+};
+async function _httpDataEndPointConnector<DATA>({
+  apiCallQ,
+  config,
+  credentials,
+  proxy,
+  errorlog,
+  handlerOptions,
+}: HttpDataEndPointConnector) {
+  let httpClient: <S>(conf: ClientRequestConfig) => ClientPromise<S> = async (
+    conf: ClientRequestConfig,
+  ) => getHttpClient()(conf);
 
-function _httpDataEndPointConnector<DATA>(
-  apiCallQ: ApiCallQ_,
-  config: ClientRequestConfig,
-  credentials: Credentials,
-  proxy: ProxyFactory_ | null,
-  useNewRateLimiter = false,
-) {
-  return async (
-    errorlog: Logger,
-    handlerOptions: ProxyHandlerOptions,
-  ): Promise<DATA> => {
-    let httpClient: <S>(conf: ClientRequestConfig) => ClientPromise<S> = async (
-      conf: ClientRequestConfig,
-    ) => getHttpClient()(conf);
+  if (proxy?.httpDataEndPointConnector && proxy.activate) {
+    const someName = proxy.activate(handlerOptions);
 
-    if (proxy?.httpDataEndPointConnector && proxy.activate) {
-      const someName = proxy.activate(handlerOptions);
+    httpClient = async (conf: ClientRequestConfig) => someName(conf);
+  }
 
-      httpClient = async (conf: ClientRequestConfig) => someName(conf);
-    }
+  const response: ClientResponse<DATA> = await apiCallQ.addToQueue({
+    config,
+    fn: httpClient,
+  });
 
-    const possiblePerSeconds =
-      credentials.remainingRequests?.possiblePerSeconds ?? 21;
+  if (response.status !== 200) {
+    // console.error('STATUS:', response.status);
+    // console.error('REQUEST:', response.request);
+    console.error('CONFIG:', response.config);
+    console.error('HEADERS:', response.headers);
+    console.error('DATA:', response.data);
+    console.error('STATUS:', response.status);
+    console.error('STATUSTEXT:', response.statusText);
+  }
 
-    // testing it with useNewRateLimiter = true
-    useNewRateLimiter = true;
-    const response: ClientResponse<DATA> = (await (useNewRateLimiter
-      ? apiCallQ.addToQueue({
-          config,
-          fn: httpClient,
-        })
-      : _rateLimiter<DATA>({
-          config,
-          credentials,
-          httpClient,
-          maxPerSeconds: 20,
-          possiblePerSeconds,
-          useNewRateLimiter,
-        }))) as ClientResponse<DATA>;
+  if (response?.data) {
+    _updateCredentials(config, response, credentials);
 
-    if (response.data) {
-      _updateCredentials(config, response, credentials);
+    return response.data;
+  }
 
-      return response.data;
-    }
-
-    // eRROR HANDLER: ECHO STATUS ON ERROR //-!
-    _echoStatus(response, credentials);
-    throw new Error(...errorlog("Can't retrive data from call to API"));
-  };
+  // eRROR HANDLER: ECHO STATUS ON ERROR //-!
+  _echoStatus(response, credentials);
+  throw new Error(...errorlog("Can't retrive data from call to API"));
 }
+// }
 
 export { _httpDataEndPointConnector };

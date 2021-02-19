@@ -1,7 +1,7 @@
 /* eslint-disable radar/no-identical-functions */
 /* eslint-disable promise/avoid-new */
 import { MAX_PER_HOUR, MAX_PER_SECONDES } from '../../../magic-values';
-import { echo, echo1 } from '../../../resources/side-effects/default-behaviour';
+import { id1 } from '../../../resources/side-effects/default-behaviour';
 import type {
   ClientRequestConfig,
   ClientResponse,
@@ -92,30 +92,26 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
   // info: requestLimit //-!
   protected get requestLimit() {
     const { floor, min, ceil } = Math;
-    const reqstRemaining = echo1('\nreqstRemaining:', this.remaining - 1);
+    const reqstRemaining = id1('\nreqstRemaining:', this.remaining - 1);
     if (reqstRemaining < 1) {
-      return echo1('returnTime :', 999);
+      return id1('returnTime :', 999);
     }
 
-    const resetTime = echo1('resetTime :', this.resetTime);
+    const resetTime = id1('resetTime :', this.resetTime);
     if (resetTime <= 0) {
-      return echo1('returnTime :', 666);
+      return id1('returnTime :', 666);
     }
 
-    const timeNow = echo1('timeNow   :', floor(now() / 1000));
+    const timeNow = id1('timeNow   :', floor(now() / 1000));
     const timeRemaining = resetTime - timeNow;
-    echo1('timeRemaining:', timeRemaining);
+    id1('timeRemaining:', timeRemaining);
 
-    const reqPerSecRaw = echo1(
-      '\nreqPerSecRaw:',
-      reqstRemaining / timeRemaining,
-    );
-
-    const reqPerSec = echo1('reqPerSec:', min(floor(reqPerSecRaw), 20));
-    const delay = echo1('calculated Delay:', ceil(1000 / reqPerSec));
+    const reqPerSecRaw = id1('\nreqPerSecRaw:', reqstRemaining / timeRemaining);
+    const reqPerSec = id1('reqPerSec:', min(floor(reqPerSecRaw), 20));
+    const delay = id1('calculated Delay:', ceil(1000 / reqPerSec));
     const offset = this.positiveTimeOffset;
 
-    return echo1(`delay plus ${offset}ms offset :`, ceil(delay + offset));
+    return id1(`delay plus ${offset}ms offset :`, ceil(delay + offset));
   }
 
   // -| protected |-···――――――――――――――――――――――――――···-| callToPopQueue() |-//::――― ~
@@ -130,19 +126,22 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
       setTimeout(async () => {
         this.deQueue();
         const cb = this.current?.value.cb ?? void0;
-
         try {
           const { fn } = this.current!.value;
           const { config } = this.current!.value;
           const before = now();
           const response = await fn(config);
 
-          if (response.status !== 200) {
-            console.error(response);
-            throw new Error((response as any) as string);
-          }
+          // if (response.status !== 200) {
+          //   console.error('request', response.request);
+          //   console.error('config', response.config);
+          //   console.error('headers', response.headers);
+          //   console.error('data', response.data);
+          //   console.error('statusText', response.statusText);
+          //   // throw new Error((response as any) as string);
+          // }
 
-          console.log(
+          console.info(
             '\nrequest response cycle in',
             now() - before,
             'ms' /* '\n' */,
@@ -158,15 +157,17 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
           cb(null, response);
         } catch (error) {
           this.broke = true;
-          console.log('catch an error in Queue Ratelimiter:', error.message);
+          console.error('catch an error in Queue Ratelimiter:', error.message);
           cb(error, null);
         }
 
-        console.log('Complete previous cycle in', now() - timeThen, 'ms');
+        console.info('Complete previous cycle in', now() - timeThen, 'ms');
 
         this.isCalled = false;
         this.callToPopQueue();
-        echo(`\nsetTimeout(${now()})---------------------------------->>>>>>>`);
+        void0(
+          `\nsetTimeout(${now()})---------------------------------->>>>>>>`,
+        );
         // console.clear();
       }, this.requestLimit);
 
@@ -181,7 +182,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
   public async addToQueue<R = any>(value: T) /* : ClientPromise<R> */ {
     //
 
-    echo(
+    void0(
       `\n\naddToQueue(${now()}) ----------------------------------config = ${
         value.config.url?.split('v1')[1]
       } `,

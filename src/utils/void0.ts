@@ -13,7 +13,7 @@ function idx<T>(...args: T[]) {
   return args;
 }
 
-function void0<T>(...arg0: T[]) {
+function void0(...arg0: any[]) {
   return void arg0;
 }
 
