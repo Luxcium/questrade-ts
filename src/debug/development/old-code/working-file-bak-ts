@@ -826,3 +826,40 @@ item()
 
 // await qtApi.search.stock('couche tard');
 // void qtApi;
+
+// = [
+/*
+    argument of type '<R>(endpoint: string, handlerOptions: ProxyHandlerOptions) => () => Promise<R>'
+    is not assignable to
+    parameter of type '<R>(endpoint: string) => () => Promise<R>'.ts(2345)
+    ,
+    handlerOptions: ProxyHandlerOptions,
+    , { noCaching: true }
+     */
+// _getAccounts(getApi(), errorlog),
+// _getActivities(accGetApi(), errorlog),
+// _getBalances(accGetApi(), errorlog),
+// _getCandles(getApi(), errorlog),
+// _getExecutions(accGetApi(), errorlog),
+// _getMarkets(getApi(), errorlog),
+// _getMarketsQuotesStrategies(postApi(), errorlog),
+// _getOptionsById(getApi(), errorlog),
+// _getOrders(accGetApi(), errorlog),
+// _getOrdersByIds(accGetApi(), errorlog),
+// _getPositions(accGetApi(), errorlog),
+// _getQuotesByIds(getApi(), errorlog),
+// // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),
+// _getQuotesOptionsByIds(postApi(), errorlog),
+// _getQuotesOptionsFilter(
+//   postApi() /* , errorlog */,
+// ),
+// _getServerTime(getApi() /* , errorlog */),
+// _getSymbolsByIds(getApi(), errorlog),
+// _getSymbolSearchAll(getApi(), errorlog),
+// // _getSymbolSearchAndCount(credentials,proxy, errorlog),
+// _getSymbolSearch(getApi(), errorlog),
+// _getSymbolSearchCount(getApi(), errorlog),
+// ];
+// unused for the moment
+// symbolSearchAndCount:    // _getSymbolSearchAndCount(credentials,proxy, errorlog),
+// quotesOptionsbyFilterAndIds:    // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),

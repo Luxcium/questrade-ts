@@ -1,4 +1,5 @@
 // import { errorlog } from '../../resources/side-effects';
+import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import type {
   Credentials,
   Logger,
@@ -7,7 +8,6 @@ import type {
   QuestradeApi,
   StrategyVariantRequest,
 } from '../../typescript';
-import { void0 } from '../../utils';
 import type { ApiCallQ_ } from '../core/next-rate-limiter/queue';
 import { _clientGetApi, _clientPostApi } from '../routes';
 import { _clientAccountGetApi } from '../routes/clientAccountGetApi/_clientAccountGetApi';
@@ -36,16 +36,20 @@ import {
   _getSymbolSearchCount,
 } from './MarketsCalls';
 
-export const _getQuestradeApi = async (
+export async function questradeApiFactory(
   credentials: Credentials,
   apiCallQ: ApiCallQ_,
-  proxy: ProxyFactory_ | null,
+  proxy: ((cred: Credentials) => ProxyFactory_) | null,
   errorlog: Logger = (...error: any[]) => error,
-  // eslint-disable-next-line require-await
-): Promise<QuestradeApi> => {
-  const getApi = () => _clientGetApi(credentials, apiCallQ, proxy);
-  const postApi = () => _clientPostApi(credentials, apiCallQ, proxy);
-  const accGetApi = () => _clientAccountGetApi(credentials, apiCallQ, proxy);
+): Promise<QuestradeApi & IQuestradeAPIv2_0> {
+  const proxyFactory: ProxyFactory_ | null = proxy ? proxy(credentials) : null;
+
+  void proxy;
+  const getApi = () => _clientGetApi(credentials, apiCallQ, proxyFactory);
+  const postApi = () => _clientPostApi(credentials, apiCallQ, proxyFactory);
+  const accGetApi = () =>
+    _clientAccountGetApi(credentials, apiCallQ, proxyFactory);
+
   const api = {
     accounts: _getAccounts(getApi(), errorlog),
     activities: _getActivities(accGetApi(), errorlog),
@@ -68,10 +72,9 @@ export const _getQuestradeApi = async (
     symbolsByIds: _getSymbolsByIds(getApi(), errorlog),
   };
 
-  void apiCallQ;
-
   return {
     account: {
+      currentAccount: credentials.accountNumber,
       getActivities(startTime: string) {
         return api.activities(startTime);
       },
@@ -97,7 +100,7 @@ export const _getQuestradeApi = async (
         return api.serverTime();
       },
     },
-    currentAccount: credentials.accountNumber,
+
     getOptionChains: {
       async byStockId(stockId: number) {
         return api.optionsById(stockId);
@@ -149,42 +152,4 @@ export const _getQuestradeApi = async (
     },
     serverTime: credentials.serverTime || 'ERROR',
   };
-};
-
-void0(void0);
-// = [
-/*
-    argument of type '<R>(endpoint: string, handlerOptions: ProxyHandlerOptions) => () => Promise<R>'
-    is not assignable to
-    parameter of type '<R>(endpoint: string) => () => Promise<R>'.ts(2345)
-    ,
-    handlerOptions: ProxyHandlerOptions,
-    , { noCaching: true }
-     */
-// _getAccounts(getApi(), errorlog),
-// _getActivities(accGetApi(), errorlog),
-// _getBalances(accGetApi(), errorlog),
-// _getCandles(getApi(), errorlog),
-// _getExecutions(accGetApi(), errorlog),
-// _getMarkets(getApi(), errorlog),
-// _getMarketsQuotesStrategies(postApi(), errorlog),
-// _getOptionsById(getApi(), errorlog),
-// _getOrders(accGetApi(), errorlog),
-// _getOrdersByIds(accGetApi(), errorlog),
-// _getPositions(accGetApi(), errorlog),
-// _getQuotesByIds(getApi(), errorlog),
-// // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),
-// _getQuotesOptionsByIds(postApi(), errorlog),
-// _getQuotesOptionsFilter(
-//   postApi() /* , errorlog */,
-// ),
-// _getServerTime(getApi() /* , errorlog */),
-// _getSymbolsByIds(getApi(), errorlog),
-// _getSymbolSearchAll(getApi(), errorlog),
-// // _getSymbolSearchAndCount(credentials,proxy, errorlog),
-// _getSymbolSearch(getApi(), errorlog),
-// _getSymbolSearchCount(getApi(), errorlog),
-// ];
-// unused for the moment
-// symbolSearchAndCount:    // _getSymbolSearchAndCount(credentials,proxy, errorlog),
-// quotesOptionsbyFilterAndIds:    // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),
+}

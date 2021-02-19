@@ -29,7 +29,6 @@ import { IMyBalances } from './IMyBalances';
 export type DateRange<R> = (startTime: string) => (endTime: string) => R;
 
 export interface QuestradeApi {
-  currentAccount: string;
   myBalances: QtApiMyBalances;
   serverTime: Date | 'ERROR';
   account: QtApiAccount;
@@ -44,6 +43,7 @@ export interface QuestradeApi {
 export type QtApiMyBalances = () => Promise<IMyBalances>;
 
 export interface QtApiAccount {
+  currentAccount: string;
   getActivities(
     startTime: string,
   ): (endTime: string) => Promise<IAccountActivity[]>;

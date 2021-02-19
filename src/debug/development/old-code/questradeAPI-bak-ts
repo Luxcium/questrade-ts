@@ -1,0 +1,67 @@
+// export { questradeApiFactory } from '../private/api/_getQuestradeApi';
+export const Null = null;
+// export const questradeApiFactory = _getQuestradeApi;
+
+// export async function questradeApiFactory(
+//   credentials: Credentials,
+//   apiCallQ: ApiCallQ_,
+//   proxy: ((cred: Credentials) => ProxyFactory_) | null,
+//   errorlog: Logger = (...error: any[]) => error,
+// ): Promise<QuestradeApi & IQuestradeAPIv2_0> {
+//   const questradeApiGetter = async () => {
+//     if (proxy) {
+//       return _getQuestradeApi(credentials, apiCallQ, proxy, errorlog);
+//     }
+
+//     return _getQuestradeApi(credentials, apiCallQ, null, errorlog);
+//   };
+
+//   const qtApi: QuestradeApi & IQuestradeAPIv2_0 = await questradeApiGetter();
+
+//   return {
+//     account: {
+//       currentAccount: qtApi.account.currentAccount,
+//       getActivities: qtApi.account.getActivities,
+//       getAllAccounts: qtApi.account.getAllAccounts,
+//       getBalances: qtApi.account.getBalances,
+//       getExecutions: qtApi.account.getExecutions,
+//       getOrders: qtApi.account.getOrders,
+//       getOrdersByIds: qtApi.account.getOrdersByIds,
+//       getPositions: qtApi.account.getPositions,
+//       getServerTime: qtApi.account.getServerTime,
+//     },
+//     getOptionChains: {
+//       byStockId: qtApi.getOptionChains.byStockId,
+//     },
+
+//     getOptionsQuotes: {
+//       byOptionsIds: qtApi.getOptionsQuotes.byOptionsIds,
+//       fromFilter: qtApi.getOptionsQuotes.fromFilter,
+//     },
+
+//     getQuotes: {
+//       byStockIds: qtApi.getQuotes.byStockIds,
+//       byStrategies: qtApi.getQuotes.byStrategies,
+//     },
+
+//     getSymbols: {
+//       byStockIds: qtApi.getSymbols.byStockIds,
+//     },
+
+//     market: {
+//       getAllMarkets: qtApi.market.getAllMarkets,
+//       getCandlesByStockId: qtApi.market.getCandlesByStockId,
+//     },
+
+//     myBalances: qtApi.myBalances,
+
+//     search: {
+//       allStocks: qtApi.search.allStocks,
+//       countResults: qtApi.search.countResults,
+//       stock: qtApi.search.stock,
+//     },
+//     serverTime: qtApi.serverTime,
+//   };
+// }
+
+// export const chainApi = {};
