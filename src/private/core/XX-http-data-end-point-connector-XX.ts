@@ -26,40 +26,50 @@ async function _httpDataEndPointConnector<DATA>({
   errorlog,
   handlerOptions,
 }: HttpDataEndPointConnector) {
-  let httpClient: <S>(conf: ClientRequestConfig) => ClientPromise<S> = async (
-    conf: ClientRequestConfig,
-  ) => getHttpClient()(conf);
+  try {
+    let httpClient: <S>(conf: ClientRequestConfig) => ClientPromise<S> = async (
+      conf: ClientRequestConfig,
+    ) => getHttpClient()(conf);
 
-  if (proxy?.httpDataEndPointConnector && proxy.activate) {
-    const someName = proxy.activate(handlerOptions);
+    if (proxy?.httpDataEndPointConnector && proxy.activate) {
+      const someName = proxy.activate(handlerOptions);
 
-    httpClient = async (conf: ClientRequestConfig) => someName(conf);
+      httpClient = async (conf: ClientRequestConfig) => someName(conf);
+    }
+
+    const response: ClientResponse<DATA> = await apiCallQ.addToQueue({
+      config,
+      fn: httpClient,
+    });
+
+    if (response.status !== 200) {
+      // console.error('STATUS:', response.status);
+      // console.error('REQUEST:', response.request);
+      console.error('CONFIG:', response.config);
+      console.error('HEADERS:', response.headers);
+      console.error('DATA:', response.data);
+      console.error('STATUS:', response.status);
+      console.error('STATUSTEXT:', response.statusText);
+    }
+
+    if (response?.data) {
+      _updateCredentials(config, response, credentials);
+
+      return response.data;
+    }
+
+    _echoStatus(response, credentials);
+  } catch (error) {
+    // eRROR HANDLER: ECHO STATUS ON ERROR //-!
+
+    throw new Error(
+      ...errorlog(
+        `ERROR: Can't retrive data from call to API (${error.message})`,
+      ),
+    );
   }
 
-  const response: ClientResponse<DATA> = await apiCallQ.addToQueue({
-    config,
-    fn: httpClient,
-  });
-
-  if (response.status !== 200) {
-    // console.error('STATUS:', response.status);
-    // console.error('REQUEST:', response.request);
-    console.error('CONFIG:', response.config);
-    console.error('HEADERS:', response.headers);
-    console.error('DATA:', response.data);
-    console.error('STATUS:', response.status);
-    console.error('STATUSTEXT:', response.statusText);
-  }
-
-  if (response?.data) {
-    _updateCredentials(config, response, credentials);
-
-    return response.data;
-  }
-
-  // eRROR HANDLER: ECHO STATUS ON ERROR //-!
-  _echoStatus(response, credentials);
-  throw new Error(...errorlog("Can't retrive data from call to API"));
+  throw new Error(...errorlog("Can't complete call to API"));
 }
 // }
 
