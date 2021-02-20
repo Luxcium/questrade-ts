@@ -1,8 +1,31 @@
+/* eslint-disable max-classes-per-file */
 import { urlEncode } from '.';
 
 const DAY = 24 * 60 * 60 * 1000;
 
-export const day = (days: number) => days * DAY;
+export const dayMiliseconds = (days: number) => days * DAY;
+
+export class DateInterval {}
+
+export class DateClass {
+  private date: Date;
+
+  public get getDate() {
+    return this.date.toISOString();
+  }
+
+  constructor(
+    year: number,
+    month: number,
+    day: number,
+    hours?: number,
+    minutes?: number,
+  ) {
+    this.date = new Date(year, month - 1, day, hours || 0, minutes || 0);
+    void this;
+  }
+}
+// new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]])
 
 // export function timeUtil() {
 //   //
@@ -39,7 +62,7 @@ export const urlEncodeDateTool = (
 export const dateNowISO = () => new Date(Date.now()).toISOString();
 export const dateNowNumeric = () => new Date(Date.now()).getTime();
 
-export const dateToISOString = (dateTime: number | string): string =>
+export const dateToISOString = (dateTime: Date | number | string): string =>
   new Date(dateTime).toISOString();
 
 export const dateToNumeric = (dateTime: Date | number | string): number =>
@@ -70,7 +93,7 @@ export const dateRange = (
   }
 
   const startDate: StartDate = rmvMiliSec(
-    dateToNumeric(now_) - day(backNumberOfDays),
+    dateToNumeric(now_) - dayMiliseconds(backNumberOfDays),
   );
 
   const endDate: EndDate = rmvMiliSec(now_);

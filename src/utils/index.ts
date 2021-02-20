@@ -28,7 +28,7 @@ export {
   dateRangeFromNow,
   dateToISOString,
   dateToNumeric,
-  day,
+  dayMiliseconds,
   now,
   setDateRange,
   urlEncodeDateTool,
