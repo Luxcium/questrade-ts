@@ -132,14 +132,14 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
           const before = now();
           const response = await fn(config);
 
-          // if (response.status !== 200) {
-          //   console.error('request', response.request);
-          //   console.error('config', response.config);
-          //   console.error('headers', response.headers);
-          //   console.error('data', response.data);
-          //   console.error('statusText', response.statusText);
-          //   // throw new Error((response as any) as string);
-          // }
+          if (response.status !== 200) {
+            console.error('request', response.request);
+            console.error('config', response.config);
+            console.error('headers', response.headers);
+            console.error('data', response.data);
+            console.error('statusText', response.statusText);
+            // throw new Error((response as any) as string);
+          }
 
           console.info(
             '\nrequest response cycle in',
@@ -156,9 +156,10 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
           // hint: //-*|-···―――――――――――――――――――――――――――···-| callback() |-···――― ~
           cb(null, response);
         } catch (error) {
-          this.broke = true;
+          // this.broke = true;
           console.error('catch an error in Queue Ratelimiter:', error.message);
           cb(error, null);
+          // throw error;
         }
 
         console.info('Complete previous cycle in', now() - timeThen, 'ms');
