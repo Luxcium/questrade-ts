@@ -21,6 +21,7 @@ export {
   getSymboIdByStockSymbol,
 } from './helpers/get-symbol-id-by-stock-symbol';
 export { perSeconds } from './perSeconds';
+export { timeoutPromise } from './timeout';
 export {
   dateNowISO,
   dateNowNumeric,
