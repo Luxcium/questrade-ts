@@ -1,127 +1,13 @@
 /* eslint-disable radar/no-identical-functions */
-import { promisify } from 'util';
-
 import { qtAPIv2_0 } from '..';
 import { echo, getMyToken } from '../resources/side-effects';
-import type { ApiOptions } from '../typescript';
+import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 import { id0 } from '../utils';
 import { willGetSNP500StringList } from './development/getSNP500List';
 
 const once = { onlyOnce: true };
-async function timeout_<T>(fn: (val: T) => any, value: T, delay: number) {
-  return promisify(setTimeout)(delay, value).then(fn);
-}
 
-async function one() {
-  const funct = (x: number) => x * 10;
-  echo(await timeout_(funct, 500, 14));
-}
-
-
-export const timeoutPromise = {
-  delay(delay: number) {
-    return {
-      fn<T>(fnx: (val: T) => any) {
-        return {
-          value(value: T) {
-            return timeout_(fnx, value, delay);
-          },
-        };
-      },
-      value<T>(value: T) {
-        return {
-          fn(fnx: (val: T) => any) {
-            return timeout_(fnx, value, delay);
-          },
-        };
-      },
-    };
-  },
-  fn<T>(fnx: (val: T) => any) {
-    return {
-      delay(delay: number) {
-        return {
-          value(value: T) {
-            return timeout_(fnx, value, delay);
-          },
-        };
-      },
-      value(value: T) {
-        return {
-          delay(delay: number) {
-            return timeout_(fnx, value, delay);
-          },
-        };
-      },
-    };
-  },
-  value<T>(value: T) {
-    return {
-      delay(delay: number) {
-        return {
-          fn(fnx: (val: T) => any) {
-            return timeout_(fnx, value, delay);
-          },
-        };
-      },
-      fn(fnx: (val: T) => any) {
-        return {
-          delay(delay: number) {
-            return timeout_(fnx, value, delay);
-          },
-        };
-      },
-    };
-  },
-};
-
-timeoutPromise.fn((x:number)=>x*2).delay(150).value(10)
-/*
-timeout
-
-delay:{},
-  fn: {},
-
-delay:{},
-  value:{},
-
-
-timeoutValueDelayFn
-timeoutValueFnDelay
-
-Fn Delay Value
-Fn Delay Value
-Fn Delay Value
-Fn Delay Value
- */
-async function testingOrDebugging() {
-  const apiOptions: ApiOptions = {
-    debug: 100,
-    token: getMyToken,
-  };
-
-  const { qtApi } = await qtAPIv2_0(apiOptions);
-  const setImmediatePromise = promisify(setImmediate);
-
-  // void async function timeoutPromise(fn?: any, cb?: any, delay?: number) {
-  //   const setTimeoutPromise = promisify(setTimeout);
-  //   const timeout = setTimeoutPromise(5000, 14).then(x => x * 123);
-  //   void timeout, fn, cb, delay;
-
-  //   return timeout;
-  // };
-
-  void setImmediatePromise;
-  id0(await willGetSNP500StringList())
-    // .slice(0, 2)
-    .map(item => () => qtApi.search.stock(item))
-    .map(item => async () =>
-      qtApi.getSymbols.byStockIds([(await item())[0]?.symbolId || 0]),
-    )
-    .map(item => item());
-}
-
-async function main() {
+export async function main() {
   echo(`Will execute main: ${once.onlyOnce}`);
   if (!once.onlyOnce) {
     return false;
@@ -129,15 +15,56 @@ async function main() {
 
   once.onlyOnce = false;
 
-  one();
-  void testingOrDebugging;
+  mainRedis();
 
   return true;
 }
 
 main();
-export { main };
 
+async function mainRedis(/* tedis?: Tedis */) {
+  const proxyFactory = redisProxyHandler({
+    httpConnectProxy: true,
+  });
+
+  void proxyFactory;
+  const { qtApi } = await qtAPIv2_0({
+    accountCallsPerHour: 30_000,
+    accountCallsPerSecond: 30,
+    marketCallsPerHour: 1500,
+    marketCallsPerSecond: 20,
+    proxyFactory,
+    token: getMyToken,
+  });
+
+  id0(await willGetSNP500StringList())
+    // .slice(0, 20)
+    .map(item => () => qtApi.search.stock(item))
+    .map(item => async () =>
+      qtApi.market.getCandlesByStockId((await item())[0]?.symbolId || 1)()(
+        new Date('2020-01-01').toISOString(),
+      )(new Date('2021-01-01').toISOString()),
+    )
+    // .map(item => async () =>
+    //   qtApi.getSymbols.byStockIds([(await item())[0]?.symbolId || 1]),
+    // )
+    .map(item => item());
+}
+
+// ech0(await qtApi.account.getServerTime());
+// ech0(await qtApi.account.getServerTime());
+// }
+
+// async function testingOrDebugging() {
+//   const apiOptions: ApiOptions = {
+//     debug: 100,
+//     token: getMyToken,
+//   };
+
+//   const { qtApi } = await qtAPIv2_0(apiOptions);
+// const setImmediatePromise = promisify(setImmediate);
+
+// void setImmediatePromise;
 /* promisify(setImmediate)( */
 
 // {

@@ -20,10 +20,19 @@ async function main(/* tedis?: Tedis */) {
     accountCallsPerSecond: 30,
     marketCallsPerHour: 1500,
     marketCallsPerSecond: 20,
+    proxyFactory,
     token: getMyToken,
   });
 
   ech0(await qtApi.account.getServerTime());
+  ech0(await qtApi.account.getServerTime());
+}
+
+main();
+
+export { main };
+/*
+
 
   // const snp500list = id0(await willGetSNP500StringList()); //.map(ech0);
   // snp500list
@@ -48,17 +57,8 @@ async function main(/* tedis?: Tedis */) {
   //   );
 
   // await qtApi.search.stock('couche tard');
-  void qtApi;
+  // void qtApi;
   // void snp500list;
-}
-
-// async function main() {
-//   return mainFunction();
-// }
-
-export { main };
-/*
-
  //
 
   // void0(await tedis.keys('URL:*'));
