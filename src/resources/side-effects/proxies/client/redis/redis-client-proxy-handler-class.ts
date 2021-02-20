@@ -39,7 +39,7 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
     proxy: 'Redis QtApi Caching Proxy',
   };
 
-  async apply(target: T, thisArg: any, argArray?: any) {
+  public async apply(target: T, thisArg: any, argArray?: any) {
     const myRedis = new Redis();
 
     try {
@@ -63,7 +63,7 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
       // );
 
       if (this.handlerOptions.notFromCache !== true) {
-        ech0({ it: this.handlerOptions });
+        id0({ it: this.handlerOptions });
         // $ READ FROM CACHE ―――――――――――――――――――――――――――――――――――――――――――――――――――$>
         const responseFromCache = await jsonCache.get(URL_HSH);
 
@@ -71,7 +71,7 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
           myRedis.disconnect();
 
           // +RETURN VALUE FROM CACHE ――――――――――――――――――――――――――――――――――――――――――$>
-          return ech0(responseFromCache);
+          return id0(responseFromCache);
         }
       } else {
         ech0({ MESSGAE: 'NOT FROM CACHE' });
@@ -212,179 +212,3 @@ export function redisProxyHandler(
     return newProxy;
   };
 }
-
-//    // private jsonCache: JSONCache<CachedApiResponse>;
-//   constructor(
-//     protected handlerOptions: ProxyHandlerOptions, // protected tedis: Tedis, // protected credentials?: Credentials,
-//   ) {
-//     super(handlerOptions);
-//     // this.jsonCache = new jsonRedis<CachedApiResponse>(redisinstance, {
-//     // prefix: 'response:cache:',
-//     // });
-//     // void this.jsonCache;
-// }
-
-// protected async applyTargetReflexion(
-//   target: T,
-//   thisArg: any,
-//   argArray?: any,
-// ) {
-//
-//   // $ Reflect.apply  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-//   const returnValue = Reflect.apply(target, thisArg, argArray);
-//   const data = `${JSON.stringify((await returnValue).data ?? null)}`;
-//   const proxyData = this._proxyData(urlPath, data, argArray);
-//   const response: ClientResponse = await returnValue;
-
-//   return { proxyData, response, returnValue, urlPath };
-// }
-
-// const urlPath = getQtUrlPathFromArgs(argArray);
-// const { URL_HSH } = getUrlHash(urlPath);
-// // getDataHash,
-// // getUDatagram,
-// // getUrlAndDataHashes,
-// // getUrlHashe,
-// try {
-//   // +SIDE EFFECTS ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-//   const isInCache: boolean = echo1(
-//     "this.tedis.command('hgetall', URL_HSH): ",
-//     await this.tedis.command('hgetall', URL_HSH),
-//   );
-//   const initialValue: any = {};
-//   if (isInCache) {
-//     // if (process.exit()) { };
-//     const parsed = ech0(
-//       parser<any[]>(await this.tedis.command('HGETALL', URL_HSH)),
-//     );
-//     for (let i = 0; i < parsed.length; i += 2) {
-//       initialValue[parser((parsed[i] as string).split(':')[0])] =
-//         parsed[i + 1];
-//     }
-//   }
-//   ech0(initialValue);
-//   // $ APPLY REFLEXCTION ON TARGET ――――――――――――――――――――――――――――――――――――――――――$>
-//   const {
-//     proxyData,
-//     response,
-//     returnValue,
-//   } = await this.applyTargetReflexion(target, thisArg, argArray);
-//   // echo(response.status);
-//   // echo(response.statusText);
-//   // echo(response.headers['content-type']);
-//   // echo(response.headers['content-length']);
-//   // echo(response.headers['strict-transport-security']);
-//   if (this.credentials) {
-//     this.credentials.xRatelimitRemaining = Number(
-//       response.headers['x-ratelimit-remaining'],
-//     );
-//     this.credentials.xRatelimitReset = Number(
-//       response.headers['x-ratelimit-reset'],
-//     );
-//     this.credentials.fromCache = true;
-//   }
-//   void proxyData;
-//   void this.tedis;
-//   const myKey = proxyData.URL_HSH;
-//   const hash = [
-//     'URL_HSH:',
-//     proxyData.URL_HSH,
-//     'path:',
-//     proxyData.path,
-//     'DATA_HSH:',
-//     proxyData.DATA_HSH,
-//     'data:',
-//     proxyData.data,
-//     'UDATAGRAM:',
-//     proxyData.UDATAGRAM,
-//     'status:',
-//     response.status,
-//     'statusText:',
-//     response.statusText,
-//     'headers_type',
-//     response.headers['content-type'],
-//     'headers_length',
-//     response.headers['content-length'],
-//     'url:',
-//     (response.config as ClientRequestConfig).url,
-//     'urlPath:',
-//     urlPath,
-//   ];
-//   //*
-//   const tempResponse = {
-//     response: {
-//       clientRequest: {
-//         /* any */
-//       },
-//       config: {
-//         url: 'https://api06.iq.questrade.com/v1/accounts',
-//       },
-//       data: {
-//         /* any */
-//       },
-//       headers: {
-//         'content-length': '152',
-//         'content-type': 'application/json; charset=utf-8',
-//         'date': 'Tue, 19 Jan 2021 06:09:06 GMT',
-//         'x-ratelimit-remaining': '29970',
-//         'x-ratelimit-reset': '1611038234',
-//       },
-//       status: 418,
-//       statusText: 'I’M A TEAPOT',
-//     },
-//   };
-//   //*/
-//   void tempResponse;
-//   voech0(await this.tedis.command('HSET', myKey, ...hash));
-//   voech0(await this.tedis.command('EXPIRE', myKey, 30));
-//   // echo<any>(myKey, await this.tedis.command('TTL', myKey));
-//   // ech0(await this.tedis.command('TTL', myKey));
-//   if ((await returnValue)?.data?.accounts) {
-//     ech0((await returnValue)?.data?.accounts);
-//   }
-//   return ech0({
-//     ...(await returnValue),
-//     config: {},
-//     data: {
-//       ...(await returnValue)?.data,
-//       accounts: [
-//         {
-//           clientAccountType: 'Individual',
-//           isBilling: true,
-//           isPrimary: false,
-//           number: '51648972',
-//           status: 'Active',
-//           type: 'TFSA',
-//         },
-//       ],
-//       // time: '2011-11-11T11:11:11.282000-05:00',
-//       userId: 126_691,
-//     },
-//     headers: {},
-//     request: {},
-//   });
-//   // return returnValue;
-//   // + CATCH ERROR ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――$>
-// } catch (error) {
-//   void echo(error);
-//   return { data: null };
-// }
-
-// protected proxy = {
-//   class: 'redisClientProxyHandlerClass',
-//   extends: 'ReflexionLoggerProxyHandlerAbstractClass<ClientStatic>',
-//   implements: 'ProxyHandler<ClientStatic>',
-// };
-
-// private _proxyData(urlPath: string, data: string, argArray?: any) {
-//   return {
-//     clientConfig: argArray[0],
-//     proxy: {
-//       ...this.proxy,
-//       handlerMethod:
-//         'async apply(target: ClientStatic, thisArg: any, argArray?: any) ',
-//       sideEffects: 'void echo(proxyData); voech0(this.tedis);',
-//     },
-//     ...getUrlAndDataHashes(urlPath, data),
-//   };
-// }
