@@ -70,7 +70,7 @@ async function _credentialsFactory(
       );
     }
   } catch (error) {
-    void errorlog(error.message);
+    void errorlog(error);
     void infolog<unknown>(credentials.toValue());
     throw new Error('_oAuth Error getting credentials in _credentialsFactory');
   }

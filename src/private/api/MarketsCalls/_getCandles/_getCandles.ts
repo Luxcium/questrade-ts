@@ -34,7 +34,7 @@ export const _getCandles = (
       })
     );
   } catch (error) {
-    void errorlog(error.message);
+    void errorlog(error);
 
     return [];
   }

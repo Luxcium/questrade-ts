@@ -16,7 +16,7 @@ export const _getExecutions = (
 
     return executions.executions;
   } catch (error) {
-    void errorlog(error.message);
+    void errorlog(error);
 
     return [];
   }

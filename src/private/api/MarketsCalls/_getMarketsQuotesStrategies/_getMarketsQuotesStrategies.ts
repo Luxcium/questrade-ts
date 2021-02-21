@@ -21,7 +21,7 @@ export const _getMarketsQuotesStrategies = (
       strategyVariantRequestData,
     )<IStrategiesQuotes>('/markets/quotes/strategies', { noCaching: true })();
   } catch (error) {
-    void errorlog(error.message);
+    void errorlog(error);
 
     return {
       /** ask price */

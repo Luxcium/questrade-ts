@@ -14,7 +14,7 @@ describe('Redeem Token ', () => {
 
       void0([qtApi, credentials]);
     } catch (error) {
-      void errorlog(error.message);
+      void errorlog(error);
       canReciveEmptyString = false;
     }
 

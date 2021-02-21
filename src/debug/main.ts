@@ -39,16 +39,43 @@ async function mainRedis(/* tedis?: Tedis */) {
 
   id0(await willGetSNP500StringList())
     // .slice(0, 20)
-    .map(item => () => qtApi.search.stock(item))
-    .map(item => async () =>
-      qtApi.market.getCandlesByStockId((await item())[0]?.symbolId || 1)()(
+    .map(item => qtApi.search.stock(item))
+    .map(async item => {
+      const symbolId = (await item)[0]?.symbolId || 1;
+      qtApi.market.getCandlesByStockId(symbolId)()(
         new Date('2020-01-01').toISOString(),
-      )(new Date('2021-01-01').toISOString()),
-    )
-    // .map(item => async () =>
-    //   qtApi.getSymbols.byStockIds([(await item())[0]?.symbolId || 1]),
-    // )
-    .map(item => item());
+      )(new Date('2021-01-01').toISOString());
+
+      return symbolId;
+    })
+    .map(async symbolId => {
+      // const symbolId = (await item )[0]?.symbolId || 1;
+      qtApi.market.getCandlesByStockId(await symbolId)()(
+        new Date('2019-01-01').toISOString(),
+      )(new Date('2020-01-01').toISOString());
+
+      return symbolId;
+    })
+    .map(async symbolId => {
+      // const symbolId = (await item )[0]?.symbolId || 1;
+      qtApi.market.getCandlesByStockId(await symbolId)()(
+        new Date('2018-01-01').toISOString(),
+      )(new Date('2019-01-01').toISOString());
+
+      return symbolId;
+    })
+    .map(async symbolId => {
+      // const symbolId = (await item )[0]?.symbolId || 1;
+      qtApi.market.getCandlesByStockId(await symbolId)()(
+        new Date('2016-01-01').toISOString(),
+      )(new Date('2017-01-01').toISOString());
+
+      return symbolId;
+    });
+  // .map(item => async () =>
+  //   qtApi.getSymbols.byStockIds([(await item())[0]?.symbolId || 1]),
+  // )
+  // .map(item => item());
 }
 
 // ech0(await qtApi.account.getServerTime());

@@ -9,7 +9,7 @@ export const _getBalances = (
   try {
     return await clientAccountGetApi<IBalances>('/balances')();
   } catch (error) {
-    void errorlog(error.message);
+    void errorlog(error);
 
     return {
       combinedBalances: [],
