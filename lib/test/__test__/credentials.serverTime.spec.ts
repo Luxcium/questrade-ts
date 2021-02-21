@@ -8,7 +8,7 @@ test("should set getServerTime to 'ERROR'", async done => {
   const qtApi = await _getQuestradeApi(_emptyCredentials());
   const { serverTime } = qtApi;
 
-  void echo(serverTime);
+  echo(serverTime);
 
   expect(serverTime).toEqual('ERROR');
   done();

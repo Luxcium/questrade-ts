@@ -18,9 +18,9 @@ export const testingThat = (async () => {
   const theResult = await qtApi.account.getPositions();
   const theResult2 = await qtApi.search.stock('tu');
 
-  void echo<unknown>('theResult1', theResult);
+  echo('theResult1', theResult);
 
-  void echo<unknown>('theResult2', theResult2[0]);
+  echo('theResult2', theResult2[0]);
 
   return { theResult, theResult2 };
 })().catch(error => void errorlog('PlayGround error message:', error.message));

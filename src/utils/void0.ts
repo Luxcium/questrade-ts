@@ -5,6 +5,7 @@ export const parser = <R = any>(obj: any) =>
   JSON.parse(JSON.stringify(obj)) as R;
 export const stringny = (obj: any) => JSON.stringify(obj).toString();
 
+/** Utility function that return its first argument [index 0] and do nothing else. */
 function id0<T>(...arg0: T[]) {
   return arg0[0];
 }

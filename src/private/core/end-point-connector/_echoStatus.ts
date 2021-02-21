@@ -6,23 +6,23 @@ import { remaningTimeString } from '../requestPerSecondLimit';
 function _echoStatus(response: ClientResponse<any>, credentials?: Credentials) {
   // iNFO: ECHO STATUS ON ERROR Block Start ******************************
   if (response.status !== 200) {
-    void echo<unknown>('________________________________________________');
-    void echo<unknown>(response.status, response.statusText);
-    void echo<unknown>(response.data);
+    echo('________________________________________________');
+    echo(response.status, response.statusText);
+    echo(response.data);
     void tablelog(response.headers);
-    void echo<unknown>(
+    echo(
       remaningTimeString(
         credentials?.remainingRequests?.secondsRemaning
           ? credentials.remainingRequests.secondsRemaning
           : 0,
       ),
     );
-    void echo<unknown>(response.status, response.statusText);
-    void echo<unknown>('________________________________________________');
-    void echo<unknown>('++++++++++++++++++++++++++++++++++++++++++++++++');
+    echo(response.status, response.statusText);
+    echo('________________________________________________');
+    echo('++++++++++++++++++++++++++++++++++++++++++++++++');
   } else {
     // iNFO: ECHO STATUS ON 200 OK Block Start //-!
-    // void echo(
+    // echo(
     //   remaningTimeString(
     //     credentials?.remainingRequests?.secondsRemaning
     //       /? credentials.remainingRequests.secondsRemaning

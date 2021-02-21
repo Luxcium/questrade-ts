@@ -37,8 +37,8 @@ async function mainRedis(/* tedis?: Tedis */) {
     token: getMyToken,
   });
 
-  id0(await willGetSNP500StringList())
     // .slice(0, 20)
+  id0(await willGetSNP500StringList())
     .map(item => qtApi.search.stock(item))
     .map(async item => {
       const symbolId = (await item)[0]?.symbolId || 1;

@@ -5,6 +5,26 @@ export const API_TS = 'api.ts';
 // GET accounts/:id/activities
 export type { IAccountActivity, IActivities };
 /*
+ 3- time
+ # ACCOUNTS/:id/
+ 3- activities
+ 3- orders[/:orderId]
+ 3- executions
+ 3- balances
+ 3- positions
+ 3- positions
+ # MARKETS/
+ 3- candles/:id
+ 3- quotes/strategies
+ 3- quotes/options
+ 3- quotes/:id
+ 3- markets
+ # SYMBOLS/
+ 3- symbols/:id/options
+ 3- symbols/search
+ 3- symbols/:id
+
+
 // GET accounts/:id/activities
 export interface IActivities {
   activities: IAccountActivity[];

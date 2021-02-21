@@ -9,13 +9,13 @@ export async function validateResponse(
 
   if (!response.data) {
     if (response) {
-      void echo<any>('________________________________________________');
-      void echo<any>(response.status, response.statusText);
-      void echo<any>(response.headers);
-      void echo<any>(response.request);
-      void echo<any>(response.status, response.statusText);
-      void echo<any>('________________________________________________');
-      void echo<any>('++++++++++++++++++++++++++++++++++++++++++++++++');
+      echo('________________________________________________');
+      echo(response.status, response.statusText);
+      echo(response.headers);
+      echo(response.request);
+      echo(response.status, response.statusText);
+      echo('________________________________________________');
+      echo('++++++++++++++++++++++++++++++++++++++++++++++++');
     }
 
     throw new Error(

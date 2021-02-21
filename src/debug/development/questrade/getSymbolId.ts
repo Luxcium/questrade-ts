@@ -8,7 +8,7 @@ export function getSymbolId(qtApi: QuestradeApi) {
     const stock = await qtApi.search.stock(stockSymbol);
 
     if (!stock) {
-      void echo(stockSymbol);
+      echo(stockSymbol);
       throw new Error('getSymbolId failed to return a value');
     }
 
