@@ -337,4 +337,4 @@ Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation
 
  [![npm](https://img.shields.io/npm/dt/questrade-ts.svg)](https://www.npmjs.com/package/questrade-ts)
 
-###### <a name="sdk-foot"><sup>1</sup></a> SDK (software development kit) term is used here in a lose manner in the sens of a development kit. It's suposed that you already have TypeScript compiler installed and it doese not include advanced capability like debugging features and perhaps should not be confused with *a software framework*  [&crarr;](#sdk-foot-back)
+###### <a name="sdk-foot"><sup>1</sup></a> SDK (software development kit) term is used here in a lose manner in the sens of a development kit. It's suposed that you already have TypeScript compiler installed and it doese not include advanced capability like debugging features and perhaps should not be confused with *a software framework*  [&crarr;](#Getting-Started)
