@@ -12,7 +12,6 @@ export type { IAccountActivity, IActivities };
  3- executions
  3- balances
  3- positions
- 3- positions
  # MARKETS/
  3- candles/:id
  3- quotes/strategies
@@ -24,6 +23,28 @@ export type { IAccountActivity, IActivities };
  3- symbols/search
  3- symbols/:id
 
+serverTime
+
+accounts
+activities
+orders
+ordersByIds
+executions
+balances
+positions
+
+candles
+quotesStrategies
+quotesOptionsByIds
+quotesOptionsFilter
+quotesByIds
+markets
+
+symbolSearch
+symbolSearchAll
+symbolSearchCount
+symbolsByIds
+optionsById
 
 // GET accounts/:id/activities
 export interface IActivities {

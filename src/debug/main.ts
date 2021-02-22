@@ -1,6 +1,8 @@
+/* eslint-disable radar/no-duplicate-string */
 /* eslint-disable radar/no-identical-functions */
 import { qtAPIv2_0 } from '..';
-import { echo, getMyToken } from '../resources/side-effects';
+import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
+import { ech0, echo, getMyToken } from '../resources/side-effects';
 import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 import { id0 } from '../utils';
 import { willGetSNP500StringList } from './development/getSNP500List';
@@ -15,14 +17,36 @@ export async function main() {
 
   once.onlyOnce = false;
 
-  mainRedis();
+  // % Rest operations
+  // # ACCOUNT CALLS
+  void getActivities; /* ACCOUNTS/:ID/ACTIVITIES*/
+  void getOrders; /* ACCOUNTS/:ID/ORDERS*/
+  void getOrdersByIds; /* ACCOUNTS/:ID/ORDERS*/
+  void getExecutions; /* ACCOUNTS/:ID/EXECUTIONS*/
+  void getBalances; /* ACCOUNTS/:ID/BALANCES*/
+  void getPositions; /* ACCOUNTS/:ID/POSITIONS*/
+  void getAllAccounts; /* ACCOUNTS*/
+  void getTime; /* TIME*/
+  // # MARKET CALLS
+  void getCandles; /* MARKETS/CANDLES/:ID */
+
+  /*
+
+    GET MARKETS/QUOTES/STRATEGIES
+    GET MARKETS/QUOTES/OPTIONS
+    GET MARKETS/QUOTES/:ID
+    GET MARKETS
+    GET SYMBOLS/:ID/OPTIONS
+    GET SYMBOLS/SEARCH
+    GET SYMBOLS/:ID
+  */
 
   return true;
 }
 
 main();
 
-async function mainRedis(/* tedis?: Tedis */) {
+async function mainRedis(/* tedis?: Tedis */): Promise<IQuestradeAPIv2_0> {
   const proxyFactory = redisProxyHandler({
     httpConnectProxy: true,
   });
@@ -37,7 +61,93 @@ async function mainRedis(/* tedis?: Tedis */) {
     token: getMyToken,
   });
 
-    // .slice(0, 20)
+  ech0(await qtApi.account.getServerTime());
+
+  return qtApi;
+}
+
+async function getTime() {
+  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const time = qtApi.account.getServerTime(); // ('2021-02-01')('2021-02-10');
+
+  ech0(await time);
+
+  return id0(qtApi);
+}
+
+async function getAllAccounts() {
+  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const accounts = qtApi.account.getAllAccounts(); // ('2021-02-01')('2021-02-10');
+
+  ech0(await accounts);
+
+  return id0(qtApi);
+}
+
+async function getPositions() {
+  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const positions = qtApi.account.getPositions(); // ('2021-02-01')('2021-02-10');
+
+  ech0(await positions);
+
+  return id0(qtApi);
+}
+
+async function getBalances() {
+  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const balances = qtApi.account.getBalances(); // ('2021-02-01')('2021-02-10');
+
+  ech0(await balances);
+
+  return id0(qtApi);
+}
+
+async function getOrders() {
+  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const orders = qtApi.account.getOrders()('2021-02-01')('2021-02-10');
+
+  ech0(await orders);
+
+  return id0(qtApi);
+}
+
+async function getExecutions() {
+  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const executions = qtApi.account.getExecutions('2021-02-01')('2021-02-10');
+
+  ech0(await executions);
+
+  return id0(qtApi);
+}
+
+async function getOrdersByIds() {
+  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const order = qtApi.account.getOrdersByIds([793_393_477]); // ('2021-02-01')('2021-02-10');
+
+  ech0(await order);
+
+  return id0(qtApi);
+}
+
+async function getActivities() {
+  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const activities = qtApi.account.getActivities('2021-02-01')('2021-02-10');
+
+  ech0(await activities);
+
+  return id0(qtApi);
+}
+
+async function getCandles() {
+  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+
+  // .map(item => async () =>
+  //   qtApi.getSymbols.byStockIds([(await item())[0]?.symbolId || 1]),
+  // )
+  // .map(item => item());
+
+  // .slice(0, 20)
+
   id0(await willGetSNP500StringList())
     .map(item => qtApi.search.stock(item))
     .map(async item => {
@@ -72,12 +182,7 @@ async function mainRedis(/* tedis?: Tedis */) {
 
       return symbolId;
     });
-  // .map(item => async () =>
-  //   qtApi.getSymbols.byStockIds([(await item())[0]?.symbolId || 1]),
-  // )
-  // .map(item => item());
 }
-
 // ech0(await qtApi.account.getServerTime());
 // ech0(await qtApi.account.getServerTime());
 // }
