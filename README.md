@@ -16,7 +16,7 @@ This [NPM Package](https://www.npmjs.com/package/questrade-ts) is an unofficial 
 
 This NodeJS wrapper is an easy way to use the [Questrade API](www.questrade.com/api/documentation/getting-started) immediately. It commes with full TypeScript support.
 
-### What can I do with the Questrade API
+## What can I do with the Questrade API
 
 As you can read on The [Questrade API documentation page](www.questrade.com/api/documentation/getting-started) Questrade API enables you to develop live or practice applications that can access your account data, retrieve market data and more through your Questrade brokerage account.
 <!--
