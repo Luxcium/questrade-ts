@@ -14,7 +14,8 @@
 
 This [NPM Package](https://www.npmjs.com/package/questrade-ts) is an unofficial [Questrade API](https://www.questrade.com/api/documentation/getting-started) wrapper for [NodeJS](https://nodejs.org/en/docs/) with full [TypeScript](https://www.typescriptlang.org/docs/home.html) support.
 
-This NodeJS wrapper is an easy way to use the [Questrade API](www.questrade.com/api/documentation/getting-started) immediately. It commes with full TypeScript support.
+This NodeJS wrapper is an easy way to use the [Questrade API]
+(www.questrade.com/api/documentation/getting-started) immediately. This SDK <a name="sdk-foot-back">[<sup>1</sup>](#sdk-foot)</a> commes with full TypeScript support.
 
 ## What can I do with the Questrade API
 
@@ -31,6 +32,8 @@ Using your login credentials, log in to Questrade.
 
   1. API access agreement
   The API access agreement appears. You need to read and agree to the terms listed in the agreement to proceed. After clicking Agree, you will be one step closer to getting access to Questrade's API.
+
+  ## Using this SDK
 
 <!--
 
@@ -333,3 +336,5 @@ You need If you disagree to the terms, access to Questrade API will be denied.
 Refer to [Questrade's Documentation](https://www.questrade.com/api/documentation/) to get help. Please always open a [questrade-ts GitHub issue](https://github.com/luxcium/questrade-ts/issues) for anything you feel doesn't match the way it should be working when referring to Questrade docs.
 
  [![npm](https://img.shields.io/npm/dt/questrade-ts.svg)](https://www.npmjs.com/package/questrade-ts)
+
+###### <a name="sdk-foot"><sup>1</sup></a> SDK (software development kit) term is used here in a lose manner in the sens of a development kit. It's suposed that you already have TypeScript compiler installed and it doese not include advanced capability like debugging features and perhaps should not be confused with *a software framework*  [&crarr;](#sdk-foot-back)
