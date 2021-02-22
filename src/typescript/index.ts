@@ -93,6 +93,7 @@ export type {
 } from './QuestradeApi';
 export type { Ŋ, RateLimiterOptions } from './RateLimiterOptions';
 export type { ReqLimiterFactory } from './ReqLimiterFactory';
+export type { DateTimeRange } from './timeutils';
 export type { UrlDataAndHashes } from './UrlAndDataHashes';
 export type { WillCallBack } from './WillCallBack';
 

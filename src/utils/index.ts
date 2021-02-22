@@ -30,6 +30,7 @@ export {
   dateToISOString,
   dateToNumeric,
   dayMiliseconds,
+  getDateRange,
   now,
   setDateRange,
   urlEncodeDateTool,

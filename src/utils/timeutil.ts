@@ -1,4 +1,5 @@
 /* eslint-disable max-classes-per-file */
+import { DateTimeRange } from '../typescript';
 import { urlEncode } from '.';
 
 const DAY = 24 * 60 * 60 * 1000;
@@ -25,6 +26,30 @@ export class DateClass {
     void this;
   }
 }
+
+export function getDateRange(
+  date: Date | string,
+  offset: number,
+): DateTimeRange {
+  let startDate: Date | string = new Date(date).toISOString();
+  let endDate: Date | string = new Date(date).toISOString();
+  const newDate: Date | string = new Date(
+    new Date(date).valueOf() + dayMiliseconds(offset),
+  ).toISOString();
+
+  if (offset > 0) {
+    startDate = new Date(date).toISOString();
+    endDate = newDate;
+  }
+
+  if (offset < 0) {
+    endDate = new Date(date).toISOString();
+    startDate = newDate;
+  }
+
+  return { endDate, startDate };
+}
+
 // new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]])
 
 // export function timeUtil() {
