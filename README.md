@@ -14,28 +14,15 @@
 
 This [NPM Package](https://www.npmjs.com/package/questrade-ts) is an unofficial [Questrade API](https://www.questrade.com/api/documentation/getting-started) wrapper for [NodeJS](https://nodejs.org/en/docs/) with full [TypeScript](https://www.typescriptlang.org/docs/home.html) support.
 
-This NodeJS wrapper is an easy way to use the [Questrade API]
-(www.questrade.com/api/documentation/getting-started) immediately. This SDK<a name="sdk-foot-back">[<sup>1</sup>](#sdk-foot)</a> commes with full TypeScript support.
+This wrapper is an easy way to use the [Questrade API](www.questrade.com/api/documentation/getting-started) immediately. This SDK<a name="sdk-foot-back">[<sup>1</sup>](#sdk-foot)</a> commes with full TypeScript support.
 
 ## What can I do with the Questrade API
 
 As you can read on The [Questrade API documentation page](www.questrade.com/api/documentation/getting-started) Questrade API enables you to develop live or practice applications that can access your account data, retrieve market data and more through your Questrade brokerage account.
 
-### Activating IQ API centre
-Using your login credentials, log in to Questrade.
 
-  1. API welcome page
-  In the top right corner where you see your login name, select API centre from the drop-down menu. You will be redirected to the API welcome page providing you with more information about the API.
 
-  1. Activate API
-  Once you're ready, click Activate API.
-
-  1. API access agreement
-  The API access agreement appears. You need to read and agree to the terms listed in the agreement to proceed. After clicking Agree, you will be one step closer to getting access to Questrade's API.
-
-  ## Using this SDK
-
-<!--
+## Using this SDK
 
 Simply start by installing this questrade-ts library:
 
@@ -51,89 +38,121 @@ or
 yarn add questrade-ts@latest
 ```
 
-You will need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx).
+You will need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx):
 
-After that, it is really simple to use:
+### Activating IQ API centre
+Using your login credentials, log in to Questrade.
 
-### TL;DR
+  1. API welcome page
+  In the top right corner where you see your login name, select API centre from the drop-down menu. You will be redirected to the API welcome page providing you with more information about the API.
 
-```TypeScript
+  1. Activate API
+  Once you're ready, click Activate API.
 
-  /* 'require' call may be converted to an import. */
-  // import { redeemToken } from 'questrade-ts'
-  const { redeemToken } = require('questrade-ts');
+  1. API access agreement
+  The API access agreement appears. You need to read and agree to the terms listed in the agreement to proceed. After clicking Agree, you will be one step closer to getting access to Questrade's API.
 
-  /* You will need to create your own API key: */
-  /* https://login.questrade.com/APIAccess/UserApps.aspx */
-  const yourRefreshToken = 'RocgqWp_USE_YOUR_OWN_TOKEN_M3BCd0';
+## TL;DR
 
-  /* inside of an async function or async IIFE */
-  (async () => {
-    const log = console.log
+```ts
+/* 'require' call may be converted to an import. */
+const { qtAPIv2_0 } = require('questrade-ts');
+/* *OR* */
+import { qtAPIv2_0 } from 'questrade-ts';
 
-    const { qtApi, credentials } = await redeemToken(yourRefreshToken);
+/* You will need to create your own API key: */
+/* https://login.questrade.com/APIAccess/UserApps.aspx */
+// more secure methods are available to set the Refresh Token
+// this is a quick examble and can be used to test the api
+const yourRefreshToken = 'RocgqWp_USE_YOUR_OWN_TOKEN_M3BCd0';
 
-    /* Validate the server time as your hello world for this package */
-    const serverTime = qtApi.serverTime
-    log(serverTime)
+/* inside of an async function or here in an async IIFE */
+(async () => {
+  const { log } = console;
+  const { qtApi, credentials } = await qtAPIv2_0({ token: yourRefreshToken });
+  /* Validate the server time as your hello world for this package */
+  const { serverTime } = qtApi;
+  log(serverTime);
 
-    /* inside an async function use await qt.get.<... some properties or methods> */
-    const myBalances = await qtApi.myBalances();
-    const balances = await qtApi.account.getBalances();
+  /* inside an async function use await qt.get.<... some properties or methods> */
+  const myBalances = await qtApi.myBalances();
+  const balances = await qtApi.account.getBalances();
 
-    log(myBalances);
-    log(balances);
+  log(myBalances);
+  log(balances);
+  log(credentials);
 
-    log(credentials);
-
-    /* you can use a try/catch block to manage error instead: */
-  })().catch(error=>console.error(error.message));
+  /* you can use a try/catch block to manage error instead: */
+})().catch(error => console.error(error.message));
 ```
 
-### Structure
+## Structure
+this contract will never change for [IQuestradeAPIv2_0](https://pastebin.com/BTFAN3i5)
 
 ```TypeScript
 
-  const qtApi: IQuestradeApi = {
-    currentAccount,
-    myBalances,
-    serverTime,
-    account: {
-      getActivities,
-      getAllAccounts,
-      getAllOrders,
-      getBalances,
-      getExecutions,
-      getOrders,
-      getOrdersByIds,
-      getPositions,
-    },
-    market: {
-      getAllMarkets,
-      gtCandlesByStockId,
-    },
-    getQuotes: {
-      byStockIds,
-      byStrategies,
-    },
-    getOptionsQuotes: {
-      byOptionsIds,
-      fromFilter,
-    },
-    getOptionChains: {
-      byStockId,
-    },
-    getSymbols: {
-      byStockIds,
-    },
-    search: {
-      stock,
-      allStocks,
-      countResults,
-    },
+ export interface IQuestradeAPIv2_0 {
+  account: {
+    currentAccount: string;
+    getActivities(
+      startTime: string,
+    ): (endTime: string) => Promise<IAccountActivity[]>;
+    getAllAccounts(): Promise<IAccount[]>;
+    getBalances(): Promise<IBalances>;
+    getExecutions(
+      startTime: string,
+    ): (endTime: string) => Promise<IExecution[]>;
+    getOrders(stateFilter?: string | undefined): DateRange<Promise<IOrder[]>>;
+    getOrdersByIds(orderId: number[]): Promise<IOrder[]>;
+    getPositions(): Promise<IPosition[]>;
+    getServerTime(): Promise<Date>;
+  };
+
+  getOptionChains: {
+    byStockId(stockId: number): Promise<IOptionChain[]>;
+  };
+
+  getOptionsQuotes: {
+    byOptionsIds(optionIds: number[]): Promise<IOptionsQuote[]>;
+    fromFilter(filters: OptionsFilters): Promise<IOptionsQuote[]>;
+  };
+
+  getQuotes: {
+    byStockIds(ids: number[]): Promise<IQuote[]>;
+    byStrategies(
+      strategyVariantRequestData: StrategyVariantRequest,
+    ): Promise<IStrategiesQuotes>;
+  };
+
+  getSymbols: {
+    byStockIds(stockIds: number[]): Promise<ISymbol[]>;
+  };
+
+  market: {
+    getAllMarkets(): Promise<IMarket[]>;
+    getCandlesByStockId(
+      symbolID: number,
+    ): (interval?: string | undefined) => DateRange<Promise<ICandle[]>>;
+  };
+
+  myBalances: QtApiMyBalances;
+
+  search: {
+    allStocks(
+      prefix: string,
+      offset?: number | undefined,
+    ): Promise<ISymbolSearchResult[]>;
+    countResults(prefix: string): Promise<number>;
+    stock(
+      prefix: string,
+      offset?: number | undefined,
+    ): Promise<ISymbolSearchResult[]>;
+  };
+  serverTime: Date | 'ERROR';
+}
   };
 ```
-
+<!--
 ### IQuestradeApi describe in TypeScript terms what the `questrade-ts` api look like
 
 ```TypeScript
