@@ -16,9 +16,22 @@ This [NPM Package](https://www.npmjs.com/package/questrade-ts) is an unofficial 
 
 This NodeJS wrapper is an easy way to use the [Questrade API](www.questrade.com/api/documentation/getting-started) immediately. It commes with full TypeScript support.
 
-### What can I do with the Questrade API
+## What can I do with the Questrade API
 
 As you can read on The [Questrade API documentation page](www.questrade.com/api/documentation/getting-started) Questrade API enables you to develop live or practice applications that can access your account data, retrieve market data and more through your Questrade brokerage account.
+
+### Activating IQ API centre
+Using your login credentials, log in to Questrade.
+
+  1. API welcome page
+  In the top right corner where you see your login name, select API centre from the drop-down menu. You will be redirected to the API welcome page providing you with more information about the API.
+
+  1. Activate API
+  Once you're ready, click Activate API.
+
+  1. API access agreement
+  The API access agreement appears. You need to read and agree to the terms listed in the agreement to proceed. After clicking Agree, you will be one step closer to getting access to Questrade's API.
+
 <!--
 
 Simply start by installing this questrade-ts library:
