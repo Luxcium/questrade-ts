@@ -2318,6 +2318,9 @@
       "color": "#90BCFFDD"
     }
   ],
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
   // #endregion: EDITOR RULERS                                                  !
 }
 // =====2021=====Luxcium=====Author==Benjamin=Vincent=(Luxcium)=License==MIT====

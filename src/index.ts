@@ -8,3 +8,5 @@ export const qtAPIv2_0: (
   credentials: Credentials;
   qtApi: IQuestradeAPIv2_0;
 }> = questradeAPI;
+
+export type { IQuestradeAPIv2_0 };
