@@ -22,6 +22,7 @@ export async function questradeAPI(apiOptions: ApiOptions) {
 
   return {
     credentials,
+    // XXX: WORKING ON questradeApiFactory CALLS
     qtApi: await questradeApiFactory(
       credentials,
       apiCallQ,

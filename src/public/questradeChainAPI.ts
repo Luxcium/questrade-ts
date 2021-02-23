@@ -13,6 +13,7 @@ export const asyncQuestradeApi = (
 
   proxy: ((cred: Credentials) => ProxyFactory_) | null,
 ) => {
+  // XXX: WORKING ON questradeApiFactory CALLS
   const asyncQtApi = questradeApiFactory(credentials, apiCallQ, proxy);
   const asyncAccount = asyncQtApi.then(t => t.account);
   const asyncCurrentAccount = asyncQtApi.then(t => t.account.currentAccount);
