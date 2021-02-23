@@ -21,7 +21,7 @@ export async function questradeApiFactory(
   proxy: ((cred: Credentials) => ProxyFactory_) | null,
   errorlog: Logger = (...error: any[]) => error,
 ) {
-  questradeApiFactory3(
+  return questradeApiFactory3(
     questradeApiFactory2(
       questradeApiFactory1(credentials, apiCallQ, proxy, errorlog),
     ),
