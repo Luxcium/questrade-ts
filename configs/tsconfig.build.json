@@ -4,10 +4,10 @@
     "noEmit": false,
     "noEmitOnError": true,
     "rootDir": "../src",
-    "outDir": "../dist/src",
-    "declarationDir": "../dist/typings",
+    "outDir": "../build/src",
+    "declarationDir": "../build/typings",
     "incremental": true,
-    "tsBuildInfoFile": "../dist/ts-build-info.lib",
+    "tsBuildInfoFile": "../build/ts-build-info.lib",
   },
   "include": [
     "../src/**/*.ts",
