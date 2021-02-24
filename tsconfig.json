@@ -99,7 +99,12 @@
     /* ALWAYS TRUE  */ "noUnusedLocals": true /*                ALWAYS TRUE  */,
     /* ALWAYS TRUE  */ "noUnusedParameters": true /*            ALWAYS TRUE  */,
     /* ALWAYS TRUE STRICT TYPE-CHECKING ADDITIONAL CHECKS MUST ALWAYS BE TRUE*/
-    /*                                                                       */
+    /*                                                                        */
+    "paths": {
+      "~*": [
+        "./*"
+      ]
+    }
     /* Unused settings */
     /*                                                                        */
     // "watch": false,
@@ -115,7 +120,6 @@
     // "mapRoot": "",
     // "maxNodeModuleJsDepth": 0,
     // "outFile": "",
-    // "paths": {},
     // "plugins": [],
     // "preserveWatchOutput": true,
     // "reactNamespace": "React",

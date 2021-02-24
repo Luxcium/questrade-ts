@@ -6,3 +6,5 @@ build
 **/utils/**/*.js
 # *.js
 lib
+scripts
+jest.config.js

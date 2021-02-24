@@ -49,3 +49,4 @@ keys
 !misc/material-dir-icons/**/*
 
 nohup.out
+.cache
