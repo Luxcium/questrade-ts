@@ -1,49 +1,49 @@
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 module.exports = {
-  'preset': 'ts-jest',
-  'testEnvironment': 'node',
-  'globals': {
+  preset: 'ts-jest',
+  testEnvironment: 'node',
+  globals: {
     'ts-jest': {
       diagnostics: true,
     },
   },
 
-  'moduleFileExtensions': ['js', 'json', 'jsx', 'ts', 'tsx', 'node'],
+  moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node'],
 
-  'verbose': true,
+  verbose: true,
 
   //
-  'automock': true,
-  'bail': false,
-  'cacheDirectory': './.cache/jest',
-  'clearMocks': false,
-  'collectCoverage': true,
-  'collectCoverageFrom': ['src/**/*.ts'],
-  'coverageDirectory': './coverage',
+  automock: true,
+  bail: false,
+  cacheDirectory: './.cache/jest',
+  clearMocks: false,
+  collectCoverage: true,
+  collectCoverageFrom: ['src/**/*.ts'],
+  coverageDirectory: './coverage',
   // coveragePathIgnorePatterns: [],
   // // coverageProvider: '',
-  'coverageReporters': ['json', 'lcov', 'text', 'clover'],
-  'coverageThreshold': {
-    'global': {
-      branches: 50,
-      functions: 50,
-      lines: 50,
-      statements: 50,
-    },
-    './src/utils/**/*.ts': {
-      branches: 40,
-      statements: 40,
-    },
-    './src/reducers/**/*.ts': {
-      statements: 90,
-    },
-    './src/api/**/*.ts': {
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100,
-    },
-  },
+  // 'coverageReporters': ['json', 'lcov', 'text', 'clover'],
+  // 'coverageThreshold': {
+  //   'global': {
+  //     branches: 50,
+  //     functions: 50,
+  //     lines: 50,
+  //     statements: 50,
+  //   },
+  //   './src/utils/**/*.ts': {
+  //     branches: 40,
+  //     statements: 40,
+  //   },
+  //   './src/reducers/**/*.ts': {
+  //     statements: 90,
+  //   },
+  //   './src/api/**/*.ts': {
+  //     branches: 100,
+  //     functions: 100,
+  //     lines: 100,
+  //     statements: 100,
+  //   },
+  // },
   // dependencyExtractor: '',
   // displayName: [],
   // errorOnDeprecated: true,
@@ -60,8 +60,8 @@ module.exports = {
   // moduleNameMapper: [], // [] ["object<string, string | 'array<string>>'"],
   // modulePathIgnorePatterns: [], // [] ['array<string>'],
   // modulePaths: [], // [] ['array<string>'],
-  // notify: true, // false
-  // notifyMode: '',
+  notify: true, // false
+  notifyMode: 'change',
   // preset: '[string]',
   // prettierPath: '[string]',
   // projects: [], // [] ['array<string | ProjectConfig>'],
@@ -81,7 +81,10 @@ module.exports = {
   // testEnvironment: '[string]',
   // testEnvironmentOptions: {},
   // testFailureExitCode: 0,
-  // testMatch: [], // [] ['array<string>'],
+  testMatch: [
+    'src/__tests__/**/*.[jt]s?(x)',
+    'src/**/?(*.)+(spec|test).[jt]s?(x)',
+  ], // [] ['array<string>'],
   // testPathIgnorePatterns: [], // [] ['array<string>'],
   // testRegex: [], // [] ["string | 'array<string>'"],
   // testResultsProcessor: '[string]',
@@ -97,7 +100,6 @@ module.exports = {
   // unmockedModulePathPatterns: [], // [] ['array<string>'],
   // watchPathIgnorePatterns: [], // [] ['array<string>'],
   // watchPlugins: [], // [] ['array<string | [string, Object]>'],
-  'watchman': true,
-  '//': 'Comment goes here',
-  // //  */
+  // 'watchman': true,
+  // '//': 'Comment goes here',
 };

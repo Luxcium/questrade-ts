@@ -141,6 +141,8 @@
     ".vscode",
     "**/__test__/**/*.*",
     "**/node_modules",
+    "lib/**/*.*",
+    "src/test/**/*.*",
     "backup",
     "build",
     "configs",
