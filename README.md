@@ -31,13 +31,13 @@ Simply start by installing this questrade-ts library:
 This Package conforms to [Semantic Versioning Specification (SemVer)](https://semver.org/#semantic-versioning-200)
 
 ```bash
-npm i questrade-ts@latest
+npm i questrade-ts@beta2 \# THIS PACKAGE IS NOT YET PUBLISHED
 ```
 
 or
 
 ```bash
-yarn add questrade-ts@latest
+yarn add questrade-ts@beta2 \# THIS PACKAGE IS NOT YET PUBLISHED
 ```
 
 You will need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx):
