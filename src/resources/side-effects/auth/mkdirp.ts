@@ -21,12 +21,12 @@ export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
 
   let { mode } = opts;
   const xfs = opts.fs || fs;
-  const _0777 = 0o0777;
+  // const _0777 = 0o0777;
 
   if (!mode) {
     // hACK:  mode = _0777 & ~process.umask();
     // hACK:  mode = /* _0777 & ~ */ process.umask(_0777);
-    mode = /* _0777 & ~ */ process.umask(_0777);
+    mode = /* _0777 & ~ */ process.umask(0o0777);
   }
 
   if (!made) {
@@ -34,10 +34,9 @@ export function sync(p: string, opts?: Mode | OptionsSync, made?: Made): Made {
   }
 
   p = path.resolve(p);
-
   try {
     // eslint-disable-next-line security/detect-non-literal-fs-filename
-    xfs.mkdirSync(p, mode);
+    xfs.mkdirSync(p, { mode });
     made = made || p;
   } catch (error) {
     if (error.code === 'ENOENT') {

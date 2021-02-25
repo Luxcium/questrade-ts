@@ -53,7 +53,7 @@ This Package conforms to [Semantic Versioning Specification (SemVer)](https://se
 ```bash
 ## BREAKING: This package is not yet published!
 # Until then you can install version: 2.0.0-beta+v2.0c by using this link
-npm i @types/node 'github:Luxcium/questrade-ts#4921b58'
+npm i @types/node 'github:Luxcium/questrade-ts#0722b1b'
 # npm i questrade-ts@beta2
 ```
 
@@ -62,7 +62,7 @@ or
 ```bash
 ## BREAKING: This package is not yet published!
 # Until then you can install version: 2.0.0-beta+v2.0c by using this link
-yarn add @types/node 'github:Luxcium/questrade-ts#4921b58'
+yarn add @types/node 'github:Luxcium/questrade-ts#0722b1b'
 # yarn add questrade-ts@beta2
 ```
 
