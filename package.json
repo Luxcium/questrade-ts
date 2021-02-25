@@ -7,8 +7,7 @@
   "author": "Luxcium <luxcium@neb401.com>",
   "license": "MIT",
   "homepage": "https://github.com/Luxcium/questrade-ts",
-  "main": "./src/index.js",
-  "types": "./typings/index.d.ts",
+  "main": "./src/index.ts",
   "repository": {
     "type": "git",
     "url": "git@github.com/luxcium/questrade-ts.git"
