@@ -1,0 +1,1 @@
+{"version":3,"file":"remainingRequests.d.ts","sourceRoot":"","sources":["../../../../../src/private/core/next-rate-limiter/remainingRequests.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,uCAAuC,CAAC;AAC5E,OAAO,KAAK,EAAE,gBAAgB,EAAE,MAAM,sCAAsC,CAAC;AAE7E,wBAAgB,iBAAiB,CAAC,CAAC,EACjC,QAAQ,EAAE,cAAc,CAAC,CAAC,CAAC,EAC3B,iBAAiB,SAAK,GACrB,gBAAgB,CA4BlB"}

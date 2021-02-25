@@ -1,0 +1,1 @@
+{"version":3,"file":"StaticJSONCache.d.ts","sourceRoot":"","sources":["../../../../../src/resources/side-effects/typescript/StaticJSONCache.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,SAAS,MAAM,YAAY,CAAC;AACxC,OAAO,KAAK,EAAE,QAAQ,EAAE,MAAM,iCAAiC,CAAC;AAEhE,MAAM,WAAW,eAAe;IAC9B,KAAK,CAAC,EAAE,WAAW,EAAE,GAAG,EAAE,OAAO,CAAC,EAAE,QAAQ,GAAG,SAAS,CAAC,CAAC,CAAC,CAAC;CAC7D"}

@@ -1,0 +1,8 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.formatDate = void 0;
+const formatDate = (date) => {
+    return new Date(date).toISOString();
+};
+exports.formatDate = formatDate;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZGF0ZXMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi8uLi9zcmMvdXRpbHMvZGF0ZXMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBQU8sTUFBTSxVQUFVLEdBQW9DLENBQ3pELElBQW1CLEVBQ25CLEVBQUU7SUFDRixPQUFPLElBQUksSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFDLFdBQVcsRUFBRSxDQUFDO0FBQ3RDLENBQUMsQ0FBQztBQUpXLFFBQUEsVUFBVSxjQUlyQiIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCBjb25zdCBmb3JtYXREYXRlOiAoZGF0ZTogRGF0ZSB8IHN0cmluZykgPT4gc3RyaW5nID0gKFxuICBkYXRlOiBEYXRlIHwgc3RyaW5nLFxuKSA9PiB7XG4gIHJldHVybiBuZXcgRGF0ZShkYXRlKS50b0lTT1N0cmluZygpO1xufTtcbiJdfQ==

@@ -1,0 +1,1 @@
+{"version":3,"file":"core_limiter.d.ts","sourceRoot":"","sources":["../../../../../src/private/core/next-rate-limiter/core_limiter.ts"],"names":[],"mappings":"AA8DA,wBAAgB,uBAAuB,CAAC,EAAE,EAAE,MAAM,kCAuBjD;AAuBD,wBAAgB,OAAO,CAAC,KAAK,SAAK,WAsBjC;AAED,eAAO,MAAM,cAAc,QAAa,CAAC;AACzC,eAAO,MAAM,sBAAsB,QAAa,CAAC"}

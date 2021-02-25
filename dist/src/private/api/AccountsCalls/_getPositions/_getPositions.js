@@ -1,0 +1,18 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports._getPositions = void 0;
+const tslib_1 = require("tslib");
+// + _getPositions
+/** _getPositions */
+const _getPositions = (clientAccountGetApi, errorlog = (...error) => error) => () => tslib_1.__awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const positions = yield clientAccountGetApi('/positions')();
+        return positions.positions;
+    }
+    catch (error) {
+        void errorlog(error);
+        return [];
+    }
+});
+exports._getPositions = _getPositions;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiX2dldFBvc2l0aW9ucy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uLy4uL3NyYy9wcml2YXRlL2FwaS9BY2NvdW50c0NhbGxzL19nZXRQb3NpdGlvbnMvX2dldFBvc2l0aW9ucy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7O0FBR0Esa0JBQWtCO0FBQ2xCLG9CQUFvQjtBQUNiLE1BQU0sYUFBYSxHQUFHLENBQzNCLG1CQUFxRSxFQUNyRSxXQUFtQixDQUFDLEdBQUcsS0FBWSxFQUFFLEVBQUUsQ0FBQyxLQUFLLEVBQzdDLEVBQUUsQ0FBQyxHQUErQixFQUFFO0lBQ3BDLElBQUk7UUFDRixNQUFNLFNBQVMsR0FBRyxNQUFNLG1CQUFtQixDQUFhLFlBQVksQ0FBQyxFQUFFLENBQUM7UUFFeEUsT0FBTyxTQUFTLENBQUMsU0FBUyxDQUFDO0tBQzVCO0lBQUMsT0FBTyxLQUFLLEVBQUU7UUFDZCxLQUFLLFFBQVEsQ0FBQyxLQUFLLENBQUMsQ0FBQztRQUVyQixPQUFPLEVBQUUsQ0FBQztLQUNYO0FBQ0gsQ0FBQyxDQUFBLENBQUM7QUFiVyxRQUFBLGFBQWEsaUJBYXhCIiwic291cmNlc0NvbnRlbnQiOlsiLy8gaW1wb3J0IHsgZXJyb3Jsb2cgfSBmcm9tICcuLi8uLi8uLi8uLi9yZXNvdXJjZXMvc2lkZS1lZmZlY3RzJztcbmltcG9ydCB0eXBlIHsgSVBvc2l0aW9uLCBJUG9zaXRpb25zLCBMb2dnZXIgfSBmcm9tICcuLi8uLi8uLi8uLi90eXBlc2NyaXB0JztcblxuLy8gKyBfZ2V0UG9zaXRpb25zXG4vKiogX2dldFBvc2l0aW9ucyAqL1xuZXhwb3J0IGNvbnN0IF9nZXRQb3NpdGlvbnMgPSAoXG4gIGNsaWVudEFjY291bnRHZXRBcGk6IDxSPihhY2NvdW50RW5kcG9pbnQ6IHN0cmluZykgPT4gKCkgPT4gUHJvbWlzZTxSPixcbiAgZXJyb3Jsb2c6IExvZ2dlciA9ICguLi5lcnJvcjogYW55W10pID0+IGVycm9yLFxuKSA9PiBhc3luYyAoKTogUHJvbWlzZTxJUG9zaXRpb25bXT4gPT4ge1xuICB0cnkge1xuICAgIGNvbnN0IHBvc2l0aW9ucyA9IGF3YWl0IGNsaWVudEFjY291bnRHZXRBcGk8SVBvc2l0aW9ucz4oJy9wb3NpdGlvbnMnKSgpO1xuXG4gICAgcmV0dXJuIHBvc2l0aW9ucy5wb3NpdGlvbnM7XG4gIH0gY2F0Y2ggKGVycm9yKSB7XG4gICAgdm9pZCBlcnJvcmxvZyhlcnJvcik7XG5cbiAgICByZXR1cm4gW107XG4gIH1cbn07XG4iXX0=

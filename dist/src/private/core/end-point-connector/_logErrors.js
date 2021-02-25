@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports._logErrors = void 0;
+function _logErrors(error, message = '') {
+    // cONSOLE:  using console error is a sideEffect and will be flagged
+    console.error('Error:', error.message, '\n', message);
+    return error;
+}
+exports._logErrors = _logErrors;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiX2xvZ0Vycm9ycy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3NyYy9wcml2YXRlL2NvcmUvZW5kLXBvaW50LWNvbm5lY3Rvci9fbG9nRXJyb3JzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFBLFNBQVMsVUFBVSxDQUFDLEtBQVksRUFBRSxPQUFPLEdBQUcsRUFBRTtJQUM1QyxvRUFBb0U7SUFDcEUsT0FBTyxDQUFDLEtBQUssQ0FBQyxRQUFRLEVBQUUsS0FBSyxDQUFDLE9BQU8sRUFBRSxJQUFJLEVBQUUsT0FBTyxDQUFDLENBQUM7SUFFdEQsT0FBTyxLQUFLLENBQUM7QUFDZixDQUFDO0FBRVEsZ0NBQVUiLCJzb3VyY2VzQ29udGVudCI6WyJmdW5jdGlvbiBfbG9nRXJyb3JzKGVycm9yOiBFcnJvciwgbWVzc2FnZSA9ICcnKSB7XG4gIC8vIGNPTlNPTEU6ICB1c2luZyBjb25zb2xlIGVycm9yIGlzIGEgc2lkZUVmZmVjdCBhbmQgd2lsbCBiZSBmbGFnZ2VkXG4gIGNvbnNvbGUuZXJyb3IoJ0Vycm9yOicsIGVycm9yLm1lc3NhZ2UsICdcXG4nLCBtZXNzYWdlKTtcblxuICByZXR1cm4gZXJyb3I7XG59XG5cbmV4cG9ydCB7IF9sb2dFcnJvcnMgfTtcbiJdfQ==

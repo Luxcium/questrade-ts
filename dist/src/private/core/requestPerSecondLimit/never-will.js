@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.neverWill = void 0;
+const utils_1 = require("../../../utils");
+const neverWillCb = () => {
+    throw new Error('NEVER: lenght is validated prior to pop this should never occur');
+};
+const neverCb = (error, returnValue) => {
+    utils_1.void0({ error, returnValue });
+    throw new Error('NEVER: lenght is validated prior to pop this should never occur');
+};
+exports.neverWill = [neverWillCb, neverCb];
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmV2ZXItd2lsbC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3NyYy9wcml2YXRlL2NvcmUvcmVxdWVzdFBlclNlY29uZExpbWl0L25ldmVyLXdpbGwudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBQUEsMENBQXVDO0FBRXZDLE1BQU0sV0FBVyxHQUFHLEdBQVUsRUFBRTtJQUM5QixNQUFNLElBQUksS0FBSyxDQUNiLGlFQUFpRSxDQUNsRSxDQUFDO0FBQ0osQ0FBQyxDQUFDO0FBRUYsTUFBTSxPQUFPLEdBQUcsQ0FBQyxLQUFtQixFQUFFLFdBQWdCLEVBQVMsRUFBRTtJQUMvRCxhQUFLLENBQUMsRUFBRSxLQUFLLEVBQUUsV0FBVyxFQUFFLENBQUMsQ0FBQztJQUM5QixNQUFNLElBQUksS0FBSyxDQUNiLGlFQUFpRSxDQUNsRSxDQUFDO0FBQ0osQ0FBQyxDQUFDO0FBRVcsUUFBQSxTQUFTLEdBQUcsQ0FBQyxXQUFXLEVBQUUsT0FBTyxDQUFVLENBQUMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyB2b2lkMCB9IGZyb20gJy4uLy4uLy4uL3V0aWxzJztcblxuY29uc3QgbmV2ZXJXaWxsQ2IgPSAoKTogbmV2ZXIgPT4ge1xuICB0aHJvdyBuZXcgRXJyb3IoXG4gICAgJ05FVkVSOiBsZW5naHQgaXMgdmFsaWRhdGVkIHByaW9yIHRvIHBvcCB0aGlzIHNob3VsZCBuZXZlciBvY2N1cicsXG4gICk7XG59O1xuXG5jb25zdCBuZXZlckNiID0gKGVycm9yOiBFcnJvciB8IG51bGwsIHJldHVyblZhbHVlOiBhbnkpOiBuZXZlciA9PiB7XG4gIHZvaWQwKHsgZXJyb3IsIHJldHVyblZhbHVlIH0pO1xuICB0aHJvdyBuZXcgRXJyb3IoXG4gICAgJ05FVkVSOiBsZW5naHQgaXMgdmFsaWRhdGVkIHByaW9yIHRvIHBvcCB0aGlzIHNob3VsZCBuZXZlciBvY2N1cicsXG4gICk7XG59O1xuXG5leHBvcnQgY29uc3QgbmV2ZXJXaWxsID0gW25ldmVyV2lsbENiLCBuZXZlckNiXSBhcyBjb25zdDtcbiJdfQ==

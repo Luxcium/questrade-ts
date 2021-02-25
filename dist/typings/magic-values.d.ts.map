@@ -1,0 +1,1 @@
+{"version":3,"file":"magic-values.d.ts","sourceRoot":"","sources":["../../src/magic-values.ts"],"names":[],"mappings":"AAAA,eAAO,MAAM,IAAI,MAAO,CAAC;AACzB,eAAO,MAAM,GAAG,MAAO,CAAC;AACxB,eAAO,MAAM,IAAI,GAAa,CAAC;AAC/B,eAAO,MAAM,GAAG,GAAa,CAAC;AAC9B,eAAO,MAAM,YAAY,OAAkB,CAAC;AAC5C,eAAO,MAAM,gBAAgB,IAAc,CAAC;AAC5C,eAAO,MAAM,iBAAiB,OAAkB,CAAC;AACjD,eAAO,MAAM,qBAAqB,IAAc,CAAC"}

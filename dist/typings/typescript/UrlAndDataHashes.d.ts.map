@@ -1,0 +1,1 @@
+{"version":3,"file":"UrlAndDataHashes.d.ts","sourceRoot":"","sources":["../../../src/typescript/UrlAndDataHashes.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,gBAAgB,CAAC,CAAC,GAAG,GAAG;IACvC,QAAQ,EAAE,MAAM,GAAG,MAAM,CAAC;IAC1B,WAAW,EAAE,CAAC,GAAG,MAAM,CAAC;IACxB,IAAI,EAAE,MAAM,GAAG,MAAM,CAAC;IACtB,OAAO,EAAE,MAAM,GAAG,MAAM,CAAC;IACzB,SAAS,EAAE,MAAM,GAAG,MAAM,CAAC;CAC5B"}

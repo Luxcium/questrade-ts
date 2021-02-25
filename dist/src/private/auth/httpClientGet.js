@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.httpClientGet = void 0;
+const side_effects_1 = require("../../resources/side-effects");
+function httpClientGet(proxy) {
+    if ((proxy === null || proxy === void 0 ? void 0 : proxy.oAuthHttpCredentials) && proxy.activate) {
+        side_effects_1.echo('Warning: A Proxy is used in oAuth Connector!');
+        return proxy.activate({});
+    }
+    return side_effects_1.getHttpClient();
+}
+exports.httpClientGet = httpClientGet;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaHR0cENsaWVudEdldC5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NyYy9wcml2YXRlL2F1dGgvaHR0cENsaWVudEdldC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBQSwrREFBbUU7QUFJbkUsU0FBZ0IsYUFBYSxDQUFDLEtBQTRCO0lBQ3hELElBQUksQ0FBQSxLQUFLLGFBQUwsS0FBSyx1QkFBTCxLQUFLLENBQUUsb0JBQW9CLEtBQUksS0FBSyxDQUFDLFFBQVEsRUFBRTtRQUNqRCxtQkFBSSxDQUFDLDhDQUE4QyxDQUFDLENBQUM7UUFFckQsT0FBTyxLQUFLLENBQUMsUUFBUSxDQUFDLEVBQUUsQ0FBQyxDQUFDO0tBQzNCO0lBRUQsT0FBTyw0QkFBYSxFQUFFLENBQUM7QUFDekIsQ0FBQztBQVJELHNDQVFDIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgZWNobywgZ2V0SHR0cENsaWVudCB9IGZyb20gJy4uLy4uL3Jlc291cmNlcy9zaWRlLWVmZmVjdHMnO1xuaW1wb3J0IHR5cGUgeyBDbGllbnRTdGF0aWMgfSBmcm9tICcuLi8uLi9yZXNvdXJjZXMvc2lkZS1lZmZlY3RzL3R5cGVzY3JpcHQnO1xuaW1wb3J0IHR5cGUgeyBQcm94eUZhY3RvcnlfIH0gZnJvbSAnLi4vLi4vdHlwZXNjcmlwdCc7XG5cbmV4cG9ydCBmdW5jdGlvbiBodHRwQ2xpZW50R2V0KHByb3h5PzogUHJveHlGYWN0b3J5XyB8IG51bGwpOiBDbGllbnRTdGF0aWMge1xuICBpZiAocHJveHk/Lm9BdXRoSHR0cENyZWRlbnRpYWxzICYmIHByb3h5LmFjdGl2YXRlKSB7XG4gICAgZWNobygnV2FybmluZzogQSBQcm94eSBpcyB1c2VkIGluIG9BdXRoIENvbm5lY3RvciEnKTtcblxuICAgIHJldHVybiBwcm94eS5hY3RpdmF0ZSh7fSk7XG4gIH1cblxuICByZXR1cm4gZ2V0SHR0cENsaWVudCgpO1xufVxuIl19

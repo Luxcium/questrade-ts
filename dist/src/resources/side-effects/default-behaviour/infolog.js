@@ -1,0 +1,9 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.infolog = void 0;
+function infolog(...args) {
+    console.info(...args);
+    return args;
+}
+exports.infolog = infolog;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5mb2xvZy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uLy4uL3NyYy9yZXNvdXJjZXMvc2lkZS1lZmZlY3RzL2RlZmF1bHQtYmVoYXZpb3VyL2luZm9sb2cudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7O0FBQUEsU0FBZ0IsT0FBTyxDQUFjLEdBQUcsSUFBUztJQUMvQyxPQUFPLENBQUMsSUFBSSxDQUFDLEdBQUcsSUFBSSxDQUFDLENBQUM7SUFFdEIsT0FBTyxJQUFJLENBQUM7QUFDZCxDQUFDO0FBSkQsMEJBSUMiLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZnVuY3Rpb24gaW5mb2xvZzxUID0gdW5rbm93bj4oLi4uYXJnczogVFtdKSB7XG4gIGNvbnNvbGUuaW5mbyguLi5hcmdzKTtcblxuICByZXR1cm4gYXJncztcbn1cbiJdfQ==
