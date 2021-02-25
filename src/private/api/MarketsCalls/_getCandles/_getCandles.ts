@@ -1,4 +1,6 @@
 // import { errorlog } from '../../../../resources/side-effects';
+import { HistoricalDataGranularity } from 'questrade-api-enumerations';
+
 import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import type { ICandle, ICandles, Logger } from '../../../../typescript';
 // tODO: remove dependencies to nodeJS crypt-module making it optional ...
@@ -12,9 +14,9 @@ export const _getCandles = (
     handlerOptions: ProxyHandlerOptions,
   ) => () => Promise<R>,
   errorlog: Logger = (...error: any[]) => error,
-) => (symbolID: number) => (interval = 'OneDay') => (
-  startDate: string,
-) => async (endDate: string): Promise<ICandle[]> => {
+) => (symbolID: number) => (
+  interval: string | HistoricalDataGranularity = 'OneDay',
+) => (startDate: string) => async (endDate: string): Promise<ICandle[]> => {
   try {
     return (
       //
