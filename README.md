@@ -52,7 +52,7 @@ This Package conforms to [Semantic Versioning Specification (SemVer)](https://se
 
 ```bash
 ## BREAKING: This package is not yet published!
-npm i 'https://github.com/Luxcium/questrade-ts.git#643c910'
+npm i 'https://github.com/Luxcium/questrade-ts.git#922bc0f'
 # npm i questrade-ts@beta2
 ```
 
@@ -60,7 +60,7 @@ or
 
 ```bash
 ## BREAKING: This package is not yet published!
-yarn add 'https://github.com/Luxcium/questrade-ts.git#643c910'
+yarn add 'https://github.com/Luxcium/questrade-ts.git#922bc0f'
 # yarn add questrade-ts@beta2
 ```
 
