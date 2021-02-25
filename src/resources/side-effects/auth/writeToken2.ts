@@ -21,10 +21,3 @@ export const writeToken = (
 
   return credentials;
 };
-
-// export function writeToken(
-//   credentials: Credentials,
-//   response: ClientResponse<IRefreshCreds>,
-// ): Credentials {
-//   return _writeToken(credentials, response);
-// }

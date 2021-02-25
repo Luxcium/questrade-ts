@@ -1,5 +1,3 @@
-export { validateToken } from '../auth/validateToken';
-export { writeToken } from '../auth/writeToken';
 export { client } from './client';
 export { ech0, echo, echo1, id0, id1, void0, void1 } from './ech0';
 export { errorlog } from './errorlog';

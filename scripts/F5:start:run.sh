@@ -22,8 +22,8 @@ FLAGS=''
                 tsc --build || exit 15
                 cp ./package.json ./out/
                 cp ./yarn.lock ./out/
-                cp ./src/resources/package-lock.json ./out/src/resources/package-lock.json
-                cp ./src/resources/package.json ./out/src/resources/package.json
+                # cp ./src/resources/package-lock.json ./out/src/resources/package-lock.json
+                # cp ./src/resources/package.json ./out/src/resources/package.json
                 builtin cd ./out
                 yarn -s || exit 17
             ) || exit 19

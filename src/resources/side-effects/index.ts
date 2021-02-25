@@ -10,11 +10,10 @@ import {
   makeTedis,
   setMyToken,
   tablelog,
-  validateToken,
   warnlog,
-  writeToken,
 } from './default-behaviour';
 
+export { validateToken, writeToken } from './auth';
 export { sync } from './auth/mkdirp';
 export {
   client,
@@ -29,9 +28,7 @@ export {
   setMyToken,
   sideEffects,
   tablelog,
-  validateToken,
   warnlog,
-  writeToken,
 };
 
 const sideEffects = {
