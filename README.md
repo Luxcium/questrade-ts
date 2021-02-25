@@ -30,7 +30,7 @@ yarn add questrade-ts@beta2 # BREAKING: This package is not yet published!
 [![GitHub issues](https://img.shields.io/github/issues/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/issues)
 
 
-<!--
+
 ## Getting Started
 
 This [NPM Package](https://www.npmjs.com/package/questrade-ts) is an unofficial [Questrade API](https://www.questrade.com/api/documentation/getting-started) wrapper for [NodeJS](https://nodejs.org/en/docs/) with full [TypeScript](https://www.typescriptlang.org/docs/home.html) support.
@@ -43,6 +43,7 @@ As you can read on The [Questrade API documentation page](www.questrade.com/api/
 
 
 
+<!--
 ## Using this SDK
 
 Simply start by installing this questrade-ts library:
