@@ -1,11 +1,9 @@
 import { access, constants, readFileSync, writeFileSync } from 'fs';
-import path from 'path';
+import { dirname } from 'path';
 
 import type { ApiOptions } from '../../../typescript';
 import { sync } from '..';
 import { apiOptionsCredentialsFactory } from './api-options-credentials-factory';
-
-const { dirname } = path;
 
 export const validateToken = (options: ApiOptions) => {
   const credentials = apiOptionsCredentialsFactory(options);
