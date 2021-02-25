@@ -2,13 +2,14 @@
   "name": "questrade-ts",
   "displayName": "Questrade API by Luxcium (with typescript support).",
   "description": "Unofficial Questrade API wrapper for NodeJS with full TypeScript support.",
-  "version": "2.0.0-beta+v2.0.0.1c",
+  "version": "2.0.0-beta-v2.0.0.2c",
   "private": false,
   "author": "Luxcium <luxcium@neb401.com>",
   "license": "MIT",
   "homepage": "https://github.com/Luxcium/questrade-ts",
-  "main": "./src/index.ts",
-  "type": "module",
+  "main": "./dist/src/index.js",
+  "types": "./dist/typings/index.d.ts",
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "git@github.com/luxcium/questrade-ts.git"

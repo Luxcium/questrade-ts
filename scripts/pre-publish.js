@@ -1,6 +1,9 @@
 const { readFile, writeFile } = require('fs');
 const { promisify } = require('util');
-
+/*
+  "main": "./src/index.ts",
+  "type": "module",
+ */
 async function prePublish() {
   const filePath = './package.json';
   const writePath = './dist/package.json';
@@ -12,8 +15,9 @@ async function prePublish() {
   const author = 'Luxcium <luxcium@neb401.com>';
   const license = 'MIT';
   const homepage = 'https://github.com/Luxcium/questrade-ts';
-  const main = './index.js';
+  const main = './src/index.js';
   const types = './typings/index.d.ts';
+  const type = 'commonjs';
 
   const readFileAsync = promisify(readFile);
   const writeFileAsync = promisify(writeFile);
@@ -25,6 +29,7 @@ async function prePublish() {
   const nowDate = new Date();
   // const date = ;
   const newPackage = {
+    ...partialPackage,
     name,
     displayName,
     description,
@@ -32,13 +37,13 @@ async function prePublish() {
       nowDate.getMonth() + 1 > 9
         ? nowDate.getMonth() + 1
         : '0' + (nowDate.getMonth() + 1)
-    }${nowDate.getDate()}v2.0c`,
+    }${nowDate.getDate()}v2.0.0.2c`,
     author,
     license,
     homepage,
     main,
     types,
-    ...partialPackage,
+    type,
   };
   writeFileAsync(writePath, JSON.stringify(newPackage));
   // console.dir(newPackage);

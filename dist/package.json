@@ -1,1 +1,52 @@
-{"name":"questrade-ts","displayName":"Questrade API by Luxcium (with typescript support).","description":"Unofficial Questrade API wrapper for NodeJS with full TypeScript support.","private":false,"author":"Luxcium <luxcium@neb401.com>","license":"MIT","homepage":"https://github.com/Luxcium/questrade-ts","main":"./src/index.js","types":"./typings/index.d.ts","type":"commonjs","repository":{"type":"git","url":"git@github.com/luxcium/questrade-ts.git"},"bugs":{"url":"https://github.com/luxcium/questrade-ts/issues"},"keywords":["TypeScript","Canadian","Stock Market API","Un-Official","Questrade","Canada","API Wrapper","Questrade API","Stocks","Trading","Luxcium","TypeScript Support","API wrapper","TypeScript support","stock market api","canada","Canadian"],"dependencies":{"axios":"0.21.1","dotenv":"8.2.0","ioredis":"4.19.4","redis":"3.0.2","redis-json":"4.3.0","redis-rejson":"1.0.0","tedis":"0.1.12"},"optionalDependencies":{},"bundledDependencies":["questrade-api-enumerations"],"version":"2.0.0-beta-v2.0.0.2c+20210225v2.0.0.2c"}
+{
+  "name": "questrade-ts",
+  "displayName": "Questrade API by Luxcium (with typescript support).",
+  "description": "Unofficial Questrade API wrapper for NodeJS with full TypeScript support.",
+  "private": false,
+  "author": "Luxcium <luxcium@neb401.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/Luxcium/questrade-ts",
+  "main": "./src/index.js",
+  "types": "./typings/index.d.ts",
+  "type": "commonjs",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/luxcium/questrade-ts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luxcium/questrade-ts/issues"
+  },
+  "keywords": [
+    "TypeScript",
+    "Canadian",
+    "Stock Market API",
+    "Un-Official",
+    "Questrade",
+    "Canada",
+    "API Wrapper",
+    "Questrade API",
+    "Stocks",
+    "Trading",
+    "Luxcium",
+    "TypeScript Support",
+    "API wrapper",
+    "TypeScript support",
+    "stock market api",
+    "canada",
+    "Canadian"
+  ],
+  "dependencies": {
+    "axios": "0.21.1",
+    "dotenv": "8.2.0",
+    "ioredis": "4.19.4",
+    "redis": "3.0.2",
+    "redis-json": "4.3.0",
+    "redis-rejson": "1.0.0",
+    "tedis": "0.1.12"
+  },
+  "optionalDependencies": {},
+  "bundledDependencies": [
+    "questrade-api-enumerations"
+  ],
+  "version": "2.0.0-beta-v2.0.0.2c+20210225v2.0.0.2c"
+}
