@@ -43,7 +43,7 @@ As you can read on The [Questrade API documentation page](www.questrade.com/api/
 
 
 
-<!--
+
 ## Using this SDK
 
 Simply start by installing this questrade-ts library:
@@ -51,15 +51,19 @@ Simply start by installing this questrade-ts library:
 This Package conforms to [Semantic Versioning Specification (SemVer)](https://semver.org/#semantic-versioning-200)
 
 ```bash
-npm i questrade-ts@beta2 # BREAKING: This package is not yet published!
+## BREAKING: This package is not yet published!
+npm i 'https://github.com/Luxcium/questrade-ts.git#d94b14a'
+# npm i questrade-ts@beta2
 ```
 
 or
 
 ```bash
-yarn add questrade-ts@beta2 # BREAKING: This package is not yet published!
+## BREAKING: This package is not yet published!
+yarn add 'https://github.com/Luxcium/questrade-ts.git#d94b14a'
+# yarn add questrade-ts@beta2
 ```
--->
+
 
 You will need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx):
 
