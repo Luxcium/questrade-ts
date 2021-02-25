@@ -59,6 +59,7 @@ or
 ```bash
 yarn add questrade-ts@beta2 # BREAKING: This package is not yet published!
 ```
+-->
 
 You will need to get an [API key](https://login.questrade.com/APIAccess/userapps.aspx):
 
@@ -174,7 +175,7 @@ this contract will never change for [IQuestradeAPIv2_0](https://pastebin.com/BTF
 }
   };
 ```
- -->
+
 <!--
 ### IQuestradeApi describe in TypeScript terms what the `questrade-ts` api look like
 
