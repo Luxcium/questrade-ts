@@ -77,7 +77,7 @@
     "@types/eslint-config-prettier": "6.11.0",
     "@types/eslint-plugin-prettier": "3.1.0",
     "@types/jest": "26.0.20",
-    "@types/ioredis": "^4.19.2",
+    "@types/ioredis": "4.19.2",
     "@types/node": "14.14.28",
     "@types/ramda": "0.27.38",
     "@types/redis": "2.8.28",
@@ -115,12 +115,12 @@
   },
   "dependencies": {
     "axios": "0.21.1",
-    "dotenv": "^8.2.0",
-    "ioredis": "^4.19.4",
-    "redis": "^3.0.2",
-    "redis-json": "^4.3.0",
-    "redis-rejson": "^1.0.0",
-    "tedis": "^0.1.12"
+    "dotenv": "8.2.0",
+    "ioredis": "4.19.4",
+    "redis": "3.0.2",
+    "redis-json": "4.3.0",
+    "redis-rejson": "1.0.0",
+    "tedis": "0.1.12"
   },
   "optionalDependencies": {},
   "bundledDependencies": [
