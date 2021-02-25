@@ -52,18 +52,14 @@ This Package conforms to [Semantic Versioning Specification (SemVer)](https://se
 
 ```bash
 ## BREAKING: This package is not yet published!
-# Until then you can install version: 2.0.0-beta+v2.0c by using this link
-npm i @types/node typescript tslib 'github:Luxcium/questrade-ts#7c7f4b1b7c2c1'
-# npm i questrade-ts@beta2
+# npm i @types/node typescript tslib questrade-ts@beta2
 ```
 
 or
 
 ```bash
 ## BREAKING: This package is not yet published!
-# Until then you can install version: 2.0.0-beta+v2.0c by using this link
-yarn add @types/node typescript tslib 'github:Luxcium/questrade-ts#7c7f4b1b7c2c1'
-# yarn add questrade-ts@beta2
+# yarn add @types/node typescript tslib questrade-ts@beta2
 ```
 
 
