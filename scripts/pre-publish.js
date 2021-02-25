@@ -37,7 +37,7 @@ async function prePublish() {
       nowDate.getMonth() + 1 > 9
         ? nowDate.getMonth() + 1
         : '0' + (nowDate.getMonth() + 1)
-    }${nowDate.getDate()}v2.0.0.2c`,
+    }${nowDate.getDate()}c`,
     author,
     license,
     homepage,
