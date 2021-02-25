@@ -8,6 +8,7 @@
   "license": "MIT",
   "homepage": "https://github.com/Luxcium/questrade-ts",
   "main": "./src/index.ts",
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git@github.com/luxcium/questrade-ts.git"
