@@ -4,6 +4,8 @@
 
 ### IT IS IN A SUPER INSTABLE STATE AT THE MOMENT
 
+The beta branch is *SUPER INSTABLE* as anything can change internally until I first publish it. I already have pused an interface that will remain *SUPER STABLE* as it's labeled version 2.0 future braking updates will keep a valid 2.0 interface and add a 2.1 interface so as not to upgrade to a major version. This contract will never change for [IQuestradeAPIv2_0](https://pastebin.com/BTFAN3i5)
+
 As soon as a version is publish it will be using the `@beta2` tag as in:
 
 ```bash
@@ -27,6 +29,8 @@ yarn add questrade-ts@beta2 # BREAKING: This package is not yet published!
 [![GitHub pull requests](https://img.shields.io/github/issues-pr/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/pulls)
 [![GitHub issues](https://img.shields.io/github/issues/luxcium/questrade-ts.svg?style=social)](https://github.com/luxcium/questrade-ts/issues)
 
+
+<!--
 ## Getting Started
 
 This [NPM Package](https://www.npmjs.com/package/questrade-ts) is an unofficial [Questrade API](https://www.questrade.com/api/documentation/getting-started) wrapper for [NodeJS](https://nodejs.org/en/docs/) with full [TypeScript](https://www.typescriptlang.org/docs/home.html) support.
@@ -169,6 +173,7 @@ this contract will never change for [IQuestradeAPIv2_0](https://pastebin.com/BTF
 }
   };
 ```
+ -->
 <!--
 ### IQuestradeApi describe in TypeScript terms what the `questrade-ts` api look like
 
