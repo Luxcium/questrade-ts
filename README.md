@@ -1,8 +1,8 @@
 # Questrade TS
 
-## THIS PACKAGE IS NOT YET PUBLISHED :warning:
+## :round_pushpin: THIS PACKAGE IS NOT YET PUBLISHED :warning:
 
-### This package is in a *SUPER INSTABLE STATE* at the moment
+### :round_pushpin: This package is in a *SUPER INSTABLE STATE* at the moment
 
 This beta branch is *SUPER INSTABLE* as anything can change internally until I first publish it. I already have pushed an interface that will remain *SUPER STABLE* as it's labeled version 2.0 future braking updates will keep a valid 2.0 interface and add a 2.1 interface so as not to upgrade to a major version. This contract will never change for [`IQuestradeAPIv2_0`](https://pastebin.com/BTFAN3i5)
 
