@@ -8,7 +8,7 @@ async function _oAuthHttp(
   apiOptions: ApiOptions,
   proxy?: ProxyFactory_ | null,
 ) {
-  const creds = validateToken(apiOptions);
+  const creds = await validateToken(apiOptions);
   const conf = configs(creds);
   const httpClient = httpClientGet(proxy);
   const response = httpClient(conf.config);

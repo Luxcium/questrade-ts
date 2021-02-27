@@ -27,6 +27,7 @@ import { IMyBalances } from './IMyBalances';
 
 // dateRange<R>
 export type DateRange<R> = (startTime: string) => (endTime: string) => R;
+export type DateRangeP<R> = DateRange<Promise<R>>;
 
 export interface QuestradeApi {
   myBalances: QtApiMyBalances;

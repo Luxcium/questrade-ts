@@ -14,13 +14,6 @@ export type { ICandle, ICandles } from './ICandles';
 // export type { AuthApiConfig, CoreApiConfig } from './ICoreApiConfigD';
 export type { ICreds } from './ICreds';
 export type { IDateObject, Time } from './IDateObject';
-export type {
-  IEquitySymbol,
-  IEquitySymbols,
-  ISymbol,
-  ISymbols,
-  MinTick,
-} from './IEquitySymbols';
 export type { IExecution, IExecutions } from './IExecutions';
 export type { IHeaders } from './IHeaders';
 export type { IMarket, IMarkets } from './IMarkets';
@@ -66,6 +59,13 @@ export type {
   VariantId,
   Variants,
 } from './IStrategiesVariants';
+export type {
+  IEquitySymbol,
+  IEquitySymbols,
+  ISymbol,
+  ISymbols,
+  MinTick,
+} from './ISymbol';
 export type {
   ISymbolSearchCount,
   ISymbolSearchResult,

@@ -31,7 +31,7 @@ export interface IQuestradeAPIv2_0 {
       startTime: string,
     ): (endTime: string) => Promise<IExecution[]>;
     getOrders(stateFilter?: string | undefined): DateRange<Promise<IOrder[]>>;
-    getOrdersByIds(orderId: number[]): Promise<IOrder[]>;
+    getOrdersByIds(orderIds: number[]): Promise<IOrder[]>;
     getPositions(): Promise<IPosition[]>;
     getServerTime(): Promise<Date>;
   };

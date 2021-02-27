@@ -2,19 +2,17 @@ import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
 
 import type { ApiOptions } from '../../../typescript';
-import { sync } from '..';
+import { mkDirP } from '..';
 import { apiOptionsCredentialsFactory } from './api-options-credentials-factory';
 
-export const validateToken = (options: ApiOptions) => {
+export async function validateToken(options: ApiOptions) {
   const credentials = apiOptionsCredentialsFactory(options);
   let refreshToken: string = credentials.seedToken;
 
   try {
-    if (credentials.keyFile) {
-      sync(dirname(credentials.keyFile));
-    } else {
-      sync(credentials.keyDir);
-    }
+    await (credentials.keyFile
+      ? mkDirP(dirname(credentials.keyFile))
+      : mkDirP(credentials.keyDir));
 
     credentials.keyFile =
       credentials.keyFile || `${credentials.keyDir}/${credentials.seedToken}`;
@@ -32,7 +30,7 @@ export const validateToken = (options: ApiOptions) => {
   }
 
   return { credentials, refreshToken };
-};
+}
 
 // export function (
 //   options: QuestradeAPIOptions,

@@ -14,7 +14,7 @@ import {
 } from './default-behaviour';
 
 export { validateToken, writeToken } from './auth';
-export { sync } from './auth/mkdirp';
+export { mkDirP } from './auth/mkdirp';
 export {
   client,
   ech0,
