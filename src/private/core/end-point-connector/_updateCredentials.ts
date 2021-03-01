@@ -1,4 +1,4 @@
-import { errorlog, infolog } from '../../../resources/side-effects';
+import { errorLog, infoLog } from '../../../resources/side-effects';
 import type {
   ClientRequestConfig,
   ClientResponse,
@@ -37,9 +37,10 @@ function _updateCredentials(
       );
     }
   } catch (error_) {
-    void errorlog('error_:', error_.message);
-    void infolog(
+    void errorLog('error_:', error_.message);
+    void infoLog(
       "To pass tests remove 'throw' error in _httpDataEndPointConnector",
+      null,
     );
 
     throw new Error(error_);

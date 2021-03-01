@@ -1,15 +1,15 @@
 import { questradeApiFactory } from '../private/api/_getQuestradeApi';
 import { _credentialsFactory } from '../private/auth/_credentialsFactory';
 import { ApiCallQ_ } from '../private/core/next-rate-limiter/queue';
-import { errorlog } from '../resources/side-effects';
-import { ApiOptions, Logger } from '../typescript';
+import { errorLog } from '../resources/side-effects';
+import { ApiOptions } from '../typescript';
 import { preValidateToken } from '../utils';
 
 export async function questradeAPI(apiOptions: ApiOptions) {
   //
 
-  const errorloger: Logger = apiOptions.errorloger ?? errorlog;
-  const apiCallQ = new ApiCallQ_();
+  const errorloger: any = apiOptions.errorloger ?? errorLog;
+  const apiCallQ = new ApiCallQ_(apiOptions);
   void apiCallQ;
 
   apiOptions.token = preValidateToken(apiOptions);

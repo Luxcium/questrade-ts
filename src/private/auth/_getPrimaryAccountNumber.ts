@@ -1,4 +1,4 @@
-import { errorlog } from '../../resources/side-effects';
+import { warnLog } from '../../resources/side-effects';
 import type { AcountNumberString, IAccount } from '../../typescript';
 
 /** pROVIDE: IAccount[] THEN GET:  a 'primaryAccountNumber string'  */
@@ -6,11 +6,12 @@ export function _getPrimaryAccountNumber(
   accounts: IAccount[],
 ): AcountNumberString {
   if (!accounts || accounts.length === 0) {
-    void errorlog(
-      "WARNING('No account number found') will default to '11111111' ",
-    );
+    // void ;
 
-    return '11111111';
+    return warnLog(
+      "('No account number found') will default to 11111111:",
+      '11111111',
+    );
   }
 
   if (accounts.length === 1) {

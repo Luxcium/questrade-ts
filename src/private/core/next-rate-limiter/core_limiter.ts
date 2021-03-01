@@ -1,5 +1,5 @@
 /* eslint-disable promise/avoid-new */
-import { errorlog } from '../../../resources/side-effects';
+import { errorLog } from '../../../resources/side-effects';
 import type { CallBack } from '../../../typescript';
 import { perSeconds, void0 } from '../../../utils';
 
@@ -70,7 +70,7 @@ export function requestPerSecondLimiter(hz: number) {
     return new Promise<T>((resolve, reject) => {
       addToQueue((error: Error, result: any) => {
         if (error) {
-          void errorlog(error);
+          void errorLog('promise in queue',error);
 
           reject(error);
 

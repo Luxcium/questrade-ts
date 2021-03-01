@@ -1,8 +1,8 @@
-import { ech0, errorlog } from '../../resources/side-effects';
+import { ech0, errorLog } from '../../resources/side-effects';
 import { main } from './redis-modeling';
 
 try {
-  main().catch(error => errorlog('PLAYGROUND MAIN:', error));
+  main().catch(error => errorLog('PLAYGROUND MAIN:', error));
 } catch (error) {
   ech0(error);
 }

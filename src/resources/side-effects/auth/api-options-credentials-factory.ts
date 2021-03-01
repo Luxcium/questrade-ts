@@ -1,6 +1,6 @@
 import type { ApiOptions, Credentials } from '../../../typescript';
 import { preValidateToken } from '../../../utils';
-import { errorlog } from '../default-behaviour';
+import { errorLog } from '../default-behaviour';
 import { _emptyCredentials } from './_emptyCredentials';
 
 export const apiOptionsCredentialsFactory = (
@@ -18,8 +18,8 @@ export const apiOptionsCredentialsFactory = (
       ? 'https://practicelogin.q.com'
       : 'https://login.questrade.com',
     caching: apiOptions.caching ?? true,
-    debugVebosity: apiOptions.debug ?? 0,
-    errorloger: apiOptions.errorloger ?? errorlog,
+    debugVebosity: apiOptions.debugVebosity ?? 1,
+    errorloger: apiOptions.errorloger ?? errorLog,
     fromCache: apiOptions.fromCache ?? true,
     keyDir: apiOptions.keyDir ?? './keys',
     keyFile: apiOptions.keyFile ?? '',

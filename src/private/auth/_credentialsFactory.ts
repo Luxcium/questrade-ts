@@ -1,4 +1,4 @@
-import { echo, errorlog, infolog } from '../../resources/side-effects';
+import { errorLog, infoLog } from '../../resources/side-effects';
 import type { ApiOptions, Credentials, ProxyFactory_ } from '../../typescript';
 import { _getAccounts } from '../api/AccountsCalls/_getAccounts/_getAccounts';
 import { _getServerTime } from '../api/AccountsCalls/_getServerTime/_getServerTime';
@@ -56,13 +56,13 @@ async function _credentialsFactory(
     ).toLocaleTimeString();
 
     if (credentials.accountNumber !== '00000000') {
-      void infolog<unknown>(
+      void infoLog<unknown>(
         ` Questrade Server ${time}\n`,
         { Status: 'ready', time },
         '\n\n',
       );
     } else {
-      void infolog<unknown>(
+      void infoLog<unknown>(
         '\n🧐\n🤡 MOCK Server Time:   ',
         new Date().toISOString(),
 
@@ -70,8 +70,8 @@ async function _credentialsFactory(
       );
     }
   } catch (error) {
-    void errorlog(error);
-    void infolog<unknown>(credentials.toValue());
+    void errorLog('Credentials Factory',error);
+    void infoLog<unknown>('Credentials Factory',credentials.toValue());
     throw new Error('_oAuth Error getting credentials in _credentialsFactory');
   }
 
@@ -80,4 +80,4 @@ async function _credentialsFactory(
 
 export { _credentialsFactory };
 
-echo(`${__dirname}:${__filename}`);
+// echo(`${__dirname}:${__filename}`);

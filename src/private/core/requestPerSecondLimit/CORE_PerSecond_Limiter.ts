@@ -1,5 +1,5 @@
 /* eslint-disable promise/avoid-new */
-import { ech0, errorlog } from '../../../resources/side-effects';
+import { ech0, errorLog } from '../../../resources/side-effects';
 import type { CallBack } from '../../../typescript';
 import { perSeconds } from '../../../utils';
 import { neverWill } from './never-will';
@@ -40,7 +40,7 @@ async function limitingRequest<T>(fn: Function, hertz = 1) {
   return new Promise<T>((resolve, reject) => {
     addToQueue((error: Error, result: any) => {
       if (error) {
-        void errorlog(error);
+        void errorLog('promise in per sec limiter', error);
 
         reject(error);
 

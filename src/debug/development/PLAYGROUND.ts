@@ -2,14 +2,14 @@ import { qtAPIv2_0 } from '../..';
 import { sideEffects } from '../../resources/side-effects';
 import type { StrategyVariantRequest } from '../../typescript';
 
-const { echo, errorlog, getMyToken } = sideEffects;
+const { echo, errorLog, getMyToken } = sideEffects;
 
 export const testingThat = (async () => {
   const qtApi = await qtAPIv2_0({ token: getMyToken })
     .then(result => {
       return result.qtApi;
     })
-    .catch(error => void errorlog(error));
+    .catch(error => void errorLog('',error));
 
   if (!qtApi) {
     throw new Error('Redeem token fault');
@@ -23,7 +23,7 @@ export const testingThat = (async () => {
   echo('theResult2', theResult2[0]);
 
   return { theResult, theResult2 };
-})().catch(error => void errorlog('PlayGround error message:', error.message));
+})().catch(error => void errorLog('PlayGround error message:', error.message));
 
 // testingThat();
 

@@ -64,4 +64,78 @@ function echo(...args: any[]): void {
   console.log(...args);
 }
 
-export { ech0, echo, echo1, id0, id1, void0, void1 };
+export {
+  debugLog,
+  ech0,
+  echo,
+  echo1,
+  errorLog,
+  httpLog,
+  id0,
+  id1,
+  infoLog,
+  sillyLog,
+  verboseLog,
+  void0,
+  void1,
+  warnLog,
+};
+/*
+function errorLog
+function warnLog
+function infoLog
+function httpLog
+function verboseLog
+function debugLog
+function sillyLog
+
+  error: 0,
+  warn: 1,
+  info: 2,
+  http: 3,
+  verbose: 4,
+  debug: 5,
+  silly: 6
+*/
+
+function errorLog<T = unknown>(label: string, arg1: T, ...args: any[]): T {
+  console.error(`Error: ${label}`, arg1, ...args);
+
+  return arg1;
+}
+
+function warnLog<T = unknown>(label: string, arg1: T, ...args: any[]): T {
+  console.warn(`Warn: ${label}`, arg1, ...args);
+
+  return arg1;
+}
+
+function infoLog<T = unknown>(label: string, arg1: T, ...args: any[]): T {
+  console.info(`Info: ${label}`, arg1, ...args);
+
+  return arg1;
+}
+
+function httpLog<T = unknown>(label: string, arg1: T, ...args: any[]): T {
+  console.log(`HTTP: ${label}`, arg1, ...args);
+
+  return arg1;
+}
+
+function verboseLog<T = unknown>(label: string, arg1: T, ...args: any[]): T {
+  console.log(`Verbose: ${label}`, arg1, ...args);
+
+  return arg1;
+}
+
+function debugLog<T = unknown>(label: string, arg1: T, ...args: any[]): T {
+  console.log(`Debug: ${label}`, arg1, ...args);
+
+  return arg1;
+}
+
+function sillyLog<T = unknown>(label: string, arg1: T, ...args: any[]): T {
+  console.log(`Silly: ${label}`, arg1, ...args);
+
+  return arg1;
+}
