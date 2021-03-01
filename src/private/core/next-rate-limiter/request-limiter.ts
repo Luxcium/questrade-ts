@@ -1,24 +1,19 @@
-import type { ClientRequestConfig } from '../../../resources/side-effects/types';
-import type { RateLimiterOptions } from '../../../typescript';
-import { limitingRequest } from '../requestPerSecondLimit';
-import { ApiCallQ_ } from './queue';
+// export async function newRequestLimiter<R>(options: ApiOptions) {
+//   const { httpClient, config, maxPerSec, maxPerHour } = options;
 
-export const newRequestLimiter = async <R>(
-  options: RateLimiterOptions,
-) /* : ClientPromise<R> */ => {
-  const { httpClient, config, maxPerSec, maxPerHour } = options;
+//   // cb(fn(args));
+//   void httpClient, maxPerSec, maxPerHour;
 
-  // cb(fn(args));
-  void httpClient, maxPerSec, maxPerHour;
+//   const callQueue = new ApiCallQ_(options);
+//   const call = callQueue.addToQueue<R>({ config, fn: httpClient });
 
-  const callQueue = new ApiCallQ_();
-  const call = callQueue.addToQueue<R>({ config, fn: httpClient });
+//   void call;
 
-  void call;
-
-  return limitingRequest(
-    async (conf: ClientRequestConfig = config) => httpClient<R>(conf),
-    20,
-  );
-};
+//   return limitingRequest(
+//     async (conf: ClientRequestConfig = config) => httpClient<R>(conf),
+//     20,
+//   );
+// }
 // newRequestLimiter
+
+export const Null = null;

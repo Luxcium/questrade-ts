@@ -23,7 +23,7 @@ const symbolSchema = new Schema<
   averageVol3Months: Number,
   cashInLieu: Number,
   count: Number,
-  currency: Currency,
+  currency: String,
   description: String,
   dividend: Number,
   dividendDate: Date,
@@ -102,7 +102,7 @@ export interface ISymbol {
   isTradable?: boolean;
   isQuotable?: boolean;
   hasOptions?: boolean;
-  currency?: Currency;
+  currency?: Currency | string;
   minTicks?: string | MinTick[];
   MinTickData?: string | [];
   pivot?: number;

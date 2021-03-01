@@ -1,4 +1,4 @@
-import { Credentials, Logger, ProxyFactory_ } from '.';
+import { Credentials, Logger, ProxyFactory_, VebosityLevel } from '.';
 
 type GetToken = () => string;
 type KeyFile = string;
@@ -9,7 +9,7 @@ interface ApiOptions {
   accountCallsPerSecond?: number;
   apiVersion?: string;
   caching?: boolean;
-  debug?: number;
+  debugVebosity?: VebosityLevel;
   fromCache?: boolean;
   keyDir?: string;
   keyFile?: string;

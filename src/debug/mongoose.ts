@@ -9,12 +9,12 @@ export const User = mongoose.model('user', UserSchema);
 export const joe = new User({ name: 'Joe' });
 
 export async function before() {
-  const mongo = await mongoose.connect('mongodb://0.0.0.0:49153/users_test', {
+  const mongo = await mongoose.connect('mongodb://0.0.0.0:27017/users_test', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
 
-  joe.save();
+  // joe.save();
 
   mongo.disconnect();
   // .then(mongooseInstance => {

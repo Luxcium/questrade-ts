@@ -40,7 +40,7 @@ class RedisQtApiProxyHandlerClass<T extends Function = ClientStatic>
   };
 
   public async apply(target: T, thisArg: any, argArray?: any) {
-    const myRedis = new Redis();
+    const myRedis = new Redis('0.0.0.0');
 
     try {
       const urlPath = getQtUrlPathFromArgs(argArray);

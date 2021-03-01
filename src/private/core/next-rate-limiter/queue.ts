@@ -8,6 +8,7 @@ import type {
   ClientRequestConfig,
   ClientResponse,
 } from '../../../resources/side-effects/types';
+import { ApiOptions } from '../../../typescript';
 import { now, void0 } from '../../../utils';
 import { QNode } from './q-node';
 
@@ -86,8 +87,8 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     return this.isNotEmpty && this.isNotCalled && this.isNotBroken;
   }
 
-  public static get new() {
-    return new ApiCallQ_();
+  public static new(apiOptions: ApiOptions) {
+    return new ApiCallQ_(apiOptions);
   }
 
   protected get positiveTimeOffset() {
@@ -96,6 +97,7 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
 
   // -| constructor |-···―――――――――――――――――――――――――――···-| ApiCallQ_() |-//-://#-| ~
   public constructor(
+    protected apiOptions: ApiOptions,
     protected maxPerSecondes: number = MAX_PER_SECONDES,
     protected maxPerHour: number = MAX_PER_HOUR,
     protected timeOfSet: number = 1000 / MAX_PER_SECONDES && 0,
@@ -243,4 +245,4 @@ export class ApiCallQ_<T extends QNodesValue = QNodesValue> {
     // from Udemy ― Js Algorithms And Data Structures Masterclass
   }
 }
-export const myQueueu = new ApiCallQ_();
+// export const myQueueu = new ApiCallQ_();

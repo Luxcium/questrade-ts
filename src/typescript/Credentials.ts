@@ -2,7 +2,12 @@ import {
   ClientRequestConfig,
   ClientResponse,
 } from '../resources/side-effects/types';
-import { ITimeRateLimiter, Logger, ProxyFactory_, UrlDataAndHashes } from '.';
+import {
+  ITimeRateLimiter,
+  ProxyFactory_,
+  UrlDataAndHashes,
+  VebosityLevel,
+} from '.';
 
 export interface Credentials {
   accessToken: string;
@@ -16,8 +21,8 @@ export interface Credentials {
   caching?: boolean;
   config_?: ClientRequestConfig;
   configUrl_?: string;
-  debugVebosity: number;
-  errorloger?: Logger;
+  debugVebosity: VebosityLevel;
+  errorloger?: any;
   expiresAt_?: string | number | Date;
   expiresAt?: string;
   expiresAtRaw?: number;

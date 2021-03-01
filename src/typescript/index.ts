@@ -95,6 +95,7 @@ export type { Ŋ, RateLimiterOptions } from './RateLimiterOptions';
 export type { ReqLimiterFactory } from './ReqLimiterFactory';
 export type { DateTimeRange } from './timeutils';
 export type { UrlDataAndHashes } from './UrlAndDataHashes';
+export { VebosityLevel } from './verbosity-levels';
 export type { WillCallBack } from './WillCallBack';
 
 export type Logger = <T = unknown>(...args: T[]) => T[];
