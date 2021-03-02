@@ -20,7 +20,7 @@ export async function main() {
   once.onlyOnce = false;
 
   const { qtApi } = await qtAPIv2_0({ debugVebosity: 1, token: getMyToken });
-  // echo(await qtApi.account.getServerTime());
+  echo(await qtApi.account.getServerTime());
   void qtApi;
 
   return true;
