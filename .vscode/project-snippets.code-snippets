@@ -34,7 +34,7 @@
 	}
 }
 /*
-
+{ type: default: Date.no}
 	+ Variables
 	With $name or ${name:default},
 	you can insert the value of a variable. When a variable isn't set,
