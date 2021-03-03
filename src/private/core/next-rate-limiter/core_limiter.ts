@@ -70,7 +70,7 @@ export function requestPerSecondLimiter(hz: number) {
     return new Promise<T>((resolve, reject) => {
       addToQueue((error: Error, result: any) => {
         if (error) {
-          void errorLog('promise in queue',error);
+          void errorLog('promise in queue', error);
 
           reject(error);
 

@@ -9,7 +9,7 @@ export const testingThat = (async () => {
     .then(result => {
       return result.qtApi;
     })
-    .catch(error => void errorLog('',error));
+    .catch(error => void errorLog('', error));
 
   if (!qtApi) {
     throw new Error('Redeem token fault');

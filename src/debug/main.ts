@@ -60,7 +60,7 @@ export async function getCandles() {
       .map(item => qtApi.search.stock(item))
       .map(async item => {
         const symbolItems = await item;
-        const symbolItem = symbolItems[0];
+        const [symbolItem] = symbolItems;
         const symbolId = symbolItem?.symbolId || 1;
 
         return {
