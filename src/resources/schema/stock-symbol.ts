@@ -12,9 +12,68 @@ import {
 import { MinTick } from '../../typescript';
 import { OptionContractDeliverables } from '../../typescript/ISymbol';
 
+/*
+The permitted SchemaTypes are:
+String
+Number
+Date
+Buffer
+Boolean
+Mixed
+ObjectId
+Array
+Decimal128
+Map
+
+# ##################################
+StockSymbol ERROR: Error: StockSymbol validation failed:
+optionContractDeliverables:
+Cast to string failed for value
+"{ underlyings: [], cashInLieu: 0 }"
+at path "optionContractDeliverables",
+
+ minTicks: Cast to string failed for value
+ "[ { pivot: 0, minTick: 0.0001 }, { pivot: 1, minTick: 0.01 } ]"
+ at path "minTicks"
+
+
+minTicks:[
+MinTickData:{
+pivot:Number
+minTick:Number }
+]
+
+[{ pivot:Number, minTick:Number }]
+
+optionContractDeliverables
+Complex
+Option contract deliverables.
+underlyings
+Complex
+List of UnderlyingMultiplierPair records.
+UnderlyingMultiplierPair
+Complex
+
+multiplier
+Integer
+Number of shares deliverable per contract (e.g., 100).
+underlyingSymbol
+String
+Underlying symbol for the deliverable (e.g., "MSFT").
+underlyingSymbolId
+String
+Underlying symbol id for the deliverable (e.g., 2345343).
+cashInLieu
+Double
+Amount of cash in lieu deliverable per contract.
+*/
 const symbolSchema = new mongoose.Schema<ISymbolDocument>({
-  MinTickData: String,
-  UnderlyingMultiplierPair: String,
+  MinTickData: { minTick: Number, pivot: Number },
+  UnderlyingMultiplierPair: {
+    multiplier: Number,
+    underlyingSymbol: String,
+    underlyingSymbolId: String,
+  },
   averageVol20Days: Number,
   averageVol3Months: Number,
   cashInLieu: Number,
@@ -37,9 +96,17 @@ const symbolSchema = new mongoose.Schema<ISymbolDocument>({
   lowPrice52: Number,
   marketCap: Number,
   minTick: Number,
-  minTicks: String,
+  minTicks: [{ minTick: Number, pivot: Number }],
   multiplier: Number,
-  optionContractDeliverables: String,
+  optionContractDeliverables: {
+    UnderlyingMultiplierPair: {
+      multiplier: Number,
+      underlyingSymbol: String,
+      underlyingSymbolId: String,
+    },
+    cashInLieu: Number,
+    underlyings: [String],
+  },
   optionDurationType: String,
   optionExerciseType: String,
   optionExpiryDate: Date,
@@ -56,7 +123,7 @@ const symbolSchema = new mongoose.Schema<ISymbolDocument>({
   tradeUnit: Number,
   underlyingSymbol: String,
   underlyingSymbolId: String,
-  underlyings: String,
+  underlyings: [String],
   yield: Number,
 });
 
