@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys */
 import type { Document, Model } from 'mongoose';
-import { model, Schema } from 'mongoose';
+import mongoose from 'mongoose';
 import {
   OrderClass,
   OrderSide,
@@ -22,12 +22,9 @@ ObjectId
 Array
 Decimal128
 Map
+  <Document<IOrder>, Model<Document<IOrder>>, undefined>
 */
-const orderSchema = new Schema<
-  Document<IOrder>,
-  Model<Document<IOrder>>,
-  undefined
->({
+const orderSchema = new mongoose.Schema<IOrderDocument>({
   OrderLeg: String,
   avgExecPrice: Number,
   canceledQuantity: Number,
@@ -76,8 +73,11 @@ const orderSchema = new Schema<
   venueHoldingOrder: String,
 });
 
-export const Order = model('Order', orderSchema);
-export interface IOrder {
+export const Order: Model<IOrderDocument> = mongoose.model(
+  'Order',
+  orderSchema,
+);
+export interface IOrderDocument extends Document {
   id?: string | number;
   symbol?: string;
   stockId?: string | number;

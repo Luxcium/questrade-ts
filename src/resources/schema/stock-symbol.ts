@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys */
 import type { Document, Model } from 'mongoose';
-import { model, Schema } from 'mongoose';
+import mongoose from 'mongoose';
 import {
   Currency,
   OptionDurationType,
@@ -12,11 +12,7 @@ import {
 import { MinTick } from '../../typescript';
 import { OptionContractDeliverables } from '../../typescript/ISymbol';
 
-const symbolSchema = new Schema<
-  Document<ISymbol>,
-  Model<Document<ISymbol>>,
-  undefined
->({
+const symbolSchema = new mongoose.Schema<ISymbolDocument>({
   MinTickData: String,
   UnderlyingMultiplierPair: String,
   averageVol20Days: Number,
@@ -65,8 +61,11 @@ const symbolSchema = new Schema<
 });
 
 // SymbolSearchResult
-export const Symbol = model('Symbol', symbolSchema);
-export interface ISymbol {
+export const StockSymbol: Model<ISymbolDocument> = mongoose.model(
+  'StockSymbol',
+  symbolSchema,
+);
+export interface ISymbolDocument extends Document {
   symbol?: string;
   symbolId?: number;
   tradeUnit: number;

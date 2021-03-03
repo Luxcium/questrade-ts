@@ -1,6 +1,6 @@
 /* eslint-disable sort-keys */
 import type { Document, Model } from 'mongoose';
-import { model, Schema } from 'mongoose';
+import mongoose from 'mongoose';
 import { OrderSide } from 'questrade-api-enumerations';
 
 /*
@@ -16,11 +16,7 @@ Array
 Decimal128
 Map
 */
-const executionSchema = new Schema<
-  Document<IExecution>,
-  Model<Document<IExecution>>,
-  undefined
->({
+const executionSchema = new mongoose.Schema<IExecutionDocument>({
   canadianExecutionFee: Number,
   commission: Number,
   exchangeExecId: String,
@@ -43,8 +39,11 @@ const executionSchema = new Schema<
   venue: String,
 });
 
-export const Execution = model('Execution', executionSchema);
-export interface IExecution {
+export const Execution: Model<IExecutionDocument> = mongoose.model(
+  'Execution',
+  executionSchema,
+);
+export interface IExecutionDocument extends Document {
   /** execution symbol. */
   symbol: string;
   /** internal symbol identifier */

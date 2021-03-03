@@ -1,15 +1,11 @@
 /* eslint-disable sort-keys */
 import type { Document, Model } from 'mongoose';
-import { model, Schema } from 'mongoose';
+import mongoose from 'mongoose';
 import { Currency } from 'questrade-api-enumerations';
 
-const symbolSearchResultSchema = new Schema<
-  Document<ISymbolSearchResult>,
-  Model<Document<ISymbolSearchResult>>,
-  undefined
->({
+const symbolSearchResultSchema = new mongoose.Schema<ISymbolResultDocument>({
   count: Number,
-  currency: Currency,
+  currency: String,
   description: String,
   isQuotable: Boolean,
   isTradable: Boolean,
@@ -20,12 +16,12 @@ const symbolSearchResultSchema = new Schema<
 });
 
 // SymbolSearchResult
-export const SymbolSearchResult = model(
+export const SymbolSearchResult: Model<ISymbolResultDocument> = mongoose.model(
   'SymbolSearchResult',
   symbolSearchResultSchema,
 );
 
-export interface ISymbolSearchResult {
+export interface ISymbolResultDocument extends Document {
   symbol: string;
   symbolId: number;
   description: string;
@@ -35,5 +31,5 @@ export interface ISymbolSearchResult {
   isQuotable: boolean;
   currency: Currency;
   count?: number;
-  all?: ISymbolSearchResult[];
+  all?: ISymbolResultDocument[];
 }

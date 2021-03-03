@@ -1,9 +1,15 @@
 /* eslint-disable radar/no-duplicate-string */
 /* eslint-disable radar/no-identical-functions */
+import mongoose from 'mongoose';
+
 import { qtAPIv2_0 } from '..';
 import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
+import { Candle } from '../resources/schema/candle';
+import { StockSymbol } from '../resources/schema/stock-symbol';
+import { SymbolSearchResult } from '../resources/schema/symbol-search-result';
 import { ech0, echo, getMyToken } from '../resources/side-effects';
 import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
+import { ICandle } from '../typescript';
 import { id0 } from '../utils';
 import { willGetSNP500StringList } from './development/getSNP500List';
 
@@ -18,15 +24,129 @@ export async function main() {
   }
 
   once.onlyOnce = false;
-  echo('Will process');
-  const { qtApi } = await qtAPIv2_0({ token: getMyToken });
-  echo(await qtApi.account.getServerTime());
-  void qtApi;
 
   return true;
 }
 
 main();
+
+export async function getCandles() {
+  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+
+  mongoose.connect('mongodb://localhost/test', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+  const db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', async function () {
+    console.log("we're connected!");
+    echo('Will process');
+
+    // const { qtApi } = await qtAPIv2_0({ token: getMyToken });
+    echo(await qtApi.account.getServerTime());
+
+    // const symbolSearchResult = new SymbolSearchResult(
+    //   (await qtApi.search.stock('aapl'))[0],
+    // );
+
+    // await symbolSearchResult.save();
+
+    const symbIDtoCandleMongoMapper = symbIDtoCandle(qtApi);
+    void symbIDtoCandleMongoMapper;
+
+    const listToCandle = id0(await willGetSNP500StringList())
+      .map(item => qtApi.search.stock(item))
+      .map(async item => {
+        const symbolItems = await item;
+        const symbolItem = symbolItems[0];
+        const symbolId = symbolItem?.symbolId || 1;
+
+        return {
+          symbolId,
+          symbolItem,
+          symbolItems,
+        };
+      })
+      .map(async items => {
+        const { symbolId, symbolItem, symbolItems } = await items;
+        try {
+          const symbolSearchResult = new SymbolSearchResult(symbolItem);
+          await symbolSearchResult.save();
+        } catch (error) {
+          console.error(error);
+        }
+
+        return {
+          symbolId,
+          symbolItems,
+        };
+      })
+      .map(async items => {
+        const { symbolId, symbolItems } = await items;
+        symbolItems.map(async symbItem => {
+          const symbId = symbItem?.symbolId || 1;
+          const stockIds = [symbId];
+          const symbol = await qtApi.getSymbols.byStockIds(stockIds);
+          symbol.map(async uniqueSymbol => {
+            const mySymbol = new StockSymbol(uniqueSymbol);
+            await mySymbol.save();
+
+            return uniqueSymbol;
+          });
+
+          return symbId;
+        });
+
+        return symbolId;
+      });
+
+    const listToCandleMongoMapper = symbIDtoCandleMongoMapper(listToCandle);
+    listToCandleMongoMapper('2020-01-01')('2021-01-01');
+    listToCandleMongoMapper('2019-01-01')('2020-01-01');
+    listToCandleMongoMapper('2018-01-01')('2019-01-01');
+    listToCandleMongoMapper('2016-01-01')('2017-01-01');
+
+    db.close(console.info.bind(console, 'connection close:'));
+  });
+}
+
+// (method) Array<Promise<number>>.map<Promise<number>>(callbackfn: (value: Promise<number>, index: number, array: Promise<number>[]) => Promise<number>, thisArg?: any): Promise<number>[]
+
+export function symbIDtoCandle(qtApi: IQuestradeAPIv2_0) {
+  return (list: Promise<number>[]) => (startTime: string) => (
+    endTime: string,
+  ) => {
+    return list.map(async symbolId => {
+      const candels = await qtApi.market.getCandlesByStockId(await symbolId)()(
+        new Date(startTime).toISOString(),
+      )(new Date(endTime).toISOString());
+
+      candlesMap(candels);
+
+      return symbolId;
+    });
+  };
+}
+
+function candlesMap(candels: ICandle[]) {
+  return candels.map(maper);
+}
+
+function maper<T>(value: T, index: number, array: T[]): T {
+  void index;
+  void array;
+
+  try {
+    const candle = new Candle(value);
+    candle.save();
+  } catch (error) {
+    console.error(error);
+  }
+
+  return value;
+}
 
 export async function mainRedis() {
   const proxyFactory = redisProxyHandler({
@@ -50,7 +170,7 @@ export async function mainRedis() {
 
 export async function getTime() {
   const qtApi: IQuestradeAPIv2_0 = await mainRedis();
-  const time = qtApi.account.getServerTime(); // ('2021-02-01')('2021-02-10');
+  const time = qtApi.account.getServerTime();
 
   ech0(await time);
 
@@ -59,7 +179,7 @@ export async function getTime() {
 
 export async function getAllAccounts() {
   const qtApi: IQuestradeAPIv2_0 = await mainRedis();
-  const accounts = qtApi.account.getAllAccounts(); // ('2021-02-01')('2021-02-10');
+  const accounts = qtApi.account.getAllAccounts();
 
   ech0(await accounts);
 
@@ -68,7 +188,7 @@ export async function getAllAccounts() {
 
 export async function getPositions() {
   const qtApi: IQuestradeAPIv2_0 = await mainRedis();
-  const positions = qtApi.account.getPositions(); // ('2021-02-01')('2021-02-10');
+  const positions = qtApi.account.getPositions();
 
   ech0(await positions);
 
@@ -77,7 +197,7 @@ export async function getPositions() {
 
 export async function getBalances() {
   const qtApi: IQuestradeAPIv2_0 = await mainRedis();
-  const balances = qtApi.account.getBalances(); // ('2021-02-01')('2021-02-10');
+  const balances = qtApi.account.getBalances();
 
   ech0(await balances);
 
@@ -104,7 +224,7 @@ export async function getExecutions() {
 
 export async function getOrdersByIds() {
   const qtApi: IQuestradeAPIv2_0 = await mainRedis();
-  const order = qtApi.account.getOrdersByIds([793_393_477]); // ('2021-02-01')('2021-02-10');
+  const order = qtApi.account.getOrdersByIds([793_393_477]);
 
   ech0(await order);
 
@@ -120,48 +240,9 @@ export async function getActivities() {
   return id0(qtApi);
 }
 
-export async function getCandles() {
-  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+// .map(item => async () =>
+//   qtApi.getSymbols.byStockIds([(await item())[0]?.symbolId || 1]),
+// )
+// .map(item => item());
 
-  // .map(item => async () =>
-  //   qtApi.getSymbols.byStockIds([(await item())[0]?.symbolId || 1]),
-  // )
-  // .map(item => item());
-
-  // .slice(0, 20)
-
-  id0(await willGetSNP500StringList())
-    .map(item => qtApi.search.stock(item))
-    .map(async item => {
-      const symbolId = (await item)[0]?.symbolId || 1;
-      qtApi.market.getCandlesByStockId(symbolId)()(
-        new Date('2020-01-01').toISOString(),
-      )(new Date('2021-01-01').toISOString());
-
-      return symbolId;
-    })
-    .map(async symbolId => {
-      // const symbolId = (await item )[0]?.symbolId || 1;
-      qtApi.market.getCandlesByStockId(await symbolId)()(
-        new Date('2019-01-01').toISOString(),
-      )(new Date('2020-01-01').toISOString());
-
-      return symbolId;
-    })
-    .map(async symbolId => {
-      // const symbolId = (await item )[0]?.symbolId || 1;
-      qtApi.market.getCandlesByStockId(await symbolId)()(
-        new Date('2018-01-01').toISOString(),
-      )(new Date('2019-01-01').toISOString());
-
-      return symbolId;
-    })
-    .map(async symbolId => {
-      // const symbolId = (await item )[0]?.symbolId || 1;
-      qtApi.market.getCandlesByStockId(await symbolId)()(
-        new Date('2016-01-01').toISOString(),
-      )(new Date('2017-01-01').toISOString());
-
-      return symbolId;
-    });
-}
+// .slice(0, 20)
