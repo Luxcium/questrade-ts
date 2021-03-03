@@ -24,6 +24,7 @@ export async function main() {
   }
 
   once.onlyOnce = false;
+  await getCandles();
 
   return true;
 }
