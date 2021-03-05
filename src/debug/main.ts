@@ -1,24 +1,67 @@
+/* eslint-disable promise/no-callback-in-promise */
+/* eslint-disable promise/no-nesting */
 /* eslint-disable radar/no-duplicate-string */
 /* eslint-disable radar/no-identical-functions */
 import mongoose from 'mongoose';
 
 import { qtAPIv2_0 } from '..';
 import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
-import { Candle, ICandleDocument } from '../resources/schema/candle';
-import { ISymbolDocument, StockSymbol } from '../resources/schema/stock-symbol';
-import {
-  ISymbolResultDocument,
-  SymbolSearchResult,
-} from '../resources/schema/symbol-search-result';
+import { Candle } from '../resources/schema/candle';
+import { StockSymbol } from '../resources/schema/stock-symbol';
+import { SymbolSearchResult } from '../resources/schema/symbol-search-result';
 import { ech0, echo, getMyToken } from '../resources/side-effects';
 import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 import { ICandle, ISymbol } from '../typescript';
 import { id0 } from '../utils';
 import { willGetSNP500StringList } from './development/getSNP500List';
 
-const once = { onlyOnce: true };
+const once = { mongooseConnection: mogooseConnectAndSave(), onlyOnce: true };
 
 // -----------------------------------------------------------------------------!!
+
+export function mogooseConnectAndSave() {
+  const connection = mongoose
+    .connect('mongodb://127.0.0.1:27017/test', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    })
+    .then(async function (db) {
+      console.log("we're connected!");
+
+      return db;
+    });
+
+  return {
+    disconnect: (cb: any) => {
+      connection
+        .then(db => cb(db.disconnect()))
+        .catch(console.error.bind(console, 'db.disconnect() ERROR:'));
+    },
+    save: async <T, D extends mongoose.Document<T>>(
+      value: T,
+      Model: mongoose.Model<D>,
+    ) => {
+      console.log('will process');
+
+      const wm1 = new WeakMap<{}, D | null>();
+      const ob1 = {};
+
+      wm1.set(ob1, new Model(value));
+
+      return (wm1.get(ob1) as D)
+        .save()
+        .then(result => {
+          console.log('Model.save() result:', result);
+
+          return result;
+        })
+        .catch(console.error.bind(console, 'Model.save() ERROR:'))
+        .finally(() => {
+          wm1.delete(ob1);
+        });
+    },
+  };
+}
 
 export async function main() {
   echo(`Will execute main: ${once.onlyOnce}`);
@@ -37,114 +80,60 @@ main();
 export async function getCandles() {
   const qtApi: IQuestradeAPIv2_0 = await mainRedis();
 
-  mongoose.connect('mongodb://127.0.0.1:27017/test', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  });
+  echo(await qtApi.account.getServerTime());
 
-  const db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'connection error:'));
-  db.once('open', async function () {
-    console.log("we're connected!");
-    echo('Will process');
+  const symbIDtoCandleMongoMapper = symbIDtoCandle(qtApi);
+  void symbIDtoCandleMongoMapper;
 
-    // const { qtApi } = await qtAPIv2_0({ token: getMyToken });
-    echo(await qtApi.account.getServerTime());
+  const listToCandle = id0(await willGetSNP500StringList())
+    .map(item => qtApi.search.stock(item))
+    .map(async item => {
+      const symbolItems = await item;
+      const [symbolItem] = symbolItems;
+      const symbolId = symbolItem?.symbolId || 1;
 
-    // const symbolSearchResult = new SymbolSearchResult(
-    //   (await qtApi.search.stock('aapl'))[0],
-    // );
+      return {
+        symbolId,
+        symbolItem,
+        symbolItems,
+      };
+    })
+    .map(async items => {
+      const { symbolId, symbolItem, symbolItems } = await items;
 
-    // await symbolSearchResult.save();
+      await once.mongooseConnection.save(symbolItem, SymbolSearchResult);
 
-    const symbIDtoCandleMongoMapper = symbIDtoCandle(qtApi);
-    void symbIDtoCandleMongoMapper;
-
-    const listToCandle = id0(await willGetSNP500StringList())
-      .map(item => qtApi.search.stock(item))
-      .map(async item => {
-        const symbolItems = await item;
-        const [symbolItem] = symbolItems;
-        const symbolId = symbolItem?.symbolId || 1;
-
-        return {
-          symbolId,
-          symbolItem,
-          symbolItems,
-        };
-      })
-      .map(async items => {
-        const { symbolId, symbolItem, symbolItems } = await items;
-        const wm1 = new WeakMap<{}, ISymbolResultDocument | null>();
-        const ob1 = {};
-        wm1.set(ob1, null);
-
-        try {
-          wm1.set(ob1, new SymbolSearchResult(symbolItem));
-          await (wm1.get(ob1) as ISymbolResultDocument).save().then(result => {
-            console.log('symbolSearchResult.save() result:', result);
-
-            return result;
-          });
-        } catch (error) {
-          console.error('SymbolSearchResult ERROR:', error);
-        }
-
-        wm1.delete(ob1);
-
-        return {
-          symbolId,
-          symbolItems,
-        };
-      })
-      .map(async items => {
-        const { symbolId, symbolItems } = await items;
-        symbolItems.map(async symbItem => {
-          const symbId = symbItem?.symbolId || 1;
-          const stockIds = [symbId];
-          const symbol = await qtApi.getSymbols.byStockIds(stockIds);
-          symbol.map(async (uniqueSymbol: ISymbol) => {
-            const wm1 = new WeakMap<{}, ISymbolDocument | null>();
-            const ob1 = {};
-            wm1.set(ob1, null);
-
-            try {
-              wm1.set(ob1, new StockSymbol(uniqueSymbol));
-
-              await (wm1.get(ob1) as ISymbolDocument).save().then(result => {
-                console.log('mySymbol.save() result:', result);
-
-                return result;
-              });
-            } catch (error) {
-              console.error('StockSymbol ERROR:', error);
-            }
-
-            wm1.delete(ob1);
-
-            return uniqueSymbol;
-          });
-
-          return symbId;
+      return {
+        symbolId,
+        symbolItems,
+      };
+    })
+    .map(async items => {
+      const { symbolId, symbolItems } = await items;
+      symbolItems.map(async symbItem => {
+        const symbId = symbItem?.symbolId || 1;
+        const stockIds = [symbId];
+        const symbol = await qtApi.getSymbols.byStockIds(stockIds);
+        symbol.map(async (uniqueSymbol: ISymbol) => {
+          once.mongooseConnection.save(uniqueSymbol, StockSymbol);
         });
-
-        return symbolId;
       });
 
-    const listToCandleMongoMapper = symbIDtoCandleMongoMapper(listToCandle);
-    await listToCandleMongoMapper('2020-01-01')('2021-01-01');
-    await listToCandleMongoMapper('2019-01-01')('2020-01-01');
-    await listToCandleMongoMapper('2018-01-01')('2019-01-01');
-    await listToCandleMongoMapper('2016-01-01')('2017-01-01')
-      .then(x => Promise.all(x))
-      .then(x => x)
-      .finally(() => db.close(console.info.bind(console, 'connection close:')));
+      return symbolId;
+    });
 
-    // db.close(console.info.bind(console, 'connection close:'));
-  });
+  const listToCandleMongoMapper = symbIDtoCandleMongoMapper(listToCandle);
+  // await listToCandleMongoMapper('2020-01-01')('2021-01-01');
+  // await listToCandleMongoMapper('2019-01-01')('2020-01-01');
+  // await listToCandleMongoMapper('2018-01-01')('2019-01-01');
+  await listToCandleMongoMapper('2016-01-01')('2017-01-01')
+    .then(x => Promise.all(x))
+    .finally(() =>
+      once.mongooseConnection.disconnect(
+        console.log.bind(console, 'once.mongooseConnection.disconnect():'),
+      ),
+    );
 }
-
-// (method) Array<Promise<number>>.map<Promise<number>>(callbackfn: (value: Promise<number>, index: number, array: Promise<number>[]) => Promise<number>, thisArg?: any): Promise<number>[]
 
 export function symbIDtoCandle(qtApi: IQuestradeAPIv2_0) {
   return (list: Promise<number>[]) => (startTime: string) => async (
@@ -163,36 +152,20 @@ export function symbIDtoCandle(qtApi: IQuestradeAPIv2_0) {
 }
 
 function candlesMap(candels: ICandle[]) {
-  return candels.map(maper);
+  return candels.map(mogooseConnectAndSaveCandleMaper);
 }
 
-async function maper<T>(value: T, index: number, array: T[]) {
-  const wm1 = new WeakMap<{}, ICandleDocument | null>();
-  const ob1 = {};
-  wm1.set(ob1, null);
+async function mogooseConnectAndSaveCandleMaper<T>(
+  val: T,
+  index: number,
+  array: T[],
+) {
+  const value = JSON.parse(JSON.stringify(val)) as T;
 
-  try {
-    wm1.set(ob1, new Candle(value));
+  once.mongooseConnection.save(value, Candle);
 
-    await (wm1.get(ob1) as ICandleDocument)
-      .save()
-      .then(result => {
-        console.log('candle.save() result:', result);
-
-        return result;
-      })
-      .catch(error => {
-        throw error;
-      });
-  } catch (error) {
-    console.error('Candle ERROR:', error);
-  }
-
-  wm1.delete(ob1);
   void index;
   void array;
-
-  return value;
 }
 
 export async function mainRedis() {
@@ -286,10 +259,3 @@ export async function getActivities() {
 
   return id0(qtApi);
 }
-
-// .map(item => async () =>
-//   qtApi.getSymbols.byStockIds([(await item())[0]?.symbolId || 1]),
-// )
-// .map(item => item());
-
-// .slice(0, 20)

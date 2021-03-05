@@ -1,7 +1,4 @@
 {
-  // Utilisez IntelliSense pour en savoir plus sur les attributs possibles.
-  // Pointez pour afficher la description des attributs existants.
-  // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
@@ -16,22 +13,13 @@
         "**/acorn.*"
       ],
       "resolveSourceMapLocations": [
-        // "${workspaceFolder}/**",
         "!**/node_modules/**"
       ],
-      // "preLaunchTask": {
-      //   "task": "${defaultBuildTask}",
-      //   "type": "shell"
-      // },
       "runtimeExecutable": "node",
       "runtimeArgs": [
-        "./out/src/main.js"
-        // "-r",
-        // "ts-node/register",
+        "--inspect=127.0.0.1:9229",
+        "./out/src/main.js",
       ],
-      // "args": [
-      // "--inspect",
-      // ],
       "cwd": "${workspaceFolder}",
       "env": {
         "NODE_ENV": "development"
@@ -39,92 +27,13 @@
       "stopOnEntry": true,
       "autoAttachChildProcesses": true,
       "console": "integratedTerminal",
-      "internalConsoleOptions": "openOnSessionStart",
+      "internalConsoleOptions": "openOnSessionStart"
     },
+    {
+      "type": "pwa-node",
+      "name": "Run Current File",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/debug/main.ts"
+    }
   ]
 }
-/*
-# LAUNCH AND ATTACH
-
-outFiles
-- array of glob patterns for locating generated JavaScript files. See section Source maps.
-resolveSourceMapLocations
-- an array of glob patterns for locations where source maps should be parsed. See section Source maps.
-timeout
-- when restarting a session, give up after this number of milliseconds. See section Attaching to Node.js.
-stopOnEntry
-- break immediately when the program launches.
-localRoot
-- VS Code's root directory. See section Remote debugging below.
-remoteRoot
-- Node's root directory. See section Remote debugging below.
-smartStep
-- try to automatically step over code that doesn't map to source files. See section Smart stepping.
-skipFiles
-- automatically skip files covered by these glob patterns. See section Skipping uninteresting code.
-trace
-- enable diagnostic output.
-
-# LAUNCH
-
-program
-- an absolute path to the Node.js program to debug.
-args
-- arguments passed to the program to debug. This attribute is of type array and expects individual arguments as array elements.
-cwd
-- launch the program to debug in this directory.
-runtimeExecutable
-- absolute path to the runtime executable to be used. Default is node. See section Launch configuration support for 'npm' and other tools.
-runtimeArgs
-- optional arguments passed to the runtime executable.
-runtimeVersion
-- if "nvm" (or "nvm-windows") or "nvs" is used for managing Node.js versions, this attribute can be used to select a specific version of Node.js. See section Multi version support below.
-env
-- optional environment variables. This attribute expects environment variables as a list of string typed key/value pairs.
-envFile
-- optional path to a file containing environment variable definitions. See section Load environment variables from external file below.
-console
-- the console to launch the program (internalConsole, integratedTerminal, externalTerminal). See section Node Console below.
-outputCapture
-- if set to std, output from the process stdout/stderr will be shown in the Debug Console, instead of listening to output over the debug port. This is useful for programs or log libraries that write directly to the stdout/stderr streams instead of using console.* APIs.
-
-# ATTACH
-
-restart
-- restart the connection on termination. See section Restarting debug session automatically.
-protocol
-- debug protocol to use. See section Supported Node-like runtimes above.
-port
-- debug port to use. See sections Attaching to Node.js and Remote debugging.
-address
-- TCP/IP address of the debug port. See sections Attaching to Node.js and Remote debugging.
-processId
-- the debugger tries to attach to this process after having sent a USR1 signal. With this setting, the debugger can attach to an already running process that was not started in debug mode. When using the processId attribute, the debug port is determined automatically based on the Node.js version (and the used protocol) and cannot be configured explicitly. So don't specify a port attribute.
-continueOnAttach
-- whether to continue the process if it's paused when we attach to it. This option is useful if you launch your program with --inspect-brk.
-
-
-
-
-
-  Module._compile (internal/modules/cjs/loader: 1112)
-Module._extensions..js (internal/modules/cjs/loader: 1137)
-Module.load (internal/modules/cjs/loader: 973)
-Module._load (internal/modules/cjs/loader: 813)
-Module.require (internal/modules/cjs/loader: 997)
-require (internal/modules/cjs/helpers: 92)
-<anonymous> (/home/luxcium/dev/questrade-ts/src/resources/side-effects/auth/validateToken.ts: 5)
-Module._compile (internal/modules/cjs/loader: 1108)
-Module._extensions..js (internal/modules/cjs/loader: 1137)
-Module.load (internal/modules/cjs/loader: 973)
-Module._load (internal/modules/cjs/loader: 813)
-Module.require (internal/modules/cjs/loader: 997)
-require (internal/modules/cjs/helpers: 92)
-<anonymous> (/home/luxcium/dev/questrade-ts/src/resources/side-effects/default-behaviour/index.ts: 1)
-Module._compile (internal/modules/cjs/loader: 1108)
-Module._extensions..js (internal/modules/cjs/loader: 1137)
-Module.load (internal/modules/cjs/loader: 973)
-Module._load (internal/modules/cjs/loader: 813)
-Module.require (internal/modules/cjs/loader: 997)
-require (internal/modules/cjs/helpers: 92)
-*/
