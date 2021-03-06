@@ -5,14 +5,24 @@
 import mongoose from 'mongoose';
 
 import { qtAPIv2_0 } from '..';
+import { ApiCallQ_ } from '../private/core/next-rate-limiter/queue';
 import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
+import { StockSymbol } from '../resources/schema/stock-symbol';
+import { SymbolSearchResult } from '../resources/schema/symbol-search-result';
 import { ech0, echo, getMyToken } from '../resources/side-effects';
 import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
-import { ICandle, ISymbol } from '../typescript';
+import { ICandle, ISymbol, ISymbolSearchResult } from '../typescript';
 import { id0 } from '../utils';
 import { willGetSNP500StringList } from './development/getSNP500List';
 
 // -----------------------------------------------------------------------------!!
+
+export interface QNodesValue2 {
+  cb?: any;
+  config: any;
+  fn: <R>(config?: unknown) => R;
+  functionKind?: 'other';
+}
 
 const once = { onlyOnceMain: true, onlyOnceMongoose: 0 };
 
@@ -23,14 +33,20 @@ export async function main() {
   }
 
   once.onlyOnceMain = false;
-  // const connection = await mogooseConnect();
-  const { qtApi, apiCallQ } = await mainRedis();
+  const { qtApi } = await mainRedis();
+  const connection = await mogooseConnect();
+  const apiCallQ = new ApiCallQ_();
+  await getMain(qtApi, apiCallQ, 0, 5)
+    .then(x => x)
+    .finally(() => null)
+    .catch(error => console.error(error));
 
-  getCandles(qtApi);
-  // .then(() => connection.disconnect())
-  // .catch(console.error.bind(console, 'db.disconnect() ERROR'));
-
-  void apiCallQ;
+  void apiCallQ.addToQueue({
+    config: 'any',
+    fn(_): any {
+      return connection.disconnect();
+    },
+  });
 
   return true;
 }
@@ -76,48 +92,36 @@ export async function mogooseConnect() {
   };
 }
 
-// .then(async function (db) {
+export async function step1(startIndex: number = 0, endIndex?: number) {
+  return (await willGetSNP500StringList()).slice(startIndex, endIndex);
+}
 
-//   return db;
-// });
+export async function step2(
+  qtApi: IQuestradeAPIv2_0,
+  apiCallQ: ApiCallQ_,
+  list: Promise<string[]>,
+) {
+  return Promise.all(
+    (await list).map(async symbol => {
+      const returnValue = await qtApi.search.stock(symbol);
+      returnValue.map(item => {
+        const config = { Model: SymbolSearchResult, value: item };
 
-// )
-// .catch(console.error.bind(console, 'db.disconnect() ERROR:'));
-// save: async <T, D extends mongoose.Document<T>>(
-//   value: T,
-//   Model: mongoose.Model<D>,
-// ) => {
-//   console.log('will process');
+        return apiCallQ.addToQueue({
+          config,
+          fn: conf => saveMongo(conf),
+        });
+      });
 
-//   const wm1 = new WeakMap<{}, D | null>();
-//   const ob1 = {};
+      return returnValue;
+    }),
+  );
+}
 
-//   wm1.set(ob1, new Model(value));
-
-//   return (wm1.get(ob1) as D)
-//     .save()
-//     .then(result => {
-//       console.log('Model.save() result:', result);
-
-//       return result;
-//     })
-//     .catch(console.error.bind(console, 'Model.save() ERROR:'))
-//     .finally(() => {
-//       wm1.delete(ob1);
-//     });
-// },
-
-export async function getCandles(qtApi: IQuestradeAPIv2_0) {
-  echo(await qtApi.account.getServerTime());
-
-  const symbIDtoCandleMongoMapper = symbIDtoCandle(qtApi);
-  void symbIDtoCandleMongoMapper;
-
-  const listToCandle = id0(await willGetSNP500StringList())
-    .slice(40, 60)
-    .map(item => qtApi.search.stock(item))
-    .map(async item => {
-      const symbolItems = await item;
+export async function step3(list: Promise<ISymbolSearchResult[][]>) {
+  return Promise.all(
+    (await list).map(async item => {
+      const symbolItems = item;
       const [symbolItem] = symbolItems;
       const symbolId = symbolItem?.symbolId || 1;
 
@@ -126,46 +130,101 @@ export async function getCandles(qtApi: IQuestradeAPIv2_0) {
         symbolItem,
         symbolItems,
       };
-    })
-    .map(async items => {
-      const { symbolId, symbolItem, symbolItems } = await items;
+    }),
+  );
+}
 
-      // await dbConnection.save(symbolItem, SymbolSearchResult);
+// export async function step0(
+//   list: Promise<
+//     {
+//       symbolId: number;
+//       symbolItem: ISymbolSearchResult;
+//       symbolItems: ISymbolSearchResult[];
+//     }[]
+//   >,
+// ) {
+//   return Promise.all(
+//     (await list).map(async items => {
+//       const { symbolId, symbolItem, symbolItems } = items;
 
-      return {
-        symbolId,
-        symbolItem,
-        symbolItems,
-      };
-    })
-    .map(async items => {
-      const { symbolId, symbolItems } = await items;
+//       return {
+//         symbolId,
+//         symbolItem,
+//         symbolItems,
+//       };
+//     }),
+//   );
+// }
+
+export async function step4(
+  qtApi: IQuestradeAPIv2_0,
+  apiCallQ: ApiCallQ_,
+  list: Promise<
+    {
+      symbolId: number;
+      symbolItem: ISymbolSearchResult;
+      symbolItems: ISymbolSearchResult[];
+    }[]
+  >,
+) {
+  return Promise.all(
+    (await list).map(async items => {
+      const { symbolId, symbolItems } = items;
       symbolItems.map(async symbItem => {
         const symbId = symbItem?.symbolId || 1;
         const stockIds = [symbId];
         const symbol = await qtApi.getSymbols.byStockIds(stockIds);
         symbol.map(async (uniqueSymbol: ISymbol) => {
+          const config = { Model: StockSymbol, value: uniqueSymbol };
+
+          apiCallQ.addToQueue({
+            config,
+            fn: saveMongo,
+          });
+
           return uniqueSymbol;
-          // dbConnection.save(uniqueSymbol, StockSymbol);
         });
       });
 
       return symbolId;
-    });
+    }),
+  );
+}
 
-  void listToCandle;
+export async function getMain(
+  qtApi: IQuestradeAPIv2_0,
+  apiCallQ: ApiCallQ_,
+  startIndex: number = 0,
+  endIndex?: number,
+) {
+  const list1 = step1(startIndex, endIndex);
+  const list2 = step2(qtApi, apiCallQ, list1);
+  const list3 = step3(list2);
+  const list4 = step4(qtApi, apiCallQ, list3);
+  const list5 = (await list4).map(symbolID => {
+    return qtApi.market.getCandlesByStockId(symbolID)();
+  });
 
-  // const listToCandleMongoMapper = symbIDtoCandleMongoMapper(listToCandle);
-  // // await listToCandleMongoMapper('2020-01-01')('2021-01-01');
-  // // await listToCandleMongoMapper('2019-01-01')('2020-01-01');
-  // // await listToCandleMongoMapper('2018-01-01')('2019-01-01');
-  // await listToCandleMongoMapper('2016-01-01')('2017-01-01')
-  //   .then(x => Promise.all(x))
-  //   .finally(() =>
-  //     once.mongooseConnection.disconnect(
-  //       console.log.bind(console, 'once.mongooseConnection.disconnect():'),
-  //     ),
-  //   );
+  const list21 = list5.map(daterange => daterange('2021-01-01')('2021-03-05'));
+  const list20 = list5.map(daterange => daterange('2020-01-01')('2021-01-01'));
+  const list19 = list5.map(daterange => daterange('2019-01-01')('2020-01-01'));
+  const list18 = list5.map(daterange => daterange('2018-01-01')('2019-01-01'));
+  const list17 = list5.map(daterange => daterange('2017-01-01')('2018-01-01'));
+  const list16 = list5.map(daterange => daterange('2016-01-01')('2017-01-01'));
+
+  return [list21, list20, list19, list18, list17, list16]; // .map(list =>
+  //   list.map(async candles => {
+  //     (await candles).map(candle => {
+  //       const config = { Model: Candle, value: candle };
+  //       apiCallQ.addToQueue({
+  //         config,
+  //         fn: saveMongo,
+  //       });
+
+  //       return candle;
+  //     });
+  //   }),
+  // );
 }
 
 export function symbIDtoCandle(qtApi: IQuestradeAPIv2_0) {
@@ -295,10 +354,27 @@ export async function getActivities() {
   return id0(qtApi);
 }
 
-export type MongoConnector = {
-  disconnect: (cb: any) => void;
-  save: <T, D extends mongoose.Document<T>>(
-    value: T,
-    Model: mongoose.Model<D>,
-  ) => Promise<void | D>;
-};
+export async function saveMongo<T, D extends mongoose.Document<T>>(config: {
+  value: T;
+  Model: mongoose.Model<D>;
+}): Promise<void | D> {
+  const { value, Model } = config;
+  console.log('will process');
+
+  const wm1 = new WeakMap<{}, D | null>();
+  const ob1 = {};
+
+  wm1.set(ob1, new Model(value));
+
+  return (wm1.get(ob1) as D)
+    .save()
+    .then(result => {
+      console.log('Model.save() result:', result);
+
+      return result;
+    })
+    .catch(console.error.bind(console, 'Model.save() ERROR:'))
+    .finally(() => {
+      wm1.delete(ob1);
+    });
+}
