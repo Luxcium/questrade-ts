@@ -37,14 +37,12 @@ async function _httpDataEndPointConnector<DATA>({
       httpClient = async (conf: ClientRequestConfig) => someName(conf);
     }
 
-    const response: ClientResponse<DATA> = await apiCallQ.addToQueue({
+    const response: ClientResponse<DATA> = await apiCallQ.addApiCallToQueue({
       config,
       fn: httpClient,
     });
 
     if (response.status !== 200) {
-      // console.error('STATUS:', response.status);
-      // console.error('REQUEST:', response.request);
       console.error('CONFIG:', response.config);
       console.error('HEADERS:', response.headers);
       console.error('DATA:', response.data);

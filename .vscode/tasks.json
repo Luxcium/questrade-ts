@@ -18,13 +18,14 @@
         "runOn": "default"
       },
       "presentation": {
-        "panel": "dedicated",
-        "group": "TSC Builder",
-        "focus": false,
-        "echo": false,
         "clear": true,
+        "echo": true,
+        "focus": false,
+        "group": "TSC Builder",
+        "panel": "dedicated",
+        "reveal": "never",
         "revealProblems": "onProblem",
-        "reveal": "silent"
+        "showReuseMessage": false,
       },
       "problemMatcher": {
         "base": "$tsc",
@@ -49,12 +50,12 @@
       "presentation": {
         "clear": true,
         "echo": true,
-        "focus": false,
+        "focus": true,
         "group": "TSC Builder",
         "panel": "dedicated",
         "reveal": "always",
         "revealProblems": "never",
-        "showReuseMessage": false
+        "showReuseMessage": false,
       },
       "problemMatcher": {
         "base": "$tsc",
@@ -63,6 +64,38 @@
       "group": {
         "kind": "test",
         "isDefault": true
+      }
+    },
+    {
+      "label": "Linting",
+      "type": "shell",
+      "command": "yarn linting",
+      "presentation": {
+        "panel": "dedicated",
+        "group": "Linting",
+        "focus": false,
+        "echo": false,
+        "clear": true,
+        "revealProblems": "onProblem",
+        "reveal": "always",
+        "showReuseMessage": true,
+      },
+      "problemMatcher": {
+        "base": "$eslint-compact",
+        "owner": "eslint",
+        "applyTo": "allDocuments",
+        "fileLocation": [
+          "absolute",
+        ],
+        // // /home/luxcium/dev/questrade-ts/src/private/core/next-rate-limiter/core_limiter.ts: line 121, col 3, Error - Expected an assignment or function call and instead saw an expression. (no-unused-expressions)
+        // "pattern": {
+        //   "regexp": "^(.+):\\s(.+)\\((.+)\\)\\sat\\s(.+):(\\d+):(\\d+):$",
+        //   "file": 1,
+        //   "line": 2,
+        //   "column": 3,
+        //   "severity": 4,
+        //   "message": 5,
+        // }
       }
     },
     {

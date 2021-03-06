@@ -6,86 +6,115 @@ import mongoose from 'mongoose';
 
 import { qtAPIv2_0 } from '..';
 import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
-import { Candle } from '../resources/schema/candle';
-import { StockSymbol } from '../resources/schema/stock-symbol';
-import { SymbolSearchResult } from '../resources/schema/symbol-search-result';
 import { ech0, echo, getMyToken } from '../resources/side-effects';
 import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 import { ICandle, ISymbol } from '../typescript';
 import { id0 } from '../utils';
 import { willGetSNP500StringList } from './development/getSNP500List';
 
-const once = { mongooseConnection: mogooseConnectAndSave(), onlyOnce: true };
-
 // -----------------------------------------------------------------------------!!
 
-export function mogooseConnectAndSave() {
-  const connection = mongoose
-    .connect('mongodb://127.0.0.1:27017/test', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    })
-    .then(async function (db) {
-      console.log("we're connected!");
-
-      return db;
-    });
-
-  return {
-    disconnect: (cb: any) => {
-      connection
-        .then(db => cb(db.disconnect()))
-        .catch(console.error.bind(console, 'db.disconnect() ERROR:'));
-    },
-    save: async <T, D extends mongoose.Document<T>>(
-      value: T,
-      Model: mongoose.Model<D>,
-    ) => {
-      console.log('will process');
-
-      const wm1 = new WeakMap<{}, D | null>();
-      const ob1 = {};
-
-      wm1.set(ob1, new Model(value));
-
-      return (wm1.get(ob1) as D)
-        .save()
-        .then(result => {
-          console.log('Model.save() result:', result);
-
-          return result;
-        })
-        .catch(console.error.bind(console, 'Model.save() ERROR:'))
-        .finally(() => {
-          wm1.delete(ob1);
-        });
-    },
-  };
-}
+const once = { onlyOnceMain: true, onlyOnceMongoose: 0 };
 
 export async function main() {
-  echo(`Will execute main: ${once.onlyOnce}`);
-  if (!once.onlyOnce) {
+  echo(`Will execute main: ${once.onlyOnceMain}`);
+  if (!once.onlyOnceMain) {
     return false;
   }
 
-  once.onlyOnce = false;
-  await getCandles();
+  once.onlyOnceMain = false;
+  const connection = await mogooseConnect();
+  const { qtApi, apiCallQ } = await mainRedis();
+
+  getCandles(qtApi)
+    .then(() => connection.disconnect())
+    .catch(console.error.bind(console, 'db.disconnect() ERROR'));
+
+  void apiCallQ;
 
   return true;
 }
 
 main();
 
-export async function getCandles() {
-  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+// -----------------------------------------------------------------------------!!
 
+export async function mogooseConnect() {
+  if (once.onlyOnceMongoose > 0) {
+    throw new Error('Error when trying to db.connect(): ALREADY CONNECTED');
+  }
+
+  once.onlyOnceMongoose += 1;
+
+  let connection: typeof mongoose;
+  try {
+    connection = await mongoose.connect('mongodb://127.0.0.1:27017/test', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+  } catch (error) {
+    console.error('db.connect() ERROR:', error);
+
+    throw new Error(`Error when trying to db.connect(): ${error.message}`);
+  }
+
+  console.log("we're connected!");
+  console.info(`once.onlyOnceMongoose === ${once.onlyOnceMongoose}`);
+
+  return {
+    disconnect: async () => {
+      console.log(
+        'db disconnected!',
+        await connection.disconnect().then(t => {
+          once.onlyOnceMongoose -= 1;
+          console.info(`once.onlyOnceMongoose === ${once.onlyOnceMongoose}`);
+
+          return t;
+        }),
+      );
+    },
+  };
+}
+
+// .then(async function (db) {
+
+//   return db;
+// });
+
+// )
+// .catch(console.error.bind(console, 'db.disconnect() ERROR:'));
+// save: async <T, D extends mongoose.Document<T>>(
+//   value: T,
+//   Model: mongoose.Model<D>,
+// ) => {
+//   console.log('will process');
+
+//   const wm1 = new WeakMap<{}, D | null>();
+//   const ob1 = {};
+
+//   wm1.set(ob1, new Model(value));
+
+//   return (wm1.get(ob1) as D)
+//     .save()
+//     .then(result => {
+//       console.log('Model.save() result:', result);
+
+//       return result;
+//     })
+//     .catch(console.error.bind(console, 'Model.save() ERROR:'))
+//     .finally(() => {
+//       wm1.delete(ob1);
+//     });
+// },
+
+export async function getCandles(qtApi: IQuestradeAPIv2_0) {
   echo(await qtApi.account.getServerTime());
 
   const symbIDtoCandleMongoMapper = symbIDtoCandle(qtApi);
   void symbIDtoCandleMongoMapper;
 
   const listToCandle = id0(await willGetSNP500StringList())
+    .slice(56, 57)
     .map(item => qtApi.search.stock(item))
     .map(async item => {
       const symbolItems = await item;
@@ -101,10 +130,11 @@ export async function getCandles() {
     .map(async items => {
       const { symbolId, symbolItem, symbolItems } = await items;
 
-      await once.mongooseConnection.save(symbolItem, SymbolSearchResult);
+      // await dbConnection.save(symbolItem, SymbolSearchResult);
 
       return {
         symbolId,
+        symbolItem,
         symbolItems,
       };
     })
@@ -115,24 +145,27 @@ export async function getCandles() {
         const stockIds = [symbId];
         const symbol = await qtApi.getSymbols.byStockIds(stockIds);
         symbol.map(async (uniqueSymbol: ISymbol) => {
-          once.mongooseConnection.save(uniqueSymbol, StockSymbol);
+          return uniqueSymbol;
+          // dbConnection.save(uniqueSymbol, StockSymbol);
         });
       });
 
       return symbolId;
     });
 
-  const listToCandleMongoMapper = symbIDtoCandleMongoMapper(listToCandle);
-  // await listToCandleMongoMapper('2020-01-01')('2021-01-01');
-  // await listToCandleMongoMapper('2019-01-01')('2020-01-01');
-  // await listToCandleMongoMapper('2018-01-01')('2019-01-01');
-  await listToCandleMongoMapper('2016-01-01')('2017-01-01')
-    .then(x => Promise.all(x))
-    .finally(() =>
-      once.mongooseConnection.disconnect(
-        console.log.bind(console, 'once.mongooseConnection.disconnect():'),
-      ),
-    );
+  void listToCandle;
+
+  // const listToCandleMongoMapper = symbIDtoCandleMongoMapper(listToCandle);
+  // // await listToCandleMongoMapper('2020-01-01')('2021-01-01');
+  // // await listToCandleMongoMapper('2019-01-01')('2020-01-01');
+  // // await listToCandleMongoMapper('2018-01-01')('2019-01-01');
+  // await listToCandleMongoMapper('2016-01-01')('2017-01-01')
+  //   .then(x => Promise.all(x))
+  //   .finally(() =>
+  //     once.mongooseConnection.disconnect(
+  //       console.log.bind(console, 'once.mongooseConnection.disconnect():'),
+  //     ),
+  //   );
 }
 
 export function symbIDtoCandle(qtApi: IQuestradeAPIv2_0) {
@@ -162,10 +195,12 @@ async function mogooseConnectAndSaveCandleMaper<T>(
 ) {
   const value = JSON.parse(JSON.stringify(val)) as T;
 
-  once.mongooseConnection.save(value, Candle);
+  // once.mongooseConnection.save(value, Candle);
 
   void index;
   void array;
+
+  return value;
 }
 
 export async function mainRedis() {
@@ -174,7 +209,7 @@ export async function mainRedis() {
   });
 
   void proxyFactory;
-  const { qtApi } = await qtAPIv2_0({
+  const { qtApi, apiCallQ } = await qtAPIv2_0({
     accountCallsPerHour: 30_000,
     accountCallsPerSecond: 30,
     marketCallsPerHour: 1500,
@@ -185,11 +220,11 @@ export async function mainRedis() {
 
   ech0(await qtApi.account.getServerTime());
 
-  return qtApi;
+  return { apiCallQ, qtApi };
 }
 
 export async function getTime() {
-  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const { qtApi } = await mainRedis();
   const time = qtApi.account.getServerTime();
 
   ech0(await time);
@@ -198,7 +233,7 @@ export async function getTime() {
 }
 
 export async function getAllAccounts() {
-  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const { qtApi } = await mainRedis();
   const accounts = qtApi.account.getAllAccounts();
 
   ech0(await accounts);
@@ -207,7 +242,7 @@ export async function getAllAccounts() {
 }
 
 export async function getPositions() {
-  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const { qtApi } = await mainRedis();
   const positions = qtApi.account.getPositions();
 
   ech0(await positions);
@@ -216,7 +251,7 @@ export async function getPositions() {
 }
 
 export async function getBalances() {
-  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const { qtApi } = await mainRedis();
   const balances = qtApi.account.getBalances();
 
   ech0(await balances);
@@ -225,7 +260,7 @@ export async function getBalances() {
 }
 
 export async function getOrders() {
-  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const { qtApi } = await mainRedis();
   const orders = qtApi.account.getOrders()('2021-02-01')('2021-02-10');
 
   ech0(await orders);
@@ -234,7 +269,7 @@ export async function getOrders() {
 }
 
 export async function getExecutions() {
-  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const { qtApi } = await mainRedis();
   const executions = qtApi.account.getExecutions('2021-02-01')('2021-02-10');
 
   ech0(await executions);
@@ -243,7 +278,7 @@ export async function getExecutions() {
 }
 
 export async function getOrdersByIds() {
-  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const { qtApi } = await mainRedis();
   const order = qtApi.account.getOrdersByIds([793_393_477]);
 
   ech0(await order);
@@ -252,10 +287,18 @@ export async function getOrdersByIds() {
 }
 
 export async function getActivities() {
-  const qtApi: IQuestradeAPIv2_0 = await mainRedis();
+  const { qtApi } = await mainRedis();
   const activities = qtApi.account.getActivities('2021-02-01')('2021-02-10');
 
   ech0(await activities);
 
   return id0(qtApi);
 }
+
+export type MongoConnector = {
+  disconnect: (cb: any) => void;
+  save: <T, D extends mongoose.Document<T>>(
+    value: T,
+    Model: mongoose.Model<D>,
+  ) => Promise<void | D>;
+};

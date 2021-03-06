@@ -10,7 +10,6 @@ export async function questradeAPI(apiOptions: ApiOptions) {
 
   const errorloger: any = apiOptions.errorloger ?? errorLog;
   const apiCallQ = new ApiCallQ_(apiOptions);
-  void apiCallQ;
 
   apiOptions.token = preValidateToken(apiOptions);
   const proxyFactory = apiOptions.proxyFactory ?? null;
@@ -21,6 +20,7 @@ export async function questradeAPI(apiOptions: ApiOptions) {
   );
 
   return {
+    apiCallQ,
     credentials,
     // XXX: WORKING ON questradeApiFactory CALLS
     qtApi: await questradeApiFactory(
