@@ -41,7 +41,7 @@ export interface QNodesValue2 {
 
 /** fCFS Queue (first-come, first-served) */
 
-export class ApiCallQ_ {
+export class SimpleQueue {
   protected broke: boolean;
   protected current: QNodes<QNodesValue>;
   protected first: QNodes<QNodesValue>;
@@ -96,9 +96,9 @@ export class ApiCallQ_ {
     return this.isNotEmpty && this.isNotCalled && this.isNotBroken;
   }
 
-  public static new(apiOptions: ApiOptions) {
-    return new ApiCallQ_(apiOptions);
-  }
+  // public static new(apiOptions: ApiOptions) {
+  //   return new ApiCallQ_(apiOptions);
+  // }
 
   protected get positiveTimeOffset() {
     return this.timeOfSet >= 0 ? this.timeOfSet : 0;
@@ -156,9 +156,9 @@ export class ApiCallQ_ {
 
       setTimeout(async () => {
         this.deQueue();
-        const cb = this.current?.value.cb ?? void0;
         const { fn } = this.current!.value;
         const { config } = this.current!.value;
+        const cb = this.current!.value.cb ?? void0;
 
         try {
           if (this.current?.value?.functionKind === 'other') {
@@ -175,40 +175,40 @@ export class ApiCallQ_ {
             );
           }
 
-          if (this.current?.value?.functionKind === 'ClientResponse') {
-            try {
-              const fnct: <R>(
-                config: ClientRequestConfig,
-              ) => Promise<ClientResponse<R>> = fn as <R>(
-                config: ClientRequestConfig,
-              ) => Promise<ClientResponse<R>>;
+          // if (this.current?.value?.functionKind === 'ClientResponse') {
+          //   try {
+          //     const fnct: <R>(
+          //       config: ClientRequestConfig,
+          //     ) => Promise<ClientResponse<R>> = fn as <R>(
+          //       config: ClientRequestConfig,
+          //     ) => Promise<ClientResponse<R>>;
 
-              const before = now();
-              const response = await fnct(config);
-              console.info(
-                '\nrequest response cycle in',
-                now() - before,
-                'ms' /* '\n' */,
-              );
-              this.remaining = response.headers['x-ratelimit-remaining'];
-              this.resetTime = response.headers['x-ratelimit-reset'];
+          //     const before = now();
+          //     const response = await fnct(config);
+          //     console.info(
+          //       '\nrequest response cycle in',
+          //       now() - before,
+          //       'ms' /* '\n' */,
+          //     );
+          //     this.remaining = response.headers['x-ratelimit-remaining'];
+          //     this.resetTime = response.headers['x-ratelimit-reset'];
 
-              cb(null, response);
-            } catch (error) {
-              if ((error.message as string).search(/401|404|429|500/u) < 0) {
-                console.error(
-                  "'****' BROKE on an error in Queue Ratelimiter:",
-                  error.message,
-                  (error.message as string).search(/401|404|429|500/u),
-                );
-                this.broke = true;
-              }
+          //     cb(null, response);
+          //   } catch (error) {
+          //     if ((error.message as string).search(/401|404|429|500/u) < 0) {
+          //       console.error(
+          //         "'****' BROKE on an error in Queue Ratelimiter:",
+          //         error.message,
+          //         (error.message as string).search(/401|404|429|500/u),
+          //       );
+          //       this.broke = true;
+          //     }
 
-              throw error;
-            }
+          //     throw error;
+          //   }
 
-            // {
-          }
+          //   // {
+          // }
         } catch (error) {
           console.error(
             "'****' CATCH an error in Queue Ratelimiter:",
@@ -235,34 +235,6 @@ export class ApiCallQ_ {
 
     return new Promise<S>((resolve, reject) => {
       callBack((error: Error, result: S) => {
-        if (!error) {
-          resolve(result);
-
-          return true;
-        }
-
-        reject(error);
-
-        return false;
-      });
-    });
-  }
-
-  // -| public |-···―――――――――――――――――――――――――――――――――···-| addToQueue() |-//::――― ~
-  public async addApiCallToQueue<R = unknown>(
-    value: QNodesValue1,
-  ): Promise<ClientResponse<R>> {
-    const callBack = (
-      cb: (error: Error, result: ClientResponse<R>) => boolean,
-    ) => {
-      this.enQueue({ ...value, cb, functionKind: 'ClientResponse' });
-      if (this.isNotCalled) {
-        this.callToPopQueue();
-      }
-    };
-
-    return new Promise<ClientResponse<R>>((resolve, reject) => {
-      callBack((error: Error, result: ClientResponse<R>) => {
         if (!error) {
           resolve(result);
 
