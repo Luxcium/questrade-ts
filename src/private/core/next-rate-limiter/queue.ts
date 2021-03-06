@@ -3,7 +3,6 @@
 /* eslint-disable promise/avoid-new */
 // /*eslint complexity: ["error", 5]*/
 import { MAX_PER_HOUR, MAX_PER_SECONDES } from '../../../magic-values';
-import { id1 } from '../../../resources/side-effects/default-behaviour';
 import type {
   ClientRequestConfig,
   ClientResponse,
@@ -126,26 +125,21 @@ export class ApiCallQ_ {
   // info: requestLimit //-!
   protected get requestLimit() {
     const { floor, min, ceil } = Math;
-    const reqstRemaining = id1('\nreqstRemaining:', this.xRemaining - 1);
-    const resetTime = id1('resetTime :', this.xResetTime);
+    const reqstRemaining = this.xRemaining - 1;
+    const resetTime = this.xResetTime;
+
     if (reqstRemaining < 1 || resetTime < 1) {
-      return id1('returnTime :', 666);
+      return 666;
     }
 
-    // if (resetTime <= 0) {
-    //   return id1('returnTime :', 666);
-    // }
-
-    const timeNow = id1('timeNow   :', floor(now() / 1000));
+    const timeNow = floor(now() / 1000);
     const timeRemaining = resetTime - timeNow;
-    id1('timeRemaining:', timeRemaining);
-
-    const reqPerSecRaw = id1('\nreqPerSecRaw:', reqstRemaining / timeRemaining);
-    const reqPerSec = id1('reqPerSec:', min(floor(reqPerSecRaw), 20));
-    const delay = id1('calculated Delay:', ceil(1000 / reqPerSec));
+    const reqPerSecRaw = reqstRemaining / timeRemaining;
+    const reqPerSec = min(floor(reqPerSecRaw), 20);
+    const delay = ceil(1000 / reqPerSec);
     const offset = this.positiveTimeOffset;
 
-    return id1(`delay plus ${offset}ms offset :`, ceil(delay + offset));
+    return ceil(delay + offset);
   }
 
   // -| protected |-···―――――――――――――――――――――――――···-| callToPopQueue() |-//::――― ~
@@ -184,12 +178,7 @@ export class ApiCallQ_ {
 
               cb(null, response);
             } catch (error) {
-              if (
-                (error.message as string).includes('401') ||
-                (error.message as string).includes('400') ||
-                (error.message as string).includes('429') ||
-                (error.message as string).includes('500')
-              ) {
+              if ((error.message as string).search(/401|400|429|500/u)) {
                 this.broke = true;
               }
 

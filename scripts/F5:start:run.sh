@@ -10,7 +10,7 @@ FLAGS=''
         ( 
             (
                 [[ -d ./out/node_modules/ ]] || exit 7
-                [[ -d ./out/src/resources/node_modules/ ]] || exit 9
+                # [[ -d ./out/src/resources/node_modules/ ]] || exit 9
             ) && (
                 node ./out/src/main.js
                 echo -e "\n\n― NODEjs ―"

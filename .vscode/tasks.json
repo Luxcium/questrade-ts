@@ -9,7 +9,8 @@
       "detail": "Output watcher for this Type-Script project",
       "command": "tsc",
       "args": [
-        "--build"
+        "--build",
+        "--verbose"
       ],
       "isBackground": false,
       "runOptions": {

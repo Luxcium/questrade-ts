@@ -23,12 +23,12 @@ export async function main() {
   }
 
   once.onlyOnceMain = false;
-  const connection = await mogooseConnect();
+  // const connection = await mogooseConnect();
   const { qtApi, apiCallQ } = await mainRedis();
 
-  getCandles(qtApi)
-    .then(() => connection.disconnect())
-    .catch(console.error.bind(console, 'db.disconnect() ERROR'));
+  getCandles(qtApi);
+  // .then(() => connection.disconnect())
+  // .catch(console.error.bind(console, 'db.disconnect() ERROR'));
 
   void apiCallQ;
 
@@ -114,7 +114,7 @@ export async function getCandles(qtApi: IQuestradeAPIv2_0) {
   void symbIDtoCandleMongoMapper;
 
   const listToCandle = id0(await willGetSNP500StringList())
-    .slice(56, 57)
+    .slice(40, 60)
     .map(item => qtApi.search.stock(item))
     .map(async item => {
       const symbolItems = await item;
@@ -218,7 +218,7 @@ export async function mainRedis() {
     token: getMyToken,
   });
 
-  ech0(await qtApi.account.getServerTime());
+  // ech0(await qtApi.account.getServerTime());
 
   return { apiCallQ, qtApi };
 }
