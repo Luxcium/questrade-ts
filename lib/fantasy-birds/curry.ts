@@ -17,9 +17,7 @@ function functionName(f: any) {
   return f._name || f.name;
 }
 
-export { functionLength, functionName };
-export { curry };
-export { bind };
+
 
 //
 //  ## bind(f)(o)
@@ -72,7 +70,7 @@ function bind(this: any, f: any) {
 //
 //       Add(15, 27) == 42;
 //
-function curry(f: any) {
+  function curry(f: any) {
   const a = function (this: any) {
     const g = bind(f).apply(f, [this].concat([].slice.call(arguments)));
 
@@ -88,3 +86,7 @@ function curry(f: any) {
 
   return a;
 }
+
+export { functionLength, functionName };
+export { curry };
+export { bind };
