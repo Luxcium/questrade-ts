@@ -3,31 +3,18 @@
 /* eslint-disable promise/avoid-new */
 // /*eslint complexity: ["error", 5]*/
 import { MAX_PER_HOUR, MAX_PER_SECONDES } from '../../../magic-values';
-import type {
-  ClientRequestConfig,
-  ClientResponse,
-} from '../../../resources/side-effects/types';
-import { ApiOptions } from '../../../typescript';
 import { now, void0 } from '../../../utils';
 import { QNode } from './q-node';
 
-export interface IQNode<T extends QNodesValue> {
+export interface IQNode<T extends QNodesVal> {
   value: T;
   next: IQNode<T> | null;
 }
 
 // type ApiCallQ_Value = any; .functionKind === 'ClientResponse'
-type QNodes<T extends QNodesValue = QNodesValue> = IQNode<T> | null;
+type QNodes<T extends QNodesVal = QNodesVal> = IQNode<T> | null;
 
-type QNodesValue = QNodesValue1 | QNodesValue2;
-export interface QNodesValue1 {
-  cb?: any;
-  config: ClientRequestConfig;
-  fn: <R = any>(config: ClientRequestConfig) => Promise<ClientResponse<R>>;
-  functionKind?: 'ClientResponse';
-}
-
-export interface QNodesValue2 {
+export interface QNodesVal {
   cb?: any;
   config: any;
   fn: (config: any) => any;
@@ -43,34 +30,11 @@ export interface QNodesValue2 {
 
 export class SimpleQueue {
   protected broke: boolean;
-  protected current: QNodes<QNodesValue>;
-  protected first: QNodes<QNodesValue>;
+  protected current: QNodes<QNodesVal>;
+  protected first: QNodes<QNodesVal>;
   protected isCalled: boolean;
-  protected last: QNodes<QNodesValue>;
-  protected xRemaining: number;
-  protected xResetTime: number;
+  protected last: QNodes<QNodesVal>;
   protected size: number;
-
-  protected set remaining(xRemaining: any) {
-    const xRemain = Number(xRemaining);
-    // set to 1 if zero or not a number or NaN
-    this.xRemaining = typeof xRemain === 'number' ? xRemain || 1 : 1;
-  }
-
-  protected get remaining() {
-    return this.xRemaining;
-  }
-
-  protected set resetTime(xResetTime: any) {
-    const xReset = Number(xResetTime);
-    // set to 1 if zero or not a number or NaN
-    this.xResetTime = typeof xReset === 'number' ? xReset || 1 : 1;
-  }
-
-  protected get resetTime() {
-    return this.xResetTime;
-  }
-
   protected get isBroken() {
     return this.broke;
   }
@@ -91,22 +55,12 @@ export class SimpleQueue {
     return this.size > 0;
   }
 
-  // : this is {current: NonNullable<ApiCallQ_<T>['current']>;
   protected get isCallable() {
     return this.isNotEmpty && this.isNotCalled && this.isNotBroken;
   }
 
-  // public static new(apiOptions: ApiOptions) {
-  //   return new ApiCallQ_(apiOptions);
-  // }
-
-  protected get positiveTimeOffset() {
-    return this.timeOfSet >= 0 ? this.timeOfSet : 0;
-  }
-
   // -| constructor |-···―――――――――――――――――――――――――――···-| ApiCallQ_() |-//-://#-| ~
   public constructor(
-    protected apiOptions?: ApiOptions,
     protected maxPerSecondes: number = MAX_PER_SECONDES,
     protected maxPerHour: number = MAX_PER_HOUR,
     protected timeOfSet: number = 1000 / MAX_PER_SECONDES && 0,
@@ -116,34 +70,7 @@ export class SimpleQueue {
     this.last = null;
     this.size = 0;
     this.current = null;
-    this.xRemaining = -2;
-    this.xResetTime = -2;
     this.broke = false;
-  }
-
-  // -| protected |-get――――――――――――――――――――――――――――――···-| requestLimit |-//::――― ~
-  // info: requestLimit //-!
-  protected get requestLimit() {
-    const { floor, min, ceil } = Math;
-    const reqstRemaining = this.xRemaining - 1;
-    const resetTime = this.xResetTime;
-
-    if (resetTime < 1) {
-      return 0;
-    }
-
-    if (reqstRemaining < 1) {
-      return 999;
-    }
-
-    const timeNow = floor(now() / 1000);
-    const timeRemaining = resetTime - timeNow;
-    const reqPerSecRaw = reqstRemaining / timeRemaining;
-    const reqPerSec = min(floor(reqPerSecRaw), 20);
-    const delay = ceil(1000 / reqPerSec);
-    const offset = this.positiveTimeOffset;
-
-    return ceil(delay + offset);
   }
 
   // -| protected |-···―――――――――――――――――――――――――···-| callToPopQueue() |-//::――― ~
@@ -154,78 +81,43 @@ export class SimpleQueue {
     if (this.isCallable) {
       this.isCalled = true;
 
-      setTimeout(async () => {
-        this.deQueue();
-        const { fn } = this.current!.value;
-        const { config } = this.current!.value;
-        const cb = this.current!.value.cb ?? void0;
+      // setTimeout(async () => {
+      this.deQueue();
+      const { fn } = this.current!.value;
+      const { config } = this.current!.value;
+      const cb = this.current!.value.cb ?? void0;
 
-        try {
-          if (this.current?.value?.functionKind === 'other') {
-            const fnct: <R>(config: unknown) => R = fn as <R>(
-              config: unknown,
-            ) => R;
+      try {
+        if (this.current?.value?.functionKind === 'other') {
+          const fnct: <R>(config: unknown) => R = fn as <R>(
+            config: unknown,
+          ) => R;
 
-            const before = now();
-            cb(null, fnct(config));
-            console.info(
-              '\n *** *** *** Other function cycle in',
-              now() - before,
-              'ms' /* '\n' */,
-            );
-          }
-
-          // if (this.current?.value?.functionKind === 'ClientResponse') {
-          //   try {
-          //     const fnct: <R>(
-          //       config: ClientRequestConfig,
-          //     ) => Promise<ClientResponse<R>> = fn as <R>(
-          //       config: ClientRequestConfig,
-          //     ) => Promise<ClientResponse<R>>;
-
-          //     const before = now();
-          //     const response = await fnct(config);
-          //     console.info(
-          //       '\nrequest response cycle in',
-          //       now() - before,
-          //       'ms' /* '\n' */,
-          //     );
-          //     this.remaining = response.headers['x-ratelimit-remaining'];
-          //     this.resetTime = response.headers['x-ratelimit-reset'];
-
-          //     cb(null, response);
-          //   } catch (error) {
-          //     if ((error.message as string).search(/401|404|429|500/u) < 0) {
-          //       console.error(
-          //         "'****' BROKE on an error in Queue Ratelimiter:",
-          //         error.message,
-          //         (error.message as string).search(/401|404|429|500/u),
-          //       );
-          //       this.broke = true;
-          //     }
-
-          //     throw error;
-          //   }
-
-          //   // {
-          // }
-        } catch (error) {
-          console.error(
-            "'****' CATCH an error in Queue Ratelimiter:",
-            error.message,
+          const before = now();
+          cb(null, fnct(config));
+          console.info(
+            '\n *** *** *** Other function cycle in',
+            now() - before,
+            'ms' /* '\n' */,
           );
-          cb(error, null);
         }
+      } catch (error) {
+        console.error(
+          "'****' CATCH an error in Queue Ratelimiter:",
+          error.message,
+        );
+        cb(error, null);
+      }
 
-        console.info('Complete previous cycle in', now() - timeThen, 'ms');
-        this.isCalled = false;
+      console.info('Complete previous cycle in', now() - timeThen, 'ms');
+      this.isCalled = false;
 
-        this.callToPopQueue();
-      }, this.requestLimit);
+      this.callToPopQueue();
+      // }, this.requestLimit);
     }
   }
 
-  public async addToQueue<S = any>(value: QNodesValue2): Promise<S> {
+  public async addToQueue<S = any>(value: QNodesVal): Promise<S> {
     const callBack = (cb: (error: Error, result: S) => boolean) => {
       this.enQueue({ ...value, cb, functionKind: 'other' });
       if (this.isNotCalled) {
@@ -249,7 +141,7 @@ export class SimpleQueue {
   }
 
   // -| protected |-···――――――――――――――――――――――――――――――――――···-| enQueue() |-//::―― ~
-  protected enQueue(val: QNodesValue) {
+  protected enQueue(val: QNodesVal) {
     const newNode = new QNode(val);
 
     if (!this.first) {

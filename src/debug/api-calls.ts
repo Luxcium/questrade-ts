@@ -8,10 +8,11 @@ import { qtAPIv2_0 } from '..';
 import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
 import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
 import { StockSymbol } from '../resources/schema/stock-symbol';
-import { echo, getMyToken } from '../resources/side-effects';
+import { SymbolSearchResult } from '../resources/schema/symbol-search-result';
+import { ech0, echo, getMyToken } from '../resources/side-effects';
 import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
-import { ICandle, IQuote, ISymbol, ISymbolSearchResult } from '../typescript';
-import { promiseOf } from '../utils';
+import { ICandle, ISymbol, ISymbolSearchResult } from '../typescript';
+import { id0 } from '../utils';
 import { willGetSNP500StringList } from './development/getSNP500List';
 
 // -----------------------------------------------------------------------------!!
@@ -23,9 +24,6 @@ export interface QNodesValue2 {
   functionKind?: 'other';
 }
 
-// public get promiseOf(): Promise<MaybeList<MLVal>> {
-//   return Promise.resolve(MaybeList.of<MLVal>(this.fork)).then(async x => x);
-// }
 const once = { onlyOnceMain: true, onlyOnceMongoose: 0 };
 
 export async function main() {
@@ -56,26 +54,6 @@ export async function main() {
 main();
 
 // -----------------------------------------------------------------------------!!
-
-export async function mainRedis() {
-  const proxyFactory = redisProxyHandler({
-    httpConnectProxy: true,
-  });
-
-  void proxyFactory;
-  const { qtApi, apiCallQ } = await qtAPIv2_0({
-    accountCallsPerHour: 30_000,
-    accountCallsPerSecond: 30,
-    marketCallsPerHour: 1500,
-    marketCallsPerSecond: 20,
-    proxyFactory,
-    token: getMyToken,
-  });
-
-  // ech0(await qtApi.account.getServerTime());
-
-  return { apiCallQ, qtApi };
-}
 
 export async function mogooseConnect() {
   if (once.onlyOnceMongoose > 0) {
@@ -118,101 +96,42 @@ export async function step1(startIndex: number = 0, endIndex?: number) {
   return (await willGetSNP500StringList()).slice(startIndex, endIndex);
 }
 
-//
-export const getStock = (qtApi: IQuestradeAPIv2_0) => async (
-  symbol: string | Promise<string>,
-  offset?: number,
-): Promise<ISymbolSearchResult[]> => {
-  const symb = await promiseOf(symbol);
+export async function step2(
+  qtApi: IQuestradeAPIv2_0,
+  apiCallQ: SimpleQueue,
+  list: Promise<string[]>,
+) {
+  return Promise.all(
+    (await list).map(async symbol => {
+      const returnValue = await qtApi.search.stock(symbol);
+      returnValue.map(item => {
+        const config = { Model: SymbolSearchResult, value: item };
 
-  return qtApi.search.stock(symb, offset);
-};
+        return apiCallQ.addToQueue({
+          config,
+          fn: conf => saveMongo(conf),
+        });
+      });
 
-export const getFirstStockResult = (qtApi: IQuestradeAPIv2_0) => async (
-  symbol: string | Promise<string>,
-  offset?: number,
-): Promise<ISymbolSearchResult> => {
-  const symb = await promiseOf(symbol);
-  const [firstResult] = await qtApi.search.stock(symb, offset);
-
-  return firstResult;
-};
-
-export const getStockId = (qtApi: IQuestradeAPIv2_0) => async (
-  symbol: string | Promise<string>,
-  offset?: number,
-): Promise<number> => {
-  const symb = await promiseOf(symbol);
-  const [firstResult] = await qtApi.search.stock(symb, offset);
-
-  return firstResult?.symbolId || 1;
-};
-
-export const getMarketQuote = (qtApi: IQuestradeAPIv2_0) => async (
-  stockId: number | Promise<number>,
-): Promise<IQuote> => {
-  const id = await promiseOf(stockId);
-  const [firstResult] = await qtApi.getQuotes.byStockIds([id]);
-
-  return firstResult;
-};
-
-export const getMarketQuotes = (qtApi: IQuestradeAPIv2_0) => async (
-  stockIds: number[] | Promise<number[]>,
-): Promise<IQuote[]> => {
-  const idList = await promiseOf(stockIds);
-
-  return qtApi.getQuotes.byStockIds([...idList]);
-};
-
-export const getSymbol = (qtApi: IQuestradeAPIv2_0) => async (
-  stockId: number | Promise<number>,
-): Promise<ISymbol> => {
-  const id = await promiseOf(stockId);
-  const [firstResult] = await qtApi.getSymbols.byStockIds([id]);
-
-  return firstResult;
-};
-
-export const getSymbols = (qtApi: IQuestradeAPIv2_0) => async (
-  stockIds: number[] | Promise<number[]>,
-): Promise<ISymbol[]> => {
-  const idList = await promiseOf(stockIds);
-
-  return qtApi.getSymbols.byStockIds([...idList]);
-};
-
-// GET MarketsQuotes
-export async function step2(qtApi: IQuestradeAPIv2_0, list: Promise<string[]>) {
-  return Promise.all((await list).map(getStock(qtApi)));
+      return returnValue;
+    }),
+  );
 }
 
-//     const returnValue = await qtApi.search.stock(symbol);
-//     // returnValue.map(item => {
-//     //   const config = { Model: SymbolSearchResult, value: item };
-
-//     //   return apiCallQ.addToQueue({
-//     //     config,
-//     //     fn: conf => saveMongo(conf),
-//     //   });
-//     // });
-
-//     return returnValue;
-//   }),
-// );
-
 export async function step3(list: Promise<ISymbolSearchResult[][]>) {
-  return map(list, (item: ISymbolSearchResult[]) => {
-    const symbolItems = item;
-    const [symbolItem] = symbolItems;
-    const symbolId = symbolItem?.symbolId || 1;
+  return Promise.all(
+    (await list).map(async item => {
+      const symbolItems = item;
+      const [symbolItem] = symbolItems;
+      const symbolId = symbolItem?.symbolId || 1;
 
-    return {
-      symbolId,
-      symbolItem,
-      symbolItems,
-    };
-  });
+      return {
+        symbolId,
+        symbolItem,
+        symbolItems,
+      };
+    }),
+  );
 }
 
 // export async function step0(
@@ -272,14 +191,6 @@ export async function step4(
   );
 }
 
-export async function map<T>(
-  list: Promise<any[]>,
-  funct: (item: any) => T,
-): Promise<T[]> {
-  return (await list).map(funct);
-  // return true; Promise.all(
-}
-
 export async function getMain(
   qtApi: IQuestradeAPIv2_0,
   apiCallQ: SimpleQueue,
@@ -287,7 +198,7 @@ export async function getMain(
   endIndex?: number,
 ) {
   const list1 = step1(startIndex, endIndex);
-  const list2 = step2(qtApi /* , apiCallQ */, list1);
+  const list2 = step2(qtApi, apiCallQ, list1);
   const list3 = step3(list2);
   const list4 = step4(qtApi, apiCallQ, list3);
   const list5 = (await list4).map(symbolID => {
@@ -349,6 +260,98 @@ async function mogooseConnectAndSaveCandleMaper<T>(
   void array;
 
   return value;
+}
+
+export async function mainRedis() {
+  const proxyFactory = redisProxyHandler({
+    httpConnectProxy: true,
+  });
+
+  void proxyFactory;
+  const { qtApi, apiCallQ } = await qtAPIv2_0({
+    accountCallsPerHour: 30_000,
+    accountCallsPerSecond: 30,
+    marketCallsPerHour: 1500,
+    marketCallsPerSecond: 20,
+    proxyFactory,
+    token: getMyToken,
+  });
+
+  // ech0(await qtApi.account.getServerTime());
+
+  return { apiCallQ, qtApi };
+}
+
+export async function getTime() {
+  const { qtApi } = await mainRedis();
+  const time = qtApi.account.getServerTime();
+
+  ech0(await time);
+
+  return id0(qtApi);
+}
+
+export async function getAllAccounts() {
+  const { qtApi } = await mainRedis();
+  const accounts = qtApi.account.getAllAccounts();
+
+  ech0(await accounts);
+
+  return id0(qtApi);
+}
+
+export async function getPositions() {
+  const { qtApi } = await mainRedis();
+  const positions = qtApi.account.getPositions();
+
+  ech0(await positions);
+
+  return id0(qtApi);
+}
+
+export async function getBalances() {
+  const { qtApi } = await mainRedis();
+  const balances = qtApi.account.getBalances();
+
+  ech0(await balances);
+
+  return id0(qtApi);
+}
+
+export async function getOrders() {
+  const { qtApi } = await mainRedis();
+  const orders = qtApi.account.getOrders()('2021-02-01')('2021-02-10');
+
+  ech0(await orders);
+
+  return id0(qtApi);
+}
+
+export async function getExecutions() {
+  const { qtApi } = await mainRedis();
+  const executions = qtApi.account.getExecutions('2021-02-01')('2021-02-10');
+
+  ech0(await executions);
+
+  return id0(qtApi);
+}
+
+export async function getOrdersByIds() {
+  const { qtApi } = await mainRedis();
+  const order = qtApi.account.getOrdersByIds([793_393_477]);
+
+  ech0(await order);
+
+  return id0(qtApi);
+}
+
+export async function getActivities() {
+  const { qtApi } = await mainRedis();
+  const activities = qtApi.account.getActivities('2021-02-01')('2021-02-10');
+
+  ech0(await activities);
+
+  return id0(qtApi);
 }
 
 export async function saveMongo<T, D extends mongoose.Document<T>>(config: {
