@@ -185,7 +185,7 @@ export class ApiCallQ_ {
 
               const before = now();
               const response = await fnct(config);
-              console.info(
+              void0(
                 '\nrequest response cycle in',
                 now() - before,
                 'ms' /* '\n' */,
@@ -195,11 +195,11 @@ export class ApiCallQ_ {
 
               cb(null, response);
             } catch (error) {
-              if ((error.message as string).search(/401|404|429|500/u) < 0) {
+              if ((error.message as string).search(/401|429|500/u) > 0) {
                 console.error(
                   "'****' BROKE on an error in Queue Ratelimiter:",
                   error.message,
-                  (error.message as string).search(/401|404|429|500/u),
+                  (error.message as string).search(/401|429|500/u),
                 );
                 this.broke = true;
               }
@@ -217,7 +217,7 @@ export class ApiCallQ_ {
           cb(error, null);
         }
 
-        console.info('Complete previous cycle in', now() - timeThen, 'ms');
+        void0('Complete previous cycle in', now() - timeThen, 'ms');
         this.isCalled = false;
 
         this.callToPopQueue();

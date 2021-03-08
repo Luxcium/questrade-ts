@@ -81,39 +81,39 @@ export class SimpleQueue {
     if (this.isCallable) {
       this.isCalled = true;
 
-      // setTimeout(async () => {
-      this.deQueue();
-      const { fn } = this.current!.value;
-      const { config } = this.current!.value;
-      const cb = this.current!.value.cb ?? void0;
+      setTimeout(async () => {
+        this.deQueue();
+        const { fn } = this.current!.value;
+        const { config } = this.current!.value;
+        const cb = this.current!.value.cb ?? void0;
 
-      try {
-        if (this.current?.value?.functionKind === 'other') {
-          const fnct: <R>(config: unknown) => R = fn as <R>(
-            config: unknown,
-          ) => R;
+        try {
+          if (this.current?.value?.functionKind === 'other') {
+            const fnct: <R>(config: unknown) => R = fn as <R>(
+              config: unknown,
+            ) => R;
 
-          const before = now();
-          cb(null, fnct(config));
-          console.info(
-            '\n *** *** *** Other function cycle in',
-            now() - before,
-            'ms' /* '\n' */,
+            const before = now();
+            cb(null, fnct(config));
+            console.info(
+              '\n *** *** *** Other function cycle in',
+              now() - before,
+              'ms' /* '\n' */,
+            );
+          }
+        } catch (error) {
+          console.error(
+            "'****' CATCH an error in Queue Ratelimiter:",
+            error.message,
           );
+          cb(error, null);
         }
-      } catch (error) {
-        console.error(
-          "'****' CATCH an error in Queue Ratelimiter:",
-          error.message,
-        );
-        cb(error, null);
-      }
 
-      console.info('Complete previous cycle in', now() - timeThen, 'ms');
-      this.isCalled = false;
+        void0('Complete previous cycle in', now() - timeThen, 'ms');
+        this.isCalled = false;
 
-      this.callToPopQueue();
-      // }, this.requestLimit);
+        this.callToPopQueue();
+      }, 1);
     }
   }
 

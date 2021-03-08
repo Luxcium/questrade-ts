@@ -1,16 +1,29 @@
+/* eslint-disable radar/no-identical-expressions */
 /* eslint-disable promise/no-callback-in-promise */
 /* eslint-disable promise/no-nesting */
 /* eslint-disable radar/no-duplicate-string */
 /* eslint-disable radar/no-identical-functions */
 import mongoose from 'mongoose';
+import {
+  Currency,
+  HistoricalDataGranularity,
+} from 'questrade-api-enumerations';
 
 import { qtAPIv2_0 } from '..';
 import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
 import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
+import { CandleWithInfos } from '../resources/schema/candle-with-infos';
 import { StockSymbol } from '../resources/schema/stock-symbol';
 import { echo, getMyToken } from '../resources/side-effects';
 import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
-import { ICandle, IQuote, ISymbol, ISymbolSearchResult } from '../typescript';
+import {
+  ICandle,
+  ICandleWithInfos,
+  IQuote,
+  ISymbol,
+  ISymbolInfos,
+  ISymbolSearchResult,
+} from '../typescript';
 import { promiseOf } from '../utils';
 import { willGetSNP500StringList } from './development/getSNP500List';
 
@@ -38,11 +51,10 @@ export async function main() {
   const { qtApi } = await mainRedis();
   const connection = await mogooseConnect();
   const apiCallQ = new SimpleQueue();
-  await getMain(qtApi, apiCallQ, 0, 5)
-    .then(x => x)
-    .finally(() => null)
-    .catch(error => console.error(error));
+  const result = getMain(qtApi, apiCallQ, 0, 505);
 
+  void apiCallQ;
+  await result;
   void apiCallQ.addToQueue({
     config: 'any',
     fn(_): any {
@@ -56,6 +68,59 @@ export async function main() {
 main();
 
 // -----------------------------------------------------------------------------!!
+
+export async function getMain(
+  qtApi: IQuestradeAPIv2_0,
+  apiCallQ: SimpleQueue,
+  startIndex: number = 0,
+  endIndex?: number,
+) {
+  const list1 = step1(startIndex, endIndex);
+  // const mapCandleSticks = getCandleSticks(qtApi)()('2020-01-01')(
+  //   '2021-01-01',
+  // )();
+  const mapCandleSticks = getCandleSticks(qtApi)();
+  const mapCandleSticks2020 = mapCandleSticks('2020-01-01')('2021-01-01')();
+  const mapCandleSticks2019 = mapCandleSticks('2019-01-01')('2020-01-01')();
+  const mapCandleSticks2018 = mapCandleSticks('2018-01-01')('2019-01-01')();
+  const mapCandleSticks2017 = mapCandleSticks('2017-01-01')('2018-01-01')();
+  const mapCandleSticks2016 = mapCandleSticks('2016-01-01')('2017-01-01')();
+  const mapCandleSticks2015 = mapCandleSticks('2015-01-01')('2016-01-01')();
+  const results = [
+    mapCandleSticks2020,
+    mapCandleSticks2019,
+    mapCandleSticks2018,
+    mapCandleSticks2017,
+    mapCandleSticks2016,
+    mapCandleSticks2015,
+  ].map(candleSticks => map(list1, candleSticks));
+
+  return Promise.all(
+    results.map(async result => {
+      return Promise.all(
+        (await result).map(async xy =>
+          Promise.all(
+            (await xy).map(async x => {
+              if (x.valid === true && x.symbolInfos?.valid !== false) {
+                const config = {
+                  Model: CandleWithInfos,
+                  value: x,
+                };
+
+                await apiCallQ.addToQueue({
+                  config,
+                  fn: saveMongo,
+                });
+              }
+
+              return x;
+            }),
+          ),
+        ),
+      );
+    }),
+  );
+}
 
 export async function mainRedis() {
   const proxyFactory = redisProxyHandler({
@@ -174,15 +239,188 @@ export const getSymbol = (qtApi: IQuestradeAPIv2_0) => async (
   return firstResult;
 };
 
-export const getSymbols = (qtApi: IQuestradeAPIv2_0) => async (
-  stockIds: number[] | Promise<number[]>,
-): Promise<ISymbol[]> => {
-  const idList = await promiseOf(stockIds);
+export function getSymbols(qtApi: IQuestradeAPIv2_0) {
+  return async (stockIds: number[] | Promise<number[]>): Promise<ISymbol[]> => {
+    const idList = await promiseOf(stockIds);
 
-  return qtApi.getSymbols.byStockIds([...idList]);
+    return qtApi.getSymbols.byStockIds([...idList]);
+  };
+}
+
+export const getServerTime = (qtApi: IQuestradeAPIv2_0) => async () => {
+  // const idList = await promiseOf(stockIds);
+
+  return qtApi.account.getServerTime();
 };
 
-// GET MarketsQuotes
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+export async function map<R, T>(
+  list: Promise<T[]>,
+  funct: (item: T) => R,
+): Promise<R[]> {
+  return (await list).map(funct);
+}
+// ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+export type GetCandelStick = (
+  symbol: string | Promise<string>,
+) => Promise<ICandleWithInfos[]>;
+
+export function getCandleSticks(qtApi: IQuestradeAPIv2_0) {
+  return (
+    interval:
+      | string
+      | HistoricalDataGranularity = HistoricalDataGranularity.ONEDAY,
+  ) => (startTime: string) => (endTime: string) => (offset?: number) => async (
+    symbol: string | Promise<string>,
+  ): Promise<ICandleWithInfos[]> => {
+    let symbolID: number, symbolInfos: ISymbolInfos;
+    const serverTime = await getServerTime(qtApi)();
+    try {
+      const firstStockResult = await getFirstStockResult(qtApi)(symbol, offset);
+      const {
+        currency = Currency.USD,
+        symbol: symbolName = 'N/A',
+        symbolId = Number.NaN,
+        securityType = 'N/A',
+        description = 'N/A',
+        listingExchange = 'N/A',
+      } = firstStockResult;
+
+      symbolID = symbolId;
+      symbolInfos = {
+        currency,
+        description,
+        listingExchange,
+        securityType,
+        serverTime,
+        symbolId,
+        symbolName,
+        valid: !!symbolId,
+      };
+    } catch (error) {
+      console.error(error.message);
+
+      return [
+        {
+          valid: false,
+        },
+      ];
+    }
+
+    try {
+      const candleList = await qtApi.market.getCandlesByStockId(symbolID)(
+        interval.toString(),
+      )(startTime)(endTime);
+
+      return candleList.map(
+        (candle): ICandleWithInfos => {
+          try {
+            const strStart = candle.start?.toString() ?? Date.now();
+            const strEnd = candle.end?.toString() ?? Date.now();
+            const epochMiliStart = new Date(strStart).valueOf();
+            const epochMiliEnd = new Date(strEnd).valueOf();
+            const {
+              open = -1,
+              close = -1,
+              high = -1,
+              low = -1,
+              volume = -1,
+            } = candle;
+
+            const matrixRatio = [
+              [open / open, open / close, open / high, open / low],
+              [close / open, close / close, close / high, close / low],
+              [high / open, high / close, high / high, high / low],
+              [low / open, low / close, low / high, low / low],
+            ];
+
+            const matrixDiff = [
+              [open - open, open - close, open - high, open - low],
+              [close - open, close - close, close - high, close - low],
+              [high - open, high - close, high - high, high - low],
+              [low - open, low - close, low - high, low - low],
+            ];
+
+            const candleStick = [open, close, high, low, volume];
+
+            return {
+              ...candle,
+              candleStick,
+              epochMiliEnd,
+              epochMiliStart,
+              matrixDiff,
+              matrixRatio,
+              symbolInfos,
+              valid: true,
+            };
+          } catch (error) {
+            echo(error.message);
+
+            return {
+              valid: false,
+            };
+          }
+        },
+      );
+    } catch (error) {
+      console.error(error.message);
+
+      return [
+        {
+          valid: false,
+        },
+      ];
+    }
+  };
+}
+
+/*
+
+symbol → Symbol name.
+symbolId → Internal unique symbol identifier.
+description → Symbol description.
+currency → Symbol currency (ISO format).
+securityType → (Stock, Option, Bond, Right, Gold, MutualFund, Index)
+listingExchange → (TSX,TSXV,CNSX,MX,NASDAQ,NYSE,NYSEAM,ARCA,OPRA,PinkSheets,OTCBB)
+serverTime → Current server time in ISO format and Eastern time zone.
+
+
+? & % + *******************************************-
+OneMinute	One candlestick per 1 minute.
+TwoMinutes	One candlestick per 2 minutes.
+ThreeMinutes	One candlestick per 3 minutes.
+FourMinutes	One candlestick per 4 minutes.
+FiveMinutes	One candlestick per 5 minutes.
+TenMinutes	One candlestick per 10 minutes.
+FifteenMinutes	One candlestick per 15 minutes.
+TwentyMinutes	One candlestick per 20 minutes.
+HalfHour	One candlestick per 30 minutes.
+OneHour	One candlestick per 1 hour.
+TwoHours	One candlestick per 2 hours.
+FourHours	One candlestick per 4 hours.
+OneDay	One candlestick per 1 day.
+OneWeek	One candlestick per 1 week.
+OneMonth	One candlestick per 1 month.
+OneYear	One candlestick per 1 year.
+? & % + *******************************************-
+Parameter	Type	Description
+id
+integer
+Internal symbol identifier.
+Can occur in the ‘location’ header only.
+startTime
+DateTime
+Beginning of the candlestick range.
+endTime
+DateTime
+End of the candlestick range.
+interval
+Enumeration
+Interval of a single candlestick.
+See Historical Data Granularity for all allowed values.
+? & % + *******************************************-
+*/
 export async function step2(qtApi: IQuestradeAPIv2_0, list: Promise<string[]>) {
   return Promise.all((await list).map(getStock(qtApi)));
 }
@@ -263,6 +501,7 @@ export async function step4(
             fn: saveMongo,
           });
 
+          // CandleWithInfos
           return uniqueSymbol;
         });
       });
@@ -270,50 +509,6 @@ export async function step4(
       return symbolId;
     }),
   );
-}
-
-export async function map<T>(
-  list: Promise<any[]>,
-  funct: (item: any) => T,
-): Promise<T[]> {
-  return (await list).map(funct);
-  // return true; Promise.all(
-}
-
-export async function getMain(
-  qtApi: IQuestradeAPIv2_0,
-  apiCallQ: SimpleQueue,
-  startIndex: number = 0,
-  endIndex?: number,
-) {
-  const list1 = step1(startIndex, endIndex);
-  const list2 = step2(qtApi /* , apiCallQ */, list1);
-  const list3 = step3(list2);
-  const list4 = step4(qtApi, apiCallQ, list3);
-  const list5 = (await list4).map(symbolID => {
-    return qtApi.market.getCandlesByStockId(symbolID)();
-  });
-
-  const list21 = list5.map(daterange => daterange('2021-01-01')('2021-03-05'));
-  const list20 = list5.map(daterange => daterange('2020-01-01')('2021-01-01'));
-  const list19 = list5.map(daterange => daterange('2019-01-01')('2020-01-01'));
-  const list18 = list5.map(daterange => daterange('2018-01-01')('2019-01-01'));
-  const list17 = list5.map(daterange => daterange('2017-01-01')('2018-01-01'));
-  const list16 = list5.map(daterange => daterange('2016-01-01')('2017-01-01'));
-
-  return [list21, list20, list19, list18, list17, list16]; // .map(list =>
-  //   list.map(async candles => {
-  //     (await candles).map(candle => {
-  //       const config = { Model: Candle, value: candle };
-  //       apiCallQ.addToQueue({
-  //         config,
-  //         fn: saveMongo,
-  //       });
-
-  //       return candle;
-  //     });
-  //   }),
-  // );
 }
 
 export function symbIDtoCandle(qtApi: IQuestradeAPIv2_0) {
@@ -374,4 +569,69 @@ export async function saveMongo<T, D extends mongoose.Document<T>>(config: {
     .finally(() => {
       wm1.delete(ob1);
     });
+}
+
+export async function getMainOLD(
+  qtApi: IQuestradeAPIv2_0,
+  apiCallQ: SimpleQueue,
+  startIndex: number = 0,
+  endIndex?: number,
+) {
+  const list1 = step1(startIndex, endIndex);
+  // const list2 = step2(qtApi /* , apiCallQ */, list1);
+  // const list3 = step3(list2);
+  // const list4 = step4(qtApi, apiCallQ, list3);
+  // const list5 = (await list4).map(symbolID => {
+  void apiCallQ;
+  // return qtApi.market.getCandlesByStockId(symbolID)();
+  // });
+  const mapCandleSticks = getCandleSticks(qtApi)()('2021-01-01')(
+    '2021-03-05',
+  )();
+
+  const result = await map(list1, mapCandleSticks);
+
+  result.map(async xy =>
+    (await xy).map(x => {
+      if (x.valid === true && x.symbolInfos?.valid !== false) {
+        const config = {
+          Model: CandleWithInfos,
+          value: x,
+        };
+
+        apiCallQ.addToQueue({
+          config,
+          fn: saveMongo,
+        });
+      }
+
+      return x;
+      // return x.valid
+      //   ? console.log(x)
+      //   : console.error('********* !!! ERROR:', x);
+    }),
+  );
+
+  // CandleWithInfos
+
+  // const list21 = list5.map(daterange => daterange('2021-01-01')('2021-03-05'));
+  // const list20 = list5.map(daterange => daterange('2020-01-01')('2021-01-01'));
+  // const list19 = list5.map(daterange => daterange('2019-01-01')('2020-01-01'));
+  // const list18 = list5.map(daterange => daterange('2018-01-01')('2019-01-01'));
+  // const list17 = list5.map(daterange => daterange('2017-01-01')('2018-01-01'));
+  // const list16 = list5.map(daterange => daterange('2016-01-01')('2017-01-01'));
+
+  // return [list21, list20, list19, list18, list17, list16]; // .map(list =>
+  //   list.map(async candles => {
+  //     (await candles).map(candle => {
+  //       const config = { Model: Candle, value: candle };
+  //       apiCallQ.addToQueue({
+  //         config,
+  //         fn: saveMongo,
+  //       });
+
+  //       return candle;
+  //     });
+  //   }),
+  // );
 }
