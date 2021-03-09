@@ -3,6 +3,7 @@
 /* eslint-disable promise/avoid-new */
 // /*eslint complexity: ["error", 5]*/
 import { MAX_PER_HOUR, MAX_PER_SECONDES } from '../../../magic-values';
+import { echo } from '../../../resources';
 import type {
   ClientRequestConfig,
   ClientResponse,
@@ -171,7 +172,7 @@ export class ApiCallQ_ {
             console.info(
               '\n *** *** *** Other function cycle in',
               now() - before,
-              'ms' /* '\n' */,
+              'ms\n' /* '\n' */,
             );
           }
 
@@ -185,10 +186,11 @@ export class ApiCallQ_ {
 
               const before = now();
               const response = await fnct(config);
-              void0(
+              echo(
                 '\nrequest response cycle in',
                 now() - before,
-                'ms' /* '\n' */,
+                'ms\n' /* '\n' */,
+                { METHOD: config.method, URI: config.url },
               );
               this.remaining = response.headers['x-ratelimit-remaining'];
               this.resetTime = response.headers['x-ratelimit-reset'];
@@ -217,7 +219,7 @@ export class ApiCallQ_ {
           cb(error, null);
         }
 
-        void0('Complete previous cycle in', now() - timeThen, 'ms');
+        echo('Complete previous cycle in', now() - timeThen, 'ms');
         this.isCalled = false;
 
         this.callToPopQueue();

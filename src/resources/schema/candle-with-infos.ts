@@ -1,59 +1,61 @@
 import type { Document, Model } from 'mongoose';
 import mongoose from 'mongoose';
-
-import { ISymbolInfos } from '../../typescript';
+import { Currency } from 'questrade-api-enumerations';
 
 const candleWithInfosSchema = new mongoose.Schema<ICandleWithInfosDocument>({
   VWAP: Number,
-  candleStick: [Number],
+  // matrixDiff: [[Number]],
+  // matrixRatio: [[Number]],
+  candleStickOCHLV: [Number],
   close: Number,
+  currency: String,
+  description: String,
   end: Date,
-  epochMiliEnd: Number,
-  epochMiliStart: Number,
+  epochEnd: Number,
+  epochStart: Number,
   granularity: String,
   high: Number,
+  listingExchange: String,
   low: Number,
-  matrixDiff: [[Number]],
-  matrixRatio: [[Number]],
   open: Number,
+  securityType: String,
+  serverTime: Date,
   start: Date,
+  symbol: String,
   symbolID: Number,
-
-  symbolInfos: {
-    currency: String,
-    description: String,
-    listingExchange: String,
-    securityType: String,
-    serverTime: Date,
-    symbolId: Number,
-    symbolName: String,
-    valid: Boolean,
-  },
+  symbolId: Number,
+  symbolName: String,
   valid: Boolean,
   volume: Number,
 });
 
-// SymbolSearchResult
 export const CandleWithInfos: Model<ICandleWithInfosDocument> = mongoose.model(
   'CandleWithInfo',
   candleWithInfosSchema,
 );
 export interface ICandleWithInfosDocument extends Document {
-  matrixDiff?: number[][];
-  matrixRatio?: number[][];
+  candleStickOCHLV?: number[];
   close?: number | undefined;
+  currency: Currency;
+  description?: string;
   end?: string | Date | undefined;
+  epochEnd?: number;
+  epochStart?: number;
   granularity?: string | undefined;
   high?: number | undefined;
+  listingExchange: string;
   low?: number | undefined;
+  // matrixDiff?: number[][];
+  // matrixRatio?: number[][];
   open?: number | undefined;
+  securityType: string;
+  serverTime: Date;
   start?: string | Date | undefined;
-  valid: boolean;
-  candleStick?: number[];
-  epochMiliStart?: number;
-  epochMiliEnd?: number;
+  symbol?: string;
+  symbolId: number;
   symbolID?: number | undefined;
-  symbolInfos?: ISymbolInfos;
+  symbolName: string;
+  valid: boolean;
   volume?: number | undefined;
   VWAP?: number | undefined;
 }

@@ -1,21 +1,28 @@
-import { ISymbolInfos } from './ISymbolInfos';
+import { Currency } from 'questrade-api-enumerations';
 
 export interface ICandleWithInfos {
-  matrixDiff?: number[][];
-  matrixRatio?: number[][];
+  candleStickOCHLV?: number[];
   close?: number | undefined;
+  currency?: Currency;
+  description?: string;
   end?: string | Date | undefined;
+  epochEnd?: number;
+  epochStart?: number;
   granularity?: string | undefined;
   high?: number | undefined;
+  listingExchange?: string;
   low?: number | undefined;
+  // matrixDiff?: number[][];
+  // matrixRatio?: number[][];
   open?: number | undefined;
+  securityType?: string;
+  serverTime?: Date;
   start?: string | Date | undefined;
-  valid: boolean;
-  candleStick?: number[];
-  epochMiliStart?: number;
-  epochMiliEnd?: number;
+  symbol?: string;
+  symbolId?: number;
   symbolID?: number | undefined;
-  symbolInfos?: ISymbolInfos;
+  symbolName?: string;
+  valid: boolean;
   volume?: number | undefined;
   VWAP?: number | undefined;
 }
