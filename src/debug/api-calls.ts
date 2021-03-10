@@ -8,7 +8,7 @@ import { qtAPIv2_0 } from '..';
 import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
 import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
 import { StockSymbol } from '../schema/stock-symbol';
-import { SymbolSearchResult } from '../schema/symbol-search-result';
+import { EquitySymbolDocumentModel } from '../schema/equity-symbol';
 import { ech0, echo, getMyToken } from '../resources/side-effects';
 import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 import { ICandle, ISymbol, IEquitySymbol } from '../typescript';
@@ -105,7 +105,7 @@ export async function step2(
     (await list).map(async symbol => {
       const returnValue = await qtApi.search.stock(symbol);
       returnValue.map(item => {
-        const config = { Model: SymbolSearchResult, value: item };
+        const config = { Model: EquitySymbolDocumentModel, value: item };
 
         return apiCallQ.addToQueue({
           config,
