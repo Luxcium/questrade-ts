@@ -11,7 +11,7 @@ import { ech0, echo, getMyToken } from '../resources/side-effects';
 import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 import { EquitySymbolDocumentModel } from '../schema/equity-symbol';
 import { StockSymbol } from '../schema/stock-symbol';
-import { ICandle, IEquitySymbol, ISymbol } from '../typescript';
+import { ICandle, IEquitySymbol, IStockSymbol } from '../typescript';
 import { id0 } from '../utils';
 import { willGetSNP500StringList } from './development/getSNP500List';
 
@@ -174,7 +174,7 @@ export async function step4(
         const symbId = symbItem?.symbolId || 1;
         const stockIds = [symbId];
         const symbol = await qtApi.getSymbols.byStockIds(stockIds);
-        symbol.map(async (uniqueSymbol: ISymbol) => {
+        symbol.map(async (uniqueSymbol: IStockSymbol) => {
           const config = { Model: StockSymbol, value: uniqueSymbol };
 
           apiCallQ.addToQueue({

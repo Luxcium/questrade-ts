@@ -19,7 +19,7 @@ import type {
   IPosition,
   IQuote,
   IStrategiesQuotes,
-  ISymbol,
+  IStockSymbol,
   IEquitySymbol,
   OptionsFilters,
   StrategyVariantRequest,
@@ -78,7 +78,7 @@ export interface QtApiOptionsQuotes {
 }
 
 export interface QtApiSymbols {
-  byStockIds: (stockIds: number[]) => Promise<ISymbol[]>;
+  byStockIds: (stockIds: number[]) => Promise<IStockSymbol[]>;
 }
 
 export interface QtApiOptionChains {
@@ -475,7 +475,7 @@ export interface QuestradeApi2 {
     byOptionsIds: (optionIds: number[]) => Promise<IOptionsQuote[]>;
   };
   getSymbols: {
-    byStockIds: (stockIds: number[]) => Promise<ISymbol[]>;
+    byStockIds: (stockIds: number[]) => Promise<IStockSymbol[]>;
   };
   getOptionChains: {
     byStockId: (stockId: number) => Promise<IOptionChain[]>;

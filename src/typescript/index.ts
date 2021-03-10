@@ -70,11 +70,11 @@ export type {
 } from './IStrategiesVariants';
 export type {
   // IEquitySymbol,
-  IEquitySymbols,
-  ISymbol,
-  ISymbols,
+  // IEquitySymbols,
+  IStockSymbol,
+  IStockSymbols,
   MinTick,
-} from './ISymbol';
+} from './IStockSymbol';
 export type { ISymbolInfos } from './ISymbolInfos';
 export type { ITime } from './ITime';
 export type { ITimeRateLimiter } from './ITimeRateLimiter';

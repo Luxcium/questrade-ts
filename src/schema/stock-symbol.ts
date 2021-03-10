@@ -10,7 +10,7 @@ import {
 } from 'questrade-api-enumerations';
 
 import { MinTick } from '../typescript';
-import { OptionContractDeliverables } from '../typescript/ISymbol';
+import { OptionContractDeliverables } from '../typescript/IStockSymbol';
 
 /*
 The permitted SchemaTypes are:

@@ -1,6 +1,6 @@
 // import { errorlog } from '../../../../resources/side-effects';
 import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
-import type { ISymbol, ISymbols, Logger } from '../../../../typescript';
+import type { IStockSymbol, IStockSymbols, Logger } from '../../../../typescript';
 import { urlEncode } from '../../../../utils';
 
 // + _getSymbolsByIDs
@@ -11,10 +11,10 @@ export const _getSymbolsByIds = (
     handlerOptions: ProxyHandlerOptions,
   ) => () => Promise<R>,
   errorlog: Logger = (...error: any[]) => error,
-) => async (stockId: number[]): Promise<ISymbol[]> => {
+) => async (stockId: number[]): Promise<IStockSymbol[]> => {
   try {
     return (
-      await clientGetApi<ISymbols>(
+      await clientGetApi<IStockSymbols>(
         `/symbols?ids=${urlEncode(stockId.join())}`,
         {
           noCaching: true,

@@ -12,7 +12,7 @@ import {
   IPosition,
   IQuote,
   IStrategiesQuotes,
-  ISymbol,
+  IStockSymbol,
   IEquitySymbol,
   OptionsFilters,
   QtApiMyBalances,
@@ -53,7 +53,7 @@ export interface IQuestradeAPIv2_0 {
   };
 
   getSymbols: {
-    byStockIds(stockIds: number[]): Promise<ISymbol[]>;
+    byStockIds(stockIds: number[]): Promise<IStockSymbol[]>;
   };
 
   market: {
