@@ -11,15 +11,15 @@ import type {
 import type { ApiCallQ_ } from '../core/next-rate-limiter/queue';
 import { _clientGetApi, _clientPostApi } from '../routes';
 import { _clientAccountGetApi } from '../routes/clientAccountGetApi/_clientAccountGetApi';
-import { _getAccounts } from './AccountsCalls/_getAccounts/_getAccounts';
-import { _getActivities } from './AccountsCalls/_getActivities/_getActivities';
-import { _getBalances } from './AccountsCalls/_getBalances/_getBalances';
-import { _myBalances } from './AccountsCalls/_getBalances/_myBalances';
-import { _getExecutions } from './AccountsCalls/_getExecutions/_getExecutions';
-import { _getOrders } from './AccountsCalls/_getOrders/_getOrders';
-import { _getOrdersByIds } from './AccountsCalls/_getOrders/_getOrdersByIds';
-import { _getPositions } from './AccountsCalls/_getPositions/_getPositions';
-import { _getServerTime } from './AccountsCalls/_getServerTime/_getServerTime';
+import { _getAccounts } from './accounts-calls/get-accounts/_getAccounts';
+import { _getActivities } from './accounts-calls/get-activities/_getActivities';
+import { _getBalances } from './accounts-calls/get-balances/_getBalances';
+import { _myBalances } from './accounts-calls/get-balances/_myBalances';
+import { _getExecutions } from './accounts-calls/get-executions/_getExecutions';
+import { _getOrders } from './accounts-calls/get-orders/_getOrders';
+import { _getOrdersByIds } from './accounts-calls/get-orders/_getOrdersByIds';
+import { _getPositions } from './accounts-calls/get-positions/_getPositions';
+import { _getServerTime } from './accounts-calls/get-server-time/_getServerTime';
 import {
   _getCandles,
   // _getEquitySymbolAndCount,
@@ -34,7 +34,7 @@ import {
   _getQuotesOptionsByIds,
   _getQuotesOptionsFilter,
   _getSymbolsByIds,
-} from './MarketsCalls';
+} from './markets-calls';
 
 export async function questradeApiFactory(
   credentials: Credentials,
