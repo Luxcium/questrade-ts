@@ -96,9 +96,10 @@ export class SimpleQueue {
             const before = now();
             cb(null, fnct(config));
             console.info(
-              '\n *** *** *** Other function cycle in',
+              '\n *** Other function cycle in',
               now() - before,
               'ms' /* '\n' */,
+              config,
             );
           }
         } catch (error) {
@@ -109,7 +110,11 @@ export class SimpleQueue {
           cb(error, null);
         }
 
-        void0('Complete previous cycle in', now() - timeThen, 'ms');
+        void0(
+          '*** *** Other function previous cycle in',
+          now() - timeThen,
+          'ms',
+        );
         this.isCalled = false;
 
         this.callToPopQueue();

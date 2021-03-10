@@ -23,7 +23,6 @@ const candleWithInfosSchema = new mongoose.Schema<ICandleWithInfosDocument>({
   start: Date,
   symbol: String,
   symbolID: Number,
-  symbolId: Number,
   symbolName: String,
   valid: Boolean,
   volume: Number,
@@ -43,19 +42,18 @@ export interface ICandleWithInfosDocument extends Document {
   epochStart?: number;
   granularity?: string | undefined;
   high?: number | undefined;
-  listingExchange: string;
+  listingExchange?: string;
   low?: number | undefined;
   // matrixDiff?: number[][];
   // matrixRatio?: number[][];
   open?: number | undefined;
-  securityType: string;
-  serverTime: Date;
+  securityType?: string;
+  serverTime?: Date;
   start?: string | Date | undefined;
   symbol?: string;
-  symbolId: number;
-  symbolID?: number | undefined;
-  symbolName: string;
-  valid: boolean;
+  symbolID?: number;
+  symbolName?: string;
+  valid?: boolean;
   volume?: number | undefined;
   VWAP?: number | undefined;
 }

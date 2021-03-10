@@ -6,7 +6,7 @@ export interface ISymbolInfos {
   listingExchange: string;
   securityType: string;
   serverTime: Date;
-  symbolId: number;
+  symbolID: number;
   symbolName: string;
   valid: boolean;
 }

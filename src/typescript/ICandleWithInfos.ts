@@ -19,8 +19,7 @@ export interface ICandleWithInfos {
   serverTime?: Date;
   start?: string | Date | undefined;
   symbol?: string;
-  symbolId?: number;
-  symbolID?: number | undefined;
+  symbolID?: number;
   symbolName?: string;
   valid: boolean;
   volume?: number | undefined;
