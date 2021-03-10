@@ -1,11 +1,11 @@
-import { ISymbolSearchResult } from '../typescript';
+import { IEquitySymbol } from '../typescript';
 import { mapping } from './mapping';
 
 
 export async function willGetSymbolIdAndFirstSymbol(
-  list: Promise<ISymbolSearchResult[][]>
+  list: Promise<IEquitySymbol[][]>
 ) {
-  return mapping(list, (item: ISymbolSearchResult[]) => {
+  return mapping(list, (item: IEquitySymbol[]) => {
     const symbolItems = item;
     const [symbolItem] = symbolItems;
     const symbolId = symbolItem?.symbolId || 1;

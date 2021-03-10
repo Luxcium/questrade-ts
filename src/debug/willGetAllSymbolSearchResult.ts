@@ -1,5 +1,5 @@
 import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
-import { ISymbolSearchResult } from '../typescript';
+import { IEquitySymbol } from '../typescript';
 import { getStock } from './getStock';
 
 //
@@ -7,6 +7,6 @@ import { getStock } from './getStock';
 export async function willGetAllSymbolSearchResult(
   qtApi: IQuestradeAPIv2_0,
   list: Promise<string[]>
-): Promise<ISymbolSearchResult[][]> {
+): Promise<IEquitySymbol[][]> {
   return Promise.all((await list).map(symbol => getStock(qtApi)(symbol)));
 }

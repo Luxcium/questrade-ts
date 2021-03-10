@@ -1,6 +1,6 @@
 import { Currency } from 'questrade-api-enumerations';
 
-export interface ISymbolSearchResult {
+export interface IEquitySymbol {
   symbol: string;
   symbolId: number;
   description: string;
@@ -10,21 +10,21 @@ export interface ISymbolSearchResult {
   isQuotable: boolean;
   currency: Currency;
   count?: number;
-  all?: ISymbolSearchResult[];
+  all?: IEquitySymbol[];
 }
 
-export interface ISymbolSearchResults {
-  symbols: ISymbolSearchResult[];
+export interface IEquitySymbolSearchResults {
+  symbols: IEquitySymbol[];
 }
 
-export interface ISymbolSearchCount {
+export interface IEquitySymbolCount {
   count?: (prefix: string) => Promise<number>;
 }
 
 export type SymbolSearch = (
   prefix: string,
   offset?: number,
-) => Promise<ISymbolSearchResult>;
+) => Promise<IEquitySymbol>;
 
-export type SymbolSearchAndCount = SymbolSearch & ISymbolSearchCount;
-export type SymbolSearchOrCount = SymbolSearch | ISymbolSearchCount;
+export type SymbolSearchAndCount = SymbolSearch & IEquitySymbolCount;
+export type SymbolSearchOrCount = SymbolSearch | IEquitySymbolCount;

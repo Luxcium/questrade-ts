@@ -1,6 +1,6 @@
 import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
 import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
-import { ISymbolSearchResult } from '../typescript';
+import { IEquitySymbol } from '../typescript';
 import { searchAndStockSymbolDbSave } from './symbolSearchAndStockSymbolMongoSave';
 
 export async function getSymbolIDSearchAndStockSymbolDbSave(
@@ -9,8 +9,8 @@ export async function getSymbolIDSearchAndStockSymbolDbSave(
   list: Promise<
     {
       symbolId: number;
-      symbolItem: ISymbolSearchResult;
-      symbolItems: ISymbolSearchResult[];
+      symbolItem: IEquitySymbol;
+      symbolItems: IEquitySymbol[];
     }[]
   >,
 ) {

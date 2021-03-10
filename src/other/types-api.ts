@@ -20,7 +20,7 @@ import type {
   IQuote,
   IStrategiesQuotes,
   ISymbol,
-  ISymbolSearchResult,
+  IEquitySymbol,
   OptionsFilters,
   StrategyVariantRequest,
 } from '../typescript';
@@ -88,11 +88,11 @@ export interface QtApiSearch {
   stock: (
     prefix: string,
     offset?: number | undefined,
-  ) => Promise<ISymbolSearchResult[]>;
+  ) => Promise<IEquitySymbol[]>;
   allStocks: (
     prefix: string,
     offset?: number | undefined,
-  ) => Promise<ISymbolSearchResult[]>;
+  ) => Promise<IEquitySymbol[]>;
   countResults: (prefix: string) => Promise<number>;
 }
 
@@ -484,11 +484,11 @@ export interface QuestradeApi2 {
     stock: (
       prefix: string,
       offset?: number | undefined,
-    ) => Promise<ISymbolSearchResult[]>;
+    ) => Promise<IEquitySymbol[]>;
     allStocks: (
       prefix: string,
       offset?: number | undefined,
-    ) => Promise<ISymbolSearchResult[]>;
+    ) => Promise<IEquitySymbol[]>;
     countResults: (prefix: string) => Promise<number>;
   };
 }

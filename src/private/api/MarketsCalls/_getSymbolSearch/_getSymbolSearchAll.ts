@@ -1,8 +1,8 @@
 // import { errorlog } from '../../../../resources/side-effects';
 import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import type {
-  ISymbolSearchResult,
-  ISymbolSearchResults,
+  IEquitySymbol,
+  IEquitySymbolSearchResults,
   Logger,
 } from '../../../../typescript';
 import { urlEncode } from '../../../../utils';
@@ -15,12 +15,12 @@ export const _getSymbolSearchAll = (
     handlerOptions: ProxyHandlerOptions,
   ) => () => Promise<R>,
   errorlog: Logger = (...error: any[]) => error,
-) => async (prefix: string, offset = 0): Promise<ISymbolSearchResult[]> => {
+) => async (prefix: string, offset = 0): Promise<IEquitySymbol[]> => {
   try {
     const _prefix = urlEncode(`${prefix.toUpperCase()}`);
     const _offset = urlEncode(`${offset}`);
     const _endpoint = `/symbols/search?prefix=${_prefix}&offset=${_offset}`;
-    const _results = await clientGetApi<ISymbolSearchResults>(_endpoint, {
+    const _results = await clientGetApi<IEquitySymbolSearchResults>(_endpoint, {
       noCaching: true,
     })();
 

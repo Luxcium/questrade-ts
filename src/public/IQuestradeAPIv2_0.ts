@@ -13,7 +13,7 @@ import {
   IQuote,
   IStrategiesQuotes,
   ISymbol,
-  ISymbolSearchResult,
+  IEquitySymbol,
   OptionsFilters,
   QtApiMyBalances,
   StrategyVariantRequest,
@@ -69,12 +69,12 @@ export interface IQuestradeAPIv2_0 {
     allStocks(
       prefix: string,
       offset?: number | undefined,
-    ): Promise<ISymbolSearchResult[]>;
+    ): Promise<IEquitySymbol[]>;
     countResults(prefix: string): Promise<number>;
     stock(
       prefix: string,
       offset?: number | undefined,
-    ): Promise<ISymbolSearchResult[]>;
+    ): Promise<IEquitySymbol[]>;
   };
   serverTime: Date | 'ERROR';
 }

@@ -61,7 +61,7 @@ export type {
   Variants,
 } from './IStrategiesVariants';
 export type {
-  IEquitySymbol,
+  // IEquitySymbol,
   IEquitySymbols,
   ISymbol,
   ISymbols,
@@ -69,13 +69,13 @@ export type {
 } from './ISymbol';
 export type { ISymbolInfos } from './ISymbolInfos';
 export type {
-  ISymbolSearchCount,
-  ISymbolSearchResult,
-  ISymbolSearchResults,
+  IEquitySymbolCount,
+  IEquitySymbol,
+  IEquitySymbolSearchResults,
   SymbolSearch,
   SymbolSearchAndCount,
   SymbolSearchOrCount,
-} from './ISymbolSearchResult';
+} from './IEquitySymbol';
 export type { ITime } from './ITime';
 export type { ITimeRateLimiter } from './ITimeRateLimiter';
 export type { Void_0, Void0 } from './IVoid_0';

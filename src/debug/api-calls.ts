@@ -11,7 +11,7 @@ import { StockSymbol } from '../resources/schema/stock-symbol';
 import { SymbolSearchResult } from '../resources/schema/symbol-search-result';
 import { ech0, echo, getMyToken } from '../resources/side-effects';
 import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
-import { ICandle, ISymbol, ISymbolSearchResult } from '../typescript';
+import { ICandle, ISymbol, IEquitySymbol } from '../typescript';
 import { id0 } from '../utils';
 import { willGetSNP500StringList } from './development/getSNP500List';
 
@@ -118,7 +118,7 @@ export async function step2(
   );
 }
 
-export async function step3(list: Promise<ISymbolSearchResult[][]>) {
+export async function step3(list: Promise<IEquitySymbol[][]>) {
   return Promise.all(
     (await list).map(async item => {
       const symbolItems = item;
@@ -162,8 +162,8 @@ export async function step4(
   list: Promise<
     {
       symbolId: number;
-      symbolItem: ISymbolSearchResult;
-      symbolItems: ISymbolSearchResult[];
+      symbolItem: IEquitySymbol;
+      symbolItems: IEquitySymbol[];
     }[]
   >,
 ) {
