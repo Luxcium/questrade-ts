@@ -373,7 +373,14 @@ export async function saveMongo<T, D extends mongoose.Document<T>>(config: {
 
       return result;
     })
-    .catch(console.error.bind(console, 'Model.save() ERROR:'))
+    .catch(error => {
+      const { message } = error;
+      if (typeof message === 'string' && message.includes('duplicate')) {
+        return console.error('Model.save() → ERROR:', message);
+      }
+
+      return console.error('Model.save() → ERROR:', error);
+    })
     .finally(() => {
       wm1.delete(ob1);
     });
