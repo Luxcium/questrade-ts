@@ -1,6 +1,6 @@
 import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
 import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
-import { CandleWithInfos } from '../resources/schema/candle-with-infos';
+import { CandleWithInfos } from '../schema/candle-with-infos';
 import { getCandleSticks } from './getCandleSticks';
 import { saveMongo } from "./saveMongo";
 import { mapping } from "./mapping";

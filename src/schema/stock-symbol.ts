@@ -9,8 +9,8 @@ import {
   SecurityType,
 } from 'questrade-api-enumerations';
 
-import { MinTick } from '../../typescript';
-import { OptionContractDeliverables } from '../../typescript/ISymbol';
+import { MinTick } from '../typescript';
+import { OptionContractDeliverables } from '../typescript/ISymbol';
 
 /*
 The permitted SchemaTypes are:

@@ -1,5 +1,5 @@
 import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
-import { SymbolSearchResult } from '../resources/schema/symbol-search-result';
+import { SymbolSearchResult } from '../schema/symbol-search-result';
 import { IEquitySymbol } from '../typescript';
 import { saveMongo } from './saveMongo';
 
