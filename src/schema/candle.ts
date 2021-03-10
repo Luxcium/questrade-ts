@@ -14,7 +14,7 @@ const candleSchema = new mongoose.Schema<ICandleDocument>({
   volume: Number,
 });
 
-// SymbolSearchResult
+// EquitySymbolResult
 export const Candle: Model<ICandleDocument> = mongoose.model(
   'Candle',
   candleSchema,

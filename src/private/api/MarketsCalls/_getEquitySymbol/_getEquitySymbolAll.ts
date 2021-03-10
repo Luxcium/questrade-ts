@@ -2,14 +2,14 @@
 import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import type {
   IEquitySymbol,
-  IEquitySymbolSearchResults,
+  IEquitySymbolResults,
   Logger,
 } from '../../../../typescript';
 import { urlEncode } from '../../../../utils';
 
-// + _getSymbolSearchAll
-/** _getSymbolSearch */
-export const _getSymbolSearchAll = (
+// + _getEquitySymbolAll
+/** _getEquitySymbol */
+export const _getEquitySymbolAll = (
   clientGetApi: <R>(
     endpoint: string,
     handlerOptions: ProxyHandlerOptions,
@@ -20,7 +20,7 @@ export const _getSymbolSearchAll = (
     const _prefix = urlEncode(`${prefix.toUpperCase()}`);
     const _offset = urlEncode(`${offset}`);
     const _endpoint = `/symbols/search?prefix=${_prefix}&offset=${_offset}`;
-    const _results = await clientGetApi<IEquitySymbolSearchResults>(_endpoint, {
+    const _results = await clientGetApi<IEquitySymbolResults>(_endpoint, {
       noCaching: true,
     })();
 

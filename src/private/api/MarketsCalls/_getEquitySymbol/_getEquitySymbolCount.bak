@@ -1,0 +1,11 @@
+// import { Credentials, EquitySymbolAndCount,Proxy } from '../../../../typescript';
+// import { _getEquitySymbolCount } from '../../MarketsCalls';
+// import { _getEquitySymbol } from './_getEquitySymbol';
+
+// export const _getEquitySymbolAndCount = (
+//   credentials: Credentials,proxy?:Proxy
+// ): EquitySymbolAndCount => {
+//   const equitySymbol: EquitySymbolAndCount = _getEquitySymbol(credentials,proxy);
+//   equitySymbol.count = _getEquitySymbolCount(credentials,proxy);
+//   return equitySymbol as EquitySymbolAndCount;
+// };

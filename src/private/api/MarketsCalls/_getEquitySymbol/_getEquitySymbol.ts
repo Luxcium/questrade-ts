@@ -1,11 +1,11 @@
 // import { errorlog } from '../../../../resources/side-effects';
 import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import type { IEquitySymbol, Logger } from '../../../../typescript';
-import { _getSymbolSearchAll } from './_getSymbolSearchAll';
+import { _getEquitySymbolAll } from './_getEquitySymbolAll';
 
-// + _getSymbolSearch
-/** _getSymbolSearch */
-export const _getSymbolSearch = (
+// + _getEquitySymbol
+/** _getEquitySymbol */
+export const _getEquitySymbol = (
   clientGetApi: <R>(
     endpoint: string,
     handlerOptions: ProxyHandlerOptions,
@@ -14,7 +14,7 @@ export const _getSymbolSearch = (
 ) => async (prefix: string, offset = 0): Promise<IEquitySymbol[]> => {
   try {
     //
-    const symbols = await _getSymbolSearchAll(clientGetApi)(prefix, offset);
+    const symbols = await _getEquitySymbolAll(clientGetApi)(prefix, offset);
     const count = symbols.length;
     let result: IEquitySymbol | null = null;
 

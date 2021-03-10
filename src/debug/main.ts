@@ -1,9 +1,9 @@
 import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
 import { echo } from '../resources/side-effects';
-import { getSymbolIDSearchAndStockSymbolDbSave } from './getSymbolIDSearchAndStockSymbolDbSave';
+import { getSymbolIDSearchAndStockSymbolDbSave } from './getSymbolIdEquitySymbolAndStockSymbolDbSave';
 import { mainRedis } from './mainRedis';
 import { mogooseConnect } from './mogooseConnect';
-import { willGetAllSymbolSearchResult } from './willGetAllSymbolSearchResult';
+import { willGetAllEquitySymbolResult } from './willGetAllEquitySymbolResult';
 import { willGetSnP500List } from './willGetSnP500List';
 import { willGetSymbolIdAndFirstSymbol } from './willGetSymbolIdAndFirstSymbol';
 
@@ -20,7 +20,7 @@ export async function main() {
   const connection = await mogooseConnect();
   const apiCallQ = new SimpleQueue();
   const list1 = willGetSnP500List({ endIndex: 505, startIndex: 0 });
-  const list2 = willGetAllSymbolSearchResult(qtApi, list1);
+  const list2 = willGetAllEquitySymbolResult(qtApi, list1);
   const list3 = willGetSymbolIdAndFirstSymbol(list2);
   const list4 = getSymbolIDSearchAndStockSymbolDbSave(qtApi, apiCallQ, list3);
 

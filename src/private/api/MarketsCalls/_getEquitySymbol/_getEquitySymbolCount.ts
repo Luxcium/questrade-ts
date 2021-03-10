@@ -3,9 +3,9 @@ import type { ProxyHandlerOptions } from '../../../../resources/side-effects/typ
 import type { ISymbols, Logger } from '../../../../typescript';
 import { urlEncode } from '../../../../utils';
 
-// + _getSymbolSearchCount
-/** _getSymbolSearch */
-export const _getSymbolSearchCount = (
+// + _getEquitySymbolCount
+/** _getEquitySymbol */
+export const _getEquitySymbolCount = (
   clientGetApi: <R>(
     endpoint: string,
     handlerOptions: ProxyHandlerOptions,

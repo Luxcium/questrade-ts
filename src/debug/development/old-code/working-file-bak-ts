@@ -21,15 +21,15 @@
 // }
 // #region : as
 //     {
-//     // console.log(c2a++, '-$---STEP 8-m1-ISymbolSearchResult');
-//     // const [ref] /* : ISymbolSearchResult */ =
+//     // console.log(c2a++, '-$---STEP 8-m1-IEquitySymbolResult');
+//     // const [ref] /* : IEquitySymbolResult */ =
 //     await
 //       item,
 //     );
-//     // console.log(c2b++, '----STEP 10-m1-ISymbolSearchResult');
+//     // console.log(c2b++, '----STEP 10-m1-IEquitySymbolResult');
 
 //     // const {
-//     //   // all /*  ISymbolSearchResult[]; */,
+//     //   // all /*  IEquitySymbolResult[]; */,
 //     //   // count /*  number; */,
 //     //   currency /*  Currency; */,
 //     //   description /*  string; */,
@@ -40,7 +40,7 @@
 //     //   symbol /*  string; */,
 //     //   symbolId /*  number; */,
 //     // } = ref || {
-//     //   // all /*  ISymbolSearchResult[]; */,
+//     //   // all /*  IEquitySymbolResult[]; */,
 //     //   // count /*  number; */,
 //     //   currency: 'CAD',
 //     //   description: '' /*  string; */,
@@ -52,8 +52,8 @@
 //     //   symbolId: 1 /*  number; */,
 //     // };
 
-//     // const partial: ISymbolSearchResult = {
-//     //   // all:[] /*  ISymbolSearchResult[]; */,
+//     // const partial: IEquitySymbolResult = {
+//     //   // all:[] /*  IEquitySymbolResult[]; */,
 //     //   // count /*  number; */,
 //     //   currency /*  Currency; */,
 //     //   description /*  string; */,
@@ -1009,11 +1009,11 @@ item()
 // ),
 // _getServerTime(getApi() /* , errorlog */),
 // _getSymbolsByIds(getApi(), errorlog),
-// _getSymbolSearchAll(getApi(), errorlog),
-// // _getSymbolSearchAndCount(credentials,proxy, errorlog),
-// _getSymbolSearch(getApi(), errorlog),
-// _getSymbolSearchCount(getApi(), errorlog),
+// _getEquitySymbolAll(getApi(), errorlog),
+// // _getEquitySymbolAndCount(credentials,proxy, errorlog),
+// _getEquitySymbol(getApi(), errorlog),
+// _getEquitySymbolCount(getApi(), errorlog),
 // ];
 // unused for the moment
-// symbolSearchAndCount:    // _getSymbolSearchAndCount(credentials,proxy, errorlog),
+// equitySymbolAndCount:    // _getEquitySymbolAndCount(credentials,proxy, errorlog),
 // quotesOptionsbyFilterAndIds:    // _getQuotesOptionsbyFilterAndIds(credentials,proxy, errorlog),

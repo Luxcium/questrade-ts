@@ -135,7 +135,7 @@ export class ChainApiClass {
   // public asyncOrders: Promise<(stateFilter?: string | undefined) => (startTime: string) => (endTime: string) => Promise<IOrder[]>>;
   // public asyncOrdersByIds: Promise<(orderId: number[]) => Promise<IOrder[]>>;
   // public asyncPositions: Promise<() => Promise<IPosition[]>>;
-  // public asyncAllStocks: Promise<(prefix: string, offset?: number | undefined) => Promise<ISymbolSearchResult[]>>;
+  // public asyncAllStocks: Promise<(prefix: string, offset?: number | undefined) => Promise<IEquitySymbolResult[]>>;
   // public asyncAllMarkets: Promise<() => Promise<IMarket[]>>;
   // public asyncByOptionsIds: Promise<(optionIds: number[]) => Promise<IOptionsQuote[]>>;
   // public asyncByStockId: Promise<(stockId: number) => Promise<IOptionChain[]>>;
@@ -150,7 +150,7 @@ export class ChainApiClass {
   // public asyncGetSymbolByStockIds: Promise<(stockIds: number[]) => Promise<ISymbol[]>>;
   // public asyncMyBalances: Promise<QtApiMyBalances>;
   // public asyncServerTime: Promise<Date | 'ERROR'>;
-  // public asyncStock: Promise<(prefix: string, offset?: number | undefined) => Promise<ISymbolSearchResult[]>>;
+  // public asyncStock: Promise<(prefix: string, offset?: number | undefined) => Promise<IEquitySymbolResult[]>>;
   // public asyncQtApi: Promise<QuestradeApi>;
   public asyncApi;
 

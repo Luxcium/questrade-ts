@@ -40,9 +40,9 @@ quotesOptionsFilter
 quotesByIds
 markets
 
-symbolSearch
-symbolSearchAll
-symbolSearchCount
+equitySymbol
+equitySymbolAll
+equitySymbolCount
 symbolsByIds
 optionsById
 

@@ -7,11 +7,11 @@ import mongoose from 'mongoose';
 import { qtAPIv2_0 } from '..';
 import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
 import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
-import { StockSymbol } from '../schema/stock-symbol';
-import { EquitySymbolDocumentModel } from '../schema/equity-symbol';
 import { ech0, echo, getMyToken } from '../resources/side-effects';
 import { redisProxyHandler } from '../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
-import { ICandle, ISymbol, IEquitySymbol } from '../typescript';
+import { EquitySymbolDocumentModel } from '../schema/equity-symbol';
+import { StockSymbol } from '../schema/stock-symbol';
+import { ICandle, IEquitySymbol, ISymbol } from '../typescript';
 import { id0 } from '../utils';
 import { willGetSNP500StringList } from './development/getSNP500List';
 
@@ -138,8 +138,8 @@ export async function step3(list: Promise<IEquitySymbol[][]>) {
 //   list: Promise<
 //     {
 //       symbolId: number;
-//       symbolItem: ISymbolSearchResult;
-//       symbolItems: ISymbolSearchResult[];
+//       symbolItem: IEquitySymbolResult;
+//       symbolItems: IEquitySymbolResult[];
 //     }[]
 //   >,
 // ) {

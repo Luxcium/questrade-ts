@@ -15,6 +15,14 @@ export type { ICandleWithInfos } from './ICandleWithInfos';
 // export type { AuthApiConfig, CoreApiConfig } from './ICoreApiConfigD';
 export type { ICreds } from './ICreds';
 export type { IDateObject, Time } from './IDateObject';
+export type {
+  EquitySymbol,
+  EquitySymbolAndCount,
+  EquitySymbolOrCount,
+  IEquitySymbol,
+  IEquitySymbolCount,
+  IEquitySymbolResults,
+} from './IEquitySymbol';
 export type { IExecution, IExecutions } from './IExecutions';
 export type { IHeaders } from './IHeaders';
 export type { IMarket, IMarkets } from './IMarkets';
@@ -68,14 +76,6 @@ export type {
   MinTick,
 } from './ISymbol';
 export type { ISymbolInfos } from './ISymbolInfos';
-export type {
-  IEquitySymbolCount,
-  IEquitySymbol,
-  IEquitySymbolSearchResults,
-  SymbolSearch,
-  SymbolSearchAndCount,
-  SymbolSearchOrCount,
-} from './IEquitySymbol';
 export type { ITime } from './ITime';
 export type { ITimeRateLimiter } from './ITimeRateLimiter';
 export type { Void_0, Void0 } from './IVoid_0';

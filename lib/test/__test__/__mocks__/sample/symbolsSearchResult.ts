@@ -1,8 +1,8 @@
 import { Currency } from 'questrade-api-enumerations';
+import { IEquitySymbolResult } from '../../../../typescript';
 
-import { ISymbolSearchResult } from '../../../../typescript';
 
-export const symbolSearchResult: ISymbolSearchResult = {
+export const equitySymbolResult: IEquitySymbolResult = {
   count: 4,
   currency: Currency.USD,
   description: 'APPLE INC',

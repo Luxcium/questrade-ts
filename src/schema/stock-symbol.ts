@@ -127,7 +127,7 @@ const symbolSchema = new mongoose.Schema<ISymbolDocument>({
   yield: Number,
 });
 
-// SymbolSearchResult
+// EquitySymbolResult
 export const StockSymbol: Model<ISymbolDocument> = mongoose.model(
   'StockSymbol',
   symbolSchema,

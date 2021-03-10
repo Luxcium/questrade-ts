@@ -73,8 +73,11 @@ export async function questradeApiFactory2(someArgsName: any) {
     candles: get(endPoint.candles),
     credentials,
     executions: accGet(endPoint.executions),
+    equitySymbol: get(endPoint.equitySymbol),
     markets: get(endPoint.markets),
+    equitySymbolAll: get(endPoint.equitySymbolAll),
     marketsQuotesStrategies: post(endPoint.strategies),
+    equitySymbolCount: get(endPoint.equitySymbolCount),
     optionsById: get(endPoint.optionsById),
     orders: accGet(endPoint.orders),
     ordersByIds: accGet(endPoint.ordersByIds),
@@ -83,9 +86,6 @@ export async function questradeApiFactory2(someArgsName: any) {
     quotesOptionsByIds: post(endPoint.quotesOptionsByIds),
     quotesOptionsFilter: post2(endPoint.optionsFilter),
     serverTime: get2(endPoint.time),
-    symbolSearch: get(endPoint.symbolSearch),
-    symbolSearchAll: get(endPoint.symbolSearchAll),
-    symbolSearchCount: get(endPoint.symbolSearchCount),
     symbolsByIds: get(endPoint.symbolsByIds),
   };
 }
@@ -161,14 +161,14 @@ export async function questradeApiFactory3(api: any) {
     },
     search: {
       async allStocks(prefix: string, offset?: number) {
-        return api.symbolSearchAll(prefix, offset);
+        return api.equitySymbolAll(prefix, offset);
       },
       async countResults(prefix: string) {
-        return api.symbolSearchCount(prefix);
+        return api.equitySymbolCount(prefix);
       },
       async stock(prefix: string, offset?: number) {
-        return api.symbolSearch(prefix, offset);
-        // return symbolSearchAndCount(prefix, offset);
+        return api.equitySymbol(prefix, offset);
+        // return equitySymbolAndCount(prefix, offset);
       },
     },
     serverTime: credentials.serverTime || 'ERROR',

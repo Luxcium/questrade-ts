@@ -1,5 +1,5 @@
 import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
-import { candlesMap } from "./candlesMap";
+import { candlesMap } from './candlesMap';
 
 /*
 export async function step4(
@@ -8,8 +8,8 @@ export async function step4(
   list: Promise<
     {
       symbolId: number;
-      symbolItem: ISymbolSearchResult;
-      symbolItems: ISymbolSearchResult[];
+      symbolItem: IEquitySymbolResult;
+      symbolItems: IEquitySymbolResult[];
     }[]
   >,
 ) {
@@ -41,11 +41,11 @@ export async function step4(
 
 export function symbIDtoCandle(qtApi: IQuestradeAPIv2_0) {
   return (list: Promise<number>[]) => (startTime: string) => async (
-    endTime: string
+    endTime: string,
   ) => {
-    return list.map(async (symbolId) => {
+    return list.map(async symbolId => {
       const candels = await qtApi.market.getCandlesByStockId(await symbolId)()(
-        new Date(startTime).toISOString()
+        new Date(startTime).toISOString(),
       )(new Date(endTime).toISOString());
 
       await Promise.all(candlesMap(candels));

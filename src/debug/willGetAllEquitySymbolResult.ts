@@ -4,9 +4,9 @@ import { getStock } from './getStock';
 
 //
 
-export async function willGetAllSymbolSearchResult(
+export async function willGetAllEquitySymbolResult(
   qtApi: IQuestradeAPIv2_0,
-  list: Promise<string[]>
+  list: Promise<string[]>,
 ): Promise<IEquitySymbol[][]> {
   return Promise.all((await list).map(symbol => getStock(qtApi)(symbol)));
 }

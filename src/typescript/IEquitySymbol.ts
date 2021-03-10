@@ -13,7 +13,7 @@ export interface IEquitySymbol {
   all?: IEquitySymbol[];
 }
 
-export interface IEquitySymbolSearchResults {
+export interface IEquitySymbolResults {
   symbols: IEquitySymbol[];
 }
 
@@ -21,10 +21,10 @@ export interface IEquitySymbolCount {
   count?: (prefix: string) => Promise<number>;
 }
 
-export type SymbolSearch = (
+export type EquitySymbol = (
   prefix: string,
   offset?: number,
 ) => Promise<IEquitySymbol>;
 
-export type SymbolSearchAndCount = SymbolSearch & IEquitySymbolCount;
-export type SymbolSearchOrCount = SymbolSearch | IEquitySymbolCount;
+export type EquitySymbolAndCount = EquitySymbol & IEquitySymbolCount;
+export type EquitySymbolOrCount = EquitySymbol | IEquitySymbolCount;

@@ -22,6 +22,10 @@ import { _getPositions } from './AccountsCalls/_getPositions/_getPositions';
 import { _getServerTime } from './AccountsCalls/_getServerTime/_getServerTime';
 import {
   _getCandles,
+  // _getEquitySymbolAndCount,
+  _getEquitySymbol,
+  _getEquitySymbolAll,
+  _getEquitySymbolCount,
   _getMarkets,
   _getMarketsQuotesStrategies,
   _getOptionsById,
@@ -30,10 +34,6 @@ import {
   _getQuotesOptionsByIds,
   _getQuotesOptionsFilter,
   _getSymbolsByIds,
-  // _getSymbolSearchAndCount,
-  _getSymbolSearch,
-  _getSymbolSearchAll,
-  _getSymbolSearchCount,
 } from './MarketsCalls';
 
 export async function questradeApiFactory(
@@ -55,6 +55,9 @@ export async function questradeApiFactory(
     activities: _getActivities(accGetApi(), errorlog),
     balances: _getBalances(accGetApi(), errorlog),
     candles: _getCandles(getApi(), errorlog),
+    equitySymbol: _getEquitySymbol(getApi(), errorlog),
+    equitySymbolAll: _getEquitySymbolAll(getApi(), errorlog),
+    equitySymbolCount: _getEquitySymbolCount(getApi(), errorlog),
     executions: _getExecutions(accGetApi(), errorlog),
     markets: _getMarkets(getApi(), errorlog),
     marketsQuotesStrategies: _getMarketsQuotesStrategies(postApi(), errorlog),
@@ -66,9 +69,6 @@ export async function questradeApiFactory(
     quotesOptionsByIds: _getQuotesOptionsByIds(postApi(), errorlog),
     quotesOptionsFilter: _getQuotesOptionsFilter(postApi() /* , errorlog */),
     serverTime: _getServerTime(getApi() /* , errorlog */),
-    symbolSearch: _getSymbolSearch(getApi(), errorlog),
-    symbolSearchAll: _getSymbolSearchAll(getApi(), errorlog),
-    symbolSearchCount: _getSymbolSearchCount(getApi(), errorlog),
     symbolsByIds: _getSymbolsByIds(getApi(), errorlog),
   };
 
@@ -140,14 +140,14 @@ export async function questradeApiFactory(
     },
     search: {
       async allStocks(prefix: string, offset?: number) {
-        return api.symbolSearchAll(prefix, offset);
+        return api.equitySymbolAll(prefix, offset);
       },
       async countResults(prefix: string) {
-        return api.symbolSearchCount(prefix);
+        return api.equitySymbolCount(prefix);
       },
       async stock(prefix: string, offset?: number) {
-        return api.symbolSearch(prefix, offset);
-        // return symbolSearchAndCount(prefix, offset);
+        return api.equitySymbol(prefix, offset);
+        // return equitySymbolAndCount(prefix, offset);
       },
     },
     serverTime: credentials.serverTime || 'ERROR',

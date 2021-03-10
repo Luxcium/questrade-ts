@@ -166,12 +166,12 @@ this contract will never change for [IQuestradeAPIv2_0](https://pastebin.com/BTF
     allStocks(
       prefix: string,
       offset?: number | undefined,
-    ): Promise<ISymbolSearchResult[]>;
+    ): Promise<IEquitySymbolResult[]>;
     countResults(prefix: string): Promise<number>;
     stock(
       prefix: string,
       offset?: number | undefined,
-    ): Promise<ISymbolSearchResult[]>;
+    ): Promise<IEquitySymbolResult[]>;
   };
   serverTime: Date | 'ERROR';
 }
@@ -237,10 +237,10 @@ this contract will never change for [IQuestradeAPIv2_0](https://pastebin.com/BTF
   byStockId(stockId: number) => Promise<IOptionChain[]>;
 
   stock(prefix: string, offset?: number | undefined) =>
-    Promise<ISymbolSearchResult>;
+    Promise<IEquitySymbolResult>;
 
   allStocks(prefix: string, offset?: number | undefined) =>
-    Promise<ISymbolSearchResult[]>;
+    Promise<IEquitySymbolResult[]>;
 
   countResults(prefix: string) => Promise<number>;
 ```

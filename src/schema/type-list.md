@@ -11,4 +11,4 @@ IStrategiesQuotes
 ISymbol
 IMarket
 ICandle
-ISymbolSearchResult
+IEquitySymbolResult
