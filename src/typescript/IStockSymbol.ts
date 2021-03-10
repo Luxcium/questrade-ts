@@ -4,7 +4,8 @@ import {
   SecurityType,
 } from 'questrade-api-enumerations';
 
-export interface IStockSymbol {
+/** @deprecated Prefer the use of IEquitySymbol instead.  */
+export interface IStockSymbol_DEPRECATED {
   symbol: string;
   symbolId: number;
   description: string;
@@ -15,4 +16,17 @@ export interface IStockSymbol {
   currency: Currency;
 }
 
-export type StockSymbol = IStockSymbol | string;
+export type StockSymbol = IStockSymbol_DEPRECATED | string;
+
+// export interface IEquitySymbol {
+//   symbol: string;
+//   symbolId: number;
+//   description: string;
+//   securityType: string;
+//   listingExchange: string;
+//   isTradable: boolean;
+//   isQuotable: boolean;
+//   currency: Currency;
+//   count?: number;
+//   all?: IEquitySymbol[];
+// }

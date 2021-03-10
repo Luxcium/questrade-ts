@@ -57,7 +57,7 @@ export type {
   QuotesOptionsbyFilterAndIds,
 } from './IQuotesOptionsByIds';
 export type { IRefreshCreds } from './IRefreshCreds';
-export type { IStockSymbol } from './IStockSymbol';
+export type { IStockSymbol_DEPRECATED } from './IStockSymbol';
 export type { IStrategiesQuotes } from './IStrategiesQuotes';
 export type {
   Leg,
