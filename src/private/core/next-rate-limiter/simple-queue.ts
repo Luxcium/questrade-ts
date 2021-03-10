@@ -99,7 +99,6 @@ export class SimpleQueue {
               '\n *** Other function cycle in',
               now() - before,
               'ms' /* '\n' */,
-              config,
             );
           }
         } catch (error) {

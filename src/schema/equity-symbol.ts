@@ -11,6 +11,7 @@ const equitySymbolSchema = new mongoose.Schema<IEquitySymbolDocumentModel>({
   isTradable: Boolean,
   listingExchange: String,
   securityType: String,
+  serverTime: Date,
   symbol: String,
   symbolId: Number,
 });
@@ -21,14 +22,15 @@ export const EquitySymbolDocumentModel: Model<IEquitySymbolDocumentModel> = mong
 );
 
 export interface IEquitySymbolDocumentModel extends Document {
+  all?: IEquitySymbolDocumentModel[];
+  count?: number;
+  currency: Currency;
+  description: string;
+  isQuotable: boolean;
+  isTradable: boolean;
+  listingExchange: string;
+  securityType: string;
+  serverTime: Date;
   symbol: string;
   symbolId: number;
-  description: string;
-  securityType: string;
-  listingExchange: string;
-  isTradable: boolean;
-  isQuotable: boolean;
-  currency: Currency;
-  count?: number;
-  all?: IEquitySymbolDocumentModel[];
 }

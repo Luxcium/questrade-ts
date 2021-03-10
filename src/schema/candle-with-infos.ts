@@ -48,7 +48,7 @@ export interface ICandleWithInfosDocument extends Document {
   // matrixRatio?: number[][];
   open?: number | undefined;
   securityType?: string;
-  serverTime?: Date;
+  serverTime: Date;
   start?: string | Date | undefined;
   symbol?: string;
   symbolID?: number;

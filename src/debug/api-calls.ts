@@ -376,7 +376,7 @@ export async function saveMongo<T, D extends mongoose.Document<T>>(config: {
     .catch(error => {
       const { message } = error;
       if (typeof message === 'string' && message.includes('duplicate')) {
-        return console.error('Model.save() → ERROR:', message);
+        return console.error(message);
       }
 
       return console.error('Model.save() → ERROR:', error);

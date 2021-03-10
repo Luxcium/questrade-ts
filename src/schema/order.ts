@@ -25,7 +25,6 @@ Map
   <Document<IOrder>, Model<Document<IOrder>>, undefined>
 */
 const orderSchema = new mongoose.Schema<IOrderDocument>({
-  OrderLeg: String,
   avgExecPrice: Number,
   canceledQuantity: Number,
   chainId: String,
@@ -42,6 +41,7 @@ const orderSchema = new mongoose.Schema<IOrderDocument>({
   isAnonymous: Boolean,
   isCrossZero: Boolean,
   isInsider: Boolean,
+  OrderLeg: String,
   isLimitOffsetInDollar: Boolean,
   isSignificantShareHolder: Boolean,
   lastExecPrice: Number,
@@ -58,6 +58,7 @@ const orderSchema = new mongoose.Schema<IOrderDocument>({
   primaryRoute: String,
   rejectionReason: String,
   secondaryRoute: String,
+  serverTime: Date,
   side: String,
   source: String,
   state: String,
@@ -78,50 +79,51 @@ export const Order: Model<IOrderDocument> = mongoose.model(
   orderSchema,
 );
 export interface IOrderDocument extends Document {
-  id?: string | number;
-  symbol?: string;
-  stockId?: string | number;
-  totalQuantity?: number;
-  openQuantity?: number;
-  filledQuantity?: number;
+  avgExecPrice?: number | null;
   canceledQuantity?: number;
-  side?: OrderSide;
-  orderType?: OrderType;
-  limitPrice?: number | null;
-  stopPrice?: number | null;
+  chainId?: string | number;
+  clientReasonStr?: string;
+  comissionCharged?: number;
+  commissionCharged?: number;
+  creationTime?: Date | string;
+  exchangeOrderId?: string | number | string;
+  filledQuantity?: number;
+  gtdDate?: Date | string | null;
+  icebergQuantity?: number | null;
+  id?: string | number;
   isAllOrNone?: boolean;
   isAnonymous?: boolean;
-  icebergQuantity?: number | null;
-  minQuantity?: number | null;
-  avgExecPrice?: number | null;
-  lastExecPrice?: number | null;
-  source?: string;
-  timeInForce?: OrderTimeInForce;
-  gtdDate?: Date | string | null;
-  state?: OrderState;
-  clientReasonStr?: string;
-  chainId?: string | number;
-  creationTime?: Date | string;
-  updateTime?: Date | string;
-  notes?: string;
-  primaryRoute?: string;
-  secondaryRoute?: string;
-  orderRoute?: string;
-  venueHoldingOrder?: string;
-  commissionCharged?: number;
-  exchangeOrderId?: string | number | string;
-  isSignificantShareHolder?: boolean;
+  isCrossZero?: boolean;
   isInsider?: boolean;
   isLimitOffsetInDollar?: boolean;
-  userId?: string | number;
-  placementCommission?: number | null;
+  isSignificantShareHolder?: boolean;
+  lastExecPrice?: number | null;
   legs?: [];
-  OrderLeg?: string;
-  strategyType?: StrategyTypes | 'SingleLeg';
-  triggerStopPrice?: number | null;
-  orderGroupId?: string | number;
+  limitPrice?: number | null;
+  minQuantity?: number | null;
+  notes?: string;
+  openQuantity?: number;
   orderClass?: OrderClass | null;
+  orderGroupId?: string | number;
+  OrderLeg?: string;
+  orderRoute?: string;
+  orderType?: OrderType;
+  placementCommission?: number | null;
+  primaryRoute?: string;
   rejectionReason?: string;
-  comissionCharged?: number;
-  isCrossZero?: boolean;
+  secondaryRoute?: string;
+  serverTime: Date;
+  side?: OrderSide;
+  source?: string;
+  state?: OrderState;
+  stockId?: string | number;
+  stopPrice?: number | null;
+  strategyType?: StrategyTypes | 'SingleLeg';
+  symbol?: string;
+  timeInForce?: OrderTimeInForce;
+  totalQuantity?: number;
+  triggerStopPrice?: number | null;
+  updateTime?: Date | string;
+  userId?: string | number;
+  venueHoldingOrder?: string;
 }

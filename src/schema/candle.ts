@@ -9,6 +9,7 @@ const candleSchema = new mongoose.Schema<ICandleDocument>({
   high: Number,
   low: Number,
   open: Number,
+  serverTime: Date,
   start: String,
   symbolID: Number,
   volume: Number,
@@ -36,6 +37,8 @@ export interface ICandleDocument extends Document {
   volume?: number;
   /** the volume weighted average price (VWAP) */
   VWAP?: number;
+  serverTime: Date;
+
   symbolID?: number;
   granularity?: string;
   // hash: { short: string; long: string };

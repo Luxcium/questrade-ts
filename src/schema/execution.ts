@@ -3,19 +3,6 @@ import type { Document, Model } from 'mongoose';
 import mongoose from 'mongoose';
 import { OrderSide } from 'questrade-api-enumerations';
 
-/*
-The permitted SchemaTypes are:
-String
-Number
-Date
-Buffer
-Boolean
-Mixed
-ObjectId
-Array
-Decimal128
-Map
-*/
 const executionSchema = new mongoose.Schema<IExecutionDocument>({
   canadianExecutionFee: Number,
   commission: Number,
@@ -31,6 +18,7 @@ const executionSchema = new mongoose.Schema<IExecutionDocument>({
   price: Number,
   quantity: Number,
   secFee: Number,
+  serverTime: Date,
   side: String,
   symbol: String,
   symbolId: Number,
@@ -88,6 +76,7 @@ export interface IExecutionDocument extends Document {
   /** sEC fee charged on all sales of US securities. */
   secFee: number;
   /** additional execution fee charged by TSX (if applicable). */
+  serverTime: Date;
   canadianExecutionFee: number;
   /** internal identifierof the parent order. */
   parentId: number;

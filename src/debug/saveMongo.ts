@@ -3,11 +3,12 @@ import mongoose from 'mongoose';
 export async function saveMongo<T, D extends mongoose.Document<T>>(config: {
   value: T;
   Model: mongoose.Model<D>;
+  serverTime?: Date;
 }): Promise<void | D> {
-  const { value, Model } = config;
+  const { value, Model, serverTime = new Date() } = config;
   console.log('will process');
 
-  const doc = new Model(value);
+  const doc = new Model({ ...value, serverTime });
 
   return doc
     .save()
@@ -19,7 +20,7 @@ export async function saveMongo<T, D extends mongoose.Document<T>>(config: {
     .catch(error => {
       const { message } = error;
       if (typeof message === 'string' && message.includes('duplicate')) {
-        return console.error('Model.save() → ERROR:', message);
+        return console.error(message);
       }
 
       return console.error('Model.save() → ERROR:', error);
