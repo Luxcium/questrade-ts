@@ -5,7 +5,7 @@ import { promiseOf } from '../utils';
 import { saveMongo } from './saveMongo';
 
 
-export function stockSymbolMongoSave(apiCallQ: SimpleQueue) {
+export function stockSymbolDbSave(apiCallQ: SimpleQueue) {
   return async (symbol: IStockSymbol[] | Promise<IStockSymbol[]>) => {
     const symbol_ = await promiseOf(symbol);
 

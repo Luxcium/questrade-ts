@@ -2,6 +2,8 @@ export type { ApiOptions } from './ApiOptions';
 export type { CallBack } from './CallBack';
 export type { Credentials } from './Credentials';
 export type { EndPtAccountBaseURL } from './EndPtAccountBaseURL';
+export type { GetEquitySymbol } from './GetEquitySymbol';
+export type { GetSymbolItemsList } from './GetSymbolItemsList';
 export type { AcountNumberString, IAccount, IAccounts } from './IAccounts';
 export type { IAccountActivity, IActivities } from './IActivities';
 export type {
@@ -57,6 +59,13 @@ export type {
   QuotesOptionsbyFilterAndIds,
 } from './IQuotesOptionsByIds';
 export type { IRefreshCreds } from './IRefreshCreds';
+export type {
+  // IEquitySymbol,
+  // IEquitySymbols,
+  IStockSymbol,
+  IStockSymbols,
+  MinTick,
+} from './IStockSymbol';
 export type { IStockSymbol_DEPRECATED } from './IStockSymbol_DEPRECATED';
 export type { IStrategiesQuotes } from './IStrategiesQuotes';
 export type {
@@ -68,13 +77,6 @@ export type {
   VariantId,
   Variants,
 } from './IStrategiesVariants';
-export type {
-  // IEquitySymbol,
-  // IEquitySymbols,
-  IStockSymbol,
-  IStockSymbols,
-  MinTick,
-} from './IStockSymbol';
 export type { ISymbolInfos } from './ISymbolInfos';
 export type { ITime } from './ITime';
 export type { ITimeRateLimiter } from './ITimeRateLimiter';

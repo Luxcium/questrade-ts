@@ -3,7 +3,7 @@ import { EquitySymbolDocumentModel } from '../schema/equity-symbol';
 import { IEquitySymbol } from '../typescript';
 import { saveMongo } from './saveMongo';
 
-export function equitySymbolResultMongoSave(apiCallQ: SimpleQueue) {
+export function equitySymbolDbSave(apiCallQ: SimpleQueue) {
   return async (symbItem: IEquitySymbol) => {
     const config = { Model: EquitySymbolDocumentModel, value: symbItem };
 
