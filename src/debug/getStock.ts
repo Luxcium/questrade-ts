@@ -10,6 +10,6 @@ export function getStock(qtApi: IQuestradeAPIv2_0) {
   ): Promise<IEquitySymbol[]> => {
     const symb = await promiseOf(symbol);
 
-    return qtApi.search.stock(symb, offset);
+    return qtApi.search.allStocks(symb, offset);
   };
 }

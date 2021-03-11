@@ -29,14 +29,45 @@ import { stockSymbolMongoSave } from './stockSymbolMongoSave';
 // );
 // return symbolId;
 
+export const counting = { counta: 0, countb: 0, countc: 0 };
 export function searchAndStockSymbolDbSave(qtApi: IQuestradeAPIv2_0) {
   return (apiCallQ: SimpleQueue) => (symbolItems: IEquitySymbol[]) => {
+    counting.countb += 1;
+
+    const counta2 = counting.counta;
+    const contb2 = counting.countb;
+
     return symbolItems.map(async symbItem => {
+      counting.countc += 1;
+
+      console.log(
+        'IEquitySymbol #',
+        counting.counta + 1,
+        `(${counta2})`,
+        '&#',
+        counting.countb,
+        `(${contb2})`,
+        '!!!!!!!!!!!!!!!!!!!!!!',
+        `(${counting.countc})`,
+      );
       const symbId = symbItem?.symbolId || 1;
       const stockIds = [symbId];
       const symbol = await qtApi.getSymbols.byStockIds(stockIds);
       await equitySymbolResultMongoSave(apiCallQ)(symbItem);
       await stockSymbolMongoSave(apiCallQ)(symbol);
+      counting.counta += 1;
+      console.log(
+        'IEquitySymbol #',
+        counting.counta,
+        `(${counta2})`,
+        '&#',
+        counting.countb,
+        `(${contb2})`,
+        '!!!!!!!!!!!!!!!!!!!!!!',
+        `(${counting.countc})`,
+      );
+
+      return symbol;
     });
   };
 }

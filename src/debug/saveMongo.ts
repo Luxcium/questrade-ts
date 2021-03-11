@@ -6,16 +6,17 @@ export async function saveMongo<T, D extends mongoose.Document<T>>(config: {
   serverTime?: Date;
 }): Promise<void | D> {
   const { value, Model, serverTime = new Date() } = config;
-  console.log('will process');
+
+  // console.log('will process');
 
   const doc = new Model({ ...value, serverTime });
 
   return doc
     .save()
-    .then(result => {
-      console.log('Document saved →', result);
+    .then(document => {
+      console.log('Document saved →', { document });
 
-      return result;
+      return document;
     })
     .catch(error => {
       const { message } = error;
