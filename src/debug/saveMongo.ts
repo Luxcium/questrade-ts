@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import mongoose from 'mongoose';
 
 export async function saveMongo<T, D extends mongoose.Document<T>>(config: {
@@ -21,9 +22,9 @@ export async function saveMongo<T, D extends mongoose.Document<T>>(config: {
     .catch(error => {
       const { message } = error;
       if (typeof message === 'string' && message.includes('duplicate')) {
-        return console.error(message);
+        return console.error(chalk.white.bgBlack(message));
       }
 
-      return console.error('Model.save() → ERROR:', error);
+      return console.error(chalk.redBright('Model.save() → ERROR:'), error);
     });
 }

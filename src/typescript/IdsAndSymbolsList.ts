@@ -1,8 +1,6 @@
 import { IEquitySymbol } from '.';
 
-export type GetSymbolItemsList = (
-  allEquitiesList: Promise<IEquitySymbol[][]>,
-) => Promise<
+export type IdsAndSymbList = Promise<
   {
     symbolId: number;
     symbolItem: IEquitySymbol;

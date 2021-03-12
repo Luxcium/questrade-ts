@@ -1,6 +1,7 @@
 export type { ApiOptions } from './ApiOptions';
 export type { CallBack } from './CallBack';
 export type { Credentials } from './Credentials';
+export type { DateTimeRange } from './DateTimeRange';
 export type { EndPtAccountBaseURL } from './EndPtAccountBaseURL';
 export type { GetEquitySymbol } from './GetEquitySymbol';
 export type { GetSymbolItemsList } from './GetSymbolItemsList';
@@ -17,6 +18,7 @@ export type { ICandleWithInfos } from './ICandleWithInfos';
 // export type { AuthApiConfig, CoreApiConfig } from './ICoreApiConfigD';
 export type { ICreds } from './ICreds';
 export type { IDateObject, Time } from './IDateObject';
+export type { IdsAndSymbList } from './IdsAndSymbolsList';
 export type {
   EquitySymbol,
   EquitySymbolAndCount,
@@ -97,7 +99,7 @@ export type {
 } from './QuestradeApi';
 export type { Ŋ, RateLimiterOptions } from './RateLimiterOptions';
 export type { ReqLimiterFactory } from './ReqLimiterFactory';
-export type { DateTimeRange } from './timeutils';
+export type { SymbolList } from './SymbolList';
 export type { UrlDataAndHashes } from './UrlAndDataHashes';
 export { VebosityLevel } from './verbosity-levels';
 export type { WillCallBack } from './WillCallBack';

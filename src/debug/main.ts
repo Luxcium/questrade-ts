@@ -1,14 +1,104 @@
+import { IQuestradeAPIv2_0 } from '..';
 import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
 import { echo } from '../resources/side-effects';
-import { getEquitySymbolsList } from './getEquitySymbolsList';
+import { IdsAndSymbList, IEquitySymbol, SymbolList } from '../typescript';
+import { searchAndStockSymbolDbSave } from './equitySymbolAndStockSymbolMongoSave';
+import { getAllEquitySymbList } from './getEquitySymbolsList';
 import { getSymbolIDSearchAndStockSymbolDbSave } from './getSymbolIdEquitySymbolAndStockSymbolDbSave';
 import { mainRedis } from './mainRedis';
 import { mogooseConnect } from './mogooseConnect';
 import { willGetSnP500List } from './willGetSnP500List';
-import { getSymbolItemsList } from './willGetSymbolIdAndFirstSymbol';
+import { getIdsAndSymbList } from './willGetSymbolIdAndFirstSymbol';
 
 export const once = { onlyOnceMain: true, onlyOnceMongoose: 0 };
 
+export type AllEquitySymbList = Promise<IEquitySymbol[][]>;
+export async function scientiaEsLuxPrincipium(apiCallQ: SimpleQueue) {
+  //
+  // activate the api for later use
+  const { qtApi } = await mainRedis();
+  const symbolList: SymbolList = willGetSnP500List();
+  const allEquitySymbList = getAllEquitySymbList(qtApi);
+  const allEquitiesList: AllEquitySymbList = allEquitySymbList(symbolList);
+  const idsAndSymbList: IdsAndSymbList = getIdsAndSymbList(allEquitiesList);
+
+  return getSymbolIDSearchAndStockSymbolDbSave(qtApi, apiCallQ, idsAndSymbList);
+}
+
+export function getBSymbolIDSearchAndStockSymbolDbSave(
+  qtApi: IQuestradeAPIv2_0,
+) {
+  return (dbSaveQueue: SimpleQueue) => async (
+    list: Promise<
+      {
+        symbolId: number;
+        symbolItem: IEquitySymbol;
+        symbolItems: IEquitySymbol[];
+      }[]
+    >,
+  ) => {
+    return Promise.all(
+      (await list).map(async items => {
+        await Promise.all(
+          searchAndStockSymbolDbSave(qtApi)(dbSaveQueue)(items.symbolItems),
+        );
+
+        return items.symbolId;
+      }),
+    );
+  };
+}
+
+/*
+import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
+import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
+import { IEquitySymbol } from '../typescript';
+import { searchAndStockSymbolDbSave } from './equitySymbolAndStockSymbolMongoSave';
+
+export async function getSymbolIDSearchAndStockSymbolDbSave(
+  qtApi: IQuestradeAPIv2_0,
+  apiCallQ: SimpleQueue,
+  list: Promise<
+    {
+      symbolId: number;
+      symbolItem: IEquitySymbol;
+      symbolItems: IEquitySymbol[];
+    }[]
+  >,
+) {
+  return Promise.all(
+    (await list).map(async items => {
+      await Promise.all(
+        searchAndStockSymbolDbSave(qtApi)(apiCallQ)(items.symbolItems),
+      );
+
+      return items.symbolId;
+    }),
+  );
+}
+
+
+import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
+import { IQuestradeAPIv2_0 } from '../public/IQuestradeAPIv2_0';
+import { IEquitySymbol } from '../typescript';
+import { equitySymbolDbSave } from './equitySymbolResultMongoSave';
+import { stockSymbolDbSave } from './stockSymbolMongoSave';
+
+export function searchAndStockSymbolDbSave(qtApi: IQuestradeAPIv2_0) {
+  return (apiCallQ: SimpleQueue) => (symbolItems: IEquitySymbol[]) => {
+    return symbolItems.map(async symbItem => {
+      const symbId = symbItem?.symbolId || 1;
+      const stockIds = [symbId];
+      const symbol = await qtApi.getSymbols.byStockIds(stockIds);
+      await equitySymbolDbSave(apiCallQ)(symbItem);
+      await stockSymbolDbSave(apiCallQ)(symbol);
+
+      return symbol;
+    });
+  };
+}
+
+*/
 export async function main() {
   echo(`Will execute main: ${once.onlyOnceMain}`);
   if (!once.onlyOnceMain) {
@@ -16,23 +106,10 @@ export async function main() {
   }
 
   once.onlyOnceMain = false;
-  const { qtApi } = await mainRedis();
   const connection = await mogooseConnect();
   const apiCallQ = new SimpleQueue();
-  const symbolList = willGetSnP500List({ endIndex: 505, startIndex: 0 });
-  const equitySymbolsList = getEquitySymbolsList({ qtApi, symbolList });
-  const symbolItemsList = getSymbolItemsList({ equitySymbolsList });
-  const list4 = getSymbolIDSearchAndStockSymbolDbSave(
-    qtApi,
-    apiCallQ,
-    symbolItemsList,
-  );
-
-  void list4;
-  const result = list4; // getMain(qtApi, apiCallQ, list1);
-
-  await result;
-  void apiCallQ.addToQueue({
+  await scientiaEsLuxPrincipium(apiCallQ);
+  apiCallQ.addToQueue({
     config: 'any',
     fn(_): any {
       return connection.disconnect();
@@ -43,5 +120,3 @@ export async function main() {
 }
 
 main();
-
-void 0;
