@@ -47,7 +47,7 @@ keys
 !**/material-dir-icons/**
 !**/material-dir-icons/**/*
 !misc/material-dir-icons/**/*
-
+!misc/dirs-material-icon-theme-PKief-4.5.0/**/*
 nohup.out
 .cache
 .npmrc
