@@ -2,7 +2,6 @@ import { IQuestradeAPIv2_0 } from '..';
 import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
 import { echo } from '../resources/side-effects';
 import { IdsAndSymbList, IEquitySymbol, SymbolList } from '../typescript';
-import { searchAndStockSymbolDbSave } from './equitySymbolAndStockSymbolMongoSave';
 import { getAllEquitySymbList } from './getEquitySymbolsList';
 import { getSymbolIDSearchAndStockSymbolDbSave } from './getSymbolIdEquitySymbolAndStockSymbolDbSave';
 import { mainRedis } from './mainRedis';
@@ -25,10 +24,14 @@ export async function scientiaEsLuxPrincipium(apiCallQ: SimpleQueue) {
   return getSymbolIDSearchAndStockSymbolDbSave(qtApi, apiCallQ, idsAndSymbList);
 }
 
-export function getBSymbolIDSearchAndStockSymbolDbSave(
-  qtApi: IQuestradeAPIv2_0,
-) {
-  return (dbSaveQueue: SimpleQueue) => async (
+export function getBSymbolIDSearchAndStockSymbolDbSave({
+  qtApi,
+  dbSaveQueue,
+}: {
+  qtApi: IQuestradeAPIv2_0;
+  dbSaveQueue: SimpleQueue;
+}) {
+  return async (
     list: Promise<
       {
         symbolId: number;
@@ -37,17 +40,39 @@ export function getBSymbolIDSearchAndStockSymbolDbSave(
       }[]
     >,
   ) => {
-    return Promise.all(
-      (await list).map(async items => {
-        await Promise.all(
-          searchAndStockSymbolDbSave(qtApi)(dbSaveQueue)(items.symbolItems),
+    const awaitedList = await list;
+    const stock = await Promise.all(
+      awaitedList.map(async items => {
+        const { symbolId, symbolItem, symbolItems } = items;
+        const symbolList = await Promise.all(
+          symbolItems.map(async symbItem => {
+            const symbId = symbItem?.symbolId || 1;
+            const stockIds = [symbId];
+            const symbols = await qtApi.getSymbols.byStockIds(stockIds);
+            const [firstsymbol] = symbols;
+
+            return { firstsymbol, symbols };
+          }),
         );
 
-        return items.symbolId;
+        const [symbol] = symbolList;
+
+        return {
+          equitySymbol: symbolItem,
+          equitySymbolList: symbolItems,
+          stockSymbol: symbol,
+          stockSymbolList: symbolList,
+          symbolId,
+        };
       }),
     );
+
+    return { dbSaveQueue, qtApi, stock };
   };
 }
+// await stockSymbolDbSave(dbSaveQueue)(symbol);
+
+// await equitySymbolDbSave(dbSaveQueue)(symbItem);
 
 /*
 import { SimpleQueue } from '../private/core/next-rate-limiter/simple-queue';
