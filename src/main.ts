@@ -1,4 +1,4 @@
-import { main } from './debug/main';
+import { main } from './draft/main';
 import { ech0, errorLog } from './resources/side-effects';
 
 try {
