@@ -17,7 +17,6 @@ export type {
 } from './IBalances';
 export type { ICandle, ICandles } from './ICandles';
 export type { ICandleWithInfos } from './ICandleWithInfos';
-// export type { AuthApiConfig, CoreApiConfig } from './ICoreApiConfigD';
 export type { ICreds } from './ICreds';
 export type { IDateObject, Time } from './IDateObject';
 export type {
@@ -29,7 +28,6 @@ export type {
   IEquitySymbolResults,
 } from './IEquitySymbol';
 export type { IExecution, IExecutions } from './IExecutions';
-// export type { IHeaders___ } from './_DEPRECATED_IHeaders_';
 export type { IMarket, IMarkets } from './IMarkets';
 export type { Methode } from './IMethode';
 export type { IMyBalances } from './IMyBalances';
@@ -62,13 +60,7 @@ export type {
   QuotesOptionsbyFilterAndIds,
 } from './IQuotesOptionsByIds';
 export type { IRefreshCreds } from './IRefreshCreds';
-export type {
-  // IEquitySymbol,
-  // IEquitySymbols,
-  IStockSymbol,
-  IStockSymbols,
-  MinTick,
-} from './IStockSymbol';
+export type { IStockSymbol, IStockSymbols, MinTick } from './IStockSymbol';
 export type { IStrategiesQuotes } from './IStrategiesQuotes';
 export type {
   Leg,
@@ -82,7 +74,6 @@ export type {
 export type { ISymbolInfo } from './ISymbolInfo';
 export type { ITime } from './ITime';
 export type { ITimeRateLimiter } from './ITimeRateLimiter';
-// export type { Void_0___, Void0 } from './IVoid_0';
 export type { LogErrors } from './LogErrors';
 export type { ProxyFactory_ } from './Proxy';
 export type {
@@ -102,7 +93,4 @@ export type { SymbolList } from './SymbolList';
 export type { UrlDataAndHashes } from './UrlAndDataHashes';
 export { VebosityLevel } from './verbosity-levels';
 export type { xIdsAndSymbList } from './xIdsAndSymbolsList';
-// export type { ReqLimiterFactory___ } from './ReqLimiterFactory';
-export type { IStockSymbol_DEPRECATED } from './_DEPRECATED_IStockSymbol_';
-// export type { WillCallBack___ } from './WillCallBack';
 export type Logger = <T = unknown>(...args: T[]) => T[];
