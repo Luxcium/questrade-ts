@@ -51,3 +51,4 @@ keys
 nohup.out
 .cache
 .npmrc
+.history
