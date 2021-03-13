@@ -190,6 +190,20 @@
     "errorLens.hintBackground": "#39C4",
     "errorLens.hintMessageBackground": "#39C4",
     "errorLens.statusBarHintForeground": "#39CF",
+    "activityBar.activeBackground": "#002b57",
+    "activityBar.activeBorder": "#bf005f",
+    "activityBar.background": "#002b57",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#bf005f",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "statusBar.background": "#001224",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#002b57",
+    "titleBar.activeBackground": "#001224",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#00122499",
+    "titleBar.inactiveForeground": "#e7e7e799"
   },
   // #endregion: ERRORLENS                                                      !
   // #region: TODO TREE                                                         !
@@ -2321,6 +2335,7 @@
   "[markdown]": {
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
+  "peacock.color": "001224",
   // #endregion: EDITOR RULERS                                                  !
 }
 // =====2021=====Luxcium=====Author==Benjamin=Vincent=(Luxcium)=License==MIT====
