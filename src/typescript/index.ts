@@ -3,6 +3,7 @@ export type { CallBack } from './CallBack';
 export type { Credentials } from './Credentials';
 export type { DateTimeRange } from './DateTimeRange';
 export type { EndPtAccountBaseURL } from './EndPtAccountBaseURL';
+export type { GetCandelStick } from './GetCandelStick';
 export type { GetEquitySymbol } from './GetEquitySymbol';
 export type { GetSymbolItemsList } from './GetSymbolItemsList';
 export type { AcountNumberString, IAccount, IAccounts } from './IAccounts';
@@ -18,7 +19,6 @@ export type { ICandleWithInfos } from './ICandleWithInfos';
 // export type { AuthApiConfig, CoreApiConfig } from './ICoreApiConfigD';
 export type { ICreds } from './ICreds';
 export type { IDateObject, Time } from './IDateObject';
-export type { IdsAndSymbList } from './IdsAndSymbolsList';
 export type {
   EquitySymbol,
   EquitySymbolAndCount,
@@ -28,7 +28,8 @@ export type {
   IEquitySymbolResults,
 } from './IEquitySymbol';
 export type { IExecution, IExecutions } from './IExecutions';
-export type { IHeaders } from './IHeaders';
+export type { IIdsAndSymbList } from './IIdsAndSymbolsList';
+// export type { IHeaders___ } from './_DEPRECATED_IHeaders_';
 export type { IMarket, IMarkets } from './IMarkets';
 export type { Methode } from './IMethode';
 export type { IMyBalances } from './IMyBalances';
@@ -68,7 +69,6 @@ export type {
   IStockSymbols,
   MinTick,
 } from './IStockSymbol';
-export type { IStockSymbol_DEPRECATED } from './IStockSymbol_DEPRECATED';
 export type { IStrategiesQuotes } from './IStrategiesQuotes';
 export type {
   Leg,
@@ -79,10 +79,10 @@ export type {
   VariantId,
   Variants,
 } from './IStrategiesVariants';
-export type { ISymbolInfos } from './ISymbolInfos';
+export type { ISymbolInfo } from './ISymbolInfo';
 export type { ITime } from './ITime';
 export type { ITimeRateLimiter } from './ITimeRateLimiter';
-export type { Void_0, Void0 } from './IVoid_0';
+// export type { Void_0___, Void0 } from './IVoid_0';
 export type { LogErrors } from './LogErrors';
 export type { ProxyFactory_ } from './Proxy';
 export type {
@@ -98,10 +98,10 @@ export type {
   QuestradeApi,
 } from './QuestradeApi';
 export type { Ŋ, RateLimiterOptions } from './RateLimiterOptions';
-export type { ReqLimiterFactory } from './ReqLimiterFactory';
 export type { SymbolList } from './SymbolList';
 export type { UrlDataAndHashes } from './UrlAndDataHashes';
 export { VebosityLevel } from './verbosity-levels';
-export type { WillCallBack } from './WillCallBack';
-
+// export type { ReqLimiterFactory___ } from './ReqLimiterFactory';
+export type { IStockSymbol_DEPRECATED } from './_DEPRECATED_IStockSymbol_';
+// export type { WillCallBack___ } from './WillCallBack';
 export type Logger = <T = unknown>(...args: T[]) => T[];

@@ -3,4 +3,6 @@ import { IEquitySymbol, SymbolList } from '.';
 
 export type GetEquitySymbol = (
   qtApi: IQuestradeAPIv2_0,
-) => (symbolList: SymbolList) => Promise<IEquitySymbol[][]>;
+) => (
+  symbolList: SymbolList | (() => SymbolList),
+) => Promise<IEquitySymbol[][]>;

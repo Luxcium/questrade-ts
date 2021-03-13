@@ -14,12 +14,14 @@ export {
 } from './create-url-and-data-hashes';
 export { formatDate } from './dates';
 export { getQtUrlPathFromArgs } from './get-qt-url-path-from-args';
+export { getSnP500List } from './get-snp-500';
 export { preValidateToken } from './get-token';
 export { getHash } from './getHash';
 export {
   getSymboIdBy,
   getSymboIdByStockSymbol,
 } from './helpers/get-symbol-id-by-stock-symbol';
+export { mapping } from './mapping';
 export { perSeconds } from './perSeconds';
 export { promiseOf } from './promise-of';
 export { timeoutPromise } from './timeout';
