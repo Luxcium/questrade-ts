@@ -95,7 +95,7 @@ export class SimpleQueue {
 
             const before = now();
             cb(null, fnct(config));
-            console.info(
+            void0(
               '\n *** Other function cycle in',
               now() - before,
               'ms' /* '\n' */,

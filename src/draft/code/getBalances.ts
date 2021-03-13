@@ -1,9 +1,8 @@
+import { IQuestradeAPIv2_0 } from '../..';
 import { ech0 } from '../../resources/side-effects';
 import { id0 } from '../../utils';
-import { mainRedis } from './mainRedis';
 
-export async function getBalances() {
-  const { qtApi } = await mainRedis();
+export async function getBalances(qtApi: IQuestradeAPIv2_0) {
   const balances = qtApi.account.getBalances();
 
   ech0(await balances);

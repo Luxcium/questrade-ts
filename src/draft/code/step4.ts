@@ -2,7 +2,7 @@ import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
 import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import { StockSymbol } from '../../schema/stock-symbol';
 import { IEquitySymbol, IStockSymbol } from '../../typescript';
-import { saveMongo } from './saveMongo_b';
+import { saveMongo_b } from './saveMongo_b';
 
 // export async function step0(
 //   list: Promise<
@@ -34,12 +34,12 @@ export async function step4(
       symbolItem: IEquitySymbol;
       symbolItems: IEquitySymbol[];
     }[]
-  >
+  >,
 ) {
   return Promise.all(
-    (await list).map(async (items) => {
+    (await list).map(async items => {
       const { symbolId, symbolItems } = items;
-      symbolItems.map(async (symbItem) => {
+      symbolItems.map(async symbItem => {
         const symbId = symbItem?.symbolId || 1;
         const stockIds = [symbId];
         const symbol = await qtApi.getSymbols.byStockIds(stockIds);
@@ -48,7 +48,7 @@ export async function step4(
 
           apiCallQ.addToQueue({
             config,
-            fn: saveMongo,
+            fn: saveMongo_b,
           });
 
           return uniqueSymbol;
@@ -56,6 +56,6 @@ export async function step4(
       });
 
       return symbolId;
-    })
+    }),
   );
 }

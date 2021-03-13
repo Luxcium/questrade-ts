@@ -169,7 +169,7 @@ export class ApiCallQ_ {
 
             const before = now();
             cb(null, fnct(config));
-            console.info(
+            echo(
               '\n *** *** *** Other function cycle in',
               now() - before,
               'ms\n' /* '\n' */,
@@ -184,14 +184,15 @@ export class ApiCallQ_ {
                 config: ClientRequestConfig,
               ) => Promise<ClientResponse<R>>;
 
-              const before = now();
+              // const before = now();
               const response = await fnct(config);
-              echo(
-                '\nrequest response cycle in',
-                now() - before,
-                'ms\n' /* '\n' */,
-                { METHOD: config.method, URI: config.url },
-              );
+              echo({ URI: config.url });
+              // echo(
+              //   '\nrequest response cycle in',
+              //   now() - before,
+              //   'ms\n' /* '\n' */,
+              //   { /* METHOD: config.method,  */ URI: config.url },
+              // );
               this.remaining = response.headers['x-ratelimit-remaining'];
               this.resetTime = response.headers['x-ratelimit-reset'];
 

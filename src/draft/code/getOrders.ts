@@ -1,9 +1,8 @@
+import { IQuestradeAPIv2_0 } from '../..';
 import { ech0 } from '../../resources/side-effects';
 import { id0 } from '../../utils';
-import { mainRedis } from './mainRedis';
 
-export async function getOrders() {
-  const { qtApi } = await mainRedis();
+export async function getOrders(qtApi: IQuestradeAPIv2_0) {
   const orders = qtApi.account.getOrders()('2021-02-01')('2021-02-10');
 
   ech0(await orders);

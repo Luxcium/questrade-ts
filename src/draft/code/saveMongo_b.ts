@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
-
-export async function saveMongo<T, D extends mongoose.Document<T>>(config: {
+/** @deprecated Use `saveMongo` instead. */
+export async function saveMongo_b<T, D extends mongoose.Document<T>>(config: {
   value: T;
   Model: mongoose.Model<D>;
 }): Promise<void | D> {

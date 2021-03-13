@@ -10,7 +10,7 @@ import { saveMongo } from './saveMongo';
 export async function mainGetCandles(
   qtApi: IQuestradeAPIv2_0,
   apiCallQ: SimpleQueue,
-  list1: Promise<string[]>,
+  list: Promise<string[]>,
 ) {
   // const list1 = step1(startIndex, endIndex);
   const mapCandleSticks = getCandleSticks(qtApi)();
@@ -27,7 +27,7 @@ export async function mainGetCandles(
     mapCandleSticks2017,
     mapCandleSticks2016,
     mapCandleSticks2015,
-  ].map(candleSticks => mapping(list1, candleSticks));
+  ].map(candleSticks => mapping({ list, mapper: candleSticks }));
 
   return Promise.all(
     results.map(async result => {
