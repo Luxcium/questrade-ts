@@ -4,7 +4,6 @@ import { IStockSymbol, xIdsAndSymbList } from '../../typescript';
 import { getSnP500List, mapping } from '../../utils';
 import { getEquitySymbList } from '../code/getEquitySymbolsList';
 import { getSymbol } from '../code/getSymbol';
-import { getSymbolIDSearchAndStockSymbolDbSave } from '../code/getSymbolIdEquitySymbolAndStockSymbolDbSave';
 import { mainRedis } from '../code/mainRedis';
 import { saveMongo } from '../code/saveMongo';
 import { getIdsAndSymbolsList } from '../code/willGetSymbolIdAndFirstSymbol';
@@ -17,7 +16,7 @@ export async function SCIENTIA_ES_LUX_PRINCIPIUM(apiCallQ: SimpleQueue) {
     ...(await equityList),
   });
 
-  const anyVal = await Promise.all(
+  const stockSymbolList = await Promise.all(
     (
       await Promise.all(
         await mapping({
@@ -38,8 +37,9 @@ export async function SCIENTIA_ES_LUX_PRINCIPIUM(apiCallQ: SimpleQueue) {
     }),
   );
 
-  void anyVal;
-  // echo(stockSymbolsList);
+  console.log(stockSymbolList);
 
-  return getSymbolIDSearchAndStockSymbolDbSave(qtApi, apiCallQ, idsAndSymbList);
+  return stockSymbolList;
+
+  // return getSymbolIDSearchAndStockSymbolDbSave(qtApi, apiCallQ, idsAndSymbList);
 }
