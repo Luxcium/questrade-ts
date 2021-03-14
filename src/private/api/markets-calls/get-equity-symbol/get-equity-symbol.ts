@@ -1,7 +1,7 @@
 // import { errorlog } from '../../../../resources/side-effects';
 import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import type { IEquitySymbol, Logger } from '../../../../typescript';
-import { _getEquitySymbolAll } from './_getEquitySymbolAll';
+import { _getEquitySymbolAll } from './get-equity-symbol-all';
 
 // + _getEquitySymbol
 /** _getEquitySymbol */

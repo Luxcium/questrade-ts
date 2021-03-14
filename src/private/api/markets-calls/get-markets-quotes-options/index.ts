@@ -1,6 +1,3 @@
-export { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
-// export {
-// _getQuotesOptionsbyFilterAndIds,
-// } from './_getQuotesOptionsbyFilterAndIds';
-export { _getQuotesOptionsByIds } from './_getQuotesOptionsByIds';
-export { _getQuotesOptionsFilter } from './_getQuotesOptionsFilter';
+export { _getMarketsQuotesOptions } from './get-markets-quotes-options';
+export { _getQuotesOptionsByIds } from './get-quotes-options-by-ids';
+export { _getQuotesOptionsFilter } from './get-quotes-options-filter';

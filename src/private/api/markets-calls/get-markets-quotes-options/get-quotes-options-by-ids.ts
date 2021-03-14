@@ -1,6 +1,6 @@
 import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import type { IOptionsQuote, Logger } from '../../../../typescript';
-import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
+import { _getMarketsQuotesOptions } from './get-markets-quotes-options';
 
 export const _getQuotesOptionsByIds = (
   clientPostApi: <D>(

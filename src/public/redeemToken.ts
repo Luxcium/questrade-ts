@@ -1,5 +1,5 @@
 import { questradeApiFactory } from '../private/api/get-questrade-api';
-import { _credentialsFactory } from '../private/auth/_credentialsFactory';
+import { _credentialsFactory } from '../private/auth/credentials-factory';
 import { ApiCallQ_ } from '../private/core/next-rate-limiter/queue';
 import { errorLog } from '../resources/side-effects';
 import { ApiOptions } from '../typescript';

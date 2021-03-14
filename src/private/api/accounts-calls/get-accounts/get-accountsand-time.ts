@@ -121,6 +121,10 @@ export const _clientGetApi = (
   credentials: Credentials,
   proxy?: ProxyFactory_,
 ) => _coreApiFunction(credentials, proxy)('GET')(null);
+callTimeOut
+callTimeOut
+ _getAccounts
+_getServerTime
 
 
 */

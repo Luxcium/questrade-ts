@@ -1,6 +1,6 @@
 import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
 import type { OptionsFilters } from '../../../../typescript';
-import { _getMarketsQuotesOptions } from './_getMarketsQuotesOptions';
+import { _getMarketsQuotesOptions } from './get-markets-quotes-options';
 
 export const _getQuotesOptionsFilter = (
   clientPostApi: <D>(

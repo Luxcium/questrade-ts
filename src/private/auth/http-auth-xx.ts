@@ -1,8 +1,8 @@
 import { validateToken, writeToken } from '../../resources/side-effects';
 import type { ApiOptions, ProxyFactory_ } from '../../typescript';
 import { configs } from './config';
-import { httpClientGet } from './httpClientGet';
-import { validateResponse } from './validateResponse';
+import { httpClientGet } from './http-client-get';
+import { validateResponse } from './validate-response';
 
 async function _oAuthHttp(
   apiOptions: ApiOptions,

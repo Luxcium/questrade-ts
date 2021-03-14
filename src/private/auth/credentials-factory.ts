@@ -1,11 +1,11 @@
 import { errorLog, infoLog } from '../../resources/side-effects';
 import type { ApiOptions, Credentials, ProxyFactory_ } from '../../typescript';
-import { _getAccounts } from '../api/accounts-calls/get-accounts/_getAccounts';
-import { _getServerTime } from '../api/accounts-calls/get-server-time/_getServerTime';
+import { _getAccounts } from '../api/accounts-calls/get-accounts/get-accounts';
+import { _getServerTime } from '../api/accounts-calls/get-server-time/get-server-time';
 import type { ApiCallQ_ } from '../core/next-rate-limiter/queue';
 import { _clientGetApi } from '../routes';
-import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
-import { _oAuthHttp } from './xx-http-auth-xx';
+import { _getPrimaryAccountNumber } from './get-primary-account-number';
+import { _oAuthHttp } from './http-auth-xx';
 
 /** provide: a token string THEN GET: a 'Promise<Credentials>' */
 async function _credentialsFactory(

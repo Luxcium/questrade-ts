@@ -1,22 +1,22 @@
-import { _getAccounts } from './accounts-calls/get-accounts/_getAccounts';
-import { _getActivities } from './accounts-calls/get-activities/_getActivities';
-import { _getBalances } from './accounts-calls/get-balances/_getBalances';
-import { _getExecutions } from './accounts-calls/get-executions/_getExecutions';
-import { _getOrders } from './accounts-calls/get-orders/_getOrders';
-import { _getOrdersByIds } from './accounts-calls/get-orders/_getOrdersByIds';
-import { _getPositions } from './accounts-calls/get-positions/_getPositions';
-import { _getServerTime } from './accounts-calls/get-server-time/_getServerTime';
-import { _getCandles } from './markets-calls/get-candles/_getCandles';
-import { _getEquitySymbol } from './markets-calls/get-equity-symbol/_getEquitySymbol';
-import { _getEquitySymbolAll } from './markets-calls/get-equity-symbol/_getEquitySymbolAll';
-import { _getEquitySymbolCount } from './markets-calls/get-equity-symbol/_getEquitySymbolCount';
-import { _getMarkets } from './markets-calls/get-markets/_getMarkets';
-import { _getQuotesOptionsByIds } from './markets-calls/get-markets-quotes-options/_getQuotesOptionsByIds';
-import { _getQuotesOptionsFilter } from './markets-calls/get-markets-quotes-options/_getQuotesOptionsFilter';
-import { _getMarketsQuotesStrategies } from './markets-calls/get-markets-quotes-strategies/_getMarketsQuotesStrategies';
-import { _getOptionsById } from './markets-calls/get-options-by-id/_getOptionsById';
-import { _getQuotesByIds } from './markets-calls/get-quotes-by-ids/_getQuotesByIds';
-import { _getSymbolsByIds } from './markets-calls/get-symbols-by-ids/_getSymbolsByIds';
+import { _getAccounts } from './accounts-calls/get-accounts/get-accounts';
+import { _getActivities } from './accounts-calls/get-activities/get-activities';
+import { _getBalances } from './accounts-calls/get-balances/get-balances';
+import { _getExecutions } from './accounts-calls/get-executions/get-executions';
+import { _getOrders } from './accounts-calls/get-orders/get-orders';
+import { _getOrdersByIds } from './accounts-calls/get-orders/get-orders-by-ids';
+import { _getPositions } from './accounts-calls/get-positions/get-positions';
+import { _getServerTime } from './accounts-calls/get-server-time/get-server-time';
+import { _getCandles } from './markets-calls/get-candles/get-candles';
+import { _getEquitySymbol } from './markets-calls/get-equity-symbol/get-equity-symbol';
+import { _getEquitySymbolAll } from './markets-calls/get-equity-symbol/get-equity-symbol-all';
+import { _getEquitySymbolCount } from './markets-calls/get-equity-symbol/get-equity-symbol-count';
+import { _getMarkets } from './markets-calls/get-markets/get-markets';
+import { _getQuotesOptionsByIds } from './markets-calls/get-markets-quotes-options/get-quotes-options-by-ids';
+import { _getQuotesOptionsFilter } from './markets-calls/get-markets-quotes-options/get-quotes-options-filter';
+import { _getMarketsQuotesStrategies } from './markets-calls/get-markets-quotes-strategies/get-markets-quotes-strategies';
+import { _getOptionsById } from './markets-calls/get-options-by-id/get-options-by-id';
+import { _getQuotesByIds } from './markets-calls/get-quotes-by-ids/get-quotes-by-ids';
+import { _getSymbolsByIds } from './markets-calls/get-symbols-by-ids/get-symbols-by-ids';
 
 export const endPoint = {
   accounts: _getAccounts,

@@ -10,7 +10,7 @@ import type {
 import type { ApiCallQ_ } from '../core/next-rate-limiter/queue';
 import { _clientGetApi, _clientPostApi } from '../routes';
 import { _clientAccountGetApi } from '../routes/clientAccountGetApi/_clientAccountGetApi';
-import { _myBalances } from './accounts-calls/get-balances/_myBalances';
+import { _myBalances } from './accounts-calls/get-balances/my-balances';
 import { endPoint } from './apix';
 
 endPoint;

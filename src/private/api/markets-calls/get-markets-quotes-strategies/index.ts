@@ -1,1 +1,1 @@
-export { _getMarketsQuotesStrategies } from './_getMarketsQuotesStrategies';
+export { _getMarketsQuotesStrategies } from './get-markets-quotes-strategies';
