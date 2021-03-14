@@ -52,7 +52,4 @@ nohup.out
 .cache
 .npmrc
 .history
-.history/
-/.history/
-/.history
 commmit-text.txt
