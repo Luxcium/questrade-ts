@@ -4,7 +4,7 @@ import type {
   ClientResponse,
 } from '../../../resources/side-effects/types';
 import type { Credentials } from '../../../typescript';
-import { remainingRequests } from '../requestPerSecondLimit';
+import { remainingRequests } from '../next-rate-limiter';
 
 function _updateCredentials(
   _config: ClientRequestConfig,

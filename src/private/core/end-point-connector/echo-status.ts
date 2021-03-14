@@ -1,7 +1,7 @@
 import { echo, tablelog } from '../../../resources/side-effects';
 import type { ClientResponse } from '../../../resources/side-effects/types';
 import type { Credentials } from '../../../typescript';
-import { remaningTimeString } from '../requestPerSecondLimit';
+import { remaningTimeString } from '../next-rate-limiter/remaning-time-string';
 
 function _echoStatus(response: ClientResponse<any>, credentials?: Credentials) {
   // iNFO: ECHO STATUS ON ERROR Block Start ******************************
