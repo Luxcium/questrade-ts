@@ -1,6 +1,6 @@
 import { GetSymbolItemsList } from '../../typescript';
 import { mapping, promiseOf } from '../../utils';
-import { EquityMapper } from './EquityMapper';
+import { EquityMapper } from './equity-mapper';
 
 export const getIdsAndSymbolsList: GetSymbolItemsList = async ({
   equityList,
@@ -24,5 +24,3 @@ export const getIdsAndSymbolsList: GetSymbolItemsList = async ({
     mapper,
   });
 };
-
-

@@ -1,7 +1,7 @@
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
 import { EquitySymbolDocumentModel } from '../../schema/equity-symbol';
 import { IEquitySymbol } from '../../typescript';
-import { saveMongo } from './saveMongo';
+import { saveMongo } from './save-mongo';
 
 export function equitySymbolDbSave(apiCallQ: SimpleQueue) {
   return async (symbItem: IEquitySymbol) => {

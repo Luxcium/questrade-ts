@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
-import { saveMongo } from '../code/saveMongo';
+import { saveMongo } from '../code/save-mongo';
 
 /*
 mapping

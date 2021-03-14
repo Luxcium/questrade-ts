@@ -2,7 +2,7 @@ import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
 import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import { StockSymbol } from '../../schema/stock-symbol';
 import { IEquitySymbol, IStockSymbol } from '../../typescript';
-import { saveMongo_b } from './saveMongo_b';
+import { saveMongo } from './save-mongo';
 
 // export async function step0(
 //   list: Promise<
@@ -48,7 +48,7 @@ export async function step4(
 
           apiCallQ.addToQueue({
             config,
-            fn: saveMongo_b,
+            fn: saveMongo,
           });
 
           return uniqueSymbol;

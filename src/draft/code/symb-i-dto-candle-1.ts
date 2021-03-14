@@ -1,5 +1,5 @@
 import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
-import { candlesMap } from './candlesMap';
+import { candlesMap } from './candles-map';
 
 
 export function symbIDtoCandle(qtApi: IQuestradeAPIv2_0) {

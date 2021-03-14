@@ -1,7 +1,7 @@
 /* eslint-disable new-cap */
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
 import { echo } from '../../resources/side-effects';
-import { mogooseConnect } from '../code/mogooseConnect';
+import { mogooseConnect } from '../code/mogoose-connect';
 import { SCIENTIA_ES_LUX_PRINCIPIUM } from './SCIENTIA_ES_LUX_PRINCIPIUM';
 
 export const once = { onlyOnceMain: true, onlyOnceMongoose: 0 };

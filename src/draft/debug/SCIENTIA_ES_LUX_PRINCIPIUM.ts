@@ -2,10 +2,10 @@ import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
 import { StockSymbol } from '../../schema/stock-symbol';
 import { IStockSymbol, xIdsAndSymbList } from '../../typescript';
 import { getSnP500List, mapping } from '../../utils';
-import { getEquitySymbList } from '../code/getEquitySymbolsList';
-import { getSymbol } from '../code/getSymbol';
-import { mainRedis } from '../code/mainRedis';
-import { getIdsAndSymbolsList } from '../code/willGetSymbolIdAndFirstSymbol';
+import { getEquitySymbList } from '../code/get-equity-symbols-list';
+import { getSymbol } from '../code/get-symbol';
+import { mainRedis } from '../code/main-redis';
+import { getIdsAndSymbolsList } from '../code/will-get-symbol-id-and-first-symbol';
 import { saveValueToDB } from './saveValueToDB';
 
 export async function SCIENTIA_ES_LUX_PRINCIPIUM(dbCallQ: SimpleQueue) {

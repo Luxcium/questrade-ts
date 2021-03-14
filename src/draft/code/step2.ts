@@ -1,7 +1,7 @@
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
 import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import { EquitySymbolDocumentModel } from '../../schema/equity-symbol';
-import { saveMongo } from './saveMongo';
+import { saveMongo } from './save-mongo';
 
 export async function step2(
   qtApi: IQuestradeAPIv2_0,

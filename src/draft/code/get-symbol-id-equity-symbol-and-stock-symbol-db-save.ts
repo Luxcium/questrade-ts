@@ -1,7 +1,7 @@
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
 import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import { IEquitySymbol } from '../../typescript';
-import { searchAndStockSymbolDbSave } from './equitySymbolAndStockSymbolMongoSave';
+import { searchAndStockSymbolDbSave } from './equity-symbol-and-stock-symbol-mongo-save';
 
 export async function getSymbolIDSearchAndStockSymbolDbSave(
   qtApi: IQuestradeAPIv2_0,

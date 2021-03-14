@@ -2,7 +2,7 @@ import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
 import { IStockSymbol } from '../../typescript';
 import { StockSymbol } from '../../schema/stock-symbol';
 import { promiseOf } from '../../utils';
-import { saveMongo } from './saveMongo';
+import { saveMongo } from './save-mongo';
 
 export function stockSymbolDbSave(apiCallQ: SimpleQueue) {
   return async (symbol: IStockSymbol[] | Promise<IStockSymbol[]>) => {
