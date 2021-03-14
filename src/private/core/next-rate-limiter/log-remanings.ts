@@ -1,5 +1,5 @@
 import type { ITimeRateLimiter } from '../../../typescript/ITimeRateLimiter';
-import { remaningTimeString } from './remaningTimeString';
+import { remaningTimeString } from './remaning-time-string';
 
 // cONSOLE: using console info is a sideEffect and will be flagged
 

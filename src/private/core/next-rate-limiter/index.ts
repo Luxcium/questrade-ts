@@ -1,8 +1,8 @@
 export { requestPerSecondLimiter } from './core_limiter';
-export { logData as logData2 } from './logData';
-export { logRemanings as logRemanings2 } from './logRemanings';
-export { remainingRequests as remainingRequests2 } from './remainingRequests';
-export { remaningTimeString as remaningTimeString2 } from './remaningTimeString';
+export { logData as logData2 } from './log-data';
+export { logRemanings as logRemanings2 } from './log-remanings';
+export { remainingRequests as remainingRequests2 } from './remaining-requests';
+export { remaningTimeString as remaningTimeString2 } from './remaning-time-string';
 export {
   epochMs,
   epochSec,
