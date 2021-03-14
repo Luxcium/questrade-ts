@@ -89,6 +89,7 @@ export type {
   QuestradeApi,
 } from './QuestradeApi';
 export type { Ŋ, RateLimiterOptions } from './RateLimiterOptions';
+export type { FnSaveMongo } from './FnSaveMongo';
 export type { SymbolList } from './SymbolList';
 export type { UrlDataAndHashes } from './UrlAndDataHashes';
 export { VebosityLevel } from './verbosity-levels';

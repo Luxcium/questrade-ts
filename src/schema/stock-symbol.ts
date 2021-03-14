@@ -10,7 +10,10 @@ import {
 } from 'questrade-api-enumerations';
 
 import { MinTick } from '../typescript';
-import { OptionContractDeliverables } from '../typescript/IStockSymbol';
+import {
+  IStockSymbol,
+  OptionContractDeliverables,
+} from '../typescript/IStockSymbol';
 
 const symbolSchema = new mongoose.Schema<ISymbolDocument>({
   MinTickData: { minTick: Number, pivot: Number },
@@ -78,12 +81,12 @@ export const StockSymbol: Model<ISymbolDocument> = mongoose.model(
   'StockSymbol',
   symbolSchema,
 );
-export interface ISymbolDocument extends Document {
+export interface ISymbolDocument extends Document, IStockSymbol {
   averageVol20Days?: number;
   averageVol3Months?: number;
   cashInLieu?: number;
   count?: number;
-  currency?: Currency | string;
+  currency?: Currency;
   description?: string;
   dividend?: number;
   dividendDate?: Date | string;

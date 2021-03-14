@@ -5,41 +5,48 @@ import { getSnP500List, mapping } from '../../utils';
 import { getEquitySymbList } from '../code/getEquitySymbolsList';
 import { getSymbol } from '../code/getSymbol';
 import { mainRedis } from '../code/mainRedis';
-import { saveMongo } from '../code/saveMongo';
 import { getIdsAndSymbolsList } from '../code/willGetSymbolIdAndFirstSymbol';
+import { saveValueToDB } from './saveValueToDB';
 
-export async function SCIENTIA_ES_LUX_PRINCIPIUM(apiCallQ: SimpleQueue) {
+export async function SCIENTIA_ES_LUX_PRINCIPIUM(dbCallQ: SimpleQueue) {
   // activate the api for later use
+  // ** // ** // ** // ** // ** //
   const { qtApi } = await mainRedis();
-  const equityList = getEquitySymbList({ qtApi, symbolList: getSnP500List });
-  const idsAndSymbList: xIdsAndSymbList = getIdsAndSymbolsList({
-    ...(await equityList),
+  // ** // ** // ** // ** // ** //
+  const step0 = getEquitySymbList({ qtApi, symbolList: getSnP500List });
+  // ** // ** // ** // ** // ** //
+  const step1: xIdsAndSymbList = getIdsAndSymbolsList({
+    ...(await step0),
   });
 
-  const stockSymbolList = await Promise.all(
-    (
-      await Promise.all(
-        await mapping({
-          list: idsAndSymbList,
-          mapper: ({ symbolId }: { symbolId: number }) =>
-            getSymbol({ qtApi, symbolId }),
-        }),
-      )
-    ).map(async (stockSymbol: IStockSymbol) => {
-      const config = { Model: StockSymbol, value: stockSymbol };
+  // ** // ** // ** // ** // ** //
+  const step2 = ({ symbolId }: { symbolId: number }) =>
+    getSymbol({ qtApi, symbolId });
+  // ** // ** // ** // ** // ** //
 
-      apiCallQ.addToQueue({
-        config,
-        fn: saveMongo,
-      });
+  const step3 = await mapping({ list: step1, mapper: step2 });
+  // ** // ** // ** // ** // ** //
+  // ** // ** // ** // ** // ** //
+  const step5 = async (stockSymbol: IStockSymbol) => {
+    // const config = { Model: StockSymbol, value: stockSymbol };
 
-      return stockSymbol;
-    }),
-  );
+    saveValueToDB(dbCallQ)({
+      Model: StockSymbol,
+      value: stockSymbol,
+    });
 
-  console.log(stockSymbolList);
+    return stockSymbol;
+  };
 
-  return stockSymbolList;
+  const step6 = await fnStep6(step3);
+  const step7 = fnStep7(step5, step6);
+  const step8 = await fnStep8(step7);
+  console.log(step8);
 
-  // return getSymbolIDSearchAndStockSymbolDbSave(qtApi, apiCallQ, idsAndSymbList);
+  return step8;
 }
+// return getSymbolIDSearchAndStockSymbolDbSave(qtApi, apiCallQ, idsAndSymbList);
+
+const fnStep7 = (step5: any, step6: any) => step6.map(step5);
+const fnStep6 = async (step7: any) => Promise.all(step7);
+const fnStep8 = fnStep6;
