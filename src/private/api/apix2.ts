@@ -9,7 +9,7 @@ import type {
 } from '../../typescript';
 import type { ApiCallQ_ } from '../core/next-rate-limiter/queue';
 import { _clientGetApi, _clientPostApi } from '../routes';
-import { _clientAccountGetApi } from '../routes/clientAccountGetApi/_clientAccountGetApi';
+import { _clientAccountGetApi } from '../routes/client-account-get-api/client-account-get-api';
 import { _myBalances } from './accounts-calls/get-balances/my-balances';
 import { endPoint } from './apix';
 
