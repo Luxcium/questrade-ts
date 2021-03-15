@@ -1,6 +1,6 @@
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
+import { StockSymbolModel } from '../../schema/stock-symbol';
 import { IStockSymbol } from '../../typescript';
-import { StockSymbol } from '../../schema/stock-symbol';
 import { promiseOf } from '../../utils';
 import { saveMongo } from './save-mongo';
 
@@ -10,7 +10,7 @@ export function stockSymbolDbSave(apiCallQ: SimpleQueue) {
 
     return Promise.all(
       symbol_.map(async (uniqueSymbol: IStockSymbol) => {
-        const config = { Model: StockSymbol, value: uniqueSymbol };
+        const config = { Model: StockSymbolModel, value: uniqueSymbol };
 
         await apiCallQ.addToQueue({
           config,

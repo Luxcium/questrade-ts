@@ -1,6 +1,6 @@
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
 import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
-import { StockSymbol } from '../../schema/stock-symbol';
+import { StockSymbolModel } from '../../schema/stock-symbol';
 import { IEquitySymbol, IStockSymbol } from '../../typescript';
 import { saveMongo } from './save-mongo';
 
@@ -44,7 +44,7 @@ export async function step4(
         const stockIds = [symbId];
         const symbol = await qtApi.getSymbols.byStockIds(stockIds);
         symbol.map(async (uniqueSymbol: IStockSymbol) => {
-          const config = { Model: StockSymbol, value: uniqueSymbol };
+          const config = { Model: StockSymbolModel, value: uniqueSymbol };
 
           apiCallQ.addToQueue({
             config,

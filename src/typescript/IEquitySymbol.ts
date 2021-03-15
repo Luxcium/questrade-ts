@@ -1,16 +1,18 @@
 import { Currency } from 'questrade-api-enumerations';
 
-export interface IEquitySymbol {
+import { ISymbolInfo } from '.';
+
+export interface IEquitySymbol extends ISymbolInfo {
+  all?: IEquitySymbol[];
+  count?: number;
+  currency: Currency;
+  description: string;
+  isQuotable: boolean;
+  isTradable: boolean;
+  listingExchange: string;
+  securityType: string;
   symbol: string;
   symbolId: number;
-  description: string;
-  securityType: string;
-  listingExchange: string;
-  isTradable: boolean;
-  isQuotable: boolean;
-  currency: Currency;
-  count?: number;
-  all?: IEquitySymbol[];
 }
 
 export interface IEquitySymbolResults {

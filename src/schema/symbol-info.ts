@@ -6,7 +6,6 @@ import { Currency } from 'questrade-api-enumerations';
 import { ISymbolInfo } from '../typescript';
 
 const symbolInfoSchema = new mongoose.Schema<ISymbolInfoDocument>({
-  _id: Number,
   currency: String,
   description: String,
   listingExchange: String,
@@ -17,7 +16,7 @@ const symbolInfoSchema = new mongoose.Schema<ISymbolInfoDocument>({
   valid: Boolean,
 });
 
-export const SymbolInfo: Model<ISymbolInfoDocument> = mongoose.model(
+export const SymbolInfoModel: Model<ISymbolInfoDocument> = mongoose.model(
   'SymbolInfo',
   symbolInfoSchema,
 );

@@ -15,7 +15,7 @@ import {
   OptionContractDeliverables,
 } from '../typescript/IStockSymbol';
 
-const symbolSchema = new mongoose.Schema<ISymbolDocument>({
+const symbolSchema = new mongoose.Schema<IStockSymbolDocument>({
   MinTickData: { minTick: Number, pivot: Number },
   UnderlyingMultiplierPair: {
     multiplier: Number,
@@ -77,11 +77,11 @@ const symbolSchema = new mongoose.Schema<ISymbolDocument>({
 });
 
 // EquitySymbolResult
-export const StockSymbol: Model<ISymbolDocument> = mongoose.model(
+export const StockSymbolModel: Model<IStockSymbolDocument> = mongoose.model(
   'StockSymbol',
   symbolSchema,
 );
-export interface ISymbolDocument extends Document, IStockSymbol {
+export interface IStockSymbolDocument extends Document, IStockSymbol {
   averageVol20Days?: number;
   averageVol3Months?: number;
   cashInLieu?: number;

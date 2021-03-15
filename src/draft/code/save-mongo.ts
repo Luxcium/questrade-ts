@@ -12,15 +12,11 @@ export const saveMongo: FnSaveMongo = async <
   serverTime?: Date;
   value: T;
 }): Promise<void | D> => {
-  const { value, Model, serverTime = new Date(), id = Number.NaN } = config;
+  const { value, Model, serverTime = new Date() } = config;
 
   // console.log('will process');
 
   const doc = new Model({ ...value, serverTime });
-  if (id) {
-    doc._id = id as any;
-    doc.id = id;
-  }
 
   return doc
     .save()

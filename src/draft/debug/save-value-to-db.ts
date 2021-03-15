@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
+import { SymbolInfoModel } from '../../schema/symbol-info';
+import { IEquitySymbol } from '../../typescript';
 import { saveMongo } from '../code/save-mongo';
 
 /*
@@ -15,21 +17,28 @@ const mapped =  mappable.map(mapper)
 export function mapValueToDB(simpleQueue: SimpleQueue) {
   return <T, D extends mongoose.Document<T>>(Model: mongoose.Model<D>) => (
     value: T,
-  ) => (id?: number) => saveValueToDB(simpleQueue)({ Model, id, value });
+  ) => saveValueToDB(simpleQueue)({ Model, value });
+}
+
+export function symbolInfoDBMapper(dbCallCue: SimpleQueue) {
+  return async ({ symbolItem }: { symbolItem: IEquitySymbol }) => {
+    return saveValueToDB(dbCallCue)({
+      Model: SymbolInfoModel,
+      value: symbolItem,
+    });
+  };
 }
 
 export function saveValueToDB(simpleQueue: SimpleQueue) {
   return <T, D extends mongoose.Document<T>>({
-    id,
     Model,
     value,
   }: {
-    id?: number;
     Model: mongoose.Model<D>;
     value: T;
   }) =>
-    simpleQueue.addToQueue({
-      config: { Model, id, value },
+    simpleQueue.addToQueue<D>({
+      config: { Model, value },
       fn: saveMongo,
     });
 }

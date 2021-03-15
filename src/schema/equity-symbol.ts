@@ -3,7 +3,7 @@ import type { Document, Model } from 'mongoose';
 import mongoose from 'mongoose';
 import { Currency } from 'questrade-api-enumerations';
 
-const equitySymbolSchema = new mongoose.Schema<IEquitySymbolDocumentModel>({
+const equitySymbolSchema = new mongoose.Schema<IEquitySymbolDocument>({
   count: Number,
   currency: String,
   description: String,
@@ -16,14 +16,14 @@ const equitySymbolSchema = new mongoose.Schema<IEquitySymbolDocumentModel>({
   symbolId: Number,
 });
 
-export const EquitySymbolDocumentModel: Model<IEquitySymbolDocumentModel> = mongoose.model(
+export const EquitySymbolModel: Model<IEquitySymbolDocument> = mongoose.model(
   'EquitySymbol',
   equitySymbolSchema,
 );
 
-export interface IEquitySymbolDocumentModel extends Document {
-  all?: IEquitySymbolDocumentModel[];
-  count?: number;
+export interface IEquitySymbolDocument extends Document {
+  // all?: IEquitySymbolDocument[];
+  // count?: number;
   currency: Currency;
   description: string;
   isQuotable: boolean;
