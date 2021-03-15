@@ -26,9 +26,6 @@ docs
 # Compiled binary addons (http://nodejs.org/api/addons.html)
 out
 build
-!dist
-!/dist/*.tgz
-!*.tgz
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
@@ -43,14 +40,19 @@ keys
 *.env
 
 
-# icon template dir
-!**/material-dir-icons/**
-!**/material-dir-icons/**/*
-!misc/material-dir-icons/**/*
-!misc/dirs-material-icon-theme-PKief-4.5.0/**/*
-!**/dirs-material-icon-theme-PKief-4.5.0/**/*.*
 nohup.out
 .cache
 .npmrc
 .history
 commmit-text.txt
+
+!dist
+!/dist/*.tgz
+!*.tgz
+
+# icon template dir
+!**/dirs-material-icon-theme-PKief-4.5.0/**/*.*
+!misc/dirs-material-icon-theme-PKief-4.5.0/**/*
+!misc/material-dir-icons/**/*
+!**/material-dir-icons/**/*
+!**/material-dir-icons/**
