@@ -1,5 +1,5 @@
-import { qtAPIv2_0 } from '../../..';
-import type { QuestradeApi } from '../../../typescript';
+import { qtAPIv2_0 } from '../../../..';
+import type { QuestradeApi } from '../../../../typescript';
 
 /* you will need to create your own API key: */
 /* https://login.questrade.com/APIAccess/UserApps.aspx */

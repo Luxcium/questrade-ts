@@ -1,6 +1,6 @@
-import { qtAPIv2_0 } from '../..';
-import { sideEffects } from '../../resources/side-effects';
-import type { StrategyVariantRequest } from '../../typescript';
+import { qtAPIv2_0 } from '../../..';
+import { sideEffects } from '../../../resources/side-effects';
+import type { StrategyVariantRequest } from '../../../typescript';
 
 const { echo, errorLog, getMyToken } = sideEffects;
 

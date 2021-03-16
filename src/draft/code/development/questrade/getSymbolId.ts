@@ -1,5 +1,5 @@
-import { sideEffects } from '../../../resources/side-effects';
-import type { QuestradeApi } from '../../../typescript';
+import { sideEffects } from '../../../../resources/side-effects';
+import type { QuestradeApi } from '../../../../typescript';
 
 const { echo } = sideEffects;
 

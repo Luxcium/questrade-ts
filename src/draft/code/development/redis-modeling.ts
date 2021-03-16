@@ -1,6 +1,6 @@
-import { qtAPIv2_0 } from '../..';
-import { ech0, getMyToken } from '../../resources/side-effects';
-import { redisProxyHandler } from '../../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
+import { qtAPIv2_0 } from '../../..';
+import { ech0, getMyToken } from '../../../resources/side-effects';
+import { redisProxyHandler } from '../../../resources/side-effects/proxies/client/redis/redis-client-proxy-handler-class';
 /*
     tedis: Tedis,
     redisinstance: IoRedis | null,

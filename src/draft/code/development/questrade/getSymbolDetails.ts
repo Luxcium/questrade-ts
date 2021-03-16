@@ -1,4 +1,4 @@
-import type { QuestradeApi } from '../../../typescript';
+import type { QuestradeApi } from '../../../../typescript';
 import { getSymbolId } from './getSymbolId';
 
 export function getSymbolDetails(qtApi: QuestradeApi) {
