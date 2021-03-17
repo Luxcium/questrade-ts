@@ -1,4 +1,3 @@
-import { MaybeList } from '../../functional';
 import { Sectors } from './sectors';
 
 export type SnP500Symbols = string[];
@@ -6,10 +5,10 @@ export type ConstituentsList = SnP500SymbolItem[];
 export type SymbolConstituentLists = [SnP500Symbols, ConstituentsList];
 
 /** Will Provide a MaybeList of Constituent  */
-export type ConstituentProvider = () => Promise<MaybeList<SnP500SymbolItem>>;
+export type ConstituentProvider = () => Promise<SnP500SymbolItem[]>;
 
 /** Will Provide a MaybeList of SymbolString  */
-export type SymbolStringProvider = () => Promise<MaybeList<string>>;
+export type SymbolStringProvider = () => Promise<string[]>;
 
 /** Will Provide an Array or Forked MaybeList of SymbolString  */
 export type SymbolStringArrayProvider = () => Promise<string[]>;

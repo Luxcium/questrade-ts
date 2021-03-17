@@ -33,10 +33,10 @@ export async function SCIENTIA_ES_LUX_PRINCIPIUM(
   // ** ------------------------------------------------------------------------>
 
   const getSymbolMapper = (symbolId: number) => getSymbol({ qtApi, symbolId });
-  const getStockSymbolMapped: Promise<IStockSymbol>[] = await mapping({
-    list: symbolIdsList,
-    mapper: getSymbolMapper,
-  });
+  const getStockSymbolMapped: Promise<IStockSymbol>[] = await mapping(
+    symbolIdsList,
+     getSymbolMapper,
+  );
 
   const stockSymbolAwaited = await getAllPromises(getStockSymbolMapped);
   const dbMapper = <D extends mongoose.Document<unknown>>(
@@ -45,10 +45,9 @@ export async function SCIENTIA_ES_LUX_PRINCIPIUM(
 
   const dbStockSymbolMapper = dbMapper(StockSymbolModel);
   const mappedStockSymbolDocument: Promise<IStockSymbolDocument>[] = await mapping(
-    {
-      list: stockSymbolAwaited,
-      mapper: dbStockSymbolMapper,
-    },
+    stockSymbolAwaited,
+      dbStockSymbolMapper,
+
   );
 
   const awaitedStockSymbolDocument = await getAllPromises(

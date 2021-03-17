@@ -19,8 +19,7 @@ export const getIdsAndSymbolsList: GetSymbolItemsList = async ({
     };
   };
 
-  return mapping({
-    list: equityList_,
+  return mapping(equityList_,
     mapper,
-  });
+  );
 };
