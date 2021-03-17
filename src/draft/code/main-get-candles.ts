@@ -27,7 +27,7 @@ export async function mainGetCandles(
     mapCandleSticks2017,
     mapCandleSticks2016,
     mapCandleSticks2015,
-  ].map(candleSticks => mapping({ list, mapper: candleSticks }));
+  ].map(candleSticks => mapping( list, candleSticks ));
 
   return Promise.all(
     results.map(async result => {

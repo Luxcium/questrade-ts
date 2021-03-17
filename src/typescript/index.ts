@@ -4,6 +4,7 @@ export type { CallBack } from './CallBack';
 export type { Credentials } from './Credentials';
 export type { DateTimeRange } from './DateTimeRange';
 export type { EndPtAccountBaseURL } from './EndPtAccountBaseURL';
+export type { FnSaveMongo } from './FnSaveMongo';
 export type { GetCandelStick } from './GetCandelStick';
 export type { GetEquitySymbol } from './GetEquitySymbol';
 export type { GetSymbolItemsList } from './GetSymbolItemsList';
@@ -75,6 +76,12 @@ export type { ISymbolInfo } from './ISymbolInfo';
 export type { ITime } from './ITime';
 export type { ITimeRateLimiter } from './ITimeRateLimiter';
 export type { LogErrors } from './LogErrors';
+export type {
+  MappableList,
+  MappableListAsync,
+  MapperFunction,
+  MappingFunction,
+} from './MappingFunction';
 export type { ProxyFactory_ } from './Proxy';
 export type {
   DateRange,
@@ -89,9 +96,9 @@ export type {
   QuestradeApi,
 } from './QuestradeApi';
 export type { Ŋ, RateLimiterOptions } from './RateLimiterOptions';
-export type { FnSaveMongo } from './FnSaveMongo';
 export type { SymbolList } from './SymbolList';
 export type { UrlDataAndHashes } from './UrlAndDataHashes';
 export { VebosityLevel } from './verbosity-levels';
 export type { xIdsAndSymbList } from './xIdsAndSymbolsList';
+
 export type Logger = <T = unknown>(...args: T[]) => T[];

@@ -3,6 +3,7 @@
 //   httpHashLoggerClientProxyHandler,
 //   proxyReflexionLoggerFunctionHandler,
 // } from '../resources/proxies';
+import { mappingFunction } from './mapping-function';
 import { helperFunctions } from './void0';
 
 export { HTTP_PROXI_CONNECTOR } from './constants';
@@ -21,7 +22,6 @@ export {
   getSymboIdBy,
   getSymboIdByStockSymbol,
 } from './helpers/get-symbol-id-by-stock-symbol';
-export { mapping } from './mapping';
 export { perSeconds } from './perSeconds';
 export { promiseOf } from './promise-of';
 export { timeoutPromise } from './timeout';
@@ -38,6 +38,8 @@ export {
   setDateRange,
   urlEncodeDateTool,
 } from './timeutil';
+export { mappingFunction };
+export { mappingFunction as mapping };
 export {
   apply,
   compose,
