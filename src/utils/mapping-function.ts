@@ -7,8 +7,11 @@ export const mappingFunction: MappingFunction = async (
 ) => {
   const awaitedList = await promiseOf(mappableList);
 
-  return Promise.all(awaitedList.map(mapperFunction));
+  return Promise.all(awaitedList.map(mapperFunction)) as any;
 };
+
+const someResult = mappingFunction([1, 2, 3], item => item * 2);
+void someResult;
 
 /*
 import { promiseOf } from '.';

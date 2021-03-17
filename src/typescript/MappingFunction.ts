@@ -7,11 +7,11 @@ export interface MappableList<T> {
     thisArg?: any,
   ): R[];
 }
-export type UnwrapPromise<R> = (R extends Promise<infer RR> ? RR : R[])[];
+export type UnwrapPromise<R> = R extends Promise<infer RR> ? RR : R[];
 export type MappingFunction = <T, R>(
   mappableList: MappableListAsync<T>,
   mapperFunction: MapperFunction<T, R>,
 ) => Promise<UnwrapPromise<R>>;
 
-// Promise<Array<R extends Promise<infer RR> ? RR : R[]>>
-// Promise<<R extends Promise<infer P> ? P : R[]>[]>
+// Promise<R extends Promise<infer RR> ? RR : R[]>
+// Promise<R extends Promise<infer P> ? P : R[]>
