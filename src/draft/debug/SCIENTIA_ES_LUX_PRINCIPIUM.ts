@@ -2,16 +2,12 @@ import mongoose from 'mongoose';
 
 import { IQuestradeAPIv2_0 } from '../..';
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
-import {
-  IStockSymbolDocument,
-  StockSymbolModel,
-} from '../../schema/stock-symbol';
-import { IEquitySymbol, IStockSymbol } from '../../typescript';
+import { StockSymbolModel } from '../../schema/stock-symbol';
+import { IEquitySymbol } from '../../typescript';
 import { getSnP500List, mapping } from '../../utils';
 import { getEquitySymbList } from '../code/get-equity-symbols-list';
 import { getSymbol } from '../code/get-symbol';
 import { getIdsAndSymbolsList } from '../code/will-get-symbol-id-and-first-symbol';
-import { getAllPromises } from './getAllPromises';
 import { mapValueToDB } from './save-value-to-db';
 
 export async function SCIENTIA_ES_LUX_PRINCIPIUM(
@@ -33,28 +29,18 @@ export async function SCIENTIA_ES_LUX_PRINCIPIUM(
   // ** ------------------------------------------------------------------------>
 
   const getSymbolMapper = (symbolId: number) => getSymbol({ qtApi, symbolId });
-  const getStockSymbolMapped: Promise<IStockSymbol>[] = await mapping(
-    symbolIdsList,
-     getSymbolMapper,
-  );
-
-  const stockSymbolAwaited = await getAllPromises(getStockSymbolMapped);
+  const getStockSymbolMapped = await mapping(symbolIdsList, getSymbolMapper);
   const dbMapper = <D extends mongoose.Document<unknown>>(
     Model: mongoose.Model<D>,
   ) => mapValueToDB(dbCallCue)(Model);
 
   const dbStockSymbolMapper = dbMapper(StockSymbolModel);
-  const mappedStockSymbolDocument: Promise<IStockSymbolDocument>[] = await mapping(
-    stockSymbolAwaited,
-      dbStockSymbolMapper,
-
+  const mappedStockSymbolDocument = mapping(
+    getStockSymbolMapped,
+    dbStockSymbolMapper,
   );
 
-  const awaitedStockSymbolDocument = await getAllPromises(
-    mappedStockSymbolDocument,
-  );
-
-  void awaitedStockSymbolDocument;
+  void mappedStockSymbolDocument;
 
   // const getStockSymbolMapped: Promise<IStockSymbol>[] = await mapping({
   //   list: idsAndSymbList,
