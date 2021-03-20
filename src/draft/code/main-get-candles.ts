@@ -1,7 +1,7 @@
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
 import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import { CandleWithInfos } from '../../schema/candle-with-infos';
-import { mapping } from '../../utils';
+import { applyListMapping } from '../../utils/mapping-function';
 import { getCandleSticks } from './get-candle-sticks';
 import { saveMongo } from './save-mongo';
 
@@ -27,7 +27,7 @@ export async function mainGetCandles(
     mapCandleSticks2017,
     mapCandleSticks2016,
     mapCandleSticks2015,
-  ].map(candleSticks => mapping( list, candleSticks ));
+  ].map(candleSticks => applyListMapping(list)(candleSticks));
 
   return Promise.all(
     results.map(async result => {

@@ -3,7 +3,7 @@
 //   httpHashLoggerClientProxyHandler,
 //   proxyReflexionLoggerFunctionHandler,
 // } from '../resources/proxies';
-import { mappingFunction } from './mapping-function';
+
 import { helperFunctions } from './void0';
 
 export { HTTP_PROXI_CONNECTOR } from './constants';
@@ -38,8 +38,6 @@ export {
   setDateRange,
   urlEncodeDateTool,
 } from './timeutil';
-export { mappingFunction };
-export { mappingFunction as mapping };
 export {
   apply,
   compose,

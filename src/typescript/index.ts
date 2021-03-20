@@ -77,9 +77,11 @@ export type { ITime } from './ITime';
 export type { ITimeRateLimiter } from './ITimeRateLimiter';
 export type { LogErrors } from './LogErrors';
 export type {
+  CurriedListMapping,
+  CurriedMappingList,
   MappableList,
   MappableListAsync,
-  MapperFunction,
+  MapperFn,
   MappingFunction,
 } from './MappingFunction';
 export type { ProxyFactory_ } from './Proxy';
@@ -96,7 +98,7 @@ export type {
   QuestradeApi,
 } from './QuestradeApi';
 export type { Ŋ, RateLimiterOptions } from './RateLimiterOptions';
-export type { SymbolList } from './SymbolList';
+export type { StockTickerList } from './StockTickerList';
 export type { UrlDataAndHashes } from './UrlAndDataHashes';
 export { VebosityLevel } from './verbosity-levels';
 export type { xIdsAndSymbList } from './xIdsAndSymbolsList';

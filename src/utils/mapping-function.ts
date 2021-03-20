@@ -1,21 +1,30 @@
-import { MappingFunction } from '../typescript';
+import {
+  CurriedListMapping,
+  CurriedMappingList,
+  MappingFunction,
+} from '../typescript';
 import { promiseOf } from '.';
 
-export const mappingFunction: MappingFunction = async (
+const mappingFunction: MappingFunction = async (
   mappableList,
   mapperFunction,
 ) => {
   const awaitedList = await promiseOf(mappableList);
+  const awaitedItems =  await  Promise.all(awaitedList)
+  const returnValue = Promise.all(awaitedItems.flatMap(mapperFunction));
+  void returnValue;
 
-  return Promise.all(awaitedList.map(mapperFunction)) as any;
+  return returnValue; // as any;
 };
 
-const someResult = mappingFunction([1, 2, 3], item => item * 2);
-void someResult;
+export const applyMappingList: CurriedMappingList = mapFn => async mList =>
+ Promise.all(await mappingFunction(mList, mapFn));
+
+export const applyListMapping: CurriedListMapping = mList => async mapFn =>
+  Promise.all(await mappingFunction(mList, mapFn));
 
 /*
 import { promiseOf } from '.';
-
 export async function mapping<T, R>({
   list,
   mapper,

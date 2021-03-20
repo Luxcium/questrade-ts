@@ -1,12 +1,12 @@
 import { IQuestradeAPIv2_0 } from '..';
-import { IEquitySymbol, SymbolList } from '.';
+import { IEquitySymbol, StockTickerList } from '.';
 
 export type GetEquitySymbol = ({
   qtApi,
-  symbolList,
+  stockTickerList,
 }: {
   qtApi: IQuestradeAPIv2_0;
-  symbolList: SymbolList | (() => SymbolList);
+  stockTickerList: StockTickerList;
 }) => Promise<{
   equityList: IEquitySymbol[][];
 }>;

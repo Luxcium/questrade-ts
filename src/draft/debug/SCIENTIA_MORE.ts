@@ -12,21 +12,21 @@ import {
 import { ISymbolInfoDocument, SymbolInfoModel } from '../../schema/symbol-info';
 import { IEquitySymbol, IStockSymbol, xIdsAndSymbList } from '../../typescript';
 import { getSnP500List, promiseOf } from '../../utils';
-import { getEquitySymbList } from '../code/get-equity-symbols-list';
+import { getEquitySymbolList } from '../code/get-equity-symbols-list';
 import { getSymbol } from '../code/get-symbol';
 import { mainRedis } from '../code/main-redis';
-import { getIdsAndSymbolsList } from '../code/will-get-symbol-id-and-first-symbol';
+import { getIDsAndSymbolsList } from '../code/will-get-symbol-id-and-first-symbol';
 import { mapValueToDB, saveValueToDB } from './save-value-to-db';
 
 export async function SCIENTIA_ES_LUX_PRINCIPIUM(dbCallCue: SimpleQueue) {
   const { qtApi } = await mainRedis();
   // const qtSymbolList = getEquitySymbList({ qtApi, symbolList: getSnP500List });
-  const qtSymbolList = getEquitySymbList({
+  const qtSymbolList = getEquitySymbolList({
     qtApi,
-    symbolList: () => getSnP500List({ endIndex: 5, startIndex: 0 }),
+    stockTickerList: () => getSnP500List({ endIndex: 5, startIndex: 0 }),
   });
 
-  const idsAndSymbList: xIdsAndSymbList = getIdsAndSymbolsList({
+  const idsAndSymbList: xIdsAndSymbList = getIDsAndSymbolsList({
     ...(await qtSymbolList),
   });
 

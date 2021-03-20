@@ -844,7 +844,7 @@
   # °@typescript-eslint°
     */
     // "@typescript-eslint/array-type": "error",
-    // "@typescript-eslint/ban-tslint-comment": "error",
+    "@typescript-eslint/ban-tslint-comment": "error",
     // "@typescript-eslint/ban-types": "off",
     // "@typescript-eslint/class-literal-property-style": "error",
     // "@typescript-eslint/consistent-indexed-object-style": "error",
