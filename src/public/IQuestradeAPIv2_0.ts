@@ -19,7 +19,7 @@ import {
   StrategyVariantRequest,
 } from '../typescript';
 
-export interface IQuestradeAPIv2_0 {
+export interface QuestradeAPIv2_0 {
   account: {
     currentAccount: string;
     getActivities(

@@ -3,13 +3,13 @@ import {
   HistoricalDataGranularity,
 } from 'questrade-api-enumerations';
 
-import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
+import { QuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import { echo } from '../../resources/side-effects';
 import { ICandleWithInfos, ISymbolInfo } from '../../typescript';
 import { getFirstStockResult } from './get-first-stock-result';
 import { getServerTime } from './get-server-time';
 
-export function getCandleSticks(qtApi: IQuestradeAPIv2_0) {
+export function getCandleSticks(qtApi: QuestradeAPIv2_0) {
   const serverTime_ = getServerTime(qtApi)();
 
   return (

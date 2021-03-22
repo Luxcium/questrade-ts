@@ -1,4 +1,4 @@
-import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
+import { QuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import { IStockSymbol } from '../../typescript';
 import { promiseOf } from '../../utils';
 
@@ -6,7 +6,7 @@ export async function getSymbol({
   qtApi,
   symbolId,
 }: {
-  qtApi: IQuestradeAPIv2_0;
+  qtApi: QuestradeAPIv2_0;
   symbolId: number | Promise<number>;
 }): Promise<IStockSymbol> {
   // return async (stockId: number | Promise<number>): Promise<IStockSymbol> => {

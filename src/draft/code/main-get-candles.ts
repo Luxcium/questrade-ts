@@ -1,5 +1,5 @@
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
-import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
+import { QuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import { CandleWithInfos } from '../../schema/candle-with-infos';
 import { applyListMapping } from '../../utils/mapping-function';
 import { getCandleSticks } from './get-candle-sticks';
@@ -8,7 +8,7 @@ import { saveMongo } from './save-mongo';
 // -----------------------------------------------------------------------------!!
 
 export async function mainGetCandles(
-  qtApi: IQuestradeAPIv2_0,
+  qtApi: QuestradeAPIv2_0,
   apiCallQ: SimpleQueue,
   list: Promise<string[]>,
 ) {

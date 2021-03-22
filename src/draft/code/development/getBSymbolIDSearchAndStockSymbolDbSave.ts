@@ -1,4 +1,4 @@
-import { IQuestradeAPIv2_0 } from '../../..';
+import { QuestradeAPIv2_0 } from '../../..';
 import { SimpleQueue } from '../../../private/core/next-rate-limiter/simple-queue';
 import { IEquitySymbol } from '../../../typescript';
 
@@ -6,7 +6,7 @@ export function getBSymbolIDSearchAndStockSymbolDbSave({
   qtApi,
   dbSaveQueue,
 }: {
-  qtApi: IQuestradeAPIv2_0;
+  qtApi: QuestradeAPIv2_0;
   dbSaveQueue: SimpleQueue;
 }) {
   return async (

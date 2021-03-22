@@ -1,10 +1,10 @@
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
-import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
+import { QuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import { EquitySymbolModel } from '../../schema/equity-symbol';
 import { saveMongo } from './save-mongo';
 
 export async function step2(
-  qtApi: IQuestradeAPIv2_0,
+  qtApi: QuestradeAPIv2_0,
   apiCallQ: SimpleQueue,
   list: Promise<string[]>,
 ) {

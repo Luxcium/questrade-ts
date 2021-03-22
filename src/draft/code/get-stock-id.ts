@@ -1,7 +1,7 @@
-import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
+import { QuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import { promiseOf } from '../../utils';
 
-export function getStockId(qtApi: IQuestradeAPIv2_0) {
+export function getStockId(qtApi: QuestradeAPIv2_0) {
   return async (
     symbol: string | Promise<string>,
     offset?: number,

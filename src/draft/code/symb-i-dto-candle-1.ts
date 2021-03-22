@@ -1,7 +1,7 @@
-import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
+import { QuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import { candlesMap } from './candles-map';
 
-export function symbIDtoCandle(qtApi: IQuestradeAPIv2_0) {
+export function symbIDtoCandle(qtApi: QuestradeAPIv2_0) {
   return (list: Promise<number>[]) => (startTime: string) => async (
     endTime: string,
   ) => {

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-import { IQuestradeAPIv2_0 } from '../..';
+import { QuestradeAPIv2_0 } from '../..';
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
 import { StockSymbolModel } from '../../schema/stock-symbol';
 import { IEquitySymbol, StockTickerList } from '../../typescript';
@@ -17,7 +17,7 @@ import { mapValueToDB } from './save-value-to-db';
 
 export async function SCIENTIA_ES_LUX_PRINCIPIUM(
   dbCallCue: SimpleQueue,
-  qtApi: IQuestradeAPIv2_0,
+  qtApi: QuestradeAPIv2_0,
 ) {
   // + start with a list of stockTicker
   const stockTickerList: StockTickerList = await getSnP500List({

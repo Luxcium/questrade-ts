@@ -1,5 +1,5 @@
 // import { errorlog } from '../../resources/side-effects';
-import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
+import { QuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import type {
   Credentials,
   Logger,
@@ -41,7 +41,7 @@ export async function questradeApiFactory(
   apiCallQ: ApiCallQ_,
   proxy: ((cred: Credentials) => ProxyFactory_) | null,
   errorlog: Logger = (...error: any[]) => error,
-): Promise<QuestradeApi & IQuestradeAPIv2_0> {
+): Promise<QuestradeApi & QuestradeAPIv2_0> {
   const proxyFactory: ProxyFactory_ | null = proxy ? proxy(credentials) : null;
 
   void proxy;

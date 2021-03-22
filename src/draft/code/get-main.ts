@@ -1,12 +1,12 @@
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
-import { IQuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
+import { QuestradeAPIv2_0 } from '../../public/IQuestradeAPIv2_0';
 import { getSnP500List } from '../../utils';
 import { step2 } from './step2';
 import { step3 } from './step3';
 import { step4 } from './step4';
 
 export async function getMain(
-  qtApi: IQuestradeAPIv2_0,
+  qtApi: QuestradeAPIv2_0,
   apiCallQ: SimpleQueue,
   startIndex: number = 0,
   endIndex?: number,
