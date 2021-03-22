@@ -4,16 +4,17 @@ export type MapperFn<T, R> = (item: T) => R;
 export type MappingFunction = <T, R>(
   mappableList: MappableListAsync<T>,
   mapperFunction: MapperFn<T, R>,
-) => Promise<any>; // Promise<U> // : U extends Promise<infer RR> ? RR : U
-
+) => Promise<(R extends Promise<infer RR> ? RR : never)[]>;
 export type CurriedMappingList = <R, T>(
   mapFn: MapperFn<T, R>,
-) => (mList: MappableListAsync<T>) => Promise<R[]>;
+) => (
+  mList: MappableListAsync<T>,
+) => Promise<(R extends Promise<infer RR> ? RR : never)[]>;
 export type CurriedListMapping = <T>(
   mList: MappableListAsync<T>,
-) => <R>(mapFn: MapperFn<T, R>) => Promise<R[]>;
-
-// Promise<R>
+) => <R>(
+  mapFn: MapperFn<T, R>,
+) => Promise<(R extends Promise<infer RR> ? RR : never)[]>;
 
 export interface MappableList<T> extends Iterable<T> {
   // callback(value: number[], index: number, array: number[][]): string | readonly string[]
@@ -26,7 +27,7 @@ export interface MappableList<T> extends Iterable<T> {
   ): R[];
 }
 
-export type UnwrapAwaitedList<R> = (R extends Promise<infer RR> ? RR : R[])[]; // = U extends Promise<infer P> ? P : U[];
+export type UnwrapAwaitedList<R> = (R extends Promise<infer RR> ? RR : never)[]; // = U extends Promise<infer P> ? P : U[];
 export type UnwrapList<R> = R extends Array<infer P> ? P : R;
 export type X<T> = T;
 export type Xx<T> = X<T>[] & T[];
@@ -45,7 +46,7 @@ export type Z<T> = Promise<Yy<T>> &
 
 export function typeCorrection<U>(
   value: Promise<U>,
-): U extends Promise<infer RR> ? RR : U {
+): U extends Promise<infer RR> ? RR : never {
   return value as any;
 }
 
