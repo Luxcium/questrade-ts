@@ -1,3 +1,3 @@
-export async function promiseOf<V, R = V>(value: V | Promise<V>): Promise<R> {
-  return (Promise.resolve(value) as unknown) as R;
+export async function promiseOf<V>(value: V | Promise<V>): Promise<V> {
+  return Promise.resolve(value);
 }
