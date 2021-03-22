@@ -7,12 +7,12 @@ import {
 export type AcountNumberString = string;
 
 export interface IAccount {
-  type: AccountType;
-  number: AcountNumberString;
-  status: AccountStatus;
-  isPrimary: boolean;
-  isBilling: boolean;
-  clientAccountType: ClientAccountType;
+  readonly type: AccountType;
+  readonly number: AcountNumberString;
+  readonly status: AccountStatus;
+  readonly isPrimary: boolean;
+  readonly isBilling: boolean;
+  readonly clientAccountType: ClientAccountType;
 }
 
 export interface IAccounts {

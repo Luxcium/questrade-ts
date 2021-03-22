@@ -30,7 +30,7 @@ export type {
 } from './IEquitySymbol';
 export type { IExecution, IExecutions } from './IExecutions';
 export type { IMarket, IMarkets } from './IMarkets';
-export type { Methode } from './IMethode';
+export type { Methode } from './Methode';
 export type { IMyBalances } from './IMyBalances';
 export type {
   IFilter,
@@ -71,7 +71,7 @@ export type {
   StrategyVariantRequest,
   VariantId,
   Variants,
-} from './IStrategiesVariants';
+} from './StrategiesVariants';
 export type { ISymbolInfo } from './ISymbolInfo';
 export type { ITime } from './ITime';
 export type { ITimeRateLimiter } from './ITimeRateLimiter';

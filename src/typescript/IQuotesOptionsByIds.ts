@@ -1,97 +1,97 @@
 export interface IOptionsQuotes {
-  quotes: IOptionsQuote[];
+  readonly quotes: IOptionsQuote[];
 }
 export interface IOptionsQuote {
   /** list of Level1 OptionData records. */
-  quotes?: [];
+  readonly quotes?: [];
   /** list of Level1 OptionData records. */
 
-  Level1OptionData?: [];
+  readonly Level1OptionData?: [];
 
   /** underlying name */
-  underlying?: string;
+  readonly underlying?: string;
 
   /** underlying ID */
-  underlyingId?: number;
+  readonly underlyingId?: number;
 
   /** symbol name */
-  symbol?: string;
+  readonly symbol?: string;
 
   /** symbol ID */
-  stockId?: number;
+  readonly stockId?: number;
 
   /** bid price */
-  bidPrice?: number;
+  readonly bidPrice?: number;
 
   /** bid size */
-  bidSize?: number;
+  readonly bidSize?: number;
 
   /** ask price */
-  askPrice?: number;
+  readonly askPrice?: number;
 
   /** ask size */
-  askSize?: number;
+  readonly askSize?: number;
 
   /** last trade price trade hours */
-  lastTradePriceTrHrs?: number;
+  readonly lastTradePriceTrHrs?: number;
 
   /** last trade price */
-  lastTradePrice?: number;
+  readonly lastTradePrice?: number;
 
   /** last trade size */
-  lastTradeSize?: number;
+  readonly lastTradeSize?: number;
 
   /** last trade tick */
-  lastTradeTick?: string;
+  readonly lastTradeTick?: string;
 
   /** last trade time */
-  lastTradeTime?: Date;
+  readonly lastTradeTime?: Date;
 
   /** volume */
-  volume?: number;
+  readonly volume?: number;
 
   /** open price */
-  openPrice?: number;
+  readonly openPrice?: number;
 
   /** high price */
-  highPrice?: number;
+  readonly highPrice?: number;
 
   /** low price */
-  lowPrice?: number;
+  readonly lowPrice?: number;
 
   /** volatility */
-  volatility?: number;
+  readonly volatility?: number;
 
   /** delta */
-  delta?: number;
+  readonly delta?: number;
 
   /** gamma */
-  gamma?: number;
+  readonly gamma?: number;
 
   /** theta */
-  theta?: number;
+  readonly theta?: number;
 
   /** vega */
-  vega?: number;
+  readonly vega?: number;
 
   /** rho */
-  rho?: number;
+  readonly rho?: number;
 
   /** open interest */
-  openInterest?: number;
+  readonly openInterest?: number;
 
   /** how much is data delayed */
-  delay?: number;
+  readonly delay?: number;
 
   /** whether or not the symbol was halted */
-  isHalted?: boolean;
+  readonly isHalted?: boolean;
 
   /** volume Weighted Average Price */
-  VWAP?: number;
+  readonly VWAP?: number;
 }
 
 export interface IQuotesOptionsByIds {
-  byIds?: (optionIds: number[]) => Promise<IOptionsQuotes>;
+  readonly byIds?: (optionIds: number[]) => Promise<IOptionsQuotes>;
 }
 
 export type QuotesOptions = (

@@ -1,19 +1,19 @@
 export interface IPosition {
-  symbol: string;
-  symbolId: number;
-  openQuantity: number;
-  closedQuantity: number;
-  currentMarketValue: number;
-  currentPrice: number;
-  averageEntryPrice: number;
-  dayPnl: number;
-  closedPnl: number;
-  openPnl: number;
-  totalCost: number;
-  isRealTime: boolean;
-  isUnderReorg: boolean;
+  readonly symbol: string;
+  readonly symbolId: number;
+  readonly openQuantity: number;
+  readonly closedQuantity: number;
+  readonly currentMarketValue: number;
+  readonly currentPrice: number;
+  readonly averageEntryPrice: number;
+  readonly dayPnl: number;
+  readonly closedPnl: number;
+  readonly openPnl: number;
+  readonly totalCost: number;
+  readonly isRealTime: boolean;
+  readonly isUnderReorg: boolean;
 }
 
 export interface IPositions {
-  positions: IPosition[];
+  readonly positions: IPosition[];
 }

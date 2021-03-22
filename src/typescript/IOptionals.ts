@@ -6,38 +6,38 @@ import {
 
 export type AccountType = number | string;
 export interface IFilter {
-  optionType: OptionType;
-  underlyingId: number;
-  expiryDate: Date | string;
-  minstrikePrice: number;
-  maxstrikePrice: number;
+  readonly optionType: OptionType;
+  readonly underlyingId: number;
+  readonly expiryDate: Date | string;
+  readonly minstrikePrice: number;
+  readonly maxstrikePrice: number;
 }
 
 interface ITimeStartEnd {
-  startTime?: Date | string;
-  endTime?: Date | string;
+  readonly startTime?: Date | string;
+  readonly endTime?: Date | string;
 }
 interface ITimeStartEndAndInterval extends ITimeStartEnd {
-  interval?: HistoricalDataGranularity | string;
+  readonly interval?: HistoricalDataGranularity | string;
 }
 interface IOrdersOptions {
-  id?: AccountType;
-  startTime?: Date | string;
-  endTime?: Date | string;
-  stateFilter?: OrderStateFilterType;
-  orderId?: number;
+  readonly id?: AccountType;
+  readonly startTime?: Date | string;
+  readonly endTime?: Date | string;
+  readonly stateFilter?: OrderStateFilterType;
+  readonly orderId?: number;
 }
 interface IOptionals extends ITimeStartEndAndInterval, IOrdersOptions {
-  stateFilter?: OrderStateFilterType;
-  id?: string | number;
-  name?: string;
-  names?: string[] | string;
-  offset?: number;
-  prefix?: string | number;
-  interval?: string;
-  ids?: string | number | string[] | number[];
-  filters?: IFilter[];
-  filter?: IFilter;
+  readonly stateFilter?: OrderStateFilterType;
+  readonly id?: string | number;
+  readonly name?: string;
+  readonly names?: string[] | string;
+  readonly offset?: number;
+  readonly prefix?: string | number;
+  readonly interval?: string;
+  readonly ids?: string | number | string[] | number[];
+  readonly filters?: IFilter[];
+  readonly filter?: IFilter;
 }
 
 export type TimeRange = ITimeStartEnd;

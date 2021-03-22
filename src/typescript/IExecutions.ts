@@ -1,56 +1,56 @@
 import { OrderSide } from 'questrade-api-enumerations';
 
 export interface IExecutions {
-  executions: IExecution[];
+  readonly executions: IExecution[];
 }
 
 export interface IExecution {
   /** execution symbol. */
-  symbol: string;
+  readonly symbol: string;
   /** internal symbol identifier */
-  symbolId: number;
+  readonly symbolId: number;
   /** execution quantity. */
-  quantity: number;
+  readonly quantity: number;
 
   /**
    * client side of the order to which execution belongs.
    * See Client Order Side section for all allowed values.
    */
-  side: OrderSide;
+  readonly side: OrderSide;
   /**
    * execution price.
    */
-  price: number;
+  readonly price: number;
   /** internal identifier of the execution. */
-  id: number;
+  readonly id: number;
   /** internal identifier of the order to which the execution belongs. */
-  orderId: number;
+  readonly orderId: number;
   /**
    * internal identifier of the order chain to
    * which the execution belongs.
    */
-  orderChainId: number;
+  readonly orderChainId: number;
   /** identifier of the execution at the market where it originated. */
-  exchangeExecId: string;
+  readonly exchangeExecId: string;
   /** execution timestamp. */
-  timestamp: Date | string;
+  readonly timestamp: Date | string;
   /** manual notes that may have been entered by Trade Desk staff */
-  notes: string;
+  readonly notes: string;
   /** trading venue where execution originated. */
-  venue: string;
+  readonly venue: string;
   /** execution cost (price x quantity). */
-  totalCost: number;
+  readonly totalCost: number;
   /** questrade commission for orders placed with Trade Desk. */
-  orderPlacementCommission: number;
+  readonly orderPlacementCommission: number;
   /** questrade commission. */
-  commission: number;
+  readonly commission: number;
   /** liquidity fee charged by execution venue. */
-  executionFee: number;
+  readonly executionFee: number;
   /** sEC fee charged on all sales of US securities. */
-  secFee: number;
+  readonly secFee: number;
   /** additional execution fee charged by TSX (if applicable). */
-  canadianExecutionFee: number;
+  readonly canadianExecutionFee: number;
   /** internal identifierof the parent order. */
-  parentId: number;
-  legId?: number;
+  readonly parentId: number;
+  readonly legId?: number;
 }

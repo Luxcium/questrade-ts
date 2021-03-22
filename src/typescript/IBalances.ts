@@ -1,47 +1,47 @@
 import { Currency } from 'questrade-api-enumerations';
 
 export interface IBalances {
-  perCurrencyBalances: IBalance[];
-  combinedBalances: IBalance[];
-  sodPerCurrencyBalances: IBalance[];
-  sodCombinedBalances: IBalance[];
+  readonly perCurrencyBalances: IBalance[];
+  readonly combinedBalances: IBalance[];
+  readonly sodPerCurrencyBalances: IBalance[];
+  readonly sodCombinedBalances: IBalance[];
 }
 
 export interface IBalance {
-  currency: Currency | 'USD' | 'CAD';
-  cash: number;
-  marketValue: number;
-  totalEquity: number;
-  buyingPower: number;
-  maintenanceExcess: number;
-  isRealTime: boolean;
+  readonly currency: Currency | 'USD' | 'CAD';
+  readonly cash: number;
+  readonly marketValue: number;
+  readonly totalEquity: number;
+  readonly buyingPower: number;
+  readonly maintenanceExcess: number;
+  readonly isRealTime: boolean;
 }
 
 export interface IBalanceCAD {
-  cash: number;
-  marketValue: number;
-  totalEquity: number;
-  buyingPower: number;
-  maintenanceExcess: number;
-  isRealTime: boolean;
+  readonly cash: number;
+  readonly marketValue: number;
+  readonly totalEquity: number;
+  readonly buyingPower: number;
+  readonly maintenanceExcess: number;
+  readonly isRealTime: boolean;
 }
 export interface IBalanceUSD {
-  cash: number;
-  marketValue: number;
-  totalEquity: number;
-  buyingPower: number;
-  maintenanceExcess: number;
-  isRealTime: boolean;
+  readonly cash: number;
+  readonly marketValue: number;
+  readonly totalEquity: number;
+  readonly buyingPower: number;
+  readonly maintenanceExcess: number;
+  readonly isRealTime: boolean;
 }
 
 export interface ICurencyBalance {
-  CAD: IBalanceCAD;
-  USD: IBalanceUSD;
+  readonly CAD: IBalanceCAD;
+  readonly USD: IBalanceUSD;
 }
 
 export interface Balances {
-  perCurrencyBalances: ICurencyBalance;
-  combinedBalances: ICurencyBalance;
-  sodPerCurrencyBalances: ICurencyBalance;
-  sodCombinedBalances: ICurencyBalance;
+  readonly perCurrencyBalances: ICurencyBalance;
+  readonly combinedBalances: ICurencyBalance;
+  readonly sodPerCurrencyBalances: ICurencyBalance;
+  readonly sodCombinedBalances: ICurencyBalance;
 }

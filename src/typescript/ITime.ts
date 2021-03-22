@@ -1,3 +1,3 @@
 export interface ITime {
-  time: Date;
+  readonly time: Date;
 }

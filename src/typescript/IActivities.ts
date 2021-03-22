@@ -2,37 +2,37 @@ import { Currency } from 'questrade-api-enumerations';
 
 export interface IActivities {
   /** array of activity records */
-  activities: IAccountActivity[];
+  readonly activities: IAccountActivity[];
 }
 export interface IAccountActivity {
   /** trade date */
-  tradeDate: Date | string;
+  readonly tradeDate: Date | string;
   /** transaction date */
-  transactionDate: Date | string;
+  readonly transactionDate: Date | string;
   /** settlement date */
-  settlementDate: Date | string;
+  readonly settlementDate: Date | string;
   /** activity action */
-  action: string;
+  readonly action: string;
   /** symbol name */
-  symbol: string;
+  readonly symbol: string;
   /** symbol ID */
-  stockId: string | number;
+  readonly stockId: string | number;
   /** description */
-  description: string;
+  readonly description: string;
   /** enumeration Currency */
-  currency: Currency;
+  readonly currency: Currency;
   /** the quantity */
-  quantity: number;
+  readonly quantity: number;
   /** the price */
-  price: number;
+  readonly price: number;
   /** gross amount */
-  grossAmount: number;
+  readonly grossAmount: number;
   /** the commission */
-  commission: number;
+  readonly commission: number;
   /** net Amount */
-  netAmount: number;
+  readonly netAmount: number;
   /** activity Type */
-  type: string;
+  readonly type: string;
 }
 
 /*

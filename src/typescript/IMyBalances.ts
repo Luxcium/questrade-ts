@@ -1,64 +1,64 @@
 import { IBalance } from '.';
 
 export interface IMyBalances {
-  perCurrency: {
-    CAD: {
-      startOfDay: IBalance;
-      current: IBalance;
+  readonly perCurrency: {
+    readonly CAD: {
+      readonly startOfDay: IBalance;
+      readonly current: IBalance;
     };
-    USD: {
-      startOfDay: IBalance;
-      current: IBalance;
-    };
-  };
-  combined: {
-    CAD: {
-      startOfDay: IBalance;
-      current: IBalance;
-    };
-    USD: {
-      startOfDay: IBalance;
-      current: IBalance;
+    readonly USD: {
+      readonly startOfDay: IBalance;
+      readonly current: IBalance;
     };
   };
-  current: {
-    perCurrency: {
-      CAD: IBalance;
-      USD: IBalance;
+  readonly combined: {
+    readonly CAD: {
+      readonly startOfDay: IBalance;
+      readonly current: IBalance;
     };
-    combined: {
-      CAD: IBalance;
-      USD: IBalance;
-    };
-  };
-  startOfDay: {
-    combined: {
-      CAD: IBalance;
-      USD: IBalance;
-    };
-    perCurrency: {
-      CAD: IBalance;
-      USD: IBalance;
+    readonly USD: {
+      readonly startOfDay: IBalance;
+      readonly current: IBalance;
     };
   };
-  CAD: {
-    perCurrency: {
-      startOfDay: IBalance;
-      current: IBalance;
+  readonly current: {
+    readonly perCurrency: {
+      readonly CAD: IBalance;
+      readonly USD: IBalance;
     };
-    combined: {
-      startOfDay: IBalance;
-      current: IBalance;
+    readonly combined: {
+      readonly CAD: IBalance;
+      readonly USD: IBalance;
     };
   };
-  USD: {
-    combined: {
-      startOfDay: IBalance;
-      current: IBalance;
+  readonly startOfDay: {
+    readonly combined: {
+      readonly CAD: IBalance;
+      readonly USD: IBalance;
     };
-    perCurrency: {
-      startOfDay: IBalance;
-      current: IBalance;
+    readonly perCurrency: {
+      readonly CAD: IBalance;
+      readonly USD: IBalance;
+    };
+  };
+  readonly CAD: {
+    readonly perCurrency: {
+      readonly startOfDay: IBalance;
+      readonly current: IBalance;
+    };
+    readonly combined: {
+      readonly startOfDay: IBalance;
+      readonly current: IBalance;
+    };
+  };
+  readonly USD: {
+    readonly combined: {
+      readonly startOfDay: IBalance;
+      readonly current: IBalance;
+    };
+    readonly perCurrency: {
+      readonly startOfDay: IBalance;
+      readonly current: IBalance;
     };
   };
 }

@@ -1,25 +1,25 @@
 export interface IOptionChains {
-  optionChain: IOptionChain[];
+  readonly optionChain: IOptionChain[];
 }
 
 export interface IOptionChain {
-  expiryDate: string;
-  description: string;
-  listingExchange: string;
-  optionExerciseType: string;
-  chainPerRoot: IChainPerRoot[];
+  readonly expiryDate: string;
+  readonly description: string;
+  readonly listingExchange: string;
+  readonly optionExerciseType: string;
+  readonly chainPerRoot: IChainPerRoot[];
 }
 
 export interface IChainPerRoot {
-  root: string;
+  readonly root: string;
 }
 export interface IChainPerStrike {
-  strikePrice: number;
-  callSymbolId: number;
-  putSymbolId: number;
+  readonly strikePrice: number;
+  readonly callSymbolId: number;
+  readonly putSymbolId: number;
 }
 export interface IChainPerStrikePrice {
-  chainPerStrike: IChainPerStrike[];
-  multiplier: number;
-  chainPerStrikePrice: IChainPerStrike[];
+  readonly chainPerStrike: IChainPerStrike[];
+  readonly multiplier: number;
+  readonly chainPerStrikePrice: IChainPerStrike[];
 }

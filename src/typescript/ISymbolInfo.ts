@@ -1,12 +1,12 @@
 import { Currency } from 'questrade-api-enumerations';
 
 export interface ISymbolInfo {
-  currency: Currency;
-  description: string;
-  listingExchange: string;
-  securityType: string;
-  serverTime: Date;
-  symbolID: number;
-  symbolName: string;
-  valid: boolean;
+  readonly currency: Currency;
+  readonly description: string;
+  readonly listingExchange: string;
+  readonly securityType: string;
+  readonly serverTime: Date;
+  readonly symbolID: number;
+  readonly symbolName: string;
+  readonly valid: boolean;
 }

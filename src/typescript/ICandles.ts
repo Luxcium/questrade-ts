@@ -1,25 +1,25 @@
 export interface ICandles {
-  candles: ICandle[];
+  readonly candles: ICandle[];
 }
 
 export interface ICandle {
   /** candlestick start timestamp (in ISO format). */
-  start?: Date | string;
+  readonly start?: Date | string;
   /** candlestick end timestamp (in ISO format). */
-  end?: Date | string;
+  readonly end?: Date | string;
   /** opening price. */
-  open?: number;
+  readonly open?: number;
   /** high price. */
-  high?: number;
+  readonly high?: number;
   /** low price. */
-  low?: number;
+  readonly low?: number;
   /** closing price. */
-  close?: number;
+  readonly close?: number;
   /** trading volume. */
-  volume?: number;
+  readonly volume?: number;
   /** the volume weighted average price (VWAP) */
-  VWAP?: number;
+  readonly VWAP?: number;
   symbolID?: number;
   granularity?: string;
-  // hash: { short: string; long: string };
+  // readonly hash: { short: string; long: string };
 }
