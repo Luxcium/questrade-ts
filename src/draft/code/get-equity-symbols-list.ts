@@ -5,8 +5,7 @@ export const getEquitySymbolList: GetEquitySymbol = async ({
   qtApi,
   stockTickerList,
 }) => {
-  let symbolList_: string[];
-  symbolList_ = await (typeof stockTickerList === 'function'
+  const symbolList_: string[] = await (typeof stockTickerList === 'function'
     ? promiseOf(stockTickerList())
     : promiseOf(stockTickerList));
 

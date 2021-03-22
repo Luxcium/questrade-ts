@@ -10,6 +10,7 @@ import type {
   IAccountActivity,
   IBalances,
   ICandle,
+  IEquitySymbol,
   IExecution,
   IMarket,
   IMyBalances,
@@ -18,9 +19,8 @@ import type {
   IOrder,
   IPosition,
   IQuote,
-  IStrategiesQuotes,
   IStockSymbol,
-  IEquitySymbol,
+  IStrategiesQuotes,
   OptionsFilters,
   StrategyVariantRequest,
 } from '../typescript';

@@ -1,5 +1,20 @@
-export type MapperFn<T, R> = (item: T) => R;
 export type MappableListAsync<T> = MappableList<T> | Promise<MappableList<T>>;
+export type MapperFn<T, R> = (item: T) => R;
+
+export type MappingFunction = <T, R>(
+  mappableList: MappableListAsync<T>,
+  mapperFunction: MapperFn<T, R>,
+) => Promise<any>; // Promise<U> // : U extends Promise<infer RR> ? RR : U
+
+export type CurriedMappingList = <R, T>(
+  mapFn: MapperFn<T, R>,
+) => (mList: MappableListAsync<T>) => Promise<R[]>;
+export type CurriedListMapping = <T>(
+  mList: MappableListAsync<T>,
+) => <R>(mapFn: MapperFn<T, R>) => Promise<R[]>;
+
+// Promise<R>
+
 export interface MappableList<T> extends Iterable<T> {
   // callback(value: number[], index: number, array: number[][]): string | readonly string[]
   flatMap<R>(callback: (value: T) => R): R[];
@@ -10,6 +25,9 @@ export interface MappableList<T> extends Iterable<T> {
     thisArg?: any,
   ): R[];
 }
+
+export type UnwrapAwaitedList<R> = (R extends Promise<infer RR> ? RR : R[])[]; // = U extends Promise<infer P> ? P : U[];
+export type UnwrapList<R> = R extends Array<infer P> ? P : R;
 export type X<T> = T;
 export type Xx<T> = X<T>[] & T[];
 
@@ -25,37 +43,15 @@ export type Z<T> = Promise<Yy<T>> &
   Promise<Promise<X<T>[]>[]> &
   Promise<Promise<T[]>[]>;
 
-// Promise<Promise<IQuote[]>[]>
-// Promise<IQuote[]>[]
-// IQuote[]
-export type UnwrapAwaitedList<U> = U extends Promise<infer P> ? P : U;
-export type UnwrapList<Q> = Q extends Array<infer P> ? P : Q;
-export type MappingFunction = <T, R>(
+export function typeCorrection<U>(
+  value: Promise<U>,
+): U extends Promise<infer RR> ? RR : U {
+  return value as any;
+}
+
+// (U extends Promise<infer RR> ? RR : U)
+
+export type MappingFunctionX = <T, R>(
   mappableList: MappableListAsync<T>,
   mapperFunction: MapperFn<T, R>,
-) => Promise<UnwrapAwaitedList<R[]>>;
-
-export type CurriedMappingList = <R>(
-  mapFn: MapperFn<any, R>,
-) => <T>(mList: MappableListAsync<T>) => Promise<UnwrapAwaitedList<R[]>>;
-export type CurriedListMapping = <T>(
-  mList: MappableListAsync<T>,
-) => <R>(mapFn: MapperFn<T, R>) => Promise<UnwrapAwaitedList<R[]>>;
-// export type UnwrapAwaitedListB<U> = (U extends Promise<infer P> ? P : U)[];
-
-// void function someVoid(unwrapAwaitedListB: UnwrapAwaitedListB<number>) {
-//   return unwrapAwaitedListB;
-// };
-
-// export const mappingFunction: MappingFunction = async (
-//   mappableList,
-//   mapperFunction,
-// ) => {
-//   const awaitedList = await promiseOf(mappableList);
-//   const returnValue = Promise.all(awaitedList.map(mapperFunction));
-//   void returnValue;
-
-//   return returnValue; // as any;
-// };
-
-// mappingFunction([1, 2, 3], item => item * 2);
+) => Promise<UnwrapList<UnwrapAwaitedList<R>>>;

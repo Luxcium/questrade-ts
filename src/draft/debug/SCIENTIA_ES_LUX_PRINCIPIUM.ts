@@ -4,6 +4,7 @@ import { IQuestradeAPIv2_0 } from '../..';
 import { SimpleQueue } from '../../private/core/next-rate-limiter/simple-queue';
 import { StockSymbolModel } from '../../schema/stock-symbol';
 import { IEquitySymbol, StockTickerList } from '../../typescript';
+import { typeCorrection } from '../../typescript/MappingFunction';
 import { getSnP500List } from '../../utils';
 import {
   applyListMapping,
@@ -49,6 +50,8 @@ export async function SCIENTIA_ES_LUX_PRINCIPIUM(
   const candlesMapper = applyMappingList(getCandlesMapper);
   const symbolIDsListMappable = applyListMapping(symbolIDsList);
   const someName1 = symbolIDsListMappable(getQuotesMapper);
+  const someConverted = typeCorrection(someName1);
+  void someConverted;
   const someName2 = symbolIDsListMappable(getSymbolsMapper);
   const someName3 = symbolIDsListMappable(getCandlesMapper);
   // const symbolsMappable = applyMappingList(symbolIDsList);

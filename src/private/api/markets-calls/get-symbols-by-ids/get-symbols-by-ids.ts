@@ -1,6 +1,10 @@
 // import { errorlog } from '../../../../resources/side-effects';
 import type { ProxyHandlerOptions } from '../../../../resources/side-effects/types';
-import type { IStockSymbol, IStockSymbols, Logger } from '../../../../typescript';
+import type {
+  IStockSymbol,
+  IStockSymbols,
+  Logger,
+} from '../../../../typescript';
 import { urlEncode } from '../../../../utils';
 
 // + _getSymbolsByIDs

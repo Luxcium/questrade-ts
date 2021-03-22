@@ -5,20 +5,27 @@ import {
 } from '../typescript';
 import { promiseOf } from '.';
 
+export function awaited<U>(
+  value: Promise<U>,
+): U extends Promise<infer RR> ? RR : U {
+  return value as any;
+}
+
 const mappingFunction: MappingFunction = async (
   mappableList,
   mapperFunction,
 ) => {
   const awaitedList = await promiseOf(mappableList);
-  const awaitedItems =  await  Promise.all(awaitedList)
+  const awaitedItems = await Promise.all(awaitedList);
   const returnValue = Promise.all(awaitedItems.flatMap(mapperFunction));
-  void returnValue;
 
-  return returnValue; // as any;
+  return awaited(returnValue);
+
+  // return returnValue as any;
 };
 
 export const applyMappingList: CurriedMappingList = mapFn => async mList =>
- Promise.all(await mappingFunction(mList, mapFn));
+  Promise.all(await mappingFunction(mList, mapFn));
 
 export const applyListMapping: CurriedListMapping = mList => async mapFn =>
   Promise.all(await mappingFunction(mList, mapFn));

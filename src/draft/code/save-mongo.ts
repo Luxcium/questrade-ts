@@ -13,9 +13,6 @@ export const saveMongo: FnSaveMongo = async <
   value: T;
 }): Promise<void | D> => {
   const { value, Model, serverTime = new Date() } = config;
-
-  // console.log('will process');
-
   const doc = new Model({ ...value, serverTime });
 
   return doc

@@ -55,7 +55,7 @@
     ],
     "@typescript-eslint/comma-dangle": [
       "warn",
-      "always-multiline",
+      "only-multiline",
       {
         "arrays": "always-multiline",
         "objects": "always-multiline",

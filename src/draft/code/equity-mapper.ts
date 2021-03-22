@@ -8,7 +8,7 @@ export type MappedEquity = {
 
 export interface EquityMapper<
   T extends IEquitySymbol[] = IEquitySymbol[],
-  R extends MappedEquity = MappedEquity,
+  R extends MappedEquity = MappedEquity
 > extends MapperFn<T, R> {
   (item: T): R;
 }

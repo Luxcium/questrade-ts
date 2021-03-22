@@ -10,6 +10,7 @@ import {
   IAccountActivity,
   IBalances,
   ICandle,
+  IEquitySymbol,
   IExecution,
   IMarket,
   IOptionChain,
@@ -17,9 +18,8 @@ import {
   IOrder,
   IPosition,
   IQuote,
-  IStrategiesQuotes,
   IStockSymbol,
-  IEquitySymbol,
+  IStrategiesQuotes,
   OptionsFilters,
   StrategyVariantRequest,
 } from '.';
@@ -84,10 +84,7 @@ export interface QtApiOptionChains {
   byStockId(stockId: number): Promise<IOptionChain[]>;
 }
 export interface QtApiSearch {
-  stock(
-    prefix: string,
-    offset?: number | undefined,
-  ): Promise<IEquitySymbol[]>;
+  stock(prefix: string, offset?: number | undefined): Promise<IEquitySymbol[]>;
   allStocks(
     prefix: string,
     offset?: number | undefined,

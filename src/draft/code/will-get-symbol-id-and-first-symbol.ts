@@ -3,7 +3,7 @@ import { promiseOf } from '../../utils';
 import { applyListMapping } from '../../utils/mapping-function';
 
 export const getIDsAndSymbolsList = async <
-  T extends IEquitySymbol[] = IEquitySymbol[],
+  T extends IEquitySymbol[] = IEquitySymbol[]
 >({
   equityList,
 }: {

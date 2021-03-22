@@ -25,6 +25,7 @@ Map
   <Document<IOrder>, Model<Document<IOrder>>, undefined>
 */
 const orderSchema = new mongoose.Schema<IOrderDocument>({
+  OrderLeg: String,
   avgExecPrice: Number,
   canceledQuantity: Number,
   chainId: String,
@@ -41,7 +42,6 @@ const orderSchema = new mongoose.Schema<IOrderDocument>({
   isAnonymous: Boolean,
   isCrossZero: Boolean,
   isInsider: Boolean,
-  OrderLeg: String,
   isLimitOffsetInDollar: Boolean,
   isSignificantShareHolder: Boolean,
   lastExecPrice: Number,

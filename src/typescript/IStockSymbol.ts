@@ -46,7 +46,6 @@ import {
 //   industrySubgroup: string;
 // }
 
-
 export interface IStockSymbols {
   symbols: IStockSymbol[];
 }
