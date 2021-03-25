@@ -1,4 +1,6 @@
-export type MappableListAsync<T> = MappableList<T> | Promise<MappableList<T>>;
+export type MappableListAsync<T> =
+  | (MappableList<T> & Iterable<T>)
+  | Promise<MappableList<T>>;
 export type MapperFn<T, R> = (item: T) => R;
 
 export type MappingFunction = <T, R>(
@@ -18,8 +20,8 @@ export type CurriedListMapping = <T>(
 
 export interface MappableList<T> extends Iterable<T> {
   // callback(value: number[], index: number, array: number[][]): string | readonly string[]
-  flatMap<R>(callback: (value: T) => R): R[];
-  flatMap<R>(callback: (value: T, index: number, array: T[]) => R): R[];
+  // flatMap<R>(callback: (value: T) => R): R[];
+  // flatMap<R>(callback: (value: T, index: number, array: T[]) => R): R[];
   map<R>(callbackfn: (value: T) => R): R[];
   map<R>(
     callbackfn: (value: T, index: number, array: T[]) => R,
@@ -44,6 +46,7 @@ export type Z<T> = Promise<Yy<T>> &
   Promise<Promise<X<T>[]>[]> &
   Promise<Promise<T[]>[]>;
 
+/** @deprecated - Not Required anymore. */
 export function typeCorrection<U>(
   value: Promise<U>,
 ): U extends Promise<infer RR> ? RR : never {

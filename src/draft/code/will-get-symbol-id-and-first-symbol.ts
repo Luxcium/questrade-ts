@@ -1,19 +1,23 @@
-import { IEquitySymbol } from '../../typescript';
+import {
+  IEquitySymbol,
+  MappableList,
+  MappableListAsync,
+} from '../../typescript';
 import { promiseOf } from '../../utils';
 import { applyListMapping } from '../../utils/mapping-function';
 
 export const getIDsAndSymbolsList = async <
-  T extends IEquitySymbol[] = IEquitySymbol[]
+  T extends MappableList<IEquitySymbol> = IEquitySymbol[]
 >({
   equityList,
 }: {
-  equityList: any;
+  equityList: MappableListAsync<T>; // T | Promise<T>;
 }) => {
-  const equityList_ = promiseOf(equityList);
-  const mapper = (listItem: IEquitySymbol[]) => {
+  const equityList_ = await promiseOf(equityList);
+  const mapper = (listItem: T) => {
     const symbolItems = listItem;
     const [symbolItem] = symbolItems;
-    const symbolId = symbolItem?.symbolId || 1;
+    const symbolId = symbolItem?.symbolId || 0;
 
     return {
       symbolId,
