@@ -4,6 +4,12 @@ const { promisify } = require('util');
   "main": "./src/index.ts",
   "type": "module",
  */
+
+const shortEpoch = () =>
+  `${Math.floor(Date.now() / 1000 - 3600 * 24 * 365 * 51) - 8225839}`.padStart(
+    5,
+    0,
+  );
 async function prePublish() {
   const filePath = './package.json';
   const writePath = './dist/package.json';
@@ -27,17 +33,17 @@ async function prePublish() {
 
   void partialPackage;
   const nowDate = new Date();
-  // const date = ;
+
   const newPackage = {
     ...partialPackage,
     name,
     displayName,
     description,
-    version: `${version}+${nowDate.getFullYear()}${
+    version: `${version}+${
       nowDate.getMonth() + 1 > 9
         ? nowDate.getMonth() + 1
         : '0' + (nowDate.getMonth() + 1)
-    }${nowDate.getDate()}c`,
+    }${nowDate.getDate()}-${shortEpoch()}b`,
     author,
     license,
     homepage,
