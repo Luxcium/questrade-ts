@@ -4,7 +4,7 @@ import { configs } from './config';
 import { httpClientGet } from './http-client-get';
 import { validateResponse } from './validate-response';
 
-async function _oAuthHttp(
+export async function _oAuthHttp(
   apiOptions: ApiOptions,
   proxy?: ProxyFactory_ | null,
 ) {
@@ -16,5 +16,3 @@ async function _oAuthHttp(
 
   return writeToken(conf.credentials, validatedResponse);
 }
-
-export { _oAuthHttp };

@@ -1,3 +1,4 @@
+export { sideEffects } from './side-effects';
 export {
   debugLog,
   ech0,

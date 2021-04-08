@@ -7,6 +7,7 @@
 import { helperFunctions } from './void0';
 
 export { HTTP_PROXI_CONNECTOR } from './constants';
+export { convertToCreds } from './convert-to-creds';
 export {
   getDataHash,
   getUDatagram,

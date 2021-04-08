@@ -30,7 +30,6 @@ export type {
 } from './IEquitySymbol';
 export type { IExecution, IExecutions } from './IExecutions';
 export type { IMarket, IMarkets } from './IMarkets';
-export type { Methode } from './Methode';
 export type { IMyBalances } from './IMyBalances';
 export type {
   IFilter,
@@ -63,15 +62,6 @@ export type {
 export type { IRefreshCreds } from './IRefreshCreds';
 export type { IStockSymbol, IStockSymbols, MinTick } from './IStockSymbol';
 export type { IStrategiesQuotes } from './IStrategiesQuotes';
-export type {
-  Leg,
-  Legs,
-  Strategy,
-  StrategyVariant,
-  StrategyVariantRequest,
-  VariantId,
-  Variants,
-} from './StrategiesVariants';
 export type { ISymbolInfo } from './ISymbolInfo';
 export type { ITime } from './ITime';
 export type { ITimeRateLimiter } from './ITimeRateLimiter';
@@ -84,6 +74,7 @@ export type {
   MapperFn,
   MappingFunction,
 } from './MappingFunction';
+export type { Methode } from './Methode';
 export type { ProxyFactory_ } from './Proxy';
 export type {
   DateRange,
@@ -99,6 +90,15 @@ export type {
 } from './QuestradeApi';
 export type { Ŋ, RateLimiterOptions } from './RateLimiterOptions';
 export type { StockTickerList } from './StockTickerList';
+export type {
+  Leg,
+  Legs,
+  Strategy,
+  StrategyVariant,
+  StrategyVariantRequest,
+  VariantId,
+  Variants,
+} from './StrategiesVariants';
 export type { UrlDataAndHashes } from './UrlAndDataHashes';
 export { VebosityLevel } from './verbosity-levels';
 export type { xIdsAndSymbList } from './xIdsAndSymbolsList';

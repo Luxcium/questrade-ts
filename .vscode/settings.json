@@ -110,7 +110,6 @@
   "prettier.printWidth": 80,
   "prettier.proseWrap": "preserve",
   "prettier.trailingComma": "all",
-  "prettier.packageManager": "yarn",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // =====2021=====Luxcium=====Author==Benjamin=Vincent=(Luxcium)=License==MIT====
   // #endregion: PRETTIER                                                       !
@@ -794,7 +793,7 @@
   // "#39C4",
   // "#FB0F",
   // "#FB04",
-  "better-comments.highlightPlainText": false,
+  "better-comments.highlightPlainText": true,
   "better-comments.multilineComments": true,
   "better-comments.tags": [
     // #region: sdsdsdsdsds
@@ -953,433 +952,433 @@
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
-    {
-      // </
-      "tag": "</",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // </>
-      "tag": "</>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // />
-      "tag": "/>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ~-
-      "tag": "~-",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // -~
-      "tag": "-~",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ~@
-      "tag": "~@",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <~
-      "tag": "<~",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <~>
-      "tag": "<~>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ~~
-      "tag": "~~",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <~~
-      "tag": "<~~",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ~~
-      "tag": "~~",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ~>
-      "tag": "~>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ~~
-      "tag": "~~",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ~~>
-      "tag": "~~>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // >=
-      "tag": ">=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <=
-      "tag": "<=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <!--
-      "tag": "<!--",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ##
-      "tag": "##",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ###
-      "tag": "###",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ####
-      "tag": "####",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // |-
-      "tag": "|-",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // -|
-      "tag": "-|",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // |->
-      "tag": "|->",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <-|
-      "tag": "<-|",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // >-|
-      "tag": ">-|",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // |-<
-      "tag": "|-<",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // |=
-      "tag": "|=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // |=>
-      "tag": "|=>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // >-
-      "tag": ">-",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <-
-      "tag": "<-",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <--
-      "tag": "<--",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // -->
-      "tag": "-->",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ->
-      "tag": "->",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // -<
-      "tag": "-<",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // >->
-      "tag": ">->",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // >>-
-      "tag": ">>-",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <<-
-      "tag": "<<-",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <->
-      "tag": "<->",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ->>
-      "tag": "->>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // -<<
-      "tag": "-<<",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <-<
-      "tag": "<-<",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ==>
-      "tag": "==>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // =>
-      "tag": "=>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // =/=
-      "tag": "=/=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // !==
-      "tag": "!==",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // !=
-      "tag": "!=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <==
-      "tag": "<==",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // >>=
-      "tag": ">>=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // =>>
-      "tag": "=>>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // >=>
-      "tag": ">=>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <=>
-      "tag": "<=>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <=<
-      "tag": "<=<",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <<=
-      "tag": "<<=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // =<<
-      "tag": "=<<",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // .-
-      "tag": ".-",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // .=
-      "tag": ".=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // =:=
-      "tag": "=:=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // =!=
-      "tag": "=!=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ==
-      "tag": "==",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ===
-      "tag": "===",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ::
-      "tag": "::",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
+    // {
+    //   // </
+    //   "tag": "</",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // </>
+    //   "tag": "</>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // />
+    //   "tag": "/>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ~-
+    //   "tag": "~-",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // -~
+    //   "tag": "-~",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ~@
+    //   "tag": "~@",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <~
+    //   "tag": "<~",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <~>
+    //   "tag": "<~>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ~~
+    //   "tag": "~~",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <~~
+    //   "tag": "<~~",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ~~
+    //   "tag": "~~",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ~>
+    //   "tag": "~>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ~~
+    //   "tag": "~~",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ~~>
+    //   "tag": "~~>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // >=
+    //   "tag": ">=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <=
+    //   "tag": "<=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <!--
+    //   "tag": "<!--",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ##
+    //   "tag": "##",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ###
+    //   "tag": "###",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ####
+    //   "tag": "####",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // |-
+    //   "tag": "|-",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // -|
+    //   "tag": "-|",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // |->
+    //   "tag": "|->",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <-|
+    //   "tag": "<-|",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // >-|
+    //   "tag": ">-|",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // |-<
+    //   "tag": "|-<",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // |=
+    //   "tag": "|=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // |=>
+    //   "tag": "|=>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // >-
+    //   "tag": ">-",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <-
+    //   "tag": "<-",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <--
+    //   "tag": "<--",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // -->
+    //   "tag": "-->",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ->
+    //   "tag": "->",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // -<
+    //   "tag": "-<",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // >->
+    //   "tag": ">->",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // >>-
+    //   "tag": ">>-",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <<-
+    //   "tag": "<<-",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <->
+    //   "tag": "<->",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ->>
+    //   "tag": "->>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // -<<
+    //   "tag": "-<<",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <-<
+    //   "tag": "<-<",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ==>
+    //   "tag": "==>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // =>
+    //   "tag": "=>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // =/=
+    //   "tag": "=/=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // !==
+    //   "tag": "!==",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // !=
+    //   "tag": "!=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <==
+    //   "tag": "<==",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // >>=
+    //   "tag": ">>=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // =>>
+    //   "tag": "=>>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // >=>
+    //   "tag": ">=>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <=>
+    //   "tag": "<=>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <=<
+    //   "tag": "<=<",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <<=
+    //   "tag": "<<=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // =<<
+    //   "tag": "=<<",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // .-
+    //   "tag": ".-",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // .=
+    //   "tag": ".=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // =:=
+    //   "tag": "=:=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // =!=
+    //   "tag": "=!=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ==
+    //   "tag": "==",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ===
+    //   "tag": "===",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ::
+    //   "tag": "::",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
     // {
     //   // :
     //   "tag": ":",
@@ -1387,55 +1386,55 @@
     //   "strikethrough": false,
     //   "backgroundColor": "transparent"
     // },
-    {
-      // :=
-      "tag": ":=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // :>
-      "tag": ":>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // :<
-      "tag": ":<",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // >:
-      "tag": ">:",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ;;
-      "tag": ";;",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <|
-      "tag": "<|",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <|>
-      "tag": "<|>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
+    // {
+    //   // :=
+    //   "tag": ":=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // :>
+    //   "tag": ":>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // :<
+    //   "tag": ":<",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // >:
+    //   "tag": ">:",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ;;
+    //   "tag": ";;",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <|
+    //   "tag": "<|",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <|>
+    //   "tag": "<|>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
     {
       // |>
       "tag": "|>",
@@ -1443,27 +1442,27 @@
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
-    {
-      // <>
-      "tag": "<>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <$
-      "tag": "<$",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <$>
-      "tag": "<$>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
+    // {
+    //   // <>
+    //   "tag": "<>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <$
+    //   "tag": "<$",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <$>
+    //   "tag": "<$>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
     {
       // $>
       "tag": "$>",
@@ -1471,90 +1470,90 @@
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
-    {
-      // <+
-      "tag": "<+",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // <+>
-      "tag": "<+>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // +>
-      "tag": "+>",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ?=
-      "tag": "?=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // /=
-      "tag": "/=",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // /==
-      "tag": "/==",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // /\
-      "tag": "/\\",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // \/
-      "tag": "\\/",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // __
-      "tag": "__",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // &&
-      "tag": "&&",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // ++
-      "tag": "++",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
-    {
-      // +++
-      "tag": "+++",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
+    // {
+    //   // <+
+    //   "tag": "<+",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // <+>
+    //   "tag": "<+>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // +>
+    //   "tag": "+>",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ?=
+    //   "tag": "?=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // /=
+    //   "tag": "/=",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // /==
+    //   "tag": "/==",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // /\
+    //   "tag": "/\\",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // \/
+    //   "tag": "\\/",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // __
+    //   "tag": "__",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // &&
+    //   "tag": "&&",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // ++
+    //   "tag": "++",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
+    // {
+    //   // +++
+    //   "tag": "+++",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
     {
       // ‽
       "tag": "‽",
@@ -1607,6 +1606,27 @@
     {
       // async
       "tag": "async",
+      "color": "#FB3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // https:
+      "tag": "https:",
+      "color": "#FB3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // https
+      "tag": "https:",
+      "color": "#FB3F",
+      "strikethrough": false,
+      "backgroundColor": "transparent"
+    },
+    {
+      // http:
+      "tag": "http:",
       "color": "#FB3F",
       "strikethrough": false,
       "backgroundColor": "transparent"
@@ -1990,13 +2010,13 @@
     //   "strikethrough": false,
     //   "backgroundColor": "transparent"
     // },
-    {
-      // -
-      "tag": "-",
-      "color": "#9BEA",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
+    // {
+    //   // -
+    //   "tag": "-",
+    //   "color": "#9BEA",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
     {
       "tag": "BUG",
       "color": "#F15",
@@ -2039,12 +2059,12 @@
       "strikethrough": false,
       "backgroundColor": "transparent"
     },
-    {
-      "tag": "LOG",
-      "color": "#9BE",
-      "strikethrough": false,
-      "backgroundColor": "transparent"
-    },
+    // {
+    //   "tag": "LOG",
+    //   "color": "#ACF",
+    //   "strikethrough": false,
+    //   "backgroundColor": "transparent"
+    // },
     // {
     //   "tag": "TODO:",
     //   "color": "#FB3",

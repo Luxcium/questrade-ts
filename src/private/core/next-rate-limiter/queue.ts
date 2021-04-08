@@ -18,9 +18,9 @@ export interface IQNode<T extends QNodesValue> {
 }
 
 // type ApiCallQ_Value = any; .functionKind === 'ClientResponse'
-type QNodes<T extends QNodesValue = QNodesValue> = IQNode<T> | null;
+export type QNodes<T extends QNodesValue = QNodesValue> = IQNode<T> | null;
 
-type QNodesValue = QNodesValue1 | QNodesValue2;
+export type QNodesValue = QNodesValue1 | QNodesValue2;
 export interface QNodesValue1 {
   cb?: any;
   config: ClientRequestConfig;

@@ -1,3 +1,4 @@
+import { validateToken, writeToken } from './auth';
 import {
   client,
   ech0,
@@ -13,8 +14,8 @@ import {
   warnLog,
 } from './default-behaviour';
 
-export { validateToken, writeToken } from './auth';
 export { mkDirP } from './auth/mkdirp';
+export { validateToken, writeToken };
 export {
   client,
   ech0,
@@ -32,6 +33,7 @@ export {
 };
 
 const sideEffects = {
+  auth: { validateToken, writeToken },
   client,
   ech0,
   echo,
