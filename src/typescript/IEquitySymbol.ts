@@ -3,8 +3,8 @@ import { Currency } from 'questrade-api-enumerations';
 import { ISymbolInfo } from '.';
 
 export interface IEquitySymbol extends ISymbolInfo {
-   all?: IEquitySymbol[];
-   count?: number;
+  all?: IEquitySymbol[];
+  count?: number;
   readonly currency: Currency;
   readonly description: string;
   readonly isQuotable: boolean;

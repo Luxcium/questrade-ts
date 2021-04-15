@@ -1,40 +1,40 @@
 export interface IStrategiesQuotes {
   /** variant ID corresponding to variant in request */
-readonly  variantId: number;
+  readonly variantId: number;
 
   /** bid price */
-readonly  bidPrice: number;
+  readonly bidPrice: number;
 
   /** ask price */
-readonly  askPrice: number;
+  readonly askPrice: number;
 
   /** underlying name */
-readonly  underlying: string;
+  readonly underlying: string;
 
   /** underlying ID */
-readonly  underlyingId: number;
+  readonly underlyingId: number;
 
   /** open price */
-readonly  openPrice: number;
+  readonly openPrice: number;
 
   /** volatility */
-readonly  volatility: number;
+  readonly volatility: number;
 
   /** delta */
-readonly  delta: number;
+  readonly delta: number;
 
   /** gamma */
-readonly  gamma: number;
+  readonly gamma: number;
 
   /** theta */
-readonly  theta: number;
+  readonly theta: number;
 
   /** vega */
-readonly  vega: number;
+  readonly vega: number;
 
   /** rho */
-readonly  rho: number;
+  readonly rho: number;
 
   /** whether or not the data is real-time */
-readonly  isRealTime: boolean;
+  readonly isRealTime: boolean;
 }
