@@ -1,6 +1,6 @@
 import {
   _getAccounts,
-  _getServerTime,
+  _getServerTime
 } from '../../../../private/api/accounts-calls';
 import { ApiCallQ_ } from '../../../../private/core/next-rate-limiter/queue';
 import { _clientGetApi } from '../../../../private/routes';
@@ -8,7 +8,7 @@ import { sideEffects } from '../../../../resources';
 import type {
   ClientRequestConfig,
   ClientResponse,
-  ClientStatic,
+  ClientStatic
 } from '../../../../resources/side-effects/types';
 import type {
   AcountNumberString,
@@ -16,7 +16,7 @@ import type {
   Credentials,
   IAccount,
   IRefreshCreds,
-  ProxyFactory_,
+  ProxyFactory_
 } from '../../../../typescript';
 
 export async function _credentialsFactory(
@@ -73,14 +73,15 @@ export async function _credentialsFactory(
         { Status: 'ready', time },
         '\n\n',
       );
-    } else {
-      void infoLog<unknown>(
-        '\n🧐\n🤡 MOCK Server Time:   ',
-        new Date().toISOString(),
-
-        '\n🍦 Status: MOCKING!!!\n🤨',
-      );
     }
+    // else {
+    //   void infoLog<unknown>(
+    //     '\n🧐\n🤡 MOCK Server Time:   ',
+    //     new Date().toISOString(),
+
+    //     '\n🍦 Status: MOCKING!!!\n🤨',
+    //   );
+    // }
   } catch (error) {
     const { errorLog } = sideEffects;
 

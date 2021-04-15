@@ -6,11 +6,15 @@
   */
   "files.exclude": {
     ".directory": true,
+    ".history": true,
     "dist": false,
-    "out": false
+    "out": false,
   },
   "search.exclude": {
+    "src": false,
     "docs": true,
+    ".history": true,
+    ".cache": true,
     "dist": true,
     "out": true
   },
