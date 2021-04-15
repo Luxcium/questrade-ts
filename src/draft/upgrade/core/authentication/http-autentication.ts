@@ -1,39 +1,25 @@
 import { ApiCallQ_ } from '../../../../private/core/next-rate-limiter/queue';
 import { _clientGetApi } from '../../../../private/routes';
 import {
-  echo,
   errorLog,
-  getHttpClient,
   infoLog,
   validateToken,
-  warnLog,
   writeToken,
 } from '../../../../resources/side-effects';
 import type {
   ClientRequestConfig,
   ClientResponse,
-  ClientStatic,
 } from '../../../../resources/side-effects/types';
 import type {
-  AcountNumberString,
   ApiOptions,
   Credentials,
-  IAccount,
   IAccounts,
   IRefreshCreds,
   ITime,
   ProxyFactory_,
 } from '../../../../typescript';
-
-function httpClientGet(proxy?: ProxyFactory_ | null): ClientStatic {
-  if (proxy?.oAuthHttpCredentials && proxy.activate) {
-    echo('Warning: A Proxy is used in oAuth Connector!');
-
-    return proxy.activate({});
-  }
-
-  return getHttpClient();
-}
+import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
+import { httpClientGet } from './httpClientGet';
 
 export async function _oAuthHttp(
   apiOptions: ApiOptions,
@@ -66,31 +52,6 @@ export async function _oAuthHttp(
   const validatedResponse = (await response.data) as ClientResponse<IRefreshCreds>;
 
   return writeToken(conf.credentials, validatedResponse);
-}
-
-export function _getPrimaryAccountNumber(
-  accounts: IAccount[],
-): AcountNumberString {
-  if (!accounts || accounts.length === 0) {
-    // void ;
-
-    return warnLog(
-      "('No account number found') will default to 11111111:",
-      '11111111',
-    );
-  }
-
-  if (accounts.length === 1) {
-    return accounts[0].number;
-  }
-
-  const primary = accounts.filter(account => account.isPrimary);
-
-  if (primary.length > 0) {
-    return primary[0].number;
-  }
-
-  return accounts[0].number;
 }
 
 export async function _credentialsFactory(
