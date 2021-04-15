@@ -1,23 +1,97 @@
-import {
-  _getAccounts,
-  _getServerTime
-} from '../../../../private/api/accounts-calls';
 import { ApiCallQ_ } from '../../../../private/core/next-rate-limiter/queue';
 import { _clientGetApi } from '../../../../private/routes';
-import { sideEffects } from '../../../../resources';
+import {
+  echo,
+  errorLog,
+  getHttpClient,
+  infoLog,
+  validateToken,
+  warnLog,
+  writeToken,
+} from '../../../../resources/side-effects';
 import type {
   ClientRequestConfig,
   ClientResponse,
-  ClientStatic
+  ClientStatic,
 } from '../../../../resources/side-effects/types';
 import type {
   AcountNumberString,
   ApiOptions,
   Credentials,
   IAccount,
+  IAccounts,
   IRefreshCreds,
-  ProxyFactory_
+  ITime,
+  ProxyFactory_,
 } from '../../../../typescript';
+
+function httpClientGet(proxy?: ProxyFactory_ | null): ClientStatic {
+  if (proxy?.oAuthHttpCredentials && proxy.activate) {
+    echo('Warning: A Proxy is used in oAuth Connector!');
+
+    return proxy.activate({});
+  }
+
+  return getHttpClient();
+}
+
+export async function _oAuthHttp(
+  apiOptions: ApiOptions,
+  proxy?: ProxyFactory_ | null,
+) {
+  const creds = await validateToken(apiOptions);
+  const conf: {
+    config: ClientRequestConfig;
+    credentials: Credentials;
+  } = {
+    config: {
+      method: 'GET',
+      params: {
+        grant_type: 'refresh_token',
+        refresh_token: creds.refreshToken,
+      },
+      url: `${creds.credentials.authUrl}/oauth2/token`,
+    },
+    credentials: creds.credentials,
+  };
+
+  const httpClient = httpClientGet(proxy);
+  const response = await httpClient(conf.config);
+  if (!response.data) {
+    throw new Error(
+      '!!! validate credntials Invalid data back from http client !!!',
+    );
+  }
+
+  const validatedResponse = (await response.data) as ClientResponse<IRefreshCreds>;
+
+  return writeToken(conf.credentials, validatedResponse);
+}
+
+export function _getPrimaryAccountNumber(
+  accounts: IAccount[],
+): AcountNumberString {
+  if (!accounts || accounts.length === 0) {
+    // void ;
+
+    return warnLog(
+      "('No account number found') will default to 11111111:",
+      '11111111',
+    );
+  }
+
+  if (accounts.length === 1) {
+    return accounts[0].number;
+  }
+
+  const primary = accounts.filter(account => account.isPrimary);
+
+  if (primary.length > 0) {
+    return primary[0].number;
+  }
+
+  return accounts[0].number;
+}
 
 export async function _credentialsFactory(
   apiOptions: ApiOptions,
@@ -38,16 +112,14 @@ export async function _credentialsFactory(
     credentials = await _oAuthHttp(apiOptions);
   }
 
-  const { infoLog } = sideEffects;
   try {
-    //
-    const accounts = await _getAccounts(
-      _clientGetApi(credentials, apiCallQ, proxy),
-    )();
-
-    const time = await _getServerTime(
-      _clientGetApi(credentials, apiCallQ, proxy),
-    )();
+    const getAccounts = _clientGetApi(credentials, apiCallQ, proxy);
+    const accounts_ = getAccounts<IAccounts>('/accounts', { noCaching: true });
+    const data_ = await accounts_();
+    const accounts = data_.accounts ?? [];
+    const getTime = _clientGetApi(credentials, apiCallQ, proxy);
+    const time =
+      (await getTime<ITime>('/time', { noCaching: true })()).time ?? new Date();
 
     const timZoneOffset = new Date(time).getTimezoneOffset();
     const timZone = -1 * 60 * 1000 * timZoneOffset;
@@ -83,8 +155,6 @@ export async function _credentialsFactory(
     //   );
     // }
   } catch (error) {
-    const { errorLog } = sideEffects;
-
     void errorLog('Credentials Factory', error);
     void infoLog<unknown>('Credentials Factory', credentials.toValue());
     throw new Error('_oAuth Error getting credentials in _credentialsFactory');
@@ -93,87 +163,41 @@ export async function _credentialsFactory(
   return credentials;
 }
 
-export async function _oAuthHttp(
-  apiOptions: ApiOptions,
-  proxy?: ProxyFactory_ | null,
-) {
-  const { validateToken, writeToken } = sideEffects.auth;
-  const creds = await validateToken(apiOptions);
-  const conf = configs(creds);
-  const httpClient = httpClientGet(proxy);
-  const response = httpClient(conf.config);
-  const validatedResponse = await validateResponse(response);
+// const { infoLog } = sideEffects;
+// const { errorLog } = sideEffects;
+// const { echo } = sideEffects;
+// const { getHttpClient } = sideEffects;
+// const { warnLog } = sideEffects;
+// const { echo } = sideEffects;
+// const { validateToken, writeToken } = sideEffects.auth;
+// const { refreshToken, credentials } = validateToken(apiOptions);
 
-  return writeToken(conf.credentials, validatedResponse);
-}
+// export function configs(arg: {
+//   refreshToken: string;
+//   credentials: Credentials;
+// }): { config: ClientRequestConfig; credentials: Credentials } {
+//   return {
+//     config: {
+//       method: 'GET',
+//       params: {
+//         grant_type: 'refresh_token',
+//         refresh_token: arg.refreshToken,
+//       },
+//       url: `${arg.credentials.authUrl}/oauth2/token`,
+//     },
+//     credentials: arg.credentials,
+//   };
+// }
 
-export function httpClientGet(proxy?: ProxyFactory_ | null): ClientStatic {
-  if (proxy?.oAuthHttpCredentials && proxy.activate) {
-    const { echo } = sideEffects;
-
-    echo('Warning: A Proxy is used in oAuth Connector!');
-
-    return proxy.activate({});
-  }
-
-  const { getHttpClient } = sideEffects;
-
-  return getHttpClient();
-}
-
-export function configs(arg: {
-  refreshToken: string;
-  credentials: Credentials;
-}): { config: ClientRequestConfig; credentials: Credentials } {
-  // const { refreshToken, credentials } = validateToken(apiOptions);
-  return {
-    config: {
-      method: 'GET',
-      params: {
-        grant_type: 'refresh_token',
-        refresh_token: arg.refreshToken,
-      },
-      url: `${arg.credentials.authUrl}/oauth2/token`,
-    },
-    credentials: arg.credentials,
-  };
-}
-
-export function _getPrimaryAccountNumber(
-  accounts: IAccount[],
-): AcountNumberString {
-  if (!accounts || accounts.length === 0) {
-    // void ;
-    const { warnLog } = sideEffects;
-
-    return warnLog(
-      "('No account number found') will default to 11111111:",
-      '11111111',
-    );
-  }
-
-  if (accounts.length === 1) {
-    return accounts[0].number;
-  }
-
-  const primary = accounts.filter(account => account.isPrimary);
-
-  if (primary.length > 0) {
-    return primary[0].number;
-  }
-
-  return accounts[0].number;
-}
-
-export async function validateResponse(
+// : Promise<ClientResponse<IRefreshCreds>>
+/*
+  export async function validateResponse(
   _response: Promise<ClientResponse>,
 ): Promise<ClientResponse<IRefreshCreds>> {
   const response = await _response;
 
   if (!response.data) {
     if (response) {
-      const { echo } = sideEffects;
-
       echo('________________________________________________');
       echo(response.status, response.statusText);
       echo(response.headers);
@@ -190,3 +214,86 @@ export async function validateResponse(
 
   return response;
 }
+  */
+
+// export async function validateResponse(
+//   _response: Promise<ClientResponse>,
+// ): Promise<ClientResponse<IRefreshCreds>> {
+//   const response = await _response;
+
+//   if (!response.data) {
+//     if (response) {
+//       echo('________________________________________________');
+//       echo(response.status, response.statusText);
+//       echo(response.headers);
+//       echo(response.request);
+//       echo(response.status, response.statusText);
+//       echo('________________________________________________');
+//       echo('++++++++++++++++++++++++++++++++++++++++++++++++');
+//     }
+
+//     throw new Error(
+//       '!!! validate credntials Invalid data back from http client !!!',
+//     );
+//   }
+
+//   return response;
+// }
+
+// export function _getAccounts(
+//   getAccounts: <R>(
+//     endpoint: string,
+//     handlerOptions: ProxyHandlerOptions,
+//   ) => () => Promise<R>,
+// ) {
+//   return async (): Promise<IAccount[]> => {
+//     const accounts = getAccounts<IAccounts>('/accounts', { noCaching: true });
+//     const data = await accounts();
+
+//     return data.accounts ?? [];
+//   };
+// }
+
+// const time = await _getServerTime(
+//   _clientGetApi(credentials, apiCallQ, proxy),
+// )();
+
+// void getTime, time_;
+/*
+
+export function _getServerTime(
+  clientGetApi: <R>(
+    endpoint: string,
+    handlerOptions: ProxyHandlerOptions,
+  ) => () => Promise<R>,
+
+) {
+  return async (): Promise<Date> => {
+    try {
+      return new Date(
+        (await clientGetApi<ITime>('/time', { noCaching: true })()).time,
+      );
+
+  };
+}
+     */
+
+//     export function _getServerTime(
+//   clientGetApi: <R>(
+//     endpoint: string,
+//     handlerOptions: ProxyHandlerOptions,
+//   ) => () => Promise<R>,
+//   errorlog: Logger = (error: any) => error /* logger */,
+// ) {
+//   return async (): Promise<Date> => {
+//     try {
+//       return new Date(
+//         (await clientGetApi<ITime>('/time', { noCaching: true })()).time,
+//       );
+//     } catch (error) {
+//       void errorlog(`calling '/time' endpoint ${error.message}`);
+
+//       return new Date();
+//     }
+//   };
+// }
