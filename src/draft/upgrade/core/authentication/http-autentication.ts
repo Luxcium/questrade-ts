@@ -1,23 +1,23 @@
+import { access, constants, readFileSync, writeFileSync } from 'fs';
+import { writeFile } from 'fs/promises';
+import { dirname } from 'path';
+
 import { ApiCallQ_ } from '../../../../private/core/next-rate-limiter/queue';
 import { _clientGetApi } from '../../../../private/routes';
-import {
-  errorLog,
-  infoLog,
-  validateToken,
-  writeToken,
-} from '../../../../resources/side-effects';
-import type {
-  ClientRequestConfig,
-  ClientResponse,
-} from '../../../../resources/side-effects/types';
+import { errorLog, infoLog, mkDirP } from '../../../../resources/side-effects';
+import { _emptyCredentials } from '../../../../resources/side-effects/auth/_emptyCredentials';
+// import { apiOptionsCredentialsFactory } from '../../../../resources/side-effects/auth/api-options-credentials-factory';
+import type { ClientRequestConfig } from '../../../../resources/side-effects/types';
 import type {
   ApiOptions,
   Credentials,
   IAccounts,
+  ICreds,
   IRefreshCreds,
   ITime,
   ProxyFactory_,
 } from '../../../../typescript';
+import { preValidateToken } from '../../../../utils';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 import { httpClientGet } from './httpClientGet';
 
@@ -30,14 +30,7 @@ export async function _oAuthHttp(
     config: ClientRequestConfig;
     credentials: Credentials;
   } = {
-    config: {
-      method: 'GET',
-      params: {
-        grant_type: 'refresh_token',
-        refresh_token: creds.refreshToken,
-      },
-      url: `${creds.credentials.authUrl}/oauth2/token`,
-    },
+    config: oAuthConfig(creds.refreshToken, creds.credentials.authUrl),
     credentials: creds.credentials,
   };
 
@@ -49,9 +42,96 @@ export async function _oAuthHttp(
     );
   }
 
-  const validatedResponse = (await response.data) as ClientResponse<IRefreshCreds>;
+  const responseCreds = convertToCreds((await response.data) as IRefreshCreds);
 
-  return writeToken(conf.credentials, validatedResponse);
+  // const validatedResponse = (await response.data) as IRefreshCreds;
+  await writeFile(
+    apiOptions.keyFile ||
+      `${apiOptions.keyDir}/${preValidateToken(apiOptions) ?? 'ERROR'}`,
+    responseCreds.refreshToken,
+    'utf8',
+  );
+
+  return {
+    ...conf.credentials,
+    ...responseCreds,
+  };
+  // return writeToken(conf.credentials, validatedResponse);
+}
+
+function oAuthConfig(
+  refreshToken: string,
+  authUrl: string,
+): ClientRequestConfig {
+  return {
+    method: 'GET',
+    params: {
+      grant_type: 'refresh_token',
+      refresh_token: refreshToken,
+    },
+    url: `${authUrl}/oauth2/token`,
+  };
+}
+
+/*
+  {
+    "access_token": "C3lTUKuNQrAAmSD/TPjuV/HI7aNrAwDp",
+    "token_type": "Bearer" ,
+    "expires_in":  300 ,
+    "refresh_token":  "aSBe7wAAdx88QTbwut0tiu3SYic3ox8F",
+    "api_server":  https://api01.iq.questrade.com"
+  }
+*/
+// const writeToken = (
+//   apiVersion: string,
+//   response: ClientResponse<IRefreshCreds>,
+// )  => {
+//   const cred  = {
+//     // ...credentials,
+//     ...response.data,
+//     apiUrl: makeApiUrl({ apiVersion, ...response.data }),
+//   };
+
+//   writeFileSync(cred.keyFile, cred.refreshToken, 'utf8');
+
+//   return cred;
+// };
+
+export function makeApiUrl({
+  api_server,
+  apiVersion,
+}: {
+  api_server: string;
+  apiVersion: string;
+}) {
+  return `${api_server}${apiVersion}`;
+}
+
+export async function validateToken(options: ApiOptions) {
+  const credentials = apiOptionsCredentialsFactory(options);
+  let refreshToken: string = credentials.seedToken;
+
+  try {
+    await (credentials.keyFile
+      ? mkDirP(dirname(credentials.keyFile))
+      : mkDirP(credentials.keyDir));
+
+    credentials.keyFile =
+      credentials.keyFile || `${credentials.keyDir}/${credentials.seedToken}`;
+    refreshToken = readFileSync(credentials.keyFile, 'utf8');
+  } catch {
+    credentials.keyFile =
+      credentials.keyFile || `${credentials.keyDir}/${credentials.seedToken}`;
+    access(credentials.keyFile, constants.F_OK, async none => {
+      if (none) {
+        writeFileSync(credentials.keyFile, credentials.seedToken, {
+          encoding: 'utf8',
+        });
+      }
+    });
+  }
+
+  return { credentials, refreshToken };
 }
 
 export async function _credentialsFactory(
@@ -124,6 +204,44 @@ export async function _credentialsFactory(
   return credentials;
 }
 
+export const apiOptionsCredentialsFactory = (
+  apiOptions: ApiOptions,
+): Credentials => {
+  const practiceAccount = Boolean(apiOptions.practiceAccount) ?? false;
+
+  return {
+    ..._emptyCredentials(),
+    accountCallsPerHour: apiOptions.accountCallsPerHour ?? 0,
+    accountCallsPerSecond: apiOptions.accountCallsPerSecond ?? 0,
+    accountNumber: `${apiOptions.accountNumber}` ?? '',
+    apiVersion: apiOptions.apiVersion ?? 'v1',
+    authUrl: practiceAccount
+      ? 'https://practicelogin.q.com'
+      : 'https://login.questrade.com',
+    caching: apiOptions.caching ?? true,
+    debugVebosity: apiOptions.debugVebosity ?? 1,
+    errorloger: apiOptions.errorloger ?? errorLog,
+    fromCache: apiOptions.fromCache ?? true,
+    keyDir: apiOptions.keyDir ?? './keys',
+    keyFile: apiOptions.keyFile ?? '',
+    marketCallsPerHour: apiOptions.marketCallsPerHour ?? 0,
+    marketCallsPerSecond: apiOptions.marketCallsPerSecond ?? 0,
+    practiceAccount,
+    proxyFactory: apiOptions.proxyFactory,
+    seedToken: preValidateToken(apiOptions) ?? 'ERROR',
+    testing: apiOptions.testing ?? false,
+  };
+};
+
+export function convertToCreds(refreshCreds: IRefreshCreds): ICreds {
+  return {
+    accessToken: refreshCreds.access_token,
+    apiServer: refreshCreds.api_server,
+    expiresIn: refreshCreds.expires_in,
+    refreshToken: refreshCreds.refresh_token,
+    tokenType: refreshCreds.token_type,
+  };
+}
 // const { infoLog } = sideEffects;
 // const { errorLog } = sideEffects;
 // const { echo } = sideEffects;

@@ -2405,6 +2405,12 @@
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "peacock.color": "001224",
+  "todo-tree.general.schemes": [
+    "file",
+    "untitled",
+    "vscode-userdata",
+    "output"
+  ],
   // #endregion: EDITOR RULERS                                                  !
 }
 // =====2021=====Luxcium=====Author==Benjamin=Vincent=(Luxcium)=License==MIT====

@@ -1,9 +1,10 @@
-import type { ApiOptions } from '../typescript';
+import { ApiOptions } from '../typescript/ApiOptions';
 
-export function preValidateToken(apiOptions: ApiOptions): string {
-  return typeof apiOptions.token === 'function'
-    ? apiOptions.token()
-    : typeof apiOptions.token === 'string'
-    ? apiOptions.token
+// type Token = { token: SeedToken | KeyFile | GetToken };
+export function preValidateToken({ token }: ApiOptions): string {
+  return typeof token === 'function'
+    ? token()
+    : typeof token === 'string'
+    ? token
     : 'ERROR';
 }
