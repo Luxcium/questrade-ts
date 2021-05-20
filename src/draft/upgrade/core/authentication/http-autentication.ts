@@ -21,31 +21,35 @@ import { preValidateToken } from '../../../../utils';
 import { _getPrimaryAccountNumber } from './_getPrimaryAccountNumber';
 import { httpClientGet } from './httpClientGet';
 
-export async function _oAuthHttp(
-  apiOptions: ApiOptions,
-  proxy?: ProxyFactory_ | null,
-) {
-  const creds = await validateToken(apiOptions);
-  const conf: {
-    config: ClientRequestConfig;
+/*
+creds: {
     credentials: Credentials;
-  } = {
-    config: oAuthConfig(creds.refreshToken, creds.credentials.authUrl),
-    credentials: creds.credentials,
+    refreshToken: string;
+}
+ */
+async function getConf(
+  creds: Promise<{
+    credentials: Credentials;
+    refreshToken: string;
+  }>,
+): Promise<{
+  config: ClientRequestConfig;
+  credentials: Credentials;
+}> {
+  const cred = await creds;
+
+  return {
+    config: oAuthConfig(cred.refreshToken, cred.credentials.authUrl),
+    credentials: cred.credentials,
   };
+}
 
-  const httpClient = httpClientGet(proxy);
-  const response = await httpClient(conf.config);
-  if (!response.data) {
-    throw new Error(
-      '!!! validate credntials Invalid data back from http client !!!',
-    );
-  }
-
-  const responseCreds = convertToCreds((await response.data) as IRefreshCreds);
-
-  // const validatedResponse = (await response.data) as IRefreshCreds;
-  await writeFile(
+async function write(
+  apiOptions: ApiOptions,
+  responseCreds: ICreds,
+  credentials: Credentials,
+) {
+  writeFile(
     apiOptions.keyFile ||
       `${apiOptions.keyDir}/${preValidateToken(apiOptions) ?? 'ERROR'}`,
     responseCreds.refreshToken,
@@ -53,10 +57,22 @@ export async function _oAuthHttp(
   );
 
   return {
-    ...conf.credentials,
+    ...credentials,
     ...responseCreds,
   };
-  // return writeToken(conf.credentials, validatedResponse);
+}
+
+export async function _oAuthHttp(
+  apiOptions: ApiOptions,
+  proxy?: ProxyFactory_ | null,
+) {
+  const httpClient = httpClientGet(proxy);
+  const creds = validateToken(apiOptions);
+  const conf = await getConf(creds);
+  const response = await httpClient(conf.config);
+  const responseCreds = convertToCreds(response.data as IRefreshCreds);
+
+  return write(apiOptions, responseCreds, conf.credentials);
 }
 
 function oAuthConfig(
@@ -234,13 +250,19 @@ export const apiOptionsCredentialsFactory = (
 };
 
 export function convertToCreds(refreshCreds: IRefreshCreds): ICreds {
-  return {
-    accessToken: refreshCreds.access_token,
-    apiServer: refreshCreds.api_server,
-    expiresIn: refreshCreds.expires_in,
-    refreshToken: refreshCreds.refresh_token,
-    tokenType: refreshCreds.token_type,
-  };
+  if (refreshCreds) {
+    return {
+      accessToken: refreshCreds.access_token,
+      apiServer: refreshCreds.api_server,
+      expiresIn: refreshCreds.expires_in,
+      refreshToken: refreshCreds.refresh_token,
+      tokenType: refreshCreds.token_type,
+    };
+  }
+
+  throw new Error(
+    '!!! validate credntials Invalid data back from http client !!!',
+  );
 }
 // const { infoLog } = sideEffects;
 // const { errorLog } = sideEffects;

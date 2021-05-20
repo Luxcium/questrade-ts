@@ -19,6 +19,8 @@ interface ApiOptions {
   testing?: boolean;
   token: SeedToken | KeyFile | GetToken;
   errorloger?: Logger;
+
+  credentials?: Credentials;
   proxyFactory?: (credentials?: Credentials) => ProxyFactory_;
 }
 
