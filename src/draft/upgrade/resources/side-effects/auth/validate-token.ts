@@ -1,9 +1,9 @@
 import { access, constants, readFileSync, writeFileSync } from 'fs';
 import { dirname } from 'path';
 
-import { mkDirP } from '../../../../resources/side-effects';
-import { ApiOptions } from '../../../../typescript';
-import { apiOptionsCredentialsFactory } from './http-autentication';
+import { mkDirP } from '../../../../../resources/side-effects';
+import { ApiOptions } from '../../../../../typescript';
+import { apiOptionsCredentialsFactory } from '../../../core/authentication/http-autentication';
 
 export async function validateToken(options: ApiOptions) {
   const credentials = apiOptionsCredentialsFactory(options);

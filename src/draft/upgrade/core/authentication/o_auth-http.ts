@@ -1,7 +1,6 @@
 import type { ApiOptions, ProxyFactory_ } from '../../../../typescript';
+import { validateToken, writeCreds } from '../../resources/side-effects';
 import { confHttpClient, getConf, responseToCreds } from './http-autentication';
-import { validateToken } from './validateToken';
-import { writeCreds } from './writeCreds';
 
 export async function _oAuthHttp(
   apiOptions: ApiOptions,
