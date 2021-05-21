@@ -1,5 +1,5 @@
 import { warnLog } from '../../../../../resources/side-effects';
-import { AcountNumberString, IAccount } from '../../../../../typescript';
+import type { AcountNumberString, IAccount } from '../../../../../typescript';
 
 export function _getPrimaryAccountNumber(
   accounts: IAccount[],

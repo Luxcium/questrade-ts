@@ -1,7 +1,7 @@
 import { errorLog } from '../../../../../resources/side-effects';
 import { _emptyCredentials } from '../../../../../resources/side-effects/auth/_emptyCredentials';
-import { ApiOptions, Credentials } from '../../../../../typescript';
-import { preValidateToken } from './preValidateToken';
+import type { ApiOptions, Credentials } from '../../../../../typescript';
+import { preValidateToken } from '../../../resources/utils/pre-validate-token';
 
 export function apiOptionsCredentialsFactory(
   apiOptions: ApiOptions,

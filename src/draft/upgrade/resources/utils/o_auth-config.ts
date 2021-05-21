@@ -1,4 +1,4 @@
-import { ClientRequestConfig } from '../../../../../resources/side-effects/types';
+import type { ClientRequestConfig } from '../../../../resources/side-effects/types';
 
 export function oAuthConfig(
   refreshToken: string,

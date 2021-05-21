@@ -1,6 +1,6 @@
-import { ClientRequestConfig } from '../../../../../resources/side-effects/types';
-import { Credentials } from '../../../../../typescript';
-import { oAuthConfig } from './oAuthConfig';
+import type { ClientRequestConfig } from '../../../../../resources/side-effects/types';
+import type { Credentials } from '../../../../../typescript';
+import { oAuthConfig } from '../../../resources/utils/o_auth-config';
 
 export async function getConf(
   creds: Promise<{

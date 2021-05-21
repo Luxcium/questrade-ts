@@ -1,6 +1,4 @@
-import { ApiOptions } from '../../../../../typescript';
-
-// type Token = { token: SeedToken | KeyFile | GetToken };
+import { ApiOptions } from '../../../../typescript';
 
 export function preValidateToken({ token }: ApiOptions): string {
   return typeof token === 'function'

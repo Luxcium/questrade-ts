@@ -2,7 +2,7 @@ import type { ApiOptions, ProxyFactory_ } from '../../../../typescript';
 import { validateToken, writeCreds } from '../../resources/side-effects';
 import { confHttpClient } from './http-autentication/confHttpClient';
 import { getConf } from './http-autentication/getConf';
-import { responseToCreds } from './http-autentication/responseToCreds';
+import { responseToCreds } from './http-autentication/response-to-creds';
 
 export async function _oAuthHttp({
   apiOptions,
@@ -13,7 +13,7 @@ export async function _oAuthHttp({
 }) {
   const creds = validateToken(apiOptions);
   const conf = getConf(creds);
-  const response = confHttpClient(conf, proxy);
+  const response = confHttpClient({ conf, proxy });
   const responseCreds = responseToCreds(response);
 
   return writeCreds({ apiOptions, conf, responseCreds });
