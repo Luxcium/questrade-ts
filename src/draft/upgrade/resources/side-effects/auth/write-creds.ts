@@ -8,11 +8,15 @@ import type {
 } from '../../../../../typescript';
 import { preValidateToken } from '../../../../../utils';
 
-export async function writeCreds(
-  apiOptions: ApiOptions,
-  responseCreds: Promise<ICreds>,
-  conf: Promise<{ config: ClientRequestConfig; credentials: Credentials }>,
-) {
+export async function writeCreds({
+  apiOptions,
+  responseCreds,
+  conf,
+}: {
+  apiOptions: ApiOptions;
+  responseCreds: Promise<ICreds>;
+  conf: Promise<{ config: ClientRequestConfig; credentials: Credentials }>;
+}) {
   const { credentials } = await conf;
   writeFile(
     apiOptions.keyFile ||

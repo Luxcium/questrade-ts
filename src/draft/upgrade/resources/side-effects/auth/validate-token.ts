@@ -3,7 +3,7 @@ import { dirname } from 'path';
 
 import { mkDirP } from '../../../../../resources/side-effects';
 import { ApiOptions } from '../../../../../typescript';
-import { apiOptionsCredentialsFactory } from '../../../core/authentication/http-autentication';
+import { apiOptionsCredentialsFactory } from '../../../core/authentication/http-autentication/apiOptionsCredentialsFactory';
 
 export async function validateToken(options: ApiOptions) {
   const credentials = apiOptionsCredentialsFactory(options);
