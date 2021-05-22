@@ -1,7 +1,7 @@
 import { ApiCallQ_ } from '../../../../../private/core/next-rate-limiter/queue';
 import { _clientGetApi } from '../../../../../private/routes';
 import { errorLog, infoLog } from '../../../../../resources/side-effects';
-import {
+import type {
   ApiOptions,
   Credentials,
   IAccounts,
