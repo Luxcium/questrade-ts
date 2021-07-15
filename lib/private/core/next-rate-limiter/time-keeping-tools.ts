@@ -381,7 +381,7 @@ interface TimeKeepingTools {
   secondsRemaning: SecondsRemaning;
   timeRemaning: TimeRemaning;
 }
-// https://github.com/Luxcium/questrade-ts/blob/next/from-v1.2.0-next-20201226/src/private/core/next-rate-limiter/time-keeping-tools.ts#L327
+// https://github.com/Luxcium/questrade-ts/blob/next/from-v1.2.0-next-20201226/lib/private/core/next-rate-limiter/time-keeping-tools.ts#L327
 const timeKeepingTools: TimeKeepingTools = {
   epochMs,
   epochSec,

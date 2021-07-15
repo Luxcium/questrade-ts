@@ -5,7 +5,7 @@
     "noEmitOnError": false,
     "target": "es6",
     "module": "commonjs",
-    "rootDir": "./src",
+    "rootDir": "lib",
     "outDir": "./out/src",
     "declarationDir": "./out/typings",
     /* Compilation Options */
@@ -133,7 +133,7 @@
     /*                                                                        */
   },
   "include": [
-    "./src/**/*.ts",
+    "./lib/**/*.ts",
   ],
   "exclude": [
     ".git",
@@ -142,7 +142,7 @@
     "**/__test__/**/*.*",
     "**/node_modules",
     "lib/**/*.*",
-    "src/test/**/*.*",
+    "lib/test/**/*.*",
     "backup",
     "build",
     "configs",

@@ -7,7 +7,7 @@ module.exports = {
   performance: {
     hints: 'warning',
   },
-  entry: './build/src/index.js',
+  entry: './build/lib/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'build/src'),

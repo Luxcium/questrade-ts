@@ -30,14 +30,14 @@ module.exports = {
   //     lines: 50,
   //     statements: 50,
   //   },
-  //   './src/utils/**/*.ts': {
+  //   './lib/utils/**/*.ts': {
   //     branches: 40,
   //     statements: 40,
   //   },
-  //   './src/reducers/**/*.ts': {
+  //   './lib/reducers/**/*.ts': {
   //     statements: 90,
   //   },
-  //   './src/api/**/*.ts': {
+  //   './lib/api/**/*.ts': {
   //     branches: 100,
   //     functions: 100,
   //     lines: 100,

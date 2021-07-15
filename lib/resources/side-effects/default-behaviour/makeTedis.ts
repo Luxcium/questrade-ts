@@ -68,7 +68,7 @@ export function makeTedis(
 // };
 /*
 makeJsonRedis({ port: 6379 })
-❯ ts-node "/home/luxcium/dev/questrade-ts/src/resources/side-effects/default-behaviour/makeTedis.ts"
+❯ ts-node "/home/luxcium/dev/questrade-ts/lib/resources/side-effects/default-behaviour/makeTedis.ts"
 {
   address: { doorNo: '12B', locality: 'pentagon', pincode: 123456 },
   age: 79,
@@ -77,7 +77,7 @@ makeJsonRedis({ port: 6379 })
 }
 
 makeJsonRedis({ port: 6380 })
-❯ ts-node "/home/luxcium/dev/questrade-ts/src/resources/side-effects/default-behaviour/makeTedis.ts"
+❯ ts-node "/home/luxcium/dev/questrade-ts/lib/resources/side-effects/default-behaviour/makeTedis.ts"
 {
   address: { doorNo: '12B', locality: 'pentagon', pincode: 123456 },
   age: 80,

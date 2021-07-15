@@ -1,7 +1,7 @@
 const { readFile, writeFile } = require('fs');
 const { promisify } = require('util');
 /*
-  "main": "./src/index.ts",
+  "main": "./lib/index.ts",
   "type": "module",
  */
 
@@ -21,7 +21,7 @@ async function prePublish() {
   const author = 'Luxcium <luxcium@neb401.com>';
   const license = 'MIT';
   const homepage = 'https://github.com/Luxcium/questrade-ts';
-  const main = './src/index.js';
+  const main = './lib/index.js';
   const types = './typings/index.d.ts';
   const type = 'commonjs';
 

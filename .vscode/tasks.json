@@ -88,7 +88,7 @@
         "fileLocation": [
           "absolute",
         ],
-        // // /home/luxcium/dev/questrade-ts/src/private/core/next-rate-limiter/core_limiter.ts: line 121, col 3, Error - Expected an assignment or function call and instead saw an expression. (no-unused-expressions)
+        // // /home/luxcium/dev/questrade-ts/lib/private/core/next-rate-limiter/core_limiter.ts: line 121, col 3, Error - Expected an assignment or function call and instead saw an expression. (no-unused-expressions)
         // "pattern": {
         //   "regexp": "^(.+):\\s(.+)\\((.+)\\)\\sat\\s(.+):(\\d+):(\\d+):$",
         //   "file": 1,
@@ -120,7 +120,7 @@
         "fileLocation": [
           "absolute",
         ],
-        // /home/luxcium/dev/questrade-ts/src/private/core/next-rate-limiter/core_limiter.ts: line 121, col 3, Error - Expected an assignment or function call and instead saw an expression. (no-unused-expressions)
+        // /home/luxcium/dev/questrade-ts/lib/private/core/next-rate-limiter/core_limiter.ts: line 121, col 3, Error - Expected an assignment or function call and instead saw an expression. (no-unused-expressions)
         "pattern": {
           "regexp": "^(.+):\\s(.+)\\((.+)\\)\\sat\\s(.+):(\\d+):(\\d+):$",
           "file": 1,

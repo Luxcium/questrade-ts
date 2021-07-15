@@ -10,7 +10,7 @@
     "tsBuildInfoFile": "../build/ts-build-info.lib",
   },
   "include": [
-    "../src/**/*.ts",
+    "../lib/**/*.ts",
   ],
   "exclude": [
     "../.git",
@@ -29,12 +29,12 @@
     "../misc",
     "../out",
     "../scripts",
-    "../src/debug",
-    "../src/other",
-    "../src/test",
-    "../src/main.ts",
-    "../src/utils/fantasy-birds",
-    "../src/utils/*.js*",
+    "../lib/debug",
+    "../lib/other",
+    "../lib/test",
+    "../lib/main.ts",
+    "../lib/utils/fantasy-birds",
+    "../lib/utils/*.js*",
     // src/utils/fantasy-birds
   ],
 }

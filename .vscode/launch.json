@@ -18,7 +18,7 @@
       "runtimeExecutable": "node",
       "runtimeArgs": [
         "--inspect=127.0.0.1:9229",
-        "./out/src/main.js",
+        "./out/lib/main.js",
       ],
       "cwd": "${workspaceFolder}",
       "env": {
@@ -33,7 +33,7 @@
       "type": "pwa-node",
       "name": "Run Current File",
       "request": "launch",
-      "program": "${workspaceFolder}/src/debug/main.ts"
+      "program": "${workspaceFolder}/lib/debug/main.ts"
     }
   ]
 }
