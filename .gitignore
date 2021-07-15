@@ -56,3 +56,8 @@ commmit-text.txt
 !misc/material-dir-icons/**/*
 !**/material-dir-icons/**/*
 !**/material-dir-icons/**
+
+
+# Added by cargo
+
+/target
