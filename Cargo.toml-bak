@@ -1,17 +1,12 @@
 [package]
 name = "questrade-ts"
 version = "0.1.0"
-authors = ["Benjamin Vincent (Luxcium) <luxcium@neb401.com>"]
 edition = "2018"
 description  = ""
 license =  "MIT"
 repository = "https://github.com/Luxcium/questrade-ts/tree/rust/"
-
-[lib]
-crate-type = ["cdylib", "rlib"]
-
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-wasm-bindgen = "=0.2"
+wasm-bindgen = "=0.2.61"
 nodejs-helper = "0.0.3"

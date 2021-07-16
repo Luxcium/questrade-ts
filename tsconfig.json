@@ -57,7 +57,7 @@
     "noImplicitUseStrict": false,
     "noStrictGenericChecks": false,
     "noUncheckedIndexedAccess": false,
-    "preserveConstEnums": false,
+    "preserveConstEnums": true,
     "preserveSymlinks": false,
     "stripInternal": false,
     /* Additional Options */
@@ -141,8 +141,9 @@
     ".vscode",
     "**/__test__/**/*.*",
     "**/node_modules",
-    "lib/**/*.*",
-    "lib/test/**/*.*",
+    "src",
+    "libraries/**/*.*",
+    "libraries/test/**/*.*",
     "backup",
     "build",
     "configs",
@@ -154,6 +155,7 @@
     "misc",
     "out",
     "scripts",
+    "/*.js"
   ],
 }
 // "compilerOptions": {
