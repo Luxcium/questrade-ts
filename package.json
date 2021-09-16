@@ -78,7 +78,7 @@
     "@types/node": "^13.7.2",
     "@types/ramda": "^0.26.41",
     "babel-jest": "^25.1.0",
-    "concurrently": "^5.1.0",
+    "concurrently": "^6.0.0",
     "coveralls": "^3.0.9",
     "cp-cli": "^2.0.0",
     "jest": "^26.0.0",
