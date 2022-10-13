@@ -134,6 +134,7 @@
   },
   "include": [
     "./src/**/*.ts",
+    "src/draft/node-stuff/error.jàs",
   ],
   "exclude": [
     ".git",

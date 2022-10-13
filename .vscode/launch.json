@@ -1,39 +1,39 @@
 {
   "version": "0.2.0",
   "configurations": [
-    {
-      "type": "pwa-node",
-      "request": "launch",
-      "name": "Node Debug main.ts",
-      "smartStep": true,
-      "skipFiles": [
-        "<node_internals>/**",
-        "**/cjs/**/*.*",
-        "**/node_modules/**/*.*",
-        "**/acorn.*"
-      ],
-      "resolveSourceMapLocations": [
-        "!**/node_modules/**"
-      ],
-      "runtimeExecutable": "node",
-      "runtimeArgs": [
-        "--inspect=127.0.0.1:9229",
-        "./out/src/main.js",
-      ],
-      "cwd": "${workspaceFolder}",
-      "env": {
-        "NODE_ENV": "development"
-      },
-      "stopOnEntry": true,
-      "autoAttachChildProcesses": true,
-      "console": "integratedTerminal",
-      "internalConsoleOptions": "openOnSessionStart"
-    },
-    {
-      "type": "pwa-node",
-      "name": "Run Current File",
-      "request": "launch",
-      "program": "${workspaceFolder}/src/debug/main.ts"
-    }
+    // {
+    //   "type": "pwa-node",
+    //   "request": "launch",
+    //   "name": "Node Debug main.ts",
+    //   "smartStep": true,
+    //   "skipFiles": [
+    //     "<node_internals>/**",
+    //     "**/cjs/**/*.*",
+    //     "**/node_modules/**/*.*",
+    //     "**/acorn.*"
+    //   ],
+    //   "resolveSourceMapLocations": [
+    //     "!**/node_modules/**"
+    //   ],
+    //   "runtimeExecutable": "node",
+    //   "runtimeArgs": [
+    //     "--inspect=127.0.0.1:9229",
+    //     "./out/src/main.js",
+    //   ],
+    //   "cwd": "${workspaceFolder}",
+    //   "env": {
+    //     "NODE_ENV": "development"
+    //   },
+    //   "stopOnEntry": true,
+    //   "autoAttachChildProcesses": true,
+    //   "console": "integratedTerminal",
+    //   "internalConsoleOptions": "openOnSessionStart"
+    // },
+    // {
+    //   "type": "pwa-node",
+    //   "name": "Run Current File",
+    //   "request": "launch",
+    //   "program": "${workspaceFolder}/src/debug/main.ts"
+    // }
   ]
 }

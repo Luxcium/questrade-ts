@@ -2,12 +2,25 @@
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
   "version": "2.0.0",
+  "presentation": {
+    "echo": true,
+    "reveal": "always",
+    "focus": false,
+    "panel": "shared",
+    "showReuseMessage": true,
+    "clear": true,
+    "group": "watchers"
+  },
   "tasks": [
     {
       "label": "TSC Build Task",
       "type": "shell",
       "detail": "Output watcher for this Type-Script project",
       "command": "tsc",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
       "args": [
         "--build",
         "--verbose"
@@ -31,10 +44,6 @@
       "problemMatcher": {
         "base": "$tsc",
         "applyTo": "allDocuments"
-      },
-      "group": {
-        "kind": "build",
-        "isDefault": true
       }
     },
     {
@@ -132,13 +141,4 @@
       }
     }
   ],
-  "presentation": {
-    "echo": true,
-    "reveal": "always",
-    "focus": false,
-    "panel": "shared",
-    "showReuseMessage": true,
-    "clear": true,
-    "group": "watchers"
-  },
 }
