@@ -22,6 +22,8 @@ web_modules/
 # out/
 .tmp/
 temp/
+**/temp/
+**/temp
 build/
 /*/*/lib/
 /*/*/out/
