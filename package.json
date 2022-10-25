@@ -117,7 +117,8 @@
   "dependencies": {
     "axios": "^0.21.1",
     "questrade-api-enumerations": "^1.1.4",
-    "snyk": "^1.316.2"
+    "snyk": "^1.316.2",
+    "tslib": "~2.4.0"
   },
   "keywords": [
     "TypeScript",
