@@ -34,7 +34,7 @@ export const _credentialsFactory = async (options: QuestradeAPIOptions) => {
     } else {
       console.info('Questrade Server Time:', time, '\nStatus: ready\n');
     }
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
     console.info(credentials.toValue());
     throw new Error('_oAuth Error getting credentials');

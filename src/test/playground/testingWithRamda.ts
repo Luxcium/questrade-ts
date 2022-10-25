@@ -43,7 +43,7 @@ export const testIt = () =>
       );
 
       I([qtApi, R]);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error.message);
     } finally {
       // tedis.close();

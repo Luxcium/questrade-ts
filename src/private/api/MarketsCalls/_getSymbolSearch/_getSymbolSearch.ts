@@ -20,7 +20,7 @@ export const _getSymbolSearch = (credentials: Credentials) => async (
     }
     return [];
     //
-  } catch (error) {
+  } catch (error: any) {
     //
     console.log(error.message);
     return [];

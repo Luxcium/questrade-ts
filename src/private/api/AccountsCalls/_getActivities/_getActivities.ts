@@ -1,7 +1,7 @@
 import {
   Credentials,
   IAccountActivity,
-  IActivities,
+  IActivities
 } from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
 import { _axiosAccountGetApi } from '../../../routes';
@@ -25,7 +25,7 @@ export const _getActivities = (credentials: Credentials) => {
         //
         return activities.activities;
         //
-      } catch (error) {
+      } catch (error: any) {
         console.error(error.message);
         return [];
       }

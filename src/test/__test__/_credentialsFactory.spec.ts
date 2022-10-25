@@ -1,7 +1,7 @@
 import { _credentialsFactory } from '../../private';
 
 describe('Name of the group', () => {
-  it('should ', async done => {
+  it('should ', done => {
     _credentialsFactory({
       account: 12345678,
       apiVersion: 'v1',

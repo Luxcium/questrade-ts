@@ -9,7 +9,7 @@ export const _getBalances = (credentials: Credentials) => async (): Promise<
   try {
     //
     return _axiosAccountGetApi(credentials)<IBalances>('/balances')();
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
     return {
       perCurrencyBalances: [],

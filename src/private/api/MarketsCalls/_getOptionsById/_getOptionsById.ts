@@ -1,7 +1,7 @@
 import {
   Credentials,
   IOptionChain,
-  IOptionChains,
+  IOptionChains
 } from '../../../../typescript';
 import { _axiosGetApi } from '../../../routes';
 
@@ -16,7 +16,7 @@ export const _getOptionsById = (credentials: Credentials) => async (
         `/symbols/${symbolID}/options`
       )()
     ).optionChain;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
     return [];
   }

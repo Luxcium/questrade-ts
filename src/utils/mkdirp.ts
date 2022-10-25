@@ -39,7 +39,7 @@ export const sync = (
   try {
     xfs.mkdirSync(p, mode);
     made = made || p;
-  } catch (err0) {
+  } catch (err0: any) {
     switch (err0.code) {
       case 'ENOENT':
         made = sync(path.dirname(p), opts, made);

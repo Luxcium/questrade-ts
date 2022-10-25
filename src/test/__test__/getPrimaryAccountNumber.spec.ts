@@ -1,12 +1,12 @@
 import {
   AccountStatus,
   AccountType,
-  ClientAccountType,
+  ClientAccountType
 } from 'questrade-api-enumerations';
 import { _getPrimaryAccountNumber } from '../../private';
 import { IAccount } from '../../typescript';
 
-test('should ', async done => {
+test('should ', done => {
   let dummyAccount: IAccount[] = [
     //
   ];

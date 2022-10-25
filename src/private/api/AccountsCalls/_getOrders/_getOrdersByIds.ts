@@ -12,7 +12,7 @@ export const _getOrdersByIds = (credentials: Credentials) => async (
         `/orders?ids=${orderId.join(',')}`
       )()
     ).orders;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
     return [];
   }

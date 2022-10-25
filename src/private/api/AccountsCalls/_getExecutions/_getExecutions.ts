@@ -14,7 +14,7 @@ export const _getExecutions = (credentials: Credentials) => (
         `/executions?${endpointFormatDateTool(startDate, endDate)}`
       )()
     ).executions;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
     return [];
   }

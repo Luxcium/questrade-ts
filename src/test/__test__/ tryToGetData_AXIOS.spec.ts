@@ -1,7 +1,7 @@
 import { _logErrors } from '../../private/core/_logErrors';
 import { _tryToGetData } from '../../private/core/_tryToGetData_AXIOS';
 
-test('should ERROR _tryToGetData', async done => {
+test('should ERROR _tryToGetData', async () => {
   const response = _tryToGetData({
     url: 'ERROR',
     data: null,
@@ -14,5 +14,4 @@ test('should ERROR _tryToGetData', async done => {
     //
   }
   // console.log();
-  done();
 });

@@ -4,7 +4,7 @@ import { Credentials } from '../../typescript/Credentials';
 import {
   remainingRequests,
   remaningTimeString,
-  requestPerSecondLimiter,
+  requestPerSecondLimiter
 } from './requestPerSecondLimit';
 export const _tryToGetData = <R, D>(
   _config: CoreApiConfig<D>,
@@ -14,8 +14,8 @@ export const _tryToGetData = <R, D>(
     try {
       const possiblePerSeconds =
         !!credentials &&
-        !!credentials.remainingRequests &&
-        !!credentials.remainingRequests.possiblePerSeconds
+          !!credentials.remainingRequests &&
+          !!credentials.remainingRequests.possiblePerSeconds
           ? credentials.remainingRequests.possiblePerSeconds
           : 21;
       let response: AxiosResponse;
@@ -60,13 +60,13 @@ export const _tryToGetData = <R, D>(
         if (credentials) {
           credentials.remainingRequests = remainingRequests(response);
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error(
           "To make tests pass removed 'throw' error messages from code bloc"
         );
       }
       return data;
-    } catch (error) {
+    } catch (error: any) {
       console.error(_logError(error).message);
       throw error;
     }

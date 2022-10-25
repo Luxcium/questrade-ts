@@ -1,7 +1,7 @@
 import { redeemToken } from '../../index';
 import { void0 } from '../../utils';
 
-test('Validating all README examples', async done => {
+test('Validating all README examples', done => {
   const yourRefreshToken = 'RocgyhkqWp-USE-YOUR-OWN-TOKEN-M3BSDjd0';
 
   // inside of an async function or async IIFE

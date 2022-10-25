@@ -9,7 +9,7 @@ import {
   IQtApiSearch,
   IQtApiSymbols,
   IQuestradeApi,
-  StrategyVariantRequest,
+  StrategyVariantRequest
 } from '../../typescript';
 import { log, setDateRange, void0 } from '../../utils';
 
@@ -26,7 +26,7 @@ let getSymbols: () => Promise<IQtApiSymbols>;
 let getOptionChains: () => Promise<IQtApiOptionChains>;
 let search: () => Promise<IQtApiSearch>;
 
-beforeAll(async done => {
+beforeAll(async () => {
   const qtApiAndCredentials = await redeemToken('MOCK');
   qtApi = qtApiAndCredentials.qtApi;
 
@@ -47,114 +47,101 @@ beforeAll(async done => {
     search,
     getSymbols,
   });
-  done();
 });
 
 // # QtAPI PROPERTIES
 describe('QtAPI PROPERTIES will test all properties and methods on qtApi', () => {
-  it('should validate credentials toValue', async done => {
+  it('should validate credentials toValue', done => {
     void0(credentials.toValue());
     done();
   });
-  it('should credentials toString', async done => {
+  it('should credentials toString', done => {
     void0(credentials.toString());
     done();
   });
 
-  it('should validate qtApi myBalances', async done => {
+  it('should validate qtApi myBalances', async () => {
     expect(
       (await qtApi.myBalances()).CAD.combined.current.buyingPower
     ).not.toBeNaN();
-    done();
+
   });
 
-  it('should validate qtApi myBalances', async done => {
+  it('should validate qtApi myBalances', done => {
     void0(qtApi.serverTime);
     done();
   });
-  it('should validate qtApi myBalances', async done => {
+  it('should validate qtApi myBalances', async () => {
     void0((await qtApi.myBalances()).CAD.combined.current.buyingPower);
-    done();
+
   });
 });
 
 // # ACCOUNT METHODS
 describe('ACCOUNT METHODS will test all methods on get.account', () => {
-  it('should validate activities', async done => {
+  it('should validate activities', async () => {
     const activities30Days = async () =>
       dateRange30Days((await account()).getActivities);
     void0(await activities30Days());
-    done();
+
   });
-  it('should validate balances', async done => {
+  it('should validate balances', async () => {
     void0(await (await account()).getBalances());
-    done();
+
   });
-  it('should validate allAccount', async done => {
+  it('should validate allAccount', async () => {
     void0(await (await account()).getAllAccounts());
-    done();
   });
-  it('should validate executions', async done => {
+  it('should validate executions', async () => {
     const executions30Days = async () =>
       dateRange30Days((await account()).getExecutions);
     void0(await executions30Days());
-    done();
   });
-  it("should validate orders 'All' state filter", async done => {
+  it("should validate orders 'All' state filter", async () => {
     const orders30Days = async () =>
       dateRange30Days((await account()).getOrders('All'));
     void0(await orders30Days());
-    done();
   });
-  it('should validate orders default state filter', async done => {
+  it('should validate orders default state filter', async () => {
     const orders30Days = async () =>
       dateRange30Days((await account()).getOrders());
     void0(await orders30Days());
-    done();
   });
-  it('should validate orders Open state filter', async done => {
+  it('should validate orders Open state filter', async () => {
     const orders30Days = async () =>
       dateRange30Days((await account()).getOrders('Open'));
     void0(await orders30Days());
-    done();
   });
-  it('should validate orders Closed state filter', async done => {
+  it('should validate orders Closed state filter', async () => {
     const orders30Days = async () =>
       dateRange30Days((await account()).getOrders('Closed'));
     void0(await orders30Days());
-    done();
   });
-  it('should validate ordersByIds', async done => {
+  it('should validate ordersByIds', async () => {
     void0((await account()).getOrdersByIds([123]));
-    done();
   });
-  it('should validate positions', async done => {
+  it('should validate positions', async () => {
     void0(await (await account()).getPositions());
-    done();
   });
-  it('should validate serverTime', async done => {
+  it('should validate serverTime', async () => {
     void0(await (await account()).getServerTime());
-    done();
   });
 });
 
 // # MARKET METHODS
 describe('MARKET METHODS will test all methods on get.market', () => {
-  it('should validate allMarkets', async done => {
+  it('should validate allMarkets', async () => {
     void0(await (await market()).getAllMarkets());
-    done();
   });
-  it("should validate candlesByStockId with 'OneDay' interval", async done => {
+  it("should validate candlesByStockId with 'OneDay' interval", async () => {
     const candel30Day = async () =>
       dateRange30Days((await market()).getCandlesByStockId(8049)('OneDay'));
     void0(await candel30Day());
-    done();
   });
-  it('should validate candlesByStockId with default interval', async done => {
+  it('should validate candlesByStockId with default interval', async () => {
     const candel30Day = async () =>
       dateRange30Days((await market()).getCandlesByStockId(8049)());
     void0(await candel30Day());
-    done();
   });
 });
 
@@ -180,57 +167,48 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
       },
     ],
   };
-  it('should validate get quotes byStockIds', async done => {
+  it('should validate get quotes byStockIds', async () => {
     void0(await (await getQuotes()).byStockIds([8049]));
-    done();
   });
-  it('should validate get quotes byStrategies', async done => {
+  it('should validate get quotes byStrategies', async () => {
     void0(await (await getQuotes()).byStrategies(demoRequestVariants));
-    done();
   });
-  it('should validate that can get optionsQuotes fromFilter', async done => {
+  it('should validate that can get optionsQuotes fromFilter', async () => {
     void0(
       await (await getOptionsQuotes()).fromFilter({
         expiryDate: '2019-10-18T00:00:00.000000-05:00',
         underlyingId: 27426,
       })
     );
-    done();
   });
-  it('should validate that can get optionsQuotes byOptionsIds', async done => {
+  it('should validate that can get optionsQuotes byOptionsIds', async () => {
     void0(await (await getOptionsQuotes()).byOptionsIds([27244725]));
-    done();
   });
 });
 
 // # SEARCH METHODES
 describe('SEARCH METHODES will test all methods on get.search', () => {
-  it('should validate countResults ', async done => {
+  it('should validate countResults ', async () => {
     void0(await (await search()).stock('aapl'));
     void0(await (await search()).stock('aapl', 0));
-    done();
   });
-  it('should validate allStocks ', async done => {
+  it('should validate allStocks ', async () => {
     void0(await (await search()).allStocks('aapl'));
     void0(await (await search()).allStocks('aapl', 0));
-    done();
   });
-  it('should validate countResults ', async done => {
+  it('should validate countResults ', async () => {
     void0(await (await search()).countResults('aapl'));
-    done();
   });
 });
 
 // # SYMBOLS METHODS
 describe('SYMBOLS METHODS will test all methods on get.symbols', () => {
-  it('should validate optionChains byStockId', async done => {
+  it('should validate optionChains byStockId', async () => {
     void0(await (await getOptionChains()).byStockId(8049));
-    done();
   });
-  it('should validate symbols byStockIds', async done => {
+  it('should validate symbols byStockIds', async () => {
     void0(await (await getSymbols()).byStockIds([8049]));
 
-    done();
   });
 });
 void0(log);

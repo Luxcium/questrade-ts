@@ -12,7 +12,7 @@ export const _getQuotesByIds = (credentials: Credentials) => async (
         `/markets/quotes?ids=${ids.join(',')}`
       )()
     ).quotes;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
     return [];
   }

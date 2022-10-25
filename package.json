@@ -74,10 +74,10 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
-    "@types/jest": "29.2.0",
+    "@types/jest": "~29.2.0",
     "@types/node": "16",
     "@types/ramda": "^0.26.41",
-    "babel-jest": "^25.1.0",
+    "babel-jest": "~29.2.1",
     "concurrently": "^5.1.0",
     "coveralls": "^3.0.9",
     "cp-cli": "^2.0.0",
@@ -112,12 +112,11 @@
     "@types/eslint-config-prettier": "6.11.0",
     "@types/eslint-plugin-prettier": "3.1.0",
     "@types/heft-jest": "1.0.3",
-    "tslib": "~2.4.0"
+    "ts-jest": "~29.0.3"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "questrade-api-enumerations": "^1.1.4",
-    "tslib": "2.4.0",
     "snyk": "^1.316.2"
   },
   "keywords": [

@@ -16,7 +16,7 @@ export const _getOrders = (credentials: Credentials) => (
         )}stateFilter=${stateFilter}`
       )()
     ).orders;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
     return [];
   }

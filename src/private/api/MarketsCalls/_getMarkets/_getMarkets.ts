@@ -8,7 +8,7 @@ export const _getMarkets = (credentials: Credentials) => async (): Promise<
 > => {
   try {
     return (await _axiosGetApi(credentials)<IMarkets>('/markets')()).markets;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
     return [];
   }

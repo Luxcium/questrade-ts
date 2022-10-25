@@ -12,7 +12,7 @@ export const _getSymbolsByIds = (credentials: Credentials) => async (
         `/symbols?ids=${stockId.join()}`
       )()
     ).symbols;
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
     return [];
   }

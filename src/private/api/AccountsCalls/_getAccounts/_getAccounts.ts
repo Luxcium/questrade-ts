@@ -13,7 +13,7 @@ export function _getAccounts(credentials: Credentials) {
       const data = await accounts();
       //
       return data.accounts;
-    } catch (error) {
+    } catch (error: any) {
       console.error(error.message);
       return [];
     }

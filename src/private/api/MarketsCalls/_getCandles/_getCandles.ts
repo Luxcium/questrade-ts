@@ -19,7 +19,7 @@ export const _getCandles = (credentials: Credentials) => (symbolID: number) => (
       result.hash = { short, long };
       return result;
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error(error.message);
     return [];
   }
