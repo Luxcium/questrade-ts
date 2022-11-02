@@ -82,13 +82,15 @@ const rmvMiliSec = (date: Date | string | number): string => {
   return dateToString(floor(dateToNumeric(date) / 1000) * 1000);
 };
 
-export const setDateRange = (backNumberOfDays: number) => <T>(
-  funct: (startTime: string) => (endTime: string) => T,
-  fromDate?: string
-) => {
-  const { startTime, endTime } = dateRange(backNumberOfDays, fromDate);
-  return funct(startTime)(endTime);
-};
+export const setDateRange =
+  (backNumberOfDays: number) =>
+  <T>(
+    funct: (startTime: string) => (endTime: string) => T,
+    fromDate?: string
+  ) => {
+    const { startTime, endTime } = dateRange(backNumberOfDays, fromDate);
+    return funct(startTime)(endTime);
+  };
 
 // export const rangeTool = (startTime?: string | null) => (
 //   endTime?: string | null

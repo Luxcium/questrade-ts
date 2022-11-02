@@ -9,7 +9,7 @@ import {
   IQtApiSearch,
   IQtApiSymbols,
   IQuestradeApi,
-  StrategyVariantRequest
+  StrategyVariantRequest,
 } from '../../typescript';
 import { log, setDateRange, void0 } from '../../utils';
 
@@ -64,7 +64,6 @@ describe('QtAPI PROPERTIES will test all properties and methods on qtApi', () =>
     expect(
       (await qtApi.myBalances()).CAD.combined.current.buyingPower
     ).not.toBeNaN();
-
   });
 
   it('should validate qtApi myBalances', done => {
@@ -73,7 +72,6 @@ describe('QtAPI PROPERTIES will test all properties and methods on qtApi', () =>
   });
   it('should validate qtApi myBalances', async () => {
     void0((await qtApi.myBalances()).CAD.combined.current.buyingPower);
-
   });
 });
 
@@ -83,11 +81,9 @@ describe('ACCOUNT METHODS will test all methods on get.account', () => {
     const activities30Days = async () =>
       dateRange30Days((await account()).getActivities);
     void0(await activities30Days());
-
   });
   it('should validate balances', async () => {
     void0(await (await account()).getBalances());
-
   });
   it('should validate allAccount', async () => {
     void0(await (await account()).getAllAccounts());
@@ -175,7 +171,9 @@ describe('QUOTES METHODES will test all methods on get.quotes', () => {
   });
   it('should validate that can get optionsQuotes fromFilter', async () => {
     void0(
-      await (await getOptionsQuotes()).fromFilter({
+      await (
+        await getOptionsQuotes()
+      ).fromFilter({
         expiryDate: '2019-10-18T00:00:00.000000-05:00',
         underlyingId: 27426,
       })
@@ -208,7 +206,6 @@ describe('SYMBOLS METHODS will test all methods on get.symbols', () => {
   });
   it('should validate symbols byStockIds', async () => {
     void0(await (await getSymbols()).byStockIds([8049]));
-
   });
 });
 void0(log);

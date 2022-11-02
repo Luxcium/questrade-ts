@@ -14,7 +14,6 @@ describe('auth Credential from QuestradeApi via AXIOS', () => {
     });
     // console.log(credentials);
     void0(credentials);
-
   });
   it('should be able to recive a keyfile', async () => {
     const credentials = await _oAuthAxiosCredentials({
@@ -27,7 +26,6 @@ describe('auth Credential from QuestradeApi via AXIOS', () => {
     });
     // console.log(credentials);
     void0(credentials);
-
   });
   it('should not be able to recive an empty string', async () => {
     let canReciveEmptyString: boolean;
@@ -41,7 +39,6 @@ describe('auth Credential from QuestradeApi via AXIOS', () => {
     }
     expect(canReciveEmptyString).toBe(false);
     void0(credentials);
-
   });
   it('should not be able to recive an empty account number', async () => {
     const credentials = await _oAuthAxiosCredentials({
@@ -54,13 +51,11 @@ describe('auth Credential from QuestradeApi via AXIOS', () => {
     });
     // console.log(credentials);
     void0(credentials);
-
   });
 
   it('should not be able to recive a file path as a string containing the token', async () => {
     const credentials = await _oAuthAxiosCredentials('./keys/MOCK');
     // console.log(credentials);
     void0(credentials);
-
   });
 });

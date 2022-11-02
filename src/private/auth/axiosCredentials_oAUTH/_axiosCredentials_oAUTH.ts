@@ -18,9 +18,9 @@ export const _oAuthAxiosCredentials = async (
       refresh_token: refreshToken,
     },
   };
-  const response = (await axios(axiosConfig)) as AxiosIntrospectRes<
-    IRefreshCreds
-  >;
+  const response = (await axios(
+    axiosConfig
+  )) as AxiosIntrospectRes<IRefreshCreds>;
 
   if (!response.data) {
     if (response) {

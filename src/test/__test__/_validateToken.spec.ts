@@ -34,8 +34,8 @@ describe('oAuth Validate Token', () => {
       keyDir: '',
     });
   });
-  it('should validate with a key dir',  async () => {
-    await(async () =>
+  it('should validate with a key dir', async () => {
+    await (async () =>
       _validateToken({
         account: '12345678',
         apiVersion: 'v1',
@@ -45,6 +45,5 @@ describe('oAuth Validate Token', () => {
         keyFile: '',
         keyDir: './build/tmp',
       }))();
-
   });
 });

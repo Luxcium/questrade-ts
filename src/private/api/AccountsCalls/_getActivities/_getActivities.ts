@@ -1,7 +1,7 @@
 import {
   Credentials,
   IAccountActivity,
-  IActivities
+  IActivities,
 } from '../../../../typescript';
 import { endpointFormatDateTool } from '../../../../utils';
 import { _axiosAccountGetApi } from '../../../routes';

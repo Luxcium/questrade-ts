@@ -4,14 +4,14 @@ const _urlSeprator = () => '/';
 const _baseAcctUrlStr = (): string => 'accounts';
 const _credAcctNmbrProp = (C: Credentials): string => C.accountNumber;
 
-const _endPtAccountBaseURL: EndPtAccountBaseURL = getCredAcctProp => urlSep => accountStr => creds => accountEndpoint =>
-  `${urlSep()}${accountStr()}${urlSep()}${getCredAcctProp(
-    creds
-  )}${accountEndpoint}`;
+const _endPtAccountBaseURL: EndPtAccountBaseURL =
+  getCredAcctProp => urlSep => accountStr => creds => accountEndpoint =>
+    `${urlSep()}${accountStr()}${urlSep()}${getCredAcctProp(
+      creds
+    )}${accountEndpoint}`;
 /** PROVIDE: credentials and accountEndpoint string, THEN GET: a endpoint string */
-export const _endpointFormatAccount = _endPtAccountBaseURL(_credAcctNmbrProp)(
-  _urlSeprator
-)(_baseAcctUrlStr);
+export const _endpointFormatAccount =
+  _endPtAccountBaseURL(_credAcctNmbrProp)(_urlSeprator)(_baseAcctUrlStr);
 
 export type EndPtAccountBaseURL = (
   getCredAcctProp: (credentials: Credentials) => string

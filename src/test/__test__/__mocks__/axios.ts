@@ -41,6 +41,6 @@ _axios.mockImplementation((config?: AxiosRequestConfig) => {
   const resp = !!data ? data : null;
   return { data: resp, introspect };
 });
-const axios = (_axios as unknown) as AxiosStatic;
+const axios = _axios as unknown as AxiosStatic;
 
 module.exports = axios;

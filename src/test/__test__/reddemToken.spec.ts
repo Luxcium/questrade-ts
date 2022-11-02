@@ -13,7 +13,6 @@ describe('Redeem Token ', () => {
       canReciveEmptyString = false;
     }
     expect(canReciveEmptyString).toBe(false);
-
   });
 
   it('should be able to recive a keyfile', async () => {
@@ -26,7 +25,6 @@ describe('Redeem Token ', () => {
       keyFile: 'MOCKfile',
     });
     void0(credentials);
-
   });
   it('should be able to recive practice account = true', async () => {
     const { credentials } = await redeemToken({
@@ -38,7 +36,6 @@ describe('Redeem Token ', () => {
       keyFile: 'MOCKfile',
     });
     void0(credentials);
-
   });
 
   it('should be able to recive no apiVersion and default to v1', async () => {
@@ -51,7 +48,6 @@ describe('Redeem Token ', () => {
     });
     expect(credentials.apiVersion).toBe('v1');
     void0(credentials);
-
   });
   it('should not be able to recive a file path as a string containing the token', async () => {
     const credentials = await redeemToken(
@@ -59,6 +55,5 @@ describe('Redeem Token ', () => {
     );
 
     void0(credentials);
-
   });
 });

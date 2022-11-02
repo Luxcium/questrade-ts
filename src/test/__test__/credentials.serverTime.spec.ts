@@ -5,5 +5,4 @@ test("should set getServerTime to 'ERROR'", async () => {
   const serverTime = qtApi.serverTime;
   console.log(serverTime);
   expect(serverTime).toEqual('ERROR');
-
 });

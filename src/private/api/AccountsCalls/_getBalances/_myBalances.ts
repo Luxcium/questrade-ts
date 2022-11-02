@@ -5,14 +5,10 @@ export const _myBalances = async (
 ): Promise<IMyBalances> => {
   const [perCADcurrent, perUSDcurrent] = myBalances.perCurrencyBalances;
   const [combinedCADcurrent, combinedUSDcurrent] = myBalances.combinedBalances;
-  const [
-    perCADstartOfDay,
-    perUSDstartOfDay,
-  ] = myBalances.sodPerCurrencyBalances;
-  const [
-    combinedCADstartOfDay,
-    combinedUSDstartOfDay,
-  ] = myBalances.sodCombinedBalances;
+  const [perCADstartOfDay, perUSDstartOfDay] =
+    myBalances.sodPerCurrencyBalances;
+  const [combinedCADstartOfDay, combinedUSDstartOfDay] =
+    myBalances.sodCombinedBalances;
 
   const perCurrency = {
     CAD: {

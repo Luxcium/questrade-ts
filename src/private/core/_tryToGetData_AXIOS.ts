@@ -4,7 +4,7 @@ import { Credentials } from '../../typescript/Credentials';
 import {
   remainingRequests,
   remaningTimeString,
-  requestPerSecondLimiter
+  requestPerSecondLimiter,
 } from './requestPerSecondLimit';
 export const _tryToGetData = <R, D>(
   _config: CoreApiConfig<D>,
@@ -14,8 +14,8 @@ export const _tryToGetData = <R, D>(
     try {
       const possiblePerSeconds =
         !!credentials &&
-          !!credentials.remainingRequests &&
-          !!credentials.remainingRequests.possiblePerSeconds
+        !!credentials.remainingRequests &&
+        !!credentials.remainingRequests.possiblePerSeconds
           ? credentials.remainingRequests.possiblePerSeconds
           : 21;
       let response: AxiosResponse;

@@ -4,18 +4,19 @@ import { _axiosAccountGetApi } from '../../../routes';
 
 // + _getExecutions
 /** _getExecutions */
-export const _getExecutions = (credentials: Credentials) => (
-  startDate: string
-) => async (endDate: string): Promise<IExecution[]> => {
-  try {
-    //
-    return (
-      await _axiosAccountGetApi(credentials)<IExecutions>(
-        `/executions?${endpointFormatDateTool(startDate, endDate)}`
-      )()
-    ).executions;
-  } catch (error: any) {
-    console.error(error.message);
-    return [];
-  }
-};
+export const _getExecutions =
+  (credentials: Credentials) =>
+  (startDate: string) =>
+  async (endDate: string): Promise<IExecution[]> => {
+    try {
+      //
+      return (
+        await _axiosAccountGetApi(credentials)<IExecutions>(
+          `/executions?${endpointFormatDateTool(startDate, endDate)}`
+        )()
+      ).executions;
+    } catch (error: any) {
+      console.error(error.message);
+      return [];
+    }
+  };
