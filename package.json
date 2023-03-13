@@ -125,7 +125,7 @@
     "tsconfig-paths": "4.1.1",
     "@types/heft-jest": "1.0.3",
     "eslint-plugin-import": "2.26.0",
-    "webpack": "5.75.0"
+    "webpack": "5.76.0"
   },
   "dependencies": {
     "axios": "^0.21.1",
