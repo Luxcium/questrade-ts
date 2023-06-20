@@ -93,7 +93,7 @@
     "typescript": "4.9.4",
     "typescript-tslint-plugin": "^0.5.5",
     "ramda": "^0.26.1",
-    "@rushstack/heft": "0.49.0",
+    "@rushstack/heft": "0.51.0",
     "@rushstack/heft-jest-plugin": "0.4.2",
     "@typescript-eslint/eslint-plugin": "5.47.1",
     "@typescript-eslint/parser": "5.47.1",
