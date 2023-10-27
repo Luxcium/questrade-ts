@@ -128,7 +128,7 @@
     "webpack": "5.75.0"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.6.0",
     "questrade-api-enumerations": "^1.1.4",
     "snyk": "^1.316.2",
     "tslib": "2.4.1"
