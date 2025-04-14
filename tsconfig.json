@@ -46,7 +46,7 @@
     "listEmittedFiles": false,
     "listFiles": false,
     "traceResolution": false,
-    "listFilesOnly": false,
+    // "listFilesOnly": false,
     /* Extra settings */
     "disableReferencedProjectLoad": false,
     "disableSolutionSearching": false,
@@ -57,7 +57,7 @@
     "noImplicitUseStrict": false,
     "noStrictGenericChecks": false,
     "noUncheckedIndexedAccess": false,
-    "preserveConstEnums": false,
+    // "preserveConstEnums": false,
     "preserveSymlinks": false,
     "stripInternal": false,
     /* Additional Options */

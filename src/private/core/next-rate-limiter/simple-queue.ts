@@ -101,10 +101,10 @@ export class SimpleQueue {
               'ms' /* '\n' */,
             );
           }
-        } catch (error) {
+        } catch (error:any) {
           console.error(
             "'****' CATCH an error in Queue Ratelimiter:",
-            error.message,
+            error?.message || error,
           );
           cb(error, null);
         }

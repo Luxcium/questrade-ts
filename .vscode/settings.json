@@ -2414,6 +2414,9 @@
     "vscode-userdata",
     "output"
   ],
+  "[dotenv]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
   // #endregion: EDITOR RULERS                                                  !
 }
 // =====2021=====Luxcium=====Author==Benjamin=Vincent=(Luxcium)=License==MIT====
