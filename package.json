@@ -97,7 +97,7 @@
     "@rushstack/heft-jest-plugin": "0.4.2",
     "@typescript-eslint/eslint-plugin": "5.47.1",
     "@typescript-eslint/parser": "5.47.1",
-    "eslint": "8.30.0",
+    "eslint": "9.26.0",
     "eslint-config-prettier": "~8.5.0",
     "eslint-import-resolver-typescript": "3.5.2",
     "eslint-plugin-jsdoc": "39.6.4",
