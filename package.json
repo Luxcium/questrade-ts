@@ -97,7 +97,7 @@
     "@rushstack/heft-jest-plugin": "0.4.2",
     "@typescript-eslint/eslint-plugin": "5.47.1",
     "@typescript-eslint/parser": "5.47.1",
-    "eslint": "8.30.0",
+    "eslint": "10.0.0",
     "eslint-config-prettier": "~8.5.0",
     "eslint-import-resolver-typescript": "3.5.2",
     "eslint-plugin-jsdoc": "39.6.4",
@@ -128,7 +128,7 @@
     "webpack": "5.75.0"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.13.5",
     "questrade-api-enumerations": "^1.1.4",
     "snyk": "^1.316.2",
     "tslib": "2.4.1"
